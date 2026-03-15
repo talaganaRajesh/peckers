@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+
+:root {
+  --background: #000;
+  --foreground: #000;
+}
+
+html,
+body {
+  scroll-behavior: auto;
+  position: relative;
+  /* Hide native scrollbar — Lenis handles all scrolling */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE / Edge */
+}
+
+
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+
+
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Allow map iframes to be interactive (pan, zoom, click) */
+.lenis.lenis-smooth .map-interactive,
+.lenis.lenis-smooth .map-interactive iframe {
+  pointer-events: auto;
+}
+
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome / Safari / WebKit */
+}
+
+#main-content {
+  will-change: transform, opacity;
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(80px);
+  }
+}
+
+.animate-scroll-line {
+  animation: scrollLine 1.6s ease-in-out infinite;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-supernett: var(--font-supernett);
+  --font-sharetech: var(--font-share-tech);
+  --font-peakers: var(--font-peakers);
+  --font-anton: var(--font-anton);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #000;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* overflow is controlled by ClientWrapper JS, not CSS class */
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+
+
+
+/* GPU acceleration for animated elements */
+.gsap-animated,
+[class*="will-change"] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Hide scrollbar but keep functionality */
+.custom-scrollbar::-webkit-scrollbar,
+.custom-scrollbar *::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.custom-scrollbar,
+.custom-scrollbar * {
+  -ms-overflow-style: none !important;
+  /* IE and Edge */
+  scrollbar-width: none !important;
+  /* Firefox */
+}
+
+/* Uniqueness Page - Hide all scrollbars */
+.uniqueness-page *::-webkit-scrollbar,
+.uniqueness-page::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.uniqueness-page *,
+.uniqueness-page {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+.anton-regular {
+  font-family: var(--font-anton), sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Screen reader only - Hidden SEO Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
