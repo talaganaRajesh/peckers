@@ -88,15 +88,15 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
         <Preloader onComplete={handlePreloaderComplete} />
       )}
 
-      <PageLoader 
-        loading={isPageLoading} 
-        minimal={isHome || isStudio} 
-        onComplete={() => setIsPageLoading(false)} 
+      <PageLoader
+        loading={isPageLoading}
+        minimal={isHome || isStudio}
+        onComplete={() => setIsPageLoading(false)}
       />
 
       <motion.div
         initial={false}
-        animate={{ 
+        animate={{
           opacity: isPageLoading ? 0 : 1,
           visibility: isPageLoading ? "hidden" : "visible"
         }}

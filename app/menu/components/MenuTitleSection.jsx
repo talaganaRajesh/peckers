@@ -255,47 +255,67 @@ export default function MenuTitleSection({
             <DropShadowSVG />
           </div>
 
-          {/* Mobile-only: simple carousel */}
-          {carousel.cards.map((card) => {
-            const item = items[card.index];
-            const isCenter = card.slot === 0;
+          {/* Mobile-only: simple carousel with swiping */}
+          <div className="md:hidden absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none">
+            <AnimatePresence initial={false}>
+              {carousel.cards.map((card) => {
+                const item = items[card.index];
+                const isCenter = card.slot === 0;
+                const isVisible = Math.abs(card.slot) <= 1;
 
-            return (
-              <div
-                key={`mob-${card.id}`}
-                className="block md:hidden border-none"
-                onClick={() =>
-                  !isCenter && !isAnimating && Math.abs(card.slot) <= 1 && handleCardClick(card.slot)
-                }
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  transform: `
-                    translate(calc(-50% + ${card.slot * 110}vw), -50%)
-                    scale(${item.boost || 1})
-                  `,
-                  opacity: Math.abs(card.slot) <= 1 ? 1 : 0,
-                  zIndex: isCenter ? 10 : 5,
-                  transition: "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease",
-                  pointerEvents: isCenter ? "none" : isAnimating ? "none" : "auto",
-                  userSelect: "none",
-                }}
-              >
-                <div className="relative" style={{ width: "clamp(200px, 75vw, 340px)", height: "auto", aspectRatio: "1/1" }}>
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    priority={isCenter}
-                    className="object-contain"
-                    draggable={false}
-                    sizes="clamp(200px, 75vw, 340px)"
-                  />
-                </div>
-              </div>
-            );
-          })}
+                if (!isVisible) return null;
+
+                return (
+                  <motion.div
+                    key={`mob-${card.id}`}
+                    className="absolute border-none"
+                    initial={false}
+                    animate={{
+                      x: `calc(-50% + ${card.slot * 75}vw)`,
+                      y: "-50%",
+                      scale: isCenter ? (item.boost || 1) : 0.7 * (item.boost || 1),
+                      opacity: isCenter ? 1 : 0.4,
+                      zIndex: isCenter ? 10 : 5,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 25,
+                    }}
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      pointerEvents: isCenter ? "auto" : "none",
+                      userSelect: "none",
+                    }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.4}
+                    onDragEnd={(e, info) => {
+                      const swipeThreshold = 50;
+                      if (info.offset.x < -swipeThreshold) {
+                        goNext();
+                      } else if (info.offset.x > swipeThreshold) {
+                        goPrev();
+                      }
+                    }}
+                  >
+                    <div className="relative" style={{ width: "clamp(200px, 75vw, 340px)", height: "auto", aspectRatio: "1/1" }}>
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        priority={isCenter}
+                        className="object-contain"
+                        draggable={false}
+                        sizes="clamp(200px, 75vw, 340px)"
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
 
           {/* Tablet-only: full multi-card stacked carousel */}
           {carousel.cards.map((card) => {
