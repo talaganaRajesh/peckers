@@ -6,20 +6,7 @@ import { urlFor } from "../../sanity/lib/image";
 
 
 
-const SAUCES_FALLBACK = [
-    { _id: '1', title: "Mayonnaise", descLine1: "A master blend of whole eggs, white wine vinegar, and cracked black pepper.", descLine2: "Freshly made in-house every day, our signature Peckers sauces.", cal: "622.9", protein: "1.2", carbs: "0.3", fat: "70.5" },
-    { _id: '2', title: "Garlic Aioli", descLine1: "Our house-made mayo blended with fresh garlic cloves", descLine2: "and a signature citrus finish.", cal: "563.1", protein: "1.4", carbs: "2.5", fat: "62.7" },
-    { _id: '3', title: "Butter me up", descLine1: "Rich, creamy, and full of bold flavours, this family recipe brings", descLine2: "a touch of heritage to every dish.", cal: "531.3", protein: "4.7", carbs: "16.6", fat: "48.9" },
-    { _id: '4', title: "Honey glaze BBQ", descLine1: "A bold fusion of savoury Hoisin and sun-ripened tomatoes,", descLine2: "finished with a kick of Cayenne.", cal: "364.1", protein: "1.5", carbs: "64.2", fat: "12.0" },
-    { _id: '5', title: "Hot honey", descLine1: "A powerhouse blend of farm-fresh honey, fiery sriracha,", descLine2: "and our signature secret spice mix.", cal: "301.7", protein: "1.1", carbs: "54.1", fat: "9.5" },
-    { _id: '7', title: "Korean gochujang", descLine1: "A rich blend of fermented chillies and aged soy, finished", descLine2: "with the nuttiness of toasted sesame.", cal: "272.2", protein: "2.4", carbs: "32.9", fat: "15.1" },
-    { _id: '8', title: "Peanut sweet chilli", descLine1: "Roasted peanuts and sun-ripened chillies, balanced with fresh herbs", descLine2: "and a signature spice blend.", cal: "222.7", protein: "9.4", carbs: "20.4", fat: "13.6" },
-    { _id: '9', title: "Super charge OG", descLine1: "Hand-whisked whole eggs and bold Sriracha, balanced with", descLine2: "a zesty citrus kick and smoked paprika.", cal: "99.7", protein: "4.4", carbs: "12.0", fat: "3.7" },
-    { _id: '10', title: "Buffalo", descLine1: "A creamy, spicy blend with the perfect balance of heat and tang,", descLine2: "enhanced with bold seasonings for a zesty punch.", cal: "313.8", protein: "1.9", carbs: "2.1", fat: "33.0" },
-    { _id: '12', title: "Cheese Sauce", descLine1: "Creamy, indulgent sauce combining smooth cheddar", descLine2: "and a hint of smoked paprika.", cal: "-", protein: "-", carbs: "-", fat: "-" },
-    { _id: '13', title: "OG chilli", descLine1: "Freshly made in-house every day, our signature Peckers sauces", descLine2: "with zero preservatives, unlike the big boys.", cal: "52.0", protein: "1.2", carbs: "11.0", fat: "0.2" },
-    { _id: '14', title: "Korean glaze", descLine1: "Freshly made in-house every day, our signature Peckers sauces", descLine2: "with zero preservatives, unlike the big boys.", cal: "130.2", protein: "1.2", carbs: "30.5", fat: "0.8" }
-];
+// SAUCES_FALLBACK removed since we fetch from Sanity now
 
 export default function SaucePageOne({ initialData = [] }) {
     const [saucesData, setSaucesData] = useState([]);
@@ -36,12 +23,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
     useEffect(() => {
         if (initialData && initialData.length > 0) {
-            // merge logic if still needed, but primarily use initialData
-            const mergedData = SAUCES_FALLBACK.map((fallback) => {
-                const sanityMatch = initialData.find(s => s.title?.toUpperCase().includes(fallback.title.toUpperCase()));
-                return sanityMatch ? { ...fallback, ...sanityMatch } : fallback;
-            });
-            setSaucesData(mergedData);
+            setSaucesData(initialData);
             setLoading(false);
             return;
         }
@@ -49,15 +31,10 @@ export default function SaucePageOne({ initialData = [] }) {
         const fetchSauces = async () => {
             try {
                 const data = await client.fetch(`*[_type == "saucePage"] | order(_createdAt asc)`);
-                const mergedData = SAUCES_FALLBACK.map((fallback) => {
-                    const sanityMatch = data.find(s => s.title?.toUpperCase().includes(fallback.title.toUpperCase()));
-                    return sanityMatch ? { ...fallback, ...sanityMatch } : fallback;
-                });
-                setSaucesData(mergedData);
+                setSaucesData(data);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching sauces:", error);
-                setSaucesData(SAUCES_FALLBACK);
                 setLoading(false);
             }
         };
@@ -88,38 +65,38 @@ export default function SaucePageOne({ initialData = [] }) {
         }
     }, [saucesData, segment]);
 
-    // Manual layout overrides per sauce image (index-based)
-    const getSauceImageStyle = (idx) => {
+    // Manual layout overrides per sauce image (title-based for resilience)
+    const getSauceImageStyle = (sauce) => {
         const base = "absolute w-[85%] h-[85%] z-10 transition-all duration-700 top-1/2 -translate-y-1/2";
+        const title = sauce.title?.toLowerCase() || "";
 
-        switch (idx) {
-            case 0: // Mayonnaise
-                return `${base} mt-[-5vw] md:mt-[-2vw] scale-[1.8] md:scale-[1.8]`;
-            case 1: // Garlic Aioli
-                return `${base} mt-[-5vw] md:mt-[-2vw] scale-[1.8] md:scale-[1.8]`;
-            case 2: // Butter me up
-                return `${base} mt-[-8vw] md:mt-[-4vw] scale-[1.7] md:scale-[1.65]`;
-            case 3: // Honey glaze BBQ
-                return `${base} mt-[0vw] md:mt-0 scale-[1.1] md:scale-[.94]`;
-            case 4: // Hot honey
-                return `${base} mt-[-4vw] md:mt-[-2vw] scale-[1.4] md:scale-[1.32]`;
-            case 5: // Korean gochujang
-                return `${base} mt-[0vw] md:mt-0 scale-[1.2] md:scale-[1.05]`;
-            case 6: // Peanut sweet chilli
-                return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-            case 7: // Super charge OG
-                return `${base} mt-[-15vw] md:mt-[-10vw] scale-[2.0] md:scale-[1.85]`;
-            case 8: // Buffalo
-                return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-            case 9: // Cheese Sauce
-                return `${base} mt-[-4vw] md:mt-[-2vw] scale-[1.4] md:scale-[1.3]`;
-            case 10: // OG Chilli
-                return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-            case 11: // Korean Glaze
-                return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-            default:
-                return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
+        if (title.includes("mayonnaise")) {
+            return `${base} mt-[-5vw] md:mt-[-2vw] scale-[1.8] md:scale-[1.8]`;
+        } else if (title.includes("garlic aioli")) {
+            return `${base} mt-[-5vw] md:mt-[-2vw] scale-[1.8] md:scale-[1.8]`;
+        } else if (title.includes("butter me up")) {
+            return `${base} mt-[-8vw] md:mt-[-4vw] scale-[1.7] md:scale-[1.65]`;
+        } else if (title.includes("honey glaze bbq") || title.includes("honey-glazed bbq")) {
+            return `${base} mt-[0vw] md:mt-0 scale-[1.1] md:scale-[.94]`;
+        } else if (title.includes("hot honey")) {
+            return `${base} mt-[-4vw] md:mt-[-2vw] scale-[1.4] md:scale-[1.32]`;
+        } else if (title.includes("gochujang")) {
+            return `${base} mt-[0vw] md:mt-0 scale-[1.2] md:scale-[1.05]`;
+        } else if (title.includes("sweet chilli")) {
+            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
+        } else if (title.includes("super charge og")) {
+            return `${base} mt-[-15vw] md:mt-[-10vw] scale-[2.0] md:scale-[1.85]`;
+        } else if (title.includes("buffalo")) {
+            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
+        } else if (title.includes("cheese sauce")) {
+            return `${base} mt-[-4vw] md:mt-[-2vw] scale-[1.4] md:scale-[1.3]`;
+        } else if (title.includes("og chilli")) {
+            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
+        } else if (title.includes("korean glaze")) {
+            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
         }
+
+        return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
     };
 
     if (loading) {
@@ -177,6 +154,11 @@ export default function SaucePageOne({ initialData = [] }) {
                                             {sauce.descLine1}<br />
                                             {sauce.descLine2}
                                         </p>
+                                        {sauce.ingredients && sauce.ingredients.length > 0 && (
+                                            <p className="text-[12px] md:text-[0.9vw] text-white/60 mt-2 font-mono uppercase tracking-[0.1em]">
+                                                Ingredients: {sauce.ingredients.join(' • ')}
+                                            </p>
+                                        )}
                                         <p className="hidden sm:block">{sauce.descLine3}</p>
                                         <div className="flex flex-col items-center">
                                             <div className="flex flex-row flex-wrap justify-center items-center gap-2 md:gap-4 pt-3 md:pt-[1vw] xl:pt-[0.8vw] font-bold">
@@ -251,7 +233,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                     </svg>
 
                                     {isActive && sauce.sauceImage && (
-                                        <div className={getSauceImageStyle(idx)}>
+                                        <div className={getSauceImageStyle(sauce)}>
                                             <Image
                                                 src={urlFor(sauce.sauceImage).url()}
                                                 alt={sauce.title}

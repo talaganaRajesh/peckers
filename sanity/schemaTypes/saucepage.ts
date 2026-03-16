@@ -52,6 +52,12 @@ export default defineType({
             title: 'Sauce Image',
             type: 'image',
             options: { hotspot: true }
+        }),
+        defineField({
+            name: 'ingredients',
+            title: 'Ingredients',
+            type: 'array',
+            of: [{ type: 'string' }]
         })
     ]
 })
