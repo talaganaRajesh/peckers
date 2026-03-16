@@ -112,7 +112,7 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
           </div>
         </SmoothScroll>
         <ConditionalFooter preloadedData={preloadedFooter} />
-        {pathname !== '/menu' && <MobileBottomBar />}
+        {!pathname.startsWith('/menu') && <MobileBottomBar />}
       </motion.div>
 
     </>

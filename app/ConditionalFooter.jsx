@@ -5,6 +5,6 @@ import Footer from "./Footer";
 
 export default function ConditionalFooter({ preloadedData = null }) {
   const pathname = usePathname();
-  if (pathname === "/menu" || pathname === "/menu/wraps" || pathname === "/house-made-sauces" || pathname.startsWith("/studio")) return null;
+  if (pathname.startsWith("/menu") || pathname === "/house-made-sauces" || pathname.startsWith("/studio")) return null;
   return <Footer preloadedData={preloadedData} />;
 }
