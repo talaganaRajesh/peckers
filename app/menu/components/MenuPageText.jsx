@@ -73,24 +73,32 @@ export default function MenuPageText({ itemData = null }) {
         <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">
           <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">Nutrition (Per Portion)</div>
           <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
-            {itemData.protein && itemData.protein !== "-" ? `${itemData.protein} Protein` : "— Protein"}
+            {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—" 
+              ? (itemData.protein.toLowerCase().includes("protein") ? itemData.protein : `${itemData.protein} Protein`) 
+              : "— Protein"}
             <br />
-            {itemData.carbs && itemData.carbs !== "-" ? `${itemData.carbs} Carbs` : "— Carbs"}
+            {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—" 
+              ? (itemData.carbs.toLowerCase().includes("carbs") ? itemData.carbs : `${itemData.carbs} Carbs`) 
+              : "— Carbs"}
             <br />
-            {itemData.fats && itemData.fats !== "-" ? `${itemData.fats} Fats` : "— Fats"}
+            {itemData.fats && itemData.fats !== "-" && itemData.fats !== "—" 
+              ? (itemData.fats.toLowerCase().includes("fats") ? itemData.fats : `${itemData.fats} Fats`) 
+              : "— Fats"}
           </div>
         </div>
         <div className="min-w-[120px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
           <div className="text-[#575750] font-mono text-[2.5vw] md:text-[12px] uppercase mb-1 tracking-wide font-bold">Energy & Calories</div>
           <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
-            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" ? itemData.calories : "—"}
+             {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" ? itemData.calories : "—"}
             <br />
             {itemData.energy && itemData.energy !== "—" && itemData.energy !== "-" ? itemData.energy : "—"}
           </div>
         </div>
         <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
           <div className="text-[#575750] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">Allergens</div>
-          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem]">{itemData.allergens}</div>
+          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem]">
+            {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
+          </div>
         </div>
         <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
           <div className="text-[#c4b40a] uppercase mb-1 text-[2.5vw] md:text-[12px] tracking-wide font-bold">Spice Level</div>

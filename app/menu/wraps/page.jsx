@@ -41,11 +41,17 @@ export default async function WrapsPage() {
     return {
       ...(defaultItem || {}),
       ...cmsItem,
-      ingredients: cmsItem.ingredients || defaultItem?.ingredients,
-      calories: cmsItem.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem?.calories,
-      protein: cmsItem.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem?.protein,
-      carbs: cmsItem.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem?.carbs,
-      fats: cmsItem.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem?.fats,
+      // If CMS has a value (and it's not the placeholder "-"), use it.
+      // Otherwise fallback to default if available.
+      ingredients: (cmsItem.ingredients && cmsItem.ingredients !== "-") ? cmsItem.ingredients : defaultItem?.ingredients,
+      calories: (cmsItem.calories && cmsItem.calories !== "-" && cmsItem.calories !== "—") ? cmsItem.calories : defaultItem?.calories,
+      protein: (cmsItem.protein && cmsItem.protein !== "-" && cmsItem.protein !== "—") ? cmsItem.protein : defaultItem?.protein,
+      carbs: (cmsItem.carbs && cmsItem.carbs !== "-" && cmsItem.carbs !== "—") ? cmsItem.carbs : defaultItem?.carbs,
+      fats: (cmsItem.fats && cmsItem.fats !== "-" && cmsItem.fats !== "—") ? cmsItem.fats : defaultItem?.fats,
+      energy: (cmsItem.energy && cmsItem.energy !== "-" && cmsItem.energy !== "—") ? cmsItem.energy : defaultItem?.energy,
+      allergens: (cmsItem.allergens && cmsItem.allergens !== "-") ? cmsItem.allergens : defaultItem?.allergens,
+      spiceLevel: (cmsItem.spiceLevel && cmsItem.spiceLevel !== "-") ? cmsItem.spiceLevel : defaultItem?.spiceLevel,
+      availabilityText: (cmsItem.availabilityText && cmsItem.availabilityText !== "-") ? cmsItem.availabilityText : defaultItem?.availabilityText,
       image: cmsItem.image ? urlFor(cmsItem.image).url() : (defaultItem?.image || "https://placehold.co/600x600/000000/FFFFFF/png?text=Wrap"),
     };
   });
