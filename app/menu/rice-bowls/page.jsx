@@ -1,6 +1,7 @@
 import { client } from "../../../sanity/lib/client";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+export const revalidate = 0;
 
 export const metadata = {
     title: "Peckers Rice Bowls Menu | Halal Chicken Rice Bowls Stevenage",
@@ -18,7 +19,7 @@ const DEFAULT_DATA = [
 ];
 
 export default async function RiceBowlsPage() {
-    const data = await client.fetch(`*[_type == "riceBowlsPage"][0] {
+    const data = await client.fetch(`*[_type == "menuPage"][0] {
         riceBowlsCarousel[] {
             name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText
         }
@@ -39,11 +40,15 @@ export default async function RiceBowlsPage() {
         return {
             ...(defaultItem || {}),
             ...cmsItem,
-            ingredients: cmsItem.ingredients || defaultItem?.ingredients,
-            calories: cmsItem.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem?.calories,
-            protein: cmsItem.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem?.protein,
-            carbs: cmsItem.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem?.carbs,
-            fats: cmsItem.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem?.fats,
+            ingredients: (cmsItem.ingredients && cmsItem.ingredients !== "-") ? cmsItem.ingredients : defaultItem?.ingredients,
+            calories: (cmsItem.calories && cmsItem.calories !== "-" && cmsItem.calories !== "—") ? cmsItem.calories : defaultItem?.calories,
+            protein: (cmsItem.protein && cmsItem.protein !== "-" && cmsItem.protein !== "—") ? cmsItem.protein : defaultItem?.protein,
+            carbs: (cmsItem.carbs && cmsItem.carbs !== "-" && cmsItem.carbs !== "—") ? cmsItem.carbs : defaultItem?.carbs,
+            fats: (cmsItem.fats && cmsItem.fats !== "-" && cmsItem.fats !== "—") ? cmsItem.fats : defaultItem?.fats,
+            energy: (cmsItem.energy && cmsItem.energy !== "-" && cmsItem.energy !== "—") ? cmsItem.energy : defaultItem?.energy,
+            allergens: (cmsItem.allergens && cmsItem.allergens !== "-") ? cmsItem.allergens : defaultItem?.allergens,
+            spiceLevel: (cmsItem.spiceLevel && cmsItem.spiceLevel !== "-") ? cmsItem.spiceLevel : defaultItem?.spiceLevel,
+            availabilityText: (cmsItem.availabilityText && cmsItem.availabilityText !== "-") ? cmsItem.availabilityText : defaultItem?.availabilityText,
             image: cmsItem.image ? urlFor(cmsItem.image).url() : (defaultItem?.image || "https://placehold.co/600x600/000000/FFFFFF/png?text=Rice+Bowl"),
         };
     });

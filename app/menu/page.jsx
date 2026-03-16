@@ -1,6 +1,7 @@
 import { client } from "../../sanity/lib/client";
 import { urlFor } from "../../sanity/lib/image";
 import GenericMenuPageClient from "./components/MenuPageClient";
+export const revalidate = 0;
 
 export const metadata = {
   title: "Peckers Menu | Halal Peri Peri Chicken, Gourmet Burgers & Wings",
@@ -8,15 +9,14 @@ export const metadata = {
 };
 
 const DEFAULT_BURGERS_DATA = [
-  { name: "OG BURGER", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=OG+Burger", ingredients: "Pressure-fried tenders and house mayo with crisp lettuce", calories: "544.4 Kcal", protein: "36.5g", carbs: "38.0g", fats: "29.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1.1 },
-  { name: "Supercharged OG", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Supercharged+OG", ingredients: "Crispy chicken and house mayo finished with sriracha and a spice blend.", calories: "532.9 Kcal", protein: "40.0g", carbs: "40.2g", fats: "25.8g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "3/4", boost: 1.1 },
-  { name: "Butter me up", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Butter+Me+Up", ingredients: "Crispy chicken in a secret family butter sauce for a rich, authentic taste", calories: "579.7 Kcal", protein: "35.3g", carbs: "42.1g", fats: "31.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", boost: 1.1 },
-  { name: "BBQ CLASSIC", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=BBQ+Classic", ingredients: "Golden chicken fillet and melted cheese glazed in-house-made honey BBQ", calories: "634.5 Kcal", protein: "41.9g", carbs: "56.1g", fats: "29.2g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1 },
-  { name: "Buffalo Soldier", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Buffalo+Soldier", ingredients: "Seeded brioche with crunchy breaded chicken, house mayo, and our secret buffalo sauce", calories: "593 Kcal", protein: "37.1g", carbs: "41.3g", fats: "32.9g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "4/4", boost: 1.1 },
-  { name: "Murger on the dance floor", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Murger", ingredients: "Seeded brioche with crunchy chicken, onion bhaji, and our signature butter sauce.", calories: "665.1 Kcal", protein: "36.5g", carbs: "57.4g", fats: "33.3g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", boost: 1.1 },
-  { name: "Hert and Seoul", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Hert+and+Seoul", ingredients: "Crunchy breaded chicken in a Korean glaze and house mayo with OG slaw.", calories: "620.7 Kcal", protein: "35.5g", carbs: "48.4g", fats: "33.8g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", boost: 1.1 },
-  { name: "Mega pecker", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Mega+Pecker", ingredients: "Double-crunchy chicken, hash brown, and melted cheese with house-made mayo.", calories: "997.5 Kcal", protein: "72.6g", carbs: "59.3g", fats: "56.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1.1 },
-  { name: "Peri - Peri Grilled chicken burger", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Grilled+Burger", ingredients: "Flame-grilled chicken in your choice of marinade with house-made mayo.", calories: "Depends", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "Depends", boost: 1.0 },
+  { name: "Peckers OG burger", ingredients: "SFC fillet, house mayo, and lettuce on a seeded brioche bun", calories: "553.8 Kcal", protein: "41.1g", carbs: "15.5g", fats: "22.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "Butter me up burger", ingredients: "SFC fillet and authentic, family-recipe butter chicken sauce on brioche bun", calories: "671.9 Kcal", protein: "38.5g", carbs: "60.1g", fats: "32.3g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "Supercharged OG burger", ingredients: "SFC fillet, supercharged sauce, and melted cheese on brioche bun", calories: "617.6 Kcal", protein: "41.1g", carbs: "58.1g", fats: "26.5g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "3/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "Buffalo Soldier burger", ingredients: "SFC fillet, Buffalo sauce, house mayo, lettuce, and onions on brioche bun", calories: "759.3 Kcal", protein: "38.9g", carbs: "60.0g", fats: "42.2g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "4/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "Murger on the dance floor burger", ingredients: "SFC fillet, house masala sauce, onion bhaji, mango chutney, and pickled onions on brioche bun.", calories: "770.8 Kcal", protein: "40.2g", carbs: "76.1g", fats: "33.3g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "Hert and Seoul burger", ingredients: "SFC fillet, Korean glaze, house mayo, OG slaw, and onions on brioche bun.", calories: "722.0 Kcal", protein: "38.8g", carbs: "64.9g", fats: "36.2g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "Mega pecker burger", ingredients: "Double SFC fillets, hash brown, cheese, house mayo, lettuce, and onions on brioche bun", calories: "1136.4 Kcal", protein: "73.8g", carbs: "77.1g", fats: "63.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
+  { name: "OG Peri - Peri Grilled burger", ingredients: "Grilled chicken, house mayo, and your choice of marinade on brioche bun", calories: "Depends", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "Depends", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Burger" },
 ];
 
 export default async function MenuPage() {

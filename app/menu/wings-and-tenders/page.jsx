@@ -1,6 +1,7 @@
 import { client } from "../../../sanity/lib/client";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+export const revalidate = 0;
 
 export const metadata = {
     title: "Peckers Wings & Tenders Menu | Halal Chicken Wings Stevenage",
@@ -35,18 +36,15 @@ const DEFAULT_DATA = [
 ];
 
 export default async function WingsAndTendersPage() {
-    const data = await client.fetch(`*[_type == "wingsAndTendersPage"][0] {
-        wingsCarousel[] { name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText },
-        tendersCarousel[] { name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText }
+    const data = await client.fetch(`*[_type == "menuPage"][0] {
+        wingsAndTendersCarousel[] { name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText }
     }`);
 
     const navbarData = await client.fetch(`*[_type == "menuNavbar"][0].menuItems[] {
         title, link, isActive
     }`);
 
-    const wingsFromSanity = data?.wingsCarousel || [];
-    const tendersFromSanity = data?.tendersCarousel || [];
-    const allSanityItems = [...wingsFromSanity, ...tendersFromSanity];
+    const allSanityItems = data?.wingsAndTendersCarousel || [];
 
     // 1. Start with CMS items as the base
     const cmsItems = allSanityItems.map(cmsItem => {
@@ -62,11 +60,14 @@ export default async function WingsAndTendersPage() {
         return {
             ...(defaultItem || {}),
             ...cmsItem,
-            ingredients: cmsItem.ingredients || defaultItem?.ingredients,
-            calories: cmsItem.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem?.calories,
-            protein: cmsItem.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem?.protein,
-            carbs: cmsItem.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem?.carbs,
-            fats: cmsItem.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem?.fats,
+            ingredients: (cmsItem.ingredients && cmsItem.ingredients !== "-") ? cmsItem.ingredients : defaultItem?.ingredients,
+            calories: (cmsItem.calories && cmsItem.calories !== "-" && cmsItem.calories !== "—") ? cmsItem.calories : defaultItem?.calories,
+            protein: (cmsItem.protein && cmsItem.protein !== "-" && cmsItem.protein !== "—") ? cmsItem.protein : defaultItem?.protein,
+            carbs: (cmsItem.carbs && cmsItem.carbs !== "-" && cmsItem.carbs !== "—") ? cmsItem.carbs : defaultItem?.carbs,
+            fats: (cmsItem.fats && cmsItem.fats !== "-" && cmsItem.fats !== "—") ? cmsItem.fats : defaultItem?.fats,
+            energy: (cmsItem.energy && cmsItem.energy !== "-" && cmsItem.energy !== "—") ? cmsItem.energy : defaultItem?.energy,
+            allergens: (cmsItem.allergens && cmsItem.allergens !== "-") ? cmsItem.allergens : defaultItem?.allergens,
+            spiceLevel: (cmsItem.spiceLevel && cmsItem.spiceLevel !== "-") ? cmsItem.spiceLevel : defaultItem?.spiceLevel,
             image: cmsItem.image ? urlFor(cmsItem.image).url() : (defaultItem?.image && !defaultItem.image.includes(".png") ? defaultItem.image : placeholder),
         };
     });

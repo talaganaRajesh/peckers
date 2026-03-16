@@ -1,6 +1,7 @@
 import { client } from "../../../sanity/lib/client";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+export const revalidate = 0;
 
 export const metadata = {
     title: "Peckers Salad Bowls Menu | Halal Chicken Salads Stevenage",
@@ -8,16 +9,16 @@ export const metadata = {
 };
 
 const DEFAULT_DATA = [
-    { name: "The OG Salad bowl", ingredients: "Fresh mixed salad, crispy peckers breaded chicken fillet, house mayo", calories: "539.8 Kcal", protein: "41.1g", carbs: "15.5g", fats: "36.8g", allergens: "-", spiceLevel: "1/4", image: "/images/salad-bowls/default.png" },
-    { name: "Buffalo soldier Salad bowl", ingredients: "Fresh salad, signature peckers breaded chicken, house Buffalo sauce, and house mayo", calories: "540.7 Kcal", protein: "33.7g", carbs: "17.7g", fats: "38.4g", allergens: "-", spiceLevel: "4/4", image: "/images/salad-bowls/default.png" },
-    { name: "Murger on the dance floor salad bowl", ingredients: "Fresh salad, peckers breaded chicken, masala sauce, and onion bhaji.", calories: "549.1 Kcal", protein: "34.8g", carbs: "33.5g", fats: "30.9g", allergens: "-", spiceLevel: "2/4", image: "/images/salad-bowls/default.png" },
-    { name: "Hert and Seoul salad bowl", ingredients: "Crunchy mixed salad, crispy peckers breaded chicken fillet, secret blend of Korean glaze & house mayo, house Korean slaw.", calories: "480.6 Kcal", protein: "32.8g", carbs: "20.9g", fats: "30.9g", allergens: "SESAME", spiceLevel: "2/4", image: "/images/salad-bowls/default.png" },
-    { name: "Mega pecker salad bowl", ingredients: "Fresh mixed salad, double peckers breaded chicken fillet, house made mayo, hash brown, melted cheese.", calories: "914.7 Kcal", protein: "68.3g", carbs: "34.5g", fats: "59.7g", allergens: "-", spiceLevel: "1/4", image: "/images/salad-bowls/default.png" },
-    { name: "OG Peri -Peri Grilled salad bowl", ingredients: "Mixed salad, grilled chicken with your choice of marinade, and house mayo.", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "Depends", spiceLevel: "Depends", image: "/images/salad-bowls/default.png" },
+    { name: "The OG Salad bowl", ingredients: "Fresh mixed salad, crispy peckers breaded chicken fillet, house mayo", calories: "539.8 Kcal", protein: "41.1g", carbs: "15.5g", fats: "36.8g", allergens: "-", spiceLevel: "1/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Salad+Bowl" },
+    { name: "Buffalo soldier Salad bowl", ingredients: "Fresh salad, signature peckers breaded chicken, house Buffalo sauce, and house mayo", calories: "540.7 Kcal", protein: "33.7g", carbs: "17.7g", fats: "38.4g", allergens: "-", spiceLevel: "4/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Salad+Bowl" },
+    { name: "Murger on the dance floor salad bowl", ingredients: "Fresh salad, peckers breaded chicken, masala sauce, and onion bhaji.", calories: "549.1 Kcal", protein: "34.8g", carbs: "33.5g", fats: "30.9g", allergens: "-", spiceLevel: "2/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Salad+Bowl" },
+    { name: "Hert and Seoul salad bowl", ingredients: "Crunchy mixed salad, crispy peckers breaded chicken fillet, secret blend of Korean glaze & house mayo, house Korean slaw.", calories: "480.6 Kcal", protein: "32.8g", carbs: "20.9g", fats: "30.9g", allergens: "SESAME", spiceLevel: "2/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Salad+Bowl" },
+    { name: "Mega pecker salad bowl", ingredients: "Fresh mixed salad, double peckers breaded chicken fillet, house made mayo, hash brown, melted cheese.", calories: "914.7 Kcal", protein: "68.3g", carbs: "34.5g", fats: "59.7g", allergens: "-", spiceLevel: "1/4", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Salad+Bowl" },
+    { name: "OG Peri -Peri Grilled salad bowl", ingredients: "Mixed salad, grilled chicken with your choice of marinade, and house mayo.", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "Depends", spiceLevel: "Depends", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Salad+Bowl" },
 ];
 
 export default async function SaladBowlsPage() {
-    const data = await client.fetch(`*[_type == "saladBowlsPage"][0] {
+    const data = await client.fetch(`*[_type == "menuPage"][0] {
         saladBowlsCarousel[] {
             name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText
         }
@@ -27,7 +28,7 @@ export default async function SaladBowlsPage() {
         title, link, isActive
     }`);
 
-    const initialItems = DEFAULT_DATA.map((defaultItem) => {
+    const finalItems = DEFAULT_DATA.map((defaultItem) => {
         const cmsItem = data?.saladBowlsCarousel?.find(
             (item) => item.name.toLowerCase() === defaultItem.name.toLowerCase()
         );
@@ -35,13 +36,14 @@ export default async function SaladBowlsPage() {
         return {
             ...defaultItem,
             ...cmsItem,
-            ingredients: cmsItem?.ingredients || defaultItem.ingredients,
-            calories: cmsItem?.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem.calories,
-            protein: cmsItem?.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem.protein,
-            carbs: cmsItem?.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem.carbs,
-            fats: cmsItem?.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem.fats,
-            spiceLevel: cmsItem?.spiceLevel || defaultItem.spiceLevel,
-            allergens: cmsItem?.allergens || defaultItem.allergens,
+            ingredients: (cmsItem?.ingredients && cmsItem.ingredients !== "-") ? cmsItem.ingredients : defaultItem.ingredients,
+            calories: (cmsItem?.calories && cmsItem.calories !== "-" && cmsItem.calories !== "—") ? cmsItem.calories : defaultItem.calories,
+            protein: (cmsItem?.protein && cmsItem.protein !== "-" && cmsItem.protein !== "—") ? cmsItem.protein : defaultItem.protein,
+            carbs: (cmsItem?.carbs && cmsItem.carbs !== "-" && cmsItem.carbs !== "—") ? cmsItem.carbs : defaultItem.carbs,
+            fats: (cmsItem?.fats && cmsItem.fats !== "-" && cmsItem.fats !== "—") ? cmsItem.fats : defaultItem.fats,
+            energy: (cmsItem?.energy && cmsItem.energy !== "-" && cmsItem.energy !== "—") ? cmsItem.energy : defaultItem?.energy,
+            spiceLevel: (cmsItem?.spiceLevel && cmsItem.spiceLevel !== "-") ? cmsItem.spiceLevel : defaultItem.spiceLevel,
+            allergens: (cmsItem?.allergens && cmsItem.allergens !== "-") ? cmsItem.allergens : defaultItem.allergens,
             image: cmsItem?.image ? urlFor(cmsItem.image).url() : defaultItem.image,
             boost: cmsItem?.boost || defaultItem.boost,
         };
@@ -49,7 +51,7 @@ export default async function SaladBowlsPage() {
 
     return (
         <GenericMenuPageClient
-            initialItems={initialItems}
+            initialItems={finalItems}
             initialNavbarData={navbarData}
             categoryName="SALAD BOWLS"
         />

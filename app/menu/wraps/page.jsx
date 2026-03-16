@@ -1,6 +1,7 @@
 import { client } from "../../../sanity/lib/client";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+export const revalidate = 0;
 
 export const metadata = {
   title: "Peckers Wraps Menu | Halal Chicken Wraps Stevenage & Hitchin",
@@ -20,7 +21,7 @@ const DEFAULT_WRAPS_DATA = [
 ];
 
 export default async function WrapsPage() {
-  const data = await client.fetch(`*[_type == "wrapsPage"][0] {
+  const data = await client.fetch(`*[_type == "menuPage"][0] {
     wrapsCarousel[] {
       name, image, boost, ingredients, calories, protein, carbs, fats, energy, allergens, spiceLevel, availabilityText
     }
