@@ -8,9 +8,15 @@ export const metadata = {
 };
 
 const DEFAULT_BURGERS_DATA = [
-  { name: "The OG", image: "/images/burgers/default.png", ingredients: "Pressure-fried tenders and house mayo with crisp lettuce", calories: "544.4 Kcal", protein: "36.5g", carbs: "38.0g", fats: "29.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1.1 },
-  { name: "Supercharged OG", image: "/images/burgers/default.png", ingredients: "Crispy chicken and house mayo finished with sriracha and a spice blend.", calories: "532.9 Kcal", protein: "40.0g", carbs: "40.2g", fats: "25.8g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "3/4", boost: 1.1 },
-  { name: "Honey-glazed BBQ classic", image: "/images/burgers/default.png", ingredients: "Golden chicken fillet and melted cheese glazed in-house-made honey BBQ", calories: "634.5 Kcal", protein: "41.9g", carbs: "56.1g", fats: "29.2g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1 },
+  { name: "OG BURGER", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=OG+Burger", ingredients: "Pressure-fried tenders and house mayo with crisp lettuce", calories: "544.4 Kcal", protein: "36.5g", carbs: "38.0g", fats: "29.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1.1 },
+  { name: "Supercharged OG", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Supercharged+OG", ingredients: "Crispy chicken and house mayo finished with sriracha and a spice blend.", calories: "532.9 Kcal", protein: "40.0g", carbs: "40.2g", fats: "25.8g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "3/4", boost: 1.1 },
+  { name: "Butter me up", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Butter+Me+Up", ingredients: "Crispy chicken in a secret family butter sauce for a rich, authentic taste", calories: "579.7 Kcal", protein: "35.3g", carbs: "42.1g", fats: "31.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", boost: 1.1 },
+  { name: "BBQ CLASSIC", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=BBQ+Classic", ingredients: "Golden chicken fillet and melted cheese glazed in-house-made honey BBQ", calories: "634.5 Kcal", protein: "41.9g", carbs: "56.1g", fats: "29.2g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1 },
+  { name: "Buffalo Soldier", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Buffalo+Soldier", ingredients: "Seeded brioche with crunchy breaded chicken, house mayo, and our secret buffalo sauce", calories: "593 Kcal", protein: "37.1g", carbs: "41.3g", fats: "32.9g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "4/4", boost: 1.1 },
+  { name: "Murger on the dance floor", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Murger", ingredients: "Seeded brioche with crunchy chicken, onion bhaji, and our signature butter sauce.", calories: "665.1 Kcal", protein: "36.5g", carbs: "57.4g", fats: "33.3g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", boost: 1.1 },
+  { name: "Hert and Seoul", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Hert+and+Seoul", ingredients: "Crunchy breaded chicken in a Korean glaze and house mayo with OG slaw.", calories: "620.7 Kcal", protein: "35.5g", carbs: "48.4g", fats: "33.8g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "2/4", boost: 1.1 },
+  { name: "Mega pecker", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Mega+Pecker", ingredients: "Double-crunchy chicken, hash brown, and melted cheese with house-made mayo.", calories: "997.5 Kcal", protein: "72.6g", carbs: "59.3g", fats: "56.6g", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "1/4", boost: 1.1 },
+  { name: "Peri - Peri Grilled chicken burger", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Grilled+Burger", ingredients: "Flame-grilled chicken in your choice of marinade with house-made mayo.", calories: "Depends", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN, MILK, EGGS", spiceLevel: "Depends", boost: 1.0 },
 ];
 
 export default async function MenuPage() {
@@ -24,17 +30,37 @@ export default async function MenuPage() {
     title, link, isActive
   }`);
 
-  const initialBurgers = data?.burgerCarousel?.map((item) => ({
-    ...item,
-    image: item.image ? urlFor(item.image).url() : "/images/burgers/default.png",
-    boost: item.boost || 1,
-  })) || DEFAULT_BURGERS_DATA;
+  // 1. Start with CMS items as the base
+  const cmsBurgers = (data?.burgerCarousel || []).map(cmsItem => {
+    const defaultItem = DEFAULT_BURGERS_DATA.find(
+      (d) => d.name.toLowerCase() === cmsItem.name.toLowerCase() || 
+             cmsItem.name.toLowerCase().includes(d.name.toLowerCase()) ||
+             d.name.toLowerCase().includes(cmsItem.name.toLowerCase())
+    );
+
+    return {
+      ...(defaultItem || {}),
+      ...cmsItem,
+      ingredients: cmsItem.ingredients || defaultItem?.ingredients,
+      calories: cmsItem.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem?.calories,
+      protein: cmsItem.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem?.protein,
+      carbs: cmsItem.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem?.carbs,
+      fats: cmsItem.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem?.fats,
+      image: cmsItem.image ? urlFor(cmsItem.image).url() : (defaultItem?.image || "https://placehold.co/600x600/000000/FFFFFF/png?text=Peckers+Burger"),
+    };
+  });
+
+  // 2. Add any default items that are NOT in CMS
+  const cmsNames = new Set(cmsBurgers.map(b => b.name.toLowerCase()));
+  const missingDefaults = DEFAULT_BURGERS_DATA.filter(d => !cmsNames.has(d.name.toLowerCase()));
+
+  const finalBurgers = [...cmsBurgers, ...missingDefaults];
 
   return (
-    <GenericMenuPageClient 
-        initialItems={initialBurgers} 
-        initialNavbarData={navbarData} 
-        categoryName="BURGERS" 
+    <GenericMenuPageClient
+      initialItems={finalBurgers}
+      initialNavbarData={navbarData}
+      categoryName="BURGERS"
     />
   );
 }

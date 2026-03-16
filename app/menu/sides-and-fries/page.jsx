@@ -8,9 +8,20 @@ export const metadata = {
 };
 
 const DEFAULT_DATA = [
+    { name: "1 Piece southern fried chicken", ingredients: "1 Piece of our signature southern fried chicken", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN", spiceLevel: "1/4", image: "/images/sides/default.png" },
+    { name: "1 piece southern fried chicken & chips", ingredients: "1 piece of southern fried chicken served with a portion of crispy chips", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN", spiceLevel: "1/4", image: "/images/sides/default.png" },
+    { name: "2 piece southern fried chicken & chips", ingredients: "2 pieces of southern fried chicken served with a portion of crispy chips", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN", spiceLevel: "1/4", image: "/images/sides/default.png" },
+    { name: "3 piece southern fried chicken & chips", ingredients: "3 pieces of southern fried chicken served with a portion of crispy chips", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN", spiceLevel: "1/4", image: "/images/sides/default.png" },
+    { name: "Fries", ingredients: "Classic & crispy portion of fries", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "-", spiceLevel: "0", image: "/images/sides/default.png" },
+    { name: "Cheesy fries", ingredients: "Cheesy fries tossed in mozzarella, house garlic mayo, and chives", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "DAIRY", spiceLevel: "0", image: "/images/sides/default.png" },
     { name: "Peckers loaded fries", ingredients: "Fries dripping in cheese, house Buffalo Soldier sauce, jalapeños, and crispy onions", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "DAIRY", spiceLevel: "3/4", image: "/images/sides/default.png" },
     { name: "Halloumi fries with chilli jam", ingredients: "halloumi fries served with a sweet chilli kick", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "DAIRY", spiceLevel: "1/4", image: "/images/sides/default.png" },
     { name: "Mac & cheese sticks", ingredients: "Mac & Cheese Bites with House-made OG Chilli", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN, DAIRY", spiceLevel: "2/4", image: "/images/sides/default.png" },
+    { name: "Corn on the cob", ingredients: "Sweet, fragrant corn on the cob, buttered to perfection", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "DAIRY", spiceLevel: "0", image: "/images/sides/default.png" },
+    { name: "Mac and cheese", ingredients: "macaroni pasta tossed in a rich, velvety cheese sauce", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "GLUTEN, DAIRY", spiceLevel: "0", image: "/images/sides/default.png" },
+    { name: "Rice bowl", ingredients: "Fragrant, mild spicy rice tossed with peppers, garlic, and onions", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "-", spiceLevel: "1/4", image: "/images/rice-bowls/default.png" },
+    { name: "Salad", ingredients: "Crisp, garden-fresh greens tossed with tangy pickled onions", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "-", spiceLevel: "0", image: "/images/salad-bowls/default.png" },
+    { name: "Grilled halloumi", ingredients: "grilled halloumi with a perfect squeak, served with zesty salsa", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "DAIRY", spiceLevel: "0", image: "/images/sides/default.png" },
 ];
 
 export default async function SidesAndFriesPage() {
@@ -22,11 +33,25 @@ export default async function SidesAndFriesPage() {
         title, link, isActive
     }`);
 
-    const initialItems = data?.sidesCarousel?.map((item) => ({
-        ...item,
-        image: item.image ? urlFor(item.image).url() : "/images/sides/default.png",
-        boost: item.boost || 1,
-    })) || DEFAULT_DATA;
+    const initialItems = DEFAULT_DATA.map((defaultItem) => {
+        const cmsItem = data?.sidesCarousel?.find(
+            (item) => item.name.toLowerCase() === defaultItem.name.toLowerCase()
+        );
+
+        return {
+            ...defaultItem,
+            ...cmsItem,
+            ingredients: cmsItem?.ingredients || defaultItem.ingredients,
+            calories: cmsItem?.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem.calories,
+            protein: cmsItem?.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem.protein,
+            carbs: cmsItem?.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem.carbs,
+            fats: cmsItem?.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem.fats,
+            spiceLevel: cmsItem?.spiceLevel || defaultItem.spiceLevel,
+            allergens: cmsItem?.allergens || defaultItem.allergens,
+            image: cmsItem?.image ? urlFor(cmsItem.image).url() : defaultItem.image,
+            boost: cmsItem?.boost || defaultItem.boost || 1,
+        };
+    });
 
     return (
         <GenericMenuPageClient 

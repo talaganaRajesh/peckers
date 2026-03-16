@@ -22,11 +22,25 @@ export default async function MealBoxPage() {
         title, link, isActive
     }`);
 
-    const initialItems = data?.mealBoxCarousel?.map((item) => ({
-        ...item,
-        image: item.image ? urlFor(item.image).url() : "/images/meal-box/default.png",
-        boost: item.boost || 1,
-    })) || DEFAULT_DATA;
+    const initialItems = DEFAULT_DATA.map((defaultItem) => {
+        const cmsItem = data?.mealBoxCarousel?.find(
+            (item) => item.name.toLowerCase() === defaultItem.name.toLowerCase()
+        );
+
+        return {
+            ...defaultItem,
+            ...cmsItem,
+            ingredients: cmsItem?.ingredients || defaultItem.ingredients,
+            calories: cmsItem?.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem.calories,
+            protein: cmsItem?.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem.protein,
+            carbs: cmsItem?.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem.carbs,
+            fats: cmsItem?.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem.fats,
+            spiceLevel: cmsItem?.spiceLevel || defaultItem.spiceLevel,
+            allergens: cmsItem?.allergens || defaultItem.allergens,
+            image: cmsItem?.image ? urlFor(cmsItem.image).url() : defaultItem.image,
+            boost: cmsItem?.boost || defaultItem.boost || 1,
+        };
+    });
 
     return (
         <GenericMenuPageClient 

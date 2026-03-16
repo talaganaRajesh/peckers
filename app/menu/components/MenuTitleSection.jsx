@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -83,6 +83,7 @@ export default function MenuTitleSection({
 }) {
   const [items] = useState(initialItems);
   const pathname = usePathname();
+  const navRef = useRef(null);
 
   const DEFAULT_NAVBAR = [
     { title: "BURGERS", link: "/menu" },
@@ -96,9 +97,21 @@ export default function MenuTitleSection({
     { title: "VEG", link: "/menu/veg" },
     { title: "SIDES & FRIES", link: "/menu/sides-and-fries" },
     { title: "MEAL BOX", link: "/menu/meal-box" },
+    { title: "KIDS", link: "/menu/kids" },
+    { title: "LUNCH TIME DEALS", link: "/menu/lunch-time-deals" },
   ];
 
-  const [navbarData] = useState(initialNavbarData && initialNavbarData.length > 0 ? initialNavbarData : DEFAULT_NAVBAR);
+  // Ensure all categories from the document are present, merging with Sanity data if available
+  const mergedNavbarData = useMemo(() => {
+    if (!initialNavbarData || initialNavbarData.length === 0) return DEFAULT_NAVBAR;
+
+    const existingTitles = new Set(initialNavbarData.map(item => item.title.toUpperCase()));
+    const missingItems = DEFAULT_NAVBAR.filter(item => !existingTitles.has(item.title.toUpperCase()));
+
+    return [...initialNavbarData, ...missingItems];
+  }, [initialNavbarData]);
+
+  const [navbarData] = useState(mergedNavbarData);
 
   const [carousel, setCarousel] = useState(() => {
     if (initialItems.length > 0) {
@@ -166,11 +179,42 @@ export default function MenuTitleSection({
         }}
       >
         {/* SUB-NAV */}
-        <div className="w-full">
-          <nav className="subnavbar" style={{ color: "white" }}>
+        <div className="w-full flex justify-center px-4 md:px-0">
+          <nav className="subnavbar relative group w-full max-w-7xl" style={{ color: "white" }}>
             <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
+            
+            {/* Scroll Buttons */}
+            <button 
+              onClick={() => {
+                if (navRef.current) {
+                  navRef.current.scrollBy({ left: -200, behavior: 'smooth' });
+                }
+              }}
+              className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 rounded-full"
+              aria-label="Scroll Left"
+            >
+              <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#EAB308]" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            <button 
+              onClick={() => {
+                if (navRef.current) {
+                  navRef.current.scrollBy({ left: 200, behavior: 'smooth' });
+                }
+              }}
+              className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 rounded-full"
+              aria-label="Scroll Right"
+            >
+              <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#EAB308]" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
             <div
-              className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start md:justify-center items-center overflow-x-auto no-scrollbar px-[5vw] sm:px-[5vw] md:px-0 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw]"
+              ref={navRef}
+              className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start md:justify-center items-center overflow-x-auto no-scrollbar px-[5vw] sm:px-[5vw] md:px-0 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw] scroll-smooth"
               style={{ fontFamily: "var(--font-peakers)", scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {navbarData.map((item, idx) => {
@@ -187,10 +231,12 @@ export default function MenuTitleSection({
                   else if (title === "WINGS & TENDERS") href = "/menu/wings-and-tenders";
                   else if (title === "PERI-PERI GRILL" || title === "GRILLED") href = "/menu/peri-peri-grilled-chicken";
                   else if (title === "WHAT'S NEW") href = "/menu/whats-new";
-                  else if (title === "SHAKES") href = "/menu/shakes";
+                  else if (title === "SHAKES" || title === "DRINKS") href = "/menu/shakes";
                   else if (title === "VEG") href = "/menu/veg";
-                  else if (title === "SIDES & FRIES") href = "/menu/sides-and-fries";
+                  else if (title === "SIDES & FRIES" || title === "SIDES") href = "/menu/sides-and-fries";
                   else if (title === "MEAL BOX") href = "/menu/meal-box";
+                  else if (title === "KIDS") href = "/menu/kids";
+                  else if (title === "LUNCH TIME DEALS") href = "/menu/lunch-time-deals";
                 }
 
                 const normalizedItemLink = href.replace(/\/$/, "");

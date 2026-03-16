@@ -27,17 +27,31 @@ export default async function SaladBowlsPage() {
         title, link, isActive
     }`);
 
-    const initialItems = data?.saladBowlsCarousel?.map((item) => ({
-        ...item,
-        image: item.image ? urlFor(item.image).url() : "/images/salad-bowls/default.png",
-        boost: item.boost || 1,
-    })) || DEFAULT_DATA;
+    const initialItems = DEFAULT_DATA.map((defaultItem) => {
+        const cmsItem = data?.saladBowlsCarousel?.find(
+            (item) => item.name.toLowerCase() === defaultItem.name.toLowerCase()
+        );
+
+        return {
+            ...defaultItem,
+            ...cmsItem,
+            ingredients: cmsItem?.ingredients || defaultItem.ingredients,
+            calories: cmsItem?.calories && cmsItem.calories !== "-" ? cmsItem.calories : defaultItem.calories,
+            protein: cmsItem?.protein && cmsItem.protein !== "-" ? cmsItem.protein : defaultItem.protein,
+            carbs: cmsItem?.carbs && cmsItem.carbs !== "-" ? cmsItem.carbs : defaultItem.carbs,
+            fats: cmsItem?.fats && cmsItem.fats !== "-" ? cmsItem.fats : defaultItem.fats,
+            spiceLevel: cmsItem?.spiceLevel || defaultItem.spiceLevel,
+            allergens: cmsItem?.allergens || defaultItem.allergens,
+            image: cmsItem?.image ? urlFor(cmsItem.image).url() : defaultItem.image,
+            boost: cmsItem?.boost || defaultItem.boost,
+        };
+    });
 
     return (
-        <GenericMenuPageClient 
-            initialItems={initialItems} 
-            initialNavbarData={navbarData} 
-            categoryName="SALAD BOWLS" 
+        <GenericMenuPageClient
+            initialItems={initialItems}
+            initialNavbarData={navbarData}
+            categoryName="SALAD BOWLS"
         />
     );
 }
