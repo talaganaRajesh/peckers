@@ -13,7 +13,6 @@ import locationPage from './locationPage'
 import mapSection from './mapSection'
 import reviewsHomepage from './reviewsHomepage'
 import enquireSection from './enquireSection'
-import sauces from './sauces'
 import saucepage from './saucepage'
 import uniquenessLanding from './uniquenessLanding'
 import uniquenessSubsection from './uniquenessSubsection'
@@ -36,7 +35,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     category, homepage, location, sliderCard, homepagePersonDetails, footer, 
     menupage, ourstorypage, timeline, ourstorybottompage, siteSettings, 
-    locationPage, mapSection, reviewsHomepage, enquireSection, sauces, 
+    locationPage, mapSection, reviewsHomepage, enquireSection, 
     saucepage, uniquenessLanding, uniquenessSubsection, locationHistory, 
     menuNavbar, crewpage, wrapspage, ricebowlspage, saladbowlspage, 
     wingsandtenderspage, periperigrillpage, whatsnewpage, shakespage, 
