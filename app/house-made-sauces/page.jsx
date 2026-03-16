@@ -16,8 +16,7 @@ export const metadata = {
 };
 
 export default async function SaucesPage() {
-    // Fetch sauces data on the server
-    const saucesData = await client.fetch(`*[_type == "sauce"] | order(_createdAt asc)`);
+    const saucesData = await client.fetch(`*[_type == "saucePage"] | order(_createdAt asc)`);
 
     return <SaucesPageClient initialSaucesData={saucesData} />;
 }

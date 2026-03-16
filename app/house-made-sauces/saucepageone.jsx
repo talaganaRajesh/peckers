@@ -35,11 +35,21 @@ export default function SaucePageOne({ initialData = [] }) {
     }, [currentIndex]);
 
     useEffect(() => {
+        if (initialData && initialData.length > 0) {
+            // merge logic if still needed, but primarily use initialData
+            const mergedData = SAUCES_FALLBACK.map((fallback) => {
+                const sanityMatch = initialData.find(s => s.title?.toUpperCase().includes(fallback.title.toUpperCase()));
+                return sanityMatch ? { ...fallback, ...sanityMatch } : fallback;
+            });
+            setSaucesData(mergedData);
+            setLoading(false);
+            return;
+        }
+
         const fetchSauces = async () => {
             try {
                 const data = await client.fetch(`*[_type == "saucePage"] | order(_createdAt asc)`);
-                // Merge initial/sanity data into fallback data system
-                const mergedData = SAUCES_FALLBACK.map((fallback, i) => {
+                const mergedData = SAUCES_FALLBACK.map((fallback) => {
                     const sanityMatch = data.find(s => s.title?.toUpperCase().includes(fallback.title.toUpperCase()));
                     return sanityMatch ? { ...fallback, ...sanityMatch } : fallback;
                 });
@@ -303,6 +313,5 @@ export default function SaucePageOne({ initialData = [] }) {
         </div>
     );
 }
-
 
 
