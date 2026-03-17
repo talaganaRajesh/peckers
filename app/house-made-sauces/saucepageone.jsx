@@ -120,12 +120,11 @@ export default function SaucePageOne({ initialData = [] }) {
                     const isVisible = isCurrent || isPrev;
                     const isTransitioning = prevIndex !== null;
 
-                    // For “next” navigation, the incoming sauce slides in from bottom.
-                    // For “prev” navigation, the outgoing (previous) sauce slides down to vanish.
-                    const imageAnimationClass = isCurrent && isTransitioning && slideDirection === "next"
-                        ? "sauce-slide-in-bottom"
-                        : isPrev && isTransitioning && slideDirection === "prev"
-                            ? "sauce-slide-out-bottom"
+                    // New animation requested: current sauce goes down and shrinks, next comes from top and scales down
+                    const imageAnimationClass = isCurrent && isTransitioning
+                        ? "sauce-pop-from-top"
+                        : isPrev && isTransitioning
+                            ? "sauce-pop-down"
                             : "";
 
                     const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
@@ -213,7 +212,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
                                     <div
-                                        className={`absolute inset-0 z-30 w-full h-full transition-all duration-1800 ease-[cubic-bezier(0.77,0,0.175,1)]`}
+                                        className={`absolute inset-0 z-30 w-full h-full transition-all duration-300 ease-linear`}
                                         style={{ transform: `rotate(${baseRotation + rotation}deg)` }}
                                     >
                                         <div className="relative w-full h-full pointer-events-auto z-20">
@@ -221,7 +220,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 <defs>
                                                     <path
                                                         id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -455, 0 a 455,455 0 1,1 910,0 a 455,455 0 1,1 -910,0"
+                                                        d="M 500, 500 m -470, 0 a 472,472 0 1,1 944,0 a 472,472 0 1,1 -944,0"
                                                         fill="none"
                                                     />
                                                 </defs>
@@ -260,8 +259,8 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                     {/* STATIC CIRCLE */}
                                     <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                                        <circle cx="500" cy="500" r="410" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
-                                        <circle cx="500" cy="90" r="8" fill="white" />
+                                        <circle cx="500" cy="500" r="455" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+                                        <circle cx="500" cy="45" r="8" fill="white" />
                                     </svg>
 
                                     {isVisible && sauce.sauceImage && (
