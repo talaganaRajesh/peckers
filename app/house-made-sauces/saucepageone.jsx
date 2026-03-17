@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { client } from "../../sanity/lib/client";
 import { urlFor } from "../../sanity/lib/image";
@@ -12,7 +12,10 @@ export default function SaucePageOne({ initialData = [] }) {
     const [fetchedSaucesData, setFetchedSaucesData] = useState([]);
     const [isFetching, setIsFetching] = useState(initialData.length === 0);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [prevIndex, setPrevIndex] = useState(null);
+    const [slideDirection, setSlideDirection] = useState("next"); // "next" = from bottom, "prev" = from top
     const [rotation, setRotation] = useState(0);
+    const transitionTimeout = useRef(null);
 
     const saucesData = initialData.length > 0 ? initialData : fetchedSaucesData;
     const loading = initialData.length === 0 && isFetching;
@@ -38,17 +41,41 @@ export default function SaucePageOne({ initialData = [] }) {
     const segment = saucesData.length ? (360 / saucesData.length) : 0;
     const baseRotation = saucesData.length ? 90 - (segment / 2) : 0;
 
+    const clearPrevIndex = () => {
+        if (transitionTimeout.current) {
+            clearTimeout(transitionTimeout.current);
+        }
+        transitionTimeout.current = setTimeout(() => {
+            setPrevIndex(null);
+            transitionTimeout.current = null;
+        }, 520); // slightly longer than the animation so it finishes cleanly
+    };
+
     const nextSlide = () => {
         const nextIdx = (currentIndex + 1) % saucesData.length;
+        setSlideDirection("next");
+        setPrevIndex(currentIndex);
         setCurrentIndex(nextIdx);
         setRotation(prev => prev + segment); // Clockwise
+        clearPrevIndex();
     };
 
     const prevSlide = () => {
         const nextIdx = (currentIndex - 1 + saucesData.length) % saucesData.length;
+        setSlideDirection("prev");
+        setPrevIndex(currentIndex);
         setCurrentIndex(nextIdx);
         setRotation(prev => prev - segment); // Counter-clockwise
+        clearPrevIndex();
     };
+
+    useEffect(() => {
+        return () => {
+            if (transitionTimeout.current) {
+                clearTimeout(transitionTimeout.current);
+            }
+        };
+    }, []);
 
     if (loading) {
         return (
@@ -67,13 +94,24 @@ export default function SaucePageOne({ initialData = [] }) {
             <div className="relative w-full min-h-[175vw] sm:min-h-[120vw] md:min-h-[60vw] lg:min-h-[55vw] xl:min-h-[50vw]">
 
                 {saucesData.map((sauce, idx) => {
-                    const isActive = idx === currentIndex;
+                    const isCurrent = idx === currentIndex;
+                    const isPrev = prevIndex !== null && idx === prevIndex;
+                    const isVisible = isCurrent || isPrev;
+                    const isTransitioning = prevIndex !== null;
+                    const imageAnimationClass = isCurrent && prevIndex !== null
+                        ? slideDirection === "next"
+                            ? "sauce-slide-in-bottom"
+                            : "sauce-slide-in-top"
+                        : "";
+                    const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
+                    const bgDissolveClass = isCurrent && isTransitioning ? "sauce-bg-dissolve-in" : "";
+
+                    const wrapperZ = isCurrent ? "z-20" : isPrev ? "z-10" : "z-0";
 
                     return (
                         <div
                             key={sauce._id}
-                            className={`absolute top-0 left-0 w-full transition-opacity duration-1200 ease-in-out ${isActive ? "opacity-100 z-20" : "opacity-0 z-10"
-                                }`}
+                            className={`absolute top-0 left-0 w-full ${isVisible ? "opacity-100" : "opacity-0"} ${wrapperZ} ${wrapperFadeClass}`}
                         >
                             <div className="relative w-full flex flex-col items-center pb-[25vw] min-h-[175vw] sm:min-h-[120vw] md:min-h-[60vw] lg:min-h-[55vw] xl:min-h-[50vw] sm:pb-[100vw] md:pb-[20vw] lg:pb-[26vw] xl:pb-[26vw] bg-black">
 
@@ -83,7 +121,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className="w-full h-auto block"
+                                        className={`w-full h-auto block ${bgDissolveClass}`}
                                         priority={idx === 0}
                                     />
                                 )}
@@ -183,19 +221,21 @@ export default function SaucePageOne({ initialData = [] }) {
                                         <circle cx="500" cy="90" r="8" fill="white" />
                                     </svg>
 
-                                    {isActive && sauce.sauceImage && (
+                                    {isVisible && sauce.sauceImage && (
                                         <div className="absolute left-1/2 top-1/2 z-10 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[112%] xl:w-[112%] overflow-hidden">
-                                            <Image
-                                                src={urlFor(sauce.sauceImage).url()}
-                                                alt={sauce.title}
-                                                fill
-                                                className="select-none object-cover object-center"
-                                                style={{
-                                                    filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
-                                                }}
-                                                priority={idx === 0}
-                                                sizes="(max-width: 640px) 112vw, (max-width: 1024px) 76vw, 66vw"
-                                            />
+                                            <div className={`absolute inset-0 ${imageAnimationClass}`}>
+                                                <Image
+                                                    src={urlFor(sauce.sauceImage).url()}
+                                                    alt={sauce.title}
+                                                    fill
+                                                    className="select-none object-cover object-center"
+                                                    style={{
+                                                        filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
+                                                    }}
+                                                    priority={idx === 0}
+                                                    sizes="(max-width: 640px) 112vw, (max-width: 1024px) 76vw, 66vw"
+                                                />
+                                            </div>
                                         </div>
                                     )}
 
@@ -245,6 +285,7 @@ export default function SaucePageOne({ initialData = [] }) {
                     </div>
                 </button>
             </div>
+
         </div>
     );
 }

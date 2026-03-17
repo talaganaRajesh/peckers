@@ -90,17 +90,30 @@ export const viewport = {
 
 export default async function RootLayout({ children }) {
   // Fetch common data once on the server to prevent pulses in Navbar/Footer
-  const siteSettings = await client.fetch(`*[_type == "siteSettings"][0]`);
-  const footerData = await client.fetch(`*[_type == "footer"][0] {
-    logo,
-    tagline,
-    socialLinks,
-    quickLinks,
-    locations,
-    legalLinks,
-    copyright,
-    bottomLogo
-  }`);
+  // Wrap in try/catch to prevent hydration errors when Sanity isn't reachable.
+  let siteSettings = null;
+  let footerData = null;
+
+  try {
+    siteSettings = await client.fetch(`*[_type == "siteSettings"][0]`);
+  } catch (error) {
+    console.error("Failed to load site settings:", error);
+  }
+
+  try {
+    footerData = await client.fetch(`*[_type == "footer"][0] {
+      logo,
+      tagline,
+      socialLinks,
+      quickLinks,
+      locations,
+      legalLinks,
+      copyright,
+      bottomLogo
+    }`);
+  } catch (error) {
+    console.error("Failed to load footer data:", error);
+  }
 
   return (
     <html lang="en" suppressHydrationWarning>
