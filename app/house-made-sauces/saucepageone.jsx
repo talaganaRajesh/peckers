@@ -44,7 +44,7 @@ export default function SaucePageOne({ initialData = [] }) {
         ? [{ sauce: saucesData[0], index: 0 }, ...saucesData.slice(1).map((sauce, index) => ({ sauce, index: index + 1 })).reverse()]
         : saucesData.map((sauce, index) => ({ sauce, index }));
     const ringLabels = ringItems.map(item => `${item.sauce.title.toUpperCase()} SAUCE •`);
-    const ringGapUnits = 0.9;
+    const ringGapUnits = 0.15;
     const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
     let ringCursor = 0;
     const ringOffsets = ringLabels.map(label => {
@@ -238,7 +238,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                             className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"}`}
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
-                                                                fontSize: "clamp(12px, 1.1vw, 19px)",
+                                                                fontSize: "clamp(14px, 1.65vw, 24px)",
                                                                 fontWeight: 700,
                                                                 letterSpacing: "0.06em",
                                                                 textTransform: "uppercase",
