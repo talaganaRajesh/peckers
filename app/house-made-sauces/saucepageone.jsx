@@ -210,7 +210,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-42vw] sm:bottom-[-5vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[130vw] h-[130vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-68vw] sm:bottom-[-5vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[155vw] h-[155vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
@@ -223,7 +223,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 <defs>
                                                     <path
                                                         id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -470, 0 a 472,472 0 1,1 944,0 a 472,472 0 1,1 -944,0"
+                                                        d="M 500, 500 m -465, 0 a 465,465 0 1,1 930,0 a 465,465 0 1,1 -930,0"
                                                         fill="none"
                                                     />
                                                 </defs>
@@ -261,7 +261,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                     {/* STATIC CIRCLE */}
                                     <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                                        <circle cx="500" cy="500" r="455" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+                                        <circle cx="500" cy="500" r="440" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
                                         <circle cx="500" cy="45" r="8" fill="white" />
                                     </svg>
 
@@ -292,7 +292,7 @@ export default function SaucePageOne({ initialData = [] }) {
             </div>
 
             {/* PREMIUM ARROWS */}
-            <div className="absolute top-[52%] sm:top-[50%] md:top-auto bottom-auto md:bottom-[45%] lg:bottom-[40%] xl:bottom-[50%] w-[94%] sm:w-[92%] md:w-[95%] lg:w-[90%] xl:w-[85%] left-1/2 -translate-x-1/2 flex justify-between items-center z-20 pointer-events-none">
+            <div className="absolute top-[38%] sm:top-[50%] md:top-auto bottom-auto md:bottom-[45%] lg:bottom-[40%] xl:bottom-[50%] w-[94%] sm:w-[92%] md:w-[95%] lg:w-[90%] xl:w-[85%] left-1/2 -translate-x-1/2 flex justify-between items-center z-20 pointer-events-none">
                 <button
                     onClick={prevSlide}
                     className="group pointer-events-auto transition-all duration-300 active:scale-95"
