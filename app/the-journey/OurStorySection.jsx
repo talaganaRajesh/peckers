@@ -24,7 +24,6 @@ export default function OurStorySection({ initialData = null }) {
     setCurrentSubSlide(0);
   }, [currentSlide]);
 
-
   if (!data) return null;
 
   // Use slides from Sanity if available, otherwise fallback to default mocked slides
@@ -100,14 +99,13 @@ export default function OurStorySection({ initialData = null }) {
     return () => clearInterval(timer);
   }, [currentSlide, displayImages.length]);
 
-
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset, velocity) => {
     return Math.abs(offset) * velocity;
   };
 
   return (
-    <section className="relative w-full lg:min-h-[105vh] bg-black px-[1.5vw] pt-[2vw] lg:pt-[2vw] pb-[5vw] lg:pb-0 text-white flex flex-col justify-center items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-[105vh] bg-black px-[1.5vw] pt-0 lg:pt-[15vh] pb-[5vw] lg:pb-0 text-white flex flex-col justify-start items-center overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
@@ -130,7 +128,7 @@ export default function OurStorySection({ initialData = null }) {
         </svg>
       </div>
 
-      <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center lg:mt-[-10vh] pt-[0vw] md:pt-0">
+      <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-[0vw] md:pt-0">
 
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
@@ -158,9 +156,11 @@ export default function OurStorySection({ initialData = null }) {
               scale: { duration: 0.2 },
               filter: { duration: 0.2 },
             }}
-            className="w-full flex flex-row items-start lg:items-center justify-start lg:justify-center cursor-grab active:cursor-grabbing"
+            /* CHANGED: flex-col-reverse for mobile stacked layout (image top, text bottom), lg:flex-row for desktop */
+            className="w-full flex flex-col-reverse lg:flex-row items-center justify-start lg:justify-center cursor-grab active:cursor-grabbing"
           >
-            <div className="w-[52%] lg:w-1/2 px-[3vw] lg:px-[6vw] flex flex-col justify-start mt-0 overflow-hidden text-left">
+            {/* CHANGED: Text Container w-full on mobile, added top margin for mobile spacing */}
+            <div className="w-full lg:w-1/2 px-[6vw] lg:px-[6vw] flex flex-col justify-start mt-[8vw] lg:mt-0 overflow-hidden text-left">
               <motion.div
                 className="mb-1 flex items-center justify-start"
                 initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -168,11 +168,13 @@ export default function OurStorySection({ initialData = null }) {
                 transition={isMobile ? { duration: 0 } : { duration: 0.6, ease: "easeOut", delay: 0.1 }}
               >
                 <div className="w-6 lg:w-10 h-px bg-white/40"></div>
-                <span className="ml-2 lg:ml-4 text-gray-400 font-anton tracking-[0.11em] text-[2.5vw] lg:text-[1.2vw] uppercase">STORY {currentSlide + 1}</span>
+                {/* CHANGED: Increased mobile text sizes, preserved desktop */}
+                <span className="ml-2 lg:ml-4 text-gray-400 font-anton tracking-[0.11em] text-[3.5vw] md:text-[2.5vw] lg:text-[1.2vw] uppercase">STORY {currentSlide + 1}</span>
               </motion.div>
 
+              {/* CHANGED: Increased heading size for mobile */}
               <motion.h2
-                className="font-bold font-peakers text-[5.5vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent"
+                className="font-bold font-peakers text-[9vw] md:text-[7vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent"
                 initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -193,8 +195,9 @@ export default function OurStorySection({ initialData = null }) {
                 })()}
               </motion.h2>
 
+              {/* CHANGED: Increased body text size for mobile */}
               <motion.div
-                className="text-[#D1D5DB] font-peakers text-[2vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] py-[2vw] space-y-4 lg:space-y-6"
+                className="text-[#D1D5DB] font-peakers text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] py-[5vw] lg:py-[2vw] space-y-4 lg:space-y-6"
                 initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: 0.6, ease: "easeOut", delay: 0.3 }}
@@ -214,20 +217,24 @@ export default function OurStorySection({ initialData = null }) {
                 })()}
 
                 <div className="pt-4 lg:pt-6">
-                  <p className="border-l-2 font-sans font-extralight border-white/30 pl-3 lg:pl-6 text-[#9CA3AF] text-left text-[2vw] md:text-[1.3vw] lg:text-inherit">
+                  {/* CHANGED: Increased quote text size for mobile */}
+                  <p className="border-l-2 font-sans font-extralight border-white/30 pl-3 lg:pl-6 text-[#9CA3AF] text-left text-[3.5vw] md:text-[2vw] lg:text-inherit">
                     {currentData.quote || "This wasn’t built in a boardroom."}
                   </p>
                 </div>
               </motion.div>
 
-              <div className="flex items-center justify-start gap-1 lg:gap-2 mt-2 pb-4">
+              <div className="flex items-center justify-start gap-1 lg:gap-2 mt-4 lg:mt-2 pb-[6vw] lg:pb-4">
                 {slides.map((_, i) => (
                   <div key={i} className={`h-0.5 lg:h-1 w-4 lg:w-12 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}></div>
                 ))}
               </div>
             </div>
-            <div className="w-[48%] lg:w-1/2 h-auto px-[2vw] flex flex-col items-start justify-center mt-[5vw] lg:mt-[-3vw]">
-              <div className="relative w-full h-[65vw] lg:h-[50vw] overflow-hidden flex items-center justify-start lg:justify-center px-0 lg:px-4">
+
+            {/* CHANGED: Image Container is full width on mobile */}
+            <div className="w-full lg:w-1/2 h-auto px-[4vw] lg:px-[2vw] flex flex-col items-start justify-center mt-0 lg:mt-[-3vw]">
+              {/* CHANGED: h-[65vw] reduces mobile image vertical gap while preserving larger sizes for tablet/desktop */}
+              <div className="relative w-full h-[65vw] md:h-[80vw] lg:h-[50vw] overflow-hidden flex items-center justify-start lg:justify-center px-0 lg:px-4">
                 <AnimatePresence mode="wait">
                   {displayImages.length > 0 && (
                     <motion.div
@@ -248,7 +255,7 @@ export default function OurStorySection({ initialData = null }) {
                         alt={`Story Image ${currentSubSlide + 1}`}
                         fill
                         className="object-contain rounded-[1.2vw]"
-                        sizes="(max-width: 1024px) 50vw, 50vw"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         priority={currentSubSlide === 0}
                       />
                     </motion.div>
@@ -282,8 +289,6 @@ export default function OurStorySection({ initialData = null }) {
           </motion.div>
         </AnimatePresence>
 
-
-
         <button
           onClick={prevSlide}
           className="hidden lg:flex absolute left-1 md:left-4 top-[50%] -translate-y-1/2 z-50 items-center justify-center w-8 h-8 md:w-14 md:h-14 border border-white/10 rounded-full bg-black/40 backdrop-blur-lg hover:bg-white hover:text-black transition-all duration-300 active:scale-75"
@@ -302,10 +307,10 @@ export default function OurStorySection({ initialData = null }) {
         </button>
 
         {isMobile && (
-          <div className="absolute bottom-[10vw] right-[8vw] flex flex-col items-end gap-2 lg:hidden pointer-events-none z-50">
+          <div className="absolute bottom-[4vw] right-[6vw] flex flex-col items-end gap-2 lg:hidden pointer-events-none z-50">
             <div className="flex flex-col items-end gap-1">
               <motion.span
-                className="text-[2vw] font-mono tracking-[0.5em] text-white/30 uppercase mr-[-0.5em]"
+                className="text-[2vw] md:text-[1.5vw] font-mono tracking-[0.5em] text-white/30 uppercase mr-[-0.5em]"
                 animate={{ opacity: [0.3, 0.7, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -322,7 +327,6 @@ export default function OurStorySection({ initialData = null }) {
           </div>
         )}
       </div>
-
     </section>
   );
 }
