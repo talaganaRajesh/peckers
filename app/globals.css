@@ -65,38 +65,52 @@ body::-webkit-scrollbar {
   animation: scrollLine 1.6s ease-in-out infinite;
 }
 
+
+
 @keyframes saucePopDown {
   0% {
     opacity: 1;
     transform: scale(1);
+    filter: blur(0px);
   }
   100% {
-    opacity: 1;
-    transform: scale(0.9);
+    opacity: 0;
+    transform: scale(0.7); /* Shrinks further for a deeper exit effect */
+    filter: blur(4px);
   }
 }
 
 @keyframes saucePopFromTop {
   0% {
-    opacity: 1;
-    transform: scale(1.5);
+    opacity: 0;
+    transform: scale(1.4); /* Starts larger to "land" into the frame */
+    filter: blur(8px);
   }
   100% {
     opacity: 1;
     transform: scale(1);
+    filter: blur(0px);
   }
 }
 
-
 .sauce-pop-down {
-  animation: saucePopDown 400ms cubic-bezier(0, 1, 0, 1) forwards;
-  will-change: transform, opacity;
+  /* Using a smooth quintic ease-out for a more natural feel */
+  animation: saucePopDown 500ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  will-change: transform, opacity, filter;
 }
 
 .sauce-pop-from-top {
-  animation: saucePopFromTop 400ms cubic-bezier(0, 1, 0, 1) forwards;
-  will-change: transform, opacity;
+  /* Slight delay can help the 'incoming' sauce feel like it's following the exit */
+  animation: saucePopFromTop 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  will-change: transform, opacity, filter;
 }
+
+
+
+
+
+
+
 
 
 @keyframes sauceLayerFadeIn {
@@ -232,4 +246,4 @@ img {
   .sauce-circular-text {
     font-size: 26px !important;
   }
-}
+}
