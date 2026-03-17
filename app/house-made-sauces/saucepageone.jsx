@@ -46,12 +46,13 @@ export default function SaucePageOne({ initialData = [] }) {
     const ringLabels = ringItems.map(item => `${item.sauce.title.toUpperCase()} SAUCE •`);
     const ringGapUnits = 0.15;
     const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
-    let ringCursor = 0;
-    const ringOffsets = ringLabels.map(label => {
-        const center = ringCursor + (label.length / 2);
-        ringCursor += label.length + ringGapUnits;
-        return `${(center / ringTotalUnits) * 100}%`;
-    });
+    const ringOffsets = ringLabels.reduce((acc, label) => {
+        const center = acc.cursor + (label.length / 2);
+        return {
+            cursor: acc.cursor + label.length + ringGapUnits,
+            offsets: [...acc.offsets, `${(center / ringTotalUnits) * 100}%`],
+        };
+    }, { cursor: 0, offsets: [] }).offsets;
 
     const clearPrevIndex = () => {
         if (transitionTimeout.current) {
@@ -220,7 +221,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 <defs>
                                                     <path
                                                         id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -440, 0 a 440,440 0 1,1 880,0 a 440,440 0 1,1 -880,0"
+                                                        d="M 500, 500 m -455, 0 a 455,455 0 1,1 910,0 a 455,455 0 1,1 -910,0"
                                                         fill="none"
                                                     />
                                                 </defs>
@@ -238,7 +239,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                             className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"}`}
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
-                                                                fontSize: "clamp(14px, 1.65vw, 24px)",
+                                                                fontSize: "clamp(14px, 1.75vw, 24px)",
                                                                 fontWeight: 700,
                                                                 letterSpacing: "0.06em",
                                                                 textTransform: "uppercase",
