@@ -98,11 +98,15 @@ export default function SaucePageOne({ initialData = [] }) {
                     const isPrev = prevIndex !== null && idx === prevIndex;
                     const isVisible = isCurrent || isPrev;
                     const isTransitioning = prevIndex !== null;
-                    const imageAnimationClass = isCurrent && prevIndex !== null
-                        ? slideDirection === "next"
-                            ? "sauce-slide-in-bottom"
-                            : "sauce-slide-in-top"
-                        : "";
+
+                    // For “next” navigation, the incoming sauce slides in from bottom.
+                    // For “prev” navigation, the outgoing (previous) sauce slides down to vanish.
+                    const imageAnimationClass = isCurrent && isTransitioning && slideDirection === "next"
+                        ? "sauce-slide-in-bottom"
+                        : isPrev && isTransitioning && slideDirection === "prev"
+                            ? "sauce-slide-out-bottom"
+                            : "";
+
                     const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
                     const bgDissolveClass = isCurrent && isTransitioning ? "sauce-bg-dissolve-in" : "";
 
