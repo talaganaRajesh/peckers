@@ -18,14 +18,14 @@ const OurStoryPage = ({ initialStoryData }) => {
   });
 
   // Opacity for the SVG based on scroll
-  const mappedProgress = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+  const mappedProgress = useTransform(scrollYProgress, [0, 0.98], [0, 1]);
   const springPath = useSpring(mappedProgress, {
     stiffness: 80,
     damping: 30,
     restDelta: 0.001
   });
 
-  const svgOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const svgOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
 
   return (
     <div id="main-content">
@@ -39,14 +39,14 @@ const OurStoryPage = ({ initialStoryData }) => {
           <StoryCircle initialData={pageData} />
         </div>
         {/* Tall container to provide scroll distance for pinning */}
-        <div ref={containerRef} className="relative h-[500vh]">
+        <div ref={containerRef} className="relative h-[350vh] ">
           {/* Sticky wrapper to keep content in view during animation */}
           <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden bg-black z-20">
 
             <div className="w-full relative flex flex-col items-center">
               <ActualCircle initialData={pageData} scrollProgress={scrollYProgress} />
 
-              <div className="w-full relative flex justify-center mt-[-1vw] md:mt-[1vw] pt-0 min-h-[50vw] md:min-h-[22vw]">
+              <div className="w-full relative flex justify-center mt-[-1vw] md:mt-[1vw] pt-0 min-h-[50vw] md:min-h-[18vw]">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -76,8 +76,8 @@ const OurStoryPage = ({ initialStoryData }) => {
                         <motion.circle
                           key={`top-${i}`}
                           style={{
-                            opacity: useTransform(scrollYProgress, [0.05 + i * 0.1, 0.1 + i * 0.1], [0, 1]),
-                            scale: useTransform(scrollYProgress, [0.05 + i * 0.1, 0.1 + i * 0.1], [0, 1])
+                            opacity: useTransform(scrollYProgress, [0 + i * 0.08, 0.05 + i * 0.08], [0, 1]),
+                            scale: useTransform(scrollYProgress, [0 + i * 0.08, 0.05 + i * 0.08], [0, 1])
                           }}
                           cx={cx} cy="21" r="5" fill="#EAB308"
                         />
@@ -88,8 +88,8 @@ const OurStoryPage = ({ initialStoryData }) => {
                         <motion.circle
                           key={`bottom-${i}`}
                           style={{
-                            opacity: useTransform(scrollYProgress, [0.45 + i * 0.1, 0.55 + i * 0.1], [0, 1]),
-                            scale: useTransform(scrollYProgress, [0.45 + i * 0.1, 0.55 + i * 0.1], [0, 1])
+                            opacity: useTransform(scrollYProgress, [0.55 + i * 0.08, 0.6 + i * 0.08], [0, 1]),
+                            scale: useTransform(scrollYProgress, [0.55 + i * 0.08, 0.6 + i * 0.08], [0, 1])
                           }}
                           cx={cx} cy="433" r="5" fill="#EAB308"
                         />
@@ -110,7 +110,7 @@ const OurStoryPage = ({ initialStoryData }) => {
                   </svg>
                 </div>
               </div>
-              <div className="mt-[0vw] w-full">
+              <div className="mt-[0vw] pb-10 w-full">
                 <ActualCircle2 initialData={bottomTimeline} scrollProgress={scrollYProgress} />
               </div>
             </div>

@@ -15,13 +15,13 @@ export default function PeckersTimeline({ initialData = null, scrollProgress }) 
     }, []);
 
     // Individual card reveal transforms
-    const card1Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.05, 0.15], [0, 1]);
-    const card2Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.15, 0.25], [0, 1]);
-    const card3Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.25, 0.35], [0, 1]);
+    const card1Opacity = useTransform(scrollProgress || { get: () => 1 }, [0, 0.1], [0, 1]);
+    const card2Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.1, 0.2], [0, 1]);
+    const card3Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.2, 0.3], [0, 1]);
 
-    const card1Y = useTransform(scrollProgress || { get: () => 0 }, [0.05, 0.15], [50, 0]);
-    const card2Y = useTransform(scrollProgress || { get: () => 0 }, [0.15, 0.25], [50, 0]);
-    const card3Y = useTransform(scrollProgress || { get: () => 0 }, [0.25, 0.35], [50, 0]);
+    const card1Y = useTransform(scrollProgress || { get: () => 0 }, [0, 0.1], [50, 0]);
+    const card2Y = useTransform(scrollProgress || { get: () => 0 }, [0.1, 0.2], [50, 0]);
+    const card3Y = useTransform(scrollProgress || { get: () => 0 }, [0.2, 0.3], [50, 0]);
 
     const cardsReveal = [
         { opacity: card1Opacity, y: card1Y },
