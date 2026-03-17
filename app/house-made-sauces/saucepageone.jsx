@@ -115,7 +115,7 @@ export default function SaucePageOne({ initialData = [] }) {
     return (
         <div className="relative w-full overflow-hidden bg-black flex flex-col items-center">
 
-            <div className="relative w-full min-h-[175vw] sm:min-h-[120vw] md:min-h-[60vw] lg:min-h-[55vw] xl:min-h-[50vw]">
+            <div className="relative w-full min-h-screen sm:min-h-[120vw] md:min-h-[60vw] lg:min-h-[55vw] xl:min-h-[50vw]">
 
                 {saucesData.map((sauce, idx) => {
                     const isCurrent = idx === currentIndex;
@@ -210,7 +210,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-55vw] sm:bottom-[-15vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[130vw] h-[130vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-42vw] sm:bottom-[-5vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[130vw] h-[130vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
@@ -238,10 +238,9 @@ export default function SaucePageOne({ initialData = [] }) {
                                                             key={`${item.sauce._id}-ring`}
                                                             fill="white"
                                                             textAnchor="middle"
-                                                            className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"}`}
+                                                            className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"} sauce-circular-text`}
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
-                                                                fontSize: "clamp(18px, 4.5vw, 26px)",
                                                                 fontWeight: 700,
                                                                 letterSpacing: "0.06em",
                                                                 textTransform: "uppercase",
