@@ -89,12 +89,12 @@ body::-webkit-scrollbar {
 
 
 .sauce-pop-down {
-  animation: saucePopDown 800ms cubic-bezier(0, 1, 0, 1) forwards;
+  animation: saucePopDown 400ms cubic-bezier(0, 1, 0, 1) forwards;
   will-change: transform, opacity;
 }
 
 .sauce-pop-from-top {
-  animation: saucePopFromTop 800ms cubic-bezier(0, 1, 0, 1) forwards;
+  animation: saucePopFromTop 400ms cubic-bezier(0, 1, 0, 1) forwards;
   will-change: transform, opacity;
 }
 

@@ -43,7 +43,10 @@ export default function SaucePageOne({ initialData = [] }) {
     const ringItems = saucesData.length > 1
         ? [{ sauce: saucesData[0], index: 0 }, ...saucesData.slice(1).map((sauce, index) => ({ sauce, index: index + 1 })).reverse()]
         : saucesData.map((sauce, index) => ({ sauce, index }));
-    const ringLabels = ringItems.map(item => `${item.sauce.title.toUpperCase()} SAUCE •`);
+    const ringLabels = ringItems.map(item => {
+        const title = item.sauce.title.toUpperCase();
+        return title.endsWith("SAUCE") ? `${title} •` : `${title} SAUCE •`;
+    });
     const ringGapUnits = 0.15;
     const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
     const ringOffsets = ringLabels.reduce((acc, label) => {
@@ -153,10 +156,10 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                 {/* TEXT SECTION WITH PREMIUM SCALING */}
                                 <div
-                                    className={`absolute mt-[8vw] sm:mt-6 md:mt-0 top-[9%] sm:top-[10%] md:top-[4%] lg:top-[6%] xl:top-[2%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-700 ease-out`}
+                                    className={`absolute mt-[12vw] sm:mt-6 md:mt-0 top-[6%] sm:top-[10%] md:top-[4%] lg:top-[6%] xl:top-[2%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-700 ease-out`}
                                 >
                                     <h1
-                                        className="text-5xl sm:text-5xl md:text-[50px] lg:text-[60px] xl:text-[5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-4 xl:mb-[-.5vw]"
+                                        className="text-4xl sm:text-5xl md:text-[50px] lg:text-[60px] xl:text-[5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-4 xl:mb-[-.5vw]"
                                         style={{ fontFamily: 'var(--font-peakers)' }}
                                     >
                                         {sauce.title}
@@ -207,12 +210,12 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-65vw] sm:bottom-[-15vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[135vw] h-[135vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-55vw] sm:bottom-[-15vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[130vw] h-[130vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
                                     <div
-                                        className={`absolute inset-0 z-30 w-full h-full transition-all duration-300 ease-linear`}
+                                        className={`absolute inset-0 z-30 w-full h-full transition-all duration-200 ease-linear`}
                                         style={{ transform: `rotate(${baseRotation + rotation}deg)` }}
                                     >
                                         <div className="relative w-full h-full pointer-events-auto z-20">
@@ -228,7 +231,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 {ringItems.map((item, ringIndex) => {
                                                     const isActive = item.index === currentIndex;
                                                     const offset = ringOffsets[ringIndex] || "0%";
-                                                    const label = ringLabels[ringIndex] || `${item.sauce.title.toUpperCase()} SAUCE •`;
+                                                    const label = ringLabels[ringIndex];
 
                                                     return (
                                                         <text
@@ -238,7 +241,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                             className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"}`}
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
-                                                                fontSize: "clamp(14px, 1.75vw, 24px)",
+                                                                fontSize: "clamp(18px, 4.5vw, 26px)",
                                                                 fontWeight: 700,
                                                                 letterSpacing: "0.06em",
                                                                 textTransform: "uppercase",
@@ -290,7 +293,7 @@ export default function SaucePageOne({ initialData = [] }) {
             </div>
 
             {/* PREMIUM ARROWS */}
-            <div className="absolute top-[48%] sm:top-[50%] md:top-auto bottom-auto md:bottom-[45%] lg:bottom-[40%] xl:bottom-[50%] w-[90%] sm:w-[92%] md:w-[95%] lg:w-[90%] xl:w-[85%] left-1/2 -translate-x-1/2 flex justify-between items-center z-20 pointer-events-none">
+            <div className="absolute top-[52%] sm:top-[50%] md:top-auto bottom-auto md:bottom-[45%] lg:bottom-[40%] xl:bottom-[50%] w-[94%] sm:w-[92%] md:w-[95%] lg:w-[90%] xl:w-[85%] left-1/2 -translate-x-1/2 flex justify-between items-center z-20 pointer-events-none">
                 <button
                     onClick={prevSlide}
                     className="group pointer-events-auto transition-all duration-300 active:scale-95"
