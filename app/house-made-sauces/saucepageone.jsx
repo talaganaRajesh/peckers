@@ -9,39 +9,34 @@ import { urlFor } from "../../sanity/lib/image";
 // SAUCES_FALLBACK removed since we fetch from Sanity now
 
 export default function SaucePageOne({ initialData = [] }) {
-    const [saucesData, setSaucesData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [fetchedSaucesData, setFetchedSaucesData] = useState([]);
+    const [isFetching, setIsFetching] = useState(initialData.length === 0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [rotation, setRotation] = useState(0);
-    const [isScaling, setIsScaling] = useState(false);
 
-    useEffect(() => {
-        setIsScaling(true);
-        const timer = setTimeout(() => setIsScaling(false), 1000);
-        return () => clearTimeout(timer);
-    }, [currentIndex]);
+    const saucesData = initialData.length > 0 ? initialData : fetchedSaucesData;
+    const loading = initialData.length === 0 && isFetching;
 
     useEffect(() => {
         if (initialData && initialData.length > 0) {
-            setSaucesData(initialData);
-            setLoading(false);
             return;
         }
 
         const fetchSauces = async () => {
             try {
                 const data = await client.fetch(`*[_type == "saucePage"] | order(_createdAt asc)`);
-                setSaucesData(data);
-                setLoading(false);
+                setFetchedSaucesData(data);
+                setIsFetching(false);
             } catch (error) {
                 console.error("Error fetching sauces:", error);
-                setLoading(false);
+                setIsFetching(false);
             }
         };
         fetchSauces();
     }, [initialData]);
 
     const segment = saucesData.length ? (360 / saucesData.length) : 0;
+    const baseRotation = saucesData.length ? 90 - (segment / 2) : 0;
 
     const nextSlide = () => {
         const nextIdx = (currentIndex + 1) % saucesData.length;
@@ -53,50 +48,6 @@ export default function SaucePageOne({ initialData = [] }) {
         const nextIdx = (currentIndex - 1 + saucesData.length) % saucesData.length;
         setCurrentIndex(nextIdx);
         setRotation(prev => prev - segment); // Counter-clockwise
-    };
-
-    // Initialize rotation on first load based on first sauce
-    useEffect(() => {
-        if (saucesData.length > 0 && rotation === 0) {
-            // Path starts at 9 o'clock. Pointer is at 12 o'clock.
-            // 9 -> 12 is a 90-degree clockwise rotation.
-            // Subtract (segment / 2) to center the first sauce title under the pointer.
-            setRotation(90 - (segment / 2));
-        }
-    }, [saucesData, segment]);
-
-    // Manual layout overrides per sauce image (title-based for resilience)
-    const getSauceImageStyle = (sauce) => {
-        const base = "absolute w-[85%] h-[85%] z-10 transition-all duration-700 top-1/2 -translate-y-1/2";
-        const title = sauce.title?.toLowerCase() || "";
-
-        if (title.includes("mayonnaise")) {
-            return `${base} mt-[-5vw] md:mt-[-2vw] scale-[1.8] md:scale-[1.8]`;
-        } else if (title.includes("garlic aioli")) {
-            return `${base} mt-[-5vw] md:mt-[-2vw] scale-[1.8] md:scale-[1.8]`;
-        } else if (title.includes("butter me up")) {
-            return `${base} mt-[-8vw] md:mt-[-4vw] scale-[1.7] md:scale-[1.65]`;
-        } else if (title.includes("honey glaze bbq") || title.includes("honey-glazed bbq")) {
-            return `${base} mt-[0vw] md:mt-0 scale-[1.1] md:scale-[.94]`;
-        } else if (title.includes("hot honey")) {
-            return `${base} mt-[-4vw] md:mt-[-2vw] scale-[1.4] md:scale-[1.32]`;
-        } else if (title.includes("gochujang")) {
-            return `${base} mt-[0vw] md:mt-0 scale-[1.2] md:scale-[1.05]`;
-        } else if (title.includes("sweet chilli")) {
-            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-        } else if (title.includes("super charge og")) {
-            return `${base} mt-[-15vw] md:mt-[-10vw] scale-[2.0] md:scale-[1.85]`;
-        } else if (title.includes("buffalo")) {
-            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-        } else if (title.includes("cheese sauce")) {
-            return `${base} mt-[-4vw] md:mt-[-2vw] scale-[1.4] md:scale-[1.3]`;
-        } else if (title.includes("og chilli")) {
-            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-        } else if (title.includes("korean glaze")) {
-            return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
-        }
-
-        return `${base} mt-[0vw] md:mt-0 scale-[1.3] md:scale-[1.2]`;
     };
 
     if (loading) {
@@ -200,7 +151,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                     {/* ROTATING TEXT (WITH INDEPENDENT SCALING) */}
                                     <div
                                         className={`absolute inset-0 w-full h-full transition-all duration-1800 ease-[cubic-bezier(0.77,0,0.175,1)]`}
-                                        style={{ transform: `rotate(${rotation}deg)` }}
+                                        style={{ transform: `rotate(${baseRotation + rotation}deg)` }}
                                     >
                                         <svg viewBox="0 0 1000 1000" className="w-full h-full overflow-visible">
                                             <path
@@ -233,15 +184,17 @@ export default function SaucePageOne({ initialData = [] }) {
                                     </svg>
 
                                     {isActive && sauce.sauceImage && (
-                                        <div className={getSauceImageStyle(sauce)}>
+                                        <div className="absolute left-1/2 top-1/2 z-10 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[112%] xl:w-[112%] overflow-hidden">
                                             <Image
                                                 src={urlFor(sauce.sauceImage).url()}
                                                 alt={sauce.title}
                                                 fill
-                                                className="object-cover object-center rounded-full select-none pointer-events-auto"
-                                                style={{ filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.95))" }}
+                                                className="select-none object-cover object-center"
+                                                style={{
+                                                    filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
+                                                }}
                                                 priority={idx === 0}
-                                                sizes="(max-width: 768px) 80vw, 40vw"
+                                                sizes="(max-width: 640px) 112vw, (max-width: 1024px) 76vw, 66vw"
                                             />
                                         </div>
                                     )}
