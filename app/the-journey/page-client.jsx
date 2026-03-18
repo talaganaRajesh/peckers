@@ -18,14 +18,14 @@ const OurStoryPage = ({ initialStoryData }) => {
   });
 
   // Opacity for the SVG based on scroll
-  const mappedProgress = useTransform(scrollYProgress, [0, 0.98], [0, 1]);
+  const mappedProgress = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
   const springPath = useSpring(mappedProgress, {
-    stiffness: 80,
+    stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
-  const svgOpacity = useTransform(scrollYProgress, [0, 0.05], [0, 1]);
+  const svgOpacity = useTransform(scrollYProgress, [0, 0.02], [0, 1]);
 
   return (
     <div id="main-content">
@@ -76,8 +76,8 @@ const OurStoryPage = ({ initialStoryData }) => {
                         <motion.circle
                           key={`top-${i}`}
                           style={{
-                            opacity: useTransform(scrollYProgress, [0 + i * 0.08, 0.05 + i * 0.08], [0, 1]),
-                            scale: useTransform(scrollYProgress, [0 + i * 0.08, 0.05 + i * 0.08], [0, 1])
+                            opacity: useTransform(scrollYProgress, [0.02 + i * 0.1, 0.08 + i * 0.1], [0, 1]),
+                            scale: useTransform(scrollYProgress, [0.02 + i * 0.1, 0.08 + i * 0.1], [0, 1])
                           }}
                           cx={cx} cy="21" r="5" fill="#EAB308"
                         />
@@ -88,8 +88,8 @@ const OurStoryPage = ({ initialStoryData }) => {
                         <motion.circle
                           key={`bottom-${i}`}
                           style={{
-                            opacity: useTransform(scrollYProgress, [0.55 + i * 0.08, 0.6 + i * 0.08], [0, 1]),
-                            scale: useTransform(scrollYProgress, [0.55 + i * 0.08, 0.6 + i * 0.08], [0, 1])
+                            opacity: useTransform(scrollYProgress, [0.45 + i * 0.1, 0.52 + i * 0.1], [0, 1]),
+                            scale: useTransform(scrollYProgress, [0.45 + i * 0.1, 0.52 + i * 0.1], [0, 1])
                           }}
                           cx={cx} cy="433" r="5" fill="#EAB308"
                         />

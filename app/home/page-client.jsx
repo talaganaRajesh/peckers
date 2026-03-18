@@ -51,7 +51,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
             loop
             playsInline
             preload="auto"
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
+            className="absolute inset-0 w-full h-full object-cover "
           />
         )}
         <div className="relative z-10 w-full px-[5vw] md:px-[7vw]">
