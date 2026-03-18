@@ -83,26 +83,12 @@ const SectionItem = memo(({ section, index, num }) => {
           backgroundColor: index % 2 === 0 ? "#111111" : "#000000",
         }}
       >
-        <div className={`w-full h-full flex flex-col px-[6vw] md:px-[5vw] leading-normal py-[6vw] sm:py-[8vw] md:py-[3vw]`}>
+        <div className={`w-full h-full flex flex-col px-[6vw] md:px-[5vw] leading-normal py-[4vw] sm:py-[6vw] md:py-[2vw]`}>
           {/* PERSISTENT HEADER */}
           <div className="flex flex-col justify-end mb-[4vw] md:mb-[2vw] pt-[6vw] md:pt-[2vw]">
 
-            <div
-              className={`w-full flex justify-start items-end ${index === 1
-                ? "min-h-[40vw] md:min-h-[10vw]"
-                : [2, 3, 5, 6, 7, 8].includes(index)
-                  ? "min-h-[32vw] md:min-h-[12vw]"
-                  : index === 4
-                    ? "min-h-[24vw] md:min-h-[8vw]"
-                    : "min-h-[16vw] md:min-h-[6vw]"
-                }`}
-            >
-              <h2
-                className={`anton-regular leading-none uppercase tracking-tight text-white ${index === 1
-                  ? "text-[6vw] md:text-[3vw]"
-                  : "text-[8vw] md:text-[4vw]"
-                  }`}
-              >
+            <div className="w-full flex justify-start items-end min-h-[18vw] md:min-h-[7vw]">
+              <h2 className="anton-regular leading-none uppercase tracking-tight text-white text-[9vw] md:text-[5vw]">
                 {section.title}
               </h2>
             </div>
@@ -110,7 +96,7 @@ const SectionItem = memo(({ section, index, num }) => {
 
           {/* SCROLLABLE TEXT CONTENT */}
           <div
-            className="w-full flex-1 overflow-y-auto custom-scrollbar pr-[2vw] max-h-[45vw] md:max-h-full"
+            className="w-full flex-1 overflow-y-auto custom-scrollbar pr-[2vw] max-h-[60vw] md:max-h-full"
             data-lenis-prevent
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
