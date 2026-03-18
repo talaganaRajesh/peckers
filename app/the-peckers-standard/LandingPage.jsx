@@ -14,7 +14,7 @@ export default function UniquenessLandingPage({ initialData = null }) {
     "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/Uniqueness/Gradient%20%281%29.webp";
 
   return (
-    <div className="w-full relative h-[83vh] md:h-[90vh]">
+    <div className="w-full relative h-[65vh] md:h-[75vh]">
       {/* Background Image */}
       <motion.div
         initial={{ scale: 1.05, opacity: 0 }}
@@ -55,15 +55,15 @@ export default function UniquenessLandingPage({ initialData = null }) {
         >
           {data?.heading ? (
             data.heading.split("\n").map((line, idx) => (
-              <span key={idx} className={`block font-peakers text-[18vw] md:text-[7.7vw] ${idx === 2 ? 'text-[#f7e229] mt-[1.5vw] md:mt-[0.2vw] mb-[1.5vw] md:mb-[0.2vw]' : ''}`}>
+              <span key={idx} className={`block font-peakers text-[14vw] md:text-[6vw] ${idx === 2 ? 'text-[#f7e229] mt-[1.2vw] md:mt-[0.1vw] mb-[1.2vw] md:mb-[0.1vw]' : ''}`}>
                 {line}
               </span>
             ))
           ) : (
             <>
-              <span className="block font-peakers text-[18vw] md:text-[7.7vw]">THE</span>
-              <span className="block font-peakers text-[18vw] md:text-[7.7vw]">PECKERS</span>
-              <span className="block text-[#f7e229] font-peakers text-[20vw] md:text-[7.7vw] font-bold mt-[1.5vw] md:mt-[0.2vw] mb-[1.5vw] md:mb-[0.2vw]">STANDARD</span>
+              <span className="block font-peakers text-[14vw] md:text-[6vw]">THE</span>
+              <span className="block font-peakers text-[14vw] md:text-[6vw]">PECKERS</span>
+              <span className="block text-[#f7e229] font-peakers text-[16vw] md:text-[6.5vw] font-bold mt-[1.2vw] md:mt-[0.1vw] mb-[1.2vw] md:mb-[0.1vw]">STANDARD</span>
             </>
           )}
         </motion.h1>
@@ -74,7 +74,7 @@ export default function UniquenessLandingPage({ initialData = null }) {
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
           <span
-            className="uppercase tracking-[0.15em] font-semibold text-[2.5vw] md:text-[1vw] text-[#d3d3d3] font-mono md:mt-[1.7vw] text-center pointer-events-auto leading-[1.7] max-w-[90vw] md:max-w-[55vw] block"
+            className="uppercase tracking-[0.15em] font-semibold text-[2.2vw] md:text-[0.85vw] text-[#d3d3d3] font-mono md:mt-[1.5vw] text-center pointer-events-auto leading-[1.7] max-w-[90vw] md:max-w-[55vw] block"
           >
             {data?.subtext || "IT'S NOT ONE THING. From our custom-milled breading to our hand-picked Covent Garden produce, we believe in seriously good chicken, sourced locally, prepared daily, and served with pride."}
           </span>

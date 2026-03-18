@@ -29,7 +29,7 @@ const SectionItem = memo(({ section, index, num }) => {
   return (
     <motion.section
       ref={sectionRef}
-      className={`w-full h-auto md:h-screen flex flex-col ${isAlternate ? "md:flex-row-reverse" : "md:flex-row"
+      className={`w-full h-auto md:h-[75vh] flex flex-col ${isAlternate ? "md:flex-row-reverse" : "md:flex-row"
         } bg-black overflow-hidden`}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -86,12 +86,6 @@ const SectionItem = memo(({ section, index, num }) => {
         <div className={`w-full h-full flex flex-col px-[6vw] md:px-[7vw] leading-normal py-[6vw] sm:py-[8vw] md:py-[3vw]`}>
           {/* PERSISTENT HEADER */}
           <div className="flex flex-col justify-end mb-[4vw] md:mb-[2vw] pt-[6vw] md:pt-[2vw]">
-            <p
-              className="text-[#FFD700] font-semibold text-[3.5vw] md:text-[0.95vw] font-mono tracking-[0.8vw] md:tracking-[0.2vw] mb-[2vw] md:mb-[1vw]"
-              style={{ fontFamily: "space mono" }}
-            >
-              {num.toString().padStart(2, "0")}
-            </p>
 
             <div
               className={`w-full flex justify-start items-end ${index === 1
@@ -105,8 +99,8 @@ const SectionItem = memo(({ section, index, num }) => {
             >
               <h2
                 className={`anton-regular leading-none uppercase tracking-tight text-white ${index === 1
-                  ? "text-[7.5vw] md:text-[3.2vw]"
-                  : "text-[10vw] md:text-[4.5vw]"
+                  ? "text-[6vw] md:text-[2.5vw]"
+                  : "text-[8vw] md:text-[3.2vw]"
                   }`}
               >
                 {section.title}
@@ -120,30 +114,21 @@ const SectionItem = memo(({ section, index, num }) => {
             data-lenis-prevent
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
-              <p className="text-[#9CA3AF] font-normal w-full text-[4.2vw] leading-[6vw] md:text-[1.1vw] md:leading-[1.95vw] mb-[2vw] md:mb-[1vw]">
+              <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1vw] md:leading-[1.7vw] mb-[2vw] md:mb-[1vw]">
                 {section.previewText}
               </p>
 
               {section.expandedText && (
-                <p className="text-[#9CA3AF] font-normal w-full text-[4.2vw] leading-[6vw] md:text-[1.1vw] md:leading-[1.95vw]">
+                <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1vw] md:leading-[1.7vw]">
                   {section.expandedText}
                 </p>
               )}
             </div>
           </div>
 
-          {/* PERSISTENT FOOTER */}
+          {/* PERSISTENT FOOTER - Border only */}
           <div className="mt-auto">
             <div className="w-full md:w-[20.8vw] h-px md:h-[0.04vw] relative bg-gray-600 mt-[4vw] md:mt-[1.5vw] mb-[6vw] md:mb-[2vw]" />
-            <p
-              className="flex text-[2.8vw] md:text-[0.8vw] items-center gap-[2vw] md:gap-[.9vw] tracking-[0.4vw] md:tracking-[0.09vw] font-mono relative text-gray-500 pb-[4vw] md:pb-[2vw]"
-              style={{ fontFamily: "space mono" }}
-            >
-              <span className="opacity-40">
-                {renderIcon(index)}
-              </span>
-              {section.title}
-            </p>
           </div>
         </div>
       </div>
