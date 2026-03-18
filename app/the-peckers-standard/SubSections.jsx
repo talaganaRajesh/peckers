@@ -40,7 +40,7 @@ const SectionItem = memo(({ section, index, num }) => {
       }}
     >
       {/* MEDIA SECTION */}
-      <div className="w-full md:w-[60%] h-[90vw] sm:h-[70vw] md:h-full relative overflow-hidden flex items-center justify-center bg-black">
+      <div className="w-full md:w-[52%] h-[90vw] sm:h-[70vw] md:h-full relative overflow-hidden flex items-center justify-center bg-black">
         {isInView ? (
           <>
             {([0, 2, 4, 5, 6].includes(index)) ? (
@@ -78,29 +78,29 @@ const SectionItem = memo(({ section, index, num }) => {
 
       {/* CONTENT SECTION */}
       <div
-        className={`w-full md:w-[40%] h-max md:h-full text-white flex flex-col`}
+        className={`w-full md:w-[48%] h-max md:h-full text-white flex flex-col`}
         style={{
           backgroundColor: index % 2 === 0 ? "#111111" : "#000000",
         }}
       >
-        <div className={`w-full h-full flex flex-col px-[6vw] md:px-[7vw] leading-normal py-[6vw] sm:py-[8vw] md:py-[3vw]`}>
+        <div className={`w-full h-full flex flex-col px-[6vw] md:px-[5vw] leading-normal py-[6vw] sm:py-[8vw] md:py-[3vw]`}>
           {/* PERSISTENT HEADER */}
           <div className="flex flex-col justify-end mb-[4vw] md:mb-[2vw] pt-[6vw] md:pt-[2vw]">
 
             <div
               className={`w-full flex justify-start items-end ${index === 1
-                ? "min-h-[40vw] md:min-h-[14vw]"
+                ? "min-h-[40vw] md:min-h-[10vw]"
                 : [2, 3, 5, 6, 7, 8].includes(index)
-                  ? "min-h-[32vw] md:min-h-[16vw]"
+                  ? "min-h-[32vw] md:min-h-[12vw]"
                   : index === 4
-                    ? "min-h-[24vw] md:min-h-[12vw]"
-                    : "min-h-[16vw] md:min-h-[8vw]"
+                    ? "min-h-[24vw] md:min-h-[8vw]"
+                    : "min-h-[16vw] md:min-h-[6vw]"
                 }`}
             >
               <h2
                 className={`anton-regular leading-none uppercase tracking-tight text-white ${index === 1
-                  ? "text-[6vw] md:text-[2.5vw]"
-                  : "text-[8vw] md:text-[3.2vw]"
+                  ? "text-[6vw] md:text-[3vw]"
+                  : "text-[8vw] md:text-[4vw]"
                   }`}
               >
                 {section.title}
@@ -114,12 +114,12 @@ const SectionItem = memo(({ section, index, num }) => {
             data-lenis-prevent
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
-              <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1vw] md:leading-[1.7vw] mb-[2vw] md:mb-[1vw]">
+              <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] md:leading-[1.8vw] mb-[2vw] md:mb-[1vw]">
                 {section.previewText}
               </p>
 
               {section.expandedText && (
-                <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1vw] md:leading-[1.7vw]">
+                <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] md:leading-[1.8vw]">
                   {section.expandedText}
                 </p>
               )}
