@@ -48,26 +48,31 @@ export default function SaucePageOne({ initialData = [] }) {
         fetchSauces();
     }, [initialData]);
 
-    const segment = saucesData.length ? (360 / saucesData.length) : 0;
-    const baseRotation = saucesData.length ? 90 - (segment / 2) : 0;
-    const ringItems = saucesData.length > 1
+    const ringItemsBase = saucesData.length > 1
         ? [{ sauce: saucesData[0], index: 0 }, ...saucesData.slice(1).map((sauce, index) => ({ sauce, index: index + 1 })).reverse()]
         : saucesData.map((sauce, index) => ({ sauce, index }));
-    const ringLabels = ringItems.map(item => {
+    const ringLabelsBase = ringItemsBase.map(item => {
         const title = item.sauce.title.toUpperCase();
         return title.endsWith("SAUCE") ? `${title} •` : `${title} SAUCE •`;
     });
-    const ringGapUnits = isMobile ? 12.0 : 0.15;
+
+    const repeatCount = isMobile ? Math.max(1, Math.ceil(12 / (ringLabelsBase.length || 1))) : 1;
+    const ringItems = Array(repeatCount).fill(ringItemsBase).flat();
+    const ringLabels = Array(repeatCount).fill(ringLabelsBase).flat();
+
+    const ringGapUnits = isMobile ? 1.5 : 5.0;
     const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
-    const ringOffsets = isMobile
-        ? ringItems.map((_, i) => `${(i / ringItems.length) * 100}%`)
-        : ringLabels.reduce((acc, label) => {
-            const center = acc.cursor + (label.length / 2);
-            return {
-                cursor: acc.cursor + label.length + ringGapUnits,
-                offsets: [...acc.offsets, `${(center / ringTotalUnits) * 100}%`],
-            };
-        }, { cursor: 0, offsets: [] }).offsets;
+    
+    const ringOffsetsData = ringLabels.reduce((acc, label) => {
+        const center = acc.cursor + (label.length / 2);
+        return {
+            cursor: acc.cursor + label.length + ringGapUnits,
+            offsets: [...acc.offsets, (center / ringTotalUnits) * 100],
+        };
+    }, { cursor: 0, offsets: [] }).offsets;
+
+    const ringOffsets = ringOffsetsData.map(offset => `${offset}%`);
+    const baseRotation = 90 - (ringOffsetsData[0] * 3.6);
 
     const clearPrevIndex = () => {
         if (transitionTimeout.current) {
@@ -82,16 +87,38 @@ export default function SaucePageOne({ initialData = [] }) {
     const transitionToIndex = (targetIndex) => {
         if (!saucesData.length || targetIndex === currentIndex) return;
 
-        const total = saucesData.length;
-        const clockwiseSteps = (targetIndex - currentIndex + total) % total;
-        const counterClockwiseSteps = (currentIndex - targetIndex + total) % total;
-        const goNext = clockwiseSteps <= counterClockwiseSteps;
-        const stepCount = goNext ? clockwiseSteps : counterClockwiseSteps;
+        // Current rotation state helps us understand where the wheel is visually
+        // But since we rotate relative to baseRotation + total accumulated rotation,
+        // we should find the closest repeated instance of targetIndex to the current "top" position.
+        
+        // Find all indices in the ringItems array that match the targetIndex
+        const targetRingIndices = ringItems
+            .map((item, idx) => item.index === targetIndex ? idx : -1)
+            .filter(idx => idx !== -1);
 
-        setSlideDirection(goNext ? "next" : "prev");
+        // We also need the current active ring index (the one currently at the top)
+        // Since we rotate the whole wheel, we can track the logical "top" index.
+        const currentRingIdx = ringItems.findIndex((item, idx) => item.index === currentIndex);
+
+        const currentPos = ringOffsetsData[currentRingIdx] * 3.6;
+        
+        // Find best target ring index by calculating smallest angular distance
+        let bestDelta = 999;
+        targetRingIndices.forEach(idx => {
+            const pos = ringOffsetsData[idx] * 3.6;
+            let d = pos - currentPos;
+            // Shortest path logic
+            while (d > 180) d -= 360;
+            while (d < -180) d += 360;
+            if (Math.abs(d) < Math.abs(bestDelta)) {
+                bestDelta = d;
+            }
+        });
+
+        setSlideDirection(bestDelta > 0 ? "next" : "prev");
         setPrevIndex(currentIndex);
         setCurrentIndex(targetIndex);
-        setRotation(prev => prev + (goNext ? stepCount * segment : -stepCount * segment));
+        setRotation(prev => prev - bestDelta);
         clearPrevIndex();
     };
 
