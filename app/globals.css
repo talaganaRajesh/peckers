@@ -73,9 +73,11 @@ body::-webkit-scrollbar {
     transform: scale(1);
     filter: blur(0px);
   }
+
   100% {
     opacity: 0;
-    transform: scale(0.7); /* Shrinks further for a deeper exit effect */
+    transform: scale(0.7);
+    /* Shrinks further for a deeper exit effect */
     filter: blur(4px);
   }
 }
@@ -83,9 +85,11 @@ body::-webkit-scrollbar {
 @keyframes saucePopFromTop {
   0% {
     opacity: 0;
-    transform: scale(1.4); /* Starts larger to "land" into the frame */
+    transform: scale(1.4);
+    /* Starts larger to "land" into the frame */
     filter: blur(8px);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);
@@ -117,6 +121,7 @@ body::-webkit-scrollbar {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -127,6 +132,7 @@ body::-webkit-scrollbar {
     opacity: 0;
     filter: blur(3px);
   }
+
   100% {
     opacity: 1;
     filter: blur(0);

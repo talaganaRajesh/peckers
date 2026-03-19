@@ -52,7 +52,8 @@ const SectionItem = memo(({ section, index, num }) => {
                   muted
                   loop
                   playsInline
-                  className="w-full h-full object-cover brightness-[0.9]"
+                  className="w-full h-full object-cover"
+                  style={{ filter: "brightness(0.9) grayscale(1)" }}
                 />
               )
             ) : (
@@ -62,7 +63,8 @@ const SectionItem = memo(({ section, index, num }) => {
                   src={urlFor(section.image).width(1200).format("webp").url()}
                   alt={section.title || `Section ${num}`}
                   fill
-                  className="object-cover object-center brightness-[0.7]"
+                  className="object-cover object-center"
+                  style={{ filter: "brightness(0.7) grayscale(0.14)" }}
                   priority={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
                   sizes="(max-width: 768px) 100vw, 65vw"

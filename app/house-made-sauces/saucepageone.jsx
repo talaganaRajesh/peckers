@@ -59,7 +59,7 @@ export default function SaucePageOne({ initialData = [] }) {
     });
     const ringGapUnits = isMobile ? 12.0 : 0.15;
     const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
-    const ringOffsets = isMobile 
+    const ringOffsets = isMobile
         ? ringItems.map((_, i) => `${(i / ringItems.length) * 100}%`)
         : ringLabels.reduce((acc, label) => {
             const center = acc.cursor + (label.length / 2);
