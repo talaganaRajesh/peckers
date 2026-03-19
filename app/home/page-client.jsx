@@ -21,17 +21,17 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
     <div id="main-content">
       <section>
         <div className="w-full min-h-[8vh] md:h-[10vh] md:min-h-0 flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden px-4 py-3 md:px-0 md:py-0">
-          <div className="text-center md:text-left text-black uppercase font-bold md:italic w-full" style={{ fontFamily: "var(--font-peakers)" }}>
+          <div className="text-center md:text-left text-black uppercase font-bold italic w-full" style={{ fontFamily: "var(--font-peakers)" }}>
             <div className="md:hidden flex flex-col items-center justify-center gap-1.5 w-full">
-              <span className="text-[16px] xs:text-[17px] sm:text-[18px] tracking-wide text-gray-800 leading-tight">
+              <span className="text-[20px] xs:text-[17px] sm:text-[18px] tracking-wide text-gray-950 leading-tight">
                 UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!
               </span>
-              <span className="text-[16px] xs:text-[17px] sm:text-[18px] tracking-wider leading-tight">
+              <span className="text-[20px] xs:text-[17px] sm:text-[18px] tracking-wider leading-tight">
                 <span className="text-red-600 font-black underline decoration-2 underline-offset-2">SIGN UP</span> FOR EXCLUSIVE REWARDS.
               </span>
             </div>
             <div className="hidden md:flex items-center justify-center w-full">
-              <span className="md:text-[3vw] xl:text-[2.4vw] whitespace-nowrap tracking-wide">
+              <span className="md:text-[3vw]  xl:text-[2.4vw] whitespace-nowrap tracking-wide">
                 UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
                 <span className="text-red-600 font-bold">SIGN UP</span>{" "}
                 FOR EXCLUSIVE REWARDS.
@@ -72,7 +72,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
         </div>
       </section>
 
-      <div className="w-full flex mt-[10vw] sm:mt-[2vw] justify-center items-center bg-black" style={{ minHeight: "50px" }}>
+      <div className="w-full flex mt-[4vw] sm:mt-[1vw] justify-center items-center bg-black" style={{ minHeight: "50px" }}>
         <svg width="80" height="50" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-bounce">
           <path d="M12 16.5c-.28 0-.53-.11-.71-.29l-5.5-5.5a1 1 0 0 1 1.42-1.42L12 14.09l4.79-4.8a1 1 0 1 1 1.42 1.42l-5.5 5.5c-.18.18-.43.29-.71.29z" fill="#fff" />
         </svg>

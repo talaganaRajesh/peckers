@@ -15,7 +15,7 @@ export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Exp
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] py-[5vw] md:py-0 pt-[15vw] md:pt-[8vw] pb-[10vw] md:pb-[2vw] xl:pb-0 flex flex-col items-center md:items-start text-center md:text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] py-[5vw] md:py-0 pt-[8vw] md:pt-[4vw] pb-[5vw] md:pb-[2vw] xl:pb-0 flex flex-col items-center md:items-start text-center md:text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}

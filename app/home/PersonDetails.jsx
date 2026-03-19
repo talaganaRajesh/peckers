@@ -13,7 +13,7 @@ export default function PersonDetails({ data = null }) {
 
   return (
     <div
-      className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-stretch justify-center mt-[15vw] md:mt-[15vw] lg:mt-[8vw] gap-[8vw] md:gap-[8vw] lg:gap-[2vw] box-border px-[5vw] md:px-[6vw] lg:px-[2vw]"
+      className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-stretch justify-center mt-[8vw] md:mt-[8vw] lg:mt-[4vw] gap-[8vw] md:gap-[8vw] lg:gap-[2vw] box-border px-[5vw] md:px-[6vw] lg:px-[2vw]"
     >
       <motion.div
         className="shrink-0 w-full lg:w-[43vw] xl:w-[44vw]"
