@@ -152,9 +152,9 @@ export default function SaucePageOne({ initialData = [] }) {
 
 
     return (
-        <div className="relative w-full overflow-hidden bg-black flex flex-col items-center">
+        <div className="relative w-full h-[100dvh] overflow-hidden bg-black flex flex-col items-center">
 
-            <div className="relative w-full min-h-screen sm:min-h-[120vw] md:min-h-[60vw] lg:min-h-[55vw] xl:min-h-[50vw]">
+            <div className="relative w-full h-full">
 
                 {saucesData.map((sauce, idx) => {
                     const isCurrent = idx === currentIndex;
@@ -177,9 +177,9 @@ export default function SaucePageOne({ initialData = [] }) {
                     return (
                         <div
                             key={sauce._id}
-                            className={`absolute top-0 left-0 w-full ${isVisible ? "opacity-100" : "opacity-0"} ${wrapperZ} ${wrapperFadeClass}`}
+                            className={`absolute top-0 left-0 w-full h-full ${isVisible ? "opacity-100" : "opacity-0"} ${wrapperZ} ${wrapperFadeClass}`}
                         >
-                            <div className="relative w-full flex flex-col items-center pb-[25vw] min-h-[175vw] sm:min-h-[120vw] md:min-h-[60vw] lg:min-h-[55vw] xl:min-h-[50vw] sm:pb-[100vw] md:pb-[20vw] lg:pb-[26vw] xl:pb-[26vw] bg-black">
+                            <div className="relative w-full h-full flex flex-col items-center bg-black">
 
                                 {sauce.bgImage && (
                                     <Image
@@ -195,7 +195,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                 {/* TEXT SECTION WITH PREMIUM SCALING */}
                                 <div
-                                    className={`absolute mt-[12vw] sm:mt-6 md:mt-0 top-[6%] sm:top-[10%] md:top-[4%] lg:top-[6%] xl:top-[2%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-700 ease-out`}
+                                    className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[12%] lg:top-[14%] xl:top-[8%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-700 ease-out`}
                                 >
                                     <h1
                                         className="text-4xl sm:text-5xl md:text-[48px] lg:text-[56px] xl:text-[4.5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-3 xl:mb-[-0.2vw]"
@@ -255,7 +255,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 bottom-[-68vw] sm:bottom-[-5vw] md:bottom-[2vw] lg:bottom-[-2vw] xl:bottom-[-5vw] w-[155vw] h-[155vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="absolute left-1/2 -translate-x-1/2 mt-[15vw] md:mt-0 -bottom-[45vw] sm:-bottom-[15vw] md:-bottom-[45vw] lg:-bottom-[35vw] xl:-bottom-[45vw] w-[155vw] h-[155vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}

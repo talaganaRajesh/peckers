@@ -101,16 +101,26 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
           visibility: isPageLoading ? "hidden" : "visible"
         }}
         transition={{ duration: isPageLoading ? 0 : 0.4 }}
+        className={pathname === "/house-made-sauces" ? "h-screen overflow-hidden flex flex-col" : ""}
       >
         <Navbar preloadedSettings={preloadedSettings} />
-        <SmoothScroll lenisRef={lenisRef}>
+        {pathname === "/house-made-sauces" ? (
           <div
             id="main-content"
-            className="w-full min-h-screen overflow-x-clip pb-[18vw] md:pb-0 h-auto overflow-visible"
+            className="w-full flex-1 overflow-hidden"
           >
             {children}
           </div>
-        </SmoothScroll>
+        ) : (
+          <SmoothScroll lenisRef={lenisRef}>
+            <div
+              id="main-content"
+              className="w-full min-h-screen overflow-x-clip pb-[18vw] md:pb-0 h-auto overflow-visible"
+            >
+              {children}
+            </div>
+          </SmoothScroll>
+        )}
         <ConditionalFooter preloadedData={preloadedFooter} />
         {!pathname.startsWith('/menu') && <MobileBottomBar />}
       </motion.div>

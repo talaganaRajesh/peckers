@@ -70,12 +70,12 @@ export default function SmoothScroll({ children, lenisRef }) {
   // Mobile fallback - ensure content is scrollable even if Lenis fails
   useLayoutEffect(() => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile && lenisRef.current) {
+    if (isMobile && lenisRef.current && pathname !== "/house-made-sauces") {
       // Ensure mobile can always scroll
       document.documentElement.style.overflowY = 'auto';
       document.body.style.overflowY = 'auto';
     }
-  }, [lenisRef]);
+  }, [lenisRef, pathname]);
 
   return <>{children}</>;
 }
