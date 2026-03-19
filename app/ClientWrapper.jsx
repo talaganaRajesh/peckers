@@ -101,13 +101,13 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
           visibility: isPageLoading ? "hidden" : "visible"
         }}
         transition={{ duration: isPageLoading ? 0 : 0.4 }}
-        className={pathname === "/house-made-sauces" ? "h-screen overflow-hidden flex flex-col" : ""}
+        className={pathname === "/house-made-sauces" ? "h-[100dvh] overflow-hidden flex flex-col" : ""}
       >
         <Navbar preloadedSettings={preloadedSettings} />
         {pathname === "/house-made-sauces" ? (
           <div
             id="main-content"
-            className="w-full flex-1 overflow-hidden"
+            className={`w-full flex-1 overflow-hidden ${pathname === "/house-made-sauces" ? "![will-change:opacity,visibility]" : ""}`}
           >
             {children}
           </div>

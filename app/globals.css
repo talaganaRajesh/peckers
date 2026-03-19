@@ -148,6 +148,10 @@ body::-webkit-scrollbar {
   will-change: opacity, filter;
 }
 
+.sauce-title-fade-in {
+  animation: sauceLayerFadeIn 300ms ease-out forwards;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
