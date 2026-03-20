@@ -24,13 +24,19 @@ const createInitialCards = (centerIdx, totalImages) => {
   ];
 };
 
-export default function LatestNewsCards({ news = [] }) {
+export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
   const images = news.filter(item => item.image?.asset);
   const [cards, setCards] = useState(images.length > 0 ? createInitialCards(0, images.length) : []);
   const [centerIdx, setCenterIdx] = useState(0);
   const animatingRef = useRef(false);
 
   const N = images.length;
+
+  useEffect(() => {
+    if (onActiveIndexChange) {
+      onActiveIndexChange(centerIdx);
+    }
+  }, [centerIdx, onActiveIndexChange]);
 
   if (N === 0) return null;
 

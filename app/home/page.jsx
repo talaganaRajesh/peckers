@@ -48,7 +48,8 @@ export default async function HomePage() {
     _id,
     title,
     image,
-    order
+    order,
+    caption
   }`);
 
   // Fetch locations data on the server (for CoopImages)

@@ -16,6 +16,30 @@ const SignUpSection = dynamic(() => import("./SignUpSection"), { ssr: true });
 
 const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocations, initialPersonDetails, initialReviews }) => {
   const [data, setData] = useState(initialHomepageData || {});
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
+
+  const getCaption = () => {
+    const card = initialSliderCards[activeCardIndex];
+    if (!card) return data?.journalCaption;
+
+    // Prioritize the caption from Sanity if it exists
+    if (card.caption) {
+      return card.caption;
+    }
+
+    const title = card.title?.toLowerCase() || "";
+    if (title.includes("health box")) {
+      return "Meet the all-new Peckers Health Box: seriously good chicken, spicy rice, grilled halloumi, and fresh salad in one balanced feast.";
+    }
+    if (title.includes("marinade") || title.includes("sauce")) {
+      return "New flavour alert: Our grilled chicken just got an upgrade with our all-new signature marinade range.";
+    }
+    if (title.includes("jerk")) {
+      return "The wait is over: Authentic, flame-grilled Jerk Chicken has officially landed at Peckers.";
+    }
+
+    return data?.journalCaption || "Stay up to date with our shenanigans, limited drops, and questionable life choices.";
+  };
 
   return (
     <div id="main-content">
@@ -77,8 +101,8 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
       <CoopImages locations={initialLocations} />
 
       <LatestNewsHeading heading={data?.journalHeading} subtitle={data?.journalSubtitle} />
-      <LatestNewsCards news={initialSliderCards} />
-      <CaptionBelowNews caption={data?.journalCaption} />
+      <LatestNewsCards news={initialSliderCards} onActiveIndexChange={setActiveCardIndex} />
+      <CaptionBelowNews caption={getCaption()} />
 
       <PersonDetails data={initialPersonDetails} />
 

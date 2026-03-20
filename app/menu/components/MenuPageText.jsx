@@ -66,8 +66,13 @@ export default function MenuPageText({ itemData = null }) {
         <span className="text-[3.2vw] md:text-[18px] text-white/80 font-peakers uppercase tracking-wide">{itemData.ingredients}</span>
       </div>
       <div className="flex gap-[3vw] md:gap-3 mt-6">
-        <a href={settings?.clickCollectUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-[4vw] py-[2vw] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150 menu-btn-cc">Click & Collect</a>
-        <a href={settings?.deliveryUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-[5vw] py-[2vw] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150 menu-btn-delivery">Delivery</a>
+        <a href={settings?.clickCollectUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-[4vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150 menu-btn-cc">Click & Collect</a>
+        <a href={settings?.deliveryUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-[5vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150 menu-btn-delivery">
+          Delivery
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[3vw] h-auto md:w-[18px]">
+            <path d="M12 1L17 6L12 11M1 6H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </a>
       </div>
       <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-[6vw] md:gap-12 mt-8 text-white/90 font-mono menu-stats px-[5vw] md:px-0">
         <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">

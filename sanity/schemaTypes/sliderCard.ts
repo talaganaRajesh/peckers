@@ -21,5 +21,11 @@ export default defineType({
             title: "Order",
             type: "number",
         }),
+        defineField({
+            name: "caption",
+            title: "Caption",
+            type: "text",
+            rows: 3,
+        }),
     ],
 });
