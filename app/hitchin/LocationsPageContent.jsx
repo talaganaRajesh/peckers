@@ -118,15 +118,15 @@ export function LocationsPageContent({ location = 'hitchin', initialData = null 
                 id='history'
             >
                 <div className="flex flex-col items-center mt-[12vw] md:mt-[6vw] justify-center w-full pt-[8vw] md:pt-[2vw] pb-[12vw] md:pb-[4vw] bg-[#0A0A0B]">
-                    <div className="flex flex-col items-center w-[90vw] md:w-[80vw]">
+                    <div className="flex flex-col items-start md:items-center w-[90vw] md:w-[80vw]">
                         {/* History Title, Logo, EST */}
-                        <div className="flex flex-col md:flex-row items-center mb-[6vw] md:mb-[1.6vw] mr-0 md:mr-[16vw] relative w-full justify-center">
+                        <div className="flex flex-row md:flex-row items-center mb-[6vw] md:mb-[1.6vw] mr-0 md:mr-[16vw] relative w-full justify-start md:justify-center gap-[4vw] md:gap-0">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ duration: 0.7, ease: "easeOut" }}
-                                className="relative w-[30vw] h-[30vw] md:w-[10vw] md:h-[10vw] flex items-center justify-center mb-[4vw] md:mb-[0.8vw] self-center md:self-start mr-0 md:mr-[44vw] bg-[#181818] rounded-full shadow-lg overflow-hidden"
+                                className="relative w-[22vw] h-[22vw] md:w-[10vw] md:h-[10vw] flex items-center justify-center mb-0 md:mb-[0.8vw] self-center md:self-start mr-0 md:mr-[44vw] bg-[#181818] rounded-full shadow-lg overflow-hidden"
                             >
                                 <Image
                                     src={logoUrl}
@@ -144,22 +144,22 @@ export function LocationsPageContent({ location = 'hitchin', initialData = null 
                                 className="flex md:absolute flex-col items-center ml-0 md:ml-[25vw] mt-0 md:mt-[2vw]">
                                 <div className="flex items-center mb-[2vw] md:mb-[0.3vw]">
                                     <span
-                                        className="h-[1.2px] w-[8vw] md:w-[3vw] bg-[#555] opacity-70 mr-[2vw] md:mr-[1vw]"
+                                        className="h-[1.2px] w-[5vw] md:w-[3vw] bg-[#555] opacity-70 mr-[2vw] md:mr-[1vw]"
                                         aria-hidden="true"
                                     ></span>
                                     <span
-                                        className="text-[#888] text-[3.5vw] md:text-[0.95vw] tracking-[0.22em] font-mono"
+                                        className="text-[#888] text-[3vw] md:text-[0.95vw] tracking-[0.22em] font-mono"
                                         style={{ fontFamily: "monospace, 'Share Tech', 'ShareTech', 'Share_Tech', 'ShareTechMono'" }}
                                     >
                                         {establishedText}
                                     </span>
                                     <span
-                                        className="h-[1.2px] w-[8vw] md:w-[3vw] bg-[#555] opacity-70 ml-[2vw] md:ml-[1vw]"
+                                        className="h-[1.2px] w-[5vw] md:w-[3vw] bg-[#555] opacity-70 ml-[2vw] md:ml-[1vw]"
                                         aria-hidden="true"
                                     ></span>
                                 </div>
                                 <h2
-                                    className="font-bold text-[12vw] md:text-[4.5vw] font-peakers text-white mt-[1vw] md:mt-[0.2vw] tracking-[0.05em]"
+                                    className="font-bold text-[9vw] md:text-[4.5vw] font-peakers text-white mt-[1vw] md:mt-[0.2vw] tracking-[0.05em]"
                                 >
                                     {historyTitle}
                                 </h2>
@@ -171,7 +171,7 @@ export function LocationsPageContent({ location = 'hitchin', initialData = null 
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                            className="w-full flex justify-center mt-[4vw] md:mt-0">
+                            className="w-full flex justify-start md:justify-center mt-[4vw] md:mt-0">
                             {historyDescription ? (
                                 <p
                                     className="text-[#e3e3e5]/70 text-left md:text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono whitespace-pre-line"
