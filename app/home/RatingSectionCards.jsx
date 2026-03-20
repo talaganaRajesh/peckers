@@ -36,8 +36,14 @@ export default function RatingSectionCards({ reviews = [] }) {
               <div className="flex flex-row items-center justify-between mb-[3vw] lg:mb-[0.8vw]">
                 <div className="flex flex-row items-center gap-[3vw] lg:gap-[0.8vw]">
                   <div
-                    className={`w-[12vw] h-[12vw] min-w-[12vw] min-h-[12vw] md:w-[6vw] md:h-[6vw] md:min-w-[6vw] md:min-h-[6vw] lg:w-[2.7vw] lg:h-[2.7vw] lg:min-w-[2.7vw] lg:min-h-[2.7vw] rounded-full bg-linear-to-br ${card.gradient || "from-gray-400 to-gray-600"} flex items-center justify-center text-white font-bold uppercase font-sans shadow-md`}
-                  ></div>
+                    className={`w-[12vw] h-[12vw] min-w-[12vw] min-h-[12vw] md:w-[6vw] md:h-[6vw] md:min-w-[6vw] md:min-h-[6vw] lg:w-[2.7vw] lg:h-[2.7vw] lg:min-w-[2.7vw] lg:min-h-[2.7vw] rounded-full bg-linear-to-br ${card.gradient || "from-gray-400 to-gray-600"} flex items-center justify-center text-white font-bold uppercase font-sans shadow-md overflow-hidden`}
+                  >
+                    {card.image ? (
+                      <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <span>{card.name?.[0]}</span>
+                    )}
+                  </div>
                   <div className="flex flex-col">
                     <span
                       className="text-white font-extralight text-[4vw] md:text-[2vw] lg:text-[1.3vw] leading-[1.2] uppercase tracking-[2px]"

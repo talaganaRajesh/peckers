@@ -20,13 +20,13 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
   return (
     <div id="main-content">
       <section>
-        <div className="w-full min-h-[8vh] md:h-[10vh] md:min-h-0 flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden px-4 py-3 md:px-0 md:py-0">
+        <div className="w-full h-auto md:h-[10vh] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0">
           <div className="text-center md:text-left text-black uppercase font-bold italic w-full" style={{ fontFamily: "var(--font-peakers)" }}>
-            <div className="md:hidden flex flex-col items-center justify-center gap-1.5 w-full">
-              <span className="text-[20px] xs:text-[17px] sm:text-[18px] tracking-wide text-gray-950 leading-tight">
+            <div className="md:hidden flex flex-col items-center justify-center gap-0.5 w-full px-0 text-center">
+              <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] tracking-normal text-gray-950 leading-tight">
                 UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!
               </span>
-              <span className="text-[20px] xs:text-[17px] sm:text-[18px] tracking-wider leading-tight">
+              <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] tracking-normal leading-tight">
                 <span className="text-red-600 font-black underline decoration-2 underline-offset-2">SIGN UP</span> FOR EXCLUSIVE REWARDS.
               </span>
             </div>

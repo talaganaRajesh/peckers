@@ -1,5 +1,6 @@
 import { client } from "../../sanity/lib/client";
 import HomePageClient from "./page-client";
+import { fetchGoogleReviews } from "../lib/google-reviews";
 
 export const metadata = {
   title: "Peckers | Best Halal Peri Peri & Fried Chicken in Stevenage & Hitchin",
@@ -70,8 +71,8 @@ export default async function HomePage() {
     "imageUrl": image.asset->url
   }`);
 
-  // Fetch reviews data on the server
-  const reviews = await client.fetch(`*[_type == "review"]`);
+  // Fetch reviews data from Google
+  const reviews = await fetchGoogleReviews();
 
   return <HomePageClient
     initialHomepageData={homepageData}
