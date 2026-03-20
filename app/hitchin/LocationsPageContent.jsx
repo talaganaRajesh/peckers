@@ -174,14 +174,14 @@ export function LocationsPageContent({ location = 'hitchin', initialData = null 
                             className="w-full flex justify-center mt-[4vw] md:mt-0">
                             {historyDescription ? (
                                 <p
-                                    className="text-[#e3e3e5]/70 text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono whitespace-pre-line"
+                                    className="text-[#e3e3e5]/70 text-left md:text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono whitespace-pre-line"
                                 >
                                     {historyDescription}
                                 </p>
                             ) : (
                                 location === 'stevenage' ? (
                                     <p
-                                        className="text-[#e3e3e5]/70 text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono"
+                                        className="text-[#e3e3e5]/70 text-left md:text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono"
                                     >
                                         Following the incredible response at our original site, Stevenage was established as our second location to bring
                                         Peckers to a larger audience. This inviting store is designed for the community to gather, offering a high-energy
@@ -192,7 +192,7 @@ export function LocationsPageContent({ location = 'hitchin', initialData = null 
                                     </p>
                                 ) : (
                                     <p
-                                        className="text-[#e3e3e5]/70 text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono"
+                                        className="text-[#e3e3e5]/70 text-left md:text-center font-extralight leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono"
                                     >
                                         Peckers Hitchin is where the vision first took flight. Nestled in the heart of Westmill, this location stands on the
                                         same ground where our family’s journey began over 50 years ago at our grandfather’s original shop.

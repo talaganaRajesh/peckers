@@ -34,7 +34,7 @@ export default function Navbar({ preloadedSettings = null }) {
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : null;
 
   return (
-    <nav id="main-navbar" className="relative z-9999 flex items-center px-4 py-4 md:px-[2vw] md:py-[1.2vw] lg:px-[2.5vw] lg:py-[1.5vw] xl:px-[1.8vw] xl:py-[.4vw] bg-black text-white font-['Share_Tech']">
+    <nav id="main-navbar" className="sticky top-0 z-9999 flex items-center px-4 py-4 md:px-[2vw] md:py-[1.2vw] lg:px-[2.5vw] lg:py-[1.5vw] xl:px-[1.8vw] xl:py-[.4vw] bg-black text-white font-['Share_Tech']">
 
       {/* Logo Section */}
       <div className="flex-1 flex items-center z-50">

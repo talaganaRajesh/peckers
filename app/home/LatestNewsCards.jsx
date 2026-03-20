@@ -87,7 +87,7 @@ export default function LatestNewsCards({ news = [] }) {
 
 
   return (
-    <div className="relative w-full pt-[10vw] pb-[5vw] md:py-[3vw] bg-black overflow-hidden">
+    <div className="relative w-full pt-[2vw] pb-[2vw] md:py-[3vw] bg-black overflow-hidden">
       <style>{`
         .card-slot-m2 { transform: translate(calc(-50% - 150vw), -50%) rotateY(45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
         .card-slot-m1 { transform: translate(calc(-50% - 45vw), -50%) rotate(-6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
@@ -113,7 +113,7 @@ export default function LatestNewsCards({ news = [] }) {
         }
       `}</style>
       <div
-        className="relative w-full h-[120vw] md:h-[40vw]"
+        className="relative w-full h-[110vw] md:h-[40vw]"
         style={{
           perspective: "1400px",
           transformStyle: "preserve-3d",

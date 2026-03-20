@@ -41,7 +41,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
         </div>
       </section>
 
-      <section className="hero w-full h-[75vh] md:h-[60vh] lg:h-[95vh] min-h-[500px] md:min-h-[400px] lg:min-h-[480px] bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
+      <section className="hero w-full h-[75vh] md:h-[60vh] lg:h-[95vh] min-h-[500px] md:min-h-[400px] lg:min-h-[480px] bg-black flex items-end justify-center lg:justify-start overflow-hidden relative">
         {data?.videoUrl && (
           <video
             src={data.videoUrl}
@@ -54,10 +54,10 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
             className="absolute inset-0 w-full h-full object-cover "
           />
         )}
-        <div className="relative z-10 w-full px-[5vw] md:px-[7vw]">
+        <div className="relative z-10 w-full px-[5vw] md:px-[7vw] lg:px-[4vw] pb-[6vw] md:pb-[4vw] lg:pb-[1.5vw]">
           <div className="flex flex-col gap-2 md:gap-4">
             <h1
-              className="text-white font-peakers text-[20vw] md:text-[11vw] lg:text-[10.5vw] leading-[1.1] font-bold tracking-normal mb-8 md:mb-10"
+              className="text-white font-peakers text-[20vw] md:text-[11vw] lg:text-[10.5vw] leading-[0.9] font-bold tracking-normal"
               style={{ textShadow: "0px 4px 30px rgba(0,0,0,0.9)" }}
             >
               Seriously <br /> Good <br /> Chicken
@@ -72,11 +72,6 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
         </div>
       </section>
 
-      <div className="w-full flex mt-[4vw] sm:mt-[1vw] justify-center items-center bg-black" style={{ minHeight: "50px" }}>
-        <svg width="80" height="50" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-bounce">
-          <path d="M12 16.5c-.28 0-.53-.11-.71-.29l-5.5-5.5a1 1 0 0 1 1.42-1.42L12 14.09l4.79-4.8a1 1 0 1 1 1.42 1.42l-5.5 5.5c-.18.18-.43.29-.71.29z" fill="#fff" />
-        </svg>
-      </div>
 
       <CoopHeading heading={data?.locationsHeading} subtitle={data?.locationsSubtitle} />
       <CoopImages locations={initialLocations} />

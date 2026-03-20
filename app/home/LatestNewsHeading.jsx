@@ -15,7 +15,7 @@ export default function LatestNewsHeading({ heading = "THE PECKERS JOURNAL", sub
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] py-[10vw] md:py-[5vw] pt-[6vw] md:pt-[4vw] pb-[1vw] md:pb-[2vw] xl:pb-0 flex flex-col items-center md:items-start text-center md:text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] py-[10vw] md:py-[5vw] pt-[3vw] md:pt-[2vw] pb-[1vw] md:pb-[2vw] xl:pb-0 flex flex-col items-center md:items-start text-center md:text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}

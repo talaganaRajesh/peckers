@@ -40,7 +40,7 @@ const SectionItem = memo(({ section, index, num }) => {
       }}
     >
       {/* MEDIA SECTION */}
-      <div className="w-full md:w-[52%] h-[90vw] sm:h-[70vw] md:h-full relative overflow-hidden flex items-center justify-center bg-black">
+      <div className="w-full md:w-[65%] h-[90vw] sm:h-[70vw] md:h-full relative overflow-hidden flex items-center justify-center bg-black">
         {isInView ? (
           <>
             {([0, 2, 4, 5, 6].includes(index)) ? (
@@ -80,7 +80,7 @@ const SectionItem = memo(({ section, index, num }) => {
 
       {/* CONTENT SECTION */}
       <div
-        className={`w-full md:w-[48%] h-max md:h-full text-white flex flex-col`}
+        className={`w-full md:w-[35%] h-max md:h-full text-white flex flex-col`}
         style={{
           backgroundColor: index % 2 === 0 ? "#111111" : "#000000",
         }}
@@ -116,6 +116,17 @@ const SectionItem = memo(({ section, index, num }) => {
 
           {/* PERSISTENT FOOTER - Border only */}
           <div className="mt-auto">
+            {index === 0 && (
+              <a
+                href="/house-made-sauces"
+                className="inline-flex items-center gap-[1.5vw] md:gap-[0.5vw] text-[#9CA3AF] hover:text-white transition-colors duration-200 text-[3.5vw] md:text-[0.95vw] font-normal mt-[2vw] md:mt-[1vw] mb-[1vw] md:mb-[0.5vw]"
+              >
+                <span>Explore our house-made sauces</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[3vw] h-[3vw] md:w-[0.8vw] md:h-[0.8vw]">
+                  <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            )}
             <div className="w-full md:w-[20.8vw] h-px md:h-[0.04vw] relative bg-gray-600 mt-[4vw] md:mt-[1.5vw] mb-[6vw] md:mb-[2vw]" />
           </div>
         </div>

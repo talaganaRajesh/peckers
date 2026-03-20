@@ -214,7 +214,7 @@ export default function MenuTitleSection({
   
             <div
               ref={navRef}
-              className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start items-center overflow-x-auto no-scrollbar px-10 md:px-14 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw] scroll-smooth"
+              className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start items-center overflow-x-auto no-scrollbar px-2 md:px-14 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw] scroll-smooth"
               style={{ fontFamily: "var(--font-peakers)", scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {navbarData.map((item, idx) => {
@@ -268,10 +268,10 @@ export default function MenuTitleSection({
           {/* NAVIGATION ARROWS */}
           <button
             onClick={goPrev}
-            className="absolute left-[2vw] sm:left-[4vw] md:left-[6vw] top-1/2 -translate-y-1/2 z-30 p-[2vw] group"
+            className="absolute left-[2vw] sm:left-[4vw] md:left-[6vw] top-1/2 -translate-y-1/2 z-30 p-[1vw] group"
             disabled={isAnimating}
           >
-            <div className="relative flex items-center justify-center w-[40px] h-[40px] md:w-[56px] md:h-[56px]">
+            <div className="relative flex items-center justify-center w-[28px] h-[28px] md:w-[56px] md:h-[56px]">
               <div className="w-full h-full rounded-full bg-black border border-[#EAB308]/60 flex items-center justify-center transition-all duration-300 group-hover:border-[#EAB308] group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] group-active:scale-90">
                 <svg viewBox="0 0 100 100" className="w-[45%] h-[45%] text-[#EAB308] rotate-180" fill="currentColor">
                   <path d="M45 20 L85 50 L45 80 L58 50 Z" />
@@ -283,10 +283,10 @@ export default function MenuTitleSection({
 
           <button
             onClick={goNext}
-            className="absolute right-[2vw] sm:right-[4vw] md:right-[6vw] top-1/2 -translate-y-1/2 z-30 p-[2vw] group"
+            className="absolute right-[2vw] sm:right-[4vw] md:right-[6vw] top-1/2 -translate-y-1/2 z-30 p-[1vw] group"
             disabled={isAnimating}
           >
-            <div className="relative flex items-center justify-center w-[40px] h-[40px] md:w-[56px] md:h-[56px]">
+            <div className="relative flex items-center justify-center w-[28px] h-[28px] md:w-[56px] md:h-[56px]">
               <div className="w-full h-full rounded-full bg-black border border-[#EAB308]/60 flex items-center justify-center transition-all duration-300 group-hover:border-[#EAB308] group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] group-active:scale-90">
                 <svg viewBox="0 0 100 100" className="w-[45%] h-[45%] text-[#EAB308]" fill="currentColor">
                   <path d="M45 20 L85 50 L45 80 L58 50 Z" />

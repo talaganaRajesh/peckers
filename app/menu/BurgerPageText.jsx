@@ -126,26 +126,26 @@ export default function BurgerPageText({ burgerData = null }) {
           href={settings?.clickCollectUrl || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center px-[4vw] py-[2vw] md:px-6 md:py-2 rounded-[.4vw] border-[1.5px] md:border-2 xl:border-[0.11vw] border-[#f2df0d] text-[#ffff] font-mono uppercase tracking-wide text-[2.8vw] md:text-[14px] lg:text-[16px] xl:text-[1vw] cursor-pointer hover:bg-[#f2df0d]/10 transition-colors duration-150 burger-btn-cc no-underline"
+          className="flex items-center justify-center px-[3vw] py-[1.5vw] md:px-6 md:py-2 rounded-[.4vw] border-[1.5px] md:border-2 xl:border-[0.11vw] border-[#f2df0d] text-[#ffff] font-mono uppercase tracking-wide text-[2.2vw] md:text-[14px] lg:text-[16px] xl:text-[1vw] cursor-pointer hover:bg-[#f2df0d]/10 transition-colors duration-150 burger-btn-cc no-underline"
           style={{
-            minWidth: 115,
+            minWidth: 90,
             letterSpacing: "0.04em",
-            paddingTop: "0.60em",
-            paddingBottom: "0.60em",
+            paddingTop: "0.45em",
+            paddingBottom: "0.45em",
           }}
         >
-          Click & Collect
+          Click &amp; Collect
         </a>
         <a
           href={settings?.deliveryUrl || "#"}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center px-[5vw] py-[2vw] md:px-7 md:py-2 rounded border-[1.5px] md:border-2 xl:border-[0.11vw] border-[#f2df0d] text-[#ffff] font-mono uppercase tracking-wide text-[2.8vw] md:text-[14px] lg:text-[16px] xl:text-[1vw] cursor-pointer hover:bg-[#f2df0d]/10 transition-colors duration-150 burger-btn-delivery no-underline"
+          className="flex items-center justify-center px-[3.5vw] py-[1.5vw] md:px-7 md:py-2 rounded border-[1.5px] md:border-2 xl:border-[0.11vw] border-[#f2df0d] text-[#ffff] font-mono uppercase tracking-wide text-[2.2vw] md:text-[14px] lg:text-[16px] xl:text-[1vw] cursor-pointer hover:bg-[#f2df0d]/10 transition-colors duration-150 burger-btn-delivery no-underline"
           style={{
-            minWidth: 115,
+            minWidth: 90,
             letterSpacing: "0.04em",
-            paddingTop: "0.7em",
-            paddingBottom: "0.7em",
+            paddingTop: "0.45em",
+            paddingBottom: "0.45em",
           }}
         >
           Delivery

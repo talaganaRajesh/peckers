@@ -207,7 +207,7 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
               .no-scrollbar::-webkit-scrollbar { display: none; }
             `}</style>
             <div
-              className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start md:justify-center items-center overflow-x-auto no-scrollbar px-[5vw] sm:px-[5vw] md:px-0 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw]"
+              className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start md:justify-center items-center overflow-x-auto no-scrollbar px-0 md:px-0 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw]"
               style={{ fontFamily: "var(--font-peakers)", scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {navbarData && navbarData.length > 0 ? (
@@ -266,7 +266,7 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
           {/* NAVIGATION ARROWS IN IMAGE CONTAINER */}
           <button
             onClick={goPrev}
-            className="absolute left-[2vw] sm:left-[4vw] md:left-[6vw] top-1/2 -translate-y-1/2 z-30 p-[2vw] md:p-0 group"
+            className="absolute left-[2vw] sm:left-[4vw] md:left-[6vw] top-1/2 -translate-y-1/2 z-30 p-[1vw] md:p-0 group"
             disabled={isAnimating}
             style={{
               cursor: isAnimating ? "wait" : "pointer",
@@ -274,7 +274,7 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
               transition: "all 0.3s ease",
             }}
           >
-            <div className="relative flex items-center justify-center w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] md:w-[56px] md:h-[56px]">
+            <div className="relative flex items-center justify-center w-[28px] h-[28px] sm:w-[38px] sm:h-[38px] md:w-[56px] md:h-[56px]">
               {/* Single Premium Circular Button */}
               <div className="w-full h-full rounded-full bg-black border border-[#EAB308]/60 flex items-center justify-center transition-all duration-300 group-hover:border-[#EAB308] group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] group-active:scale-90">
                 <svg
@@ -293,7 +293,7 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
 
           <button
             onClick={goNext}
-            className="absolute right-[2vw] sm:right-[4vw] md:right-[6vw] top-1/2 -translate-y-1/2 z-30 p-[2vw] md:p-0 group"
+            className="absolute right-[2vw] sm:right-[4vw] md:right-[6vw] top-1/2 -translate-y-1/2 z-30 p-[1vw] md:p-0 group"
             disabled={isAnimating}
             style={{
               cursor: isAnimating ? "wait" : "pointer",
@@ -301,7 +301,7 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
               transition: "all 0.3s ease",
             }}
           >
-            <div className="relative flex items-center justify-center w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] md:w-[56px] md:h-[56px]">
+            <div className="relative flex items-center justify-center w-[28px] h-[28px] sm:w-[38px] sm:h-[38px] md:w-[56px] md:h-[56px]">
               {/* Single Premium Circular Button */}
               <div className="w-full h-full rounded-full bg-black border border-[#EAB308]/60 flex items-center justify-center transition-all duration-300 group-hover:border-[#EAB308] group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] group-active:scale-90">
                 <svg

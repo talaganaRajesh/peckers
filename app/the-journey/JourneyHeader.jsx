@@ -9,7 +9,7 @@ export default function JourneyIntroSection({ initialData = null }) {
     if (!data) return null;
 
     return (
-        <section className="w-full bg-black pt-[2vw] md:pt-[10vw] pb-0 md:pb-[10vw] flex flex-col items-center text-center relative overflow-hidden min-h-[50vh]">
+        <section className="w-full bg-black pt-0 pb-0 md:pb-[10vw] flex flex-col items-center text-center relative overflow-hidden min-h-[50vh]">
 
             <>
                 {/* ================= DESKTOP ================= */}
@@ -290,7 +290,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                 </div>
 
                 {/* ================= MOBILE VERSION ================= */}
-                <div className="xl:hidden w-full px-6 pt-10">
+                <div className="xl:hidden w-full px-6 pt-4">
 
                     {/* Mobile Heading */}
                     <motion.h2
