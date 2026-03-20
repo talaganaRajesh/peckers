@@ -105,7 +105,7 @@ export default function OurStorySection({ initialData = null }) {
   };
 
   return (
-    <section className="relative w-full lg:min-h-[105vh] bg-black px-[1.5vw] pt-0 lg:pt-[15vh] pb-[5vw] lg:pb-0 text-white flex flex-col justify-start items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-[105vh] bg-black px-[1.5vw] pt-0 lg:pt-[10vh] pb-[5vw] lg:pb-0 text-white flex flex-col justify-start items-center overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
@@ -157,24 +157,15 @@ export default function OurStorySection({ initialData = null }) {
               filter: { duration: 0.2 },
             }}
             /* CHANGED: flex-col-reverse for mobile stacked layout (image top, text bottom), lg:flex-row for desktop */
-            className="w-full flex flex-col-reverse lg:flex-row items-center justify-start lg:justify-center cursor-grab active:cursor-grabbing"
+            className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center cursor-grab active:cursor-grabbing"
           >
             {/* CHANGED: Text Container w-full on mobile, added top margin for mobile spacing */}
             <div className="w-full lg:w-1/2 px-[6vw] lg:px-[6vw] flex flex-col justify-start mt-[8vw] lg:mt-0 overflow-hidden text-left">
-              <motion.div
-                className="mb-1 flex items-center justify-start"
-                initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={isMobile ? { duration: 0 } : { duration: 0.6, ease: "easeOut", delay: 0.1 }}
-              >
-                <div className="w-6 lg:w-10 h-px bg-white/40"></div>
-                {/* CHANGED: Increased mobile text sizes, preserved desktop */}
-                <span className="ml-2 lg:ml-4 text-gray-400 font-anton tracking-[0.11em] text-[3.5vw] md:text-[2.5vw] lg:text-[1.2vw] uppercase">STORY {currentSlide + 1}</span>
-              </motion.div>
+
 
               {/* CHANGED: Increased heading size for mobile */}
               <motion.h2
-                className="font-bold font-peakers text-[9vw] md:text-[7vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent"
+                className="font-bold font-peakers text-[9vw] md:text-[7vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent"
                 initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={isMobile ? { duration: 0 } : { duration: 0.6, ease: "easeOut", delay: 0.2 }}
@@ -232,9 +223,9 @@ export default function OurStorySection({ initialData = null }) {
             </div>
 
             {/* CHANGED: Image Container is full width on mobile */}
-            <div className="w-full lg:w-1/2 h-auto px-[4vw] lg:px-[2vw] flex flex-col items-start justify-center mt-0 lg:mt-[-3vw]">
+            <div className="w-full lg:w-1/2 h-auto px-[4vw] lg:px-[2vw] flex flex-col items-start lg:justify-start justify-center mt-0 lg:mt-0">
               {/* CHANGED: h-[65vw] reduces mobile image vertical gap while preserving larger sizes for tablet/desktop */}
-              <div className="relative w-full h-[65vw] md:h-[80vw] lg:h-[50vw] overflow-hidden flex items-center justify-start lg:justify-center px-0 lg:px-4">
+              <div className="relative w-full h-[65vw] md:h-[80vw] lg:h-[50vw] overflow-hidden flex items-center lg:items-start justify-start lg:justify-center px-0 lg:px-4">
                 <AnimatePresence mode="wait">
                   {displayImages.length > 0 && (
                     <motion.div
@@ -254,7 +245,7 @@ export default function OurStorySection({ initialData = null }) {
                         src={urlFor(displayImages[currentSubSlide % displayImages.length]).url()}
                         alt={`Story Image ${currentSubSlide + 1}`}
                         fill
-                        className="object-contain rounded-[1.2vw]"
+                        className="object-contain lg:object-top rounded-[1.2vw]"
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         priority={currentSubSlide === 0}
                       />
