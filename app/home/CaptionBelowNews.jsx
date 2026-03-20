@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 export default function CaptionBelowNews({ caption = "Stay up to date with our shenanigans, limited drops, and questionable life choices." }) {
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[90vw] md:w-[80vw] flex flex-col items-center pt-0 md:pt-5">
+      <div className="w-[90vw] md:w-[80vw] flex flex-col items-center pt-0 pb-8 md:pb-0 md:pt-5">
         <motion.div
-          className="relative flex items-center justify-center my-[2vw] md:my-[0.6vw]"
+          className="relative flex items-center justify-center md:my-[0.6vw]"
           style={{
             width: "80%",
             marginLeft: "auto",
