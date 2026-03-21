@@ -275,11 +275,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
             }}
           >
             <div className="relative flex items-center justify-center w-[28px] h-[28px] sm:w-[38px] sm:h-[38px] md:w-[56px] md:h-[56px]">
-              {/* Single Premium Circular Button */}
-              <div className="w-full h-full rounded-full bg-black border border-[#EAB308]/60 flex items-center justify-center transition-all duration-300 group-hover:border-[#EAB308] group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] group-active:scale-90">
+              <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-black md:border md:border-[#EAB308]/60 md:group-hover:border-[#EAB308] md:group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)]">
                 <svg
                   viewBox="0 0 100 100"
-                  className="w-[45%] h-[45%] text-[#EAB308] rotate-180"
+                  className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-[#EAB308] rotate-180"
                   fill="currentColor"
                 >
                   {/* Primary Spearhead */}
@@ -302,11 +301,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
             }}
           >
             <div className="relative flex items-center justify-center w-[28px] h-[28px] sm:w-[38px] sm:h-[38px] md:w-[56px] md:h-[56px]">
-              {/* Single Premium Circular Button */}
-              <div className="w-full h-full rounded-full bg-black border border-[#EAB308]/60 flex items-center justify-center transition-all duration-300 group-hover:border-[#EAB308] group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)] group-active:scale-90">
+              <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-black md:border md:border-[#EAB308]/60 md:group-hover:border-[#EAB308] md:group-hover:shadow-[0_0_15px_rgba(234,179,8,0.4)]">
                 <svg
                   viewBox="0 0 100 100"
-                  className="w-[45%] h-[45%] text-[#EAB308]"
+                  className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-[#EAB308]"
                   fill="currentColor"
                 >
                   {/* Primary Spearhead */}
@@ -496,10 +494,9 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 1.1, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="uppercase text-white text-center font-black"
+              className="uppercase text-white text-center font-black text-[clamp(1.25rem,6.4vw,1.7rem)] md:text-[clamp(1.8rem,9vw,4rem)]"
               style={{
                 fontFamily: "var(--font-peakers)",
-                fontSize: "clamp(1.8rem, 9vw, 4rem)",
                 fontWeight: 900,
                 letterSpacing: "0.05em",
                 lineHeight: "1.1",

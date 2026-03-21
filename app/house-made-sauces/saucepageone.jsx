@@ -196,7 +196,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                 {/* TEXT SECTION WITH PREMIUM SCALING */}
                                 <div
-                                    className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[12%] lg:top-[14%] xl:top-[8%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-300 ease-out`}
+                                    className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[12%] lg:top-[14%] xl:top-[5%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-300 ease-out`}
                                 >
                                     <h1
                                         className={`text-4xl sm:text-5xl md:text-[48px] lg:text-[56px] xl:text-[4.5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-3 xl:mb-[-0.2vw] ${isCurrent && isTransitioning ? "sauce-title-fade-in" : ""}`}
