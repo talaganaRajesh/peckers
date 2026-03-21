@@ -62,7 +62,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
     const ringGapUnits = isMobile ? 1.5 : 5.0;
     const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
-    
+
     const ringOffsetsData = ringLabels.reduce((acc, label) => {
         const center = acc.cursor + (label.length / 2);
         return {
@@ -90,7 +90,7 @@ export default function SaucePageOne({ initialData = [] }) {
         // Current rotation state helps us understand where the wheel is visually
         // But since we rotate relative to baseRotation + total accumulated rotation,
         // we should find the closest repeated instance of targetIndex to the current "top" position.
-        
+
         // Find all indices in the ringItems array that match the targetIndex
         const targetRingIndices = ringItems
             .map((item, idx) => item.index === targetIndex ? idx : -1)
@@ -101,7 +101,7 @@ export default function SaucePageOne({ initialData = [] }) {
         const currentRingIdx = ringItems.findIndex((item, idx) => item.index === currentIndex);
 
         const currentPos = ringOffsetsData[currentRingIdx] * 3.6;
-        
+
         // Find best target ring index by calculating smallest angular distance
         let bestDelta = 999;
         targetRingIndices.forEach(idx => {
