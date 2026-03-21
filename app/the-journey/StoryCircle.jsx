@@ -11,10 +11,10 @@ export default function StoryCircle({ initialData = null }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="w-full bg-black text-white px-[6vw] md:px-[4vw] pt-[1vw] pb-[2vw]"
+            className="w-full bg-transparent text-white px-[4vw] xl:px-[3vw] pt-[0.8vw] pb-[1.6vw] backdrop-blur-[2px]"
         >
-            <div className="flex items-center justify-between gap-[20vw] md:gap-[20vw] w-full">
-                <h2 className="text-[5vw] md:text-[3.4vw] text-left font-bold leading-[1.1] py-2 font-peakers tracking-wide md:whitespace-nowrap uppercase">
+            <div className="flex items-center justify-between gap-6 md:gap-10 w-full">
+                <h2 className="text-[3.2vw] xl:text-[3vw] text-left font-bold leading-[1.08] py-2 font-peakers tracking-wide uppercase whitespace-nowrap">
                     {data?.circleSectionHeading || "A LEGACY THAT CAME FULL CIRCLE"}
                 </h2>
 
@@ -23,10 +23,10 @@ export default function StoryCircle({ initialData = null }) {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex-1 h-px bg-[#1F2937] mx-[3vw] md:mx-12"
+                    className="flex-1 h-px bg-[#1F2937] mx-3 md:mx-10"
                 ></motion.div>
 
-                <span className="text-white/60 tracking-widest font-sans text-[3vw] md:text-xs whitespace-nowrap uppercase text-right">
+                <span className="text-white/60 tracking-[0.22em] font-sans text-[0.8vw] xl:text-[0.75vw] whitespace-nowrap uppercase text-right">
                     {data?.establishedYear ? `EST. ${data.establishedYear}` : "EST. EST. 1978"}
                 </span>
             </div>
@@ -36,7 +36,7 @@ export default function StoryCircle({ initialData = null }) {
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="w-full h-px bg-[#1F2937] mt-[3vw] md:mt-4"
+                className="w-full h-px bg-[#1F2937] mt-[1vw] md:mt-3"
             ></motion.div>
 
         </motion.section>

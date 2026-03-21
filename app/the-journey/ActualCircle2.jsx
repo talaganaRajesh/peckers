@@ -43,10 +43,10 @@ export default function PeckersTimeline2({ initialData = [], scrollProgress }) {
     if (timelineData.length === 0) return null;
 
     return (
-        <div className="bg-black text-white flex justify-center mt-[1vw] md:mt-[1vw] py-[1vw] md:py-[2.5vw] font-peakers">
-            <div className="w-full max-w-[90vw] relative">
+        <div className="bg-transparent text-white relative z-120 flex justify-center mt-0 md:mt-[1.8vw] py-[0.5vw] md:py-0 font-peakers">
+            <div className="w-full max-w-[98vw] relative">
                 <div
-                    className="flex flex-col md:flex-row justify-between gap-[6vw] md:gap-[8vw] h-auto md:h-[4vw] items-center leading-7 mb-[4vw]"
+                    className="flex flex-col md:flex-row justify-between gap-[6vw] md:gap-[1.4vw] h-auto md:h-[0.4vw] items-center leading-7 mb-0 md:w-[92vw] mx-auto relative z-120"
                 >
                     {timelineData.slice(0, 3).map((item, index) => {
 
@@ -56,7 +56,7 @@ export default function PeckersTimeline2({ initialData = [], scrollProgress }) {
                                 : index === 1
                                     ? "items-center text-center"
                                     : "items-center text-center md:items-start md:text-left";
-                        const offset = index === 1 ? "mt-0 md:-mt-[-2vw]" : "";
+                        const offset = index === 1 ? "mt-0 md:mt-[0.35vw]" : "md:mt-[0.5vw]";
 
                         const isHighlighted = item.highlight || (!isDesktop && (item.year?.toString() === "2025" || item.year?.toString().includes("2025")));
                         return (
@@ -76,25 +76,25 @@ export default function PeckersTimeline2({ initialData = [], scrollProgress }) {
                                     scale: 1.02,
                                     transition: { duration: 0.3, ease: "easeOut" }
                                 } : {}}
-                                className={`relative px-[6vw] md:px-[1vw] py-[6vw] md:py-[1vw] rounded-[4vw] md:rounded-[1vw] flex flex-col ${alignment} ${offset} w-[80vw] md:w-[15vw] h-auto md:h-[9vw] border
+                                className={`relative z-130 px-[6vw] md:px-[1.35vw] py-[6vw] md:py-[1.22vw] rounded-[4vw] md:rounded-[0.95vw] flex flex-col ${alignment} ${offset} w-[80vw] md:w-[19.2vw] h-auto md:h-[11.8vw] border
   ${isHighlighted
                                         ? "bg-[#121212] border-yellow-500/60"
                                         : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
                                     }`}
                             >
                                 <span
-                                    className={`text-[5vw] md:text-[1.2vw] text-white font-bold mb-[3vw] md:mb-[0.5vw] tracking-tight ${isHighlighted ? "text-white" : "text-zinc-600"
+                                    className={`text-[5vw] md:text-[1.38vw] text-white font-bold mb-[3vw] md:mb-[0.6vw] tracking-tight ${isHighlighted ? "text-white" : "text-zinc-600"
                                         }`}
                                     style={{ fontFamily: "Space Mono", color: "white" }}
                                 >
                                     {item.year}
                                 </span>
 
-                                <h3 className="text-[5vw] md:text-[1.2vw] font-peakers mb-[2vw] md:mb-[0.5vw] leading-none text-white">
+                                <h3 className="text-[5vw] md:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.66vw] leading-none text-white">
                                     {item.title}
                                 </h3>
 
-                                <p className="text-zinc-500 font-peakers text-[3vw] md:text-[0.7vw] leading-none font-medium">
+                                <p className="text-zinc-500 font-peakers text-[3vw] md:text-[0.92vw] leading-none font-medium">
                                     {item.description}
                                 </p>
                             </motion.div>
