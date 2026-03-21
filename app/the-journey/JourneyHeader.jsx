@@ -53,7 +53,6 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <g filter="url(#filter0_d_0_1)">
-                                    <rect y="209.5" width="1440" height="6.75" fill="#FFD700" opacity="0.35" />
                                     <motion.rect
                                         initial={{ width: 0, opacity: 0.95 }}
                                         whileInView={{ width: 1440, opacity: 1 }}
