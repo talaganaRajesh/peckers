@@ -181,7 +181,7 @@ export default function OurStorySection({ initialData = null }) {
               </div>
 
               {fixedSubHeading && (
-                <p className="text-[#E5E7EB] font-peakers text-[4.2vw] md:text-[2.9vw] lg:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-3 lg:mt-4 pb-0 shrink-0">
+                <p className="text-zinc-500 font-peakers text-[4.2vw] md:text-[2.9vw] lg:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-3 lg:mt-4 pb-0 shrink-0">
                   {fixedSubHeading}
                 </p>
               )}

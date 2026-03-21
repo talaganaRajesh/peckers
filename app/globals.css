@@ -67,17 +67,20 @@ body::-webkit-scrollbar {
 
 
 
+
+
+
+
+
 @keyframes saucePopDown {
   0% {
     opacity: 1;
     transform: scale(1);
     filter: blur(0px);
   }
-
   100% {
     opacity: 0;
-    transform: scale(0.7);
-    /* Shrinks further for a deeper exit effect */
+    transform: scale(0.7); /* Shrinks further for a deeper exit effect */
     filter: blur(4px);
   }
 }
@@ -85,11 +88,9 @@ body::-webkit-scrollbar {
 @keyframes saucePopFromTop {
   0% {
     opacity: 0;
-    transform: scale(1.4);
-    /* Starts larger to "land" into the frame */
+    transform: scale(1.4); /* Starts larger to "land" into the frame */
     filter: blur(8px);
   }
-
   100% {
     opacity: 1;
     transform: scale(1);
@@ -116,7 +117,6 @@ body::-webkit-scrollbar {
 
 
 
-
 @keyframes sauceLayerFadeIn {
   0% {
     opacity: 0;
@@ -130,22 +130,20 @@ body::-webkit-scrollbar {
 @keyframes sauceBgDissolveIn {
   0% {
     opacity: 0;
-    filter: blur(3px);
   }
 
   100% {
     opacity: 1;
-    filter: blur(0);
   }
 }
 
 .sauce-layer-fade-in {
-  animation: sauceLayerFadeIn 500ms ease-out forwards;
+  animation: sauceLayerFadeIn 260ms ease-out forwards;
 }
 
 .sauce-bg-dissolve-in {
-  animation: sauceBgDissolveIn 500ms ease-out forwards;
-  will-change: opacity, filter;
+  animation: sauceBgDissolveIn 300ms ease-out forwards;
+  will-change: opacity;
 }
 
 @keyframes sauceTitleFast {
@@ -161,8 +159,8 @@ body::-webkit-scrollbar {
 }
 
 .sauce-title-fade-in {
-  /* Ultra-smooth, fast entrance for the heading */
-  animation: sauceTitleFast 10ms cubic-bezier(0.19, 1, 0.12, 1) forwards;
+  animation: sauceTitleFast 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: opacity, transform;
 }
 
 @theme inline {
