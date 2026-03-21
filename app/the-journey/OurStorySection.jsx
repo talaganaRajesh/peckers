@@ -11,29 +11,26 @@ export default function OurStorySection({ initialData = null }) {
   const [currentSubSlide, setCurrentSubSlide] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  // Reset sub-slide when main slide changes
-  useEffect(() => {
-    setCurrentSubSlide(0);
-  }, [currentSlide]);
-
-  if (!data) return null;
-
   // Use slides from Sanity if available, otherwise fallback to default mocked slides
-  const slides = (data.slides && data.slides.length > 0)
+  const slides = (data?.slides && data.slides.length > 0)
     ? data.slides.map((s, idx) => ({ ...s, id: idx + 1 }))
-    : [
-      { ...data, id: 1 },
-      { ...data, id: 2, heading: data.heading || "A FAMILY LEGACY, REIMAGINED", content: data.content },
-      { ...data, id: 3, heading: data.heading || "A FAMILY LEGACY, REIMAGINED", content: data.content },
-    ];
+    : data
+      ? [
+        { ...data, id: 1 },
+        { ...data, id: 2, heading: data.heading || "A FAMILY LEGACY, REIMAGINED", content: data.content },
+        { ...data, id: 3, heading: data.heading || "A FAMILY LEGACY, REIMAGINED", content: data.content },
+      ]
+      : [];
 
   const nextSlide = () => {
     setDirection(1);
+    setCurrentSubSlide(0);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
     setDirection(-1);
+    setCurrentSubSlide(0);
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
@@ -73,27 +70,30 @@ export default function OurStorySection({ initialData = null }) {
     }),
   };
 
-  const currentData = slides[currentSlide];
-  const fixedHeading = slides[0]?.heading || data.heading || "A FAMILY LEGACY, REIMAGINED";
+  const currentData = slides[currentSlide] || {};
+  const fixedHeading = slides[0]?.heading || data?.heading || "A FAMILY LEGACY, REIMAGINED";
   const fixedSubHeading =
     slides.find((slide) => typeof slide.subHeading === "string" && slide.subHeading.trim() !== "")?.subHeading ||
-    data.subHeading ||
-    data.subtitle ||
+    data?.subHeading ||
+    data?.subtitle ||
     "";
 
   // Get images for the current slide (sub-carousel)
   const displayImages = (currentData.storyImages && currentData.storyImages.length > 0)
     ? currentData.storyImages
-    : [currentData.founderImage || data.founderImage].filter(Boolean);
+    : [currentData.founderImage || data?.founderImage].filter(Boolean);
 
   // Auto-slide internal images
   useEffect(() => {
+    if (!data) return;
     if (displayImages.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentSubSlide((prev) => (prev + 1) % displayImages.length);
     }, 3000); // 3 seconds per internal image
     return () => clearInterval(timer);
-  }, [currentSlide, displayImages.length]);
+  }, [data, currentSlide, displayImages.length]);
+
+  if (!data) return null;
 
   return (
     <section className="relative w-full lg:min-h-[90vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
@@ -120,8 +120,8 @@ export default function OurStorySection({ initialData = null }) {
       </div>
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
-        <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center">
-          <div className="w-full lg:w-1/2 px-[6vw] lg:px-[6vw] flex flex-col justify-start mt-[5vw] lg:mt-0 overflow-hidden text-left h-[84vh] md:h-[78vh] lg:h-[74vh]">
+        <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
+          <div className="w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[88vh] md:h-[82vh] lg:h-[78vh]">
             <div className="h-full min-h-0 flex flex-col">
               <h2 className="font-bold font-peakers text-[9vw] md:text-[7vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent">
                 {(() => {
@@ -149,21 +149,27 @@ export default function OurStorySection({ initialData = null }) {
                   exit="exit"
                   transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
                   data-lenis-prevent
-                  className="custom-scrollbar text-[#D1D5DB] font-peakers text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] lg:pt-[3vw] pb-2 space-y-4 lg:space-y-6 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
+                  className="custom-scrollbar text-[#D1D5DB] font-peakers text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] lg:pt-[3vw] pb-2 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
                 >
                   {(() => {
                     const bodyArray = currentData.content || currentData.bodyText;
-                    if (!bodyArray || bodyArray.length === 0) return <p>Content reveal in progress...</p>;
+                    if (!bodyArray || (Array.isArray(bodyArray) && bodyArray.length === 0) || (typeof bodyArray === 'string' && bodyArray.trim() === '')) {
+                      return <p>Content reveal in progress...</p>;
+                    }
 
-                    const contentArray = Array.isArray(bodyArray)
+                    const contentString = Array.isArray(bodyArray)
                       ? bodyArray
-                      : typeof bodyArray === "string"
-                        ? bodyArray.split("\n").filter((p) => p.trim() !== "")
-                        : [bodyArray];
+                        .map((item) => (typeof item === 'string' ? item : String(item)))
+                        .join('\n')
+                      : typeof bodyArray === 'string'
+                        ? bodyArray
+                        : String(bodyArray);
 
-                    return contentArray.map((para, i) => (
-                      <p key={i}>{para}</p>
-                    ));
+                    return (
+                      <div className="whitespace-pre-wrap break-normal">
+                        {contentString}
+                      </div>
+                    );
                   })()}
                 </motion.div>
               </AnimatePresence>
@@ -194,7 +200,7 @@ export default function OurStorySection({ initialData = null }) {
                     animate="center"
                     exit="exit"
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute top-0 lg:top-0 left-0 lg:left-[4vw] right-0 lg:right-[2vw] bottom-0 lg:bottom-0 w-full h-full rounded-[1.2vw] overflow-hidden"
+                    className="absolute top-0 lg:top-0 left-0 lg:left-0 right-0 lg:right-0 bottom-0 lg:bottom-0 w-full h-full rounded-[1.2vw] overflow-hidden"
                   >
                     <Image
                       src={urlFor(displayImages[currentSubSlide % displayImages.length]).url()}
