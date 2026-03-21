@@ -96,7 +96,7 @@ export default function OurStorySection({ initialData = null }) {
   if (!data) return null;
 
   return (
-    <section className="relative w-full lg:min-h-[90vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-[90vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-14 lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
@@ -121,7 +121,7 @@ export default function OurStorySection({ initialData = null }) {
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
-          <div className="w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[88vh] md:h-[82vh] lg:h-[78vh]">
+          <div className="w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[64vh] md:h-[70vh] lg:h-[78vh]">
             <div className="h-full min-h-0 flex flex-col">
               <h2 className="font-bold font-peakers text-[9vw] md:text-[7vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent">
                 {(() => {
