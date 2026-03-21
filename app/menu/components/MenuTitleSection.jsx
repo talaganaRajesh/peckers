@@ -182,9 +182,9 @@ export default function MenuTitleSection({
         <div className="w-full flex justify-center px-4 md:px-0">
           <nav className="subnavbar relative group w-full max-w-7xl" style={{ color: "white" }}>
             <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
-            
+
             {/* Scroll Buttons */}
-            <button 
+            <button
               onClick={() => {
                 if (navRef.current) {
                   navRef.current.scrollBy({ left: -250, behavior: 'smooth' });
@@ -197,8 +197,8 @@ export default function MenuTitleSection({
                 <path d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-  
-            <button 
+
+            <button
               onClick={() => {
                 if (navRef.current) {
                   navRef.current.scrollBy({ left: 250, behavior: 'smooth' });
@@ -211,7 +211,7 @@ export default function MenuTitleSection({
                 <path d="M9 5l7 7-7 7" />
               </svg>
             </button>
-  
+
             <div
               ref={navRef}
               className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start items-center overflow-x-auto no-scrollbar px-2 md:px-14 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw] scroll-smooth"
@@ -479,7 +479,7 @@ export default function MenuTitleSection({
               exit={{ scale: 1.1, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
               className="uppercase text-white text-center font-black"
-              style={{ fontFamily: "var(--font-peakers)", fontSize: "clamp(2.5rem, 11vw, 6rem)", fontWeight: 900, letterSpacing: "0.05em", lineHeight: "1.1", textShadow: "0px 2px 6px rgba(0,0,0,0.4)" }}
+              style={{ fontFamily: "var(--font-peakers)", fontSize: "clamp(1.8rem, 9vw, 4rem)", fontWeight: 900, letterSpacing: "0.05em", lineHeight: "1.1", textShadow: "0px 2px 6px rgba(0,0,0,0.4)" }}
             >
               {items[carousel.center]?.name}
             </motion.h1>

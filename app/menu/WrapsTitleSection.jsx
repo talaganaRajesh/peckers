@@ -480,7 +480,7 @@ export default function WrapsTitleSection({ initialWraps = [], initialNavbarData
                             className="uppercase text-white text-center font-black"
                             style={{
                                 fontFamily: "var(--font-peakers)",
-                                fontSize: "clamp(2.5rem, 11vw, 6rem)",
+                                fontSize: "clamp(1.8rem, 9vw, 4rem)",
                                 fontWeight: 900,
                                 letterSpacing: "0.05em",
                                 lineHeight: "1.1",
