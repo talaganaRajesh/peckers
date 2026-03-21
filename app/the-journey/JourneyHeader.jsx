@@ -9,7 +9,7 @@ export default function JourneyIntroSection({ initialData = null }) {
     if (!data) return null;
 
     return (
-        <section className="w-full bg-black pt-0 pb-0 md:pb-[10vw] flex flex-col items-center text-center relative overflow-hidden min-h-[50vh]">
+        <section className="w-full bg-black pt-10 md:pt-16 xl:pt-[6vw] pb-0 md:pb-[8vw] flex flex-col items-center text-center relative overflow-hidden min-h-[50vh]">
 
             <>
                 {/* ================= DESKTOP ================= */}
@@ -17,21 +17,21 @@ export default function JourneyIntroSection({ initialData = null }) {
 
                     {/* Main Heading */}
                     <motion.h2
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 35 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-[3.35vw] font-peakers text-white leading-none font-bold tracking-tight mb-[2vw]"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="text-[3.35vw] font-peakers text-white leading-none font-bold tracking-tight mb-[1.6vw]"
                     >
                         {data.heading || "THE PECKERS JOURNEY"}
                     </motion.h2>
 
                     {/* Subtitle */}
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 22 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.65, delay: 0.08, ease: "easeOut" }}
                         className="text-[1vw] font-peakers text-[#FFD700] tracking-[0.35vw] leading-[1.4] max-w-[60vw] mx-auto"
                     >
                         {data.subtitle || "FROM ONE STORE TO GROWING COMMUNITY BRAND - THE JOURNEY CONTINUES"}
@@ -40,9 +40,9 @@ export default function JourneyIntroSection({ initialData = null }) {
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.4 }}
-                        className="w-full relative mt-[8vw]"
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.8, delay: 0.05, ease: "easeOut" }}
+                        className="w-full relative mt-[4.8vw]"
                     >
                         <div className="w-full relative h-[32vw]">
                             {/* SVG Timeline Line */}
@@ -53,13 +53,13 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <g filter="url(#filter0_d_0_1)">
+                                    <rect y="209.5" width="1440" height="6.75" fill="#FFD700" opacity="0.35" />
                                     <motion.rect
-                                        initial={{ scaleX: 0 }}
-                                        whileInView={{ scaleX: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 2.5, ease: "easeInOut" }}
-                                        style={{ originX: 0 }}
-                                        y="209.5" width="1440" height="6.75" fill="#FFD700"
+                                        initial={{ width: 0, opacity: 0.95 }}
+                                        whileInView={{ width: 1440, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.25, ease: "easeInOut" }}
+                                        y="209.5" height="6.75" fill="#FFD700"
                                     />
                                 </g>
 
@@ -68,8 +68,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <motion.rect
                                         initial={{ scaleY: 0 }}
                                         whileInView={{ scaleY: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 0.65, delay: 0.18, ease: "easeOut" }}
                                         style={{ originY: 0 }}
                                         x="308.829" y="228" width="3.34212" height="53.4739" fill="#FFD700"
                                     />
@@ -77,8 +77,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 <motion.g
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: 0.6, ease: "backOut" }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{ duration: 0.65, delay: 0.12, ease: "backOut" }}
                                     style={{ transformOrigin: "310px 213px" }}
                                     filter="url(#filter2_dd_0_1)"
                                 >
@@ -91,8 +91,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <motion.rect
                                         initial={{ scaleY: 0 }}
                                         whileInView={{ scaleY: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.8, delay: 1.8, ease: "easeOut" }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 0.65, delay: 0.34, ease: "easeOut" }}
                                         style={{ originY: "218px" }}
                                         x="733" y="144" width="4" height="74" fill="#FFD700"
                                     />
@@ -100,8 +100,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 <motion.g
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: 1.4, ease: "backOut" }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{ duration: 0.65, delay: 0.28, ease: "backOut" }}
                                     style={{ transformOrigin: "735px 213px" }}
                                     filter="url(#filter4_dd_0_1)"
                                 >
@@ -114,8 +114,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <motion.rect
                                         initial={{ scaleY: 0 }}
                                         whileInView={{ scaleY: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 0.65, delay: 0.5, ease: "easeOut" }}
                                         style={{ originY: 0 }}
                                         x="1163" y="228" width="3.34212" height="53.4739" fill="#FFD700"
                                     />
@@ -123,8 +123,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 <motion.g
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: 2.2, ease: "backOut" }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{ duration: 0.65, delay: 0.44, ease: "backOut" }}
                                     style={{ transformOrigin: "1164px 213px" }}
                                     filter="url(#filter6_dd_0_1)"
                                 >
@@ -229,8 +229,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0, y: -30 }}
                                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: 1.2, type: "spring", stiffness: 100 }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{ duration: 0.7, delay: 0.22, type: "spring", stiffness: 110 }}
                                     style={{ transformOrigin: "top center" }}
                                     className="absolute left-[21.5%] top-[62%] -translate-x-1/2 z-20 w-[18vw] h-[11vw] rounded-[.7vw] border  border-[#FFD700]/60 pl-[0.8vw] pr-[2vw] py-[2vw] flex flex-col items-start gap-[0vw] bg-black/95 text-left"
                                 >
@@ -248,10 +248,10 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0, y: 30 }}
                                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: 2.0, type: "spring", stiffness: 100 }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{ duration: 0.7, delay: 0.36, type: "spring", stiffness: 110 }}
                                     style={{ transformOrigin: "bottom center" }}
-                                    className="absolute left-[51%] bottom-[65%] -translate-x-1/2 z-20 w-[18vw] h-[11w] rounded-[.7vw] border  border-[#FFD700]/60 pl-[0.8vw] pr-[2vw] py-[2vw] flex flex-col items-start gap-[0vw] bg-black/95 text-left"
+                                    className="absolute left-[51%] bottom-[65%] -translate-x-1/2 z-20 w-[18vw] h-[11vw] rounded-[.7vw] border border-[#FFD700]/60 pl-[0.8vw] pr-[2vw] py-[2vw] flex flex-col items-start gap-[0vw] bg-black/95 text-left"
                                 >
                                     <span className="text-white font-mono text-[2.8vw] font-bold tracking-tight uppercase leading-none mb-[0.5vw]">
                                         {data.timeline[1].year || "2024"}
@@ -266,8 +266,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                             <motion.div
                                 initial={{ opacity: 0, scale: 0, y: -30 }}
                                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.8, delay: 2.8, type: "spring", stiffness: 100 }}
+                                viewport={{ once: true, amount: 0.15 }}
+                                transition={{ duration: 0.7, delay: 0.5, type: "spring", stiffness: 110 }}
                                 style={{ transformOrigin: "top center" }}
                                 className="absolute left-[80.8%] top-[62%] -translate-x-1/2 z-20 w-[17.5vw] rounded-[.7vw] border border-dashed border-[#FFD700]/60 px-[2vw] py-[1.5vw] flex flex-col items-center gap-[.8vw] bg-black/95"
                             >
@@ -290,15 +290,15 @@ export default function JourneyIntroSection({ initialData = null }) {
                 </div>
 
                 {/* ================= MOBILE VERSION ================= */}
-                <div className="xl:hidden w-full px-6 pt-4">
+                <div className="xl:hidden w-full px-4 sm:px-6 md:px-10 pt-6 md:pt-8">
 
                     {/* Mobile Heading */}
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-[8vw] md:text-[5vw] xl:text-[4vw] font-peakers text-white font-bold mb-4 text-center"
+                        transition={{ duration: 0.45 }}
+                        className="text-[clamp(2rem,8vw,3.4rem)] md:text-[clamp(2.2rem,5vw,3.8rem)] font-peakers text-white font-bold mb-5 text-center leading-[0.95]"
                     >
                         {data.heading || "THE PECKERS JOURNEY"}
                     </motion.h2>
@@ -307,40 +307,26 @@ export default function JourneyIntroSection({ initialData = null }) {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-[2.4vw] md:text-[2vw] xl:text-[1.3vw] text-[#FFD700] font-mono tracking-[0.3em] leading-[1.4] mb-10 text-center"
+                        transition={{ duration: 0.45, delay: 0.08 }}
+                        className="text-[clamp(0.68rem,2.8vw,0.9rem)] md:text-[clamp(0.78rem,1.8vw,1rem)] text-[#FFD700] font-mono tracking-[0.28em] leading-[1.45] mb-9 md:mb-10 text-center"
                     >
                         {data.subtitle || "FROM ONE STORE TO GROWING COMMUNITY BRAND THE JOURNEY CONTINUES"}
                     </motion.p>
 
                     {/* Timeline */}
-                    <div className="relative max-w-sm mx-auto">
+                    <div className="relative max-w-xs sm:max-w-md md:max-w-lg mx-auto w-full">
 
                         {/* Animated SVG Line for Mobile */}
-                        <div className="absolute left-[16.5px] top-0 bottom-0 w-[10px] z-10">
-                            <svg width="100%" height="100%" className="overflow-visible">
-                                <defs>
-                                    <filter id="mobileGlow" x="-50%" y="-5" width="200%" height="calc(100% + 10px)">
-                                        <feGaussianBlur stdDeviation="3" result="blur" />
-                                        <feFlood floodColor="#FFD700" floodOpacity="0.5" result="color" />
-                                        <feComposite in="color" in2="blur" operator="in" result="glow" />
-                                        <feMerge>
-                                            <feMergeNode in="glow" />
-                                            <feMergeNode in="SourceGraphic" />
-                                        </feMerge>
-                                    </filter>
-                                </defs>
-                                <rect x="0" y="0" width="2" height="100%" fill="#FFD700" opacity="0.1" />
-                                <motion.rect
-                                    initial={{ scaleY: 0 }}
-                                    whileInView={{ scaleY: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 2.5, ease: "easeInOut" }}
-                                    style={{ originY: 0 }}
-                                    x="0" y="0" width="3" height="100%" fill="#FFD700"
-                                    filter="url(#mobileGlow)"
-                                />
-                            </svg>
+                        <div className="absolute left-[18px] top-0 bottom-0 w-[3px] z-20 rounded-full overflow-visible">
+                            <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full" />
+                            <motion.div
+                                initial={{ scaleY: 0 }}
+                                whileInView={{ scaleY: 1 }}
+                                viewport={{ once: true, amount: 0.1 }}
+                                transition={{ duration: 1.1, ease: "easeOut" }}
+                                style={{ originY: 0 }}
+                                className="absolute inset-0 rounded-full bg-[#FFD700] shadow-[0_0_18px_rgba(255,215,0,0.8)]"
+                            />
                         </div>
 
                         {data.timeline?.map((item, idx) => (
@@ -348,8 +334,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 key={idx}
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-20px" }}
-                                transition={{ duration: 0.6, delay: idx * 0.2, ease: "easeOut" }}
+                                viewport={{ once: true, amount: 0.12 }}
+                                transition={{ duration: 0.6, delay: idx * 0.06, ease: "easeOut" }}
                                 style={{ transformOrigin: "left center" }}
                                 className="relative mb-14"
                             >
@@ -359,8 +345,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         <motion.circle
                                             initial={{ scale: 0 }}
                                             whileInView={{ scale: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.4, delay: (idx * 0.2) + 0.2, ease: "backOut" }}
+                                            viewport={{ once: true, amount: 0.12 }}
+                                            transition={{ duration: 0.55, delay: (idx * 0.08) + 0.08, ease: "backOut" }}
                                             cx="22.5" cy="22.5" r="21" fill="#FFD700"
                                         />
                                         <circle cx="22.5" cy="22.5" r="18" stroke="#121212" strokeWidth="4" fill="none" />
@@ -368,10 +354,10 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 </div>
 
                                 <div className="ml-14 bg-[#121212] border border-[#333] rounded-xl p-5 hover:border-[#FFD700]/40 transition-colors shadow-lg">
-                                    <div className="text-white text-[3.5vw] font-bold opacity-80 mb-1">
+                                    <div className="text-white text-[clamp(0.9rem,3.5vw,1.2rem)] font-bold opacity-80 mb-1">
                                         {item.year}
                                     </div>
-                                    <div className="text-[#FFD700] text-[8vw] font-bold font-peakers uppercase leading-tight">
+                                    <div className="text-[#FFD700] text-[clamp(1.8rem,8vw,3rem)] font-bold font-peakers uppercase leading-tight">
                                         {item.location}
                                     </div>
                                 </div>
@@ -382,8 +368,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-20px" }}
-                            transition={{ duration: 0.6, delay: (data.timeline?.length || 0) * 0.2, ease: "easeOut" }}
+                            viewport={{ once: true, amount: 0.12 }}
+                            transition={{ duration: 0.6, delay: (data.timeline?.length || 0) * 0.06, ease: "easeOut" }}
                             style={{ transformOrigin: "left center" }}
                             className="relative mb-20"
                         >
@@ -392,8 +378,8 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <motion.circle
                                         initial={{ scale: 0 }}
                                         whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.4, delay: ((data.timeline?.length || 0) * 0.2) + 0.2 }}
+                                        viewport={{ once: true, amount: 0.12 }}
+                                        transition={{ duration: 0.55, delay: ((data.timeline?.length || 0) * 0.08) + 0.08 }}
                                         cx="22.5" cy="22.5" r="21" fill="#FFD700"
                                     />
                                     <circle cx="22.5" cy="22.5" r="18" stroke="#121212" strokeWidth="4" fill="none" />

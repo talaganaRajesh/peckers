@@ -45,6 +45,26 @@ export default function PeckersTimeline({ initialData = null, scrollProgress }) 
     return (
         <div className="bg-transparent z-120 relative text-white flex justify-center py-[0.8vw] md:py-0 font-peakers">
             <div className="w-full max-w-[98vw] relative mt-[2.7vw] xl:mt-[2.3vw]">
+                <motion.div
+                    initial={{ scaleX: 0, opacity: 0.35 }}
+                    whileInView={{ scaleX: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: "-20%" }}
+                    transition={{ duration: 1.8, ease: "easeOut" }}
+                    style={{ transformOrigin: "left center" }}
+                    className="absolute left-0 right-0 top-1/2 h-[0.4vw] md:h-[0.22vw] bg-[#FFD700] rounded-full z-10"
+                />
+                <div className="absolute left-0 right-0 top-1/2 z-20 flex justify-between pointer-events-none px-[6vw] md:px-[1.35vw] transform -translate-y-1/2">
+                    {timelineData.slice(0, 3).map((_, idx) => (
+                        <motion.span
+                            key={idx}
+                            initial={{ scale: 0, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
+                            viewport={{ once: true, margin: "-20%" }}
+                            transition={{ duration: 0.8, delay: 0.6 + idx * 0.2, ease: "easeOut" }}
+                            className="w-[1.2vw] h-[1.2vw] md:w-[0.95vw] md:h-[0.95vw] rounded-full bg-[#FFD700] border border-[#FFF]/20 shadow-[0_0_20px_rgba(255,215,0,0.50)]"
+                        />
+                    ))}
+                </div>
                 <div
                     className="flex flex-col md:flex-row justify-between gap-[6vw] md:gap-[1.4vw] h-auto md:h-[1.1vw] items-center mb-0 md:w-[92vw] mx-auto relative z-120"
                 >

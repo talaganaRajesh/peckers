@@ -95,10 +95,10 @@ const OurStoryPage = ({ initialStoryData }) => {
                 <div className="w-full relative z-110 flex justify-center mt-[0.2vw] pt-0 min-h-[42vw] md:min-h-[17vw]">
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center">
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true, margin: "-10%" }}
-                      transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                      viewport={{ once: true, margin: "-20%" }}
+                      transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
                       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[30vw] md:w-[12.2vw]"
                     >
                       <img src="https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/Logo%20image%20peckers.png" alt="Peckers Logo" className="w-full h-auto drop-shadow-2xl" />
