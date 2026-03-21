@@ -56,14 +56,20 @@ export default defineType({
                             type: "string",
                         }),
                         defineField({
+                            name: "subHeading",
+                            title: "Sub-headline",
+                            type: "string",
+                        }),
+                        defineField({
                             name: "content",
-                            title: "Content Paragraphs",
+                            title: "Body text",
+                            description: "Multiple paragraphs for the slide body.",
                             type: "array",
                             of: [{ type: "text" }],
                         }),
                         defineField({
                             name: "quote",
-                            title: "Quote",
+                            title: "Highlighted quote",
                             type: "string",
                         }),
                         defineField({
