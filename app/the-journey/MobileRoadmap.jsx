@@ -1,34 +1,26 @@
 "use client";
 
-import React, { useId } from "react";
+import React from "react";
 import { motion } from 'framer-motion';
 
 const ArrowLeftToRight = () => {
     return (
-        <div className="w-full h-15 flex justify-center -my-2 opacity-95 z-0">
+        <div className="w-full h-15 flex justify-center -my-2 opacity-95 z-20 pointer-events-none">
             <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <motion.path
-                    initial={{ pathLength: 0, opacity: 0.2 }}
-                    whileInView={{ pathLength: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                <path
                     d="M 80 0 C 80 40, 220 40, 220 70"
-                    stroke="#FFD700"
-                    strokeWidth="3"
-                    strokeDasharray="6 4"
+                    stroke="#71717a"
+                    strokeWidth="2"
+                    strokeDasharray="8 8"
+                    strokeLinecap="round"
                     fill="none"
-                    vectorEffect="non-scaling-stroke"
                 />
-                <motion.path
-                    initial={{ opacity: 0, scale: 0.5, transformOrigin: 'center' }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
+                <path
                     d="M 214 62 L 220 74 L 226 62"
                     fill="none"
-                    stroke="#FFD700"
-                    strokeWidth="3"
-                    vectorEffect="non-scaling-stroke"
+                    stroke="#71717a"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                 />
             </svg>
         </div>
@@ -37,30 +29,22 @@ const ArrowLeftToRight = () => {
 
 const ArrowRightToLeft = () => {
     return (
-        <div className="w-full h-15 flex justify-center -my-2 opacity-95 z-0">
+        <div className="w-full h-15 flex justify-center -my-2 opacity-95 z-20 pointer-events-none">
             <svg width="100%" height="100%" viewBox="0 0 300 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <motion.path
-                    initial={{ pathLength: 0, opacity: 0.2 }}
-                    whileInView={{ pathLength: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                <path
                     d="M 220 0 C 220 40, 80 40, 80 70"
-                    stroke="#FFD700"
-                    strokeWidth="3"
-                    strokeDasharray="6 4"
+                    stroke="#71717a"
+                    strokeWidth="2"
+                    strokeDasharray="8 8"
+                    strokeLinecap="round"
                     fill="none"
-                    vectorEffect="non-scaling-stroke"
                 />
-                <motion.path
-                    initial={{ opacity: 0, scale: 0.5, transformOrigin: 'center' }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
+                <path
                     d="M 74 62 L 80 74 L 86 62"
                     fill="none"
-                    stroke="#FFD700"
-                    strokeWidth="3"
-                    vectorEffect="non-scaling-stroke"
+                    stroke="#71717a"
+                    strokeWidth="2"
+                    strokeLinecap="round"
                 />
             </svg>
         </div>
