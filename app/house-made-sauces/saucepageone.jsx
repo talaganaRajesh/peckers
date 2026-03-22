@@ -207,7 +207,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className={`w-full h-auto block scale-[1.35] translate-y-[10%] md:scale-105 md:translate-y-0 origin-center ${bgDissolveClass}`}
+                                        className={`w-full h-auto block scale-[1.25] translate-y-[20%] md:scale-105 md:translate-y-0 origin-center ${bgDissolveClass}`}
                                         priority={idx === 0}
                                     />
                                 )}
