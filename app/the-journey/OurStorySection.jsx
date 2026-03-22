@@ -96,7 +96,7 @@ export default function OurStorySection({ initialData = null }) {
   if (!data) return null;
 
   return (
-    <section className="relative w-full lg:min-h-[80vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-3 lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-[80vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-[9vh] lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
