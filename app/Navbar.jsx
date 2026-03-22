@@ -79,9 +79,9 @@ export default function Navbar({ preloadedSettings = null }) {
           </div>
         </div>
         <Link href="/the-journey" className="whitespace-nowrap navbar-link">THE JOURNEY</Link>
-        <Link href="/careers" className="whitespace-nowrap navbar-link mr-[1vw] lg:mr-[1.2vw] xl:mr-[1.5vw]">CAREERS</Link>
+        <Link href="/careers" className="whitespace-nowrap navbar-link mr-[1vw] lg:mr-[1.2vw] xl:mr-[3vw]">CAREERS</Link>
       </div>
-
+ 
       {/* Desktop Buttons */}
       <div
         className="hidden md:flex flex-1 justify-end md:gap-[1vw] lg:gap-[1.5vw] xl:gap-[1.2vw]"

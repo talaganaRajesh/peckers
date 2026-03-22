@@ -96,7 +96,7 @@ export default function OurStorySection({ initialData = null }) {
   if (!data) return null;
 
   return (
-    <section className="relative w-full lg:min-h-[90vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-14 lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-[80vh] bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-3 lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
@@ -121,22 +121,10 @@ export default function OurStorySection({ initialData = null }) {
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
-          <div className="w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[64vh] md:h-[70vh] lg:h-[78vh]">
+          <div className="w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[56vh] md:h-[60vh] lg:h-[67vh]">
             <div className="h-full min-h-0 flex flex-col">
-              <h2 className="font-bold font-peakers text-[9vw] md:text-[7vw] lg:text-[68px] leading-[1.1] lg:leading-[1.3] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent">
-                {(() => {
-                  if (fixedHeading.includes(",")) {
-                    const parts = fixedHeading.split(",");
-                    return (
-                      <>
-                        {parts[0]}
-                        <br />
-                        {parts.slice(1).join(",")}
-                      </>
-                    );
-                  }
-                  return fixedHeading;
-                })()}
+              <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.2vw] lg:text-[48px] leading-[1.05] lg:leading-[1.2] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent whitespace-nowrap overflow-hidden text-ellipsis">
+                {fixedHeading}
               </h2>
 
               <AnimatePresence mode="wait" custom={direction}>
@@ -189,7 +177,7 @@ export default function OurStorySection({ initialData = null }) {
           </div>
 
           <div className="w-full lg:w-1/2 h-auto px-[4vw] lg:px-[2vw] flex flex-col items-start lg:justify-start justify-center mt-0 lg:mt-0">
-            <div className="relative w-full h-[65vw] md:h-[80vw] lg:h-[66vh] overflow-hidden flex items-center lg:items-start justify-start lg:justify-center px-0 lg:px-4">
+            <div className="relative w-full h-[60vw] md:h-[74vw] lg:h-[62vh] overflow-hidden flex items-center lg:items-start justify-start lg:justify-center px-0 lg:px-4">
               <AnimatePresence mode="wait" custom={direction}>
                 {displayImages.length > 0 && (
                   <motion.div
