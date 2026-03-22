@@ -308,13 +308,29 @@ img {
 
 .navbar-action-button {
   position: relative;
-  border-color: #fff;
-  background: rgba(0, 0, 0, 0.15);
-  transition: transform 260ms ease, box-shadow 260ms ease, background 260ms ease;
+   z-index: 2;
+   border-color: #fff;
+   background: #000;
+   transition: border-color 220ms ease;
+ }
+ 
+ .navbar-action-button::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   border-radius: inherit;
+   background: #fff;
+   transform: translate(0, 0);
+   opacity: 0;
+   pointer-events: none;
+   z-index: 1;
 }
 
 .navbar-action-button:hover {
-  background: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(255, 255, 255, 0.3), 0 0 22px rgba(255, 255, 255, 0.18);
+  border-color: #fff;
+}
+
+.navbar-action-button:hover::before {
+  opacity: 1;
+  transform: translate(4px, 4px);
 }

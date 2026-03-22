@@ -1,5 +1,81 @@
+"use client";
+import { useState } from "react";
 
 export default function EnquiriesSection({ location }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    guests: "",
+    date: "",
+    time: "",
+    details: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) {
+      setError("Please provide your name and phone number.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError(null);
+
+    const emailTarget = process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL;
+    const sheetUrls = {
+      hitchin: process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL_HITCHIN,
+      stevenage: process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL_STEVENAGE,
+    };
+    const sheetUrl = sheetUrls[location?.toLowerCase()];
+
+    try {
+      // 1. Google Sheets Submission
+      if (sheetUrl) {
+        await fetch(sheetUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...formData, location }),
+        });
+      } else {
+        console.warn("Google Sheet URL for this location is not configured in .env.");
+      }
+
+      // 2. FormSubmit (Email) Submission
+      if (emailTarget) {
+        await fetch(`https://formsubmit.co/ajax/${emailTarget}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            Location: location,
+            _subject: `New Event Enquiry - ${location}`,
+            _captcha: "false",
+          }),
+        });
+      } else {
+        console.warn("FormSubmit email is not configured in .env.");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Submission error:", err);
+      setError("Failed to send inquiry. Please try again or call us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="w-[90%] md:w-[88%] bg-black min-h-screen mx-auto md:ml-[7vw] mt-[10vw] md:mt-[7vw] rounded-[4vw] md:rounded-[1.4vw] text-white font-['Share_Tech'] flex flex-col md:flex-row overflow-hidden" style={{ border: "1px solid #1F2739" }}>
 
@@ -65,110 +141,159 @@ export default function EnquiriesSection({ location }) {
         </div>
 
         {/* FORM */}
-        <form className="flex flex-col gap-[6vw] md:gap-[2vw]">
+        {!submitted ? (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-[6vw] md:gap-[2vw]">
 
-          {/* NAME + PHONE */}
-          <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
-            <div className="flex-1 flex flex-col gap-2">
-              <label className="text-[3vw] md:text-[0.8vw] tracking-wide font-extralight font-mono text-white">
-                YOUR NAME
+            {/* NAME + PHONE */}
+            <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
+              <div className="flex-1 flex flex-col gap-2">
+                <label className="text-[3vw] md:text-[0.8vw] tracking-wide font-extralight font-mono text-white">
+                  YOUR NAME <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Full Name"
+                  required
+                  disabled={isSubmitting}
+                  className="bg-[#111111] text-[4vw] md:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none disabled:opacity-50"
+                  style={{ fontFamily: 'monospace' }}
+                />
+              </div>
+
+              <div className="flex-1 flex flex-col gap-2">
+                <label className="text-[3vw] md:text-[0.8vw] tracking-wide font-extralight text-white font-mono">
+                  PHONE NO. <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Contact Number"
+                  required
+                  disabled={isSubmitting}
+                  className="bg-[#111111] text-[4vw] md:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none disabled:opacity-50"
+                  style={{ fontFamily: 'monospace' }}
+                />
+              </div>
+            </div>
+
+            {/* GUESTS + DATE + TIME */}
+            <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
+
+              <div className="flex-1 flex flex-col gap-2">
+                <label className="text-[3vw] md:text-[0.8vw] tracking-widest font-extralight font-mono text-white">
+                  GUESTS
+                </label>
+                <input
+                  type="number"
+                  name="guests"
+                  value={formData.guests}
+                  onChange={handleChange}
+                  placeholder="Est."
+                  disabled={isSubmitting}
+                  className="bg-[#111111] border text-[4vw] md:text-[1.1vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none transition disabled:opacity-50"
+                  style={{ fontFamily: 'monospace' }}
+                />
+              </div>
+
+              <div className="flex-1 flex flex-col gap-2">
+                <label className="text-[3vw] md:text-[0.8vw] tracking-wide text-white font-mono font-extralight">
+                  DATE
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  value={formData.date}
+                  onChange={handleChange}
+                  placeholder="mm/dd/yy"
+                  disabled={isSubmitting}
+                  className="bg-[#111111] border text-[4vw] md:text-[1.1vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white/80 focus:outline-none disabled:opacity-50"
+                  style={{ fontFamily: 'monospace' }}
+                />
+              </div>
+
+              <div className="flex-1 flex flex-col gap-2">
+                <label className="text-[3vw] md:text-[0.8vw] font-extralight font-mono tracking-widest text-white">
+                  TIME
+                </label>
+                <input
+                  type="time"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                  placeholder="--:-- --"
+                  disabled={isSubmitting}
+                  className="bg-[#111111] border text-[4vw] md:text-[1.4vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white/80 focus:outline-none focus:border-[#1F2937] transition disabled:opacity-50"
+                />
+              </div>
+
+            </div>
+
+            {/* DETAILS */}
+            <div className="flex flex-col gap-[2vw] md:gap-2">
+              <label className="text-[3vw] md:text-[0.8vw] font-mono font-extralight tracking-widest text-white">
+                DETAILS
               </label>
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="bg-[#111111] text-[4vw] md:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none"
-                style={{
-                  fontFamily: 'monospace'
-                }}
+              <textarea
+                name="details"
+                value={formData.details}
+                onChange={handleChange}
+                rows={4}
+                placeholder="Tell us about your event (e.g., Birthday, Party size)... "
+                disabled={isSubmitting}
+                style={{ fontFamily: 'monospace' }}
+                className="bg-[#111111] border font-extralight text-[4vw] md:text-[1.2vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 resize-none focus:outline-none disabled:opacity-50"
               />
             </div>
 
-            <div className="flex-1 flex flex-col gap-2">
-              <label className="text-[3vw] md:text-[0.8vw] tracking-wide font-extralight text-white font-mono">
-                PHONE NO.
-              </label>
-              <input
-                type="text"
-                placeholder="Contact Number"
-                className="bg-[#111111] text-[4vw] md:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none"
-                style={{
-                  fontFamily: 'monospace'
-                }}
-              />
-            </div>
-          </div>
-
-          {/* GUESTS + DATE + TIME */}
-          <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
-
-            <div className="flex-1 flex flex-col gap-2">
-              <label className="text-[3vw] md:text-[0.8vw] tracking-widest font-extralight font-mono text-white">
-                GUESTS
-              </label>
-              <input
-                type="number"
-                placeholder="Est."
-                className="bg-[#111111] border text-[4vw] md:text-[1.1vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none transition"
-                style={{
-                  fontFamily: 'monospace'
-                }}
-
-              />
+            {/* BUTTON AND ERROR */}
+            <div className="mt-[4vw] md:mt-[2vw] flex flex-col gap-4">
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full md:w-auto bg-white flex justify-center items-center gap-3 text-black font-mono font-bold px-[6vw] md:px-[3.5vw] py-[4vw] md:py-5 rounded-[2vw] md:rounded-[.6vw] text-[4vw] md:text-[1.45vw] tracking-widest hover:bg-white/90 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-50 disabled:shadow-none"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                    SENDING...
+                  </>
+                ) : (
+                  "SUBMIT INQUIRY"
+                )}
+              </button>
+              {error && <p className="text-red-500 font-mono text-[3vw] md:text-[1vw] uppercase">{error}</p>}
             </div>
 
-            <div className="flex-1 flex flex-col gap-2">
-              <label className="text-[3vw] md:text-[0.8vw] tracking-wide text-white font-mono font-extralight">
-                DATE
-              </label>
-              <input
-                type="date"
-                placeholder="mm/dd/yy"
-                className="bg-[#111111] border text-[4vw] md:text-[1.1vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white/80 focus:outline-none "
-                style={{
-                  fontFamily: 'monospace'
-                }}
-              />
+          </form>
+        ) : (
+          <div className="flex flex-col items-center justify-center text-center py-[10vw] md:py-[5vw] animate-in fade-in zoom-in duration-700">
+            <div className="w-[20vw] h-[20vw] md:w-[6vw] md:h-[6vw] bg-white text-black rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+              <svg width="50%" height="50%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </div>
-
-            <div className="flex-1 flex flex-col gap-2">
-              <label className="text-[3vw] md:text-[0.8vw] font-extralight font-mono tracking-widest text-white">
-                TIME
-              </label>
-              <input
-                type="time"
-                placeholder="--:-- --"
-                className="bg-[#111111] border text-[4vw] md:text-[1.4vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white/80 focus:outline-none focus:border-[#1F2937] transition"
-              />
-            </div>
-
-          </div>
-
-          {/* DETAILS */}
-          <div className="flex flex-col gap-[2vw] md:gap-2">
-            <label className="text-[3vw] md:text-[0.8vw] font-mono font-extralight tracking-widest text-white">
-              DETAILS
-            </label>
-            <textarea
-              rows={4}
-              placeholder="Tell us about your event (e.g., Birthday, Party size)... "
-              style={{
-                fontFamily: 'monospace'
-              }}
-              className="bg-[#111111] border font-extralight text-[4vw] md:text-[1.2vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 resize-none focus:outline-none "
-            />
-          </div>
-
-          {/* BUTTON */}
-          <div className="mt-[4vw] md:mt-[2vw]">
+            <h3 className="text-[8vw] md:text-[3vw] font-bold mb-3 font-peakers tracking-wider text-white">
+              INQUIRY RECEIVED
+            </h3>
+            <p className="text-[4vw] md:text-[1.1vw] font-mono font-extralight text-white/60 max-w-[80%] mb-8 leading-relaxed">
+              Thank you for getting in touch. Our team will review your details and get back to you shortly to help plan your event.
+            </p>
             <button
-              type="submit"
-              className="w-full md:w-auto bg-white text-black font-mono font-bold px-[6vw] md:px-[3.5vw] py-[4vw] md:py-5 rounded-[2vw] md:rounded-[.6vw] text-[4vw] md:text-[1.45vw] tracking-widest hover:bg-white/90 transition shadow-[0_0_40px_rgba(255,255,255,0.2)]"
+              onClick={() => {
+                setSubmitted(false);
+                setFormData({ name: "", phone: "", guests: "", date: "", time: "", details: "" });
+              }}
+              className="text-[#9CA3AF] hover:text-white transition-colors text-[3.5vw] md:text-[1vw] font-mono uppercase underline decoration-1 underline-offset-4"
             >
-              SUBMIT INQUIRY
+              Submit Another Enquiry
             </button>
           </div>
-
-        </form>
+        )}
       </div>
 
     </section>
