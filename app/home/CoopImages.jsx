@@ -24,7 +24,7 @@ export default function CoopImages({ locations = [] }) {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600 w-[7vw] h-[7vw] md:w-[8vw] md:h-[8vw]">
             <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" />
           </svg>
-          <span className="text-white text-[6.5vw] md:text-[7.5vw] uppercase tracking-wide" style={{ fontFamily: "var(--font-peakers)" }}>{hitchin?.name || "Hitchin"}</span>
+          <span className="text-white text-[6vw] md:text-[6.8vw] uppercase tracking-wide font-semibold" style={{ fontFamily: "var(--font-peakers)" }}>{hitchin?.name || "Hitchin"}</span>
         </div>
         <div className="relative w-[30vw] h-[25vw] md:w-[40vw] md:h-[30vw]">
           {HITCHIN_IMG && (
@@ -55,7 +55,7 @@ export default function CoopImages({ locations = [] }) {
         )}
         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500" />
         <span
-          className="relative z-10 text-white text-[3.5vw] xl:text-[3vw] drop-shadow-lg uppercase"
+          className="relative z-10 text-white text-[3vw] xl:text-[2.6vw] drop-shadow-lg uppercase font-semibold"
           style={{ fontFamily: "var(--font-peakers)" }}
         >
           {hitchin?.name || "Hitchin"}
@@ -82,7 +82,7 @@ export default function CoopImages({ locations = [] }) {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600 w-[7vw] h-[7vw] md:w-[8vw] md:h-[8vw]">
             <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" />
           </svg>
-          <span className="text-white text-[6.5vw] md:text-[7.5vw] uppercase tracking-wide text-right" style={{ fontFamily: "var(--font-peakers)" }}>{stevenage?.name || "Stevenage"}</span>
+          <span className="text-white text-[6vw] md:text-[6.8vw] uppercase tracking-wide text-right font-semibold" style={{ fontFamily: "var(--font-peakers)" }}>{stevenage?.name || "Stevenage"}</span>
         </div>
       </Link>
 
@@ -102,7 +102,7 @@ export default function CoopImages({ locations = [] }) {
         )}
         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-500" />
         <span
-          className="relative z-10 text-white text-[3.5vw] xl:text-[3vw] drop-shadow-lg uppercase"
+          className="relative z-10 text-white text-[3vw] xl:text-[2.6vw] drop-shadow-lg uppercase font-semibold"
           style={{ fontFamily: "var(--font-peakers)" }}
         >
           {stevenage?.name || "Stevenage"}

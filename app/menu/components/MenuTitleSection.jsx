@@ -190,7 +190,7 @@ export default function MenuTitleSection({
                   navRef.current.scrollBy({ left: -250, behavior: 'smooth' });
                 }
               }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 rounded-full"
+              className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity bg-black/50 rounded-full"
               aria-label="Scroll Left"
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#EAB308]" fill="none" stroke="currentColor" strokeWidth="2">
@@ -204,7 +204,7 @@ export default function MenuTitleSection({
                   navRef.current.scrollBy({ left: 250, behavior: 'smooth' });
                 }
               }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 rounded-full"
+              className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity bg-black/50 rounded-full"
               aria-label="Scroll Right"
             >
               <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#EAB308]" fill="none" stroke="currentColor" strokeWidth="2">

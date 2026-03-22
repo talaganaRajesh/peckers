@@ -73,6 +73,26 @@ const Footer = ({ preloadedData = null }) => {
     const logoUrl = data.logo ? urlFor(data.logo).url() : null;
     const bottomLogoUrl = data.bottomLogo ? urlFor(data.bottomLogo).url() : null;
 
+    const resolveFooterHref = (url, title = "") => {
+        const raw = (url || "").trim();
+        const normalizedTitle = title.trim().toLowerCase();
+
+        if (raw && raw !== "#" && !raw.startsWith("#")) {
+            if (raw === "/locations") return "/hitchin";
+            return raw;
+        }
+
+        if (normalizedTitle.includes("menu")) return "/menu";
+        if (normalizedTitle.includes("find us") || normalizedTitle.includes("location")) return "/hitchin";
+        if (normalizedTitle.includes("secret") || normalizedTitle.includes("standard")) return "/the-peckers-standard";
+        if (normalizedTitle.includes("journey") || normalizedTitle.includes("story")) return "/the-journey";
+        if (normalizedTitle.includes("careers")) return "/careers";
+        if (normalizedTitle.includes("hitchin")) return "/hitchin";
+        if (normalizedTitle.includes("stevenage")) return "/stevenage";
+
+        return "/home";
+    };
+
     return (
         <footer className="w-full bg-black pt-[10vw] md:pt-[6vw] lg:pt-[3vw] xl:pt-[3vw] pb-[6vw] md:pb-[4vw] lg:pb-[2vw] xl:pb-[1vw] mt-[5vw] md:mt-[4vw] xl:mt-[3vw] overflow-clip">
             <div
@@ -159,7 +179,7 @@ const Footer = ({ preloadedData = null }) => {
                             {data.quickLinks?.length > 0 ? data.quickLinks.map((link, idx) => (
                                 <li key={idx}>
                                     <Link
-                                        href={link.url || "#"}
+                                        href={resolveFooterHref(link.url, link.title)}
                                         className="hover:underline inline-block"
                                         style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
                                     >
@@ -169,7 +189,7 @@ const Footer = ({ preloadedData = null }) => {
                             )) : (
                                 <>
                                     <li><Link href="/menu" className="hover:underline inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Our Menu</Link></li>
-                                    <li><Link href="/locations" className="hover:underline inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Find Us</Link></li>
+                                    <li><Link href="/hitchin" className="hover:underline inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Find Us</Link></li>
                                     <li><Link href="/the-peckers-standard" className="hover:underline inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Our Secret</Link></li>
                                     <li><Link href="/careers" className="hover:underline inline-block" style={{ fontFamily: "Montserrat, Arial, sans-serif" }}>Careers</Link></li>
                                 </>
@@ -195,16 +215,20 @@ const Footer = ({ preloadedData = null }) => {
                             {data.locations?.length > 0 ? data.locations
                                 .filter(loc => !loc.toLowerCase().includes("view all"))
                                 .map((loc, idx) => (
-                                    <div key={idx}>{loc}</div>
+                                    <div key={idx}>
+                                        <Link href={resolveFooterHref("#", loc)} className="hover:underline inline-block">
+                                            {loc}
+                                        </Link>
+                                    </div>
                                 )) : (
                                 <>
-                                    <div>Hitchin</div>
-                                    <div>Stevenage</div>
+                                    <div><Link href="/hitchin" className="hover:underline inline-block">Hitchin</Link></div>
+                                    <div><Link href="/stevenage" className="hover:underline inline-block">Stevenage</Link></div>
                                 </>
                             )}
                             <div>
                                 <Link
-                                    href="/locations"
+                                    href="/hitchin"
                                     className="underline decoration-[#C41718] decoration-1 underline-offset-[1vw] md:underline-offset-4 lg:underline-offset-2 text-[#C41718] hover:text-[#f22] transition-colors inline-block mt-[1vw] md:mt-[2vw] lg:mt-0"
                                     style={{ fontFamily: "Montserrat, Arial, sans-serif" }}
                                 >
@@ -231,7 +255,7 @@ const Footer = ({ preloadedData = null }) => {
                     <ul className="space-y-[4vw] md:space-y-[2vw] lg:space-y-[1.5vw] xl:space-y-[1.2vw] text-[4vw] sm:text-[3vw] md:text-[2vw] lg:text-[1.3vw] xl:text-[1vw] font-mono text-[#B7BAC8] w-full">
                         {data.legalLinks?.length > 0 ? data.legalLinks.map((link, idx) => (
                             <li key={idx}>
-                                <a href={link.url} className="hover:underline inline-block">
+                                <a href={resolveFooterHref(link.url, link.title)} className="hover:underline inline-block">
                                     {link.title}
                                 </a>
                             </li>

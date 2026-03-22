@@ -20,7 +20,7 @@ export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Exp
     >
       {/* Title */}
       <h2
-        className="text-[8.5vw] sm:text-[7vw] md:text-[4vw] font-bold text-white tracking-[.2vw] uppercase"
+        className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         {words.map((word, i) => (

@@ -316,7 +316,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                     <div className="relative max-w-xs sm:max-w-md md:max-w-lg mx-auto w-full">
 
                         {/* Animated SVG Line for Mobile */}
-                        <div className="absolute left-[18px] top-0 bottom-0 w-[3px] z-20 rounded-full overflow-visible">
+                        <div className="absolute left-[18px] top-0 bottom-0 w-[4px] z-20 rounded-full overflow-visible">
                             <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full" />
                             <motion.div
                                 initial={{ scaleY: 0 }}
@@ -340,16 +340,19 @@ export default function JourneyIntroSection({ initialData = null }) {
                             >
                                 {/* Circle Marker - Mobile */}
                                 <div className="absolute left-[7px] top-2 z-30">
-                                    <svg width="22" height="22" viewBox="0 0 45 45" className="drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]">
-                                        <motion.circle
-                                            initial={{ scale: 0 }}
-                                            whileInView={{ scale: 1 }}
-                                            viewport={{ once: true, amount: 0.12 }}
-                                            transition={{ duration: 0.55, delay: (idx * 0.08) + 0.08, ease: "backOut" }}
-                                            cx="22.5" cy="22.5" r="21" fill="#FFD700"
-                                        />
+                                    <motion.svg
+                                        width="22"
+                                        height="22"
+                                        viewBox="0 0 45 45"
+                                        className="drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]"
+                                        initial={{ opacity: 0, scale: 0.88 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true, amount: 0.12 }}
+                                        transition={{ duration: 0.4, delay: (idx * 0.08) + 0.04, ease: "easeOut" }}
+                                    >
+                                        <circle cx="22.5" cy="22.5" r="21" fill="#FFD700" />
                                         <circle cx="22.5" cy="22.5" r="18" stroke="#121212" strokeWidth="4" fill="none" />
-                                    </svg>
+                                    </motion.svg>
                                 </div>
 
                                 <div className="ml-14 bg-[#121212] border border-[#333] rounded-xl p-5 hover:border-[#FFD700]/40 transition-colors shadow-lg">
@@ -373,16 +376,19 @@ export default function JourneyIntroSection({ initialData = null }) {
                             className="relative mb-20"
                         >
                             <div className="absolute left-[7px] top-2 z-30">
-                                <svg width="22" height="22" viewBox="0 0 45 45" className="drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] animate-pulse">
-                                    <motion.circle
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true, amount: 0.12 }}
-                                        transition={{ duration: 0.55, delay: ((data.timeline?.length || 0) * 0.08) + 0.08 }}
-                                        cx="22.5" cy="22.5" r="21" fill="#FFD700"
-                                    />
+                                <motion.svg
+                                    width="22"
+                                    height="22"
+                                    viewBox="0 0 45 45"
+                                    className="drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] animate-pulse"
+                                    initial={{ opacity: 0, scale: 0.88 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true, amount: 0.12 }}
+                                    transition={{ duration: 0.4, delay: ((data.timeline?.length || 0) * 0.08) + 0.04 }}
+                                >
+                                    <circle cx="22.5" cy="22.5" r="21" fill="#FFD700" />
                                     <circle cx="22.5" cy="22.5" r="18" stroke="#121212" strokeWidth="4" fill="none" />
-                                </svg>
+                                </motion.svg>
                             </div>
 
                             <div className="ml-14 bg-[#121212] border border-dashed border-[#FFD700]/60 rounded-xl p-6 shadow-xl">

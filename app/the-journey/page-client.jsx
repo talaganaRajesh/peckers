@@ -75,7 +75,7 @@ const OurStoryPage = ({ initialStoryData }) => {
 
       <div className="hidden lg:block bg-black">
         {/* Tall container to provide scroll distance for pinning */}
-        <div ref={containerRef} className="relative h-[440vh] xl:h-[420vh] bg-black">
+        <div ref={containerRef} className="relative h-[300vh] xl:h-[300vh] bg-black">
           {/* Pinned viewport: section freezes while scroll drives timeline progress */}
           <div
             className="sticky w-full bg-black z-20 overflow-visible"

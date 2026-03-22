@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import dynamic from 'next/dynamic';
 import Image from "next/image";
+import Script from "next/script";
 import { urlFor } from "../../sanity/lib/image";
 import CoopHeading from "./CoopHeading";
 import CoopImages from "./CoopImages";
@@ -45,22 +46,49 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
     <div id="main-content">
       <section>
         <div className="w-full h-auto md:h-[10vh] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0">
-          <div className="text-center md:text-left text-black uppercase font-bold italic w-full" style={{ fontFamily: "var(--font-peakers)" }}>
-            <div className="md:hidden flex flex-col items-center justify-center gap-0.5 w-full px-0 text-center">
-              <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] tracking-normal text-gray-950 leading-tight">
-                UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!
-              </span>
-              <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] tracking-normal leading-tight">
-                <span className="text-red-600 font-black underline decoration-2 underline-offset-2">SIGN UP</span> FOR EXCLUSIVE REWARDS.
-              </span>
-            </div>
-            <div className="hidden md:flex items-center justify-center w-full">
-              <span className="md:text-[3vw]  xl:text-[2.4vw] whitespace-nowrap tracking-wide">
-                UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
-                <span className="text-red-600 font-bold">SIGN UP</span>{" "}
-                FOR EXCLUSIVE REWARDS.
-              </span>
-            </div>
+          <div className="text-center text-black uppercase font-bold italic w-full px-2" style={{ fontFamily: "var(--font-peakers)" }}>
+            <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.4vw] tracking-normal md:tracking-wide leading-tight">
+              UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
+              <span className="relative inline-block align-baseline">
+                <span className="text-red-600 font-black md:font-bold">SIGN UP</span>
+                <div id="sbx_button" className="talkbox-signup-hitbox" aria-label="Sign up" />
+              </span>{" "}
+              FOR EXCLUSIVE REWARDS.
+            </span>
+            <Script
+              src="https://talkbox.impactapp.com.au/signup_buttons/oQiu4OvNbdNp7Nb7NlA4gw==/script.js"
+              strategy="afterInteractive"
+            />
+            <style jsx global>{`
+              .talkbox-signup-hitbox {
+                position: absolute;
+                inset: 0;
+                z-index: 10;
+                overflow: hidden;
+              }
+
+              .talkbox-signup-hitbox > * {
+                position: absolute !important;
+                inset: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                background: transparent !important;
+                opacity: 0 !important;
+                cursor: pointer !important;
+              }
+
+              .talkbox-signup-hitbox button,
+              .talkbox-signup-hitbox a,
+              .talkbox-signup-hitbox iframe {
+                width: 100% !important;
+                height: 100% !important;
+                opacity: 0 !important;
+                cursor: pointer !important;
+              }
+            `}</style>
           </div>
         </div>
       </section>

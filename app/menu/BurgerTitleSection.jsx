@@ -212,9 +212,24 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
             >
               {navbarData && navbarData.length > 0 ? (
                 navbarData.map((item, idx) => {
+                  const title = item.title?.toUpperCase() || "";
                   let href = item.link || "#";
-                  if (item.title === "BURGERS") href = "/menu";
-                  if (item.title === "WRAPS") href = "/menu/wraps";
+
+                  if (title === "BURGERS") href = "/menu";
+                  else if (title === "WRAPS") href = "/menu/wraps";
+                  else if (href === "#" || !href || href.startsWith("#")) {
+                    if (title === "RICE BOWLS") href = "/menu/rice-bowls";
+                    else if (title === "SALAD BOWLS") href = "/menu/salad-bowls";
+                    else if (title === "WINGS & TENDERS" || title === "WINGS AND TENDERS") href = "/menu/wings-and-tenders";
+                    else if (title === "PERI-PERI GRILL" || title === "GRILLED") href = "/menu/peri-peri-grilled-chicken";
+                    else if (title === "WHAT'S NEW") href = "/menu/whats-new";
+                    else if (title === "SHAKES" || title === "DRINKS") href = "/menu/shakes";
+                    else if (title === "VEG") href = "/menu/veg";
+                    else if (title === "SIDES & FRIES" || title === "SIDES") href = "/menu/sides-and-fries";
+                    else if (title === "MEAL BOX") href = "/menu/meal-box";
+                    else if (title === "KIDS") href = "/menu/kids";
+                    else if (title === "LUNCH TIME DEALS") href = "/menu/lunch-time-deals";
+                  }
 
                   return (
                     <a
@@ -240,16 +255,16 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                   <a href="/menu/wraps" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
                     WRAPS
                   </a>
-                  <a href="#" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
+                  <a href="/menu/rice-bowls" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
                     RICE BOWLS
                   </a>
-                  <a href="#" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
+                  <a href="/menu/wings-and-tenders" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
                     WINGS AND TENDERS
                   </a>
-                  <a href="#" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
+                  <a href="/menu/peri-peri-grilled-chicken" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
                     GRIILLED
                   </a>
-                  <a href="#" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
+                  <a href="/menu/meal-box" className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity">
                     MEAL BOX
                   </a>
                 </>

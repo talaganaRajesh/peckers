@@ -90,7 +90,7 @@ const SectionItem = memo(({ section, index, num }) => {
           <div className="flex flex-col justify-end mb-[4vw] md:mb-[2vw] pt-[6vw] md:pt-[2vw]">
 
             <div className="w-full flex justify-start items-end min-h-[18vw] md:min-h-[0.1vw]">
-              <h2 className="anton-regular leading-none uppercase tracking-tight text-white text-[9vw] md:text-[4vw]">
+              <h2 className="anton-regular leading-none uppercase tracking-tight text-white text-[9vw] md:text-[50.4px]">
                 {section.title}
               </h2>
             </div>
