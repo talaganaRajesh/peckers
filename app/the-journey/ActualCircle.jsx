@@ -51,7 +51,7 @@ export default function PeckersTimeline({ initialData = null, scrollProgress }) 
                     viewport={{ once: true, margin: "-20%" }}
                     transition={{ duration: 1.8, ease: "easeOut" }}
                     style={{ transformOrigin: "left center" }}
-                    className="absolute left-0 right-0 top-1/2 h-[0.4vw] md:h-[0.22vw] bg-[#FFD700] rounded-full z-10"
+                    className="absolute left-0 right-0 top-1/2 h-0.5 md:h-0.75 min-h-0.5 bg-[#FFD700] rounded-full z-10"
                 />
                 <div className="absolute left-0 right-0 top-1/2 z-20 flex justify-between pointer-events-none px-[6vw] md:px-[1.35vw] transform -translate-y-1/2">
                     {timelineData.slice(0, 3).map((_, idx) => (
