@@ -275,3 +275,46 @@ img {
     font-size: 20px !important;
   }
 }
+
+/* Navbar hover underline/card effects */
+.navbar-link {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.15rem;
+  transition: color 260ms ease, transform 260ms ease;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.2rem;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  transition: width 260ms ease;
+}
+
+.navbar-link:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+.navbar-action-button {
+  position: relative;
+  border-color: #fff;
+  background: rgba(0, 0, 0, 0.15);
+  transition: transform 260ms ease, box-shadow 260ms ease, background 260ms ease;
+}
+
+.navbar-action-button:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255, 255, 255, 0.3), 0 0 22px rgba(255, 255, 255, 0.18);
+}

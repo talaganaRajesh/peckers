@@ -173,7 +173,7 @@ export default function MenuTitleSection({
   return (
     <>
       <div
-        className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-0 md:pt-[1vh] min-h-0 pb-[4vh] md:pb-0"
+        className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-0 md:pt-[1vh] min-h-0 pb-[2vh] md:pb-0"
         style={{
           background: "radial-gradient(ellipse 50% 52% at 50% 38%, #1c1c1c 0%, #0d0d0d 26%, #070707 58%, #000 100%)",
         }}
@@ -470,7 +470,7 @@ export default function MenuTitleSection({
         </div>
 
         {/* TITLE */}
-        <div className="w-full flex items-center justify-center relative pb-2 md:pb-4 pt-2 md:pt-2 z-20 overflow-hidden">
+        <div className="w-full flex items-center justify-center relative pb-1 md:pb-2 pt-1 md:pt-2 z-20 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.h1
               key={carousel.center}

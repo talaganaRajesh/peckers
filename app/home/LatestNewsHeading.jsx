@@ -20,7 +20,7 @@ export default function LatestNewsHeading({ heading = "THE PECKERS JOURNAL", sub
     >
       {/* Title */}
       <h2
-        className="text-[10vw] sm:text-[8vw] md:text-[4.8vw] font-bold text-white tracking-[.2vw] uppercase"
+        className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         {words.map((word, i) => (
@@ -36,7 +36,7 @@ export default function LatestNewsHeading({ heading = "THE PECKERS JOURNAL", sub
 
       {/* Subtitle */}
       <motion.p
-        className="font-sans mt-[4vw] md:mt-[1vw] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-[45vw]"
+        className="font-sans mt-[4vw] md:mt-[1vw] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
         {...fadeUp(0.4)}
       >
         {subtitleText}

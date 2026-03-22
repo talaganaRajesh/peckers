@@ -68,7 +68,7 @@ export default function RatingSection({ data = null }) {
   return (
     <div className="w-full flex flex-col lg:flex-row items-center justify-between bg-black font-bold tracking-tight px-[5vw] md:px-[6vw] lg:px-[2.5vw] xl:px-[2vw] pt-[6vw] md:pt-[6vw] lg:pt-[4vw] xl:pt-[6vw] pb-[6vw] md:pb-[8vw] lg:pb-[3vw] xl:pb-[2vw] gap-[4vw] md:gap-[5vw] lg:gap-0">
       <span
-        className="text-[10vw] sm:text-[8vw] md:text-[8vw] lg:text-[5vw] xl:text-[4vw] text-white tracking-[1.6]"
+        className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         {headingWords.map((word, i) => (
