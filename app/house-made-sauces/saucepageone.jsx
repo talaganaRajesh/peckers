@@ -58,7 +58,7 @@ export default function SaucePageOne({ initialData = [] }) {
         if (title.startsWith("AYONNAISE")) {
             title = "M" + title;
         }
-        return title.endsWith("SAUCE") ? `${title}•` : `${title} SAUCE•`;
+        return title.endsWith("SAUCE") ? `${title}•` : `${title}SAUCE•`;
     });
     // Dynamically build the ring until we hit an ideal character count
     // A full circle fits ~190 characters on Desktop, ~150 on Mobile with the current font size settings.
@@ -79,8 +79,8 @@ export default function SaucePageOne({ initialData = [] }) {
         index++;
     }
 
-    const ringGapUnits = 0; // Completely eliminate gap between labels
-    const ringBuffer = 2; // Extra units to prevent clipping at path start
+    const ringGapUnits = -2; // Pack labels extra tight
+    const ringBuffer = 0; // no extra gap at path start/end
     const ringTotalUnits = currentTotal + (ringGapUnits * ringLabels.length) + ringBuffer;
 
     const ringOffsetsData = ringLabels.reduce((acc, label) => {
@@ -89,7 +89,7 @@ export default function SaucePageOne({ initialData = [] }) {
             cursor: acc.cursor + label.length + ringGapUnits,
             offsets: [...acc.offsets, (center / ringTotalUnits) * 100],
         };
-    }, { cursor: ringBuffer / 2, offsets: [] }).offsets;
+    }, { cursor: 0, offsets: [] }).offsets;
 
     const ringOffsets = ringOffsetsData.map(offset => `${offset}%`);
     const baseRotation = 90 - (ringOffsetsData[0] * 3.6);
@@ -207,7 +207,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className={`w-full h-auto block scale-105 md:scale-105 origin-center ${bgDissolveClass}`}
+                                        className={`w-full h-auto block scale-[1.35] translate-y-[10%] md:scale-105 md:translate-y-0 origin-center ${bgDissolveClass}`}
                                         priority={idx === 0}
                                     />
                                 )}
@@ -303,7 +303,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
                                                                 fontWeight: 700,
-                                                                letterSpacing: "0.06em",
+                                                                letterSpacing: "0em",
                                                                 textTransform: "uppercase",
                                                                 cursor: "pointer",
                                                                 pointerEvents: "auto",
