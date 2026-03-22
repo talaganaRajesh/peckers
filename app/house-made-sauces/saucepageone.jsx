@@ -63,7 +63,7 @@ export default function SaucePageOne({ initialData = [] }) {
     // Dynamically build the ring until we hit an ideal character count
     // A full circle fits ~190 characters on Desktop, ~150 on Mobile with the current font size settings.
     // By pushing exact amounts, the 360-degree spread will naturally pack them without overlapping or gaps!
-    const idealCharCount = isMobile ? 150 : 190;
+    const idealCharCount = isMobile ? 200 : 240;
     const ringItems = [];
     const ringLabels = [];
     let currentTotal = 0;
@@ -79,9 +79,9 @@ export default function SaucePageOne({ initialData = [] }) {
         index++;
     }
 
-    const ringGapUnits = -2; // Pack labels extra tight
-    const ringBuffer = 0; // no extra gap at path start/end
-    const ringTotalUnits = currentTotal + (ringGapUnits * ringLabels.length) + ringBuffer;
+    const ringGapUnits = 2; // Fixed gap between labels
+    const circumferenceUnits = isMobile ? 200 : 250; // Balanced value to provide a packed look without overlap
+    const ringTotalUnits = Math.max(currentTotal + (ringGapUnits * ringLabels.length), circumferenceUnits);
 
     const ringOffsetsData = ringLabels.reduce((acc, label) => {
         const center = acc.cursor + (label.length / 2);
@@ -323,7 +323,6 @@ export default function SaucePageOne({ initialData = [] }) {
                                     {/* STATIC CIRCLE */}
                                     <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10">
                                         <circle cx="500" cy="500" r="440" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
-                                        <circle cx="500" cy="45" r="8" fill="white" />
                                     </svg>
 
                                     {isVisible && sauce.sauceImage && (
