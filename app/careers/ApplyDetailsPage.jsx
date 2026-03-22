@@ -26,10 +26,10 @@ export default function ApplyDetailsPage({ initialData }) {
         setIsSubmitting(true);
         setError(null);
 
-        const emailTarget = process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL;
+        const emailTarget = process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL_CAREERS;
 
         if (!emailTarget) {
-            console.error("NEXT_PUBLIC_FORMSUBMIT_EMAIL IS NOT DEFINED");
+            console.error("NEXT_PUBLIC_FORMSUBMIT_EMAIL_CAREERS IS NOT DEFINED");
             setError("CONFIGURATION ERROR. PLEASE TRY AGAIN LATER.");
             setIsSubmitting(false);
             return;

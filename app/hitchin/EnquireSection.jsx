@@ -28,7 +28,11 @@ export default function EnquiriesSection({ location }) {
     setIsSubmitting(true);
     setError(null);
 
-    const emailTarget = process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL;
+    const emailTargets = {
+      hitchin: process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL_HITCHIN,
+      stevenage: process.env.NEXT_PUBLIC_FORMSUBMIT_EMAIL_STEVENAGE,
+    };
+    const emailTarget = emailTargets[location?.toLowerCase()];
     const sheetUrls = {
       hitchin: process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL_HITCHIN,
       stevenage: process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL_STEVENAGE,
@@ -73,7 +77,7 @@ export default function EnquiriesSection({ location }) {
           }),
         });
       } else {
-        console.warn("FormSubmit email is not configured in .env.");
+        console.warn(`FormSubmit email for ${location} is not configured in .env.`);
       }
 
       setSubmitted(true);
