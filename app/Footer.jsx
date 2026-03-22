@@ -89,6 +89,9 @@ const Footer = ({ preloadedData = null }) => {
         if (normalizedTitle.includes("careers")) return "/careers";
         if (normalizedTitle.includes("hitchin")) return "/hitchin";
         if (normalizedTitle.includes("stevenage")) return "/stevenage";
+        if (normalizedTitle.includes("privacy")) return "/privacy";
+        if (normalizedTitle.includes("terms")) return "/terms";
+        if (normalizedTitle.includes("allergen")) return "/allergens";
 
         return "/home";
     };
@@ -255,9 +258,9 @@ const Footer = ({ preloadedData = null }) => {
                     <ul className="space-y-[4vw] md:space-y-[2vw] lg:space-y-[1.5vw] xl:space-y-[1.2vw] text-[4vw] sm:text-[3vw] md:text-[2vw] lg:text-[1.3vw] xl:text-[1vw] font-mono text-[#B7BAC8] w-full">
                         {data.legalLinks?.length > 0 ? data.legalLinks.map((link, idx) => (
                             <li key={idx}>
-                                <a href={resolveFooterHref(link.url, link.title)} className="hover:underline inline-block">
+                                <Link href={resolveFooterHref(link.url, link.title)} className="hover:underline inline-block">
                                     {link.title}
-                                </a>
+                                </Link>
                             </li>
                         )) : (
                             <>
