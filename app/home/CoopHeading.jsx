@@ -15,7 +15,7 @@ export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Exp
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-[2.5vw] md:pt-[1.5vw] pb-[1vw] md:pb-[1vw] xl:pb-0 flex flex-col items-start text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-[6vw] md:pt-[1.5vw] pb-[5vw] md:pb-[1vw] xl:pb-0 flex flex-col items-start text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
@@ -36,7 +36,7 @@ export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Exp
 
       {/* Subtitle */}
       <motion.p
-        className="font-sans mt-[4vw] md:mt-[1vw] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
+        className="font-sans mt-[2vw] md:mt-[1vw] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
         {...fadeUp(0.4)}
       >
         {subtitleText}

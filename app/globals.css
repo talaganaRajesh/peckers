@@ -270,7 +270,7 @@ img {
     font-size: 32px !important;
   }
 }
-
+  
 @media (min-width: 1024px) {
   .sauce-circular-text {
     font-size: 26px !important;

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function CaptionBelowNews({ caption = "Stay up to date with our shenanigans, limited drops, and questionable life choices." }) {
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[90vw] md:w-[80vw] flex flex-col items-center pt-0 pb-8 md:pb-0 md:pt-5">
+      <div className="w-[120vw] md:w-[80vw] flex flex-col items-center pt-0 pb-8 md:pb-0 md:pt-5">
         <motion.div
           className="relative flex items-center justify-center md:my-[0.6vw]"
           style={{
@@ -31,7 +31,7 @@ export default function CaptionBelowNews({ caption = "Stay up to date with our s
           <div style={{ width: "100%", height: "2.5px", visibility: "hidden" }} />
         </motion.div>
 
-        <div className="flex items-start px-[4.5vw] md:px-[14vw] w-full mt-[4vw] md:mt-[0.6vw] justify-center">
+        <div className="flex items-start px-[1.5vw] md:px-[14vw] w-full mt-[4vw] md:mt-[0.6vw] justify-center">
           <motion.svg
             viewBox="0 0 14 48"
             fill="none"

@@ -42,7 +42,16 @@ export default function EnquiriesSection({ location }) {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...formData, location }),
+          body: JSON.stringify({
+            Date: new Date().toLocaleString(),
+            Location: location,
+            Name: formData.name,
+            Phone: formData.phone,
+            Guests: formData.guests,
+            EventDate: formData.date,
+            EventTime: formData.time,
+            Details: formData.details
+          }),
         });
       } else {
         console.warn("Google Sheet URL for this location is not configured in .env.");

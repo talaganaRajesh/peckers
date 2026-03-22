@@ -1,9 +1,56 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { urlFor } from "../../sanity/lib/image";
 
 export default function JourneyIntroSection({ initialData = null }) {
+    const [suggestion, setSuggestion] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState(null);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!suggestion.trim()) return;
+
+        setIsSubmitting(true);
+        setError(null);
+
+        const sheetUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+
+        if (!sheetUrl) {
+            console.error("NEXT_PUBLIC_GOOGLE_SHEET_URL IS NOT DEFINED");
+            setError("CONFIGURATION ERROR.");
+            setIsSubmitting(false);
+            return;
+        }
+
+        try {
+            await fetch(sheetUrl, {
+                method: "POST",
+                mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    Location: "Suggest a city... (The Journey)",
+                    town: suggestion,
+                    Date: new Date().toLocaleString()
+                })
+            });
+
+            // Since it's no-cors, we assume success
+            setSubmitted(true);
+            setSuggestion("");
+        } catch (err) {
+            console.error("SUBMISSION ERROR:", err);
+            setError("FAILED TO SEND.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     const data = initialData;
 
     if (!data) return null;
@@ -270,19 +317,61 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 style={{ transformOrigin: "top center" }}
                                 className="absolute left-[80.8%] top-[62%] -translate-x-1/2 z-20 w-[17.5vw] rounded-[.7vw] border border-dashed border-[#FFD700]/60 px-[2vw] py-[1.5vw] flex flex-col items-center gap-[.8vw] bg-black/95"
                             >
-                                <h2 className="text-[1.5vw] text-white font-peakers tracking-wide uppercase">
-                                    {data.whereNextHeading || "WHERE NEXT ?"}
-                                </h2>
+                                <AnimatePresence mode="wait">
+                                    {!submitted ? (
+                                        <motion.div
+                                            key="form"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            className="w-full flex flex-col items-center gap-[.8vw]"
+                                        >
+                                            <h2 className="text-[1.5vw] text-white font-peakers tracking-wide uppercase">
+                                                {data.whereNextHeading || "WHERE NEXT ?"}
+                                            </h2>
 
-                                <input
-                                    type="text"
-                                    placeholder={data.whereNextPlaceholder || "Suggest a city..."}
-                                    className="w-full py-[.6vw] bg-black border border-[#2a2f3a] font-mono text-[0.7vw] text-white placeholder:text-white/40 px-[0.9vw] focus:outline-none"
-                                />
+                                            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-[0.8vw]">
+                                                <input
+                                                    type="text"
+                                                    value={suggestion}
+                                                    onChange={(e) => setSuggestion(e.target.value)}
+                                                    disabled={isSubmitting}
+                                                    placeholder={data.whereNextPlaceholder || "Suggest a city..."}
+                                                    className="w-full py-[.6vw] bg-black border border-[#2a2f3a] font-mono text-[0.7vw] text-white placeholder:text-white/40 px-[0.9vw] focus:outline-none disabled:opacity-50"
+                                                />
 
-                                <button className="w-full h-[2vw] border-[0.15vw] font-mono text-white border-white rounded-[.6vw] text-[0.8vw] tracking-[0.1vw] hover:bg-white hover:text-black transition-all duration-300">
-                                    {data.whereNextButtonText || "SUBMIT"}
-                                </button>
+                                                <button
+                                                    type="submit"
+                                                    disabled={isSubmitting || !suggestion.trim()}
+                                                    className="w-full h-[2vw] border-[0.15vw] font-mono text-white border-white rounded-[.6vw] text-[0.8vw] tracking-[0.1vw] hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-30 flex items-center justify-center gap-2"
+                                                >
+                                                    {isSubmitting ? "SENDING..." : (data.whereNextButtonText || "SUBMIT")}
+                                                </button>
+                                                {error && <p className="text-red-500 font-mono text-[0.6vw] uppercase">{error}</p>}
+                                            </form>
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key="success"
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="w-full flex flex-col items-center text-center"
+                                        >
+                                            <div className="w-[2.5vw] h-[2.5vw] bg-[#FFD700] rounded-full flex items-center justify-center mb-2">
+                                                <svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 13L9 17L19 7" stroke="#000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-white font-peakers text-[1.2vw] uppercase tracking-wider mb-1">RECEIVED!</h3>
+                                            <button
+                                                onClick={() => setSubmitted(false)}
+                                                className="text-[0.6vw] font-mono text-[#FFD700] underline uppercase hover:text-white transition-colors"
+                                            >
+                                                SUGGEST MORE
+                                            </button>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         </div>
                     </motion.div>
@@ -380,7 +469,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     width="22"
                                     height="22"
                                     viewBox="0 0 45 45"
-                                    className="drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] animate-pulse"
+                                    className={`drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] ${!submitted ? 'animate-pulse' : ''}`}
                                     initial={{ opacity: 0, scale: 0.88 }}
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true, amount: 0.12 }}
@@ -392,22 +481,60 @@ export default function JourneyIntroSection({ initialData = null }) {
                             </div>
 
                             <div className="ml-14 bg-[#121212] border border-dashed border-[#FFD700]/60 rounded-xl p-6 shadow-xl">
+                                <AnimatePresence mode="wait">
+                                    {!submitted ? (
+                                        <motion.div
+                                            key="mobile-form"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                        >
+                                            <h2 className="text-center text-white font-bold tracking-widest text-sm mb-4">
+                                                {data.whereNextHeading || "WHERE NEXT?"}
+                                            </h2>
 
-                                <h2 className="text-center text-white font-bold tracking-widest text-sm mb-4">
-                                    {data.whereNextHeading || "WHERE NEXT?"}
-                                </h2>
+                                            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                                                <input
+                                                    type="text"
+                                                    value={suggestion}
+                                                    onChange={(e) => setSuggestion(e.target.value)}
+                                                    disabled={isSubmitting}
+                                                    placeholder={data.whereNextPlaceholder || "Suggest a city..."}
+                                                    className="bg-black border border-[#333] p-3 rounded-lg text-white focus:outline-none focus:border-[#FFD700] text-sm disabled:opacity-50"
+                                                />
 
-                                <div className="flex flex-col gap-4">
-                                    <input
-                                        type="text"
-                                        placeholder={data.whereNextPlaceholder || "Suggest a city..."}
-                                        className="bg-black border border-[#333] p-3 rounded-lg text-white focus:outline-none focus:border-[#FFD700] text-sm"
-                                    />
-
-                                    <button className="bg-black text-white py-3 border border-white/20 rounded-full uppercase text-xs tracking-widest hover:border-white transition-all font-bold">
-                                        {data.whereNextButtonText || "Submit"}
-                                    </button>
-                                </div>
+                                                <button
+                                                    type="submit"
+                                                    disabled={isSubmitting || !suggestion.trim()}
+                                                    className="bg-black text-white py-3 border border-white/20 rounded-full uppercase text-xs tracking-widest hover:border-white transition-all font-bold disabled:opacity-30"
+                                                >
+                                                    {isSubmitting ? "SENDING..." : (data.whereNextButtonText || "Submit")}
+                                                </button>
+                                                {error && <p className="text-red-500 font-mono text-[10px] text-center uppercase">{error}</p>}
+                                            </form>
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key="mobile-success"
+                                            initial={{ opacity: 0, scale: 0.9 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="flex flex-col items-center py-2"
+                                        >
+                                            <div className="w-12 h-12 bg-[#FFD700] rounded-full flex items-center justify-center mb-4 text-black">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <h2 className="text-white font-peakers text-2xl mb-1 uppercase tracking-wider">RECEIVED!</h2>
+                                            <button
+                                                onClick={() => setSubmitted(false)}
+                                                className="text-xs font-mono text-[#FFD700] underline uppercase mt-2"
+                                            >
+                                                Suggest more
+                                            </button>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         </motion.div>
                     </div>
