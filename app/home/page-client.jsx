@@ -81,7 +81,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
         <div className="relative z-10 w-full px-[5vw] md:px-[7vw] lg:px-[4vw] pb-[6vw] md:pb-[4vw] lg:pb-[1.5vw]">
           <div className="flex flex-col gap-2 md:gap-4">
             <h1
-              className="text-white font-peakers text-[20vw] md:text-[11vw] lg:text-[10.5vw] leading-[0.9] font-bold tracking-normal"
+              className="text-white font-peakers text-[20vw] md:text-[11vw] lg:text-[10.5vw] leading-[0.9] font-bold tracking-[0.04em]"
               style={{ textShadow: "0px 4px 30px rgba(0,0,0,0.9)" }}
             >
               Seriously <br /> Good <br /> Chicken

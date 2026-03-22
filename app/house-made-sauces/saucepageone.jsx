@@ -53,16 +53,35 @@ export default function SaucePageOne({ initialData = [] }) {
         ? [{ sauce: saucesData[0], index: 0 }, ...saucesData.slice(1).map((sauce, index) => ({ sauce, index: index + 1 })).reverse()]
         : saucesData.map((sauce, index) => ({ sauce, index }));
     const ringLabelsBase = ringItemsBase.map(item => {
-        const title = item.sauce.title.toUpperCase();
-        return title.endsWith("SAUCE") ? `${title} •` : `${title} SAUCE •`;
+        let title = item.sauce.title.toUpperCase();
+        // Safety check: if title starts with 'A' and is followed by 'YONNAISE', it might be missing 'M'
+        if (title.startsWith("AYONNAISE")) {
+            title = "M" + title;
+        }
+        return title.endsWith("SAUCE") ? `${title}•` : `${title} SAUCE•`;
     });
+    // Dynamically build the ring until we hit an ideal character count
+    // A full circle fits ~190 characters on Desktop, ~150 on Mobile with the current font size settings.
+    // By pushing exact amounts, the 360-degree spread will naturally pack them without overlapping or gaps!
+    const idealCharCount = isMobile ? 150 : 190;
+    const ringItems = [];
+    const ringLabels = [];
+    let currentTotal = 0;
+    let index = 0;
 
-    const repeatCount = isMobile ? Math.max(1, Math.ceil(12 / (ringLabelsBase.length || 1))) : 1;
-    const ringItems = Array(repeatCount).fill(ringItemsBase).flat();
-    const ringLabels = Array(repeatCount).fill(ringLabelsBase).flat();
+    while (currentTotal < idealCharCount) {
+        const baseIndex = index % ringLabelsBase.length;
+        const label = ringLabelsBase[baseIndex];
+        const sauce = ringItemsBase[baseIndex].sauce;
+        ringLabels.push(label);
+        ringItems.push({ id: `ring-item-${index}`, index: ringItemsBase[baseIndex].index, sauce });
+        currentTotal += label.length;
+        index++;
+    }
 
-    const ringGapUnits = isMobile ? 1.5 : 5.0;
-    const ringTotalUnits = ringLabels.reduce((sum, label) => sum + label.length, 0) + (ringGapUnits * ringLabels.length);
+    const ringGapUnits = 0; // Completely eliminate gap between labels
+    const ringBuffer = 2; // Extra units to prevent clipping at path start
+    const ringTotalUnits = currentTotal + (ringGapUnits * ringLabels.length) + ringBuffer;
 
     const ringOffsetsData = ringLabels.reduce((acc, label) => {
         const center = acc.cursor + (label.length / 2);
@@ -70,7 +89,7 @@ export default function SaucePageOne({ initialData = [] }) {
             cursor: acc.cursor + label.length + ringGapUnits,
             offsets: [...acc.offsets, (center / ringTotalUnits) * 100],
         };
-    }, { cursor: 0, offsets: [] }).offsets;
+    }, { cursor: ringBuffer / 2, offsets: [] }).offsets;
 
     const ringOffsets = ringOffsetsData.map(offset => `${offset}%`);
     const baseRotation = 90 - (ringOffsetsData[0] * 3.6);
@@ -188,7 +207,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className={`w-full h-auto block ${bgDissolveClass}`}
+                                        className={`w-full h-auto block scale-105 md:scale-105 origin-center ${bgDissolveClass}`}
                                         priority={idx === 0}
                                     />
                                 )}
@@ -199,22 +218,18 @@ export default function SaucePageOne({ initialData = [] }) {
                                     className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[12%] lg:top-[14%] xl:top-[5%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-300 ease-out`}
                                 >
                                     <h1
-                                        className={`text-4xl sm:text-5xl md:text-[48px] lg:text-[56px] xl:text-[4.5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-3 xl:mb-[-0.2vw] ${isCurrent && isTransitioning ? "sauce-title-fade-in" : ""}`}
+                                        className={`text-3xl sm:text-4xl md:text-[40px] lg:text-[48px] xl:text-[3.5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-3 xl:mb-[-0.2vw] ${isCurrent && isTransitioning ? "sauce-title-fade-in" : ""}`}
                                         style={{ fontFamily: 'var(--font-peakers)' }}
                                     >
                                         {sauce.title}
                                     </h1>
 
-                                    <div className="text-[15px] sm:text-[16px] md:text-[14px] lg:text-[15px] xl:text-[1.1vw] leading-[1.4em] md:leading-[1.5em] xl:leading-[1.2vw] py-[1vw] font-light md:font-normal lg:font-normal xl:font-light font-['Inconsolata'] tracking-wider space-y-1 md:space-y-1.5 lg:space-y-2 xl:space-y-[0.4vw]">
+                                    <div className="text-[13px] sm:text-[14px] md:text-[13px] lg:text-[14px] xl:text-[0.9vw] leading-[1.4em] md:leading-[1.5em] xl:leading-[1.2vw] py-[1vw] font-light md:font-normal lg:font-normal xl:font-light font-['Inconsolata'] tracking-wider space-y-1 md:space-y-1.5 lg:space-y-2 xl:space-y-[0.4vw]">
                                         <p>
                                             {sauce.descLine1}<br />
                                             {sauce.descLine2}
                                         </p>
-                                        {sauce.ingredients && sauce.ingredients.length > 0 && (
-                                            <p className="text-[12px] md:text-[0.9vw] text-white/60 mt-2 font-mono uppercase tracking-[0.1em]">
-                                                Ingredients: {sauce.ingredients.join(' • ')}
-                                            </p>
-                                        )}
+                                      
                                         <p className="hidden sm:block">{sauce.descLine3}</p>
                                         <div className="flex flex-col items-center">
                                             {/* FRESHNESS BADGE - NOW ON ITS OWN LINE */}
@@ -256,7 +271,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="fixed md:absolute left-1/2 -translate-x-1/2 md:mt-0 -bottom-[78vw] sm:-bottom-[38vw] md:-bottom-[45vw] lg:-bottom-[35vw] xl:-bottom-[45vw] w-[155vw] h-[155vw] sm:w-[75vw] sm:h-[75vw] md:w-[70vw] md:h-[70vw] lg:w-[60vw] lg:h-[60vw] xl:w-[72vw] xl:h-[72vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="fixed md:absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 md:mt-0 w-[135vw] h-[135vw] sm:w-[65vw] sm:h-[65vw] md:w-[60vw] md:h-[60vw] lg:w-[52vw] lg:h-[52vw] xl:w-[62vw] xl:h-[62vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
@@ -269,7 +284,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 <defs>
                                                     <path
                                                         id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -465, 0 a 465,465 0 1,1 930,0 a 465,465 0 1,1 -930,0"
+                                                        d="M 500, 500 m -452, 0 a 452,452 0 1,1 904,0 a 452,452 0 1,1 -904,0"
                                                         fill="none"
                                                     />
                                                 </defs>
@@ -312,7 +327,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                     </svg>
 
                                     {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 top-1/2 z-10 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[112%] xl:w-[112%] overflow-hidden">
+                                        <div className="absolute left-1/2 top-1/2 z-10 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[110%] xl:w-[110%] overflow-hidden">
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage).url()}

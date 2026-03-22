@@ -15,12 +15,12 @@ export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Exp
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-[4vw] md:pt-[2vw] pb-[2vw] md:pb-[2vw] xl:pb-0 flex flex-col items-start text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-[2.5vw] md:pt-[1.5vw] pb-[1vw] md:pb-[1vw] xl:pb-0 flex flex-col items-start text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
       <h2
-        className="text-[10vw] sm:text-[8vw] md:text-[4.8vw] font-bold text-white tracking-[.2vw] uppercase"
+        className="text-[8.5vw] sm:text-[7vw] md:text-[4vw] font-bold text-white tracking-[.2vw] uppercase"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         {words.map((word, i) => (

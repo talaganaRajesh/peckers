@@ -13,7 +13,7 @@ export default function CoopImages({ locations = [] }) {
 
   return (
     <div
-      className="flex flex-col lg:flex-row gap-[8vw] md:gap-[5vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-between items-center px-[5vw] md:px-[6vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[2vw] pb-[10vw] lg:py-[7vw] xl:py-[5vw]"
+      className="flex flex-col lg:flex-row gap-[8vw] md:gap-[5vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-between items-center px-[5vw] md:px-[6vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[10vw] lg:py-[7vw] xl:py-[5vw]"
     >
       {/* Hitchin Mobile & Tablet */}
       <Link

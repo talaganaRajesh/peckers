@@ -260,18 +260,18 @@ img {
 }
 
 .sauce-circular-text {
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 /* Increase circular ring text on small screens without affecting desktop */
 @media (max-width: 767px) {
   .sauce-circular-text {
-    font-size: 26px !important;
+    font-size: 18px !important;
   }
 }
 
 @media (min-width: 1024px) {
   .sauce-circular-text {
-    font-size: 26px !important;
+    font-size: 20px !important;
   }
 }
