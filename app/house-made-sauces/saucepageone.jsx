@@ -46,6 +46,22 @@ export default function SaucePageOne({ initialData = [] }) {
         ...item,
         id: `ring-item-${item.index}-${idx}`,
     }));
+    const [isDesktop, setIsDesktop] = useState(false);
+
+    useEffect(() => {
+        const updateIsDesktop = () => {
+            setIsDesktop(window.innerWidth >= 768);
+        };
+
+        updateIsDesktop();
+        window.addEventListener("resize", updateIsDesktop);
+        return () => window.removeEventListener("resize", updateIsDesktop);
+    }, []);
+
+    const ringGapUnits = isDesktop ? 0 : 2.25;
+
+    console.log("saucepageone ringGapUnits", ringGapUnits, "isDesktop", isDesktop);
+
     const ringLabels = ringItems.map(item => {
         let title = (item.sauce?.title || "").trim().replace(/\s+/g, " ").toUpperCase();
         // Safety check: if title starts with 'A' and is followed by 'YONNAISE', it might be missing 'M'
@@ -57,10 +73,10 @@ export default function SaucePageOne({ initialData = [] }) {
         } else {
             title = `${title} SAUCE`;
         }
-        return `${title} • `;
+        // Keep visual separator but reduce padding around dot to maximize compactness.
+        return `${title} •`;
     });
 
-    const ringGapUnits = 2.25;
     const ringLayout = ringLabels.reduce((acc, label) => {
         const start = acc.cursor;
         const center = start + (label.length / 2);
@@ -198,7 +214,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                 {/* TEXT SECTION WITH PREMIUM SCALING */}
                                 <div
-                                    className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[12%] lg:top-[14%] xl:top-[5%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-300 ease-out`}
+                                    className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[12%] lg:top-[14%] xl:top-[2%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-300 ease-out`}
                                 >
                                     <h1
                                         className={`text-3xl sm:text-4xl md:text-[40px] lg:text-[48px] xl:text-[3.5vw] font-bold tracking-wide mb-1 sm:mb-2 md:mb-3 xl:mb-[-0.2vw] ${isCurrent && isTransitioning ? "sauce-title-fade-in" : ""}`}
@@ -254,20 +270,21 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="fixed md:absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[36%] sm:translate-y-1/2 md:mt-0 w-[168vw] h-[168vw] sm:w-[65vw] sm:h-[65vw] md:w-[60vw] md:h-[60vw] lg:w-[52vw] lg:h-[52vw] xl:w-[62vw] xl:h-[62vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="fixed md:absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[48%] sm:translate-y-[48%] md:mt-0 w-[160vw] h-[160vw] sm:w-[80vw] sm:h-[80vw] md:w-[60vw] md:h-[60vw] lg:w-[52vw] lg:h-[52vw] xl:w-[62vw] xl:h-[62vw] md:max-w-[100vw] md:max-h-[100vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
-                                    <div
-                                        className={`absolute inset-0 z-30 w-full h-full transition-all duration-200 ease-linear`}
-                                        style={{ transform: `rotate(${baseRotation + rotation}deg)` }}
-                                    >
-                                        <div className="relative w-full h-full pointer-events-auto z-20">
+                                    <div className="absolute inset-0 md:scale-[0.94] md:origin-center">
+                                        <div
+                                            className={`absolute inset-0 z-30 w-full h-full transition-all duration-200 ease-linear`}
+                                            style={{ transform: `rotate(${baseRotation + rotation}deg)` }}
+                                        >
+                                            <div className="relative w-full h-full pointer-events-auto z-20">
                                             <svg viewBox="0 0 1000 1000" className="w-full h-full overflow-visible">
                                                 <defs>
                                                     <path
                                                         id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -460, 0 a 460,460 0 1,1 920,0 a 460,460 0 1,1 -920,0"
+                                                        d="M 500, 500 m -500, 0 a 500,500 0 1,1 1000,0 a 500,500 0 1,1 -1000,0"
                                                         fill="none"
                                                     />
                                                 </defs>
@@ -282,11 +299,12 @@ export default function SaucePageOne({ initialData = [] }) {
                                                             key={item.id}
                                                             fill="white"
                                                             textAnchor="start"
-                                                            className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"} sauce-circular-text`}
+                                                            className={`${isActive ? "opacity-80" : "opacity-50 hover:opacity-80"} sauce-circular-text`}
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
                                                                 fontWeight: 700,
-                                                                letterSpacing: "0.02em",
+                                                                fontSize: isDesktop ? "1.95rem" : "1rem",
+                                                                letterSpacing: isDesktop ? "0.005em" : "0.02em",
                                                                 textTransform: "uppercase",
                                                                 cursor: "pointer",
                                                                 pointerEvents: "auto",
@@ -302,14 +320,15 @@ export default function SaucePageOne({ initialData = [] }) {
                                             </svg>
                                         </div>
                                     </div>
+                                </div>
 
                                     {/* STATIC CIRCLE */}
-                                    <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                                        <circle cx="500" cy="500" r="448" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+                                    <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10 md:scale-[0.94] md:origin-center">
+                                        <circle cx="500" cy="500" r="488" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
                                     </svg>
 
                                     {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 top-1/2 z-10 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[110%] xl:w-[110%] overflow-hidden">
+                                        <div className="absolute left-1/2 top-1/2 z-10 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[112%] md:w-[112%] lg:h-[114%] lg:w-[114%] xl:h-[115%] xl:w-[115%] overflow-hidden">
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage).url()}
