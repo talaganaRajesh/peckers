@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import Script from "next/script";
 import HeaderActionButton from "./components/HeaderActionButton";
 import { client } from "../sanity/lib/client";
 import { urlFor } from "../sanity/lib/image";
@@ -81,7 +82,7 @@ export default function Navbar({ preloadedSettings = null }) {
         <Link href="/the-journey" className="whitespace-nowrap navbar-link">THE JOURNEY</Link>
         <Link href="/careers" className="whitespace-nowrap navbar-link mr-[1vw] lg:mr-[1.2vw] xl:mr-[3vw]">CAREERS</Link>
       </div>
- 
+
       {/* Desktop Buttons */}
       <div
         className="hidden md:flex flex-1 justify-end md:gap-[1vw] lg:gap-[1.5vw] xl:gap-[1.2vw]"
@@ -152,6 +153,56 @@ export default function Navbar({ preloadedSettings = null }) {
           <Link href="/careers" onClick={() => setOpen(false)}>CAREERS</Link>
         </div>
       </div>
+
+      {/* White Strip (Conditionally shown on home page) */}
+      {(pathname === "/" || pathname === "/home") && (
+        <div className="absolute top-[100%] left-0 w-full h-auto md:h-[4.5vw] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0">
+          <div className="text-center text-black uppercase font-bold italic w-full px-2" style={{ fontFamily: "var(--font-peakers)" }}>
+            <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.1vw] tracking-normal md:tracking-wide leading-tight font-extrabold md:font-bold">
+              UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
+              <span className="relative inline-block align-baseline">
+                <span className="text-red-600 font-extrabold md:font-bold">SIGN UP</span>
+                <div id="sbx_button" className="talkbox-signup-hitbox" aria-label="Sign up" />
+              </span>{" "}
+              FOR EXCLUSIVE REWARDS.
+            </span>
+            <Script
+              src="https://talkbox.impactapp.com.au/signup_buttons/oQiu4OvNbdNp7Nb7NlA4gw==/script.js"
+              strategy="afterInteractive"
+            />
+            <style jsx global>{`
+              .talkbox-signup-hitbox {
+                position: absolute;
+                inset: 0;
+                z-index: 10;
+                overflow: hidden;
+              }
+
+              .talkbox-signup-hitbox > * {
+                position: absolute !important;
+                inset: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: 0 !important;
+                background: transparent !important;
+                opacity: 0 !important;
+                cursor: pointer !important;
+              }
+
+              .talkbox-signup-hitbox button,
+              .talkbox-signup-hitbox a,
+              .talkbox-signup-hitbox iframe {
+                width: 100% !important;
+                height: 100% !important;
+                opacity: 0 !important;
+                cursor: pointer !important;
+              }
+            `}</style>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

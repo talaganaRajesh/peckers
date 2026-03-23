@@ -36,7 +36,7 @@ export default function LatestNewsHeading({ heading = "THE PECKERS JOURNAL", sub
 
       {/* Subtitle */}
       <motion.p
-        className="font-sans mt-[4vw] md:mt-[1vw] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
+        className="font-sans mt-[4vw] md:mt-0 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
         {...fadeUp(0.4)}
       >
         {subtitleText}

@@ -44,55 +44,6 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
 
   return (
     <div id="main-content">
-      <section>
-        <div className="w-full h-auto md:h-[10vh] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0">
-          <div className="text-center text-black uppercase font-bold italic w-full px-2" style={{ fontFamily: "var(--font-peakers)" }}>
-            <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.4vw] tracking-normal md:tracking-wide leading-tight">
-              UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
-              <span className="relative inline-block align-baseline">
-                <span className="text-red-600 font-black md:font-bold">SIGN UP</span>
-                <div id="sbx_button" className="talkbox-signup-hitbox" aria-label="Sign up" />
-              </span>{" "}
-              FOR EXCLUSIVE REWARDS.
-            </span>
-            <Script
-              src="https://talkbox.impactapp.com.au/signup_buttons/oQiu4OvNbdNp7Nb7NlA4gw==/script.js"
-              strategy="afterInteractive"
-            />
-            <style jsx global>{`
-              .talkbox-signup-hitbox {
-                position: absolute;
-                inset: 0;
-                z-index: 10;
-                overflow: hidden;
-              }
-
-              .talkbox-signup-hitbox > * {
-                position: absolute !important;
-                inset: 0 !important;
-                width: 100% !important;
-                height: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                background: transparent !important;
-                opacity: 0 !important;
-                cursor: pointer !important;
-              }
-
-              .talkbox-signup-hitbox button,
-              .talkbox-signup-hitbox a,
-              .talkbox-signup-hitbox iframe {
-                width: 100% !important;
-                height: 100% !important;
-                opacity: 0 !important;
-                cursor: pointer !important;
-              }
-            `}</style>
-          </div>
-        </div>
-      </section>
-
       <section className="hero w-full h-[75vh] md:h-[60vh] lg:h-[95vh] min-h-[500px] md:min-h-[400px] lg:min-h-[480px] bg-black flex items-end justify-center lg:justify-start overflow-hidden relative">
         {data?.videoUrl && (
           <video
