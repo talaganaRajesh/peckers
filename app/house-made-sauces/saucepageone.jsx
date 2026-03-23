@@ -4,17 +4,13 @@ import Image from "next/image";
 import { client } from "../../sanity/lib/client";
 import { urlFor } from "../../sanity/lib/image";
 
-
-
-// SAUCES_FALLBACK removed since we fetch from Sanity now
-
 export default function SaucePageOne({ initialData = [] }) {
     const TRANSITION_MS = 320;
     const [fetchedSaucesData, setFetchedSaucesData] = useState([]);
     const [isFetching, setIsFetching] = useState(initialData.length === 0);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState(null);
-    const [slideDirection, setSlideDirection] = useState("next"); // "next" = from bottom, "prev" = from top
+    const [slideDirection, setSlideDirection] = useState("next");
     const [rotation, setRotation] = useState(0);
     const transitionTimeout = useRef(null);
 
@@ -22,9 +18,7 @@ export default function SaucePageOne({ initialData = [] }) {
     const loading = initialData.length === 0 && isFetching;
 
     useEffect(() => {
-        if (initialData && initialData.length > 0) {
-            return;
-        }
+        if (initialData && initialData.length > 0) return;
 
         const fetchSauces = async () => {
             try {
@@ -52,7 +46,6 @@ export default function SaucePageOne({ initialData = [] }) {
         const updateIsDesktop = () => {
             setIsDesktop(window.innerWidth >= 768);
         };
-
         updateIsDesktop();
         window.addEventListener("resize", updateIsDesktop);
         return () => window.removeEventListener("resize", updateIsDesktop);
@@ -60,20 +53,14 @@ export default function SaucePageOne({ initialData = [] }) {
 
     const ringGapUnits = isDesktop ? 0 : 2.25;
 
-    console.log("saucepageone ringGapUnits", ringGapUnits, "isDesktop", isDesktop);
-
     const ringLabels = ringItems.map(item => {
         let title = (item.sauce?.title || "").trim().replace(/\s+/g, " ").toUpperCase();
-        // Safety check: if title starts with 'A' and is followed by 'YONNAISE', it might be missing 'M'
-        if (title.startsWith("AYONNAISE")) {
-            title = "M" + title;
-        }
+        if (title.startsWith("AYONNAISE")) title = "M" + title;
         if (/\bSAUCE$/.test(title)) {
             title = title.replace(/\s*SAUCE$/, " SAUCE").trim();
         } else {
             title = `${title} SAUCE`;
         }
-        // Keep visual separator but reduce padding around dot to maximize compactness.
         return `${title} •`;
     });
 
@@ -94,9 +81,7 @@ export default function SaucePageOne({ initialData = [] }) {
     const baseRotation = 90 - ((ringCenterOffsetsData[0] || 0) * 3.6);
 
     const clearPrevIndex = () => {
-        if (transitionTimeout.current) {
-            clearTimeout(transitionTimeout.current);
-        }
+        if (transitionTimeout.current) clearTimeout(transitionTimeout.current);
         transitionTimeout.current = setTimeout(() => {
             setPrevIndex(null);
             transitionTimeout.current = null;
@@ -106,32 +91,20 @@ export default function SaucePageOne({ initialData = [] }) {
     const transitionToIndex = (targetIndex) => {
         if (!saucesData.length || targetIndex === currentIndex) return;
 
-        // Current rotation state helps us understand where the wheel is visually
-        // But since we rotate relative to baseRotation + total accumulated rotation,
-        // we should find the closest repeated instance of targetIndex to the current "top" position.
-
-        // Find all indices in the ringItems array that match the targetIndex
         const targetRingIndices = ringItems
             .map((item, idx) => item.index === targetIndex ? idx : -1)
             .filter(idx => idx !== -1);
 
-        // We also need the current active ring index (the one currently at the top)
-        // Since we rotate the whole wheel, we can track the logical "top" index.
-        const currentRingIdx = ringItems.findIndex((item, idx) => item.index === currentIndex);
-
+        const currentRingIdx = ringItems.findIndex((item) => item.index === currentIndex);
         const currentPos = ringCenterOffsetsData[currentRingIdx] * 3.6;
 
-        // Find best target ring index by calculating smallest angular distance
         let bestDelta = 999;
         targetRingIndices.forEach(idx => {
             const pos = ringCenterOffsetsData[idx] * 3.6;
             let d = pos - currentPos;
-            // Shortest path logic
             while (d > 180) d -= 360;
             while (d < -180) d += 360;
-            if (Math.abs(d) < Math.abs(bestDelta)) {
-                bestDelta = d;
-            }
+            if (Math.abs(d) < Math.abs(bestDelta)) bestDelta = d;
         });
 
         setSlideDirection(bestDelta > 0 ? "next" : "prev");
@@ -153,9 +126,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
     useEffect(() => {
         return () => {
-            if (transitionTimeout.current) {
-                clearTimeout(transitionTimeout.current);
-            }
+            if (transitionTimeout.current) clearTimeout(transitionTimeout.current);
         };
     }, []);
 
@@ -169,7 +140,6 @@ export default function SaucePageOne({ initialData = [] }) {
 
     if (!saucesData || saucesData.length === 0) return null;
 
-
     return (
         <div className="relative w-full h-full overflow-hidden bg-black flex flex-col items-center">
 
@@ -181,7 +151,6 @@ export default function SaucePageOne({ initialData = [] }) {
                     const isVisible = isCurrent || isPrev;
                     const isTransitioning = prevIndex !== null;
 
-                    // New animation requested: current sauce goes down and shrinks, next comes from top and scales down
                     const imageAnimationClass = isCurrent && isTransitioning
                         ? "sauce-pop-from-top"
                         : isPrev && isTransitioning
@@ -190,7 +159,6 @@ export default function SaucePageOne({ initialData = [] }) {
 
                     const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
                     const bgDissolveClass = isCurrent && isTransitioning ? "sauce-bg-dissolve-in" : "";
-
                     const wrapperZ = isCurrent ? "z-20" : isPrev ? "z-10" : "z-0";
 
                     return (
@@ -211,8 +179,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                     />
                                 )}
 
-
-                                {/* TEXT SECTION WITH PREMIUM SCALING */}
+                                {/* TEXT SECTION */}
                                 <div
                                     className={`absolute sm:mt-1 md:mt-0 top-[10%] sm:top-[15%] md:top-[8%] lg:top-[10%] xl:top-[2%] left-1/2 -translate-x-1/2 text-center md:text-center text-white w-[95%] sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] z-20 transition-transform duration-300 ease-out`}
                                 >
@@ -228,10 +195,8 @@ export default function SaucePageOne({ initialData = [] }) {
                                             {sauce.descLine1}<br />
                                             {sauce.descLine2}
                                         </p>
-                                      
                                         <p className="hidden sm:block">{sauce.descLine3}</p>
                                         <div className="flex flex-col items-center">
-                                            {/* FRESHNESS BADGE - NOW ON ITS OWN LINE */}
                                             <div className="mb-1.5 md:mb-[0.3vw]">
                                                 <div className="px-3 sm:px-4 md:px-[1vw] py-1 md:py-[0.3vw] rounded-[100px] border border-white/20 flex items-center justify-center gap-1.5 sm:gap-2 md:gap-[0.6vw] bg-black/30 backdrop-blur-md">
                                                     <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[8px] h-[10px] sm:w-[10px] sm:h-[12px] md:w-[1vw] md:h-[1.2vw]">
@@ -272,7 +237,6 @@ export default function SaucePageOne({ initialData = [] }) {
                                 <div
                                     className="fixed md:absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[48%] sm:translate-y-[48%] md:mt-0 w-[160vw] h-[160vw] sm:w-[80vw] sm:h-[80vw] md:w-[60vw] md:h-[60vw] lg:w-[52vw] lg:h-[52vw] xl:w-[62vw] xl:h-[62vw] md:max-w-[100vw] md:max-h-[100vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
-
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
                                     <div className="absolute inset-0 md:scale-[0.94] md:origin-center">
                                         <div
@@ -280,80 +244,85 @@ export default function SaucePageOne({ initialData = [] }) {
                                             style={{ transform: `rotate(${baseRotation + rotation}deg)` }}
                                         >
                                             <div className="relative w-full h-full pointer-events-auto z-20">
-                                            <svg viewBox="0 0 1000 1000" className="w-full h-full overflow-visible">
-                                                <defs>
-                                                    <path
-                                                        id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -500, 0 a 500,500 0 1,1 1000,0 a 500,500 0 1,1 -1000,0"
-                                                        fill="none"
-                                                    />
-                                                </defs>
+                                                <svg viewBox="0 0 1000 1000" className="w-full h-full overflow-visible">
+                                                    <defs>
+                                                        <path
+                                                            id={`sauce-ring-path-${idx}`}
+                                                            d="M 500, 500 m -500, 0 a 500,500 0 1,1 1000,0 a 500,500 0 1,1 -1000,0"
+                                                            fill="none"
+                                                        />
+                                                    </defs>
 
-                                                {ringItems.map((item, ringIndex) => {
-                                                    const isActive = item.index === currentIndex;
-                                                    const offset = ringOffsets[ringIndex] || "0%";
-                                                    const label = ringLabels[ringIndex];
+                                                    {ringItems.map((item, ringIndex) => {
+                                                        const isActive = item.index === currentIndex;
+                                                        const offset = ringOffsets[ringIndex] || "0%";
+                                                        const label = ringLabels[ringIndex];
 
-                                                    return (
-                                                        <text
-                                                            key={item.id}
-                                                            fill="white"
-                                                            textAnchor="start"
-                                                            className={`${isActive ? "opacity-80" : "opacity-50 hover:opacity-80"} sauce-circular-text`}
-                                                            style={{
-                                                                fontFamily: "var(--font-peakers)",
-                                                                fontWeight: 700,
-                                                                fontSize: isDesktop ? "1.95rem" : "1rem",
-                                                                letterSpacing: isDesktop ? "0.005em" : "0.02em",
-                                                                textTransform: "uppercase",
-                                                                cursor: "pointer",
-                                                                pointerEvents: "auto",
-                                                            }}
-                                                            onClick={() => transitionToIndex(item.index)}
-                                                        >
-                                                            <textPath href={`#sauce-ring-path-${idx}`} startOffset={offset}>
-                                                                {label}
-                                                            </textPath>
-                                                        </text>
-                                                    );
-                                                })}
-                                            </svg>
+                                                        return (
+                                                            <text
+                                                                key={item.id}
+                                                                fill="white"
+                                                                textAnchor="start"
+                                                                className={`${isActive ? "opacity-80" : "opacity-50 hover:opacity-80"} sauce-circular-text`}
+                                                                style={{
+                                                                    fontFamily: "var(--font-peakers)",
+                                                                    fontWeight: 700,
+                                                                    fontSize: isDesktop ? "1.95rem" : "1rem",
+                                                                    letterSpacing: isDesktop ? "0.005em" : "0.02em",
+                                                                    textTransform: "uppercase",
+                                                                    cursor: "pointer",
+                                                                    pointerEvents: "auto",
+                                                                }}
+                                                                onClick={() => transitionToIndex(item.index)}
+                                                            >
+                                                                <textPath href={`#sauce-ring-path-${idx}`} startOffset={offset}>
+                                                                    {label}
+                                                                </textPath>
+                                                            </text>
+                                                        );
+                                                    })}
+                                                </svg>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
                                     {/* STATIC CIRCLE */}
                                     <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10 md:scale-[0.94] md:origin-center">
                                         <circle cx="500" cy="500" r="488" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
                                     </svg>
 
+                                    {/* ✅ FIX: Force all sauce images to the same fixed crop via Sanity URL params */}
                                     {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 top-1/2 z-10 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[112%] md:w-[112%] lg:h-[114%] lg:w-[114%] xl:h-[115%] xl:w-[115%] overflow-hidden">
+                                        <div className="absolute left-1/2 top-1/2 z-10 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[112%] md:w-[112%] lg:h-[114%] lg:w-[114%] xl:h-[115%] xl:w-[115%] overflow-hidden rounded-full">
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
-                                                    src={urlFor(sauce.sauceImage).url()}
+                                                    src={urlFor(sauce.sauceImage)
+                                                        .width(1400)
+                                                        .height(1400)
+                                                        .fit("crop")
+                                                        .crop("center")
+                                                        .url()}
                                                     alt={sauce.title}
                                                     fill
-                                                    className="select-none object-cover object-center"
+                                                    className="select-none object-cover object-center scale-[1.05]"
                                                     style={{
                                                         filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
+                                                        transformOrigin: "center center",
                                                     }}
                                                     priority={idx === 0}
-                                                    sizes="(max-width: 640px) 112vw, (max-width: 1024px) 76vw, 66vw"
+                                                    sizes="(max-width: 640px) 130vw, (max-width: 1024px) 90vw, 80vw"
                                                 />
                                             </div>
                                         </div>
                                     )}
-
                                 </div>
-
                             </div>
                         </div>
                     );
                 })}
             </div>
 
-            {/* PREMIUM ARROWS */}
+            {/* ARROWS */}
             <div className="absolute top-[38%] sm:top-[50%] md:top-auto bottom-auto md:bottom-[45%] lg:bottom-[40%] xl:bottom-[50%] w-[94%] sm:w-[92%] md:w-[95%] lg:w-[90%] xl:w-[85%] left-1/2 -translate-x-1/2 flex justify-between items-center z-20 pointer-events-none">
                 <button
                     onClick={prevSlide}
@@ -361,11 +330,7 @@ export default function SaucePageOne({ initialData = [] }) {
                 >
                     <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-13 lg:w-[60px] lg:h-15">
                         <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                            <svg
-                                viewBox="0 0 100 100"
-                                className="w-[45%] h-[45%] text-white rotate-180"
-                                fill="currentColor"
-                            >
+                            <svg viewBox="0 0 100 100" className="w-[45%] h-[45%] text-white rotate-180" fill="currentColor">
                                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />
                                 <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
                             </svg>
@@ -379,11 +344,7 @@ export default function SaucePageOne({ initialData = [] }) {
                 >
                     <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-13 lg:w-[60px] lg:h-15">
                         <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                            <svg
-                                viewBox="0 0 100 100"
-                                className="w-[45%] h-[45%] text-white"
-                                fill="currentColor"
-                            >
+                            <svg viewBox="0 0 100 100" className="w-[45%] h-[45%] text-white" fill="currentColor">
                                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />
                                 <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
                             </svg>
@@ -395,5 +356,3 @@ export default function SaucePageOne({ initialData = [] }) {
         </div>
     );
 }
-
-
