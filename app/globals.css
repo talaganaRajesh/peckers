@@ -260,14 +260,15 @@ img {
 }
 
 .sauce-circular-text {
-  font-size: 16px !important;
+  font-size: 26px !important;
   letter-spacing: 0em;
 }
 
-/* Increase circular ring text on small screens without affecting desktop */
+/* Keep circular ring text readable on mobile without collisions */
 @media (max-width: 767px) {
   .sauce-circular-text {
-    font-size: 32px !important;
+    font-size: 24px !important;
+    letter-spacing: 0.1em !important;
   }
 }
   

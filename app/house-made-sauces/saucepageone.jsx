@@ -57,10 +57,10 @@ export default function SaucePageOne({ initialData = [] }) {
         } else {
             title = `${title} SAUCE`;
         }
-        return `${title} •`;
+        return `${title} • `;
     });
 
-    const ringGapUnits = 3.5;
+    const ringGapUnits = 2.25;
     const ringLayout = ringLabels.reduce((acc, label) => {
         const start = acc.cursor;
         const center = start + (label.length / 2);
@@ -254,7 +254,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 </div>
 
                                 <div
-                                    className="fixed md:absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 md:mt-0 w-[135vw] h-[135vw] sm:w-[65vw] sm:h-[65vw] md:w-[60vw] md:h-[60vw] lg:w-[52vw] lg:h-[52vw] xl:w-[62vw] xl:h-[62vw] flex items-center justify-center z-10 pointer-events-none"
+                                    className="fixed md:absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-[36%] sm:translate-y-1/2 md:mt-0 w-[168vw] h-[168vw] sm:w-[65vw] sm:h-[65vw] md:w-[60vw] md:h-[60vw] lg:w-[52vw] lg:h-[52vw] xl:w-[62vw] xl:h-[62vw] flex items-center justify-center z-10 pointer-events-none"
                                 >
 
                                     {/* ROTATING CLICKABLE SAUCE NAMES */}
@@ -267,7 +267,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 <defs>
                                                     <path
                                                         id={`sauce-ring-path-${idx}`}
-                                                        d="M 500, 500 m -452, 0 a 452,452 0 1,1 904,0 a 452,452 0 1,1 -904,0"
+                                                        d="M 500, 500 m -460, 0 a 460,460 0 1,1 920,0 a 460,460 0 1,1 -920,0"
                                                         fill="none"
                                                     />
                                                 </defs>
@@ -305,11 +305,11 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                     {/* STATIC CIRCLE */}
                                     <svg viewBox="0 0 1000 1000" className="absolute inset-0 w-full h-full pointer-events-none z-10">
-                                        <circle cx="500" cy="500" r="440" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+                                        <circle cx="500" cy="500" r="448" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
                                     </svg>
 
                                     {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 top-1/2 z-10 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[110%] xl:w-[110%] overflow-hidden">
+                                        <div className="absolute left-1/2 top-1/2 z-10 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 sm:h-[106%] sm:w-[106%] md:h-[108%] md:w-[108%] lg:h-[110%] lg:w-[110%] xl:h-[110%] xl:w-[110%] overflow-hidden">
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage).url()}
