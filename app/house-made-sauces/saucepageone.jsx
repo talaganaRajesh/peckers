@@ -16,17 +16,7 @@ export default function SaucePageOne({ initialData = [] }) {
     const [prevIndex, setPrevIndex] = useState(null);
     const [slideDirection, setSlideDirection] = useState("next"); // "next" = from bottom, "prev" = from top
     const [rotation, setRotation] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
     const transitionTimeout = useRef(null);
-
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, []);
 
     const saucesData = initialData.length > 0 ? initialData : fetchedSaucesData;
     const loading = initialData.length === 0 && isFetching;
@@ -52,47 +42,40 @@ export default function SaucePageOne({ initialData = [] }) {
     const ringItemsBase = saucesData.length > 1
         ? [{ sauce: saucesData[0], index: 0 }, ...saucesData.slice(1).map((sauce, index) => ({ sauce, index: index + 1 })).reverse()]
         : saucesData.map((sauce, index) => ({ sauce, index }));
-    const ringLabelsBase = ringItemsBase.map(item => {
-        let title = item.sauce.title.toUpperCase();
+    const ringItems = ringItemsBase.map((item, idx) => ({
+        ...item,
+        id: `ring-item-${item.index}-${idx}`,
+    }));
+    const ringLabels = ringItems.map(item => {
+        let title = (item.sauce?.title || "").trim().replace(/\s+/g, " ").toUpperCase();
         // Safety check: if title starts with 'A' and is followed by 'YONNAISE', it might be missing 'M'
         if (title.startsWith("AYONNAISE")) {
             title = "M" + title;
         }
-        return title.endsWith("SAUCE") ? `${title}•` : `${title}SAUCE•`;
+        if (/\bSAUCE$/.test(title)) {
+            title = title.replace(/\s*SAUCE$/, " SAUCE").trim();
+        } else {
+            title = `${title} SAUCE`;
+        }
+        return `${title} •`;
     });
-    // Dynamically build the ring until we hit an ideal character count
-    // A full circle fits ~190 characters on Desktop, ~150 on Mobile with the current font size settings.
-    // By pushing exact amounts, the 360-degree spread will naturally pack them without overlapping or gaps!
-    const idealCharCount = isMobile ? 200 : 240;
-    const ringItems = [];
-    const ringLabels = [];
-    let currentTotal = 0;
-    let index = 0;
 
-    while (currentTotal < idealCharCount) {
-        const baseIndex = index % ringLabelsBase.length;
-        const label = ringLabelsBase[baseIndex];
-        const sauce = ringItemsBase[baseIndex].sauce;
-        ringLabels.push(label);
-        ringItems.push({ id: `ring-item-${index}`, index: ringItemsBase[baseIndex].index, sauce });
-        currentTotal += label.length;
-        index++;
-    }
-
-    const ringGapUnits = 2; // Fixed gap between labels
-    const circumferenceUnits = isMobile ? 200 : 250; // Balanced value to provide a packed look without overlap
-    const ringTotalUnits = Math.max(currentTotal + (ringGapUnits * ringLabels.length), circumferenceUnits);
-
-    const ringOffsetsData = ringLabels.reduce((acc, label) => {
-        const center = acc.cursor + (label.length / 2);
+    const ringGapUnits = 3.5;
+    const ringLayout = ringLabels.reduce((acc, label) => {
+        const start = acc.cursor;
+        const center = start + (label.length / 2);
         return {
-            cursor: acc.cursor + label.length + ringGapUnits,
-            offsets: [...acc.offsets, (center / ringTotalUnits) * 100],
+            cursor: start + label.length + ringGapUnits,
+            starts: [...acc.starts, start],
+            centers: [...acc.centers, center],
         };
-    }, { cursor: 0, offsets: [] }).offsets;
+    }, { cursor: 0, starts: [], centers: [] });
 
-    const ringOffsets = ringOffsetsData.map(offset => `${offset}%`);
-    const baseRotation = 90 - (ringOffsetsData[0] * 3.6);
+    const ringTotalUnits = Math.max(ringLayout.cursor, 1);
+    const ringStartOffsetsData = ringLayout.starts.map(start => (start / ringTotalUnits) * 100);
+    const ringCenterOffsetsData = ringLayout.centers.map(center => (center / ringTotalUnits) * 100);
+    const ringOffsets = ringStartOffsetsData.map(offset => `${offset}%`);
+    const baseRotation = 90 - ((ringCenterOffsetsData[0] || 0) * 3.6);
 
     const clearPrevIndex = () => {
         if (transitionTimeout.current) {
@@ -120,12 +103,12 @@ export default function SaucePageOne({ initialData = [] }) {
         // Since we rotate the whole wheel, we can track the logical "top" index.
         const currentRingIdx = ringItems.findIndex((item, idx) => item.index === currentIndex);
 
-        const currentPos = ringOffsetsData[currentRingIdx] * 3.6;
+        const currentPos = ringCenterOffsetsData[currentRingIdx] * 3.6;
 
         // Find best target ring index by calculating smallest angular distance
         let bestDelta = 999;
         targetRingIndices.forEach(idx => {
-            const pos = ringOffsetsData[idx] * 3.6;
+            const pos = ringCenterOffsetsData[idx] * 3.6;
             let d = pos - currentPos;
             // Shortest path logic
             while (d > 180) d -= 360;
@@ -296,14 +279,14 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                                     return (
                                                         <text
-                                                            key={`${item.sauce._id}-ring`}
+                                                            key={item.id}
                                                             fill="white"
-                                                            textAnchor="middle"
+                                                            textAnchor="start"
                                                             className={`${isActive ? "opacity-100" : "opacity-85 hover:opacity-100"} sauce-circular-text`}
                                                             style={{
                                                                 fontFamily: "var(--font-peakers)",
                                                                 fontWeight: 700,
-                                                                letterSpacing: "0em",
+                                                                letterSpacing: "0.02em",
                                                                 textTransform: "uppercase",
                                                                 cursor: "pointer",
                                                                 pointerEvents: "auto",
