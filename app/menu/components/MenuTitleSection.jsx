@@ -88,30 +88,19 @@ export default function MenuTitleSection({
   const DEFAULT_NAVBAR = [
     { title: "BURGERS", link: "/menu" },
     { title: "WRAPS", link: "/menu/wraps" },
-    { title: "RICE BOWLS", link: "/menu/rice-bowls" },
-    { title: "SALAD BOWLS", link: "/menu/salad-bowls" },
     { title: "WINGS & TENDERS", link: "/menu/wings-and-tenders" },
-    { title: "PERI-PERI GRILL", link: "/menu/peri-peri-grilled-chicken" },
+    { title: "PERI-PERI GRILLED CHICKEN", link: "/menu/peri-peri-grilled-chicken" },
+    { title: "RICE & SALAD BOWLS", link: "/menu/rice-and-salad-bowls" },
     { title: "WHAT'S NEW", link: "/menu/whats-new" },
-    { title: "SHAKES", link: "/menu/shakes" },
-    { title: "VEG", link: "/menu/veg" },
-    { title: "SIDES & FRIES", link: "/menu/sides-and-fries" },
-    { title: "MEAL BOX", link: "/menu/meal-box" },
     { title: "KIDS", link: "/menu/kids" },
+    { title: "SIDES", link: "/menu/sides-and-fries" },
+    { title: "VEG", link: "/menu/veg" },
+    { title: "DRINKS & DESSERTS", link: "/menu/drinks-and-desserts" },
     { title: "LUNCH TIME DEALS", link: "/menu/lunch-time-deals" },
   ];
 
-  // Ensure all categories from the document are present, merging with Sanity data if available
-  const mergedNavbarData = useMemo(() => {
-    if (!initialNavbarData || initialNavbarData.length === 0) return DEFAULT_NAVBAR;
-
-    const existingTitles = new Set(initialNavbarData.map(item => item.title.toUpperCase()));
-    const missingItems = DEFAULT_NAVBAR.filter(item => !existingTitles.has(item.title.toUpperCase()));
-
-    return [...initialNavbarData, ...missingItems];
-  }, [initialNavbarData]);
-
-  const [navbarData] = useState(mergedNavbarData);
+  // Force the navbar to use strictly the 11 items defined above
+  const navbarData = DEFAULT_NAVBAR;
 
   const [carousel, setCarousel] = useState(() => {
     if (initialItems.length > 0) {
@@ -226,15 +215,13 @@ export default function MenuTitleSection({
                 if (title === "BURGERS") href = "/menu";
                 else if (title === "WRAPS") href = "/menu/wraps";
                 else if (href === "#" || !href || href.startsWith("#")) {
-                  if (title === "RICE BOWLS") href = "/menu/rice-bowls";
-                  else if (title === "SALAD BOWLS") href = "/menu/salad-bowls";
+                  if (title === "RICE & SALAD BOWLS" || title === "RICE BOWLS" || title === "SALAD BOWLS") href = "/menu/rice-and-salad-bowls";
                   else if (title === "WINGS & TENDERS") href = "/menu/wings-and-tenders";
-                  else if (title === "PERI-PERI GRILL" || title === "GRILLED") href = "/menu/peri-peri-grilled-chicken";
+                  else if (title === "PERI-PERI GRILLED CHICKEN" || title === "PERI-PERI GRILL" || title === "GRILLED") href = "/menu/peri-peri-grilled-chicken";
                   else if (title === "WHAT'S NEW") href = "/menu/whats-new";
-                  else if (title === "SHAKES" || title === "DRINKS") href = "/menu/shakes";
+                  else if (title === "DRINKS & DESSERTS" || title === "SHAKES" || title === "DRINKS") href = "/menu/drinks-and-desserts";
                   else if (title === "VEG") href = "/menu/veg";
-                  else if (title === "SIDES & FRIES" || title === "SIDES") href = "/menu/sides-and-fries";
-                  else if (title === "MEAL BOX") href = "/menu/meal-box";
+                  else if (title === "SIDES" || title === "SIDES & FRIES") href = "/menu/sides-and-fries";
                   else if (title === "KIDS") href = "/menu/kids";
                   else if (title === "LUNCH TIME DEALS") href = "/menu/lunch-time-deals";
                 }

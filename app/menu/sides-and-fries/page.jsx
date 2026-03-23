@@ -26,7 +26,7 @@ export default async function SidesAndFriesPage() {
         <GenericMenuPageClient 
             initialItems={initialItems} 
             initialNavbarData={navbarData} 
-            categoryName="SIDES & FRIES" 
+            categoryName="SIDES" 
         />
     );
 }

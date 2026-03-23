@@ -26,7 +26,7 @@ export default async function PeriPeriGrillPage() {
         <GenericMenuPageClient 
             initialItems={initialItems} 
             initialNavbarData={navbarData} 
-            categoryName="PERI-PERI GRILL" 
+            categoryName="PERI-PERI GRILLED CHICKEN" 
         />
     );
 }
