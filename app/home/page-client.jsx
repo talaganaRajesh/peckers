@@ -110,7 +110,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
           <div className="flex flex-col gap-2 md:gap-4">
             <h1
               className="text-white font-peakers text-[20vw] md:text-[11vw] lg:text-[10.5vw] leading-[0.9] font-bold tracking-[0.04em]"
-              style={{ textShadow: "0px 4px 30px rgba(0,0,0,0.9)" }}
+              style={{ textShadow: "none" }}
             >
               Seriously <br /> Good <br /> Chicken
             </h1>

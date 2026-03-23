@@ -60,7 +60,7 @@ export default function PersonDetails({ data = null }) {
 
         <div className="flex justify-start w-full">
           <a
-            href="#"
+            href="/the-journey"
             className="group inline-flex flex-col items-start text-white gap-[1vw] xl:gap-[.3vw] font-sans text-[3.5vw] sm:text-[2.5vw] md:text-[2.5vw] lg:text-[1.3vw] xl:text-[1.1vw] font-extralight"
             style={{ letterSpacing: "0.08em", width: "fit-content" }}
           >
