@@ -176,8 +176,17 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className={`absolute inset-0 w-full h-full object-cover object-center opacity-90 ${bgDissolveClass}`}
-                                        style={{ zIndex: 0 }}
+                                        className={`absolute inset-0 w-full h-full object-cover opacity-90 ${bgDissolveClass}`}
+                                        style={{
+                                            zIndex: 0,
+                                            transform: sauce.title?.toLowerCase().includes("mayonnaise")
+                                                ? "scale(1.1) translateX(-2%)"
+                                                : "scale(1)",
+                                            transformOrigin: "center center",
+                                            objectPosition: sauce.title?.toLowerCase().includes("mayonnaise")
+                                                ? "25% center"
+                                                : "center center",
+                                        }}
                                         priority={idx === 0}
                                     />
                                 )}
