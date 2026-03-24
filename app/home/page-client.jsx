@@ -11,9 +11,8 @@ const LatestNewsHeading = dynamic(() => import("./LatestNewsHeading"), { ssr: tr
 const LatestNewsCards = dynamic(() => import("./LatestNewsCards"), { ssr: true });
 const CaptionBelowNews = dynamic(() => import("./CaptionBelowNews"), { ssr: true });
 const PersonDetails = dynamic(() => import("./PersonDetails"), { ssr: true });
-const RatingSection = dynamic(() => import("./RatingSection"), { ssr: true });
-const RatingSectionCards = dynamic(() => import("./RatingSectionCards"), { ssr: true });
 const SignUpSection = dynamic(() => import("./SignUpSection"), { ssr: true });
+import GoogleReviews from "../components/GoogleReviews";
 
 const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocations, initialPersonDetails, initialReviews }) => {
   const [data, setData] = useState(initialHomepageData || {});
@@ -85,8 +84,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
 
       <PersonDetails data={initialPersonDetails} />
 
-      <RatingSection data={data?.ratingSection} />
-      <RatingSectionCards reviews={initialReviews} />
+      <GoogleReviews initialReviews={initialReviews} />
 
       <SignUpSection initialData={data?.signupSection} />
 
