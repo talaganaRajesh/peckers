@@ -2,7 +2,15 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaStar, FaGoogle, FaQuoteLeft } from "react-icons/fa";
+import { FaStar, FaGoogle, FaQuoteLeft, FaChevronRight } from "react-icons/fa";
+import { useInView } from "framer-motion";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.1 },
+  transition: { duration: 0.8, ease: "easeOut", delay },
+});
 
 const GoogleReviews = ({ initialReviews = [] }) => {
   const [reviews, setReviews] = useState(initialReviews);
@@ -86,24 +94,36 @@ const GoogleReviews = ({ initialReviews = [] }) => {
     return null; // Don't show the section if it fails
   }
 
-  // Duplicate reviews for infinite scroll effect if needed, but for now we'll do a simple carousel
+  const headingText = "What People Say";
+  const words = headingText.split(" ");
+
   return (
-    <section className="py-24 bg-black overflow-hidden relative" id="reviews">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-5xl md:text-7xl font-peakers text-white uppercase leading-none mb-6">
-              What People <span className="text-yellow-500">Say</span>
+    <section className="py-[10vw] md:py-[6vw] bg-black overflow-hidden relative" id="reviews">
+      <div className="w-full px-[5vw] md:px-[1.4vw] relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-[8vw] md:mb-[4vw] gap-8">
+          <div className="flex flex-col items-start text-left">
+            <h2
+              className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase leading-[1.2]"
+              style={{ fontFamily: "var(--font-peakers)" }}
+            >
+              {words.map((word, i) => (
+                <motion.span
+                  key={i}
+                  className={`inline-block mr-[2.5vw] md:mr-[0.6vw] ${word.toLowerCase() === "say" ? "text-yellow-500" : ""}`}
+                  {...fadeUp(i * 0.1)}
+                >
+                  {word}
+                </motion.span>
+              ))}
             </h2>
-            <p className="text-gray-400 text-lg max-w-xl font-sans font-light tracking-wide">
+            
+            <motion.p
+              className="font-sans mt-[4vw] md:mt-[0.5vw] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-[45vw] leading-tight"
+              {...fadeUp(0.4)}
+            >
               Real feedback from our community. Click any card to view on Google.
-            </p>
-          </motion.div>
+            </motion.p>
+          </div>
 
           <motion.a
             href="https://www.google.com/maps/search/Peckers+Chicken+Stevenage+Hitchin"
@@ -112,19 +132,19 @@ const GoogleReviews = ({ initialReviews = [] }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-5 bg-[#111] p-5 rounded-2xl border border-white/5 hover:bg-[#181818] transition-colors"
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex items-center gap-4 bg-[#111] p-4 md:p-5 rounded-2xl border border-white/10 hover:border-white/20 transition-all group backdrop-blur-sm self-start md:self-end"
           >
-            <div className="bg-yellow-500 p-3.5 rounded-xl">
-              <FaGoogle className="text-black text-2xl" />
+            <div className="bg-yellow-500 p-3 rounded-xl transition-transform group-hover:scale-110 duration-300">
+              <FaGoogle className="text-black text-xl" />
             </div>
             <div>
-              <div className="flex items-center gap-1 mb-1.5">
+              <div className="flex items-center gap-1 mb-1">
                 {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} className="text-yellow-500 text-sm" />
+                  <FaStar key={i} className="text-yellow-500 text-[10px] md:text-sm" />
                 ))}
               </div>
-              <p className="text-white font-bold text-lg leading-none tracking-tight">Excellent on Google</p>
+              <p className="text-white font-bold text-sm md:text-lg leading-none tracking-tight">Excellent on Google</p>
             </div>
           </motion.a>
         </div>
@@ -144,41 +164,52 @@ const GoogleReviews = ({ initialReviews = [] }) => {
                 href={`https://search.google.com/local/reviews?placeid=${review.placeId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-w-[320px] md:min-w-[400px] h-full bg-[#0A0A0A] p-8 md:p-10 rounded-[2rem] border border-white/10 flex flex-col gap-6 snap-start transition-all duration-300 hover:border-white/20 hover:bg-[#0F0F0F]"
+                className="min-w-[300px] md:min-w-[420px] h-full bg-[#0A0A0A] p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] border border-white/5 flex flex-col gap-5 md:gap-6 snap-start transition-all duration-500 hover:border-white/20 hover:bg-[#111] group relative overflow-hidden"
               >
-                <div className="flex gap-5 items-center">
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="flex gap-4 items-center relative z-10">
                   <div className="relative">
                     <img
                       src={review.profile_photo_url}
                       alt={review.author_name}
-                      className="w-14 h-14 rounded-full object-cover grayscale-[20%] border border-white/10"
+                      className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500 border border-white/10"
                     />
-                    <div className="absolute -bottom-1 -right-1 bg-yellow-500 rounded-full p-1 border-2 border-[#0A0A0A]">
-                      <FaGoogle className="text-[10px] text-black" />
+                    <div className="absolute -bottom-1 -right-1 bg-yellow-500 rounded-full p-1 border-2 border-[#0A0A0A] shadow-lg">
+                      <FaGoogle className="text-[8px] md:text-[10px] text-black" />
                     </div>
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-lg leading-tight uppercase font-peakers tracking-wider">{review.author_name}</h4>
-                    <p className="text-gray-500 text-sm font-sans tracking-wide">{review.relative_time_description}</p>
+                    <h4 className="text-white font-bold text-base md:text-lg leading-tight uppercase tracking-wider" style={{ fontFamily: "var(--font-peakers)" }}>
+                      {review.author_name}
+                    </h4>
+                    <p className="text-gray-500 text-[10px] md:text-xs font-sans tracking-[0.1em] uppercase mt-0.5">{review.relative_time_description}</p>
                   </div>
                 </div>
 
-                <div className="flex gap-1">
+                <div className="flex gap-1 relative z-10">
                   {[...Array(5)].map((_, i) => (
                     <FaStar
                       key={i}
-                      className={i < Math.round(review.rating) ? "text-yellow-500 text-sm" : "text-gray-800 text-sm"}
+                      className={`${i < Math.round(review.rating) ? "text-yellow-500" : "text-white/10"} text-[10px] md:text-xs`}
                     />
                   ))}
                 </div>
 
-                <p className="text-gray-300 text-base md:text-lg leading-relaxed font-light tracking-wide line-clamp-5 italic">
-                  "{review.text}"
+                <p className="text-white/80 text-sm md:text-base leading-relaxed font-light tracking-wide line-clamp-5 italic relative z-10 h-[6.5rem]">
+                   "{review.text || "No comment provided."}"
                 </p>
 
-                <div className="mt-auto pt-6 border-t border-white/5 flex justify-between items-center">
-                   <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-bold">At {review.locationName}</span>
-                   <span className="text-[10px] uppercase tracking-[0.1em] text-yellow-500/50 font-bold">View Review →</span>
+                <div className="mt-auto pt-5 border-t border-white/5 flex justify-between items-center relative z-10">
+                   <div className="flex flex-col">
+                     <span className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] text-white/30 font-bold mb-1">Posted at</span>
+                     <span className="text-[9px] md:text-[10px] uppercase tracking-[0.1em] text-white/70 font-bold">{review.locationName}</span>
+                   </div>
+                   <div className="flex items-center gap-2 text-yellow-500 font-bold group-hover:translate-x-1 transition-transform duration-300">
+                     <span className="text-[9px] md:text-[10px] uppercase tracking-[0.1em]">View Review</span>
+                     <FaChevronRight className="text-[8px]" />
+                   </div>
                 </div>
               </motion.a>
             ))}
