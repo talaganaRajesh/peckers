@@ -159,7 +159,8 @@ export default function SaucePageOne({ initialData = [] }) {
                             : "";
 
                     const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
-                    const bgDissolveClass = isCurrent && isTransitioning ? "sauce-bg-dissolve-in" : "";
+                    const bgDissolveClass = isCurrent && isTransitioning ? +
+                    "sauce-bg-dissolve-in" : "";
                     const wrapperZ = isCurrent ? "z-20" : isPrev ? "z-10" : "z-0";
 
                     return (
@@ -176,7 +177,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className={`absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-90 ${bgDissolveClass}`}
+                                        className={`absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-90 hidden md:block ${bgDissolveClass}`}
                                         style={{
                                             zIndex: 0,
                                             transform: sauce.title?.toLowerCase().includes("mayonnaise")
@@ -258,8 +259,8 @@ export default function SaucePageOne({ initialData = [] }) {
                                 <div
                                     className={`
                                         fixed md:absolute left-1/2 -translate-x-1/2
-                                        top-[18rem] sm:top-[14.4rem] md:top-[14.2rem] lg:top-[14.5rem] xl:top-[14.8rem]
-                                        w-[165vw] h-[165vw]
+                                        top-[15.2rem] sm:top-[14.4rem] md:top-[14.2rem] lg:top-[14.5rem] xl:top-[14.8rem]
+                                        w-[150vw] h-[150vw]
                                         sm:w-[146vw] sm:h-[146vw]
                                         md:w-[118vw] md:h-[118vw]
                                         lg:w-[98vw] lg:h-[98vw] 
@@ -302,7 +303,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                                     textTransform: "uppercase",
                                                                     cursor: "pointer",
                                                                     pointerEvents: "auto",
-                                                                    transform: isDesktop ? "" : "translateY(4px)",
+                                                                    transform: isDesktop ? "" : "translateY(5px)",
                                                                 }}
                                                                 onClick={() => transitionToIndex(item.index)}
                                                             >
@@ -327,7 +328,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                     {/* SAUCE IMAGE — cropped circle */}
                                     {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 mt-2 md:mt-6 top-[48%] md:top-1/2 z-10 h-[114%] w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full">
+                                        <div className="absolute left-1/2 mt-2 md:mt-6 top-[48%] md:top-1/2 z-10 h-[108%] w-[108%] md:h-[114%] md:w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full">
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage)
