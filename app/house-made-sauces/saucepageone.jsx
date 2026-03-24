@@ -176,7 +176,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
-                                        className={`absolute inset-0 w-full h-full object-cover opacity-90 ${bgDissolveClass}`}
+                                        className={`absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-90 ${bgDissolveClass}`}
                                         style={{
                                             zIndex: 0,
                                             transform: sauce.title?.toLowerCase().includes("mayonnaise")
@@ -258,11 +258,11 @@ export default function SaucePageOne({ initialData = [] }) {
                                 <div
                                     className={`
                                         fixed md:absolute left-1/2 -translate-x-1/2
-                                        top-[13.3rem] sm:top-[13.8rem] md:top-[14.2rem] lg:top-[14.5rem] xl:top-[14.8rem]
+                                        top-[18rem] sm:top-[14.4rem] md:top-[14.2rem] lg:top-[14.5rem] xl:top-[14.8rem]
                                         w-[165vw] h-[165vw]
                                         sm:w-[146vw] sm:h-[146vw]
                                         md:w-[118vw] md:h-[118vw]
-                                        lg:w-[98vw] lg:h-[98vw]
+                                        lg:w-[98vw] lg:h-[98vw] 
                                         xl:w-[84vw] xl:h-[84vw]
                                         flex items-center justify-center z-10 pointer-events-none
                                     `}
@@ -302,6 +302,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                                     textTransform: "uppercase",
                                                                     cursor: "pointer",
                                                                     pointerEvents: "auto",
+                                                                    transform: isDesktop ? "" : "translateY(4px)",
                                                                 }}
                                                                 onClick={() => transitionToIndex(item.index)}
                                                             >
@@ -326,7 +327,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                     {/* SAUCE IMAGE — cropped circle */}
                                     {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 mt-6 top-1/2 z-10 h-[114%] w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full">
+                                        <div className="absolute left-1/2 mt-2 md:mt-6 top-[48%] md:top-1/2 z-10 h-[114%] w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full">
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage)
@@ -360,10 +361,10 @@ export default function SaucePageOne({ initialData = [] }) {
               FIX: Realigned the bottom offsets so they perfectly flank the center 
               of the dynamically shifting, partially-visible bowl above.
             */}
-            <div className="absolute top-[50%] sm:top-[55%] md:top-auto bottom-auto md:bottom-[16%] lg:bottom-[22%] xl:bottom-[25%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-30 pointer-events-none">
+            <div className="absolute top-[58%] sm:top-[60%] md:top-auto bottom-auto md:bottom-[16%] lg:bottom-[22%] xl:bottom-[25%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
                 <button
                     onClick={prevSlide}
-                    className="group pointer-events-auto transition-all duration-300 active:scale-95"
+                    className="group pointer-events-auto bg-black/30 hover:bg-black/50 rounded-full p-1 transition-all duration-300 active:scale-95"
                     aria-label="Previous sauce"
                 >
                     <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
