@@ -181,7 +181,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         style={{
                                             zIndex: 0,
                                             transform: sauce.title?.toLowerCase().includes("mayonnaise")
-                                                ? "scale(1.1) translateX(-2%)"
+                                                ? "scale(1.1) translateX(-5%)"
                                                 : "scale(1)",
                                             transformOrigin: "center center",
                                             objectPosition: sauce.title?.toLowerCase().includes("mayonnaise")

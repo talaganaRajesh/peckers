@@ -33,6 +33,82 @@ export default function Navbar({ preloadedSettings = null }) {
     fetchSettings();
   }, [settings]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const setupSignupModal = () => {
+      const modal = document.getElementById("sbx_modal");
+      if (!modal) return false;
+
+      modal.setAttribute("data-backdrop", "true");
+      modal.setAttribute("data-keyboard", "true");
+
+      try {
+        const $modal = window.jQuery && window.jQuery(modal);
+        if ($modal && $modal.data("bs.modal")) {
+          const bsModal = $modal.data("bs.modal");
+          bsModal.options.backdrop = true;
+          bsModal.options.keyboard = true;
+
+          // Keep the form inputs interacting, but allow the close button and outside click.
+          modal.addEventListener("click", (event) => {
+            const dialog = modal.querySelector(".modal-dialog");
+            if (dialog && dialog.contains(event.target)) {
+              event.stopPropagation();
+            }
+          });
+        }
+      } catch (error) {
+        console.error("TalkBox modal fix failed:", error);
+      }
+
+      return true;
+    };
+
+    const intervalId = window.setInterval(() => {
+      if (setupSignupModal()) {
+        window.clearInterval(intervalId);
+      }
+    }, 200);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const openSbxModal = () => {
+      const modal = document.getElementById("sbx_modal");
+      if (!modal) return;
+      try {
+        const btn = document.querySelector("#sbx_button .bulletproof_button");
+        const $modal = window.jQuery && window.jQuery(modal);
+        if ($modal && $modal.length && $modal.data("bs.modal")) {
+          $modal.sbx_modal("show");
+          return;
+        }
+        if (btn && typeof btn.click === "function") {
+          btn.click();
+          return;
+        }
+      } catch (error) {
+        console.error("Error opening sbx modal:", error);
+      }
+    };
+
+    const clickHandler = (event) => {
+      const target = event.target;
+      if (!target.closest("#sbx_button") && !target.closest("#sbx_modal")) return;
+      if (target.closest("#sbx_button")) {
+        event.preventDefault();
+        openSbxModal();
+      }
+    };
+
+    document.addEventListener("click", clickHandler, true);
+    return () => document.removeEventListener("click", clickHandler, true);
+  }, []);
+
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : null;
 
   return (
@@ -198,6 +274,21 @@ export default function Navbar({ preloadedSettings = null }) {
                 height: 100% !important;
                 opacity: 0 !important;
                 cursor: pointer !important;
+              }
+
+              #sbx_modal iframe {
+                pointer-events: auto !important;
+                min-height: 560px !important;
+                min-width: 360px !important;
+              }
+
+              #sbx_modal_wrapper,
+              #sbx_modal {
+                z-index: 10001 !important;
+              }
+
+              .modal-backdrop {
+                z-index: 10000 !important;
               }
             `}</style>
           </div>
