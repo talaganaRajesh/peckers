@@ -53,7 +53,7 @@ const SectionItem = memo(({ section, index, num }) => {
                   loop
                   playsInline
                   className="w-full h-full object-cover"
-                  style={{ filter: "brightness(0.9) grayscale(1)" }}
+                  style={{ filter: "brightness(0.9)" }}
                 />
               )
             ) : (
@@ -64,7 +64,7 @@ const SectionItem = memo(({ section, index, num }) => {
                   alt={section.title || `Section ${num}`}
                   fill
                   className="object-cover object-center"
-                  style={{ filter: "brightness(0.7) grayscale(1)" }}
+                  style={{ filter: "brightness(0.7)" }}
                   priority={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
                   sizes="(max-width: 768px) 100vw, 65vw"

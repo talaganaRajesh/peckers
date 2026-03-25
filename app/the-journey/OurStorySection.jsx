@@ -121,7 +121,7 @@ export default function OurStorySection({ initialData = null }) {
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
-          <div className="w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[56vh] md:h-[60vh] lg:h-[67vh]">
+          <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[56vh] md:h-[60vh] lg:h-[67vh]">
             <div className="h-full min-h-0 flex flex-col">
               <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.2vw] lg:text-[48px] leading-[1.05] lg:leading-[1.2] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent whitespace-nowrap overflow-hidden text-ellipsis">
                 {fixedHeading}
@@ -161,6 +161,15 @@ export default function OurStorySection({ initialData = null }) {
                   })()}
                 </motion.div>
               </AnimatePresence>
+ 
+               <button
+                 onClick={nextSlide}
+                 className="flex absolute right-1 md:right-4 top-[50%] -translate-y-1/2 lg:right-4 z-50 items-center justify-center w-8 h-8 md:w-14 md:h-14 border border-white/10 rounded-full bg-black/40 backdrop-blur-lg hover:bg-white hover:text-black transition-all duration-300 active:scale-75"
+               >
+                 <svg width="16" height="16" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                   <path d="M5 12h14M12 5l7 7-7 7" />
+                 </svg>
+               </button>
 
               <div className="flex items-center justify-start gap-1 lg:gap-2 mt-4 lg:mt-3 pb-0 lg:pb-1 shrink-0">
                 {slides.map((_, i) => (
@@ -211,14 +220,6 @@ export default function OurStorySection({ initialData = null }) {
         >
           <svg width="16" height="16" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          onClick={nextSlide}
-          className="flex absolute right-1 md:right-4 top-[50%] -translate-y-1/2 z-50 items-center justify-center w-8 h-8 md:w-14 md:h-14 border border-white/10 rounded-full bg-black/40 backdrop-blur-lg hover:bg-white hover:text-black transition-all duration-300 active:scale-75"
-        >
-          <svg width="16" height="16" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
       </div>
