@@ -157,11 +157,11 @@ export default function Navbar({ preloadedSettings = null }) {
       {/* White Strip (Conditionally shown on home page) */}
       {(pathname === "/" || pathname === "/home") && (
         <div className="absolute top-[100%] left-0 w-full h-auto md:h-[4.5vw] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0">
-          <div className="text-center text-black uppercase font-bold italic w-full px-2" style={{ fontFamily: "var(--font-peakers)" }}>
-            <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.1vw] tracking-normal md:tracking-wide leading-tight font-extrabold md:font-bold">
+          <div className="text-center text-black uppercase font-black italic w-full px-2" style={{ fontFamily: "var(--font-peakers)" }}>
+            <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.1vw] tracking-normal md:tracking-wide leading-tight font-black">
               UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
               <span className="relative inline-block align-baseline">
-                <span className="text-red-600 font-extrabold md:font-bold">SIGN UP</span>
+                <span className="text-red-600 font-black">SIGN UP</span>
                 <div id="sbx_button" className="talkbox-signup-hitbox" aria-label="Sign up" />
               </span>{" "}
               FOR EXCLUSIVE REWARDS.
