@@ -1,7 +1,6 @@
-import { client } from "../../../sanity/lib/client";
+import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
-export const revalidate = 0;
 
 export const metadata = {
   title: "Peckers Wraps Menu | Halal Chicken Wraps Stevenage & Hitchin",
@@ -9,15 +8,19 @@ export const metadata = {
 };
 
 export default async function WrapsPage() {
-  const data = await client.fetch(`*[_type == "menuPage"][0] {
+  const { data } = await sanityFetch({
+    query: `*[_type == "menuPage"][0] {
     wrapsCarousel[] {
       name, image, boost, ingredients, calories, protein, carbs, fats, energy, allergens, spiceLevel, availabilityText
     }
-  }`);
+  }`
+  });
 
-  const navbarData = await client.fetch(`*[_type == "menuNavbar"][0].menuItems[] {
+  const { data: navbarData } = await sanityFetch({
+    query: `*[_type == "menuNavbar"][0].menuItems[] {
     title, link, isActive
-  }`);
+  }`
+  });
 
   const finalWraps = (data?.wrapsCarousel || []).map(item => ({
     ...item,

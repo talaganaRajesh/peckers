@@ -1,5 +1,5 @@
 
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 import TheJourneyPageClient from "./page-client";
 
 export const metadata = {
@@ -80,7 +80,8 @@ export default async function TheJourneyPage() {
 
     try {
         // Fetch all story related data on the server with a timeout protection
-        const fetchedData = await client.fetch(`{
+        const { data: fetchedData } = await sanityFetch({
+            query: `{
             "pageData": *[_type == "ourStoryPage"][0]{
                 heading,
                 content,
@@ -118,8 +119,7 @@ export default async function TheJourneyPage() {
                 mobileRoadmap
             },
             "bottomTimeline": *[_type == "timeline"] | order(order asc)
-        }`, {}, {
-            next: { revalidate: 60 } 
+        }`
         });
 
         if (fetchedData) {

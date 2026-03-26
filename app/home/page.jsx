@@ -1,4 +1,4 @@
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 import HomePageClient from "./page-client";
 import { fetchGoogleReviews } from "../lib/google-reviews";
 
@@ -20,7 +20,8 @@ export const metadata = {
 
 export default async function HomePage() {
   // Fetch homepage data on the server
-  const homepageData = await client.fetch(`*[_type == "homepage"][0]{
+  const { data: homepageData } = await sanityFetch({
+    query: `*[_type == "homepage"][0]{
         "videoUrl": heroVideo.asset->url,
         "posterUrl": heroPoster.asset->url,
         heroTitle,
@@ -41,19 +42,23 @@ export default async function HomePage() {
             }
           }
         }
-    }`);
+    }`
+  });
 
   // Fetch slider cards data on the server (for LatestNewsCards)
-  const sliderCards = await client.fetch(`*[_type == "sliderCard"] | order(order asc) {
+  const { data: sliderCards } = await sanityFetch({
+    query: `*[_type == "sliderCard"] | order(order asc) {
     _id,
     title,
     image,
     order,
     caption
-  }`);
+  }`
+  });
 
   // Fetch locations data on the server (for CoopImages)
-  const locationsList = await client.fetch(`*[_type == "location"]{
+  const { data: locationsList } = await sanityFetch({
+    query: `*[_type == "location"]{
     _id,
     name,
     image {
@@ -62,15 +67,18 @@ export default async function HomePage() {
         url
       }
     }
-  }`);
+  }`
+  });
 
   // Fetch person details data on the server
-  const personDetails = await client.fetch(`*[_type == "homepagePersonDetails"][0] {
+  const { data: personDetails } = await sanityFetch({
+    query: `*[_type == "homepagePersonDetails"][0] {
     heading,
     description,
     buttonText,
     "imageUrl": image.asset->url
-  }`);
+  }`
+  });
 
   // Fetch reviews data from Google
   const reviews = await fetchGoogleReviews();

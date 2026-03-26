@@ -3,7 +3,7 @@ import "./globals.css";
 import { Share_Tech } from "next/font/google";
 import localFont from "next/font/local";
 import ClientWrapper from "./ClientWrapper";
-import { client } from "../sanity/lib/client";
+import { sanityFetch, SanityLive } from "../sanity/lib/live";
 
 const peakersFont = localFont({
   src: "./fonts/Supernett-Cn-Regular.woff2",
@@ -95,13 +95,14 @@ export default async function RootLayout({ children }) {
   let footerData = null;
 
   try {
-    siteSettings = await client.fetch(`*[_type == "siteSettings"][0]`);
+    const { data } = await sanityFetch({ query: `*[_type == "siteSettings"][0]` });
+    siteSettings = data;
   } catch (error) {
     console.error("Failed to load site settings:", error);
   }
 
   try {
-    footerData = await client.fetch(`*[_type == "footer"][0] {
+    const { data } = await sanityFetch({ query: `*[_type == "footer"][0] {
       logo,
       tagline,
       socialLinks,
@@ -110,7 +111,8 @@ export default async function RootLayout({ children }) {
       legalLinks,
       copyright,
       bottomLogo
-    }`);
+    }` });
+    footerData = data;
   } catch (error) {
     console.error("Failed to load footer data:", error);
   }
@@ -145,6 +147,7 @@ export default async function RootLayout({ children }) {
         <ClientWrapper preloadedSettings={siteSettings} preloadedFooter={footerData}>
           {children}
         </ClientWrapper>
+        <SanityLive />
       </body>
     </html>
   );

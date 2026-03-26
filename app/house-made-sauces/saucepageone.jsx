@@ -160,7 +160,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                     const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
                     const bgDissolveClass = isCurrent && isTransitioning ? +
-                    "sauce-bg-dissolve-in" : "";
+                        "sauce-bg-dissolve-in" : "";
                     const wrapperZ = isCurrent ? "z-20" : isPrev ? "z-10" : "z-0";
 
                     return (
@@ -194,7 +194,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                                 {/* TEXT SECTION */}
                                 <div
-                                    className={`absolute top-[2.9rem] sm:top-[3rem] md:top-[3.2rem] lg:top-[3.3rem] xl:top-[3.4rem] left-1/2 -translate-x-1/2 text-center text-white w-[95%] sm:w-[90%] md:w-[65%] lg:w-[55%] xl:w-[48%] z-20`}
+                                    className={`absolute top-[1.2rem] sm:top-[1.4rem] md:top-[1rem] lg:top-[0rem] xl:top-[0rem] left-1/2 -translate-x-1/2 text-center text-white w-[95%] sm:w-[90%] md:w-[65%] lg:w-[55%] xl:w-[48%] z-20`}
                                 >
                                     {/* TITLE */}
                                     <h1
@@ -259,7 +259,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 <div
                                     className={`
                                         fixed md:absolute left-1/2 -translate-x-1/2
-                                        top-[15.2rem] sm:top-[14.4rem] md:top-[14.2rem] lg:top-[14.5rem] xl:top-[14.8rem]
+                                        top-[15.2rem] sm:top-[14.4rem] md:top-[14.2rem] lg:top-[11.5rem] xl:top-[10.2rem]
                                         w-[150vw] h-[150vw]
                                         sm:w-[146vw] sm:h-[146vw]
                                         md:w-[118vw] md:h-[118vw]

@@ -1,5 +1,5 @@
 import SaucesPageClient from "./page-client";
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
     title: "House-Made Sauces | Peckers Chicken - Artisan Dips & Flavors",
@@ -16,7 +16,9 @@ export const metadata = {
 };
 
 export default async function SaucesPage() {
-    const saucesData = await client.fetch(`*[_type == "saucePage"] | order(_createdAt asc)`);
+    const { data: saucesData } = await sanityFetch({
+        query: `*[_type == "saucePage"] | order(_createdAt asc)`
+    });
 
     return <SaucesPageClient initialSaucesData={saucesData} />;
 }

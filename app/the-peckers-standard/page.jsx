@@ -1,4 +1,4 @@
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 import UniquenessPageClient from "./page-client";
 
 export const metadata = {
@@ -17,13 +17,15 @@ export const metadata = {
 
 export default async function UniquenessPage() {
     // Fetch all uniqueness related data on the server
-    const data = await client.fetch(`{
+    const { data } = await sanityFetch({
+        query: `{
         "landingData": *[_type == "uniquenessLanding"][0],
         "sectionsData": *[_type == "uniquenessSubSection"][0].sections[] {
             ...,
             "videoUrl": video.asset->url
         }
-    }`);
+    }`
+    });
 
     return <UniquenessPageClient initialData={data} />;
 }

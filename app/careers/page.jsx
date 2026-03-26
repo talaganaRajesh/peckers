@@ -3,7 +3,7 @@ import CareersLandingPage from "./CareersLandingPage";
 import CrewPage from "./CrewPage";
 import RolesWithPeckers from "./RolesWithPeckers";
 import ApplyDetailsPage from "./ApplyDetailsPage";
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
     title: "Careers | Join the Peckers Crew - Seriously Good Chicken",
@@ -14,7 +14,8 @@ export default async function CareersPage() {
     let careersData = null;
 
     try {
-        careersData = await client.fetch(`*[_type == "crewPage"][0]{
+        const { data } = await sanityFetch({
+            query: `*[_type == "crewPage"][0]{
             tagline,
             landingHeading1,
             landingHeading2,
@@ -36,9 +37,9 @@ export default async function CareersPage() {
             },
             applyTitle,
             applySubtitle
-        }`, {}, {
-            next: { revalidate: 60 }
+        }`
         });
+        careersData = data;
     } catch (error) {
         console.error("Sanity fetch failed on Careers page:", error);
     }

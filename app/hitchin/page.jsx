@@ -1,5 +1,5 @@
 import { LocationsPageContent } from "./LocationsPageContent";
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
     title: "Peckers Hitchin | Best Halal Chicken Takeaway & Restaurant in Hitchin",
@@ -27,7 +27,10 @@ export default async function LocationPage() {
         "posterUrl": heroPoster.asset->url,
         heroVideoUrl
     }`;
-    const data = await client.fetch(query, { location });
+    const { data } = await sanityFetch({
+        query: query,
+        params: { location }
+    });
 
     return <LocationsPageContent location={location} initialData={data} />;
 }

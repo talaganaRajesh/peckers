@@ -1,5 +1,5 @@
 import { LocationsPageContent } from "../hitchin/LocationsPageContent";
-import { client } from "../../sanity/lib/client";
+import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
     title: "Peckers Stevenage | Best Halal Chicken & Peri Peri in Stevenage",
@@ -28,7 +28,10 @@ export default async function StevenagePage() {
         "posterUrl": heroPoster.asset->url,
         heroVideoUrl
     }`;
-    const data = await client.fetch(query, { location });
+    const { data } = await sanityFetch({
+        query: query,
+        params: { location }
+    });
 
     return <LocationsPageContent location={location} initialData={data} />;
 }
