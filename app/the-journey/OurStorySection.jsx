@@ -89,7 +89,7 @@ export default function OurStorySection({ initialData = null }) {
     if (displayImages.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentSubSlide((prev) => (prev + 1) % displayImages.length);
-    }, 3000); // 3 seconds per internal image
+    }, 25000); // 5 seconds per internal image
     return () => clearInterval(timer);
   }, [data, currentSlide, displayImages.length]);
 

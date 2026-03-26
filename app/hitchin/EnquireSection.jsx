@@ -15,13 +15,26 @@ export default function EnquiriesSection({ location }) {
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    if (name === "phone") {
+      // Only allow digits and max 10 characters
+      const digitsOnly = value.replace(/\D/g, "");
+      if (digitsOnly.length <= 10) {
+        setFormData((prev) => ({ ...prev, [name]: digitsOnly }));
+      }
+      return;
+    }
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
       setError("Please provide your name and phone number.");
+      return;
+    }
+    if (formData.phone.length !== 10) {
+      setError("Please enter a valid 10-digit phone number.");
       return;
     }
 

@@ -102,12 +102,12 @@ const SectionItem = memo(({ section, index, num }) => {
             data-lenis-prevent
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
-              <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] md:leading-[1.8vw] mb-[2vw] md:mb-[1vw]">
+              <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] md:leading-[1.8vw] mb-[2vw] md:mb-[1vw]">
                 {section.previewText}
               </p>
 
               {section.expandedText && (
-                <p className="text-[#9CA3AF] font-normal w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] md:leading-[1.8vw]">
+                <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] md:leading-[1.8vw]">
                   {section.expandedText}
                 </p>
               )}

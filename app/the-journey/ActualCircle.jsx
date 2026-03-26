@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useTransform } from 'framer-motion';
 
-export default function PeckersTimeline({ initialData = null, scrollProgress }) {
+export default function PeckersTimeline({ initialData = null }) {
     const timelineData = initialData?.timeline || [];
     const [isDesktop, setIsDesktop] = useState(false);
 
@@ -13,21 +13,6 @@ export default function PeckersTimeline({ initialData = null, scrollProgress }) 
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
-
-    // Individual card reveal transforms
-    const card1Opacity = useTransform(scrollProgress || { get: () => 1 }, [0, 0.1], [0, 1]);
-    const card2Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.08, 0.22], [0, 1]);
-    const card3Opacity = useTransform(scrollProgress || { get: () => 1 }, [0.18, 0.35], [0, 1]);
-
-    const card1Y = useTransform(scrollProgress || { get: () => 0 }, [0, 0.1], [30, 0]);
-    const card2Y = useTransform(scrollProgress || { get: () => 0 }, [0.08, 0.22], [30, 0]);
-    const card3Y = useTransform(scrollProgress || { get: () => 0 }, [0.18, 0.35], [30, 0]);
-
-    const cardsReveal = [
-        { opacity: card1Opacity, y: card1Y },
-        { opacity: card2Opacity, y: card2Y },
-        { opacity: card3Opacity, y: card3Y }
-    ];
 
     if (timelineData.length === 0) return null;
 
@@ -82,9 +67,11 @@ export default function PeckersTimeline({ initialData = null, scrollProgress }) 
                         return (
                             <motion.div
                                 key={index}
+                                initial={getInitial(index)}
+                                whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotateX: 0, rotateY: 0, rotate: 0, filter: "blur(0px)" }}
+                                viewport={{ once: true, margin: "-10%" }}
+                                transition={{ duration: 0.6, delay: 0.4 + index * 0.2, ease: "easeOut" }}
                                 style={{
-                                    opacity: cardsReveal[index]?.opacity,
-                                    y: cardsReveal[index]?.y,
                                     ...(isHighlighted
                                         ? {
                                             boxShadow: "0 0 25px rgba(234,179,8,0.4), 0 0 50px rgba(234,179,8,0.15)",
