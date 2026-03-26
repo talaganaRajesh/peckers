@@ -104,7 +104,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         initial={{ width: 0, opacity: 0.95 }}
                                         whileInView={{ width: 1440, opacity: 1 }}
                                         viewport={{ once: true, amount: 0.15 }}
-                                        transition={{ duration: 1.25, ease: "easeInOut" }}
+                                        transition={{ duration: 3.5, ease: "easeInOut" }}
                                         y="209.5" height="6.75" fill="#FFD700"
                                     />
                                 </g>
@@ -115,7 +115,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         initial={{ scaleY: 0 }}
                                         whileInView={{ scaleY: 1 }}
                                         viewport={{ once: true, amount: 0.15 }}
-                                        transition={{ duration: 0.65, delay: 0.18, ease: "easeOut" }}
+                                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
                                         style={{ originY: 0 }}
                                         x="308.829" y="228" width="3.34212" height="53.4739" fill="#FFD700"
                                     />
@@ -124,7 +124,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
                                     viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 0.65, delay: 0.12, ease: "backOut" }}
+                                    transition={{ duration: 1.2, delay: 0.3, ease: "backOut" }}
                                     style={{ transformOrigin: "310px 213px" }}
                                     filter="url(#filter2_dd_0_1)"
                                 >
@@ -138,7 +138,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         initial={{ scaleY: 0 }}
                                         whileInView={{ scaleY: 1 }}
                                         viewport={{ once: true, amount: 0.15 }}
-                                        transition={{ duration: 0.65, delay: 0.34, ease: "easeOut" }}
+                                        transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
                                         style={{ originY: "218px" }}
                                         x="733" y="144" width="4" height="74" fill="#FFD700"
                                     />
@@ -147,7 +147,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
                                     viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 0.65, delay: 0.28, ease: "backOut" }}
+                                    transition={{ duration: 1.2, delay: 1.0, ease: "backOut" }}
                                     style={{ transformOrigin: "735px 213px" }}
                                     filter="url(#filter4_dd_0_1)"
                                 >
@@ -161,7 +161,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         initial={{ scaleY: 0 }}
                                         whileInView={{ scaleY: 1 }}
                                         viewport={{ once: true, amount: 0.15 }}
-                                        transition={{ duration: 0.65, delay: 0.5, ease: "easeOut" }}
+                                        transition={{ duration: 1.5, delay: 2.0, ease: "easeOut" }}
                                         style={{ originY: 0 }}
                                         x="1163" y="228" width="3.34212" height="53.4739" fill="#FFD700"
                                     />
@@ -170,7 +170,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     initial={{ scale: 0, opacity: 0 }}
                                     whileInView={{ scale: 1, opacity: 1 }}
                                     viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 0.65, delay: 0.44, ease: "backOut" }}
+                                    transition={{ duration: 1.2, delay: 1.8, ease: "backOut" }}
                                     style={{ transformOrigin: "1164px 213px" }}
                                     filter="url(#filter6_dd_0_1)"
                                 >
@@ -276,7 +276,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     initial={{ opacity: 0, scale: 0, y: -30 }}
                                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                     viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 0.7, delay: 0.22, type: "spring", stiffness: 110 }}
+                                    transition={{ duration: 1.5, delay: 0.8, type: "spring", stiffness: 110 }}
                                     style={{ transformOrigin: "top center" }}
                                     className="absolute left-[21.5%] top-[62%] -translate-x-1/2 z-20 w-[18vw] h-[11vw] rounded-[.7vw] border  border-[#FFD700]/60 pl-[0.8vw] pr-[2vw] py-[2vw] flex flex-col items-start gap-[0vw] bg-black/95 text-left"
                                 >
@@ -295,7 +295,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     initial={{ opacity: 0, scale: 0, y: 30 }}
                                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                     viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 0.7, delay: 0.36, type: "spring", stiffness: 110 }}
+                                    transition={{ duration: 1.5, delay: 1.5, type: "spring", stiffness: 110 }}
                                     style={{ transformOrigin: "bottom center" }}
                                     className="absolute left-[51%] bottom-[65%] -translate-x-1/2 z-20 w-[18vw] h-[11vw] rounded-[.7vw] border border-[#FFD700]/60 pl-[0.8vw] pr-[2vw] py-[2vw] flex flex-col items-start gap-[0vw] bg-black/95 text-left"
                                 >
@@ -313,7 +313,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 initial={{ opacity: 0, scale: 0, y: -30 }}
                                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.15 }}
-                                transition={{ duration: 0.7, delay: 0.5, type: "spring", stiffness: 110 }}
+                                transition={{ duration: 1.5, delay: 2.2, type: "spring", stiffness: 110 }}
                                 style={{ transformOrigin: "top center" }}
                                 className="absolute left-[80.8%] top-[62%] -translate-x-1/2 z-20 w-[17.5vw] rounded-[.7vw] border border-dashed border-[#FFD700]/60 px-[2vw] py-[1.5vw] flex flex-col items-center gap-[.8vw] bg-black/95"
                             >

@@ -34,7 +34,7 @@ export default function PeckersTimeline({ initialData = null }) {
                     initial={{ scaleX: 0, opacity: 0.35 }}
                     whileInView={{ scaleX: 1, opacity: 1 }}
                     viewport={{ once: true, margin: "-20%" }}
-                    transition={{ duration: 1.8, ease: "easeOut" }}
+                    transition={{ duration: 3.0, ease: "easeOut" }}
                     style={{ transformOrigin: "left center" }}
                     className="absolute left-0 right-0 top-1/2 h-0.5 md:h-0.75 min-h-0.5 bg-[#FFD700] rounded-full z-10"
                 />
@@ -45,7 +45,7 @@ export default function PeckersTimeline({ initialData = null }) {
                             initial={{ scale: 0, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
                             viewport={{ once: true, margin: "-20%" }}
-                            transition={{ duration: 0.8, delay: 0.6 + idx * 0.2, ease: "easeOut" }}
+                            transition={{ duration: 1.5, delay: 0.8 + idx * 0.3, ease: "easeOut" }}
                             className="w-[1.2vw] h-[1.2vw] md:w-[0.95vw] md:h-[0.95vw] rounded-full bg-[#FFD700] border border-[#FFF]/20 shadow-[0_0_20px_rgba(255,215,0,0.50)]"
                         />
                     ))}
@@ -70,7 +70,7 @@ export default function PeckersTimeline({ initialData = null }) {
                                 initial={getInitial(index)}
                                 whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotateX: 0, rotateY: 0, rotate: 0, filter: "blur(0px)" }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                transition={{ duration: 0.6, delay: 0.4 + index * 0.2, ease: "easeOut" }}
+                                transition={{ duration: 1.2, delay: 0.5 + index * 0.4, ease: "easeOut" }}
                                 style={{
                                     ...(isHighlighted
                                         ? {

@@ -50,7 +50,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                                 initial={getInitial(index)}
                                 whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotateX: 0, rotateY: 0, rotate: 0, filter: "blur(0px)" }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                transition={{ duration: 0.6, delay: 1.0 + index * 0.2, ease: "easeOut" }}
+                                transition={{ duration: 2.5, delay: 2.0 + index * 0.6, ease: "easeOut" }}
                                 style={{
                                     ...(isHighlighted
                                         ? {
