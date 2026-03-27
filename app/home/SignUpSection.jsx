@@ -35,7 +35,7 @@ export default function SignUpSection({ initialData = null }) {
 
   return (
     <div
-      className="w-full flex justify-center items-center pt-[4vw] pb-[6vw] md:pt-[5vw] lg:pt-[3vw] xl:pt-[2vw] md:pb-[8vw] lg:pb-[4vw] xl:pb-[2.5vw] px-[5vw] md:px-[6vw] lg:px-[4vw] xl:px-[2vw] border-b border-[#262626]"
+      className="w-full flex justify-center items-center pt-0 pb-[6vw] md:pt-0 lg:pt-0 xl:pt-0 md:pb-[8vw] lg:pb-[4vw] xl:pb-[2.5vw] px-[5vw] md:px-[6vw] lg:px-[4vw] xl:px-[2vw] border-b border-[#262626]"
       style={{ overflow: "visible" }}
     >
       <motion.div
