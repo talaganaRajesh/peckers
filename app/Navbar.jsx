@@ -109,6 +109,33 @@ export default function Navbar({ preloadedSettings = null }) {
     return () => document.removeEventListener("click", clickHandler, true);
   }, []);
 
+  // TalkBox Signup Script Manual Injection
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (pathname !== "/" && pathname !== "/home") return;
+
+    // We use a small delay to ensure the DOM is ready
+    const timer = setTimeout(() => {
+      const container = document.getElementById("sbx_button");
+      if (!container) return;
+
+      // If already populated, don't re-inject
+      if (container.children.length > 0) return;
+
+      // Remove any existing TalkBox script tags to force a clean slate
+      const existingScripts = document.querySelectorAll('script[src*="talkbox.impactapp.com.au"]');
+      existingScripts.forEach(s => s.remove());
+
+      const script = document.createElement("script");
+      // Use timestamp to force re-evaluation of the IIFE script
+      script.src = `https://talkbox.impactapp.com.au/signup_buttons/oQiu4OvNbdNp7Nb7NlA4gw==/script.js?t=${Date.now()}`;
+      script.async = true;
+      document.body.appendChild(script);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : null;
 
   return (
@@ -242,10 +269,6 @@ export default function Navbar({ preloadedSettings = null }) {
               </span>{" "}
               FOR EXCLUSIVE REWARDS.
             </span>
-            <Script
-              src="https://talkbox.impactapp.com.au/signup_buttons/oQiu4OvNbdNp7Nb7NlA4gw==/script.js"
-              strategy="afterInteractive"
-            />
             <style jsx global>{`
               .talkbox-signup-hitbox {
                 position: absolute;

@@ -50,7 +50,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                                 initial={getInitial(index)}
                                 whileInView={{ opacity: 1, x: 0, y: 0, scale: 1, rotateX: 0, rotateY: 0, rotate: 0, filter: "blur(0px)" }}
                                 viewport={{ once: true, margin: "-10%" }}
-                                transition={{ duration: 2.5, delay: 2.0 + index * 0.6, ease: "easeOut" }}
+                                transition={{ duration: 1.2, delay: 0.8 + index * 0.4, ease: "easeOut" }}
                                 style={{
                                     ...(isHighlighted
                                         ? {
@@ -81,7 +81,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                                     {item.title}
                                 </h3>
 
-                                <p className="text-zinc-500 font-peakers text-[3vw] md:text-[0.92vw] leading-none font-medium">
+                                <p className="text-zinc-500 font-sans text-[3vw] md:text-[0.92vw] leading-none font-medium">
                                     {item.description}
                                 </p>
                             </motion.div>

@@ -101,8 +101,7 @@ export default function PeckersTimeline({ initialData = null }) {
                                     {item.title}
                                 </h3>
 
-                                <p className={`text-zinc-500 font-peakers leading-tight font-medium ${index === 1 ? "text-[2.8vw] md:text-[0.86vw]" : "text-[3vw] md:text-[0.92vw]"}`}
-                                    style={index === 1 ? { fontFamily: "Space Mono" } : {}}>
+                                <p className={`text-zinc-500 font-sans leading-tight font-medium ${index === 1 ? "text-[2.8vw] md:text-[0.86vw]" : "text-[3vw] md:text-[0.92vw]"}`}>
 
                                     {item.description}
                                 </p>

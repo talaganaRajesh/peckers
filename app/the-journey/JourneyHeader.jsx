@@ -68,7 +68,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="text-[3.35vw] font-peakers text-white leading-none font-bold tracking-tight mb-[1.6vw]"
+                        className="text-[3.35vw] font-peakers text-white leading-none font-bold tracking-[.05em] mb-[1.6vw]"
                     >
                         {data.heading || "THE PECKERS JOURNEY"}
                     </motion.h2>
@@ -79,7 +79,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.65, delay: 0.08, ease: "easeOut" }}
-                        className="text-[1vw] font-peakers text-[#FFD700] tracking-[0.35vw] leading-[1.4] max-w-[60vw] mx-auto"
+                        className="text-[1vw] font-sans text-[#FFD700] tracking-[0.35vw] leading-[1.4] max-w-[60vw] mx-auto"
                     >
                         {data.subtitle || "FROM ONE STORE TO GROWING COMMUNITY BRAND - THE JOURNEY CONTINUES"}
                     </motion.p>
@@ -326,7 +326,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                             exit={{ opacity: 0 }}
                                             className="w-full flex flex-col items-center gap-[.8vw]"
                                         >
-                                            <h2 className="text-[1.5vw] text-white font-peakers tracking-wide uppercase">
+                                            <h2 className="text-[1.5vw] text-white font-peakers tracking-[0.35vw] uppercase">
                                                 {data.whereNextHeading || "WHERE NEXT ?"}
                                             </h2>
 
@@ -398,7 +398,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                         transition={{ duration: 0.45, delay: 0.08 }}
                         className="text-[clamp(0.68rem,2.8vw,0.9rem)] md:text-[clamp(0.78rem,1.8vw,1rem)] text-[#FFD700] font-mono tracking-[0.28em] leading-[1.45] mb-9 md:mb-10 text-center"
                     >
-                        {data.subtitle || "FROM ONE STORE TO GROWING COMMUNITY BRAND THE JOURNEY CONTINUES"}
+                        {data.subtitle || "FROM ONE STORE TO GROWING COMMUNITY BRAND - THE JOURNEY CONTINUES"}
                     </motion.p>
 
                     {/* Timeline */}

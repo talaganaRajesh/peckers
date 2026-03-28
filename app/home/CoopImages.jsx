@@ -73,7 +73,7 @@ export default function CoopImages({ locations = [] }) {
               src={HITCHIN_IMG}
               alt={`Peckers Hitchin - Best Halal Peri Peri Grilled Chicken and Takeaway in Hitchin`}
               fill
-              className="object-cover rounded-[2vw] md:rounded-[1.5vw] shadow-md border border-[#333]"
+              className="object-contain lg:object-cover rounded-[2vw] md:rounded-[1.5vw] shadow-md border border-[#333]"
               sizes="30vw"
             />
           )}
@@ -114,7 +114,7 @@ export default function CoopImages({ locations = [] }) {
               src={STEVENAGE_IMG}
               alt={`Peckers Stevenage - Best Halal Chicken Restaurant and Delivery in Stevenage`}
               fill
-              className="object-cover rounded-[2vw] md:rounded-[1.5vw] shadow-md border border-[#333]"
+              className="object-contain lg:object-cover rounded-[2vw] md:rounded-[1.5vw] shadow-md border border-[#333]"
               sizes="30vw"
             />
           )}

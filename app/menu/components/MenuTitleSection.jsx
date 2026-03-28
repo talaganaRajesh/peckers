@@ -88,18 +88,17 @@ export default function MenuTitleSection({
   const DEFAULT_NAVBAR = [
     { title: "BURGERS", link: "/menu" },
     { title: "WRAPS", link: "/menu/wraps" },
-    { title: "WINGS & TENDERS", link: "/menu/wings-and-tenders" },
-    { title: "PERI-PERI GRILLED CHICKEN", link: "/menu/peri-peri-grilled-chicken" },
-    { title: "RICE & SALAD BOWLS", link: "/menu/rice-and-salad-bowls" },
-    { title: "WHAT'S NEW", link: "/menu/whats-new" },
+    { title: "RICE BOWLS & SALAD BOWLS", link: "/menu/rice-and-salad-bowls" },
+    { title: "WINGS", link: "/menu/wings" },
+    { title: "TENDERS", link: "/menu/tenders" },
+    { title: "MEAL BOXES AND PLATTERS", link: "/menu/meal-box" },
     { title: "KIDS", link: "/menu/kids" },
     { title: "SIDES", link: "/menu/sides-and-fries" },
-    { title: "VEG", link: "/menu/veg" },
-    { title: "DRINKS & DESSERTS", link: "/menu/drinks-and-desserts" },
-    { title: "LUNCH TIME DEALS", link: "/menu/lunch-time-deals" },
+    { title: "DRINKS", link: "/menu/drinks-and-desserts" },
+    { title: "VEGGIE", link: "/menu/veg" },
   ];
 
-  // Force the navbar to use strictly the 11 items defined above
+  // Force the navbar to use strictly the 10 items defined above
   const navbarData = DEFAULT_NAVBAR;
 
   const [carousel, setCarousel] = useState(() => {
@@ -211,20 +210,17 @@ export default function MenuTitleSection({
                 const title = item.title?.toUpperCase() || "";
                 let href = item.link || "#";
 
-                // Explicitly force route for Burgers and Wraps
+                // Explicitly force route mappings
                 if (title === "BURGERS") href = "/menu";
                 else if (title === "WRAPS") href = "/menu/wraps";
-                else if (href === "#" || !href || href.startsWith("#")) {
-                  if (title === "RICE & SALAD BOWLS" || title === "RICE BOWLS" || title === "SALAD BOWLS") href = "/menu/rice-and-salad-bowls";
-                  else if (title === "WINGS & TENDERS") href = "/menu/wings-and-tenders";
-                  else if (title === "PERI-PERI GRILLED CHICKEN" || title === "PERI-PERI GRILL" || title === "GRILLED") href = "/menu/peri-peri-grilled-chicken";
-                  else if (title === "WHAT'S NEW") href = "/menu/whats-new";
-                  else if (title === "DRINKS & DESSERTS" || title === "SHAKES" || title === "DRINKS") href = "/menu/drinks-and-desserts";
-                  else if (title === "VEG") href = "/menu/veg";
-                  else if (title === "SIDES" || title === "SIDES & FRIES") href = "/menu/sides-and-fries";
-                  else if (title === "KIDS") href = "/menu/kids";
-                  else if (title === "LUNCH TIME DEALS") href = "/menu/lunch-time-deals";
-                }
+                else if (title === "WINGS") href = "/menu/wings";
+                else if (title === "TENDERS") href = "/menu/tenders";
+                else if (title === "RICE BOWLS & SALAD BOWLS") href = "/menu/rice-and-salad-bowls";
+                else if (title === "MEAL BOXES AND PLATTERS") href = "/menu/meal-box";
+                else if (title === "KIDS") href = "/menu/kids";
+                else if (title === "SIDES") href = "/menu/sides-and-fries";
+                else if (title === "DRINKS") href = "/menu/drinks-and-desserts";
+                else if (title === "VEGGIE") href = "/menu/veg";
 
                 const normalizedItemLink = href.replace(/\/$/, "");
                 const normalizedCurrentPath = pathname.replace(/\/$/, "");

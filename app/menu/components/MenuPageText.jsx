@@ -3,6 +3,7 @@
 import { useRef, useLayoutEffect, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 import { client } from "../../../sanity/lib/client";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -111,7 +112,12 @@ export default function MenuPageText({ itemData = null }) {
         </div>
       </div>
       <div className="w-full flex justify-center pt-8 pb-10 menu-available text-center px-[5vw]">
-        <span className="text-white font-peakers text-[4vw] md:text-[24px] font-normal">{itemData.availabilityText || "Also available as a wrap, rice bowl, or salad bowl."}</span>
+        <div className="text-white font-peakers text-[4vw] md:text-[24px] font-normal transition-all duration-300">
+          Also available as a{" "}
+          <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>,{" "}
+          <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or{" "}
+          <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.
+        </div>
       </div>
     </div>
   );
