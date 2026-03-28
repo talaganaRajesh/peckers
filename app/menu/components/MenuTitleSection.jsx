@@ -98,7 +98,7 @@ export default function MenuTitleSection({
     { title: "VEGGIE", link: "/menu/veg" },
   ];
 
-  // Force the navbar to use strictly the 10 items defined above
+  // FORCE the navbar to use strictly these 10 items and NO others.
   const navbarData = DEFAULT_NAVBAR;
 
   const [carousel, setCarousel] = useState(() => {

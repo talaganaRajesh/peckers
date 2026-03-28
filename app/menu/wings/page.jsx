@@ -1,5 +1,5 @@
-import { sanityFetch } from "../../sanity/lib/live";
-import { urlFor } from "../../sanity/lib/image";
+import { sanityFetch } from "../../../sanity/lib/live";
+import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
