@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { client } from "../../sanity/lib/client";
+import HeaderActionButton from "../components/HeaderActionButton";
 
 export default function LocationAddress({ location = "hitchin" }) {
     const [data, setData] = useState(null);
@@ -118,30 +119,28 @@ export default function LocationAddress({ location = "hitchin" }) {
                         </div>
                         <br />
                         <div className="flex flex-col md:flex-row gap-[4vw] md:gap-[1.2vw] py-[4vw] md:py-[2vw] flex-nowrap">
-                            <a
-                                href={data.clickCollectUrl || "#"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full md:w-auto text-center text-[#ffff] px-[4vw] md:px-[2vw] lg:px-[2.2vw] py-[3vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4vw] md:text-[13px] lg:text-[1.33vw] tracking-wide transition-all duration-300 hover:bg-[#232323] whitespace-nowrap"
-                                style={{
-                                    fontFamily: "monospace, 'Share Tech', 'ShareTech', 'Share_Tech', 'ShareTechMono'",
-                                    border: '2px solid #fff'
-                                }}
+                            <HeaderActionButton
+                                href={data.clickCollectUrl}
+                                wrapperClassName="w-full md:w-auto"
+                                className="w-full md:w-auto text-center px-[4vw] md:px-[2vw] lg:px-[2.2vw] py-[3vw] md:py-[12.5px] text-[4vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap"
+                                bgColor="bg-white"
+                                textColor="text-black"
+                                borderColor="border-white"
+                                shimmerColor="bg-red-600"
                             >
                                 CLICK & COLLECT
-                            </a>
-                            <a
-                                href={data.deliveryUrl || "#"}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full md:w-auto text-center text-black px-[4vw] md:px-[3.2vw] lg:px-[3.5vw] font-bold py-[3vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4.2vw] md:text-[13px] lg:text-[1.4vw] tracking-wide transition-all duration-300 hover:bg-[#ffff] bg-[#ffff] whitespace-nowrap"
-                                style={{
-                                    fontFamily: "monospace, 'Share Tech', 'ShareTech', 'Share_Tech', 'ShareTechMono'",
-                                    border: '1px solid #333'
-                                }}
+                            </HeaderActionButton>
+                            <HeaderActionButton
+                                href={data.deliveryUrl}
+                                wrapperClassName="w-full md:w-auto"
+                                className="w-full md:w-auto text-center px-[4vw] md:px-[3.2vw] lg:px-[3.5vw] py-[3vw] md:py-[12.5px] text-[4.2vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap hover:bg-red-700"
+                                bgColor="bg-red-600"
+                                textColor="text-white"
+                                borderColor="border-red-600"
+                                shimmerColor="bg-white"
                             >
                                 DELIVERY
-                            </a>
+                            </HeaderActionButton>
                         </div>
                     </div>
 

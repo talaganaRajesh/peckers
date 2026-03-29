@@ -1,6 +1,6 @@
-export default function HeaderActionButton({ href, className = "", children, bgColor = "bg-black", textColor = "text-white", borderColor = "border-white", shimmerColor = "bg-white" }) {
+export default function HeaderActionButton({ href, className = "", children, bgColor = "bg-black", textColor = "text-white", borderColor = "border-white", shimmerColor = "bg-white", wrapperClassName = "" }) {
   return (
-    <div className="group relative inline-flex align-middle">
+    <div className={`group relative inline-flex align-middle ${wrapperClassName}`}>
       <span
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 z-0 translate-x-[4px] translate-y-[4px] rounded-full ${shimmerColor} opacity-0 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:translate-x-[6px] group-hover:translate-y-[6px]`}
