@@ -17,10 +17,10 @@ export async function GET() {
       const url = `https://places.googleapis.com/v1/places/${placeId}?fields=reviews,rating,userRatingCount,displayName&key=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
-      
+
       const reviews = data.reviews || [];
       const locationName = data.displayName?.text || "";
-      
+
       return reviews.map((review) => ({
         ...review,
         locationName
@@ -35,9 +35,9 @@ export async function GET() {
     let totalUserRatingCount = 0;
 
     results.forEach((resultReviews) => {
-       allReviews = [...allReviews, ...resultReviews];
-       // Note: we'd need another field to get total ratings across locations if needed, 
-       // but for simplicity we'll just use the reviews we have.
+      allReviews = [...allReviews, ...resultReviews];
+      // Note: we'd need another field to get total ratings across locations if needed, 
+      // but for simplicity we'll just use the reviews we have.
     });
 
     // Map to the format expected by the frontend
