@@ -131,6 +131,30 @@ export default function SaucePageOne({ initialData = [] }) {
         };
     }, []);
 
+    useEffect(() => {
+        if (!saucesData || saucesData.length === 0) return;
+
+        // Preload all background and sauce images onto the browser's cache
+        saucesData.forEach((sauce) => {
+            if (typeof window !== "undefined") {
+                if (sauce.bgImage) {
+                    const img = new window.Image();
+                    img.src = urlFor(sauce.bgImage).width(1920).auto('format').url();
+                }
+                if (sauce.sauceImage) {
+                    const img = new window.Image();
+                    img.src = urlFor(sauce.sauceImage)
+                        .width(1400)
+                        .height(1400)
+                        .fit("crop")
+                        .crop("center")
+                        .auto('format')
+                        .url();
+                }
+            }
+        });
+    }, [saucesData]);
+
     if (loading) {
         return (
             <div className="w-full min-h-screen bg-black flex items-center justify-center">
@@ -159,7 +183,7 @@ export default function SaucePageOne({ initialData = [] }) {
                             : "";
 
                     const wrapperFadeClass = isCurrent && isTransitioning ? "sauce-layer-fade-in" : "";
-                    const bgDissolveClass = isCurrent && isTransitioning ? +
+                    const bgDissolveClass = isCurrent && isTransitioning ?
                         "sauce-bg-dissolve-in" : "";
                     const wrapperZ = isCurrent ? "z-20" : isPrev ? "z-10" : "z-0";
 
@@ -173,7 +197,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                 {/* BACKGROUND IMAGE */}
                                 {sauce.bgImage && (
                                     <Image
-                                        src={urlFor(sauce.bgImage).url()}
+                                        src={urlFor(sauce.bgImage).width(1920).auto('format').url()}
                                         alt={`${sauce.title} Background`}
                                         width={1920}
                                         height={1080}
@@ -188,7 +212,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                 ? "25% center"
                                                 : "center center",
                                         }}
-                                        priority={idx === 0}
+                                        priority={idx === 0 || idx === (currentIndex + 1) % saucesData.length}
                                     />
                                 )}
 
@@ -249,7 +273,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                         )}
                                     </div>
                                 </div>
- 
+
                                 {/*
                                   ─── CIRCLE CONTAINER ───
                                   FIX: The translate-y-[25%] mathematically ensures exactly 75% 
@@ -327,8 +351,8 @@ export default function SaucePageOne({ initialData = [] }) {
                                     </svg>
 
                                     {/* SAUCE IMAGE — cropped circle */}
-                                    {isVisible && sauce.sauceImage && (
-                                        <div className="absolute left-1/2 mt-2 md:mt-6 top-[48%] md:top-1/2 z-10 h-[108%] w-[108%] md:h-[114%] md:w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full">
+                                    {sauce.sauceImage && (
+                                        <div className={`absolute left-1/2 mt-2 md:mt-6 top-[48%] md:top-1/2 z-10 h-[108%] w-[108%] md:h-[114%] md:w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full ${isVisible ? "opacity-100" : "opacity-0"}`}>
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage)
@@ -336,6 +360,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                         .height(1400)
                                                         .fit("crop")
                                                         .crop("center")
+                                                        .auto('format')
                                                         .url()}
                                                     alt={sauce.title}
                                                     fill
@@ -344,7 +369,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                         filter: "drop-shadow(0px 20px 40px rgba(0,0,0,0.95))",
                                                         transformOrigin: "center center",
                                                     }}
-                                                    priority={idx === 0}
+                                                    priority={idx === 0 || idx === currentIndex || idx === (currentIndex + 1) % saucesData.length}
                                                     sizes="(max-width: 640px) 130vw, (max-width: 1024px) 90vw, 80vw"
                                                 />
                                             </div>
