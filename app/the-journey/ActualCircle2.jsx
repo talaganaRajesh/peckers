@@ -81,7 +81,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                                     {item.title}
                                 </h3>
 
-                                <p className="text-zinc-500 font-sans text-[3vw] md:text-[0.92vw] leading-none font-medium">
+                                <p className="text-zinc-500 font-sans text-[3vw] md:text-[0.92vw] leading-none font-bold">
                                     {item.description}
                                 </p>
                             </motion.div>
