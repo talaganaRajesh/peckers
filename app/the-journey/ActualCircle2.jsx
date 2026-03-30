@@ -77,7 +77,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                                     {item.year}
                                 </span>
 
-                                <h3 className="text-[5vw] md:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.66vw] leading-none text-white">
+                                <h3 className="text-[5vw] font-bold md:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.66vw] leading-none text-white">
                                     {item.title}
                                 </h3>
 
