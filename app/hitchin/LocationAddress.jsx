@@ -125,7 +125,8 @@ export default function LocationAddress({ location = "hitchin" }) {
                                 className="w-full md:w-auto text-center text-[#ffff] px-[4vw] md:px-[2vw] lg:px-[2.2vw] py-[3vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4vw] md:text-[13px] lg:text-[1.33vw] tracking-wide transition-all duration-300 hover:bg-[#232323] whitespace-nowrap"
                                 style={{
                                     fontFamily: "monospace, 'Share Tech', 'ShareTech', 'Share_Tech', 'ShareTechMono'",
-                                    border: '2px solid #fff'
+                                    border: '2px solid #fff',
+                                    fontWeight: 'bold'
                                 }}
                             >
                                 CLICK & COLLECT
