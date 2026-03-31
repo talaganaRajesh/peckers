@@ -97,11 +97,11 @@ export default function PeckersTimeline({ initialData = null }) {
                                     {item.year}
                                 </span>
 
-                                <h3 className="text-[5vw] md:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.66vw] leading-tight text-white">
+                                <h3 className="text-[5vw] font-bold md:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.66vw] leading-tight text-white">
                                     {item.title}
                                 </h3>
 
-                                <p className={`text-zinc-500 font-sans leading-tight font-medium ${index === 1 ? "text-[2.8vw] md:text-[0.86vw]" : "text-[3vw] md:text-[0.92vw]"}`}>
+                                <p className={`text-zinc-500 font-sans leading-tight font-bold ${index === 1 ? "text-[2.8vw] md:text-[0.86vw]" : "text-[3vw] md:text-[0.92vw]"}`}>
 
                                     {item.description}
                                 </p>

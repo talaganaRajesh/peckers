@@ -22,6 +22,14 @@ export default async function UniquenessPage() {
         "landingData": *[_type == "uniquenessLanding"][0],
         "sectionsData": *[_type == "uniquenessSubSection"][0].sections[] {
             ...,
+            "image": image {
+                asset-> {
+                    ...,
+                    metadata {
+                        dimensions
+                    }
+                }
+            },
             "videoUrl": video.asset->url
         }
     }`

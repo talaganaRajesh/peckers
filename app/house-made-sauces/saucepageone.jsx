@@ -174,6 +174,8 @@ export default function SaucePageOne({ initialData = [] }) {
                     const isCurrent = idx === currentIndex;
                     const isPrev = prevIndex !== null && idx === prevIndex;
                     const isVisible = isCurrent || isPrev;
+                    const isNext = idx === (currentIndex + 1) % saucesData.length;
+                    const isNear = isVisible || isNext;
                     const isTransitioning = prevIndex !== null;
 
                     const imageAnimationClass = isCurrent && isTransitioning
@@ -195,12 +197,12 @@ export default function SaucePageOne({ initialData = [] }) {
                             <div className="relative w-full h-full flex flex-col items-center bg-black">
 
                                 {/* BACKGROUND IMAGE */}
-                                {sauce.bgImage && (
+                                {sauce.bgImage && isNear && (
                                     <Image
                                         src={urlFor(sauce.bgImage).width(1920).auto('format').url()}
                                         alt={`${sauce.title} Background`}
-                                        width={1920}
-                                        height={1080}
+                                        width={1280}
+                                        height={720}
                                         className={`absolute inset-0 w-full h-full object-cover object-top md:object-center opacity-90 hidden md:block ${bgDissolveClass}`}
                                         style={{
                                             zIndex: 0,
@@ -356,8 +358,8 @@ export default function SaucePageOne({ initialData = [] }) {
                                             <div className={`absolute inset-0 ${imageAnimationClass}`}>
                                                 <Image
                                                     src={urlFor(sauce.sauceImage)
-                                                        .width(1400)
-                                                        .height(1400)
+                                                        .width(1000)
+                                                        .height(1000)
                                                         .fit("crop")
                                                         .crop("center")
                                                         .auto('format')

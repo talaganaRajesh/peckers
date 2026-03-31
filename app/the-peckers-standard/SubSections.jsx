@@ -26,10 +26,15 @@ const SectionItem = memo(({ section, index, num }) => {
 
   const isAlternate = index % 2 !== 0;
 
+  // Calculate aspect ratios to reserve space and prevent layout shifts (fixing the "stucking" issue)
+  const imageAspectRatio = section.image?.asset?.metadata?.dimensions?.aspectRatio || (16 / 9);
+  const videoAspectRatio = 16 / 9; // Default for videos
+  const activeAspectRatio = (section.videoUrl || section.video) ? videoAspectRatio : imageAspectRatio;
+
   return (
     <motion.section
       ref={sectionRef}
-      className={`w-full h-auto md:h-[75vh] flex flex-col ${isAlternate ? "md:flex-row-reverse" : "md:flex-row"
+      className={`w-full h-auto md:min-h-[75vh] flex flex-col ${isAlternate ? "md:flex-row-reverse" : "md:flex-row"
         } bg-black overflow-hidden`}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -40,47 +45,68 @@ const SectionItem = memo(({ section, index, num }) => {
       }}
     >
       {/* MEDIA SECTION */}
-      <div className="w-full md:w-[60%] h-[90vw] sm:h-[70vw] md:h-full relative overflow-hidden flex items-center justify-center bg-black">
-        {isInView ? (
-          <>
-            {([0, 2, 4, 5, 6].includes(index)) ? (
-              // VIDEO SECTION
-              (section.videoUrl || section.video) && (
-                <video
-                  ref={videoRef}
-                  src={section.videoUrl || (section.video?.asset?._ref ? urlFor(section.video).url() : "")}
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-contain md:object-cover"
-                  style={{ filter: "brightness(0.9)" }}
-                />
-              )
-            ) : (
-              // PHOTO SECTION
-              section.image && (
-                <Image
-                  src={urlFor(section.image).width(1200).format("webp").url()}
-                  alt={section.title || `Section ${num}`}
-                  fill
-                  className="object-contain md:object-cover object-center"
-                  style={{ filter: "brightness(0.7)" }}
-                  priority={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  sizes="(max-width: 768px) 100vw, 65vw"
-                />
-              )
-            )}
-          </>
-        ) : (
-          // Placeholder while out of view to maintain layout
-          <div className="w-full h-full bg-[#0a0a0a]" />
-        )}
+      <div
+        className="w-full md:w-[60%] relative overflow-hidden flex items-center justify-center bg-black"
+        style={{
+          aspectRatio: activeAspectRatio ? `${activeAspectRatio}` : "16/9",
+          minHeight: "1px"
+        }}
+      >
+        {/* Aspect Ratio Sizer (Mobile only, or consistent across screens) */}
+        <div
+          className="w-full md:hidden"
+          style={{ aspectRatio: activeAspectRatio || "16/9" }}
+        />
+        <div
+          className="hidden md:block absolute inset-0 md:relative md:h-full md:w-full"
+          style={{ minHeight: "75vh" }}
+        />
+
+        <div className="absolute inset-0 w-full h-full">
+          {isInView ? (
+            <>
+              {(section.videoUrl || section.video) ? (
+                // VIDEO SECTION
+                (
+                  <video
+                    ref={videoRef}
+                    src={section.videoUrl || (section.video?.asset?._ref ? urlFor(section.video).url() : "")}
+                    muted
+                    loop
+                    playsInline
+                    autoPlay
+                    className="w-full h-full object-cover"
+                    style={{ filter: "brightness(0.9)" }}
+                  />
+                )
+              ) : (
+                // PHOTO SECTION
+                section.image && (
+                  <div className="w-full h-full">
+                    <Image
+                      src={urlFor(section.image).width(1200).format("webp").url()}
+                      alt={section.title || `Section ${num}`}
+                      fill
+                      className="object-cover object-center"
+                      style={{ filter: "brightness(0.7)" }}
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      sizes="(max-width: 768px) 100vw, 65vw"
+                    />
+                  </div>
+                )
+              )}
+            </>
+          ) : (
+            // Placeholder while out of view - matches the exact aspect ratio
+            <div className="w-full h-full bg-[#0a0a0a]" />
+          )}
+        </div>
       </div>
 
       {/* CONTENT SECTION */}
       <div
-        className={`w-full md:w-[40%] h-max md:h-full text-white flex flex-col`}
+        className={`w-full md:w-[40%] h-auto md:min-h-full text-white flex flex-col`}
         style={{
           backgroundColor: index % 2 === 0 ? "#111111" : "#000000",
         }}
@@ -124,7 +150,7 @@ const SectionItem = memo(({ section, index, num }) => {
               >
                 <span>Explore our house-made sauces</span>
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[3vw] h-[3vw] md:w-[0.8vw] md:h-[0.8vw]">
-                  <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             )}

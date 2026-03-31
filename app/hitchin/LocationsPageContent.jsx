@@ -117,7 +117,7 @@ export function LocationsPageContent({ location = 'hitchin', initialData = null 
             <section
                 id='history'
             >
-                <div className="flex flex-col items-center mt-[12vw] md:mt-[6vw] justify-center w-full pt-[8vw] md:pt-[2vw] pb-[12vw] md:pb-[4vw] bg-[#0A0A0B]">
+                <div className="flex flex-col items-center mt-[12vw] md:mt-[2vw] justify-center w-full pt-[8vw] md:pt-[2vw] pb-[12vw] md:pb-[4vw] bg-[#0A0A0B]">
                     <div className="flex flex-col items-start md:items-center w-[90vw] md:w-[80vw]">
                         {/* History Title, Logo, EST */}
                         <div className="flex flex-row md:flex-row items-center mb-[6vw] md:mb-[1.6vw] mr-0 md:mr-[16vw] relative w-full justify-start md:justify-center gap-[4vw] md:gap-0">

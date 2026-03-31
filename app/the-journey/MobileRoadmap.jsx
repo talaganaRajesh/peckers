@@ -108,10 +108,10 @@ export default function MobileRoadmap({ initialData = null }) {
                                     >
                                         {item.year}
                                     </span>
-                                    <h3 className="text-[4.5vw] md:text-[3vw] xl:text-[2.2vw] font-peakers mb-[2vw] md:mb-[1vw] leading-none text-white">
+                                    <h3 className="text-[4.5vw] md:text-[3vw] xl:text-[2.2vw] font-peakers mb-[2vw] md:mb-[1vw] leading-none text-white font-bold ">
                                         {item.title}
                                     </h3>
-                                    <p className="text-zinc-500 font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-medium">
+                                    <p className="text-zinc-500 font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-bold">
                                         {item.description}
                                     </p>
                                 </div>
