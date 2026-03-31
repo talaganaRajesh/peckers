@@ -197,54 +197,7 @@ export default function WrapsTitleSection({ initialWraps = [], initialNavbarData
                         "radial-gradient(ellipse 50% 52% at 50% 38%, #1c1c1c 0%, #0d0d0d 26%, #070707 58%, #000 100%)",
                 }}
             >
-                {/* SUB-NAV */}
-                <div className="w-full">
-                    <nav
-                        className="subnavbar"
-                        style={{ color: "white" }}
-                    >
-                        <style>{`
-              .no-scrollbar::-webkit-scrollbar { display: none; }
-            `}</style>
-                        <div
-                            className="flex font-['Share_Tech'] gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start md:justify-center items-center overflow-x-auto no-scrollbar px-[5vw] sm:px-[5vw] md:px-0 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw]"
-                            style={{ fontFamily: "var(--font-peakers)", scrollbarWidth: "none", msOverflowStyle: "none" }}
-                        >
-                            {navbarData && navbarData.length > 0 ? (
-                                navbarData.map((item, idx) => {
-                                    let href = item.link || "#";
-                                    if (item.title === "BURGERS") href = "/menu";
-                                    if (item.title === "WRAPS") href = "/menu/wraps";
 
-                                    return (
-                                        <a
-                                            key={idx}
-                                            href={href}
-                                            className={`whitespace-nowrap pb-1 md:pb-1 tracking-wider ${item.title === "WRAPS"
-                                                ? "font-sharetech text-[18px] sm:text-[22px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] border-b-2 border-red-500"
-                                                : "text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] tracking-wide opacity-70 hover:opacity-100 transition-opacity"
-                                                }`}
-                                        >
-                                            {item.title}
-                                        </a>
-                                    );
-                                })
-                            ) : (
-                                <>
-                                    <a
-                                        href="/menu"
-                                        className="whitespace-nowrap text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] pb-2 md:pb-2 tracking-wide opacity-70 hover:opacity-100 transition-opacity"
-                                    >
-                                        BURGERS
-                                    </a>
-                                    <a href="/menu/wraps" className="whitespace-nowrap font-sharetech text-[18px] sm:text-[22px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] border-b-2 border-red-500 pb-1 md:pb-1 tracking-wider">
-                                        WRAPS
-                                    </a>
-                                </>
-                            )}
-                        </div>
-                    </nav>
-                </div>
 
                 {/* BURGER STAGE */}
                 <div
