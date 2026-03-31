@@ -1,6 +1,4 @@
-import { Geist, Geist_Mono, Space_Mono, Inconsolata, Anton } from "next/font/google";
 import "./globals.css";
-import { Share_Tech } from "next/font/google";
 import localFont from "next/font/local";
 import ClientWrapper from "./ClientWrapper";
 import { sanityFetch, SanityLive } from "../sanity/lib/live";
@@ -11,46 +9,23 @@ const peakersFont = localFont({
   variable: "--font-peakers",
 });
 
-const anton = Anton({
+const peakersBold = localFont({
+  src: "./fonts/Supernett Cn Bold.otf",
+  display: "swap",
+  variable: "--font-peakers-bold",
+  weight: "700",
+});
+
+const neuzeit = localFont({
+  src: "./fonts/NeuzeitGrotesk-Regular.otf",
+  display: "swap",
+  variable: "--font-neuzeit",
   weight: "400",
-  subsets: ["latin"],
-  variable: "--font-anton",
-  display: "swap",
-});
-
-const shareTech = Share_Tech({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-share-tech",
-  display: "swap",
-});
-
-
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-space-mono",
-  display: "swap",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const inconsolata = Inconsolata({
-  subsets: ["latin"],
-  variable: "--font-inconsolata",
-  display: "swap",
 });
 
 export const metadata = {
-  title: "Peckers | Best Halal Peri Peri & Fried Chicken in Stevenage & Hitchin",
+  title:
+    "Peckers | Best Halal Peri Peri & Fried Chicken in Stevenage & Hitchin",
   description:
     "Discover Peckers - the premium alternative to Chicken George and Dave's Hot Chicken in Hertfordshire. We serve the best halal peri peri grilled chicken, wings, and gourmet burgers in Stevenage and Hitchin. Fast delivery and late-night takeaway available.",
   keywords: [
@@ -74,11 +49,11 @@ export const metadata = {
     "lunch deals Stevenage",
     "takeaway near me",
     "Peckers chicken",
-    "halal peri peri wings"
+    "halal peri peri wings",
   ],
   alternates: {
     canonical: "https://peckers.co.uk", // Update with actual domain if known
-  }
+  },
 };
 
 export const viewport = {
@@ -95,14 +70,17 @@ export default async function RootLayout({ children }) {
   let footerData = null;
 
   try {
-    const { data } = await sanityFetch({ query: `*[_type == "siteSettings"][0]` });
+    const { data } = await sanityFetch({
+      query: `*[_type == "siteSettings"][0]`,
+    });
     siteSettings = data;
   } catch (error) {
     console.error("Failed to load site settings:", error);
   }
 
   try {
-    const { data } = await sanityFetch({ query: `*[_type == "footer"][0] {
+    const { data } = await sanityFetch({
+      query: `*[_type == "footer"][0] {
       logo,
       tagline,
       socialLinks,
@@ -111,7 +89,8 @@ export default async function RootLayout({ children }) {
       legalLinks,
       copyright,
       bottomLogo
-    }` });
+    }`,
+    });
     footerData = data;
   } catch (error) {
     console.error("Failed to load footer data:", error);
@@ -126,25 +105,34 @@ export default async function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FoodEstablishment",
-              "name": "Peckers",
-              "image": "https://peckers.co.uk/logo.png", // Path to brand logo
-              "description": "Premium Halal Grilled and Fried Chicken Restaurant in Hertfordshire.",
-              "servesCuisine": ["Halal", "Peri Peri", "Grilled Chicken", "Fried Chicken"],
-              "areaServed": ["Stevenage", "Hitchin", "Hertfordshire"],
-              "hasMenu": "https://peckers.co.uk/menu",
-              "address": {
+              name: "Peckers",
+              image: "https://peckers.co.uk/logo.png", // Path to brand logo
+              description:
+                "Premium Halal Grilled and Fried Chicken Restaurant in Hertfordshire.",
+              servesCuisine: [
+                "Halal",
+                "Peri Peri",
+                "Grilled Chicken",
+                "Fried Chicken",
+              ],
+              areaServed: ["Stevenage", "Hitchin", "Hertfordshire"],
+              hasMenu: "https://peckers.co.uk/menu",
+              address: {
                 "@type": "PostalAddress",
-                "addressRegion": "Hertfordshire",
-                "addressCountry": "UK"
-              }
-            })
+                addressRegion: "Hertfordshire",
+                addressCountry: "UK",
+              },
+            }),
           }}
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${shareTech.variable} ${anton.variable} ${peakersFont.variable} ${spaceMono.variable} ${inconsolata.variable} antialiased`}
+        className={`${peakersFont.variable} ${peakersBold.variable} ${neuzeit.variable} antialiased`}
       >
-        <ClientWrapper preloadedSettings={siteSettings} preloadedFooter={footerData}>
+        <ClientWrapper
+          preloadedSettings={siteSettings}
+          preloadedFooter={footerData}
+        >
           {children}
         </ClientWrapper>
         <SanityLive />

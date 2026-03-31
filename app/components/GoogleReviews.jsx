@@ -2,7 +2,13 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FaStar, FaGoogle, FaQuoteRight, FaChevronRight, FaStarHalfAlt } from "react-icons/fa";
+import {
+  FaStar,
+  FaGoogle,
+  FaQuoteRight,
+  FaChevronRight,
+  FaStarHalfAlt,
+} from "react-icons/fa";
 import { useInView } from "framer-motion";
 
 const fadeUp = (delay = 0) => ({
@@ -24,7 +30,7 @@ const GoogleReviews = ({ initialReviews = [] }) => {
       const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
       const placeIds = [
         "ChIJVVweuNo1dkgRi-IfLyhtgyU", // Hitchin
-        "ChIJxVydIDgvdkgR3vKTXPIOuYo"  // Stevenage
+        "ChIJxVydIDgvdkgR3vKTXPIOuYo", // Stevenage
       ];
 
       if (!apiKey) {
@@ -41,23 +47,24 @@ const GoogleReviews = ({ initialReviews = [] }) => {
               headers: {
                 "Content-Type": "application/json",
                 "X-Goog-Api-Key": apiKey,
-                "X-Goog-FieldMask": "reviews,rating,userRatingCount,displayName"
-              }
+                "X-Goog-FieldMask":
+                  "reviews,rating,userRatingCount,displayName",
+              },
             });
             const data = await response.json();
             const reviews = data.reviews || [];
             const locationName = data.displayName?.text || "";
-            
+
             return reviews.map((review) => ({
               ...review,
               locationName,
-              placeId
+              placeId,
             }));
-          })
+          }),
         );
 
         const allReviews = results.flat().map((review, index) => ({
-          _id: `google-${index}-${review.name?.split('/').pop() || index}`,
+          _id: `google-${index}-${review.name?.split("/").pop() || index}`,
           author_name: review.authorAttribution?.displayName || "Anonymous",
           text: review.text?.text || review.originalText?.text || "",
           relative_time_description: review.relativePublishTimeDescription,
@@ -65,7 +72,9 @@ const GoogleReviews = ({ initialReviews = [] }) => {
           profile_photo_url: review.authorAttribution?.photoUri,
           locationName: review.locationName,
           placeId: review.placeId, // Ensure this matches the iterator placeId
-          time: review.publishTime ? new Date(review.publishTime).getTime() / 1000 : 0
+          time: review.publishTime
+            ? new Date(review.publishTime).getTime() / 1000
+            : 0,
         }));
 
         // Sort reviews by time (newest first)
@@ -98,7 +107,10 @@ const GoogleReviews = ({ initialReviews = [] }) => {
   const words = headingText.split(" ");
 
   return (
-    <section className="pt-[10vw] pb-[2vw] md:pt-[6vw] md:pb-[1vw] bg-black overflow-hidden relative" id="reviews">
+    <section
+      className="pt-[10vw] pb-[2vw] md:pt-[6vw] md:pb-[1vw] lg:pt-[9vw] lg:pb-[9vw] xl:pt-[5.5vw] xl:pb-[5.5vw] bg-black overflow-hidden relative"
+      id="reviews"
+    >
       <div className="w-full px-[5vw] md:px-[1.4vw] relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-[8vw] md:mb-[2vw] gap-8">
           <div className="flex flex-col items-start text-left">
@@ -108,12 +120,13 @@ const GoogleReviews = ({ initialReviews = [] }) => {
             >
               STREET CRED
             </h2>
-            
+
             <motion.p
               className="font-sans mt-[4vw] md:mt-0 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
               {...fadeUp(0.4)}
             >
-              Real feedback from our community. Click any card to view on Google.
+              Real feedback from our community. Click any card to view on
+              Google.
             </motion.p>
           </div>
 
@@ -127,7 +140,10 @@ const GoogleReviews = ({ initialReviews = [] }) => {
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-0.5">
                 {[...Array(4)].map((_, i) => (
-                  <FaStar key={i} className="text-yellow-500 text-sm md:text-lg" />
+                  <FaStar
+                    key={i}
+                    className="text-yellow-500 text-sm md:text-lg"
+                  />
                 ))}
                 <FaStarHalfAlt className="text-yellow-500 text-sm md:text-lg" />
               </div>
@@ -154,7 +170,7 @@ const GoogleReviews = ({ initialReviews = [] }) => {
               100% { transform: translateX(-50%); }
             }
           `}</style>
-          
+
           <div className="reviews-marquee gap-6 pb-6">
             {[...reviews, ...reviews].map((review, index) => (
               <motion.a
@@ -190,7 +206,7 @@ const GoogleReviews = ({ initialReviews = [] }) => {
                 </div>
 
                 <p className="text-white/80 text-sm md:text-base md:leading-relaxed font-sans font-normal tracking-wide relative z-10 line-clamp-6">
-                   "{review.text || "No comment provided."}"
+                  "{review.text || "No comment provided."}"
                 </p>
               </motion.a>
             ))}

@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #000;
   --foreground: #000;
@@ -17,8 +16,6 @@ body {
   /* IE / Edge */
 }
 
-
-
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -26,9 +23,6 @@ body {
 .lenis.lenis-smooth [data-lenis-prevent] {
   overscroll-behavior: contain;
 }
-
-
-
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
@@ -40,11 +34,17 @@ body {
   pointer-events: auto;
 }
 
-
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
   /* Chrome / Safari / WebKit */
+}
+
+/* Make date/time picker icons visible on dark backgrounds */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
 }
 
 #main-content {
@@ -64,13 +64,6 @@ body::-webkit-scrollbar {
 .animate-scroll-line {
   animation: scrollLine 1.6s ease-in-out infinite;
 }
-
-
-
-
-
-
-
 
 @keyframes saucePopDown {
   0% {
@@ -113,13 +106,6 @@ body::-webkit-scrollbar {
   animation: saucePopFromTop 600ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
   will-change: transform, opacity, filter;
 }
-
-
-
-
-
-
-
 
 @keyframes sauceLayerFadeIn {
   0% {
@@ -170,12 +156,10 @@ body::-webkit-scrollbar {
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-supernett: var(--font-supernett);
-  --font-sharetech: var(--font-share-tech);
+  --font-sans: var(--font-neuzeit);
+  --font-mono: var(--font-neuzeit);
+  --font-neuzeit: var(--font-neuzeit);
   --font-peakers: var(--font-peakers);
-  --font-anton: var(--font-anton);
 }
 
 @media (prefers-color-scheme: light) {
@@ -202,9 +186,6 @@ img {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
-
-
-
 
 /* GPU acceleration for animated elements */
 .gsap-animated,
@@ -242,12 +223,6 @@ img {
 .uniqueness-page {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
-}
-
-.anton-regular {
-  font-family: var(--font-anton), sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 /* Screen reader only - Hidden SEO Utility */
@@ -289,7 +264,9 @@ img {
   position: relative;
   display: inline-block;
   padding-bottom: 0.15rem;
-  transition: color 260ms ease, transform 260ms ease;
+  transition:
+    color 260ms ease,
+    transform 260ms ease;
 }
 
 .navbar-link::after {

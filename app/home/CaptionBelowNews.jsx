@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 
-export default function CaptionBelowNews({ caption = "Stay up to date with our shenanigans, limited drops, and questionable life choices." }) {
+export default function CaptionBelowNews({
+  caption = "Stay up to date with our shenanigans, limited drops, and questionable life choices.",
+}) {
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[120vw] md:w-[80vw] flex flex-col items-center pt-0 pb-8 md:pb-0 md:pt-5">
+      <div className="w-[120vw] md:w-[80vw] flex flex-col items-center pt-0 pb-4 md:pb-0 md:pt-3">
         <motion.div
           className="relative flex items-center justify-center md:my-[0.6vw]"
           style={{
@@ -28,7 +30,9 @@ export default function CaptionBelowNews({ caption = "Stay up to date with our s
               pointerEvents: "none",
             }}
           />
-          <div style={{ width: "100%", height: "2.5px", visibility: "hidden" }} />
+          <div
+            style={{ width: "100%", height: "2.5px", visibility: "hidden" }}
+          />
         </motion.div>
 
         <div className="flex items-start px-[1.5vw] md:px-[14vw] w-full mt-[4vw] md:mt-[0.6vw] justify-center">
@@ -54,7 +58,8 @@ export default function CaptionBelowNews({ caption = "Stay up to date with our s
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
           >
-            {caption || "Stay up to date with our shenanigans, limited drops, and questionable life choices."}
+            {caption ||
+              "Stay up to date with our shenanigans, limited drops, and questionable life choices."}
           </motion.span>
         </div>
       </div>

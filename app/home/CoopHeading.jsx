@@ -9,13 +9,18 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.8, ease: "easeOut", delay },
 });
 
-export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Experience our local vibe and flavour in person. Find your nearest Peckers below." }) {
+export default function CoopHeading({
+  heading = "OUR LOCATIONS",
+  subtitle = "Experience our local vibe and flavour in person. Find your nearest Peckers below.",
+}) {
   const words = (heading || "OUR LOCATIONS").split(" ");
-  const subtitleText = subtitle || "Experience our local vibe and flavour in person. Find your nearest Peckers below.";
+  const subtitleText =
+    subtitle ||
+    "Experience our local vibe and flavour in person. Find your nearest Peckers below.";
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-[6vw] md:pt-[1.5vw] pb-[5vw] md:pb-0 xl:pb-0 flex flex-col items-start text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-[6vw] md:pt-[9vw] lg:pt-[9vw] xl:pt-[5.5vw] pb-[5vw] md:pb-0 xl:pb-0 flex flex-col items-start text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
@@ -36,7 +41,7 @@ export default function CoopHeading({ heading = "OUR LOCATIONS", subtitle = "Exp
 
       {/* Subtitle */}
       <motion.p
-        className="font-sans mt-[2vw] md:mt-0 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
+        className="font-sans mt-[9px] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
         {...fadeUp(0.4)}
       >
         {subtitleText}
