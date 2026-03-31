@@ -1,12 +1,8 @@
 "use client";
 
 import { useState, useRef, useCallback, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { client } from "../../../sanity/lib/client";
-import { urlFor } from "../../../sanity/lib/image";
 
 // SVG as a React Component - only the blurred radial shadow
 const DropShadowSVG = () => (
@@ -69,6 +65,14 @@ const POS_MAPPING_LAPTOP = {
   [-3]: { x: -21, y: -120, scale: 0.15, opacity: 0.3, z: 4 },
 };
 
+const MOBILE_SLOT_MAPPING = {
+  0: { x: 0, scale: 1, opacity: 1, z: 10 },
+  1: { x: 36, scale: 0.74, opacity: 0.55, z: 7 },
+  [-1]: { x: -36, scale: 0.74, opacity: 0.55, z: 7 },
+  2: { x: 72, scale: 0.56, opacity: 0.18, z: 4 },
+  [-2]: { x: -72, scale: 0.56, opacity: 0.18, z: 4 },
+};
+
 function getSlotPos(slot, isLaptop = false) {
   const mapping = isLaptop ? POS_MAPPING_LAPTOP : POS_MAPPING_TABLET;
   if (mapping[slot]) return mapping[slot];
@@ -77,29 +81,9 @@ function getSlotPos(slot, isLaptop = false) {
 
 export default function MenuTitleSection({
   initialItems = [],
-  initialNavbarData = [],
-  onItemChange = null,
-  categoryName = "MENU"
+  onItemChange = null
 }) {
   const [items] = useState(initialItems);
-  const pathname = usePathname();
-  const navRef = useRef(null);
-
-  const DEFAULT_NAVBAR = [
-    { title: "BURGERS", link: "/menu" },
-    { title: "WRAPS", link: "/menu/wraps" },
-    { title: "RICE BOWLS & SALAD BOWLS", link: "/menu/rice-and-salad-bowls" },
-    { title: "WINGS", link: "/menu/wings" },
-    { title: "TENDERS", link: "/menu/tenders" },
-    { title: "MEAL BOXES AND PLATTERS", link: "/menu/meal-box" },
-    { title: "KIDS", link: "/menu/kids" },
-    { title: "SIDES", link: "/menu/sides-and-fries" },
-    { title: "DRINKS", link: "/menu/drinks-and-desserts" },
-    { title: "VEGGIE", link: "/menu/veg" },
-  ];
-
-  // FORCE the navbar to use strictly these 10 items and NO others.
-  const navbarData = DEFAULT_NAVBAR;
 
   const [carousel, setCarousel] = useState(() => {
     if (initialItems.length > 0) {
@@ -115,8 +99,13 @@ export default function MenuTitleSection({
   });
 
   const animatingRef = useRef(false);
+  const touchStartXRef = useRef(null);
   const [isAnimating, setIsAnimating] = useState(false);
   const [glowVisible, setGlowVisible] = useState(true);
+  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
+  const [isLaptopViewport, setIsLaptopViewport] = useState(false);
+  const [mobileDragPx, setMobileDragPx] = useState(0);
+  const [isMobileDragging, setIsMobileDragging] = useState(false);
 
   const TOTAL = items.length;
 
@@ -125,6 +114,26 @@ export default function MenuTitleSection({
       onItemChange(carousel.center);
     }
   }, [carousel.center, onItemChange]);
+
+  useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 768px)");
+    const laptopQuery = window.matchMedia("(min-width: 1024px)");
+
+    const syncViewportFlags = () => {
+      setIsDesktopViewport(desktopQuery.matches);
+      setIsLaptopViewport(laptopQuery.matches);
+    };
+
+    syncViewportFlags();
+
+    desktopQuery.addEventListener("change", syncViewportFlags);
+    laptopQuery.addEventListener("change", syncViewportFlags);
+
+    return () => {
+      desktopQuery.removeEventListener("change", syncViewportFlags);
+      laptopQuery.removeEventListener("change", syncViewportFlags);
+    };
+  }, []);
 
   const getModIndex = useCallback((idx) => {
     return ((idx % TOTAL) + TOTAL) % TOTAL;
@@ -148,13 +157,70 @@ export default function MenuTitleSection({
       return { center: nextCenter, cards: nextCards };
     });
 
-    setTimeout(() => { setGlowVisible(true); }, 150);
-    setTimeout(() => { animatingRef.current = false; setIsAnimating(false); }, 650);
+    setTimeout(() => { setGlowVisible(true); }, 120);
+    setTimeout(() => { animatingRef.current = false; setIsAnimating(false); }, 420);
   }, [getModIndex, TOTAL]);
 
   const handleCardClick = useCallback((clickedSlot) => { moveBy(clickedSlot); }, [moveBy]);
   const goNext = useCallback(() => moveBy(1), [moveBy]);
   const goPrev = useCallback(() => moveBy(-1), [moveBy]);
+
+  const handleTouchStart = useCallback((event) => {
+    touchStartXRef.current = event.touches?.[0]?.clientX ?? null;
+    setIsMobileDragging(true);
+  }, []);
+
+  const handleTouchMove = useCallback((event) => {
+    if (touchStartXRef.current === null || isAnimating) return;
+
+    const currentX = event.touches?.[0]?.clientX;
+    if (typeof currentX !== "number") return;
+
+    const delta = currentX - touchStartXRef.current;
+    const clampedDelta = Math.max(-140, Math.min(140, delta));
+    setMobileDragPx(clampedDelta);
+  }, [isAnimating]);
+
+  const handleTouchEnd = useCallback((event) => {
+    if (touchStartXRef.current === null || isAnimating) {
+      touchStartXRef.current = null;
+      setIsMobileDragging(false);
+      setMobileDragPx(0);
+      return;
+    }
+
+    const endX = event.changedTouches?.[0]?.clientX;
+    if (typeof endX !== "number") return;
+
+    const deltaX = endX - touchStartXRef.current;
+    const swipeThreshold = 34;
+
+    setIsMobileDragging(false);
+    setMobileDragPx(0);
+
+    if (deltaX <= -swipeThreshold) {
+      goNext();
+    } else if (deltaX >= swipeThreshold) {
+      goPrev();
+    }
+
+    touchStartXRef.current = null;
+  }, [goNext, goPrev, isAnimating]);
+
+  const handleTouchCancel = useCallback(() => {
+    touchStartXRef.current = null;
+    setIsMobileDragging(false);
+    setMobileDragPx(0);
+  }, []);
+
+  const mobileVisibleCards = useMemo(() => {
+    return carousel.cards.filter((card) => Math.abs(card.slot) <= 2);
+  }, [carousel.cards]);
+
+  const mobileDragVw = useMemo(() => {
+    if (typeof window === "undefined") return 0;
+    return (mobileDragPx / window.innerWidth) * 100;
+  }, [mobileDragPx]);
 
   if (TOTAL === 0) return null;
 
@@ -209,75 +275,69 @@ export default function MenuTitleSection({
             <DropShadowSVG />
           </div>
 
-          {/* Mobile-only: simple carousel with swiping */}
-          <div className="md:hidden absolute inset-0 flex items-center justify-center overflow-visible pointer-events-none">
-            <AnimatePresence initial={false}>
-              {carousel.cards.map((card) => {
+          {/* Mobile-only: lightweight swipe carousel */}
+          {!isDesktopViewport && (
+            <div
+              className="md:hidden absolute inset-0 flex items-center justify-center overflow-visible"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchCancel}
+            >
+              {mobileVisibleCards.map((card) => {
                 const item = items[card.index];
                 const isCenter = card.slot === 0;
-                const isVisible = Math.abs(card.slot) <= 1;
-
-                if (!isVisible) return null;
+                const cfg = MOBILE_SLOT_MAPPING[card.slot] ?? MOBILE_SLOT_MAPPING[0];
+                const offsetX = cfg.x + mobileDragVw;
+                const scale = cfg.scale * (item.boost || 1);
 
                 return (
-                  <motion.div
+                  <div
                     key={`mob-${card.id}`}
-                    className="absolute border-none"
-                    initial={false}
-                    animate={{
-                      x: `calc(-50% + ${card.slot * 75}vw)`,
-                      y: "-50%",
-                      scale: isCenter ? (item.boost || 1) : 0.7 * (item.boost || 1),
-                      opacity: isCenter ? 1 : 0.4,
-                      zIndex: isCenter ? 10 : 5,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 25,
-                    }}
+                    className="absolute"
                     style={{
                       left: "50%",
                       top: "50%",
-                      pointerEvents: isCenter ? "auto" : "none",
+                      transform: "translate(-50%, -50%)",
+                      zIndex: cfg.z,
+                      pointerEvents: "none",
                       userSelect: "none",
                     }}
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.4}
-                    onDragEnd={(e, info) => {
-                      const swipeThreshold = 50;
-                      if (info.offset.x < -swipeThreshold) {
-                        goNext();
-                      } else if (info.offset.x > swipeThreshold) {
-                        goPrev();
-                      }
-                    }}
                   >
-                    <div className="relative" style={{ width: "clamp(200px, 75vw, 340px)", height: "auto", aspectRatio: "1/1" }}>
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        priority={isCenter}
-                        className="object-contain"
-                        draggable={false}
-                        sizes="clamp(200px, 75vw, 340px)"
-                      />
+                    <div
+                      style={{
+                        transform: `translate3d(${offsetX}vw, 0, 0) scale(${scale})`,
+                        opacity: cfg.opacity,
+                        transition: isMobileDragging
+                          ? "none"
+                          : "transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease",
+                        willChange: "transform, opacity",
+                      }}
+                    >
+                      <div className="relative" style={{ width: "clamp(200px, 75vw, 340px)", height: "auto", aspectRatio: "1/1" }}>
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          priority={isCenter}
+                          className="object-contain"
+                          draggable={false}
+                          sizes="clamp(200px, 75vw, 340px)"
+                        />
+                      </div>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
-            </AnimatePresence>
-          </div>
+            </div>
+          )}
 
           {/* Tablet & Laptop: Optimized motion.div carousel items */}
-          {carousel.cards.map((card) => {
-            const isLaptop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-            const cfg = getSlotPos(card.slot, isLaptop);
+          {isDesktopViewport && carousel.cards.map((card) => {
+            const cfg = getSlotPos(card.slot, isLaptopViewport);
             const item = items[card.index];
             const isCenter = card.slot === 0;
-            const isVisible = isLaptop ? Math.abs(card.slot) <= 3 : Math.abs(card.slot) <= 2;
+            const isVisible = isLaptopViewport ? Math.abs(card.slot) <= 3 : Math.abs(card.slot) <= 2;
 
             return (
               <motion.div
