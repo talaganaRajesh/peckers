@@ -25,9 +25,15 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
   const prevPathname = useRef(pathname);
   const lenisRef = useRef(null);
 
+  const isMenuPath = (path) => typeof path === "string" && path.startsWith("/menu");
+
   // Instantly trigger PageLoader on route changes (during render)
   if (prevPathname.current !== pathname) {
-    if (loadingDone && !isPageLoading) {
+    const fromMenu = isMenuPath(prevPathname.current);
+    const toMenu = isMenuPath(pathname);
+    const isMenuTabSwitch = fromMenu && toMenu;
+
+    if (loadingDone && !isPageLoading && !isMenuTabSwitch) {
       setIsPageLoading(true);
     }
     prevPathname.current = pathname;

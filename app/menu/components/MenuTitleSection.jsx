@@ -334,19 +334,12 @@ export default function MenuTitleSection({
 
         {/* TITLE */}
         <div className="w-full flex items-center justify-center relative pb-1 md:pb-2 pt-1 md:pt-2 z-20 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={carousel.center}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 1.1, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="uppercase text-white text-center font-black text-[clamp(1.25rem,6.4vw,1.7rem)] md:text-[clamp(1.8rem,9vw,4rem)]"
-              style={{ fontFamily: "var(--font-peakers)", fontWeight: 900, letterSpacing: "0.05em", lineHeight: "1.1", textShadow: "0px 2px 6px rgba(0,0,0,0.4)" }}
-            >
-              {items[carousel.center]?.name}
-            </motion.h1>
-          </AnimatePresence>
+          <h1
+            className="uppercase text-white text-center font-black text-[clamp(1.25rem,6.4vw,1.7rem)] md:text-[clamp(1.8rem,9vw,4rem)]"
+            style={{ fontFamily: "var(--font-peakers)", fontWeight: 900, letterSpacing: "0.05em", lineHeight: "1.1", textShadow: "0px 2px 6px rgba(0,0,0,0.4)" }}
+          >
+            {items[carousel.center]?.name}
+          </h1>
         </div>
       </div>
     </>
