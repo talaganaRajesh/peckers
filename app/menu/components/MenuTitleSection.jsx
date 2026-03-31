@@ -104,8 +104,6 @@ export default function MenuTitleSection({
   const [glowVisible, setGlowVisible] = useState(true);
   const [isDesktopViewport, setIsDesktopViewport] = useState(false);
   const [isLaptopViewport, setIsLaptopViewport] = useState(false);
-  const [mobileDragPx, setMobileDragPx] = useState(0);
-  const [isMobileDragging, setIsMobileDragging] = useState(false);
 
   const TOTAL = items.length;
 
@@ -167,25 +165,11 @@ export default function MenuTitleSection({
 
   const handleTouchStart = useCallback((event) => {
     touchStartXRef.current = event.touches?.[0]?.clientX ?? null;
-    setIsMobileDragging(true);
   }, []);
-
-  const handleTouchMove = useCallback((event) => {
-    if (touchStartXRef.current === null || isAnimating) return;
-
-    const currentX = event.touches?.[0]?.clientX;
-    if (typeof currentX !== "number") return;
-
-    const delta = currentX - touchStartXRef.current;
-    const clampedDelta = Math.max(-140, Math.min(140, delta));
-    setMobileDragPx(clampedDelta);
-  }, [isAnimating]);
 
   const handleTouchEnd = useCallback((event) => {
     if (touchStartXRef.current === null || isAnimating) {
       touchStartXRef.current = null;
-      setIsMobileDragging(false);
-      setMobileDragPx(0);
       return;
     }
 
@@ -194,9 +178,6 @@ export default function MenuTitleSection({
 
     const deltaX = endX - touchStartXRef.current;
     const swipeThreshold = 34;
-
-    setIsMobileDragging(false);
-    setMobileDragPx(0);
 
     if (deltaX <= -swipeThreshold) {
       goNext();
@@ -209,18 +190,11 @@ export default function MenuTitleSection({
 
   const handleTouchCancel = useCallback(() => {
     touchStartXRef.current = null;
-    setIsMobileDragging(false);
-    setMobileDragPx(0);
   }, []);
 
   const mobileVisibleCards = useMemo(() => {
     return carousel.cards.filter((card) => Math.abs(card.slot) <= 2);
   }, [carousel.cards]);
-
-  const mobileDragVw = useMemo(() => {
-    if (typeof window === "undefined") return 0;
-    return (mobileDragPx / window.innerWidth) * 100;
-  }, [mobileDragPx]);
 
   if (TOTAL === 0) return null;
 
@@ -280,7 +254,6 @@ export default function MenuTitleSection({
             <div
               className="md:hidden absolute inset-0 flex items-center justify-center overflow-visible"
               onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               onTouchCancel={handleTouchCancel}
             >
@@ -288,7 +261,6 @@ export default function MenuTitleSection({
                 const item = items[card.index];
                 const isCenter = card.slot === 0;
                 const cfg = MOBILE_SLOT_MAPPING[card.slot] ?? MOBILE_SLOT_MAPPING[0];
-                const offsetX = cfg.x + mobileDragVw;
                 const scale = cfg.scale * (item.boost || 1);
 
                 return (
@@ -306,11 +278,9 @@ export default function MenuTitleSection({
                   >
                     <div
                       style={{
-                        transform: `translate3d(${offsetX}vw, 0, 0) scale(${scale})`,
+                        transform: `translate3d(${cfg.x}vw, 0, 0) scale(${scale})`,
                         opacity: cfg.opacity,
-                        transition: isMobileDragging
-                          ? "none"
-                          : "transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease",
+                        transition: "transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms ease",
                         willChange: "transform, opacity",
                       }}
                     >
