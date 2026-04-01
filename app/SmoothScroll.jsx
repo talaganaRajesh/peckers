@@ -17,8 +17,8 @@ export default function SmoothScroll({ children, lenisRef }) {
     const lenis = new Lenis({
       lerp: 0.12,
       smoothWheel: true,
-      smoothTouch: true,
-      touchMultiplier: 2,
+      smoothTouch: false,
+      touchMultiplier: 1.5,
       wheelMultiplier: 1,
       normalizeWheel: true,
       duration: 1.2,
@@ -28,7 +28,7 @@ export default function SmoothScroll({ children, lenisRef }) {
     if (lenisRef) {
       lenisRef.current = lenis;
     }
-    //Final glitches fixed 
+    //Final glitches fixed
 
     // GSAP ticker drives Lenis — one clean loop, properly cleaned up below
     const onTick = (time) => lenis.raf(time * 1000);
@@ -72,8 +72,8 @@ export default function SmoothScroll({ children, lenisRef }) {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile && lenisRef.current && pathname !== "/house-made-sauces") {
       // Ensure mobile can always scroll
-      document.documentElement.style.overflowY = 'auto';
-      document.body.style.overflowY = 'auto';
+      document.documentElement.style.overflowY = "auto";
+      document.body.style.overflowY = "auto";
     }
   }, [lenisRef, pathname]);
 

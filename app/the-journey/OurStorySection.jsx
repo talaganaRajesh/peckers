@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { urlFor } from "../../sanity/lib/image";
 
 export default function OurStorySection({ initialData = null }) {
@@ -12,15 +12,26 @@ export default function OurStorySection({ initialData = null }) {
   const [direction, setDirection] = useState(0);
 
   // Use slides from Sanity if available, otherwise fallback to default mocked slides
-  const slides = (data?.slides && data.slides.length > 0)
-    ? data.slides.map((s, idx) => ({ ...s, id: idx + 1 }))
-    : data
-      ? [
-        { ...data, id: 1 },
-        { ...data, id: 2, heading: data.heading || "A FAMILY LEGACY, REIMAGINED", content: data.content },
-        { ...data, id: 3, heading: data.heading || "A FAMILY LEGACY, REIMAGINED", content: data.content },
-      ]
-      : [];
+  const slides =
+    data?.slides && data.slides.length > 0
+      ? data.slides.map((s, idx) => ({ ...s, id: idx + 1 }))
+      : data
+        ? [
+            { ...data, id: 1 },
+            {
+              ...data,
+              id: 2,
+              heading: data.heading || "A FAMILY LEGACY, REIMAGINED",
+              content: data.content,
+            },
+            {
+              ...data,
+              id: 3,
+              heading: data.heading || "A FAMILY LEGACY, REIMAGINED",
+              content: data.content,
+            },
+          ]
+        : [];
 
   const nextSlide = () => {
     setDirection(1);
@@ -71,17 +82,22 @@ export default function OurStorySection({ initialData = null }) {
   };
 
   const currentData = slides[currentSlide] || {};
-  const fixedHeading = slides[0]?.heading || data?.heading || "A FAMILY LEGACY, REIMAGINED";
+  const fixedHeading =
+    slides[0]?.heading || data?.heading || "A FAMILY LEGACY, REIMAGINED";
   const fixedSubHeading =
-    slides.find((slide) => typeof slide.subHeading === "string" && slide.subHeading.trim() !== "")?.subHeading ||
+    slides.find(
+      (slide) =>
+        typeof slide.subHeading === "string" && slide.subHeading.trim() !== "",
+    )?.subHeading ||
     data?.subHeading ||
     data?.subtitle ||
     "";
 
   // Get images for the current slide (sub-carousel)
-  const displayImages = (currentData.storyImages && currentData.storyImages.length > 0)
-    ? currentData.storyImages
-    : [currentData.founderImage || data?.founderImage].filter(Boolean);
+  const displayImages =
+    currentData.storyImages && currentData.storyImages.length > 0
+      ? currentData.storyImages
+      : [currentData.founderImage || data?.founderImage].filter(Boolean);
 
   // Auto-slide internal images
   useEffect(() => {
@@ -89,7 +105,7 @@ export default function OurStorySection({ initialData = null }) {
     if (displayImages.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentSubSlide((prev) => (prev + 1) % displayImages.length);
-    }, 15000); // 15 seconds per internal image
+    }, 9000); // 9 seconds per internal image
     return () => clearInterval(timer);
   }, [data, currentSlide, displayImages.length]);
 
@@ -140,16 +156,23 @@ export default function OurStorySection({ initialData = null }) {
                   className="custom-scrollbar text-[#D1D5DB] font-peakers text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] lg:pt-[3vw] pb-2 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
                 >
                   {(() => {
-                    const bodyArray = currentData.content || currentData.bodyText;
-                    if (!bodyArray || (Array.isArray(bodyArray) && bodyArray.length === 0) || (typeof bodyArray === 'string' && bodyArray.trim() === '')) {
+                    const bodyArray =
+                      currentData.content || currentData.bodyText;
+                    if (
+                      !bodyArray ||
+                      (Array.isArray(bodyArray) && bodyArray.length === 0) ||
+                      (typeof bodyArray === "string" && bodyArray.trim() === "")
+                    ) {
                       return <p>Content reveal in progress...</p>;
                     }
 
                     const contentString = Array.isArray(bodyArray)
                       ? bodyArray
-                        .map((item) => (typeof item === 'string' ? item : String(item)))
-                        .join('\n')
-                      : typeof bodyArray === 'string'
+                          .map((item) =>
+                            typeof item === "string" ? item : String(item),
+                          )
+                          .join("\n")
+                      : typeof bodyArray === "string"
                         ? bodyArray
                         : String(bodyArray);
 
@@ -161,19 +184,32 @@ export default function OurStorySection({ initialData = null }) {
                   })()}
                 </motion.div>
               </AnimatePresence>
- 
-               <button
-                 onClick={nextSlide}
-                 className="flex absolute right-1 md:right-4 top-[50%] -translate-y-1/2 lg:right-4 z-50 items-center justify-center w-8 h-8 md:w-14 md:h-14 border border-white/10 rounded-full bg-black/40 backdrop-blur-lg hover:bg-white hover:text-black transition-all duration-300 active:scale-75"
-               >
-                 <svg width="16" height="16" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                   <path d="M5 12h14M12 5l7 7-7 7" />
-                 </svg>
-               </button>
+
+              <button
+                onClick={nextSlide}
+                className="flex absolute right-1 md:right-4 top-[50%] -translate-y-1/2 lg:right-4 z-50 items-center justify-center w-8 h-8 md:w-14 md:h-14 border border-white/10 rounded-full bg-black/40 backdrop-blur-lg hover:bg-white hover:text-black transition-all duration-300 active:scale-75"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  className="md:w-6 md:h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
 
               <div className="flex items-center justify-start gap-1 lg:gap-2 mt-4 lg:mt-3 pb-0 lg:pb-1 shrink-0">
                 {slides.map((_, i) => (
-                  <div key={i} className={`h-0.5 lg:h-1 w-4 lg:w-12 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}></div>
+                  <div
+                    key={i}
+                    className={`h-0.5 lg:h-1 w-4 lg:w-12 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}
+                  ></div>
                 ))}
               </div>
 
@@ -200,7 +236,11 @@ export default function OurStorySection({ initialData = null }) {
                     className="absolute top-0 lg:top-0 left-0 lg:left-0 right-0 lg:right-0 bottom-0 lg:bottom-0 w-full h-full rounded-[1.2vw] overflow-hidden"
                   >
                     <Image
-                      src={urlFor(displayImages[currentSubSlide % displayImages.length]).url()}
+                      src={urlFor(
+                        displayImages[currentSubSlide % displayImages.length],
+                      )
+                        .fit("clip")
+                        .url()}
                       alt={`Story Image ${currentSubSlide + 1}`}
                       fill
                       className="object-contain lg:object-top rounded-[1.2vw]"
@@ -218,7 +258,17 @@ export default function OurStorySection({ initialData = null }) {
           onClick={prevSlide}
           className="flex absolute left-1 md:left-4 top-[50%] -translate-y-1/2 z-50 items-center justify-center w-8 h-8 md:w-14 md:h-14 border border-white/10 rounded-full bg-black/40 backdrop-blur-lg hover:bg-white hover:text-black transition-all duration-300 active:scale-75"
         >
-          <svg width="16" height="16" className="md:w-6 md:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="16"
+            height="16"
+            className="md:w-6 md:h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
         </button>

@@ -1,20 +1,32 @@
 "use client";
 import React, { useState } from "react";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Script from "next/script";
 import { urlFor } from "../../sanity/lib/image";
 import CoopHeading from "./CoopHeading";
 import CoopImages from "./CoopImages";
 
-const LatestNewsHeading = dynamic(() => import("./LatestNewsHeading"), { ssr: true });
-const LatestNewsCards = dynamic(() => import("./LatestNewsCards"), { ssr: true });
-const CaptionBelowNews = dynamic(() => import("./CaptionBelowNews"), { ssr: true });
+const LatestNewsHeading = dynamic(() => import("./LatestNewsHeading"), {
+  ssr: true,
+});
+const LatestNewsCards = dynamic(() => import("./LatestNewsCards"), {
+  ssr: true,
+});
+const CaptionBelowNews = dynamic(() => import("./CaptionBelowNews"), {
+  ssr: true,
+});
 const PersonDetails = dynamic(() => import("./PersonDetails"), { ssr: true });
 const SignUpSection = dynamic(() => import("./SignUpSection"), { ssr: true });
 import GoogleReviews from "../components/GoogleReviews";
 
-const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocations, initialPersonDetails, initialReviews }) => {
+const HomePageClient = ({
+  initialHomepageData,
+  initialSliderCards,
+  initialLocations,
+  initialPersonDetails,
+  initialReviews,
+}) => {
   const [data, setData] = useState(initialHomepageData || {});
   const [activeCardIndex, setActiveCardIndex] = useState(0);
 
@@ -38,12 +50,15 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
       return "The wait is over: Authentic, flame-grilled Jerk Chicken has officially landed at Peckers.";
     }
 
-    return data?.journalCaption || "Stay up to date with our shenanigans, limited drops, and questionable life choices.";
+    return (
+      data?.journalCaption ||
+      "Stay up to date with our shenanigans, limited drops, and questionable life choices."
+    );
   };
 
   return (
     <div id="main-content">
-      <section className="hero w-full h-[75vh] md:h-[60vh] lg:h-[95vh] min-h-[500px] md:min-h-[400px] lg:min-h-[480px] bg-black flex items-end justify-center lg:justify-start overflow-hidden relative">
+      <section className="hero w-full h-screen bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
         {data?.videoUrl && (
           <video
             src={data.videoUrl}
@@ -56,7 +71,7 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
             className="absolute inset-0 w-full h-full object-cover "
           />
         )}
-        <div className="relative z-10 w-full px-[5vw] md:px-[7vw] lg:px-[4vw] pb-[6vw] md:pb-[4vw] lg:pb-[1.5vw]">
+        <div className="relative z-10 w-full px-[5vw] md:px-[7vw] lg:px-[4vw]">
           <div className="flex flex-col gap-2 md:gap-4">
             <h1
               className="text-white font-peakers text-[20vw] md:text-[11vw] lg:text-[10.5vw] leading-[0.9] font-bold tracking-[0.04em]"
@@ -74,13 +89,26 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
         </div>
       </section>
 
-
-      <CoopHeading heading={data?.locationsHeading} subtitle={data?.locationsSubtitle} />
+      <CoopHeading
+        heading={data?.locationsHeading}
+        subtitle={data?.locationsSubtitle}
+      />
       <CoopImages locations={initialLocations} />
 
-      <LatestNewsHeading heading={data?.journalHeading} subtitle={data?.journalSubtitle} />
-      <LatestNewsCards news={initialSliderCards} onActiveIndexChange={setActiveCardIndex} />
-      <CaptionBelowNews caption={getCaption()} />
+      {/* THE PECKERS JOURNAL — full viewport section */}
+      <section className="md:h-screen flex flex-col gap-[5vw] md:gap-[1.5vw]">
+        <LatestNewsHeading
+          heading={data?.journalHeading}
+          subtitle={data?.journalSubtitle}
+        />
+        <div className="md:flex-1 md:min-h-0">
+          <LatestNewsCards
+            news={initialSliderCards}
+            onActiveIndexChange={setActiveCardIndex}
+          />
+        </div>
+        <CaptionBelowNews caption={getCaption()} />
+      </section>
 
       <PersonDetails data={initialPersonDetails} />
 
@@ -91,11 +119,14 @@ const HomePageClient = ({ initialHomepageData, initialSliderCards, initialLocati
       <div className="sr-only">
         <h2>Best Halal Chicken in Hertfordshire - Stevenage & Hitchin</h2>
         <p>
-          Peckers is the top choice for halal food in Stevenage and Hitchin. We serve the best peri peri grilled chicken,
-          crispy fried chicken wings, and gourmet burgers in Hertfordshire. Whether you are searching for the ultimate
-          fried chicken experience like Chicken George or Dave's Hot Chicken, Peckers offers a premium, locally-crafted
-          alternative. Looking for a late night takeaway in Stevenage or the best place to eat in Hitchin?
-          Peckers stands out among the best chicken shops in Stevenage with our legendary wings and burgers.
+          Peckers is the top choice for halal food in Stevenage and Hitchin. We
+          serve the best peri peri grilled chicken, crispy fried chicken wings,
+          and gourmet burgers in Hertfordshire. Whether you are searching for
+          the ultimate fried chicken experience like Chicken George or Dave's
+          Hot Chicken, Peckers offers a premium, locally-crafted alternative.
+          Looking for a late night takeaway in Stevenage or the best place to
+          eat in Hitchin? Peckers stands out among the best chicken shops in
+          Stevenage with our legendary wings and burgers.
         </p>
       </div>
     </div>
