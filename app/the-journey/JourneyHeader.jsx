@@ -117,7 +117,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
                                         style={{ originY: 0 }}
-                                        x="308.829" y="228" width="3.34212" height="53.4739" fill="#FFD700"
+                                        x="307" y="228" width="6" height="53.4739" fill="#FFD700"
                                     />
                                 </g>
                                 <motion.g
@@ -140,7 +140,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
                                         style={{ originY: "218px" }}
-                                        x="733" y="144" width="4" height="74" fill="#FFD700"
+                                        x="732" y="144" width="6" height="74" fill="#FFD700"
                                     />
                                 </g>
                                 <motion.g
@@ -163,7 +163,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{ duration: 1.5, delay: 2.0, ease: "easeOut" }}
                                         style={{ originY: 0 }}
-                                        x="1163" y="228" width="3.34212" height="53.4739" fill="#FFD700"
+                                        x="1161" y="228" width="6" height="53.4739" fill="#FFD700"
                                     />
                                 </g>
                                 <motion.g
@@ -189,11 +189,11 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
                                         <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
                                     </filter>
-                                    <filter id="filter1_d_0_1" x="302.145" y="221.316" width="16.7103" height="66.8423" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                    <filter id="filter1_d_0_1" x="295" y="220" width="30" height="70" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                         <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                         <feOffset />
-                                        <feGaussianBlur stdDeviation="3.34212" />
+                                        <feGaussianBlur stdDeviation="1.5" />
                                         <feComposite in2="hardAlpha" operator="out" />
                                         <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
                                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
@@ -215,11 +215,11 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         <feBlend mode="normal" in2="effect1_dropShadow_0_1" result="effect2_dropShadow_0_1" />
                                         <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_0_1" result="shape" />
                                     </filter>
-                                    <filter id="filter3_d_0_1" x="724" y="135" width="22" height="92" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                    <filter id="filter3_d_0_1" x="720" y="135" width="30" height="92" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                         <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                         <feOffset />
-                                        <feGaussianBlur stdDeviation="4.5" />
+                                        <feGaussianBlur stdDeviation="1.5" />
                                         <feComposite in2="hardAlpha" operator="out" />
                                         <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
                                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
@@ -241,11 +241,11 @@ export default function JourneyIntroSection({ initialData = null }) {
                                         <feBlend mode="normal" in2="effect1_dropShadow_0_1" result="effect2_dropShadow_0_1" />
                                         <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_0_1" result="shape" />
                                     </filter>
-                                    <filter id="filter5_d_0_1" x="1156.32" y="221.316" width="16.7103" height="66.8423" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                                    <filter id="filter5_d_0_1" x="1150" y="220" width="30" height="70" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                         <feFlood floodOpacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
                                         <feOffset />
-                                        <feGaussianBlur stdDeviation="3.34212" />
+                                        <feGaussianBlur stdDeviation="1.5" />
                                         <feComposite in2="hardAlpha" operator="out" />
                                         <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
                                         <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
