@@ -32,7 +32,12 @@ export default async function HomePage() {
         journalHeading,
         journalSubtitle,
         journalCaption,
-        ratingSection,
+        ratingSection {
+          heading,
+          subheading,
+          rating,
+          totalReviews
+        },
         signupSection {
           ...,
           backgroundImage {

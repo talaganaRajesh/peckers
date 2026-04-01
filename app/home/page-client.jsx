@@ -112,7 +112,10 @@ const HomePageClient = ({
 
       <PersonDetails data={initialPersonDetails} />
 
-      <GoogleReviews initialReviews={initialReviews} />
+      <GoogleReviews
+        initialReviews={initialReviews}
+        ratingData={data?.ratingSection}
+      />
 
       <SignUpSection initialData={data?.signupSection} />
 

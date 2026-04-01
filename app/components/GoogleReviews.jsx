@@ -18,7 +18,7 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
 });
 
-const GoogleReviews = ({ initialReviews = [] }) => {
+const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
   const [reviews, setReviews] = useState(initialReviews);
   const [loading, setLoading] = useState(initialReviews.length === 0);
   const [error, setError] = useState(null);
@@ -118,15 +118,15 @@ const GoogleReviews = ({ initialReviews = [] }) => {
               className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
               style={{ fontFamily: "var(--font-peakers)" }}
             >
-              STREET CRED
+              {ratingData?.heading || "STREET CRED"}
             </h2>
 
             <motion.p
               className="font-sans mt-[4vw] md:mt-0 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
               {...fadeUp(0.4)}
             >
-              Real feedback from our community. Click any card to view on
-              Google.
+              {ratingData?.subheading ||
+                "Real feedback from our community. Click any card to view on Google."}
             </motion.p>
           </div>
 
@@ -148,7 +148,7 @@ const GoogleReviews = ({ initialReviews = [] }) => {
                 <FaStarHalfAlt className="text-yellow-500 text-sm md:text-lg" />
               </div>
               <p className="text-white/60 font-medium text-xs md:text-sm tracking-tight">
-                (4.8/5 on Google)
+                ({ratingData?.rating || "4.8"}/5 {ratingData?.totalReviews ? `rating from ${ratingData.totalReviews}+ ` : ""}Familiar Faces)
               </p>
             </div>
           </motion.div>

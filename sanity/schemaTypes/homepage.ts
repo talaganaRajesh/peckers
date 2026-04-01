@@ -34,6 +34,7 @@ export default defineType({
             type: "object",
             fields: [
                 defineField({ name: "heading", type: "string" }),
+                defineField({ name: "subheading", type: "text" }),
                 defineField({ name: "rating", type: "number" }),
                 defineField({ name: "totalReviews", type: "number" }),
             ],
