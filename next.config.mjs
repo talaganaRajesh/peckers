@@ -20,6 +20,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/sanity-api/:path*",
+        destination: "https://3gu4dx3n.api.sanity.io/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

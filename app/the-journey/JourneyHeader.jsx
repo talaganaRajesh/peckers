@@ -99,7 +99,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
-                                <g filter="url(#filter0_d_0_1)">
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
                                     <motion.rect
                                         initial={{ width: 0, opacity: 0.95 }}
                                         whileInView={{ width: 1440, opacity: 1 }}
@@ -110,164 +110,85 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 </g>
 
                                 {/* Connector and Circle 1 - Hitchin (at spot 1) */}
-                                <g filter="url(#filter1_d_0_1)">
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
                                     <motion.rect
-                                        initial={{ scaleY: 0 }}
-                                        whileInView={{ scaleY: 1 }}
+                                        initial={{ height: 0 }}
+                                        whileInView={{ height: 53.4739 }}
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                                        style={{ originY: 0 }}
-                                        x="307" y="228" width="6" height="53.4739" fill="#FFD700"
+                                        x="307" y="228" width="6" fill="#FFD700"
                                     />
                                 </g>
-                                <motion.g
-                                    initial={{ scale: 0, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 1.2, delay: 0.3, ease: "backOut" }}
-                                    style={{ transformOrigin: "310px 213px" }}
-                                    filter="url(#filter2_dd_0_1)"
-                                >
-                                    <circle cx="310" cy="213" r="22.5" fill="#FFD700" />
-                                    <circle cx="310" cy="213" r="20.25" stroke="#121212" strokeWidth="4.5" fill="none" />
-                                </motion.g>
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
+                                    <motion.circle
+                                        initial={{ r: 0, opacity: 0 }}
+                                        whileInView={{ r: 22.5, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.2, delay: 0.3, ease: "backOut" }}
+                                        cx="310" cy="213" fill="#FFD700"
+                                    />
+                                    <motion.circle
+                                        initial={{ r: 0, opacity: 0 }}
+                                        whileInView={{ r: 20.25, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.2, delay: 0.3, ease: "backOut" }}
+                                        cx="310" cy="213" stroke="#121212" strokeWidth="4.5" fill="none"
+                                    />
+                                </g>
 
                                 {/* Connector and Circle 2 - Stevenage (at spot 2) */}
-                                <g filter="url(#filter3_d_0_1)">
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
                                     <motion.rect
-                                        initial={{ scaleY: 0 }}
-                                        whileInView={{ scaleY: 1 }}
+                                        initial={{ y: 218, height: 0 }}
+                                        whileInView={{ y: 144, height: 74 }}
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
-                                        style={{ originY: "218px" }}
-                                        x="732" y="144" width="6" height="74" fill="#FFD700"
+                                        x="732" width="6" fill="#FFD700"
                                     />
                                 </g>
-                                <motion.g
-                                    initial={{ scale: 0, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 1.2, delay: 1.0, ease: "backOut" }}
-                                    style={{ transformOrigin: "735px 213px" }}
-                                    filter="url(#filter4_dd_0_1)"
-                                >
-                                    <circle cx="735" cy="213" r="22.5" fill="#FFD700" />
-                                    <circle cx="735" cy="213" r="20.25" stroke="#121212" strokeWidth="4.5" fill="none" />
-                                </motion.g>
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
+                                    <motion.circle
+                                        initial={{ r: 0, opacity: 0 }}
+                                        whileInView={{ r: 22.5, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.2, delay: 1.0, ease: "backOut" }}
+                                        cx="735" cy="213" fill="#FFD700"
+                                    />
+                                    <motion.circle
+                                        initial={{ r: 0, opacity: 0 }}
+                                        whileInView={{ r: 20.25, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.2, delay: 1.0, ease: "backOut" }}
+                                        cx="735" cy="213" stroke="#121212" strokeWidth="4.5" fill="none"
+                                    />
+                                </g>
 
                                 {/* Connector and Circle 3 - Where Next (at spot 3) */}
-                                <g filter="url(#filter5_d_0_1)">
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
                                     <motion.rect
-                                        initial={{ scaleY: 0 }}
-                                        whileInView={{ scaleY: 1 }}
+                                        initial={{ height: 0 }}
+                                        whileInView={{ height: 53.4739 }}
                                         viewport={{ once: true, amount: 0.15 }}
                                         transition={{ duration: 1.5, delay: 2.0, ease: "easeOut" }}
-                                        style={{ originY: 0 }}
-                                        x="1161" y="228" width="6" height="53.4739" fill="#FFD700"
+                                        x="1161" y="228" width="6" fill="#FFD700"
                                     />
                                 </g>
-                                <motion.g
-                                    initial={{ scale: 0, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    viewport={{ once: true, amount: 0.15 }}
-                                    transition={{ duration: 1.2, delay: 1.8, ease: "backOut" }}
-                                    style={{ transformOrigin: "1164px 213px" }}
-                                    filter="url(#filter6_dd_0_1)"
-                                >
-                                    <circle cx="1164" cy="213" r="22.5" fill="#FFD700" />
-                                    <circle cx="1164" cy="213" r="20.25" stroke="#121212" strokeWidth="4.5" fill="none" />
-                                </motion.g>
-
-                                <defs>
-                                    <filter id="filter0_d_0_1" x="-22.5" y="187" width="1485" height="51.75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="11.25" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 0.5 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                    <filter id="filter1_d_0_1" x="295" y="220" width="30" height="70" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="1.5" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                    <filter id="filter2_dd_0_1" x="270.624" y="173.5" width="78.75" height="78.75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="2.8125" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="8.4375" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="effect1_dropShadow_0_1" result="effect2_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                    <filter id="filter3_d_0_1" x="720" y="135" width="30" height="92" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="1.5" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                    <filter id="filter4_dd_0_1" x="695.787" y="173.5" width="78.75" height="78.75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="2.8125" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="8.4375" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="effect1_dropShadow_0_1" result="effect2_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                    <filter id="filter5_d_0_1" x="1150" y="220" width="30" height="70" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="1.5" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                    <filter id="filter6_dd_0_1" x="1124.78" y="173.5" width="78.75" height="78.75" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-                                        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="2.8125" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" />
-                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                        <feOffset />
-                                        <feGaussianBlur stdDeviation="8.4375" />
-                                        <feComposite in2="hardAlpha" operator="out" />
-                                        <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 0.843137 0 0 0 0 0 0 0 0 1 0" />
-                                        <feBlend mode="normal" in2="effect1_dropShadow_0_1" result="effect2_dropShadow_0_1" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_0_1" result="shape" />
-                                    </filter>
-                                </defs>
+                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
+                                    <motion.circle
+                                        initial={{ r: 0, opacity: 0 }}
+                                        whileInView={{ r: 22.5, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.2, delay: 1.8, ease: "backOut" }}
+                                        cx="1164" cy="213" fill="#FFD700"
+                                    />
+                                    <motion.circle
+                                        initial={{ r: 0, opacity: 0 }}
+                                        whileInView={{ r: 20.25, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.15 }}
+                                        transition={{ duration: 1.2, delay: 1.8, ease: "backOut" }}
+                                        cx="1164" cy="213" stroke="#121212" strokeWidth="4.5" fill="none"
+                                    />
+                                </g>
                             </svg>
 
                             {/* Card 1 - Hitchin (2022) */}
