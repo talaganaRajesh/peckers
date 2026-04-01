@@ -305,7 +305,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                     <defs>
                                                         <path
                                                             id={`sauce-ring-path-${idx}`}
-                                                            d="M 500, 500 m -472, 0 a 472,472 0 1,1 944,0 a 472,472 0 1,1 -944,0"
+                                                            d="M 500, 500 m -474, 0 a 474,474 0 1,1 948,0 a 474,474 0 1,1 -948,0"
                                                             fill="none"
                                                         />
                                                     </defs>
@@ -329,7 +329,7 @@ export default function SaucePageOne({ initialData = [] }) {
                                                                     textTransform: "uppercase",
                                                                     cursor: "pointer",
                                                                     pointerEvents: "auto",
-                                                                    transform: isDesktop ? "" : "translateY(5px)",
+                                                                    transform: isDesktop ? "" : "",
                                                                 }}
                                                                 onClick={() => transitionToIndex(item.index)}
                                                             >
@@ -347,9 +347,9 @@ export default function SaucePageOne({ initialData = [] }) {
                                     {/* STATIC BORDER CIRCLE */}
                                     <svg
                                         viewBox="0 0 1000 1000"
-                                        className="absolute inset-0 top-4 w-full h-full pointer-events-none z-10 md:scale-[0.96] md:origin-center"
+                                        className="absolute inset-0 w-full h-full pointer-events-none z-10 md:scale-[0.96] md:origin-center"
                                     >
-                                        <circle cx="500" cy="500" r="470" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
+                                        <circle cx="500" cy="500" r="460" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" />
                                     </svg>
 
                                     {/* SAUCE IMAGE — cropped circle */}
@@ -392,11 +392,11 @@ export default function SaucePageOne({ initialData = [] }) {
             <div className="absolute top-[58%] sm:top-[60%] md:top-auto bottom-auto md:bottom-[16%] lg:bottom-[22%] xl:bottom-[25%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
                 <button
                     onClick={prevSlide}
-                    className="group pointer-events-auto bg-black/30 hover:bg-black/50 rounded-full p-1 transition-all duration-300 active:scale-95"
+                    className="group pointer-events-auto transition-all duration-300 active:scale-95"
                     aria-label="Previous sauce"
                 >
                     <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
-                        <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        <div className="w-full h-full rounded-full bg-black/30 border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:bg-black/60 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]">
                             <svg viewBox="0 0 100 100" className="w-[45%] h-[45%] text-white rotate-180" fill="currentColor">
                                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />
                                 <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
@@ -411,7 +411,7 @@ export default function SaucePageOne({ initialData = [] }) {
                     aria-label="Next sauce"
                 >
                     <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
-                        <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                        <div className="w-full h-full rounded-full bg-black/30 border border-white/20 backdrop-blur-md flex items-center justify-center transition-all duration-300 group-hover:bg-black/60 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(0,0,0,0.3)]">
                             <svg viewBox="0 0 100 100" className="w-[45%] h-[45%] text-white" fill="currentColor">
                                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />
                                 <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
