@@ -21,7 +21,7 @@ export default function SignUpSection({ initialData = null }) {
       ease: "power2.inOut",
       yoyo: false,
       delay: 0.3,
-      onUpdate: () => { },
+      onUpdate: () => {},
       onRepeat: () => {
         gsap.set(gloss, { left: "-60%", opacity: 0.34 });
       },
@@ -31,7 +31,9 @@ export default function SignUpSection({ initialData = null }) {
 
   if (!data) return null;
 
-  const bgImageUrl = data.backgroundImage?.asset?.url || "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/HomePage/Sign%20Up%20Section.webp";
+  const bgImageUrl =
+    data.backgroundImage?.asset?.url ||
+    "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/HomePage/Sign%20Up%20Section.webp";
 
   return (
     <div
@@ -56,7 +58,7 @@ export default function SignUpSection({ initialData = null }) {
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <motion.h2
-          className="text-white px-[2vw] font-bold text-[6.5vw] md:text-[7vw] lg:text-[5vw] xl:text-[3.8vw] mb-[1.5vw] md:mb-[2.5vw] lg:mb-[1.5vw] xl:mb-[0.5vw] leading-tight font-['Share_Tech'] text-center"
+          className="text-white px-[2vw] font-bold text-[6.5vw] md:text-[7vw] lg:text-[5vw] xl:text-[3.8vw] mb-[1.5vw] md:mb-[2.5vw] lg:mb-[1.5vw] xl:mb-[0.5vw] leading-tight font-sans text-center"
           style={{ letterSpacing: "0.04em", fontFamily: "var(--font-peakers)" }}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,24 +70,34 @@ export default function SignUpSection({ initialData = null }) {
 
         <motion.p
           className="text-[#e7e7e7e0] text-[3.5vw] sm:text-[3vw] md:text-[3.5vw] lg:text-[2vw] xl:text-[1.35vw] font-sans mb-[2vw] md:mb-[3vw] lg:mb-[1vw] xl:mb-[0.5vw] mt-[0.5vw] md:mt-[1vw] lg:mt-0 text-center max-w-[90vw] md:max-w-[80vw] lg:max-w-[60vw] xl:max-w-max"
-          style={{ fontWeight: 300, letterSpacing: "0.01em", lineHeight: "1.4" }}
+          style={{
+            fontWeight: 300,
+            letterSpacing: "0.01em",
+            lineHeight: "1.4",
+          }}
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.3 }}
         >
-          {data.description || "Sign up for the Peckers loyalty scheme and get a free milkshake on us today."}
+          {data.description ||
+            "Sign up for the Peckers loyalty scheme and get a free milkshake on us today."}
         </motion.p>
 
         <motion.p
           className="text-[#888888] italic text-[2.8vw] sm:text-[2.4vw] md:text-[2.8vw] lg:text-[1.5vw] xl:text-[1vw] font-sans mb-[5vw] md:mb-[6vw] lg:mb-[3vw] xl:mb-[2vw] mt-0 text-center max-w-[90vw] md:max-w-[80vw] lg:max-w-[60vw] xl:max-w-max"
-          style={{ fontWeight: 300, letterSpacing: "0.01em", lineHeight: "1.4" }}
+          style={{
+            fontWeight: 300,
+            letterSpacing: "0.01em",
+            lineHeight: "1.4",
+          }}
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
         >
-          {data.subText || "Collect chicken heads as you go. Earn rewards at 3 and 6, then reach 10 for a free meal"}
+          {data.subText ||
+            "Collect chicken heads as you go. Earn rewards at 3 and 6, then reach 10 for a free meal"}
         </motion.p>
 
         <motion.div
@@ -123,7 +135,9 @@ export default function SignUpSection({ initialData = null }) {
                 transform: "rotate(-14deg)",
               }}
             ></span>
-            <span style={{ position: "relative", zIndex: 3 }}>{data.buttonText || "CLAIM MY SHAKE"}</span>
+            <span style={{ position: "relative", zIndex: 3 }}>
+              {data.buttonText || "CLAIM MY SHAKE"}
+            </span>
           </button>
         </motion.div>
       </motion.div>

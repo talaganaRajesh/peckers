@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "../../sanity/lib/client";
 import { urlFor } from "../../sanity/lib/image";
-``
+``;
 export default function CoopImages({ locations = [] }) {
   const [town, setTown] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,38 +46,39 @@ export default function CoopImages({ locations = [] }) {
       setIsSubmitting(false);
     }
   };
-  const hitchin = locations.find(l => l.name?.trim().toLowerCase() === "hitchin");
-  const stevenage = locations.find(l => l.name?.trim().toLowerCase() === "stevenage");
+  const hitchin = locations.find(
+    (l) => l.name?.trim().toLowerCase() === "hitchin",
+  );
+  const stevenage = locations.find(
+    (l) => l.name?.trim().toLowerCase() === "stevenage",
+  );
 
   const HITCHIN_IMG = hitchin?.image?.asset?.url || null;
   const STEVENAGE_IMG = stevenage?.image?.asset?.url || null;
 
   return (
-    <div
-      className="flex flex-col lg:flex-row gap-[8vw] md:gap-[5vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-between items-center px-[5vw] md:px-[6vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[10vw] lg:py-[7vw] xl:py-[3.5vw]"
-    >
+    <div className="flex flex-col lg:flex-row gap-[8vw] md:gap-[5vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-between items-center px-[5vw] md:px-[6vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[10vw] lg:py-[7vw] xl:py-[3.5vw]">
       {/* Hitchin Mobile & Tablet */}
       <Link
         href="/hitchin"
-        className="flex lg:hidden w-full items-center justify-between bg-[#1a1a1a] rounded-[3vw] md:rounded-[2vw] p-[3vw] md:p-[2vw] shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
+        className="group flex lg:hidden relative w-full h-[50vw] md:h-[40vw] rounded-[3vw] md:rounded-[2vw] overflow-hidden shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
       >
-        <div className="flex items-center gap-[2vw] md:gap-[3vw] pl-[2vw] md:pl-[3vw]">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600 w-[7vw] h-[7vw] md:w-[8vw] md:h-[8vw]">
-            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" />
-          </svg>
-          <span className="text-white text-[6vw] md:text-[6.8vw] uppercase tracking-wide font-semibold" style={{ fontFamily: "var(--font-peakers)" }}>{hitchin?.name || "Hitchin"}</span>
-        </div>
-        <div className="relative w-[30vw] h-[25vw] md:w-[40vw] md:h-[30vw]">
-          {HITCHIN_IMG && (
-            <Image
-              src={HITCHIN_IMG}
-              alt={`Peckers Hitchin - Best Halal Peri Peri Grilled Chicken and Takeaway in Hitchin`}
-              fill
-              className="object-contain lg:object-cover rounded-[2vw] md:rounded-[1.5vw] shadow-md border border-[#333]"
-              sizes="30vw"
-            />
-          )}
-        </div>
+        {HITCHIN_IMG && (
+          <Image
+            src={HITCHIN_IMG}
+            alt={`Peckers Hitchin - Best Halal Peri Peri Grilled Chicken and Takeaway in Hitchin`}
+            fill
+            className="object-cover transition-transform duration-700 group-active:scale-105"
+            sizes="100vw"
+          />
+        )}
+        <div className="absolute inset-0 bg-black/40" />
+        <span
+          className="absolute inset-0 flex items-center justify-center text-white text-[10vw] md:text-[8vw] uppercase tracking-wide font-semibold drop-shadow-lg"
+          style={{ fontFamily: "var(--font-peakers)" }}
+        >
+          {hitchin?.name || "Hitchin"}
+        </span>
       </Link>
 
       {/* Hitchin Desktop & Laptop */}
@@ -106,25 +107,24 @@ export default function CoopImages({ locations = [] }) {
       {/* Stevenage Mobile & Tablet */}
       <Link
         href="/stevenage"
-        className="flex lg:hidden w-full items-center justify-between bg-[#1a1a1a] rounded-[3vw] md:rounded-[2vw] p-[3vw] md:p-[2vw] shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
+        className="group flex lg:hidden relative w-full h-[50vw] md:h-[40vw] rounded-[3vw] md:rounded-[2vw] overflow-hidden shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
       >
-        <div className="relative w-[30vw] h-[25vw] md:w-[40vw] md:h-[30vw]">
-          {STEVENAGE_IMG && (
-            <Image
-              src={STEVENAGE_IMG}
-              alt={`Peckers Stevenage - Best Halal Chicken Restaurant and Delivery in Stevenage`}
-              fill
-              className="object-contain lg:object-cover rounded-[2vw] md:rounded-[1.5vw] shadow-md border border-[#333]"
-              sizes="30vw"
-            />
-          )}
-        </div>
-        <div className="flex items-center gap-[2vw] md:gap-[3vw] pr-[2vw] md:pr-[3vw]">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-red-600 w-[7vw] h-[7vw] md:w-[8vw] md:h-[8vw]">
-            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor" />
-          </svg>
-          <span className="text-white text-[6vw] md:text-[6.8vw] uppercase tracking-wide text-right font-semibold" style={{ fontFamily: "var(--font-peakers)" }}>{stevenage?.name || "Stevenage"}</span>
-        </div>
+        {STEVENAGE_IMG && (
+          <Image
+            src={STEVENAGE_IMG}
+            alt={`Peckers Stevenage - Best Halal Chicken Restaurant and Delivery in Stevenage`}
+            fill
+            className="object-cover transition-transform duration-700 group-active:scale-105"
+            sizes="100vw"
+          />
+        )}
+        <div className="absolute inset-0 bg-black/40" />
+        <span
+          className="absolute inset-0 flex items-center justify-center text-white text-[10vw] md:text-[8vw] uppercase tracking-wide font-semibold drop-shadow-lg"
+          style={{ fontFamily: "var(--font-peakers)" }}
+        >
+          {stevenage?.name || "Stevenage"}
+        </span>
       </Link>
 
       {/* Stevenage Desktop & Laptop */}
@@ -156,13 +156,16 @@ export default function CoopImages({ locations = [] }) {
           {!submitted ? (
             <>
               <span
-                className="text-white text-[7vw] md:text-[8vw] lg:text-[3.2vw] xl:text-[2.5vw] mb-[4vw] md:mb-[5vw] lg:mb-[2vw] xl:mb-[1.5vw] text-center tracking-wide"
+                className="text-white font-bold text-[7vw] md:text-[8vw] lg:text-[3.2vw] xl:text-[2.5vw] mb-[4vw] md:mb-[5vw] lg:mb-[2vw] xl:mb-[1.5vw] text-center tracking-wide"
                 style={{ fontFamily: "var(--font-peakers)" }}
               >
                 WE’RE EXPANDING
               </span>
 
-              <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+              <form
+                onSubmit={handleSubmit}
+                className="w-full flex flex-col items-center"
+              >
                 <input
                   type="text"
                   placeholder="Suggest our next town… "
@@ -187,14 +190,30 @@ export default function CoopImages({ locations = [] }) {
                     "SEND"
                   )}
                 </button>
-                {error && <p className="text-red-500 text-[3vw] lg:text-[1vw] mt-2 font-mono uppercase">{error}</p>}
+                {error && (
+                  <p className="text-red-500 text-[3vw] lg:text-[1vw] mt-2 font-mono uppercase">
+                    {error}
+                  </p>
+                )}
               </form>
             </>
           ) : (
             <div className="flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-700">
               <div className="w-[15vw] h-[15vw] lg:w-[5vw] lg:h-[5vw] bg-white text-black rounded-full flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                <svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <svg
+                  width="60%"
+                  height="60%"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 13L9 17L19 7"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
                 </svg>
               </div>
               <span
@@ -204,10 +223,14 @@ export default function CoopImages({ locations = [] }) {
                 THANK YOU!
               </span>
               <p className="text-gray-400 font-mono text-[3.5vw] lg:text-[1.1vw] xl:text-[0.9vw] max-w-[80%] uppercase">
-                We'll consider <span className="text-white">{town}</span> for our next location.
+                We'll consider <span className="text-white">{town}</span> for
+                our next location.
               </p>
               <button
-                onClick={() => { setSubmitted(false); setTown(""); }}
+                onClick={() => {
+                  setSubmitted(false);
+                  setTown("");
+                }}
                 className="mt-6 text-gray-500 hover:text-white transition-colors text-[3vw] lg:text-[0.8vw] font-mono uppercase underline decoration-1 underline-offset-4"
               >
                 Suggest another

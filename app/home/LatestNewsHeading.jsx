@@ -9,13 +9,16 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.8, ease: "easeOut", delay },
 });
 
-export default function LatestNewsHeading({ heading = "THE PECKERS JOURNAL", subtitle = "Latest stories from the heart of Peckers." }) {
+export default function LatestNewsHeading({
+  heading = "THE PECKERS JOURNAL",
+  subtitle = "Latest stories from the heart of Peckers.",
+}) {
   const words = (heading || "THE PECKERS JOURNAL").split(" ");
   const subtitleText = subtitle || "Latest stories from the heart of Peckers.";
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] py-[10vw] md:py-[5vw] pt-[3vw] md:pt-[2vw] pb-[1vw] md:pb-[2vw] xl:pb-0 flex flex-col items-center md:items-start text-center md:text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-[6vw] md:pt-[2vw] xl:pt-[1.5vw] pb-[1vw] md:pb-[1vw] xl:pb-[1vw] flex flex-col items-center md:items-start text-center md:text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
@@ -36,7 +39,7 @@ export default function LatestNewsHeading({ heading = "THE PECKERS JOURNAL", sub
 
       {/* Subtitle */}
       <motion.p
-        className="font-sans mt-[4vw] md:mt-0 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
+        className="font-sans mt-[9px] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
         {...fadeUp(0.4)}
       >
         {subtitleText}
