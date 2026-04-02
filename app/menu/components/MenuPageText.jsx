@@ -133,7 +133,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
       )}
       {['BURGERS','WRAPS','RICE BOWLS','SALAD BOWLS','RICE & SALAD BOWLS','RICE BOWLS & SALAD BOWLS','RICE AND SALAD BOWLS','SALAD BOWL','RICE BOWL'].includes(categoryName?.toUpperCase?.() || '') && (
         <div className="w-full flex justify-center pt-0 pb-2 text-center px-[5vw]">
-          <span className="text-white font-peakers text-[2.8vw] md:text-[14px] lg:text-[15px] xl:text-[1.35vw] tracking-3 font-normal">
+          <span className="text-[#F2DF0D] opacity-80 font-neuzeit text-[2.8vw] md:text-[14px] lg:text-[15px] xl:text-[1.35vw] tracking-3 font-normal">
             Can also be made into a veggie option
           </span>
         </div>
