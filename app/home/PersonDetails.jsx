@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function PersonDetails({ data = null }) {
   if (!data) return null;
@@ -13,13 +12,7 @@ export default function PersonDetails({ data = null }) {
 
   return (
     <div className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-stretch justify-center mt-[8vw] md:mt-[8vw] lg:mt-[9vw] xl:mt-[5.5vw] gap-[8vw] md:gap-[8vw] lg:gap-[2vw] box-border px-[5vw] md:px-[6vw] lg:px-[2vw] mb-5 md:mb-0">
-      <motion.div
-        className="shrink-0 w-full lg:w-[43vw] xl:w-[44vw]"
-        initial={{ opacity: 0, x: -40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-      >
+      <div className="shrink-0 w-full lg:w-[43vw] xl:w-[44vw]">
         {data.imageUrl && (
           <Image
             src={data.imageUrl}
@@ -30,17 +23,11 @@ export default function PersonDetails({ data = null }) {
             height={840}
           />
         )}
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="w-full lg:max-w-[50vw] xl:max-w-[40vw] flex flex-col justify-center bg-black md:px-[4vw] lg:px-[4vw] xl:px-[3vw] md:py-[6vw] lg:py-[2vw] xl:py-0 min-h-[50vw] md:min-h-[40vw] lg:min-h-[38vw] xl:min-h-[28vw] shadow-xl relative mt-[4vw] md:mt-[4vw] lg:-mt-[2vw] xl:-mt-[2.2vw] mr-0 xl:mr-[1vw] z-10 md:z-2 rounded-xl lg:rounded-none"
-        initial={{ opacity: 0, x: 40 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-      >
+      <div className="w-full lg:max-w-[50vw] xl:max-w-[40vw] flex flex-col justify-start bg-black md:px-[4vw] lg:px-[4vw] xl:px-[3vw] md:py-[6vw] lg:py-[2vw] xl:pt-[3vw] xl:pb-0 min-h-[50vw] md:min-h-[40vw] lg:min-h-[38vw] xl:min-h-[28vw] shadow-xl relative mt-[4vw] md:mt-[4vw] lg:-mt-[2vw] xl:-mt-[2.2vw] mr-0 xl:mr-[1vw] z-10 md:z-2 rounded-xl lg:rounded-none">
         <h2
-          className="block text-white font-bold text-[9vw] sm:text-[9vw] md:text-[6vw] lg:text-[4.5vw] xl:text-[4.9vw] tracking-tight sm:tracking-[.1vw] xl:tracking-[.2vw] leading-tight mb-[6vw] md:mb-[4vw] lg:mb-[1.5vw] xl:mb-[1vw] text-left whitespace-normal lg:max-w-[35vw]"
+          className="block text-white font-bold text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] tracking-[.18vw] leading-tight mb-[6vw] md:mb-[4vw] lg:mb-[1.5vw] xl:mb-[1vw] text-left whitespace-normal lg:max-w-[35vw]"
           style={{ letterSpacing: "0.01em", fontFamily: "var(--font-peakers)" }}
         >
           {resHeading} <span className="text-white">{lastWord}</span>
@@ -79,7 +66,7 @@ export default function PersonDetails({ data = null }) {
             </span>
           </a>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

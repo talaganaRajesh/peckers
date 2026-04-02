@@ -76,11 +76,15 @@ function getSlotPos(slot, isLaptop = false) {
     y: -120,
     scale: 0,
     opacity: 0,
-    z: -1
+    z: -1,
   };
 }
 
-export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbarData = [], onBurgerChange = null }) {
+export default function BurgerCarouselFinal({
+  initialBurgers = [],
+  initialNavbarData = [],
+  onBurgerChange = null,
+}) {
   const [burgers, setBurgers] = useState(initialBurgers);
   const [navbarData, setNavbarData] = useState(initialNavbarData || []);
   const [loading, setLoading] = useState(initialBurgers.length === 0);
@@ -111,7 +115,8 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
     if (initialBurgers.length > 0) return;
     const fetchBurgers = async () => {
       try {
-        const data = await client.fetch(`*[_type == "menuPage"][0].burgerCarousel[] {
+        const data =
+          await client.fetch(`*[_type == "menuPage"][0].burgerCarousel[] {
           name,
           image,
           boost
@@ -141,50 +146,55 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
     fetchBurgers();
   }, []);
 
-  const getModIndex = useCallback((idx) => {
-    return ((idx % TOTAL) + TOTAL) % TOTAL;
-  }, [TOTAL]);
+  const getModIndex = useCallback(
+    (idx) => {
+      return ((idx % TOTAL) + TOTAL) % TOTAL;
+    },
+    [TOTAL],
+  );
 
-  const moveBy = useCallback((steps) => {
-    if (steps === 0 || animatingRef.current || TOTAL === 0) return;
+  const moveBy = useCallback(
+    (steps) => {
+      if (steps === 0 || animatingRef.current || TOTAL === 0) return;
 
-    animatingRef.current = true;
-    setIsAnimating(true);
-    setGlowVisible(false);
+      animatingRef.current = true;
+      setIsAnimating(true);
+      setGlowVisible(false);
 
-    setCarousel((prev) => {
-      const nextCenter = getModIndex(prev.center + steps);
-      const nextCards = prev.cards.map((card) => {
-        let diff = card.index - nextCenter;
-        if (diff > TOTAL / 2) diff -= TOTAL;
-        if (diff < -TOTAL / 2) diff += TOTAL;
-        return { ...card, slot: diff };
+      setCarousel((prev) => {
+        const nextCenter = getModIndex(prev.center + steps);
+        const nextCards = prev.cards.map((card) => {
+          let diff = card.index - nextCenter;
+          if (diff > TOTAL / 2) diff -= TOTAL;
+          if (diff < -TOTAL / 2) diff += TOTAL;
+          return { ...card, slot: diff };
+        });
+        return { center: nextCenter, cards: nextCards };
       });
-      return { center: nextCenter, cards: nextCards };
-    });
 
-    setTimeout(() => {
-      setGlowVisible(true);
-    }, 150);
+      setTimeout(() => {
+        setGlowVisible(true);
+      }, 150);
 
-    setTimeout(() => {
-      animatingRef.current = false;
-      setIsAnimating(false);
-    }, 650);
-  }, [getModIndex, TOTAL]);
+      setTimeout(() => {
+        animatingRef.current = false;
+        setIsAnimating(false);
+      }, 650);
+    },
+    [getModIndex, TOTAL],
+  );
 
   const handleCardClick = useCallback(
     (clickedSlot) => {
       moveBy(clickedSlot);
     },
-    [moveBy]
+    [moveBy],
   );
 
   const goNext = useCallback(() => moveBy(1), [moveBy]);
   const goPrev = useCallback(() => moveBy(-1), [moveBy]);
 
   if (loading) return null;
-
 
   if (TOTAL === 0) return null;
 
@@ -197,8 +207,6 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
             "radial-gradient(ellipse 50% 52% at 50% 38%, #1c1c1c 0%, #0d0d0d 26%, #070707 58%, #000 100%)",
         }}
       >
-
-
         {/* BURGER STAGE */}
         <div
           className="relative w-full flex items-center justify-center mt-[8vw] md:mt-0"
@@ -225,7 +233,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                   {/* Primary Spearhead */}
                   <path d="M45 20 L85 50 L45 80 L58 50 Z" />
                   {/* Secondary Peak */}
-                  <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
+                  <path
+                    d="M15 25 L50 50 L15 75 L28 50 Z"
+                    className="opacity-40"
+                  />
                 </svg>
               </div>
             </div>
@@ -251,7 +262,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                   {/* Primary Spearhead */}
                   <path d="M45 20 L85 50 L45 80 L58 50 Z" />
                   {/* Secondary Peak */}
-                  <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
+                  <path
+                    d="M15 25 L50 50 L15 75 L28 50 Z"
+                    className="opacity-40"
+                  />
                 </svg>
               </div>
             </div>
@@ -259,7 +273,7 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
 
           {/* SVG Drop Shadow */}
           <div
-            className="hidden md:block"
+            className=""
             style={{
               position: "absolute",
               left: "50%",
@@ -267,10 +281,12 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
               transform: "translate(-50%, -33%)",
               zIndex: 1,
               pointerEvents: "none",
-              width: "clamp(280px, 50vw, 760px)",
-              height: "clamp(280px, 50vw, 760px)",
+              width: "clamp(340px, 70vw, 760px)",
+              height: "clamp(340px, 70vw, 760px)",
               opacity: glowVisible ? 0.5 : 0,
-              transition: glowVisible ? "opacity 0.4s ease" : "opacity 0.1s ease",
+              transition: glowVisible
+                ? "opacity 0.4s ease"
+                : "opacity 0.1s ease",
             }}
             aria-hidden="true"
           >
@@ -287,7 +303,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                 key={`mob-${card.id}`}
                 className="block md:hidden"
                 onClick={() =>
-                  !isCenter && !isAnimating && Math.abs(card.slot) <= 1 && handleCardClick(card.slot)
+                  !isCenter &&
+                  !isAnimating &&
+                  Math.abs(card.slot) <= 1 &&
+                  handleCardClick(card.slot)
                 }
                 style={{
                   position: "absolute",
@@ -295,16 +314,28 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                   top: "50%",
                   transform: `
                     translate(calc(-50% + ${card.slot * 110}vw), -50%)
-                    scale(${burger.boost || 1})
+                    scale(${(isCenter ? 1 : 0.7) * (burger.boost || 1)})
                   `,
-                  opacity: Math.abs(card.slot) <= 1 ? 1 : 0,
+                  opacity: Math.abs(card.slot) <= 1 ? (isCenter ? 1 : 0.9) : 0,
                   zIndex: isCenter ? 10 : 5,
-                  transition: "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease",
-                  pointerEvents: isCenter ? "none" : isAnimating ? "none" : "auto",
+                  transition:
+                    "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease",
+                  pointerEvents: isCenter
+                    ? "none"
+                    : isAnimating
+                      ? "none"
+                      : "auto",
                   userSelect: "none",
                 }}
               >
-                <div className="relative" style={{ width: "clamp(200px, 75vw, 340px)", height: "auto", aspectRatio: "1/1" }}>
+                <div
+                  className="relative"
+                  style={{
+                    width: "clamp(200px, 75vw, 340px)",
+                    height: "auto",
+                    aspectRatio: "1/1",
+                  }}
+                >
                   <Image
                     src={burger.image}
                     alt={burger.name}
@@ -330,7 +361,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                 key={`tab-${card.id}`}
                 className="hidden md:block lg:hidden"
                 onClick={() =>
-                  !isCenter && !isAnimating && Math.abs(card.slot) <= 2 && handleCardClick(card.slot)
+                  !isCenter &&
+                  !isAnimating &&
+                  Math.abs(card.slot) <= 2 &&
+                  handleCardClick(card.slot)
                 }
                 style={{
                   position: "absolute",
@@ -348,17 +382,28 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                     : isAnimating
                       ? "none"
                       : "auto",
-                  cursor: isCenter ? "default" : isAnimating ? "wait" : "pointer",
+                  cursor: isCenter
+                    ? "default"
+                    : isAnimating
+                      ? "wait"
+                      : "pointer",
                   userSelect: "none",
                 }}
               >
-                <div className="relative" style={{ width: "clamp(220px, 45vw, 520px)", height: "auto", aspectRatio: "1/1" }}>
+                <div
+                  className="relative"
+                  style={{
+                    width: "clamp(220px, 45vw, 520px)",
+                    height: "auto",
+                    aspectRatio: "1/1",
+                  }}
+                >
                   <Image
                     src={burger.image}
                     alt={burger.name}
                     fill
                     priority={isCenter}
-                    className={`object-contain ${isCenter ? 'drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]' : ''}`}
+                    className={`object-contain ${isCenter ? "drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]" : ""}`}
                     draggable={false}
                     sizes="clamp(220px, 45vw, 520px)"
                   />
@@ -378,7 +423,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                 key={`lap-${card.id}`}
                 className="hidden lg:block"
                 onClick={() =>
-                  !isCenter && !isAnimating && Math.abs(card.slot) <= 3 && handleCardClick(card.slot)
+                  !isCenter &&
+                  !isAnimating &&
+                  Math.abs(card.slot) <= 3 &&
+                  handleCardClick(card.slot)
                 }
                 style={{
                   position: "absolute",
@@ -396,7 +444,11 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                     : isAnimating
                       ? "none"
                       : "auto",
-                  cursor: isCenter ? "default" : isAnimating ? "wait" : "pointer",
+                  cursor: isCenter
+                    ? "default"
+                    : isAnimating
+                      ? "wait"
+                      : "pointer",
                   userSelect: "none",
                 }}
               >
@@ -406,8 +458,10 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
                     width: "clamp(220px, 45vw, 520px)",
                     height: "auto",
                     aspectRatio: "1/1",
-                    filter: isCenter ? "drop-shadow(0 5px 15px rgba(0,0,0,0.3))" : "none",
-                    transition: "filter .4s ease"
+                    filter: isCenter
+                      ? "drop-shadow(0 5px 15px rgba(0,0,0,0.3))"
+                      : "none",
+                    transition: "filter .4s ease",
                   }}
                 >
                   <Image
@@ -424,7 +478,6 @@ export default function BurgerCarouselFinal({ initialBurgers = [], initialNavbar
             );
           })}
         </div>
-
 
         {/* TITLE */}
         <div className="w-full flex items-center justify-center relative pb-2 md:pb-4 pt-2 md:pt-2 z-20 overflow-hidden">

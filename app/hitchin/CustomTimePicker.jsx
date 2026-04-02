@@ -101,7 +101,10 @@ export default function CustomTimePicker({ value, onChange, disabled }) {
 
             <div className="grid grid-cols-2">
               {/* Hours column */}
-              <div className="border-r border-[#1F2937] max-h-[48vw] md:max-h-52 overflow-y-auto scrollbar-hide">
+              <div
+                data-lenis-prevent
+                className="border-r border-[#1F2937] max-h-[48vw] md:max-h-52 overflow-y-auto time-picker-scroll"
+              >
                 {hours.map((h) => {
                   const period = h >= 12 ? "PM" : "AM";
                   const display = h > 12 ? h - 12 : h;
@@ -126,7 +129,10 @@ export default function CustomTimePicker({ value, onChange, disabled }) {
               </div>
 
               {/* Minutes column */}
-              <div className="max-h-[48vw] md:max-h-52 overflow-y-auto scrollbar-hide">
+              <div
+                data-lenis-prevent
+                className="max-h-[48vw] md:max-h-52 overflow-y-auto time-picker-scroll"
+              >
                 {MINUTES.map((m) => {
                   const active = selectedMinute === m;
                   return (

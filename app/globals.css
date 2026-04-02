@@ -225,6 +225,25 @@ img {
   scrollbar-width: none !important;
 }
 
+/* Time picker custom scrollbar */
+.time-picker-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+.time-picker-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.time-picker-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+.time-picker-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+.time-picker-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
 /* Screen reader only - Hidden SEO Utility */
 .sr-only {
   position: absolute;

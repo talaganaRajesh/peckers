@@ -1,14 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.1 },
-  transition: { duration: 0.8, ease: "easeOut", delay },
-});
-
 export default function LatestNewsHeading({
   heading = "THE PECKERS JOURNAL",
   subtitle = "Latest stories from the heart of Peckers.",
@@ -27,23 +16,16 @@ export default function LatestNewsHeading({
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         {words.map((word, i) => (
-          <motion.span
-            key={i}
-            className="inline-block mr-[2.5vw] md:mr-[0.6vw]"
-            {...fadeUp(i * 0.1)}
-          >
+          <span key={i} className="inline-block mr-[2.5vw] md:mr-[0.6vw]">
             {word}
-          </motion.span>
+          </span>
         ))}
       </h2>
 
       {/* Subtitle */}
-      <motion.p
-        className="font-sans mt-[9px] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
-        {...fadeUp(0.4)}
-      >
+      <p className="font-sans mt-[9px] font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none">
         {subtitleText}
-      </motion.p>
+      </p>
     </div>
   );
 }

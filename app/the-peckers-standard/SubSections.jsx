@@ -1,13 +1,31 @@
 "use client";
 import React, { useRef, useEffect, memo } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { urlFor } from "../../sanity/lib/image";
 
 // Optimized individual section component to prevent parent re-renders
 const SectionItem = memo(({ section, index, num }) => {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
+  const scrollableRef = useRef(null);
+
+  // Only apply data-lenis-prevent when content actually overflows to avoid scroll dead zones
+  useEffect(() => {
+    const el = scrollableRef.current;
+    if (!el) return;
+    const updateLenisPrevent = () => {
+      if (el.scrollHeight > el.clientHeight) {
+        el.setAttribute("data-lenis-prevent", "");
+      } else {
+        el.removeAttribute("data-lenis-prevent");
+      }
+    };
+    updateLenisPrevent();
+    const ro = new ResizeObserver(updateLenisPrevent);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   // Only load/play media when nearly in view — once: true prevents video destroy/remount on scroll
   const isInView = useInView(sectionRef, { margin: "200px 0px", once: true });
@@ -34,18 +52,11 @@ const SectionItem = memo(({ section, index, num }) => {
     section.videoUrl || section.video ? videoAspectRatio : imageAspectRatio;
 
   return (
-    <motion.section
+    <section
       ref={sectionRef}
       className={`w-full h-auto md:h-[75vh] flex flex-col ${
         isAlternate ? "md:flex-row-reverse" : "md:flex-row"
       } bg-black overflow-hidden`}
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{
-        duration: 1.2,
-        ease: [0.22, 1, 0.36, 1],
-      }}
     >
       {/* MEDIA SECTION */}
       <div
@@ -130,8 +141,8 @@ const SectionItem = memo(({ section, index, num }) => {
 
           {/* SCROLLABLE TEXT CONTENT */}
           <div
+            ref={scrollableRef}
             className="w-full flex-1 overflow-y-auto custom-scrollbar pr-[2vw] max-h-[60vw] md:max-h-none md:min-h-0"
-            data-lenis-prevent
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
               <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] font-sans md:leading-[1.8vw] mb-[2vw] md:mb-[1vw]">
@@ -178,7 +189,7 @@ const SectionItem = memo(({ section, index, num }) => {
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 });
 

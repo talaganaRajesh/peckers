@@ -94,7 +94,7 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
   };
 
   return (
-    <div className="relative w-full h-full md:py-[1vw] bg-black overflow-hidden">
+    <div className="relative w-full h-full md:py-[1vw] bg-black overflow-visible">
       <style>{`
         .card-slot-m2 { transform: translate(calc(-50% - 150vw), -50%) rotateY(45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
         .card-slot-m1 { transform: translate(calc(-50% - 38vw), -50%) rotate(-6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
@@ -103,9 +103,9 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
         .card-slot-2  { transform: translate(calc(-50% + 150vw), -50%) rotateY(-45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
         
         .latest-card {
-           width: 55vw;
-           height: 70vw;
-           border-radius: 3vw;
+           width: 60.5vw;
+           height: 77vw;
+           border-radius: 3.3vw;
         }
         @media (min-width: 768px) {
           .card-slot-m2 { transform: translate(calc(-50% - 97vw), -50%) rotateY(45deg) scale(0.6); }
@@ -113,21 +113,21 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
           .card-slot-1  { transform: translate(calc(-50% + 27vw), -50%) rotate(5deg) scale(0.92); }
           .card-slot-2  { transform: translate(calc(-50% + 97vw), -50%) rotateY(-45deg) scale(0.6); }
           .latest-card {
-             width: 24vw;
-             height: 34vw;
-             border-radius: 1.2vw;
+             width: 26.4vw;
+             height: 37.4vw;
+             border-radius: 1.32vw;
           }
         }
         @media (min-width: 1280px) {
           .latest-card {
-             width: 22vw;
-             height: 32vw;
-             border-radius: 1vw;
+             width: 24.2vw;
+             height: 35.2vw;
+             border-radius: 1.1vw;
           }
         }
       `}</style>
       <div
-        className="relative w-full h-[75vw] md:h-full"
+        className="relative w-full h-[92vw] md:h-full py-[4vw] md:py-[3vw]"
         style={{
           perspective: "1400px",
           transformStyle: "preserve-3d",

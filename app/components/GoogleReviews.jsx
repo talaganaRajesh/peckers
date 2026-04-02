@@ -148,7 +148,11 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
                 <FaStarHalfAlt className="text-yellow-500 text-sm md:text-lg" />
               </div>
               <p className="text-white/60 font-medium text-xs md:text-sm tracking-tight">
-                ({ratingData?.rating || "4.8"}/5 {ratingData?.totalReviews ? `rating from ${ratingData.totalReviews}+ ` : ""}Familiar Faces)
+                ({ratingData?.rating || "4.8"}/5{" "}
+                {ratingData?.totalReviews
+                  ? `rating from ${ratingData.totalReviews}+ `
+                  : ""}
+                Familiar Faces)
               </p>
             </div>
           </motion.div>
@@ -178,7 +182,7 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
                 href={`https://search.google.com/local/reviews?placeid=${review.placeId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[300px] min-w-[300px] md:w-[480px] md:min-w-[480px] h-[300px] md:h-[310px] shrink-0 bg-[#111111] p-6 md:p-8 rounded-[1rem] border border-white/5 flex flex-col gap-4 md:gap-6 snap-start transition-all duration-300 hover:border-white/10 group relative overflow-hidden"
+                className="w-[300px] min-w-[300px] md:w-[480px] md:min-w-[480px] h-[200px] md:h-[200px] shrink-0 bg-[#111111] p-6 md:p-8 rounded-[1rem] border border-white/5 flex flex-col gap-3 md:gap-4 snap-start transition-all duration-300 hover:border-white/10 group relative overflow-hidden"
               >
                 <div className="flex justify-between items-start relative z-10 w-full">
                   <div className="flex gap-4 items-center">
