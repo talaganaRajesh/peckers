@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function SubNavbar() {
   const pathname = usePathname();
   const navRef = useRef(null);
+  const itemRefs = useRef([]);
 
   const navbarData = [
     { title: "BURGERS", link: "/menu" },
@@ -20,6 +21,33 @@ export default function SubNavbar() {
     { title: "DRINKS", link: "/menu/drinks-and-desserts" },
     { title: "VEGGIE", link: "/menu/veg" },
   ];
+
+  const scrollActiveToCenter = useCallback(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const activeIdx = navbarData.findIndex((item) => {
+      const normalizedItemLink = (item.link || "").replace(/\/$/, "");
+      const normalizedCurrentPath = pathname.replace(/\/$/, "");
+      return (
+        normalizedItemLink === normalizedCurrentPath ||
+        (normalizedItemLink === "/menu" && normalizedCurrentPath === "/menu")
+      );
+    });
+    const activeEl = itemRefs.current[activeIdx];
+    if (!activeEl) return;
+
+    const navRect = nav.getBoundingClientRect();
+    const elRect = activeEl.getBoundingClientRect();
+    const elCenter =
+      elRect.left + elRect.width / 2 - navRect.left + nav.scrollLeft;
+    const targetScroll = elCenter - navRect.width / 2;
+
+    nav.scrollTo({ left: targetScroll, behavior: "smooth" });
+  }, [pathname]);
+
+  useEffect(() => {
+    scrollActiveToCenter();
+  }, [scrollActiveToCenter]);
 
   return (
     <div className="w-full flex justify-center px-4 md:px-0 z-50 bg-black pt-4 md:pt-6">
@@ -106,11 +134,12 @@ export default function SubNavbar() {
             return (
               <Link
                 key={idx}
+                ref={(el) => (itemRefs.current[idx] = el)}
                 href={href}
-                className={`whitespace-nowrap pb-1 md:pb-1 tracking-wider ${
+                className={`whitespace-nowrap pb-1 md:pb-1 tracking-wider text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] ${
                   isActive
-                    ? "font-sans text-[18px] sm:text-[22px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] border-b-2 border-red-500"
-                    : "text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.4vw] tracking-wide opacity-70 hover:opacity-100 transition-opacity"
+                    ? "border-b-2 border-red-500"
+                    : "opacity-70 hover:opacity-100 transition-opacity"
                 }`}
               >
                 {item.title}

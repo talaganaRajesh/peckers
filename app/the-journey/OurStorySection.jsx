@@ -139,7 +139,7 @@ export default function OurStorySection({ initialData = null }) {
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
           <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[56vh] md:h-[60vh] lg:h-[67vh]">
             <div className="h-full min-h-0 flex flex-col">
-              <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.2vw] lg:text-[48px] leading-[1.05] lg:leading-[1.2] uppercase mt-2 lg:mt-0 bg-linear-to-r from-gray-100 to-gray-600 bg-clip-text text-transparent whitespace-nowrap overflow-hidden text-ellipsis">
+              <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.2vw] lg:text-[48px] leading-[1.05] lg:leading-[1.2] uppercase mt-2 lg:mt-0 text-white whitespace-nowrap overflow-hidden text-ellipsis">
                 {fixedHeading}
               </h2>
 
@@ -153,7 +153,7 @@ export default function OurStorySection({ initialData = null }) {
                   exit="exit"
                   transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
                   data-lenis-prevent
-                  className="custom-scrollbar text-[#D1D5DB] font-peakers text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] lg:pt-[3vw] pb-2 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
+                  className="custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] lg:pt-[3vw] pb-2 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
                 >
                   {(() => {
                     const bodyArray =
@@ -214,7 +214,7 @@ export default function OurStorySection({ initialData = null }) {
               </div>
 
               {fixedSubHeading && (
-                <p className="text-zinc-500 font-peakers text-[4.2vw] md:text-[2.9vw] lg:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-3 lg:mt-4 pb-0 shrink-0">
+                <p className="text-zinc-500 font-neuzeit text-[4.2vw] md:text-[2.9vw] lg:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-3 lg:mt-4 pb-0 shrink-0">
                   {fixedSubHeading}
                 </p>
               )}

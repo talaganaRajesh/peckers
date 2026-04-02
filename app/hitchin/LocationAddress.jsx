@@ -166,11 +166,14 @@ export default function LocationAddress({ location = "hitchin" }) {
                 {data.phone}
               </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-[4vw] md:gap-[1.2vw] pt-[4vw] md:pt-0 mt-auto pb-[4vw] md:pb-[2vw] flex-nowrap">
+            <div
+              className="flex flex-col md:flex-row gap-[4vw] md:gap-[1.2vw] pt-[4vw] md:pt-0 mt-auto pb-[4vw] md:pb-[2vw] flex-nowrap"
+              style={{ fontFamily: "var(--font-neuzeit)" }}
+            >
               <HeaderActionButton
                 href={data.clickCollectUrl}
                 wrapperClassName="w-full md:w-auto"
-                className="w-full md:w-auto text-center px-[4vw] md:px-[2vw] lg:px-[2.2vw] py-[3vw] md:py-[12.5px] text-[4vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap"
+                className="w-full md:w-auto text-center px-[4vw] md:px-[2vw] lg:px-[2.2vw] py-[3vw] md:py-[12.5px] text-[4vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap font-black"
                 bgColor="bg-white"
                 textColor="text-black"
                 borderColor="border-white"
@@ -181,7 +184,7 @@ export default function LocationAddress({ location = "hitchin" }) {
               <HeaderActionButton
                 href={data.deliveryUrl}
                 wrapperClassName="w-full md:w-auto"
-                className="w-full md:w-auto text-center px-[4vw] md:px-[3.2vw] lg:px-[3.5vw] py-[3vw] md:py-[12.5px] text-[4.2vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap hover:bg-red-700"
+                className="w-full md:w-auto text-center px-[4vw] md:px-[3.2vw] lg:px-[3.5vw] py-[3vw] md:py-[12.5px] text-[4.2vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap hover:bg-red-700 font-black"
                 bgColor="bg-red-600"
                 textColor="text-white"
                 borderColor="border-red-600"

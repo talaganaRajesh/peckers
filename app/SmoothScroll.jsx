@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.ticker.lagSmoothing(0);
 
 // lenisRef – optional ref that the parent can use to call lenis.scrollTo(0) etc.
 export default function SmoothScroll({ children, lenisRef }) {
@@ -15,13 +16,12 @@ export default function SmoothScroll({ children, lenisRef }) {
 
   useLayoutEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.12,
+      lerp: 0.08,
       smoothWheel: true,
       smoothTouch: false,
       touchMultiplier: 1.5,
       wheelMultiplier: 1,
       normalizeWheel: true,
-      duration: 1.2,
     });
 
     // Expose instance to parent (ClientWrapper) so it can reset scroll
@@ -66,16 +66,6 @@ export default function SmoothScroll({ children, lenisRef }) {
       return () => clearTimeout(timer);
     }
   }, [pathname, lenisRef]);
-
-  // Mobile fallback - ensure content is scrollable even if Lenis fails
-  useLayoutEffect(() => {
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile && lenisRef.current && pathname !== "/house-made-sauces") {
-      // Ensure mobile can always scroll
-      document.documentElement.style.overflowY = "auto";
-      document.body.style.overflowY = "auto";
-    }
-  }, [lenisRef, pathname]);
 
   return <>{children}</>;
 }

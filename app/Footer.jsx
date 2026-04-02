@@ -278,7 +278,7 @@ const Footer = ({ preloadedData = null }) => {
                         href={resolveFooterHref("#", loc)}
                         className="hover:underline inline-block"
                       >
-                        {loc}
+                        {loc.replace(/HItchin/g, "Hitchin")}
                       </Link>
                     </div>
                   ))
@@ -371,10 +371,11 @@ const Footer = ({ preloadedData = null }) => {
 
       <div className="w-full bg-black text-[#586676] text-[10px] md:text-[0.8vw] tracking-tight font-mono px-[5vw] py-6 md:px-[5vw] md:py-[2.5vw] lg:px-[4vw] xl:px-[4vw] flex flex-col md:flex-row justify-between items-center border-t border-[#151515] gap-3 md:gap-0">
         <div className="mb-1 md:mb-0 text-center md:text-left">
-          {data.copyright?.includes("Designed and Developed By")
+          {(data.copyright?.includes("Designed and Developed By")
             ? data.copyright.split("Designed and Developed By")[0].trim()
             : data.copyright ||
-              "© 2024 Peckers Chicken Ltd. All rights reserved. Do not steal our sauce recipe."}
+              "© 2026 Peckers Chicken Ltd. All rights reserved. Do not steal our sauce recipe."
+          ).replace(/©\s*20(2[0-5])/, "© 2026")}
         </div>
 
         <a
@@ -402,7 +403,7 @@ const Footer = ({ preloadedData = null }) => {
       </div>
 
       <div className="flex-1 flex items-center">
-        <div className="w-full flex justify-center items-center py-6 md:py-12 bg-black">
+        <div className="w-full flex justify-center items-center py-2 md:py-4 bg-black">
           <div className="relative max-w-[98%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
             <Image
               src="/Peckers Logo 1 [Vectorized].svg"
