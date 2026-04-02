@@ -67,10 +67,10 @@ const POS_MAPPING_LAPTOP = {
 
 const MOBILE_SLOT_MAPPING = {
   0: { x: 0, scale: 1, opacity: 1, z: 10 },
-  1: { x: 36, scale: 0.64, opacity: 0.45, z: 7 },
-  [-1]: { x: -36, scale: 0.64, opacity: 0.45, z: 7 },
-  2: { x: 72, scale: 0.46, opacity: 0.08, z: 4 },
-  [-2]: { x: -72, scale: 0.46, opacity: 0.08, z: 4 },
+  1: { x: 35, scale: 0.5, opacity: 0.25, z: 7 },
+  [-1]: { x: -35, scale: 0.5, opacity: 0.25, z: 7 },
+  2: { x: 70, scale: 0.35, opacity: 0.05, z: 4 },
+  [-2]: { x: -70, scale: 0.35, opacity: 0.05, z: 4 },
 };
 
 function getSlotPos(slot, isLaptop = false) {

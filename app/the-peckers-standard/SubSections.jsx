@@ -165,7 +165,7 @@ const SectionItem = memo(({ section, index, num }) => {
               .includes("NOTHING COMES OUT OF A BOTTLE") && (
               <a
                 href="/house-made-sauces"
-                className="inline-flex items-center gap-[1.5vw] md:gap-[0.5vw] text-[#9CA3AF] hover:text-white transition-colors duration-200 text-[3.5vw] md:text-[0.95vw] font-normal mt-[0.5vw] md:mt-[0.25vw] "
+                className="inline-flex items-center gap-[2vw] md:gap-[0.8vw] px-[6vw] md:px-[1.4vw] py-[2.2vw] md:py-[0.6vw] rounded-full border border-white/30 hover:border-white hover:bg-white/5 hover:text-white transition-all duration-300 text-[3.2vw] md:text-[0.85vw] font-bold uppercase tracking-widest mt-[4vw] md:mt-[1.2vw] group"
               >
                 <span>Explore our house-made sauces</span>
                 <svg
@@ -174,12 +174,12 @@ const SectionItem = memo(({ section, index, num }) => {
                   viewBox="0 0 12 12"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-[3vw] h-[3vw] md:w-[0.8vw] md:h-[0.8vw]"
+                  className="w-[2.8vw] h-[2.8vw] md:w-[0.7vw] md:h-[0.7vw] transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
                 >
                   <path
                     d="M2 10L10 2M10 2H4M10 2V8"
                     stroke="currentColor"
-                    strokeWidth="1.5"
+                    strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />

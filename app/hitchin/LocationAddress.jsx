@@ -146,7 +146,18 @@ export default function LocationAddress({ location = "hitchin" }) {
                 />
               </svg>
               <div className="text-[#e3e3e5] text-[4vw] md:text-[1.2vw] font-peakers whitespace-pre-line">
-                {data.hours}
+                {location.toLowerCase().includes("hitchin") &&
+                (data.hours === "Monday - Sunday" || !data.hours) ? (
+                  <>
+                    Monday – Thursday: 12 PM - 10 PM
+                    <br />
+                    Friday & Saturday: 11:30 AM - 11 PM
+                    <br />
+                    Sunday: 11:30 AM - 10:00 PM
+                  </>
+                ) : (
+                  data.hours
+                )}
               </div>
             </div>
             <br />
