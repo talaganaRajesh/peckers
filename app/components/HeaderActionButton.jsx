@@ -10,7 +10,7 @@ export default function HeaderActionButton({ href, className = "", children, bgC
         href={href || "#"}
         target="_blank"
         rel="noopener noreferrer"
-        className={`relative z-10 inline-flex items-center justify-center rounded-full border-[0.15vw] ${borderColor} ${bgColor} ${textColor} leading-none transition-all duration-200 ease-out group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] ${className}`}
+        className={`relative z-10 inline-flex items-center justify-center rounded-full border-[0.15vw] ${borderColor} ${bgColor} ${textColor} transition-all duration-200 ease-out group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] ${className}`}
       >
         {children}
       </a>

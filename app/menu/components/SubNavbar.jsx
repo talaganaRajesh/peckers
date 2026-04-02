@@ -18,8 +18,7 @@ export default function SubNavbar() {
     { title: "MEAL BOXES AND PLATTERS", link: "/menu/meal-box" },
     { title: "KIDS", link: "/menu/kids" },
     { title: "SIDES", link: "/menu/sides-and-fries" },
-    { title: "DRINKS", link: "/menu/drinks-and-desserts" },
-    { title: "VEGGIE", link: "/menu/veg" },
+    { title: "SHAKES", link: "/menu/drinks-and-desserts" },
   ];
 
   const scrollActiveToCenter = useCallback(() => {
@@ -110,7 +109,7 @@ export default function SubNavbar() {
           {navbarData.map((item, idx) => {
             const title = item.title?.toUpperCase() || "";
             let href = item.link || "#";
-
+ 
             if (title === "BURGERS") href = "/menu";
             else if (title === "WRAPS") href = "/menu/wraps";
             else if (title === "WINGS") href = "/menu/wings";
@@ -121,8 +120,7 @@ export default function SubNavbar() {
               href = "/menu/meal-box";
             else if (title === "KIDS") href = "/menu/kids";
             else if (title === "SIDES") href = "/menu/sides-and-fries";
-            else if (title === "DRINKS") href = "/menu/drinks-and-desserts";
-            else if (title === "VEGGIE") href = "/menu/veg";
+            else if (title === "SHAKES") href = "/menu/drinks-and-desserts";
 
             const normalizedItemLink = href.replace(/\/$/, "");
             const normalizedCurrentPath = pathname.replace(/\/$/, "");

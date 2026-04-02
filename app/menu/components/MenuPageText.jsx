@@ -4,22 +4,33 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { client } from "../../../sanity/lib/client";
 
-export default function MenuPageText({ itemData = null }) {
+export default function MenuPageText({ itemData = null, categoryName = "" }) {
   const containerRef = useRef(null);
   const [settings, setSettings] = useState(null);
   const ingredientsText = typeof itemData?.ingredients === "string" ? itemData.ingredients.trim() : "";
   const hasIngredients = ingredientsText !== "" && ingredientsText !== "-" && ingredientsText !== "—";
 
   useEffect(() => {
-    const fetchSettings = async () => {
+    const loadSettings = async () => {
+      if (typeof window !== "undefined" && window.location.hostname.includes("localhost")) {
+        setSettings({
+          clickCollectUrl: "#",
+          deliveryUrl: "#",
+        });
+        return;
+      }
+
       try {
         const siteSettings = await client.fetch(`*[_type == "siteSettings"][0] { clickCollectUrl, deliveryUrl }`);
         if (siteSettings) setSettings(siteSettings);
       } catch (error) {
-        console.error("Error fetching site settings:", error);
+        // Graceful fallbacks to avoid noisy console errors in dev mode when CORS or network is unavailable.
+        setSettings({ clickCollectUrl: "#", deliveryUrl: "#" });
+        console.warn("Unable to fetch site settings at this time; using defaults.", error);
       }
     };
-    fetchSettings();
+
+    loadSettings();
   }, []);
 
   if (!itemData) return null;
@@ -97,14 +108,36 @@ export default function MenuPageText({ itemData = null }) {
           <div className="flex items-center gap-1.5 mt-1 h-[1.1em]">{renderSpiceLevel()}</div>
         </div>
       </div>
-      <div className="w-full flex justify-center pt-8 pb-10 text-center px-[5vw]">
-        <div className="text-white font-peakers text-[4vw] md:text-[24px] font-normal transition-all duration-300">
-          Also available as a{" "}
-          <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>,{" "}
-          <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or{" "}
-          <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.
+      {['BURGERS','WRAPS','RICE BOWLS','SALAD BOWLS','RICE & SALAD BOWLS','RICE BOWLS & SALAD BOWLS','RICE AND SALAD BOWLS'].includes((categoryName || "").toUpperCase()) && (
+        <div className="w-full flex justify-center pt-2 pb-2 text-center px-[5vw]">
+          <div className="text-white font-peakers text-[4vw] md:text-[22px] font-normal transition-all duration-300">
+            {(() => {
+              const key = (categoryName || "").toUpperCase();
+              if (key === "BURGERS") {
+                return (
+                  <>Also available as a <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>, <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
+                );
+              }
+              if (key === "WRAPS") {
+                return (
+                  <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link>, <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
+                );
+              }
+              //  Rice/Salad cases
+              return (
+                <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link> and <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>.</>
+              );
+            })()}
+          </div>
         </div>
-      </div>
+      )}
+      {['BURGERS','WRAPS','RICE BOWLS','SALAD BOWLS','RICE & SALAD BOWLS','RICE BOWLS & SALAD BOWLS','RICE AND SALAD BOWLS','SALAD BOWL','RICE BOWL'].includes(categoryName?.toUpperCase?.() || '') && (
+        <div className="w-full flex justify-center pt-0 pb-2 text-center px-[5vw]">
+          <span className="text-white font-peakers text-[2.8vw] md:text-[14px] lg:text-[15px] xl:text-[1.35vw] tracking-3 font-normal">
+            Can also be made into a veggie option
+          </span>
+        </div>
+      )}
     </div>
   );
 }

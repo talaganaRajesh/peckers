@@ -24,7 +24,7 @@ export default function GenericMenuPageClient({ initialItems, initialNavbarData,
                     categoryName={categoryName}
                 />
 
-                <MenuPageText itemData={initialItems[activeIndex]} />
+                <MenuPageText itemData={initialItems[activeIndex]} categoryName={categoryName} />
             </div>
         </div>
     );

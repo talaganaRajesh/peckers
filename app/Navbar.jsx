@@ -47,111 +47,8 @@ export default function Navbar({ preloadedSettings = null }) {
     fetchSettings();
   }, [settings]);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
 
-    const setupSignupModal = () => {
-      const modal = document.getElementById("sbx_modal");
-      if (!modal) return false;
 
-      modal.setAttribute("data-backdrop", "true");
-      modal.setAttribute("data-keyboard", "true");
-
-      try {
-        const $modal = window.jQuery && window.jQuery(modal);
-        if ($modal && $modal.data("bs.modal")) {
-          const bsModal = $modal.data("bs.modal");
-          bsModal.options.backdrop = true;
-          bsModal.options.keyboard = true;
-
-          // Keep the form inputs interacting, but allow the close button and outside click.
-          modal.addEventListener("click", (event) => {
-            const dialog = modal.querySelector(".modal-dialog");
-            if (dialog && dialog.contains(event.target)) {
-              event.stopPropagation();
-            }
-          });
-        }
-      } catch (error) {
-        console.error("TalkBox modal fix failed:", error);
-      }
-
-      return true;
-    };
-
-    const intervalId = window.setInterval(() => {
-      if (setupSignupModal()) {
-        window.clearInterval(intervalId);
-      }
-    }, 200);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const openSbxModal = () => {
-      const modal = document.getElementById("sbx_modal");
-      if (!modal) return;
-      try {
-        const btn = document.querySelector("#sbx_button .bulletproof_button");
-        const $modal = window.jQuery && window.jQuery(modal);
-        if ($modal && $modal.length && $modal.data("bs.modal")) {
-          $modal.sbx_modal("show");
-          return;
-        }
-        if (btn && typeof btn.click === "function") {
-          btn.click();
-          return;
-        }
-      } catch (error) {
-        console.error("Error opening sbx modal:", error);
-      }
-    };
-
-    const clickHandler = (event) => {
-      const target = event.target;
-      if (!target.closest("#sbx_button") && !target.closest("#sbx_modal"))
-        return;
-      if (target.closest("#sbx_button")) {
-        event.preventDefault();
-        openSbxModal();
-      }
-    };
-
-    document.addEventListener("click", clickHandler, true);
-    return () => document.removeEventListener("click", clickHandler, true);
-  }, []);
-
-  // TalkBox Signup Script Manual Injection
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (pathname !== "/" && pathname !== "/home") return;
-
-    // We use a small delay to ensure the DOM is ready
-    const timer = setTimeout(() => {
-      const container = document.getElementById("sbx_button");
-      if (!container) return;
-
-      // If already populated, don't re-inject
-      if (container.children.length > 0) return;
-
-      // Remove any existing TalkBox script tags to force a clean slate
-      const existingScripts = document.querySelectorAll(
-        'script[src*="talkbox.impactapp.com.au"]',
-      );
-      existingScripts.forEach((s) => s.remove());
-
-      const script = document.createElement("script");
-      // Use timestamp to force re-evaluation of the IIFE script
-      script.src = `https://talkbox.impactapp.com.au/signup_buttons/oQiu4OvNbdNp7Nb7NlA4gw==/script.js?t=${Date.now()}`;
-      script.async = true;
-      document.body.appendChild(script);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [pathname]);
 
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : null;
 
@@ -252,7 +149,7 @@ export default function Navbar({ preloadedSettings = null }) {
       >
         <HeaderActionButton
           href={settings?.clickCollectUrl}
-          className="md:px-[1.8vw] lg:px-[2.2vw] xl:px-[2.5vw] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1vw] lg:text-[1.1vw] xl:text-[0.9vw] whitespace-nowrap font-black"
+          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1vw] lg:text-[1.1vw] xl:text-[0.9vw] whitespace-nowrap font-black"
           bgColor="bg-white"
           textColor="text-black"
           borderColor="border-white"
@@ -263,7 +160,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
         <HeaderActionButton
           href={settings?.deliveryUrl}
-          className="flex items-center gap-2 md:px-[1.8vw] lg:px-[2.2vw] xl:px-[2.5vw] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1vw] lg:text-[1.1vw] xl:text-[0.9vw] whitespace-nowrap hover:bg-red-700 font-black"
+          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1vw] lg:text-[1.1vw] xl:text-[0.9vw] whitespace-nowrap hover:bg-red-700 font-black"
           bgColor="bg-red-600"
           textColor="text-white"
           borderColor="border-red-600"
@@ -397,61 +294,16 @@ export default function Navbar({ preloadedSettings = null }) {
           >
             <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.1vw] tracking-normal md:tracking-wide leading-tight font-black">
               UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
-              <span className="relative inline-block align-baseline">
-                <span className="text-red-600 font-black">SIGN UP</span>
-                <div
-                  id="sbx_button"
-                  className="talkbox-signup-hitbox"
-                  aria-label="Sign up"
-                />
-              </span>{" "}
+              <a
+                href="https://peckers.vmos.io/account/auth/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-600 font-black underline"
+              >
+                SIGN UP
+              </a>{" "}
               FOR EXCLUSIVE REWARDS.
             </span>
-            <style jsx global>{`
-              .talkbox-signup-hitbox {
-                position: absolute;
-                inset: 0;
-                z-index: 10;
-                overflow: hidden;
-              }
-
-              .talkbox-signup-hitbox > * {
-                position: absolute !important;
-                inset: 0 !important;
-                width: 100% !important;
-                height: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                border: 0 !important;
-                background: transparent !important;
-                opacity: 0 !important;
-                cursor: pointer !important;
-              }
-
-              .talkbox-signup-hitbox button,
-              .talkbox-signup-hitbox a,
-              .talkbox-signup-hitbox iframe {
-                width: 100% !important;
-                height: 100% !important;
-                opacity: 0 !important;
-                cursor: pointer !important;
-              }
-
-              #sbx_modal iframe {
-                pointer-events: auto !important;
-                min-height: 560px !important;
-                min-width: 360px !important;
-              }
-
-              #sbx_modal_wrapper,
-              #sbx_modal {
-                z-index: 10001 !important;
-              }
-
-              .modal-backdrop {
-                z-index: 10000 !important;
-              }
-            `}</style>
           </div>
         </div>
       )}

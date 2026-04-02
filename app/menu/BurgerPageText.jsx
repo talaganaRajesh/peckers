@@ -220,6 +220,11 @@ export default function BurgerPageText({ burgerData = null }) {
           {burgerData.availabilityText || "Also available as a wrap, rice bowl, or salad bowl."}
         </span>
       </div>
+      <div className="w-full flex justify-center pb-[4vw] md:pb-5 text-center px-[5vw]">
+        <span className="text-white font-peakers text-[3.2vw] md:text-[16px] lg:text-[18px] xl:text-[1.8vw] tracking-3 font-normal">
+          Can also be made into a veggie option
+        </span>
+      </div>
 
       {/* Hidden SEO for Competitors */}
       <div className="sr-only">
