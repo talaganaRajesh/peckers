@@ -5,7 +5,7 @@ import { useInView } from "framer-motion";
 import { urlFor } from "../../sanity/lib/image";
 
 // Optimized individual section component to prevent parent re-renders
-const SectionItem = memo(({ section, index, num }) => {
+const SectionItem = memo(({ section, index, num, total }) => {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const scrollableRef = useRef(null);
@@ -51,6 +51,11 @@ const SectionItem = memo(({ section, index, num }) => {
   const activeAspectRatio =
     section.videoUrl || section.video ? videoAspectRatio : imageAspectRatio;
 
+  // Use a fixed aspect ratio for the last subsections on mobile (e.g., last 2)
+  // to ensure they match others if their source images are too tall. 
+  const isLastSubsection = index >= total - 2;
+  const mobileAspectRatio = isLastSubsection ? "16/9" : (activeAspectRatio || "16/9");
+
   return (
     <section
       ref={sectionRef}
@@ -68,7 +73,7 @@ const SectionItem = memo(({ section, index, num }) => {
         {/* Aspect Ratio Sizer (Mobile only, or consistent across screens) */}
         <div
           className="w-full md:hidden"
-          style={{ aspectRatio: activeAspectRatio || "16/9" }}
+          style={{ aspectRatio: mobileAspectRatio }}
         />
         <div className="hidden md:block absolute inset-0 md:relative md:h-full md:w-full" />
 
@@ -321,6 +326,7 @@ const SubSections = ({ initialData = [] }) => {
           section={section}
           index={index}
           num={index + 1}
+          total={sectionsData.length}
         />
       ))}
     </div>
