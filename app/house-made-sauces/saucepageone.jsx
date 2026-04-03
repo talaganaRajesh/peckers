@@ -273,7 +273,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       className="text-[12px] sm:text-[13px] md:text-[0.9vw] xl:text-[0.8vw] font-bold tracking-[0.07em] uppercase translate-y-px"
                     >
                       FRESHLY MADE IN-HOUSE EVERY DAY | NO ADDED PRESERVATIVES
-                      UNLIKE BIG BOYS
+                      UNLIKE THE BIG BOYS
                     </span>
                   </div>
                 </div>
