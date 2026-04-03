@@ -88,8 +88,8 @@ export default function FAQPage() {
   })).filter(category => category.items.length > 0);
 
   return (
-    <main className="min-h-screen bg-black text-white pt-[25vw] md:pt-[15vw] lg:pt-[10vw] pb-[15vw]">
-      <div className="px-[5vw] md:px-[6vw] lg:px-[8vw] xl:px-[10vw]">
+    <main className="min-h-screen bg-black text-white pt-[25vw] md:pt-[15vw] lg:pt-[10vw] pb-[2vw]">
+      <div className="px-4 md:px-[2vw] lg:px-[2.5vw] xl:px-[2.8vw]">
         {/* Header Section */}
         <section className="mb-[10vw] md:mb-[8vw] lg:mb-[6vw] max-w-4xl">
           <motion.h1 
@@ -172,7 +172,7 @@ export default function FAQPage() {
         </section>
 
         {/* Contact CTA */}
-        <section className="mt-[15vw] bg-[#111] border border-[#262626] rounded-[4vw] p-[8vw] md:p-[6vw] lg:p-[4vw] text-center">
+        <section className="mt-[10vw] md:mt-[6vw] bg-[#111] border border-[#262626] rounded-[4vw] md:rounded-[2vw] p-[8vw] md:p-[6vw] lg:p-[4vw] text-center">
             <h2 
               className="text-[8vw] sm:text-[6vw] md:text-[4vw] lg:text-[3vw] xl:text-[2.5vw] text-white uppercase mb-6"
               style={{ fontFamily: "var(--font-peakers-bold)" }}
