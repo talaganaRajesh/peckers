@@ -149,7 +149,7 @@ export default function Navbar({ preloadedSettings = null }) {
       >
         <HeaderActionButton
           href={settings?.clickCollectUrl}
-          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1vw] lg:text-[1.1vw] xl:text-[0.9vw] whitespace-nowrap font-black"
+          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap font-black"
           bgColor="bg-white"
           textColor="text-black"
           borderColor="border-white"
@@ -160,7 +160,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
         <HeaderActionButton
           href={settings?.deliveryUrl}
-          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1vw] lg:text-[1.1vw] xl:text-[0.9vw] whitespace-nowrap hover:bg-red-700 font-black"
+          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap hover:bg-red-700 font-black"
           bgColor="bg-red-600"
           textColor="text-white"
           borderColor="border-red-600"
