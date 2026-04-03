@@ -165,12 +165,12 @@ export default function SaucePageOne({ initialData = [] }) {
   const swirlVariants = {
     initial: (direction) => ({
       opacity: 0,
-      rotate: direction === "next" ? 45 : -45,
+      rotate: direction === "next" ? 40 : -40,
     }),
     animate: { opacity: 1, rotate: 0 },
     exit: (direction) => ({
       opacity: 0,
-      rotate: direction === "next" ? -45 : 45,
+      rotate: direction === "next" ? -40 : 40,
     }),
   };
 
@@ -187,7 +187,7 @@ export default function SaucePageOne({ initialData = [] }) {
               animate="animate"
               exit="exit"
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full z-0 hidden md:block"
+              className="absolute inset-0 w-full h-full z-0"
             >
               <Image
                 src={urlFor(currentSauce.bgImage).url()}
@@ -210,9 +210,14 @@ export default function SaucePageOne({ initialData = [] }) {
                 }}
                 priority
               />
+              {/* Darken bg on mobile so text stays readable */}
+              <div className="absolute inset-0 bg-black/65 md:hidden" />
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* MOBILE GRADIENT — keeps text legible over the bg image */}
+        <div className="absolute top-0 left-0 right-0 h-[48%] bg-gradient-to-b from-black via-black/75 to-transparent z-[9] pointer-events-none md:hidden" />
 
         {/* TEXT SECTION */}
         <div className="absolute top-[1.2rem] sm:top-[1.4rem] md:top-[1rem] lg:top-[0rem] xl:top-[0rem] left-1/2 -translate-x-1/2 text-center text-white w-[95%] sm:w-[90%] md:w-[65%] lg:w-[55%] xl:w-[48%] z-20">
@@ -320,9 +325,9 @@ export default function SaucePageOne({ initialData = [] }) {
         */}
         <div
           className="fixed md:absolute left-1/2 -translate-x-1/2
-                      top-[12rem] sm:top-[11rem] md:top-[14.5rem] lg:top-[14.5rem] xl:top-[17rem]
-                      w-[130vw] h-[130vw]
-                      sm:w-[120vw] sm:h-[120vw]
+                      top-[46vh] sm:top-[46vh] md:top-[14.5rem] lg:top-[14.5rem] xl:top-[17rem]
+                      w-[175vw] h-[175vw]
+                      sm:w-[160vw] sm:h-[160vw]
                       md:w-[95vw] md:h-[95vw]
                       lg:w-[82vw] lg:h-[82vw] 
                       xl:w-[70vw] xl:h-[70vw]
@@ -362,7 +367,7 @@ export default function SaucePageOne({ initialData = [] }) {
                         style={{
                           fontFamily: "var(--font-peakers)",
                           fontWeight: 700,
-                          fontSize: isDesktop ? "0.298rem" : "0.54rem",
+                          fontSize: isDesktop ? "0.298rem" : "0.62rem",
                           letterSpacing: isDesktop ? "0.005em" : "0.02em",
                           textTransform: "uppercase",
                           cursor: "pointer",
@@ -402,7 +407,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
           {/* SAUCE IMAGE — cropped circle */}
           <div className="absolute left-1/2 mt-2 md:mt-6 top-[48%] md:top-1/2 z-10 h-[108%] w-[108%] md:h-[114%] md:w-[114%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full">
-            <AnimatePresence mode="popLayout" custom={slideDirection}>
+            <AnimatePresence mode="sync" custom={slideDirection}>
               {currentSauce.sauceImage && (
                 <motion.div
                   key={"bowl-" + currentSauce._id}
@@ -413,6 +418,7 @@ export default function SaucePageOne({ initialData = [] }) {
                   exit="exit"
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                   className="absolute inset-0"
+                  style={{ transformOrigin: "center center" }}
                 >
                   <Image
                     src={urlFor(currentSauce.sauceImage)
@@ -444,10 +450,10 @@ export default function SaucePageOne({ initialData = [] }) {
       <div className="absolute top-[63%] sm:top-[65%] md:top-auto bottom-auto md:bottom-[15%] lg:bottom-[16%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
         <button
           onClick={prevSlide}
-          className="group pointer-events-auto bg-black/30 hover:bg-black/50 rounded-full p-1 transition-all duration-300 active:scale-95"
+          className="group pointer-events-auto transition-all duration-300 active:scale-95"
           aria-label="Previous sauce"
         >
-          <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
+          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
             <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               <svg
                 viewBox="0 0 100 100"
@@ -469,7 +475,7 @@ export default function SaucePageOne({ initialData = [] }) {
           className="group pointer-events-auto transition-all duration-300 active:scale-95"
           aria-label="Next sauce"
         >
-          <div className="relative flex items-center justify-center w-[36px] h-9 sm:w-[44px] sm:h-11 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
+          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
             <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               <svg
                 viewBox="0 0 100 100"
