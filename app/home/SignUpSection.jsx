@@ -71,17 +71,6 @@ export default function SignUpSection({ initialData = null }) {
             "Sign up for the Peckers loyalty scheme and get a free milkshake on us today."}
         </p>
 
-        <p
-          className="text-[#888888] italic text-[2.8vw] sm:text-[2.4vw] md:text-[2.8vw] lg:text-[1.5vw] xl:text-[1vw] font-sans mb-[5vw] md:mb-[6vw] lg:mb-[3vw] xl:mb-[2vw] mt-0 text-center max-w-[90vw] md:max-w-[80vw] lg:max-w-[60vw] xl:max-w-max"
-          style={{
-            fontWeight: 300,
-            letterSpacing: "0.01em",
-            lineHeight: "1.4",
-          }}
-        >
-          {data.subText ||
-            "Collect chicken heads as you go. Earn rewards at 3 and 6, then reach 10 for a free meal"}
-        </p>
 
         <div style={{ position: "relative", width: "fit-content" }}>
           <button
