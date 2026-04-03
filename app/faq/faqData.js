@@ -1,6 +1,6 @@
 export const faqData = [
   {
-    category: "General",
+    category: "Who we are",
     items: [
       {
         id: 1,

@@ -90,7 +90,7 @@ export default function FAQPage() {
             className="text-[#B7BAC8] text-[4.5vw] sm:text-[3vw] md:text-[2vw] lg:text-[1.5vw] xl:text-[1.2vw] max-w-2xl leading-relaxed"
             style={{ fontFamily: "var(--font-neuzeit)" }}
           >
-            Everything you need to know about Peckers. From our fresh ingredients to our seriously good chicken.
+            Everything you need to know about Peckers. From our fresh ingredients to our Seriously Good Chicken.
           </motion.p>
         </section>
 
