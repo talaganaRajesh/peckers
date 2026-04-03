@@ -161,6 +161,7 @@ export default function EnquiriesSection({ location }) {
 
   return (
     <section
+      id="enquiry-form"
       className="w-[90%] md:w-[88%] bg-black min-h-screen mx-auto md:ml-[7vw] mt-[10vw] md:mt-[7vw] rounded-[4vw] md:rounded-[1.4vw] text-white font-sans flex flex-col md:flex-row overflow-hidden"
       style={{ border: "1px solid #1F2739" }}
     >

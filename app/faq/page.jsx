@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { faqData } from "./faqData";
 import { FiPlus, FiMinus, FiSearch } from "react-icons/fi";
+import Link from "next/link";
 
 const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
@@ -43,12 +44,29 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
               className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[90%]"
               style={{ fontFamily: "var(--font-neuzeit)" }}
             >
-              {answer.split('\n').map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  {i !== answer.split('\n').length - 1 && <br />}
-                </React.Fragment>
-              ))}
+              {answer.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
+                const match = part.match(/\[(.*?)\]\((.*?)\)/);
+                if (match) {
+                  const isExternal = match[2].startsWith('http');
+                  return (
+                    <Link 
+                      key={index} 
+                      href={match[2]} 
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="text-[#C41718] hover:underline transition-all duration-300"
+                    >
+                      {match[1]}
+                    </Link>
+                  );
+                }
+                return part.split('\n').map((line, i) => (
+                  <React.Fragment key={`${index}-${i}`}>
+                    {line}
+                    {i !== part.split('\n').length - 1 && <br />}
+                  </React.Fragment>
+                ));
+              })}
             </p>
           </motion.div>
         )}

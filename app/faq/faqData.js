@@ -115,12 +115,12 @@ export const faqData = [
       {
         id: 19,
         question: "Do you have a loyalty program?",
-        answer: "Yes, we do! Join our loyalty program to get a free milkshake just for signing up. You can then start collecting ‘Chicken Heads’ for every £12 you spend: 3rd & 6th Chicken Head gets a free side and a free main, and the 10th Chicken Head means your meal is on the house!"
+        answer: "Yes, we do! [Join our loyalty program](https://peckers.vmos.io/account/auth/login) to get a free milkshake just for signing up. You can then start collecting ‘Chicken Heads’ for every £12 you spend: 3rd & 6th Chicken Head gets a free side and a free main, and the 10th Chicken Head means your meal is on the house!"
       },
       {
         id: 20,
         question: "Can I order Peckers for an event or party?",
-        answer: "Yes, we cater for events and parties! Simply visit peckerschicken.co.uk/locations and fill out the enquiry form. A member of our team will get back to you soon to help plan your perfect Peckers spread."
+        answer: "Yes, we cater for events and parties! Simply visit our [Hitchin](/hitchin#enquiry-form) or [Stevenage](/stevenage#enquiry-form) location pages and fill out the enquiry form. A member of our team will get back to you soon to help plan your perfect Peckers spread."
       },
       {
         id: 21,
