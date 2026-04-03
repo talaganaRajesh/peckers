@@ -151,6 +151,14 @@ export default function LocationAddress({ location = "hitchin" }) {
                   <>
                     Monday – Sunday: 12 PM - 10 PM                  
                   </>
+                ) : location.toLowerCase().includes("stevenage") ? (
+                  <>
+                    Monday – Thursday: 11:30 AM - 10 PM
+                    <br />
+                    Friday & Saturday: 11:30 AM - 11 PM
+                    <br />
+                    Sunday: 11:30 AM - 10:00 PM
+                  </>
                 ) : (
                   data.hours
                 )}
