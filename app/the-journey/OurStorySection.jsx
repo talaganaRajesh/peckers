@@ -253,6 +253,27 @@ export default function OurStorySection({ initialData = null }) {
                 )}
               </AnimatePresence>
             </div>
+
+            {/* Image Description */}
+            <AnimatePresence mode="wait">
+              {(() => {
+                const activeImg = displayImages[currentSubSlide % displayImages.length];
+                const desc = activeImg?.description;
+                if (!desc) return null;
+                return (
+                  <motion.p
+                    key={`description-${currentSlide}-${currentSubSlide}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="mt-4 lg:mt-6 text-[3.8vw] md:text-[2.2vw] lg:text-[0.95vw] text-white/70 font-neuzeit uppercase tracking-[0.15em] text-center w-full px-0 lg:px-4 leading-relaxed"
+                  >
+                    {desc}
+                  </motion.p>
+                );
+              })()}
+            </AnimatePresence>
           </div>
         </div>
 

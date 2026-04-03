@@ -93,6 +93,7 @@ export default async function TheJourneyPage() {
                     }
                 },
                 storyImages[] {
+                    ...,
                     asset->{
                         _id,
                         url
@@ -104,6 +105,7 @@ export default async function TheJourneyPage() {
                     content,
                     quote,
                     storyImages[] {
+                        ...,
                         asset->{
                             _id,
                             url

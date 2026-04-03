@@ -5,8 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Script from "next/script";
+import { FaChevronDown } from "react-icons/fa";
 import HeaderActionButton from "./components/HeaderActionButton";
 import { client } from "../sanity/lib/client";
+
 import { urlFor } from "../sanity/lib/image";
 
 export default function Navbar({ preloadedSettings = null }) {
@@ -91,7 +93,10 @@ export default function Navbar({ preloadedSettings = null }) {
         </Link>
         <div className="relative group">
           <span className="whitespace-nowrap cursor-default navbar-link">
-            FIND US
+            <span className="flex items-center gap-1.5">
+              FIND US
+              <FaChevronDown className="text-[0.9em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
+            </span>
           </span>
           <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             <div className="bg-[#1a1a1a] border border-[#333] rounded-lg py-2 shadow-xl md:min-w-[150px] lg:min-w-[180px] xl:min-w-[200px]">
@@ -112,7 +117,10 @@ export default function Navbar({ preloadedSettings = null }) {
         </div>
         <div className="relative group">
           <span className="whitespace-nowrap cursor-default navbar-link">
-            OUR SECRET
+            <span className="flex items-center gap-1.5">
+              OUR SECRET
+              <FaChevronDown className="text-[0.9em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
+            </span>
           </span>
           <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
             <div className="bg-[#1a1a1a] border border-[#333] rounded-lg py-2 shadow-xl md:min-w-[180px] lg:min-w-[220px] xl:min-w-[250px]">
@@ -207,9 +215,9 @@ export default function Navbar({ preloadedSettings = null }) {
             <button
               type="button"
               onClick={() => setLocationsOpen(!locationsOpen)}
-              className="w-full text-center py-1"
+              className="w-full flex items-center justify-center gap-2 py-1"
             >
-              LOCATIONS {locationsOpen ? "−" : "+"}
+              LOCATIONS <FaChevronDown className={`text-[0.8em] transition-transform duration-300 ${locationsOpen ? "rotate-180" : ""}`} />
             </button>
             {locationsOpen && (
               <div className="flex flex-col items-center gap-2 mt-2 w-full">
@@ -240,9 +248,9 @@ export default function Navbar({ preloadedSettings = null }) {
             <button
               type="button"
               onClick={() => setJourneyOpen(!journeyOpen)}
-              className="w-full text-center py-1"
+              className="w-full flex items-center justify-center gap-2 py-1"
             >
-              OUR SECRET {journeyOpen ? "−" : "+"}
+              OUR SECRET <FaChevronDown className={`text-[0.8em] transition-transform duration-300 ${journeyOpen ? "rotate-180" : ""}`} />
             </button>
             {journeyOpen && (
               <div className="flex flex-col items-center gap-2 mt-2 w-full">

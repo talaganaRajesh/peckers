@@ -38,6 +38,13 @@ export default defineType({
                 {
                     type: "image",
                     options: { hotspot: true },
+                    fields: [
+                        {
+                            name: "description",
+                            type: "string",
+                            title: "Image Description",
+                        },
+                    ],
                 }
             ],
         }),
@@ -80,6 +87,13 @@ export default defineType({
                                 {
                                     type: "image",
                                     options: { hotspot: true },
+                                    fields: [
+                                        {
+                                            name: "description",
+                                            type: "string",
+                                            title: "Image Description",
+                                        },
+                                    ],
                                 }
                             ],
                         }),
