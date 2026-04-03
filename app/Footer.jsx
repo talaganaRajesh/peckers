@@ -113,6 +113,7 @@ const Footer = ({ preloadedData = null }) => {
     if (normalizedTitle.includes("privacy")) return "/privacy";
     if (normalizedTitle.includes("terms")) return "/terms";
     if (normalizedTitle.includes("allergen")) return "/allergens";
+    if (normalizedTitle.includes("faq")) return "/faq";
 
     return "/home";
   };
@@ -249,6 +250,18 @@ const Footer = ({ preloadedData = null }) => {
                     </Link>
                   </li>
                 </>
+              )}
+              {/* Always show FAQ if not already present in dynamic links */}
+              {!data.quickLinks?.some(l => l.title.toLowerCase().includes('faq')) && (
+                <li>
+                  <Link
+                    href="/faq"
+                    className="hover:underline inline-block"
+                    style={{ fontFamily: "var(--font-neuzeit)" }}
+                  >
+                    FAQ
+                  </Link>
+                </li>
               )}
             </ul>
           </div>
