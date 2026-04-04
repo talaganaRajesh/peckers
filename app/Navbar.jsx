@@ -49,9 +49,6 @@ export default function Navbar({ preloadedSettings = null }) {
     fetchSettings();
   }, [settings]);
 
-
-
-
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : null;
 
   return (
@@ -217,7 +214,10 @@ export default function Navbar({ preloadedSettings = null }) {
               onClick={() => setLocationsOpen(!locationsOpen)}
               className="w-full flex items-center justify-center gap-2 py-1"
             >
-              LOCATIONS <FaChevronDown className={`text-[0.8em] transition-transform duration-300 ${locationsOpen ? "rotate-180" : ""}`} />
+              LOCATIONS{" "}
+              <FaChevronDown
+                className={`text-[0.8em] transition-transform duration-300 ${locationsOpen ? "rotate-180" : ""}`}
+              />
             </button>
             {locationsOpen && (
               <div className="flex flex-col items-center gap-2 mt-2 w-full">
@@ -250,7 +250,10 @@ export default function Navbar({ preloadedSettings = null }) {
               onClick={() => setJourneyOpen(!journeyOpen)}
               className="w-full flex items-center justify-center gap-2 py-1"
             >
-              OUR SECRET <FaChevronDown className={`text-[0.8em] transition-transform duration-300 ${journeyOpen ? "rotate-180" : ""}`} />
+              OUR SECRET{" "}
+              <FaChevronDown
+                className={`text-[0.8em] transition-transform duration-300 ${journeyOpen ? "rotate-180" : ""}`}
+              />
             </button>
             {journeyOpen && (
               <div className="flex flex-col items-center gap-2 mt-2 w-full">
@@ -303,7 +306,7 @@ export default function Navbar({ preloadedSettings = null }) {
             <span className="text-[5vw] xs:text-[5.2vw] sm:text-[22px] md:text-[3vw] xl:text-[2.1vw] tracking-normal md:tracking-wide leading-tight font-black">
               UNLOCK THE PERKS OF THE PECKERS INNER CIRCLE!{" "}
               <a
-                href="https://peckers.vmos.io/account/auth/login"
+                href="https://peckers.vmos.io/account/auth/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-red-600 font-black underline"
