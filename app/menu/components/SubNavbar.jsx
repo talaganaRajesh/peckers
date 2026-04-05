@@ -12,7 +12,8 @@ export default function SubNavbar() {
   const navbarData = [
     { title: "BURGERS", link: "/menu" },
     { title: "WRAPS", link: "/menu/wraps" },
-    { title: "RICE BOWLS & SALAD BOWLS", link: "/menu/rice-and-salad-bowls" },
+    { title: "RICE BOWLS", link: "/menu/rice-bowls" },
+    { title: "SALAD BOWLS", link: "/menu/salad-bowls" },
     { title: "WINGS", link: "/menu/wings" },
     { title: "TENDERS", link: "/menu/tenders" },
     { title: "MEAL BOXES AND PLATTERS", link: "/menu/meal-box" },
@@ -114,8 +115,10 @@ export default function SubNavbar() {
             else if (title === "WRAPS") href = "/menu/wraps";
             else if (title === "WINGS") href = "/menu/wings";
             else if (title === "TENDERS") href = "/menu/tenders";
-            else if (title === "RICE BOWLS & SALAD BOWLS")
-              href = "/menu/rice-and-salad-bowls";
+            else if (title === "RICE BOWLS")
+              href = "/menu/rice-bowls";
+            else if (title === "SALAD BOWLS")
+              href = "/menu/salad-bowls";
             else if (title === "MEAL BOXES AND PLATTERS")
               href = "/menu/meal-box";
             else if (title === "KIDS") href = "/menu/kids";
