@@ -58,7 +58,7 @@ const HomePageClient = ({
 
   return (
     <div id="main-content">
-      <section className="hero w-full h-screen bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
+      <section className="hero w-full h-[80vh] xl:h-screen bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
         {data?.videoUrl && (
           <video
             src={data.videoUrl}
@@ -96,7 +96,7 @@ const HomePageClient = ({
       <CoopImages locations={initialLocations} />
 
       {/* THE PECKERS JOURNAL — full viewport section */}
-      <section className="md:h-screen flex flex-col gap-[5vw] md:gap-[1.5vw]">
+      <section className="flex flex-col gap-[8vw] md:gap-[5vw] lg:gap-[3vw] xl:gap-[1.5vw] xl:h-screen py-[10vw] md:py-[6vw] xl:py-0">
         <LatestNewsHeading
           heading={data?.journalHeading}
           subtitle={data?.journalSubtitle}

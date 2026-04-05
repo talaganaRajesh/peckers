@@ -33,6 +33,13 @@ export default function Navbar({ preloadedSettings = null }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  // Close mobile menu and dropdowns on page navigation
+  useEffect(() => {
+    setOpen(false);
+    setLocationsOpen(false);
+    setJourneyOpen(false);
+  }, [pathname]);
+
   useEffect(() => {
     if (settings) return; // Skip if already loaded
 
@@ -54,21 +61,20 @@ export default function Navbar({ preloadedSettings = null }) {
   return (
     <nav
       id="main-navbar"
-      className={`sticky top-0 z-[9999] flex items-center px-4 md:px-[2vw] lg:px-[2.5vw] xl:px-[1.8vw] bg-black text-white font-sans transition-all duration-300 ease-in-out ${
-        scrolled
-          ? "py-2 md:py-[0.5vw] lg:py-[0.6vw] xl:py-[0.2vw]"
-          : "py-4 md:py-[1.2vw] lg:py-[1.5vw] xl:py-[.4vw]"
-      }`}
+      className={`sticky top-0 z-9999 flex items-center px-4 md:px-[2vw] lg:px-[2.5vw] xl:px-[1.8vw] bg-black text-white font-sans transition-all duration-300 ease-in-out ${scrolled
+        ? "py-2 md:py-[0.5vw] lg:py-[0.6vw] xl:py-[0.2vw]"
+        : "py-4 md:py-[1.2vw] lg:py-[1.5vw] xl:py-[.4vw]"
+        }`}
     >
       {/* Logo Section */}
       <div className="flex-1 flex items-center z-50">
         <Link
           href="/home"
-          className={`relative block transition-all duration-300 ease-in-out ${
-            scrolled
-              ? "w-[110px] md:w-[100px] lg:w-[120px] xl:w-[180px] h-[38px] md:h-[42px] lg:h-[50px] xl:h-[58px]"
-              : "w-[140px] md:w-[130px] lg:w-[160px] xl:w-[240px] h-[50px] md:h-[60px] lg:h-[70px] xl:h-[82px]"
-          }`}
+          onClick={() => setOpen(false)}
+          className={`relative block transition-all duration-300 ease-in-out ${scrolled
+            ? "w-[110px] md:w-[100px] lg:w-[120px] xl:w-[180px] h-[38px] md:h-[42px] lg:h-[50px] xl:h-[58px]"
+            : "w-[140px] md:w-[130px] lg:w-[160px] xl:w-[240px] h-[50px] md:h-[60px] lg:h-[70px] xl:h-[82px]"
+            }`}
         >
           <Image
             src="/Peckers Logo 1 [Vectorized].svg"
@@ -82,7 +88,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Desktop Center Links */}
       <div
-        className="hidden md:flex flex-1 md:text-[1.3vw] lg:text-[1.5vw] xl:text-[1.5vw] justify-center md:tracking-[.1vw] lg:tracking-[.15vw] xl:tracking-[.2vw] font-semibold md:gap-[1.8vw] lg:gap-[2.5vw] xl:gap-[2.7vw]"
+        className="hidden md:flex flex-1 md:text-[14px] lg:text-[1.4vw] xl:text-[1.5vw] justify-center md:tracking-[.05vw] lg:tracking-[.15vw] xl:tracking-[.2vw] font-semibold md:gap-[2vw] lg:gap-[2.5vw] xl:gap-[2.7vw]"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         <Link href="/menu" className="whitespace-nowrap navbar-link">
@@ -292,7 +298,7 @@ export default function Navbar({ preloadedSettings = null }) {
       {/* White Strip (Conditionally shown on home page, hidden after scrolling past hero) */}
       {(pathname === "/" || pathname === "/home") && (
         <div
-          className="absolute top-[100%] left-0 w-full h-auto md:h-[4.5vw] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0"
+          className="absolute top-full left-0 w-full h-auto md:h-[4.5vw] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0"
           style={{
             opacity: isHeroVisible ? 1 : 0,
             pointerEvents: isHeroVisible ? "auto" : "none",
