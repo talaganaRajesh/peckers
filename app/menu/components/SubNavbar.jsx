@@ -49,7 +49,7 @@ export default function SubNavbar() {
   }, [scrollActiveToCenter]);
 
   return (
-    <div className="w-full flex justify-center px-4 md:px-0 z-50 bg-black pt-4 md:pt-6">
+    <div className="w-full flex justify-center px-4 md:px-0 z-50 bg-black pt-4 md:pt-2 lg:pt-4 xl:pt-6">
       <nav
         className="subnavbar relative group w-full max-w-7xl"
         style={{ color: "white" }}

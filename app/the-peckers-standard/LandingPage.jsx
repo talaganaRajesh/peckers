@@ -40,32 +40,32 @@ export default function UniquenessLandingPage({ initialData = null }) {
       </div>
       {/* Centered Overlay Content */}
       <div className="absolute inset-0 w-full flex flex-col items-center justify-center pb-[2vh] pointer-events-none z-2">
-        <h1 className="text-center font-peakers font-bold text-white text-[2.9vw] md:text-[3.1vw] leading-none drop-shadow-lg pointer-events-auto">
+        <h1 className="text-center font-peakers font-bold text-white leading-none drop-shadow-lg pointer-events-auto">
           {data?.heading ? (
             data.heading.split("\n").map((line, idx) => (
               <span
                 key={idx}
-                className={`block font-peakers text-[14vw] md:text-[6vw] ${idx === 2 ? "text-[#f7e229] mt-[1.2vw] md:mt-[0.1vw] mb-[1.2vw] md:mb-[0.1vw]" : ""}`}
+                className={`block font-peakers text-[14vw] md:text-[64px] lg:text-[80px] xl:text-[88px] ${idx === 2 ? "text-[#f7e229] mt-[1.2vw] md:mt-[2px] mb-[1.2vw] md:mb-[2px]" : ""}`}
               >
                 {line}
               </span>
             ))
           ) : (
             <>
-              <span className="block font-peakers text-[14vw] md:text-[6vw]">
+              <span className="block font-peakers text-[14vw] md:text-[64px] lg:text-[80px] xl:text-[88px]">
                 THE
               </span>
-              <span className="block font-peakers text-[14vw] md:text-[6vw]">
+              <span className="block font-peakers text-[14vw] md:text-[64px] lg:text-[80px] xl:text-[88px]">
                 PECKERS
               </span>
-              <span className="block text-[#f7e229] font-peakers text-[16vw] md:text-[6.5vw] font-bold mt-[1.2vw] md:mt-[0.1vw] mb-[1.2vw] md:mb-[0.1vw]">
+              <span className="block text-[#f7e229] font-peakers text-[16vw] md:text-[72px] lg:text-[90px] xl:text-[100px] font-bold mt-[1.2vw] md:mt-[2px] mb-[1.2vw] md:mb-[2px]">
                 STANDARD
               </span>
             </>
           )}
         </h1>
-        <div className="w-full flex justify-center px-[4vw] md:px-0 mt-[6vw] md:mt-0">
-          <span className="uppercase tracking-[0.15em] font-semibold text-[2.2vw] md:text-[0.85vw] text-[#d3d3d3] font-mono md:mt-[1.5vw] text-center pointer-events-auto leading-[1.7] max-w-[90vw] md:max-w-[55vw] block">
+        <div className="w-full flex justify-center px-[4vw] md:px-0 mt-[6vw] md:mt-4">
+          <span className="uppercase tracking-[0.15em] font-semibold text-[2.2vw] md:text-[15px] lg:text-[16px] xl:text-[0.85vw] text-[#d3d3d3] font-mono md:mt-[1.5vw] text-center pointer-events-auto leading-[1.7] max-w-[90vw] md:max-w-[70vw] lg:max-w-[55vw] block">
             {data?.subtext ||
               "IT'S NOT ONE THING. From our custom-milled breading to our hand-picked Covent Garden produce, we believe in seriously good chicken, sourced locally, prepared daily, and served with pride."}
           </span>

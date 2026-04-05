@@ -100,9 +100,9 @@ export default function LocationAddress({ location = "hitchin" }) {
 
   return (
     <section>
-      <div className="flex justify-center items-center min-h-[90vh] mt-6">
+      <div className="flex justify-center items-center md:min-h-[70vh] lg:min-h-[75vh] xl:min-h-[90vh] mt-6">
         <div
-          className="bg-[#121212] rounded-[18px] px-[6vw] md:px-[5vw] py-[8vw] md:py-[4vw] gap-[8vw] md:gap-[2vw] flex flex-col md:flex-row shadow-lg h-auto md:h-[77vh] w-[90vw] md:w-[72vw]"
+          className="bg-[#121212] rounded-[18px] px-[6vw] md:px-[5vw] py-[8vw] md:py-[4vw] gap-[8vw] md:gap-[2vw] flex flex-col md:flex-row shadow-lg h-auto md:min-h-[500px] xl:h-[77vh] w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] xl:max-w-7xl"
           style={{ border: "1px solid #333" }}
         >
           {/* Left Side (Info) */}
@@ -111,14 +111,14 @@ export default function LocationAddress({ location = "hitchin" }) {
             style={{ borderRadius: "0.6vw", background: "transparent" }}
           >
             <div
-              className="text-white text-[8vw] md:text-[3.6vw] tracking-[0.1vw] font-bold uppercase"
+              className="text-white text-[8vw] md:text-[42px] lg:text-[48px] xl:text-[3.6vw] tracking-[0.1vw] font-bold uppercase"
               style={{ fontFamily: "var(--font-peakers)", lineHeight: "1.1" }}
             >
               {data.name}
             </div>
-            <div className="flex items-center gap-[4vw] md:gap-[1vw] mt-7 mb-2">
+            <div className="flex items-center gap-[4vw] md:gap-[1.5vw] mt-10 md:mt-14 mb-4 md:mb-6">
               <svg
-                className="w-[6vw] h-[7.5vw] md:w-[20px] md:h-[25px] min-w-[20px]"
+                className="w-[6vw] h-[7.5vw] md:w-[28px] md:h-[35px] min-w-[24px]"
                 viewBox="0 0 20 25"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -128,14 +128,14 @@ export default function LocationAddress({ location = "hitchin" }) {
                   fill="white"
                 />
               </svg>
-              <div className="text-[#e3e3e5] text-[4vw] md:text-[1.2vw] py-[1vw] font-peakers whitespace-pre-line">
+              <div className="text-[#e3e3e5] text-[4vw] md:text-[18px] lg:text-[20px] xl:text-[1.1vw] py-[1vw] font-peakers whitespace-pre-line font-medium">
                 {data.address}
               </div>
             </div>
             <br />
-            <div className="flex items-center gap-[4vw] md:gap-[1.3vw] mb-2">
+            <div className="flex items-center gap-[4vw] md:gap-[1.5vw] mb-4 md:mb-6">
               <svg
-                className="w-[7.5vw] h-[10.5vw] md:w-[25px] md:h-[35px] min-w-[25px]"
+                className="w-[7.5vw] h-[10.5vw] md:w-[32px] md:h-[42px] min-w-[28px]"
                 viewBox="0 0 25 25"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +145,7 @@ export default function LocationAddress({ location = "hitchin" }) {
                   fill="white"
                 />
               </svg>
-              <div className="text-[#e3e3e5] text-[4vw] md:text-[1.2vw] font-peakers whitespace-pre-line">
+              <div className="text-[#e3e3e5] text-[4vw] md:text-[18px] lg:text-[20px] xl:text-[1.1vw] font-peakers whitespace-pre-line font-medium">
                 {location.toLowerCase().includes("hitchin") &&
                 (data.hours === "Monday - Sunday" || !data.hours) ? (
                   <>
@@ -165,9 +165,9 @@ export default function LocationAddress({ location = "hitchin" }) {
               </div>
             </div>
             <br />
-            <div className="flex items-center gap-[4vw] md:gap-[1vw] mb-4">
+            <div className="flex items-center gap-[4vw] md:gap-[1.5vw] mb-6 md:mb-10">
               <svg
-                className="w-[7vw] h-[7vw] md:w-[23px] md:h-[23px] min-w-[23px]"
+                className="w-[7vw] h-[7vw] md:w-[30px] md:h-[30px] min-w-[26px]"
                 viewBox="0 0 23 23"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@ export default function LocationAddress({ location = "hitchin" }) {
                   fill="white"
                 />
               </svg>
-              <div className="text-[#e3e3e5] text-[4vw] md:text-[1.2vw] font-peakers">
+              <div className="text-[#e3e3e5] text-[4vw] md:text-[18px] lg:text-[20px] xl:text-[1.1vw] font-peakers font-medium">
                 {data.phone}
               </div>
             </div>
@@ -188,7 +188,7 @@ export default function LocationAddress({ location = "hitchin" }) {
               <HeaderActionButton
                 href={data.clickCollectUrl}
                 wrapperClassName="w-full md:w-auto"
-                className="w-full md:w-auto text-center px-[4vw] md:px-[2vw] lg:px-[2.2vw] py-[3vw] md:py-[12.5px] text-[4vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap font-black"
+                className="w-full md:w-auto text-center px-[4vw] md:px-[2.4vw] lg:px-[2.8vw] py-[3vw] md:py-[15px] text-[4vw] md:text-[16px] lg:text-[18px] tracking-wide whitespace-nowrap font-black"
                 bgColor="bg-white"
                 textColor="text-black"
                 borderColor="border-white"
@@ -199,7 +199,7 @@ export default function LocationAddress({ location = "hitchin" }) {
               <HeaderActionButton
                 href={data.deliveryUrl}
                 wrapperClassName="w-full md:w-auto"
-                className="w-full md:w-auto text-center px-[4vw] md:px-[3.2vw] lg:px-[3.5vw] py-[3vw] md:py-[12.5px] text-[4.2vw] md:text-[13px] lg:text-[16px] tracking-wide whitespace-nowrap hover:bg-red-700 font-black"
+                className="w-full md:w-auto text-center px-[4vw] md:px-[3.6vw] lg:px-[4vw] py-[3vw] md:py-[15px] text-[4.2vw] md:text-[16px] lg:text-[18px] tracking-wide whitespace-nowrap hover:bg-red-700 font-black"
                 bgColor="bg-red-600"
                 textColor="text-white"
                 borderColor="border-red-600"

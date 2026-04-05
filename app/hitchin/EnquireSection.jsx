@@ -162,11 +162,11 @@ export default function EnquiriesSection({ location }) {
   return (
     <section
       id="enquiry-form"
-      className="w-[90%] md:w-[88%] bg-black min-h-screen mx-auto md:ml-[7vw] mt-[10vw] md:mt-[7vw] rounded-[4vw] md:rounded-[1.4vw] text-white font-sans flex flex-col md:flex-row overflow-hidden"
+      className="w-[90%] md:w-[94%] lg:w-[88%] bg-black md:min-h-[700px] xl:min-h-screen mx-auto md:ml-[3vw] lg:ml-[7vw] mt-[10vw] md:mt-[7vw] rounded-[4vw] md:rounded-[1.4vw] text-white font-sans flex flex-col md:flex-row overflow-hidden"
       style={{ border: "1px solid #1F2739" }}
     >
       {/* LEFT SIDE */}
-      <div className="w-full md:w-[29vw] border-b md:border-b-0 md:border-r border-[#1F2937] px-[8vw] md:px-[4vw] py-[8vw] md:py-[4vw] flex flex-col justify-start bg-[#121212]">
+      <div className="w-full md:w-[35vw] lg:w-[29vw] border-b md:border-b-0 md:border-r border-[#1F2937] px-[8vw] md:px-[3vw] lg:px-[4vw] py-[8vw] md:py-[4vw] flex flex-col justify-start bg-[#121212]">
         <h2 className="text-[8vw] md:text-[2.6vw] font-bold uppercase tracking-wider text-white font-peakers">
           ENQUIRIES
         </h2>
@@ -259,12 +259,12 @@ export default function EnquiriesSection({ location }) {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="w-full md:w-[57vw] px-[6vw] md:px-[4vw] py-[8vw] md:py-[3vw] flex flex-col font-peakers bg-[#000000]">
+      <div className="w-full md:w-[65vw] lg:w-[57vw] px-[6vw] md:px-[3vw] lg:px-[4vw] py-[8vw] md:py-[4vw] lg:py-[3vw] flex flex-col font-peakers bg-[#000000]">
         <div className="flex items-center gap-[4vw] mb-[6vw] md:mb-[2vw]">
           <h2 className="text-[7vw] md:text-[2.6vw] tracking-[0.05vw] font-bold whitespace-nowrap">
             GET IN TOUCH
           </h2>
-          <div className="flex-1 h-[2px] bg-[#1F2937] w-[100%]"></div>
+          <div className="flex-1 h-[2px] bg-[#1F2937] w-full"></div>
         </div>
 
         {/* FORM */}

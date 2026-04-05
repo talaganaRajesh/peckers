@@ -59,13 +59,13 @@ const SectionItem = memo(({ section, index, num, total }) => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full h-auto md:h-[75vh] flex flex-col ${
+      className={`w-full h-auto md:min-h-[60vh] lg:h-[75vh] flex flex-col ${
         isAlternate ? "md:flex-row-reverse" : "md:flex-row"
       } bg-black overflow-hidden`}
     >
       {/* MEDIA SECTION */}
       <div
-        className="w-full md:w-[60%] md:h-full relative overflow-hidden flex items-center justify-center bg-black"
+        className="w-full md:w-[50%] lg:w-[60%] md:h-full relative overflow-hidden flex items-center justify-center bg-black"
         style={{
           minHeight: "1px",
         }}
@@ -127,7 +127,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
 
       {/* CONTENT SECTION */}
       <div
-        className={`w-full md:w-[40%] h-auto md:h-full text-white flex flex-col overflow-hidden`}
+        className={`w-full md:w-[50%] lg:w-[40%] h-auto md:h-full text-white flex flex-col overflow-hidden`}
         style={{
           backgroundColor: index % 2 === 0 ? "#111111" : "#000000",
         }}
@@ -138,7 +138,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
           {/* PERSISTENT HEADER */}
           <div className="flex flex-col justify-end mb-[4vw] md:mb-[2vw] pt-[6vw] md:pt-[2vw]">
             <div className="w-full flex justify-start items-end min-h-[18vw] md:min-h-[0.1vw]">
-              <h2 className="font-peakers font-bold leading-none uppercase tracking-tight text-white text-[9vw] md:text-[50.4px]">
+              <h2 className="font-peakers font-bold leading-none uppercase tracking-tight text-white text-[9vw] md:text-[44px] lg:text-[48px] xl:text-[50.4px]">
                 {section.title}
               </h2>
             </div>
@@ -150,12 +150,12 @@ const SectionItem = memo(({ section, index, num, total }) => {
             className="w-full flex-1 overflow-y-auto custom-scrollbar pr-[2vw] max-h-[60vw] md:max-h-none md:min-h-0"
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
-              <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] font-sans md:leading-[1.8vw] mb-[2vw] md:mb-[1vw]">
+              <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[18px] md:leading-[28px] lg:text-[20px] lg:leading-[32px] xl:text-[1.1vw] xl:leading-[1.8vw] font-sans mb-[2vw] md:mb-[1vw]">
                 {section.previewText}
               </p>
 
               {section.expandedText && (
-                <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[1.1vw] font-sans md:leading-[1.8vw]">
+                <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[18px] md:leading-[28px] lg:text-[20px] lg:leading-[32px] xl:text-[1.1vw] xl:leading-[1.8vw] font-sans">
                   {section.expandedText}
                 </p>
               )}
@@ -170,7 +170,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
               .includes("NOTHING COMES OUT OF A BOTTLE") && (
               <a
                 href="/house-made-sauces"
-                className="inline-flex items-center gap-[2vw] md:gap-[0.8vw] px-[6vw] md:px-[1.4vw] py-[2.2vw] md:py-[0.6vw] rounded-full border border-white/30 hover:border-white hover:bg-white/5 hover:text-white transition-all duration-300 text-[3.2vw] md:text-[0.85vw] font-bold uppercase tracking-widest mt-[4vw] md:mt-[1.2vw] group"
+                className="inline-flex items-center gap-[2vw] md:gap-[10px] px-[6vw] md:px-[20px] py-[2.2vw] md:py-[8px] rounded-full border border-white/30 hover:border-white hover:bg-white/5 hover:text-white transition-all duration-300 text-[3.2vw] md:text-[12px] lg:text-[0.85vw] font-bold uppercase tracking-widest mt-[4vw] md:mt-[1.2vw] group"
               >
                 <span>Explore our house-made sauces</span>
                 <svg

@@ -49,10 +49,10 @@ const DropShadowSVG = () => (
 
 const POS_MAPPING_TABLET = {
   0: { x: 0, y: 0, scale: 1, opacity: 1, z: 10 },
-  1: { x: 30, y: -50, scale: 0.45, opacity: 0.85, z: 5 },
-  [-1]: { x: -30, y: -50, scale: 0.45, opacity: 0.85, z: 5 },
-  2: { x: 18, y: -100, scale: 0.2, opacity: 0.4, z: 1 },
-  [-2]: { x: -18, y: -100, scale: 0.2, opacity: 0.4, z: 1 },
+  1: { x: 30, y: -40, scale: 0.45, opacity: 0.85, z: 5 },
+  [-1]: { x: -30, y: -40, scale: 0.45, opacity: 0.85, z: 5 },
+  2: { x: 18, y: -80, scale: 0.2, opacity: 0.4, z: 1 },
+  [-2]: { x: -18, y: -80, scale: 0.2, opacity: 0.4, z: 1 },
 };
 
 const POS_MAPPING_LAPTOP = {
@@ -229,7 +229,7 @@ export default function MenuTitleSection({
         {/* STAGE */}
         <div
           className="relative w-full flex items-center justify-center mt-[8vw] md:mt-0"
-          style={{ height: "clamp(230px, 42vw, 450px)" }}
+          style={{ height: "clamp(230px, 38vw, 450px)" }}
         >
           {/* NAVIGATION ARROWS */}
           <button

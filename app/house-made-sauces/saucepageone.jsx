@@ -36,12 +36,12 @@ export default function SaucePageOne({ initialData = [] }) {
   const ringItemsBase =
     saucesData.length > 1
       ? [
-          { sauce: saucesData[0], index: 0 },
-          ...saucesData
-            .slice(1)
-            .map((sauce, index) => ({ sauce, index: index + 1 }))
-            .reverse(),
-        ]
+        { sauce: saucesData[0], index: 0 },
+        ...saucesData
+          .slice(1)
+          .map((sauce, index) => ({ sauce, index: index + 1 }))
+          .reverse(),
+      ]
       : saucesData.map((sauce, index) => ({ sauce, index }));
   const ringItems = ringItemsBase.map((item, idx) => ({
     ...item,
@@ -220,7 +220,7 @@ export default function SaucePageOne({ initialData = [] }) {
         <div className="absolute top-0 left-0 right-0 h-[48%] bg-gradient-to-b from-black via-black/75 to-transparent z-[9] pointer-events-none md:hidden" />
 
         {/* TEXT SECTION */}
-        <div className="absolute top-[1.2rem] sm:top-[1.4rem] md:top-[1rem] lg:top-[0rem] xl:top-[0rem] left-1/2 -translate-x-1/2 text-center text-white w-[95%] sm:w-[90%] md:w-[65%] lg:w-[55%] xl:w-[48%] z-20">
+        <div className="absolute top-[1.2rem] sm:top-[1.4rem] md:top-24 lg:top-32 xl:top-4 left-1/2 -translate-x-1/2 text-center text-white w-[95%] sm:w-[90%] md:w-[65%] lg:w-[55%] xl:w-[48%] z-20">
           <AnimatePresence mode="wait">
             <motion.div
               key={"text-" + currentSauce._id}
@@ -232,7 +232,7 @@ export default function SaucePageOne({ initialData = [] }) {
             >
               {/* TITLE */}
               <h1
-                className="text-4xl sm:text-5xl md:text-[52px] lg:text-[60px] xl:text-[4vw] font-bold tracking-wide mb-2 sm:mb-3 md:mb-2"
+                className="text-4xl sm:text-5xl md:text-[64px] lg:text-[72px] xl:text-[4vw] font-bold tracking-wide mb-2 sm:mb-3 md:mb-2"
                 style={{ fontFamily: "var(--font-peakers)" }}
               >
                 {currentSauce.title}
@@ -240,7 +240,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
               {/* DESCRIPTION */}
               <div
-                className="text-[13px] sm:text-[14px] md:text-[13px] lg:text-[14px] xl:text-[0.9vw] leading-[1.5em] font-bold tracking-wider space-y-1"
+                className="text-[13px] sm:text-[14px] md:text-[18px] lg:text-[20px] xl:text-[0.9vw] leading-[1.6em] font-bold tracking-wider space-y-1"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
                 <p>
@@ -270,7 +270,7 @@ export default function SaucePageOne({ initialData = [] }) {
                     </svg>
                     <span
                       style={{ fontFamily: "var(--font-peakers)" }}
-                      className="text-[12px] sm:text-[13px] md:text-[0.9vw] xl:text-[0.8vw] font-bold tracking-[0.07em] uppercase translate-y-px"
+                      className="text-[12px] sm:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[0.8vw] font-bold tracking-[0.07em] uppercase translate-y-px"
                     >
                       FRESHLY MADE IN-HOUSE EVERY DAY | NO ADDED PRESERVATIVES
                       UNLIKE THE BIG BOYS
@@ -280,36 +280,36 @@ export default function SaucePageOne({ initialData = [] }) {
 
                 {/* NUTRITIONAL BADGES */}
                 {currentSauce.cal && currentSauce.cal !== "-" && (
-                  <div className="flex flex-row flex-wrap justify-center items-center gap-2 font-bold">
+                  <div className="flex flex-row flex-wrap justify-center items-center gap-2 md:gap-4 font-bold">
                     <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[0.65vw] text-white/40 font-mono">
+                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
                         CAL
                       </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[1vw] xl:text-[0.85vw]">
+                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
                         {currentSauce.cal}
                       </span>
                     </div>
                     <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[0.65vw] text-white/40 font-mono">
+                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
                         P(g)
                       </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[1vw] xl:text-[0.85vw]">
+                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
                         {currentSauce.protein}
                       </span>
                     </div>
                     <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[0.65vw] text-white/40 font-mono">
+                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
                         C(g)
                       </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[1vw] xl:text-[0.85vw]">
+                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
                         {currentSauce.carbs}
                       </span>
                     </div>
                     <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[0.65vw] text-white/40 font-mono">
+                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
                         F(g)
                       </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[1vw] xl:text-[0.85vw]">
+                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
                         {currentSauce.fat}
                       </span>
                     </div>
@@ -325,11 +325,11 @@ export default function SaucePageOne({ initialData = [] }) {
         */}
         <div
           className="fixed md:absolute left-1/2 -translate-x-1/2
-                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-[11rem] lg:top-[11rem] xl:top-[13.5rem]
+                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-80 lg:top-[25rem] xl:top-[13.5rem]
                       w-[190vw] h-[190vw]
                       sm:w-[160vw] sm:h-[160vw]
-                      md:w-[95vw] md:h-[95vw]
-                      lg:w-[82vw] lg:h-[82vw] 
+                      md:w-[75vw] md:h-[75vw]
+                      lg:w-[62vw] lg:h-[62vw] 
                       xl:w-[70vw] xl:h-[70vw]
                       flex items-center justify-center z-10 pointer-events-none"
         >
@@ -367,8 +367,8 @@ export default function SaucePageOne({ initialData = [] }) {
                         style={{
                           fontFamily: "var(--font-peakers)",
                           fontWeight: 700,
-                          fontSize: isDesktop ? "0.298rem" : "0.62rem",
-                          letterSpacing: isDesktop ? "0.005em" : "0.02em",
+                          fontSize: isDesktop ? "0.45rem" : "0.62rem",
+                          letterSpacing: isDesktop ? "0.015em" : "0.02em",
                           textTransform: "uppercase",
                           cursor: "pointer",
                           pointerEvents: "auto",
@@ -447,13 +447,13 @@ export default function SaucePageOne({ initialData = [] }) {
       {/*
               ─── ARROW BUTTONS ───
       */}
-      <div className="absolute top-[63%] sm:top-[65%] md:top-auto bottom-auto md:bottom-[15%] lg:bottom-[16%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
+      <div className="absolute top-[63%] sm:top-[65%] md:top-auto bottom-auto md:bottom-[7%] lg:bottom-[8%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
         <button
           onClick={prevSlide}
           className="group pointer-events-auto transition-all duration-300 active:scale-95"
           aria-label="Previous sauce"
         >
-          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
+          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[68px] md:h-[68px] lg:w-[80px] lg:h-[80px]">
             <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               <svg
                 viewBox="0 0 100 100"
@@ -475,7 +475,7 @@ export default function SaucePageOne({ initialData = [] }) {
           className="group pointer-events-auto transition-all duration-300 active:scale-95"
           aria-label="Next sauce"
         >
-          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[52px] md:h-[52px] lg:w-[60px] lg:h-[60px]">
+          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[68px] md:h-[68px] lg:w-[80px] lg:h-[80px]">
             <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
               <svg
                 viewBox="0 0 100 100"

@@ -109,16 +109,18 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
         }
         @media (min-width: 768px) {
           .card-slot-m2 { transform: translate(calc(-50% - 97vw), -50%) rotateY(45deg) scale(0.6); }
-          .card-slot-m1 { transform: translate(calc(-50% - 27vw), -50%) rotate(-5deg) scale(0.92); }
-          .card-slot-1  { transform: translate(calc(-50% + 27vw), -50%) rotate(5deg) scale(0.92); }
+          .card-slot-m1 { transform: translate(calc(-50% - 28vw), -50%) rotate(-5deg) scale(0.92); }
+          .card-slot-1  { transform: translate(calc(-50% + 28vw), -50%) rotate(5deg) scale(0.92); }
           .card-slot-2  { transform: translate(calc(-50% + 97vw), -50%) rotateY(-45deg) scale(0.6); }
           .latest-card {
-             width: 26.4vw;
-             height: 37.4vw;
-             border-radius: 1.32vw;
+             width: 32vw;
+             height: 45vw;
+             border-radius: 2vw;
           }
         }
         @media (min-width: 1280px) {
+          .card-slot-m1 { transform: translate(calc(-50% - 27vw), -50%) rotate(-5deg) scale(0.92); }
+          .card-slot-1  { transform: translate(calc(-50% + 27vw), -50%) rotate(5deg) scale(0.92); }
           .latest-card {
              width: 24.2vw;
              height: 35.2vw;
@@ -127,7 +129,7 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
         }
       `}</style>
       <div
-        className="relative w-full h-[92vw] md:h-full py-[4vw] md:py-[3vw]"
+        className="relative w-full h-[92vw] md:h-[500px] lg:h-[600px] xl:h-full py-[4vw] md:py-[3vw]"
         style={{
           perspective: "1400px",
           transformStyle: "preserve-3d",

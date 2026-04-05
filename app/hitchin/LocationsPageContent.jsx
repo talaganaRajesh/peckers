@@ -98,7 +98,7 @@ export function LocationsPageContent({
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
         className="w-full flex flex-col items-center justify-center relative overflow-hidden"
-        style={{ minHeight: "70vh" }}
+        style={{ minHeight: "clamp(400px, 60vh, 800px)" }}
       >
         {/* Background Video from Sanity - isolated per location slug */}
         {(pageData?.videoUrl || pageData?.heroVideoUrl) && (
@@ -147,7 +147,7 @@ export function LocationsPageContent({
       </div>
 
       <section id="history">
-        <div className="flex flex-col items-center mt-[12vw] md:mt-[2vw] justify-center w-full pt-[8vw] md:pt-[2vw] pb-[12vw] md:pb-[4vw] bg-[#0A0A0B]">
+        <div className="flex flex-col items-center mt-[12vw] md:mt-[6vw] lg:mt-[4vw] xl:mt-[2vw] justify-center w-full pt-[8vw] md:pt-[6vw] lg:pt-[4vw] xl:pt-[2vw] pb-[12vw] md:pb-[8vw] lg:pb-[6vw] xl:pb-[4vw] bg-[#0A0A0B]">
           <div className="flex flex-col items-start md:items-center w-[90vw] md:w-[80vw]">
             {/* History Title, Logo, EST */}
             <div className="flex flex-row md:flex-row items-center mb-[6vw] md:mb-[1.6vw] relative w-full justify-start md:justify-center gap-[4vw] md:gap-0">

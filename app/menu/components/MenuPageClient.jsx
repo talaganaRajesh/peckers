@@ -14,7 +14,7 @@ export default function GenericMenuPageClient({ initialItems, initialNavbarData,
     return (
         <div
             id="main-content"
-            className="relative bg-black min-h-screen overflow-hidden"
+            className="relative bg-black md:min-h-[650px] xl:min-h-screen overflow-hidden"
         >
             <div key={categoryName}>
                 <MenuTitleSection
