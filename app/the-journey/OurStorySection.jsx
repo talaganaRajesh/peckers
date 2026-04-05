@@ -137,9 +137,9 @@ export default function OurStorySection({ initialData = null }) {
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
-          <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[56vh] md:h-[60vh] lg:h-[67vh]">
+          <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-[50vh] md:h-[48vh] lg:h-[67vh] xl:h-[72vh]">
             <div className="h-full min-h-0 flex flex-col">
-              <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.2vw] lg:text-[48px] leading-[1.05] lg:leading-[1.2] uppercase mt-2 lg:mt-0 text-white whitespace-nowrap overflow-hidden text-ellipsis">
+              <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.2vw] lg:text-[52px] xl:text-[60px] leading-[1.05] lg:leading-[1.1] uppercase mt-2 lg:mt-0 text-white">
                 {fixedHeading}
               </h2>
 
@@ -153,7 +153,7 @@ export default function OurStorySection({ initialData = null }) {
                   exit="exit"
                   transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
                   data-lenis-prevent
-                  className="custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[3vw] lg:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] lg:pt-[3vw] pb-2 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
+                  className="custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[22px] lg:text-[18px] xl:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[3vw] md:pt-[20px] lg:pt-[3vw] pb-2 flex-1 min-h-0 overflow-y-scroll overscroll-contain pr-2"
                 >
                   {(() => {
                     const bodyArray =
@@ -189,7 +189,7 @@ export default function OurStorySection({ initialData = null }) {
                 onClick={nextSlide}
                 className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
               >
-                <div className="relative flex items-center justify-center w-[28px] h-[28px] md:w-[56px] md:h-[56px]">
+                <div className="relative flex items-center justify-center w-[32px] h-[32px] md:w-[64px] md:h-[64px]">
                   <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
                     <svg
                       viewBox="0 0 100 100"
@@ -206,17 +206,17 @@ export default function OurStorySection({ initialData = null }) {
                 </div>
               </button>
 
-              <div className="flex items-center justify-start gap-1 lg:gap-2 mt-4 lg:mt-3 pb-0 lg:pb-1 shrink-0">
+              <div className="flex items-center justify-start gap-1 lg:gap-2 mt-4 lg:mt-6 pb-0 lg:pb-1 shrink-0">
                 {slides.map((_, i) => (
                   <div
                     key={i}
-                    className={`h-0.5 lg:h-1 w-4 lg:w-12 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}
+                    className={`h-0.5 lg:h-1 w-6 lg:w-14 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}
                   ></div>
                 ))}
               </div>
 
               {fixedSubHeading && (
-                <p className="text-zinc-500 font-neuzeit text-[4.2vw] md:text-[2.9vw] lg:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-3 lg:mt-4 pb-0 shrink-0">
+                <p className="text-zinc-500 font-neuzeit text-[4.2vw] md:text-[18px] lg:text-[16px] xl:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-3 lg:mt-6 pb-0 shrink-0">
                   {fixedSubHeading}
                 </p>
               )}
@@ -224,7 +224,7 @@ export default function OurStorySection({ initialData = null }) {
           </div>
 
           <div className="w-full lg:w-1/2 h-auto px-[4vw] lg:px-[2vw] flex flex-col items-start lg:justify-start justify-center mt-0 lg:mt-0">
-            <div className="relative w-full h-[60vw] md:h-[74vw] lg:h-[62vh] overflow-hidden flex items-center lg:items-start justify-start lg:justify-center px-0 lg:px-4">
+            <div className="relative w-full h-[60vw] md:h-[55vw] lg:h-[62vh] overflow-hidden flex items-center lg:items-start justify-start lg:justify-center px-0 lg:px-4">
               <AnimatePresence mode="wait" custom={direction}>
                 {displayImages.length > 0 && (
                   <motion.div
@@ -267,7 +267,7 @@ export default function OurStorySection({ initialData = null }) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="mt-4 lg:mt-6 text-[3.8vw] md:text-[2.2vw] lg:text-[0.95vw] text-white/70 font-neuzeit uppercase tracking-[0.15em] text-center w-full px-0 lg:px-4 leading-relaxed"
+                    className="mt-4 lg:mt-8 text-[3.8vw] md:text-[16px] lg:text-[15px] xl:text-[0.95vw] text-white/70 font-neuzeit uppercase tracking-[0.15em] text-center w-full px-0 lg:px-4 leading-relaxed"
                   >
                     {desc}
                   </motion.p>
@@ -281,7 +281,7 @@ export default function OurStorySection({ initialData = null }) {
           onClick={prevSlide}
           className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
         >
-          <div className="relative flex items-center justify-center w-[28px] h-[28px] md:w-[56px] md:h-[56px]">
+          <div className="relative flex items-center justify-center w-[32px] h-[32px] md:w-[64px] md:h-[64px]">
             <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
               <svg
                 viewBox="0 0 100 100"
