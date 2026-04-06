@@ -182,7 +182,7 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
                 href={`https://search.google.com/local/reviews?placeid=${review.placeId}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-[300px] min-w-[300px] md:w-[480px] md:min-w-[480px] h-[200px] md:h-[200px] shrink-0 bg-[#111111] p-6 md:p-8 rounded-[1rem] border border-white/5 flex flex-col gap-3 md:gap-4 snap-start transition-all duration-300 hover:border-white/10 group relative overflow-hidden"
+                className="w-[300px] min-w-[300px] md:w-[480px] md:min-w-[480px] h-[200px] md:h-[200px] shrink-0 bg-[#111111] p-6 md:p-8 rounded-2xl border border-white/5 flex flex-col gap-3 md:gap-4 snap-start transition-all duration-300 hover:border-white/10 group relative overflow-hidden"
               >
                 <div className="flex justify-between items-start relative z-10 w-full">
                   <div className="flex gap-4 items-center">
@@ -198,15 +198,15 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
                       </div>
                     )}
                     <div>
-                      <h4 className="text-white font-mono font-bold text-sm md:text-base leading-tight uppercase tracking-widest">
+                      <h3 className="text-white font-mono font-bold text-sm md:text-base leading-tight uppercase tracking-widest">
                         {review.author_name}
-                      </h4>
+                      </h3>
                       <p className="text-gray-500 text-[10px] md:text-xs font-mono tracking-tight mt-0.5">
                         {review.relative_time_description || "Verified Buyer"}
                       </p>
                     </div>
                   </div>
-                  <FaQuoteRight className="text-white/[0.03] text-6xl md:text-7xl absolute top-4 right-4" />
+                  <FaQuoteRight className="text-white/5 text-6xl md:text-7xl absolute top-4 right-4" />
                 </div>
 
                 <p className="text-white/80 text-sm md:text-base md:leading-relaxed font-sans font-normal tracking-wide relative z-10 line-clamp-6">
