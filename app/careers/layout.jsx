@@ -1,14 +1,14 @@
 export const metadata = {
     title: "Careers | Join the Peckers Team | Best Chicken in Hertfordshire",
-    description: "Join Peckers and become part of the best chicken team in Stevenage and Hitchin. We're looking for passionate individuals to help us beat the competition. Explore roles at Peckers today.",
+    description: "Join the Peckers team and become part of Hertfordshire's fastest-growing chicken brand in Stevenage and Hitchin. We're looking for passionate individuals to help us deliver Seriously Good Chicken.",
     keywords: [
         "jobs in Stevenage",
         "Hitchin restaurant careers",
         "Peckers chicken jobs",
-        "Dave's Hot Chicken UK vacancies",
-        "Chicken George vs Peckers jobs",
         "halal hospitality careers",
-        "working at Peckers"
+        "working at Peckers",
+        "food service jobs Hertfordshire",
+        "local restaurant vacancies"
     ]
 };
 

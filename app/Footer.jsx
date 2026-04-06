@@ -139,7 +139,7 @@ const Footer = ({ preloadedData = null }) => {
               className="text-[#E3E3E3] font-mono text-[3.5vw] leading-snug text-left"
               style={{ letterSpacing: "0.09em", fontWeight: "300" }}
             >
-              {data.tagline || <>Seriously good chicken.&nbsp; Est. 2024.</>}
+              {data.tagline || "Seriously good chicken."}
             </p>
           </div>
 
@@ -156,13 +156,7 @@ const Footer = ({ preloadedData = null }) => {
             className="hidden md:block text-[#E3E3E3] font-mono mb-[4vw] lg:mb-[2vw] xl:mb-[1.3vw] leading-snug md:text-[2.5vw] lg:text-[1.4vw] xl:text-[1vw] text-left w-full whitespace-pre-line"
             style={{ letterSpacing: "0.09em", fontWeight: "300" }}
           >
-            {data.tagline?.includes("\n")
-              ? data.tagline
-              : data.tagline?.replace(/\./g, ".\n") || (
-                  <>
-                    Seriously good <br /> chicken. <br /> Est. 2024.
-                  </>
-                )}
+            {data.tagline || "Seriously good chicken."}
           </p>
 
           {/* Social buttons (unchanged for both breakpoints) */}
@@ -415,42 +409,7 @@ const Footer = ({ preloadedData = null }) => {
         </a>
       </div>
 
-      <div className="flex-1 flex items-center">
-        <div className="w-full flex justify-center items-center py-2 md:py-4 bg-black">
-          <div className="relative max-w-[98%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
-            <Image
-              src="/Peckers Logo 1 [Vectorized].svg"
-              alt="Peckers Logo"
-              fill
-              className="object-contain"
-            />
-          </div>
-        </div>
-      </div>
 
-      {/* Global SEO - Competitor Targeting */}
-      <div className="sr-only">
-        <h2>Peckers Chicken - The Best Halal Fast Food in Hertfordshire</h2>
-        <p>
-          Looking for the best chicken shop experience? Peckers is the premium
-          alternative to Chicken George Stevenage and Dave's Hot Chicken UK. We
-          serve artisan-quality halal peri peri grilled chicken, hot wings, and
-          gourmet burgers across Stevenage, Hitchin, and the wider Hertfordshire
-          area.
-        </p>
-        <p>
-          Whether you're comparing Peckers vs Chicken George or searching for
-          Dave's Hot Chicken halal options, our menu is designed to impress with
-          seriously good flavors, fresh ingredients, and dedicated service.
-          Visit us in Hitchin or Stevenage for the ultimate chicken experience.
-        </p>
-        <ul>
-          <li>Chicken George vs Peckers</li>
-          <li>Dave's Hot Chicken UK style</li>
-          <li>Best halal takeaway Stevenage</li>
-          <li>Top related chicken restaurants Hitchin</li>
-        </ul>
-      </div>
     </footer>
   );
 };
