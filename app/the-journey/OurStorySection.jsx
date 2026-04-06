@@ -112,7 +112,7 @@ export default function OurStorySection({ initialData = null }) {
   if (!data) return null;
 
   return (
-    <section className="relative w-full lg:min-h-0 bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-0 lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-0 bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-0 md:pb-[12vw] lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
@@ -185,26 +185,7 @@ export default function OurStorySection({ initialData = null }) {
                 </motion.div>
               </AnimatePresence>
 
-              <button
-                onClick={nextSlide}
-                className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
-              >
-                <div className="relative flex items-center justify-center w-[32px] h-[32px] md:w-[64px] md:h-[64px]">
-                  <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                    <svg
-                      viewBox="0 0 100 100"
-                      className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-white"
-                      fill="currentColor"
-                    >
-                      <path d="M45 20 L85 50 L45 80 L58 50 Z" />
-                      <path
-                        d="M15 25 L50 50 L15 75 L28 50 Z"
-                        className="opacity-40"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </button>
+
 
               <div className="flex items-center justify-start gap-1 lg:gap-2 mt-1 lg:mt-2 pb-0 lg:pb-1 shrink-0">
                 {slides.map((_, i) => (
@@ -278,6 +259,24 @@ export default function OurStorySection({ initialData = null }) {
         </div>
 
         <button
+          onClick={nextSlide}
+          className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
+        >
+          <div className="relative flex items-center justify-center w-[32px] h-[32px] md:w-[64px] md:h-[64px]">
+            <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+              <svg
+                viewBox="0 0 100 100"
+                className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-white"
+                fill="currentColor"
+              >
+                <path d="M45 20 L85 50 L45 80 L58 50 Z" />
+                <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
+              </svg>
+            </div>
+          </div>
+        </button>
+
+        <button
           onClick={prevSlide}
           className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
         >
@@ -289,10 +288,7 @@ export default function OurStorySection({ initialData = null }) {
                 fill="currentColor"
               >
                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />
-                <path
-                  d="M15 25 L50 50 L15 75 L28 50 Z"
-                  className="opacity-40"
-                />
+                <path d="M15 25 L50 50 L15 75 L28 50 Z" className="opacity-40" />
               </svg>
             </div>
           </div>
