@@ -69,7 +69,7 @@ export default function MobileRoadmap({ initialData = null }) {
   if (!roadmapData) return null;
 
   return (
-    <section className="block lg:hidden w-full bg-black text-white px-[4vw] md:px-[6vw] pt-0 md:pt-0 -mt-2 md:-mt-12 pb-[10vw] md:pb-[10vw] overflow-hidden relative z-20">
+    <section className="block lg:hidden w-full bg-black text-white px-[4vw] md:px-[6vw] pt-0 md:pt-0 -mt-2 md:mt-8 pb-[10vw] md:pb-[10vw] overflow-hidden relative z-20">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
