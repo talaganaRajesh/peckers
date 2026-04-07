@@ -306,7 +306,7 @@ export default function SaucePageOne({ initialData = [] }) {
                         <motion.div
                           key={`nutri-${nutritionIndex}-${currentSauce._id}`}
                           initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: -1.5, opacity: 1 }}
+                          animate={{ y: -2, opacity: 1 }}
                           exit={{ y: -20, opacity: 0 }}
                           transition={{ duration: 0.5, ease: "easeInOut" }}
                           className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
@@ -322,7 +322,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       </AnimatePresence>
                     </div>
                     <span
-                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap"
+                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none"
                       style={{ fontFamily: "var(--font-neuzeit)" }}
                     >
                       Per 100g nutrition
