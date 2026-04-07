@@ -260,8 +260,8 @@ export function LocationsPageContent({
         </p>
         <p>
           Our {location} location is famous for its seriously good chicken, late
-          night service, and vibrant atmosphere. Whether you're comparing
-          Peckers vs Chicken George or looking for Dave's Hot Chicken halal
+          night service, and vibrant atmosphere. Whether you&apos;re comparing
+          Peckers vs Chicken George or looking for Dave&apos;s Hot Chicken halal
           options, we provide the best peri peri in {location}. Order from
           Peckers today for the best chicken shop experience in Hertfordshire.
         </p>
