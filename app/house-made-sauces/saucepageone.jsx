@@ -274,7 +274,7 @@ export default function SaucePageOne({ initialData = [] }) {
               {/* FRESHLY MADE BADGE */}
               <div className="flex flex-col items-center mt-3 md:mt-2 xl:mt-[0.8vw]">
                 <div className="mb-2">
-                  <div className="px-3 sm:px-4 md:px-[1vw] py-1 md:py-[0.35vw] rounded-[100px] border border-white/20 flex items-center justify-center gap-1.5 sm:gap-2 md:gap-[0.5vw] bg-black/30 backdrop-blur-md">
+                  <div className="px-3 sm:px-4 md:px-5 lg:px-6 xl:px-[1vw] py-1 md:py-2 lg:py-2.5 xl:py-[0.35vw] rounded-[100px] border border-white/20 flex items-center justify-center gap-1.5 sm:gap-2 md:gap-[0.5vw] bg-black/30 backdrop-blur-md">
                     <svg
                       width="10"
                       height="12"
@@ -338,7 +338,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       w-[190vw] h-[190vw]
                       sm:w-[160vw] sm:h-[160vw]
                       md:w-[75vw] md:h-[75vw]
-                      lg:w-[62vw] lg:h-[62vw] 
+                      lg:w-[62vw] lg:h-[65vw] 
                       xl:w-[70vw] xl:h-[70vw]
                       flex items-center justify-center z-10 pointer-events-none"
         >
