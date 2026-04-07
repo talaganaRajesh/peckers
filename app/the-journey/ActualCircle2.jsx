@@ -136,17 +136,17 @@ export default function PeckersTimeline2({ initialData = [] }) {
                   }`}
               >
                 <span
-                  className="text-[5vw] md:text-[1.38vw] text-white font-bold mb-[3vw] md:mb-[0.6vw] tracking-tight"
+                  className="text-[5vw] md:text-[20px] lg:text-[1.38vw] text-white font-bold mb-[3vw] md:mb-[0.8vw] tracking-tight"
                   style={{ fontFamily: "var(--font-neuzeit)" }}
                 >
                   {item.year}
                 </span>
 
-                <h3 className="text-[5vw] font-bold md:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.66vw] leading-none text-white">
+                <h3 className="text-[5vw] font-bold md:text-[20px] lg:text-[1.36vw] font-peakers mb-[2vw] md:mb-[0.8vw] leading-none text-white uppercase">
                   {item.title}
                 </h3>
 
-                <p className="text-white font-sans text-[3vw] md:text-[0.92vw] leading-none font-medium">
+                <p className="text-white font-sans text-[3vw] md:text-[14px] lg:text-[0.92vw] leading-relaxed font-medium">
                   {item.description}
                 </p>
               </motion.div>

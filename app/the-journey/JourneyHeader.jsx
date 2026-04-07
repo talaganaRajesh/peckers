@@ -299,7 +299,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                 </div>
 
                 {/* ================= MOBILE VERSION ================= */}
-                <div className="xl:hidden w-full px-4 sm:px-6 md:px-10 pt-6 md:pt-8">
+                <div className="xl:hidden w-full px-4 sm:px-12 md:px-16 pt-6 md:pt-12">
 
                     {/* Mobile Heading */}
                     <motion.h2
@@ -307,7 +307,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45 }}
-                        className="text-[clamp(2rem,8vw,3.4rem)] md:text-[clamp(2.2rem,5vw,3.8rem)] font-peakers text-white font-bold mb-5 text-center leading-[0.95]"
+                        className="text-[clamp(2rem,8vw,3.4rem)] md:text-[clamp(2.5rem,6vw,4rem)] font-peakers text-white font-bold mb-5 text-center leading-[0.95]"
                     >
                         {data.heading || "THE PECKERS JOURNEY"}
                     </motion.h2>
@@ -317,16 +317,16 @@ export default function JourneyIntroSection({ initialData = null }) {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.08 }}
-                        className="text-[clamp(0.68rem,2.8vw,0.9rem)] md:text-[clamp(0.78rem,1.8vw,1rem)] text-[#FFD700] font-mono tracking-[0.28em] leading-[1.45] mb-9 md:mb-10 text-center"
+                        className="text-[clamp(0.68rem,2.8vw,0.9rem)] md:text-[1.1rem] text-[#FFD700] font-mono tracking-[0.28em] leading-[1.45] mb-12 md:mb-16 text-center max-w-2xl mx-auto"
                     >
                         {data.subtitle || "FROM ONE STORE TO GROWING COMMUNITY BRAND - THE JOURNEY CONTINUES"}
                     </motion.p>
 
                     {/* Timeline */}
-                    <div className="relative max-w-xs sm:max-w-md md:max-w-lg mx-auto w-full">
+                    <div className="relative max-w-xs sm:max-w-md md:max-w-2xl mx-auto w-full">
 
                         {/* Animated SVG Line for Mobile */}
-                        <div className="absolute left-[18px] top-0 bottom-0 w-[4px] z-20 rounded-full overflow-visible">
+                        <div className="absolute left-[18px] md:left-[24px] top-0 bottom-0 w-[4px] md:w-[6px] z-20 rounded-full overflow-visible">
                             <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full" />
                             <motion.div
                                 initial={{ scaleY: 0 }}
@@ -346,13 +346,13 @@ export default function JourneyIntroSection({ initialData = null }) {
                                 viewport={{ once: true, amount: 0.12 }}
                                 transition={{ duration: 0.6, delay: idx * 0.06, ease: "easeOut" }}
                                 style={{ transformOrigin: "left center" }}
-                                className="relative mb-14"
+                                className="relative mb-14 md:mb-20"
                             >
                                 {/* Circle Marker - Mobile */}
-                                <div className="absolute left-[7px] top-2 z-30">
+                                <div className="absolute left-[7px] md:left-[11px] top-2 z-30">
                                     <motion.svg
-                                        width="22"
-                                        height="22"
+                                        width="26"
+                                        height="26"
                                         viewBox="0 0 45 45"
                                         className="drop-shadow-[0_0_8px_rgba(255,215,0,0.6)]"
                                         initial={{ opacity: 0, scale: 0.88 }}
@@ -365,11 +365,11 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     </motion.svg>
                                 </div>
 
-                                <div className="ml-14 bg-[#121212] border border-[#333] rounded-xl p-5 hover:border-[#FFD700]/40 transition-colors shadow-lg">
-                                    <div className="text-white text-[clamp(0.9rem,3.5vw,1.2rem)] font-bold opacity-80 mb-1">
+                                <div className="ml-14 md:ml-20 bg-[#121212] border border-[#333] rounded-xl md:rounded-2xl p-6 md:p-8 hover:border-[#FFD700]/40 transition-colors shadow-lg">
+                                    <div className="text-white text-[1rem] md:text-[1.2rem] font-bold opacity-80 mb-1">
                                         {item.year}
                                     </div>
-                                    <div className="text-white text-[clamp(1.8rem,8vw,3rem)] font-bold font-peakers uppercase leading-tight">
+                                    <div className="text-[clamp(1.8rem,8vw,3rem)] md:text-[3rem] text-white font-bold font-peakers uppercase leading-tight">
                                         {item.location}
                                     </div>
                                 </div>
