@@ -204,7 +204,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <span className="text-white font-mono text-[2.8vw] font-bold tracking-tight uppercase leading-none mb-[0.5vw]">
                                         {data.timeline[0].year || "2022"}
                                     </span>
-                                    <h3 className="text-[4.2vw] text-[#FFD700] font-bold font-peakers tracking-wider leading-none uppercase">
+                                    <h3 className="text-[4.2vw] text-white font-bold font-peakers tracking-wider leading-none uppercase">
                                         {data.timeline[0].location || "HITCHIN"}
                                     </h3>
                                 </motion.div>
@@ -223,7 +223,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <span className="text-white font-mono text-[2.8vw] font-bold tracking-tight uppercase leading-none mb-[0.5vw]">
                                         {data.timeline[1].year || "2024"}
                                     </span>
-                                    <h3 className="text-[4vw] text-[#FFD700] font-peakers font-bold tracking-wider leading-none uppercase">
+                                    <h3 className="text-[4vw] text-white font-peakers font-bold tracking-wider leading-none uppercase">
                                         {data.timeline[1].location || "STEVENAGE"}
                                     </h3>
                                 </motion.div>
@@ -369,7 +369,7 @@ export default function JourneyIntroSection({ initialData = null }) {
                                     <div className="text-white text-[clamp(0.9rem,3.5vw,1.2rem)] font-bold opacity-80 mb-1">
                                         {item.year}
                                     </div>
-                                    <div className="text-[#FFD700] text-[clamp(1.8rem,8vw,3rem)] font-bold font-peakers uppercase leading-tight">
+                                    <div className="text-white text-[clamp(1.8rem,8vw,3rem)] font-bold font-peakers uppercase leading-tight">
                                         {item.location}
                                     </div>
                                 </div>
