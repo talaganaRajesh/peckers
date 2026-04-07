@@ -122,7 +122,7 @@ export default function MobileRoadmap({ initialData = null }) {
                     }`}
                 >
                   <span
-                    className={`text-[4.5vw] md:text-[3vw] xl:text-[2vw] font-bold mb-[2vw] md:mb-[1vw] tracking-tight ${isHighlighted ? "text-white" : "text-zinc-600"}`}
+                    className="text-[4.5vw] md:text-[3vw] xl:text-[2vw] font-bold mb-[2vw] md:mb-[1vw] tracking-tight text-white"
                     style={{ fontFamily: "var(--font-neuzeit)" }}
                   >
                     {item.year}
@@ -130,7 +130,7 @@ export default function MobileRoadmap({ initialData = null }) {
                   <h3 className="text-[4.5vw] md:text-[3vw] xl:text-[2.2vw] font-peakers mb-[2vw] md:mb-[1vw] leading-none text-white font-bold ">
                     {item.title}
                   </h3>
-                  <p className="text-zinc-500 font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-bold">
+                  <p className="text-white font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-medium">
                     {item.description}
                   </p>
                 </div>

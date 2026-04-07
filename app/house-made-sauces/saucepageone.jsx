@@ -300,7 +300,7 @@ export default function SaucePageOne({ initialData = [] }) {
 
                 {/* NUTRITIONAL BADGES - ANIMATED CAPSULE */}
                 {nutritionItems.length > 0 && (
-                  <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[40px] lg:h-[44px] xl:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[240px] lg:w-[260px] xl:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                  <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={`nutri-${nutritionIndex}-${currentSauce._id}`}
@@ -308,7 +308,7 @@ export default function SaucePageOne({ initialData = [] }) {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -20, opacity: 0 }}
                         transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="flex items-center justify-center gap-1.5 md:gap-[0.5vw] font-bold"
+                        className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
                       >
                         <span
                           className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider translate-y-px"
