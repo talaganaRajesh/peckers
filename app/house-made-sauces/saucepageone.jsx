@@ -11,6 +11,7 @@ export default function SaucePageOne({ initialData = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState("next");
   const [rotation, setRotation] = useState(0);
+  const [nutritionIndex, setNutritionIndex] = useState(0);
 
   const saucesData = initialData.length > 0 ? initialData : fetchedSaucesData;
   const loading = initialData.length === 0 && isFetching;
@@ -32,6 +33,27 @@ export default function SaucePageOne({ initialData = [] }) {
     };
     fetchSauces();
   }, [initialData]);
+
+  const currentSauce = saucesData[currentIndex];
+
+  const nutritionItems = currentSauce ? [
+    { label: "Calories", value: currentSauce.cal, unit: "" },
+    { label: "Protein", value: currentSauce.protein, unit: "g" },
+    { label: "Carbohydrates", value: currentSauce.carbs, unit: "g" },
+    { label: "Fat", value: currentSauce.fat, unit: "g" },
+  ].filter(item => item.value && item.value !== "-") : [];
+
+  useEffect(() => {
+    if (nutritionItems.length <= 1) return;
+    const interval = setInterval(() => {
+      setNutritionIndex((prev) => (prev + 1) % nutritionItems.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [nutritionItems.length, currentIndex]);
+
+  useEffect(() => {
+    setNutritionIndex(0);
+  }, [currentIndex]);
 
   const ringItemsBase =
     saucesData.length > 1
@@ -147,8 +169,6 @@ export default function SaucePageOne({ initialData = [] }) {
   }
 
   if (!saucesData || saucesData.length === 0) return null;
-
-  const currentSauce = saucesData[currentIndex];
 
   const flyVariants = {
     initial: { opacity: 0, scale: 1.15 },
@@ -278,41 +298,30 @@ export default function SaucePageOne({ initialData = [] }) {
                   </div>
                 </div>
 
-                {/* NUTRITIONAL BADGES */}
-                {currentSauce.cal && currentSauce.cal !== "-" && (
-                  <div className="flex flex-row flex-wrap justify-center items-center gap-2 md:gap-4 font-bold">
-                    <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
-                        CAL
-                      </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
-                        {currentSauce.cal}
-                      </span>
-                    </div>
-                    <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
-                        P(g)
-                      </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
-                        {currentSauce.protein}
-                      </span>
-                    </div>
-                    <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
-                        C(g)
-                      </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
-                        {currentSauce.carbs}
-                      </span>
-                    </div>
-                    <div className="px-2 sm:px-3 md:px-[0.8vw] py-1 md:py-[0.3vw] rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center gap-1 sm:gap-1.5 md:gap-[0.4vw] backdrop-blur-md">
-                      <span className="text-[9px] sm:text-[10px] md:text-[11px] lg:text-[12px] text-white/40 font-mono text-nowrap">
-                        F(g)
-                      </span>
-                      <span className="text-[12px] sm:text-[13px] md:text-[15px] lg:text-[18px] xl:text-[0.85vw]">
-                        {currentSauce.fat}
-                      </span>
-                    </div>
+                {/* NUTRITIONAL BADGES - ANIMATED CAPSULE */}
+                {nutritionItems.length > 0 && (
+                  <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={`nutri-${nutritionIndex}-${currentSauce._id}`}
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -20, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                        className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
+                      >
+                        <span
+                          className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider translate-y-px"
+                        >
+                          {nutritionItems[nutritionIndex].label} :
+                        </span>
+                        <span
+                          className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white uppercase tracking-wider translate-y-px"
+                        >
+                          {nutritionItems[nutritionIndex].value}{nutritionItems[nutritionIndex].unit}
+                        </span>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 )}
               </div>

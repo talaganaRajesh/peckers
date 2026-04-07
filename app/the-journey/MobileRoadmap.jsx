@@ -109,21 +109,20 @@ export default function MobileRoadmap({ initialData = null }) {
                   style={
                     isHighlighted
                       ? {
-                          boxShadow:
-                            "0 0 25px rgba(234,179,8,0.4), 0 0 50px rgba(234,179,8,0.15)",
-                          borderColor: "rgba(234,179,8,0.8)",
-                        }
+                        boxShadow:
+                          "0 0 25px rgba(234,179,8,0.4), 0 0 50px rgba(234,179,8,0.15)",
+                        borderColor: "rgba(234,179,8,0.8)",
+                      }
                       : {}
                   }
                   className={`relative px-[5vw] md:px-[4vw] xl:px-[3vw] py-[6vw] md:py-[4vw] xl:py-[3vw] rounded-[4vw] md:rounded-[2vw] xl:rounded-[1.5vw] flex flex-col items-center text-center w-[65vw] md:w-[45vw] xl:w-[35vw] border
-                                        ${
-                                          isHighlighted
-                                            ? "bg-[#121212] border-yellow-500/60"
-                                            : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
-                                        }`}
+                                        ${isHighlighted
+                      ? "bg-[#121212] border-yellow-500/60"
+                      : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
+                    }`}
                 >
                   <span
-                    className={`text-[4.5vw] md:text-[3vw] xl:text-[2vw] font-bold mb-[2vw] md:mb-[1vw] tracking-tight ${isHighlighted ? "text-white" : "text-zinc-600"}`}
+                    className="text-[4.5vw] md:text-[3vw] xl:text-[2vw] font-bold mb-[2vw] md:mb-[1vw] tracking-tight text-white"
                     style={{ fontFamily: "var(--font-neuzeit)" }}
                   >
                     {item.year}
@@ -131,7 +130,7 @@ export default function MobileRoadmap({ initialData = null }) {
                   <h3 className="text-[4.5vw] md:text-[3vw] xl:text-[2.2vw] font-peakers mb-[2vw] md:mb-[1vw] leading-none text-white font-bold ">
                     {item.title}
                   </h3>
-                  <p className="text-zinc-500 font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-bold">
+                  <p className="text-white font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-medium">
                     {item.description}
                   </p>
                 </div>

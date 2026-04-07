@@ -132,31 +132,28 @@ export default function PeckersTimeline({ initialData = null }) {
                 style={{
                   ...(isHighlighted
                     ? {
-                        boxShadow:
-                          "0 0 25px rgba(234,179,8,0.4), 0 0 50px rgba(234,179,8,0.15)",
-                        borderColor: "rgba(234,179,8,0.8)",
-                      }
+                      boxShadow:
+                        "0 0 25px rgba(234,179,8,0.4), 0 0 50px rgba(234,179,8,0.15)",
+                      borderColor: "rgba(234,179,8,0.8)",
+                    }
                     : {}),
                 }}
                 whileHover={
                   isDesktop
                     ? {
-                        scale: 1.02,
-                        transition: { duration: 0.3, ease: "easeOut" },
-                      }
+                      scale: 1.02,
+                      transition: { duration: 0.3, ease: "easeOut" },
+                    }
                     : {}
                 }
                 className={`relative z-130 px-[6vw] md:px-[1.35vw] py-[6vw] md:py-[1.22vw] rounded-[4vw] md:rounded-[0.95vw] flex flex-col ${alignment} ${offset} w-[80vw] md:w-[19.2vw] h-auto md:h-[11.8vw] border
-  ${
-    isHighlighted
-      ? "bg-[#121212] border-yellow-500/60"
-      : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
-  }`}
+  ${isHighlighted
+                    ? "bg-[#121212] border-yellow-500/60"
+                    : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
+                  }`}
               >
                 <span
-                  className={`text-[5vw] md:text-[1.38vw] font-bold mb-[3vw] md:mb-[0.6vw] tracking-tight ${
-                    isHighlighted ? "text-white" : "text-zinc-600"
-                  }`}
+                  className="text-[5vw] md:text-[1.38vw] font-bold mb-[3vw] md:mb-[0.6vw] tracking-tight text-white"
                   style={{ fontFamily: "var(--font-neuzeit)" }}
                 >
                   {item.year}
@@ -167,7 +164,7 @@ export default function PeckersTimeline({ initialData = null }) {
                 </h3>
 
                 <p
-                  className={`text-zinc-500 font-sans leading-tight font-bold ${index === 1 ? "text-[2.8vw] md:text-[0.86vw]" : "text-[3vw] md:text-[0.92vw]"}`}
+                  className={`text-white font-sans leading-tight font-medium ${index === 1 ? "text-[2.8vw] md:text-[0.86vw]" : "text-[3vw] md:text-[0.92vw]"}`}
                 >
                   {item.description}
                 </p>
