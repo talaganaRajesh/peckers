@@ -27,14 +27,11 @@ export const metadata = {
   title:
     "Peckers | Best Halal Peri Peri & Fried Chicken in Stevenage & Hitchin",
   description:
-    "Discover Peckers - the premium alternative to Chicken George and Dave's Hot Chicken in Hertfordshire. We serve the best halal peri peri grilled chicken, wings, and gourmet burgers in Stevenage and Hitchin. Fast delivery and late-night takeaway available.",
+    "Discover Peckers - Hertfordshire's destination for premium halal grilled and fried chicken. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin. Fast delivery and late-night takeaway available.",
   keywords: [
-    "Chicken George Stevenage alternative",
-    "Dave's Hot Chicken UK alternative",
+    "Peckers chicken",
     "best halal chicken Stevenage",
     "fried chicken Hitchin",
-    "Chicken George vs Peckers",
-    "Dave's Hot Chicken halal",
     "peri peri grilled chicken near me",
     "late night takeaway Stevenage",
     "chicken delivery Hertfordshire",
@@ -48,8 +45,9 @@ export const metadata = {
     "places to eat Hitchin",
     "lunch deals Stevenage",
     "takeaway near me",
-    "Peckers chicken",
     "halal peri peri wings",
+    "gourmet burgers Hertfordshire",
+    "Seriously Good Chicken"
   ],
   alternates: {
     canonical: "https://peckers.co.uk", // Update with actual domain if known

@@ -226,21 +226,7 @@ export default function BurgerPageText({ burgerData = null }) {
         </span>
       </div>
 
-      {/* Hidden SEO for Competitors */}
-      <div className="sr-only">
-        <h2>Best Halal Burgers & Chicken near Stevenage and Hitchin</h2>
-        <p>
-          Comparing Peckers vs Chicken George? Looking for the best halal alternative to Dave's Hot Chicken in Hertfordshire?
-          Our menu features gourmet burgers, peri peri grilled chicken, and spicy wings that outperform the competition.
-          Peckers is local, 100% halal, and serves seriously good food late night in Stevenage and Hitchin.
-        </p>
-        <ul>
-          <li>Chicken George vs Peckers Stevenage</li>
-          <li>Dave's Hot Chicken halal alternatives UK</li>
-          <li>Best burgers in Stevenage 2024</li>
-          <li>Top rated chicken shop Hitchin</li>
-        </ul>
-      </div>
+
     </div>
   );
 }
