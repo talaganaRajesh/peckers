@@ -334,11 +334,11 @@ export default function SaucePageOne({ initialData = [] }) {
         */}
         <div
           className="fixed md:absolute left-1/2 -translate-x-1/2
-                      top-[min(46vh,19rem)] sm:top-[min(55vh,22rem)] md:top-[22rem] lg:top-[26rem] xl:top-[13.5rem]
+                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-80 lg:top-[25rem] xl:top-[13.5rem]
                       w-[190vw] h-[190vw]
                       sm:w-[160vw] sm:h-[160vw]
                       md:w-[75vw] md:h-[75vw]
-                      lg:w-[62vw] lg:h-[62vw] 
+                      lg:w-[62vw] lg:h-[65vw] 
                       xl:w-[70vw] xl:h-[70vw]
                       flex items-center justify-center z-10 pointer-events-none"
         >
