@@ -24,7 +24,7 @@ export default function MobileBottomBar() {
         href={settings?.clickCollectUrl || "#"}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-1 flex items-center justify-center gap-1.5 min-[375px]:gap-2 bg-white text-black py-2.5 sm:py-3 rounded-xl text-[12px] min-[375px]:text-[13px] sm:text-[15px] font-black active:scale-95 transition-transform shadow-md tracking-wide sm:tracking-wider leading-none whitespace-nowrap px-1"
+        className="flex-1 flex items-center justify-center gap-1.5 min-[375px]:gap-2 bg-white text-black py-2.5 sm:py-3 rounded-xl text-[12px] min-[375px]:text-[13px] sm:text-[15px] font-black active:scale-95 transition-transform shadow-md tracking-wide sm:tracking-wider whitespace-nowrap px-1"
         style={{ fontFamily: "var(--font-neuzeit)" }}
       >
         <svg
@@ -48,7 +48,7 @@ export default function MobileBottomBar() {
         href={settings?.deliveryUrl || "#"}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-1 flex items-center justify-center gap-1.5 min-[375px]:gap-2 bg-red-600 hover:bg-red-700 text-white py-2.5 sm:py-3 rounded-xl text-[13px] min-[375px]:text-[14px] sm:text-[15px] font-black active:scale-95 transition-transform shadow-[0_4px_15px_rgba(220,38,38,0.4)] tracking-wide sm:tracking-wider leading-none whitespace-nowrap px-1"
+        className="flex-1 flex items-center justify-center gap-1.5 min-[375px]:gap-2 bg-red-600 hover:bg-red-700 text-white py-2.5 sm:py-3 rounded-xl text-[13px] min-[375px]:text-[14px] sm:text-[15px] font-black active:scale-95 transition-transform shadow-[0_4px_15px_rgba(220,38,38,0.4)] tracking-wide sm:tracking-wider whitespace-nowrap px-1"
         style={{ fontFamily: "var(--font-neuzeit)" }}
       >
         <svg
