@@ -300,28 +300,33 @@ export default function SaucePageOne({ initialData = [] }) {
 
                 {/* NUTRITIONAL BADGES - ANIMATED CAPSULE */}
                 {nutritionItems.length > 0 && (
-                  <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={`nutri-${nutritionIndex}-${currentSauce._id}`}
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: -20, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
-                      >
-                        <span
-                          className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider translate-y-px"
+                  <div className="flex items-center gap-2.5 sm:gap-3 md:gap-[0.8vw] mt-2">
+                    <div className="relative h-[32px] sm:h-[36px] md:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={`nutri-${nutritionIndex}-${currentSauce._id}`}
+                          initial={{ y: 20, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -20, opacity: 0 }}
+                          transition={{ duration: 0.5, ease: "easeInOut" }}
+                          className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
                         >
-                          {nutritionItems[nutritionIndex].label} :
-                        </span>
-                        <span
-                          className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white uppercase tracking-wider translate-y-px"
-                        >
-                          {nutritionItems[nutritionIndex].value}{nutritionItems[nutritionIndex].unit}
-                        </span>
-                      </motion.div>
-                    </AnimatePresence>
+                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider translate-y-px">
+                            {nutritionItems[nutritionIndex].label} :
+                          </span>
+                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white uppercase tracking-wider translate-y-px">
+                            {nutritionItems[nutritionIndex].value}
+                            {nutritionItems[nutritionIndex].unit}
+                          </span>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                    <span
+                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap translate-y-[0.5px]"
+                      style={{ fontFamily: "var(--font-neuzeit)" }}
+                    >
+                      Per 100g nutrition
+                    </span>
                   </div>
                 )}
               </div>
