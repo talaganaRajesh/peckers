@@ -37,10 +37,10 @@ export default function SaucePageOne({ initialData = [] }) {
   const currentSauce = saucesData[currentIndex];
 
   const nutritionItems = currentSauce ? [
-    { label: "Calories", value: currentSauce.cal, unit: "" },
-    { label: "Protein", value: currentSauce.protein, unit: "g" },
-    { label: "Carbs", value: currentSauce.carbs, unit: "g" },
-    { label: "Fat", value: currentSauce.fat, unit: "g" },
+    { label: "Calories", value: currentSauce.cal, unit: " kcal" },
+    { label: "Protein", value: currentSauce.protein, unit: " G" },
+    { label: "Carbs", value: currentSauce.carbs, unit: " G" },
+    { label: "Fat", value: currentSauce.fat, unit: " G" },
   ].filter(item => item.value && item.value !== "-") : [];
 
   useEffect(() => {
@@ -311,10 +311,10 @@ export default function SaucePageOne({ initialData = [] }) {
                           transition={{ duration: 0.5, ease: "easeInOut" }}
                           className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
                         >
-                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider">
+                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] tracking-wider">
                             {nutritionItems[nutritionIndex].label} :
                           </span>
-                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white uppercase tracking-wider">
+                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white tracking-wider">
                             {nutritionItems[nutritionIndex].value}
                             {nutritionItems[nutritionIndex].unit}
                           </span>

@@ -174,26 +174,18 @@ export default function WrapsPageText({ wrapData = null }) {
 
             <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-[6vw] md:gap-8 lg:gap-12 xl:gap-[10vw] mt-[8vw] md:mt-7 ml-0 md:ml-6 text-white/90 font-mono pt-0 wrap-stats px-[5vw] md:px-0">
 
-                {/* Basic Info (Protein, Carbs, Fats) */}
+                {/* Basic Info (Calories, Protein, Carbs, Fats) */}
                 <div className="min-w-[150px] border-l-2 border-[#616132] pl-[3vw] md:pl-4 pt-0">
                     <div className="text-[#c4b40a] text-[2.5vw] md:text-[11px] lg:text-[12px] xl:text-[.7vw] font-mono uppercase mb-1 tracking-wide font-bold pt-0.5">
-                        Nutrition (Per Portion)
+                        Nutrition (Per Wrap)
                     </div>
                     <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] tracking-tight pt-0 leading-snug">
+                        {wrapData.calories && wrapData.calories !== "-" && wrapData.calories !== "—"
+                            ? (wrapData.calories.toLowerCase().includes("kcal") ? wrapData.calories : `${wrapData.calories} kcal`)
+                            : "-"}<br />
                         {wrapData.protein || "-"}<br />
                         {wrapData.carbs || "-"}<br />
                         {wrapData.fats || "-"}
-                    </div>
-                </div>
-
-                {/* Energy & Calories */}
-                <div className="min-w-[120px] pt-0 border-l-2 md:border-none border-[#616132] pl-[3vw] md:pl-0">
-                    <div className="text-[#575750] font-mono text-[2.5vw] md:text-[11px] lg:text-[12px] xl:text-[.7vw] uppercase mb-1 tracking-wide font-bold pt-0.5">
-                        Energy & Calories
-                    </div>
-                    <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] tracking-tight pt-0 leading-snug">
-                        {wrapData.calories || "-"}<br />
-                        {wrapData.energy || "-"}
                     </div>
                 </div>
 
