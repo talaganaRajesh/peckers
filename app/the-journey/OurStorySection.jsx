@@ -105,7 +105,7 @@ export default function OurStorySection({ initialData = null }) {
     if (displayImages.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentSubSlide((prev) => (prev + 1) % displayImages.length);
-    }, 9000); // 9 seconds per internal image
+    }, 5000); // 5 seconds per internal image
     return () => clearInterval(timer);
   }, [data, currentSlide, displayImages.length]);
 
@@ -258,15 +258,16 @@ export default function OurStorySection({ initialData = null }) {
           </div>
         </div>
 
+        {/* Navigation Buttons flanking the text section */}
         <button
-          onClick={nextSlide}
-          className="absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
+          onClick={prevSlide}
+          className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
         >
-          <div className="relative flex items-center justify-center w-[32px] h-[32px] md:w-[64px] md:h-[64px]">
+          <div className="relative flex items-center justify-center w-[24px] h-[24px] md:w-[48px] md:h-[48px]">
             <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
               <svg
                 viewBox="0 0 100 100"
-                className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-white"
+                className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-white rotate-180"
                 fill="currentColor"
               >
                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />
@@ -277,14 +278,14 @@ export default function OurStorySection({ initialData = null }) {
         </button>
 
         <button
-          onClick={prevSlide}
-          className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
+          onClick={nextSlide}
+          className="absolute right-1 md:right-4 lg:right-auto lg:left-[calc(50%-3.5vw)] top-1/2 -translate-y-1/2 z-50 p-[1vw] group text-white"
         >
-          <div className="relative flex items-center justify-center w-[32px] h-[32px] md:w-[64px] md:h-[64px]">
+          <div className="relative flex items-center justify-center w-[24px] h-[24px] md:w-[48px] md:h-[48px]">
             <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
               <svg
                 viewBox="0 0 100 100"
-                className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-white rotate-180"
+                className="w-[65%] h-[65%] md:w-[45%] md:h-[45%] text-white"
                 fill="currentColor"
               >
                 <path d="M45 20 L85 50 L45 80 L58 50 Z" />

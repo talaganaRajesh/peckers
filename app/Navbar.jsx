@@ -98,7 +98,7 @@ export default function Navbar({ preloadedSettings = null }) {
           <span className="whitespace-nowrap cursor-default navbar-link">
             <span className="flex items-center gap-1.5">
               FIND US
-              <FaChevronDown className="text-[0.9em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
+              <FaChevronDown className="text-[0.65em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
             </span>
           </span>
           <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
@@ -122,7 +122,7 @@ export default function Navbar({ preloadedSettings = null }) {
           <span className="whitespace-nowrap cursor-default navbar-link">
             <span className="flex items-center gap-1.5">
               OUR SECRET
-              <FaChevronDown className="text-[0.9em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
+              <FaChevronDown className="text-[0.65em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
             </span>
           </span>
           <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
