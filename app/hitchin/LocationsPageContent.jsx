@@ -147,23 +147,23 @@ export function LocationsPageContent({
       </div>
 
       <section id="history">
-        <div className="flex flex-col items-center mt-[12vw] md:mt-[6vw] lg:mt-[4vw] xl:mt-[2vw] justify-center w-full pt-[8vw] md:pt-[6vw] lg:pt-[4vw] xl:pt-[2vw] pb-[12vw] md:pb-[8vw] lg:pb-[6vw] xl:pb-[4vw] bg-[#0A0A0B]">
-          <div className="flex flex-col items-start md:items-center w-[90vw] md:w-[80vw]">
+        <div className="flex flex-col items-center mt-[12vw] md:mt-[10vw] lg:mt-[4vw] xl:mt-[2vw] justify-center w-full pt-[8vw] md:pt-[6vw] lg:pt-[4vw] xl:pt-[2vw] pb-[12vw] md:pb-[8vw] lg:pb-[6vw] xl:pb-[4vw] bg-[#0A0A0B]">
+          <div className="flex flex-col items-start md:items-center w-[90vw] md:w-[85vw] lg:w-[80vw]">
             {/* History Title, Logo, EST */}
-            <div className="flex flex-row md:flex-row items-center mb-[6vw] md:mb-[1.6vw] relative w-full justify-start md:justify-center gap-[4vw] md:gap-0">
+            <div className="flex flex-row md:flex-row items-center mb-[10vw] md:mb-[4vw] lg:mb-[1.6vw] relative w-full justify-start md:justify-center gap-[4vw] md:gap-8 lg:gap-0">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7, ease: "easeOut" }}
-                className="relative w-[22vw] h-[22vw] md:w-[10vw] md:h-[10vw] flex items-center justify-center mb-0 md:mb-[0.8vw] self-center md:self-start mr-0 md:mr-[44vw] overflow-hidden"
+                className="relative w-[22vw] h-[22vw] md:w-[15vw] md:h-[15vw] lg:w-[10vw] lg:h-[10vw] flex items-center justify-center mb-0 md:mb-[0.8vw] self-center md:self-start mr-0 md:mr-0 lg:mr-[44vw] overflow-hidden"
               >
                 <Image
                   src={logoUrl}
                   alt={`Peckers ${locationTitle} Logo - Best Halal Chicken in ${location.charAt(0).toUpperCase() + location.slice(1)}`}
                   fill
                   className="object-contain p-[2vw] md:p-[1vw]"
-                  sizes="(max-width: 768px) 30vw, 10vw"
+                  sizes="(max-width: 768px) 30vw, 15vw"
                 />
               </motion.div>
               <motion.div
@@ -171,25 +171,25 @@ export function LocationsPageContent({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                className="flex md:absolute flex-col items-center ml-0 md:left-1/2 md:-translate-x-1/2 mt-0 md:mt-[2vw]"
+                className="flex lg:absolute flex-col items-start md:items-center ml-0 lg:left-1/2 lg:-translate-x-1/2 mt-0 md:mt-2 lg:mt-[2vw]"
               >
-                <div className="flex items-center mb-[2vw] md:mb-[0.3vw]">
+                <div className="flex items-center mb-[2vw] md:mb-[4px] lg:mb-[0.3vw]">
                   <span
-                    className="h-[1.2px] w-[5vw] md:w-[3vw] bg-[#555] opacity-70 mr-[2vw] md:mr-[1vw]"
+                    className="h-[1.2px] w-[5vw] md:w-[4vw] lg:w-[3vw] bg-[#555] opacity-70 mr-[2vw] md:mr-[1vw]"
                     aria-hidden="true"
                   ></span>
                   <span
-                    className="text-[#888] text-[3vw] md:text-[0.95vw] tracking-[0.22em] font-mono"
+                    className="text-[#888] text-[3vw] md:text-[14px] lg:text-[0.95vw] tracking-[0.22em] font-mono"
                     style={{ fontFamily: "var(--font-neuzeit)" }}
                   >
                     {establishedText}
                   </span>
                   <span
-                    className="h-[1.2px] w-[5vw] md:w-[3vw] bg-[#555] opacity-70 ml-[2vw] md:ml-[1vw]"
+                    className="h-[1.2px] w-[5vw] md:w-[4vw] lg:w-[3vw] bg-[#555] opacity-70 ml-[2vw] md:ml-[1vw]"
                     aria-hidden="true"
                   ></span>
                 </div>
-                <h2 className="font-bold text-[9vw] md:text-[4.5vw] font-peakers text-white mt-[1vw] md:mt-[0.2vw] tracking-[0.05em]">
+                <h2 className="font-bold text-[9vw] md:text-[40px] lg:text-[4.5vw] font-peakers text-white mt-[1vw] md:mt-[4px] lg:mt-[0.2vw] tracking-[0.05em] uppercase">
                   {historyTitle}
                 </h2>
               </motion.div>
@@ -200,14 +200,14 @@ export function LocationsPageContent({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="w-full flex justify-start md:justify-center mt-[4vw] md:mt-0"
+              className="w-full flex justify-start md:justify-center mt-[4vw] md:mt-8 lg:mt-0"
             >
               {historyDescription ? (
-                <p className="text-[#e3e3e5]/70 text-left md:text-center font-semibold leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono whitespace-pre-line">
+                <p className="text-[#e3e3e5]/70 text-left md:text-center font-semibold leading-[1.7] text-[4vw] md:text-[16px] lg:text-[1vw] max-w-[95vw] md:max-w-[85vw] lg:max-w-[70vw] font-mono whitespace-pre-line">
                   {historyDescription}
                 </p>
               ) : location === "stevenage" ? (
-                <p className="text-[#e3e3e5]/70 text-left md:text-center font-bold leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono">
+                <p className="text-[#e3e3e5]/70 text-left md:text-center font-bold leading-[1.7] text-[4vw] md:text-[17px] lg:text-[1vw] max-w-[95vw] md:max-w-[85vw] lg:max-w-[70vw] font-mono">
                   Following the incredible response at our original site,
                   Stevenage was established as our second location to bring
                   Peckers to a larger audience. This inviting store is designed
@@ -220,7 +220,7 @@ export function LocationsPageContent({
                   everyone to enjoy seriously good chicken together.
                 </p>
               ) : (
-                <p className="text-[#e3e3e5]/70 text-left md:text-center font-semibold leading-[1.6] text-[4vw] md:text-[1vw] max-w-[90vw] md:max-w-[70vw] font-mono">
+                <p className="text-[#e3e3e5]/70 text-left md:text-center font-semibold leading-[1.7] text-[4vw] md:text-[16px] lg:text-[1vw] max-w-[95vw] md:max-w-[85vw] lg:max-w-[70vw] font-mono">
                   Peckers Hitchin is where the vision first took flight. Nestled
                   in the heart of Westmill, this location stands on the same
                   ground where our family’s journey began over 50 years ago at

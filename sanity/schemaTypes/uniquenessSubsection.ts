@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity"
 
 export default defineType({
     name: "uniquenessSubSection",
-    title: "Uniqueness Sub Sections",
+    title: "Peckers Standard — Detail Sections",
     type: "document",
 
     fields: [

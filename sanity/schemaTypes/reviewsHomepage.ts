@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
     name: "review",
-    title: "Rating Card",
+    title: "Homepage — Community Voices (Reviews)",
     type: "document",
     fields: [
         defineField({

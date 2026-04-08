@@ -68,7 +68,7 @@ export default function RatingSection({ data = null }) {
   return (
     <div className="w-full flex flex-col lg:flex-row items-center justify-between bg-black font-bold tracking-tight px-[5vw] md:px-[6vw] lg:px-[2.5vw] xl:px-[2vw] pt-[6vw] md:pt-[6vw] lg:pt-[4vw] xl:pt-[6vw] pb-[6vw] md:pb-[8vw] lg:pb-[3vw] xl:pb-[2vw] gap-[4vw] md:gap-[5vw] lg:gap-0">
       <span
-        className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
+        className="text-[7.2vw] sm:text-[6.2vw] md:text-[4.8vw] lg:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         {headingWords.map((word, i) => (
@@ -86,7 +86,7 @@ export default function RatingSection({ data = null }) {
         </span>
 
         <span
-          className="text-white text-[3.5vw] sm:text-[3vw] md:text-[3vw] lg:text-[1.8vw] xl:text-[1.2vw] font-sans font-light mt-[1vw] sm:mt-0 ml-0 md:ml-[1vw] xl:ml-[0.4vw]"
+          className="text-white text-[3.5vw] sm:text-[3vw] md:text-[3.5vw] lg:text-[1.8vw] xl:text-[1.2vw] font-sans font-light mt-[1vw] sm:mt-0 ml-0 md:ml-[1vw] xl:ml-[0.4vw]"
           style={{ letterSpacing: "0.04em" }}
         >
           ( {rating}/5 Rating from {(totalReviews || 1000).toLocaleString()}+ Familiar Faces )

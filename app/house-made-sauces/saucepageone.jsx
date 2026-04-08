@@ -287,21 +287,21 @@ export default function SaucePageOne({ initialData = [] }) {
 
                 {/* NUTRITIONAL BADGES - ANIMATED CAPSULE */}
                 {nutritionItems.length > 0 && (
-                  <div className="flex items-center gap-2.5 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-[0.8vw] mt-2">
-                    <div className="relative h-[32px] sm:h-[36px] md:h-[40px] lg:h-[44px] xl:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] xl:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                  <div className="flex flex-col items-center">
+                    <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={`nutri-${nutritionIndex}-${currentSauce._id}`}
                           initial={{ y: 20, opacity: 0 }}
-                          animate={{ y: -2, opacity: 1 }}
+                          animate={{ y: 0, opacity: 1 }}
                           exit={{ y: -20, opacity: 0 }}
                           transition={{ duration: 0.5, ease: "easeInOut" }}
                           className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
                         >
-                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] tracking-wider">
+                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider">
                             {nutritionItems[nutritionIndex].label} :
                           </span>
-                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white tracking-wider">
+                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white uppercase tracking-wider">
                             {nutritionItems[nutritionIndex].value}
                             {nutritionItems[nutritionIndex].unit}
                           </span>
@@ -309,7 +309,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       </AnimatePresence>
                     </div>
                     <span
-                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none"
+                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none mt-2"
                       style={{ fontFamily: "var(--font-neuzeit)" }}
                     >
                       Per 100g nutrition
@@ -326,7 +326,7 @@ export default function SaucePageOne({ initialData = [] }) {
         */}
         <div
           className="fixed md:absolute left-1/2 -translate-x-1/2
-                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-96 lg:top-[25rem] xl:top-[13.5rem]
+                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-80 lg:top-[25rem] xl:top-[13.5rem]
                       w-[190vw] h-[190vw]
                       sm:w-[160vw] sm:h-[160vw]
                       md:w-[75vw] md:h-[75vw]
@@ -443,55 +443,56 @@ export default function SaucePageOne({ initialData = [] }) {
             </AnimatePresence>
           </div>
         </div>
-      </div>
 
-      {/*
+
+        {/*
               ─── ARROW BUTTONS ───
       */}
-      <div className="absolute top-[63%] sm:top-[65%] md:top-auto bottom-auto md:bottom-[7%] lg:bottom-[8%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
-        <button
-          onClick={prevSlide}
-          className="group pointer-events-auto transition-all duration-300 active:scale-95"
-          aria-label="Previous sauce"
-        >
-          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[68px] md:h-[68px] lg:w-[80px] lg:h-[80px]">
-            <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-              <svg
-                viewBox="0 0 100 100"
-                className="w-[45%] h-[45%] text-white rotate-180"
-                fill="currentColor"
-              >
-                <path d="M45 20 L85 50 L45 80 L58 50 Z" />
-                <path
-                  d="M15 25 L50 50 L15 75 L28 50 Z"
-                  className="opacity-40"
-                />
-              </svg>
+        <div className="absolute top-[63%] sm:top-[65%] md:top-auto bottom-auto md:bottom-[7%] lg:bottom-[8%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
+          <button
+            onClick={prevSlide}
+            className="group pointer-events-auto transition-all duration-300 active:scale-95"
+            aria-label="Previous sauce"
+          >
+            <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[68px] md:h-[68px] lg:w-[80px] lg:h-[80px]">
+              <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <svg
+                  viewBox="0 0 100 100"
+                  className="w-[45%] h-[45%] text-white rotate-180"
+                  fill="currentColor"
+                >
+                  <path d="M45 20 L85 50 L45 80 L58 50 Z" />
+                  <path
+                    d="M15 25 L50 50 L15 75 L28 50 Z"
+                    className="opacity-40"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
 
-        <button
-          onClick={nextSlide}
-          className="group pointer-events-auto transition-all duration-300 active:scale-95"
-          aria-label="Next sauce"
-        >
-          <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[68px] md:h-[68px] lg:w-[80px] lg:h-[80px]">
-            <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-              <svg
-                viewBox="0 0 100 100"
-                className="w-[45%] h-[45%] text-white"
-                fill="currentColor"
-              >
-                <path d="M45 20 L85 50 L45 80 L58 50 Z" />
-                <path
-                  d="M15 25 L50 50 L15 75 L28 50 Z"
-                  className="opacity-40"
-                />
-              </svg>
+          <button
+            onClick={nextSlide}
+            className="group pointer-events-auto transition-all duration-300 active:scale-95"
+            aria-label="Next sauce"
+          >
+            <div className="relative flex items-center justify-center w-[44px] h-[44px] sm:w-[48px] sm:h-12 md:w-[68px] md:h-[68px] lg:w-[80px] lg:h-[80px]">
+              <div className="w-full h-full rounded-full bg-white/10 border border-white/40 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                <svg
+                  viewBox="0 0 100 100"
+                  className="w-[45%] h-[45%] text-white"
+                  fill="currentColor"
+                >
+                  <path d="M45 20 L85 50 L45 80 L58 50 Z" />
+                  <path
+                    d="M15 25 L50 50 L15 75 L28 50 Z"
+                    className="opacity-40"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
       </div>
     </div>
   );

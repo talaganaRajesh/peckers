@@ -170,7 +170,7 @@ export default function EnquiriesSection({ location }) {
         <h2 className="text-[8vw] md:text-[2.6vw] font-bold uppercase tracking-wider text-white font-peakers">
           ENQUIRIES
         </h2>
-        <p className="text-white/60 text-[3.5vw] md:text-[.95vw] mb-[8vw] md:mb-[5vw] font-bold font-sans leading-relaxed mt-[4vw] md:mt-[2vw]">
+        <p className="text-white/60 text-[3.5vw] md:text-[14px] lg:text-[.95vw] mb-[8vw] md:mb-[5vw] font-bold font-sans leading-relaxed mt-[4vw] md:mt-[2vw]">
           <strong>Planning a celebration?</strong>
           <br />
           {location === "stevenage" ? (
@@ -200,7 +200,7 @@ export default function EnquiriesSection({ location }) {
                 fill="#374151"
               />
             </svg>
-            <span className="text-[5vw] md:text-[1.8vw] tracking-wider font-peakers">
+            <span className="text-[5vw] md:text-[18px] lg:text-[1.8vw] tracking-wider font-peakers">
               BIRTHDAY & EVENTS
             </span>
           </div>
@@ -217,7 +217,7 @@ export default function EnquiriesSection({ location }) {
                 fill="#374151"
               />
             </svg>
-            <span className="text-[5vw] md:text-[1.8vw] tracking-wider font-peakers">
+            <span className="text-[5vw] md:text-[18px] lg:text-[1.8vw] tracking-wider font-peakers">
               SOCIAL GATHERINGS
             </span>
           </div>
@@ -234,7 +234,7 @@ export default function EnquiriesSection({ location }) {
                 fill="#374151"
               />
             </svg>
-            <span className="text-[5vw] md:text-[1.8vw] tracking-wider font-peakers">
+            <span className="text-[5vw] md:text-[18px] lg:text-[1.8vw] tracking-wider font-peakers">
               PRIVATE HIRE
             </span>
           </div>
@@ -251,7 +251,7 @@ export default function EnquiriesSection({ location }) {
                 fill="#374151"
               />
             </svg>
-            <span className="text-[5vw] md:text-[1.8vw] tracking-wider font-peakers">
+            <span className="text-[5vw] md:text-[18px] lg:text-[1.8vw] tracking-wider font-peakers">
               OUTSIDE CATERING
             </span>
           </div>
@@ -276,7 +276,7 @@ export default function EnquiriesSection({ location }) {
             {/* NAME + PHONE */}
             <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[0.8vw] tracking-wide font-extralight font-mono text-white">
+                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] tracking-wide font-extralight font-mono text-white">
                   YOUR NAME <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -287,13 +287,13 @@ export default function EnquiriesSection({ location }) {
                   placeholder="Full Name"
                   required
                   disabled={isSubmitting}
-                  className="bg-[#111111] text-[4vw] md:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none disabled:opacity-50"
+                  className="bg-[#111111] text-[4vw] md:text-[15px] lg:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none disabled:opacity-50"
                   style={{ fontFamily: "var(--font-neuzeit)" }}
                 />
               </div>
 
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[0.8vw] tracking-wide font-extralight text-white font-mono">
+                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] tracking-wide font-extralight text-white font-mono">
                   PHONE NO. <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -304,7 +304,7 @@ export default function EnquiriesSection({ location }) {
                   placeholder="Contact Number"
                   required
                   disabled={isSubmitting}
-                  className="bg-[#111111] text-[4vw] md:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none disabled:opacity-50"
+                  className="bg-[#111111] text-[4vw] md:text-[15px] lg:text-[1.1vw] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 focus:outline-none disabled:opacity-50"
                   style={{ fontFamily: "var(--font-neuzeit)" }}
                 />
               </div>
@@ -313,7 +313,7 @@ export default function EnquiriesSection({ location }) {
             {/* GUESTS + DATE + TIME */}
             <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[0.8vw] tracking-widest font-extralight font-mono text-white">
+                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] tracking-widest font-extralight font-mono text-white">
                   GUESTS
                 </label>
                 <CustomGuestCounter
@@ -327,7 +327,7 @@ export default function EnquiriesSection({ location }) {
               </div>
 
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[0.8vw] tracking-wide text-white font-mono font-extralight">
+                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] tracking-wide text-white font-mono font-extralight">
                   DATE
                 </label>
                 <CustomDatePicker
@@ -342,7 +342,7 @@ export default function EnquiriesSection({ location }) {
               </div>
 
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[0.8vw] font-extralight font-mono tracking-widest text-white">
+                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] font-extralight font-mono tracking-widest text-white">
                   TIME
                 </label>
                 <CustomTimePicker
@@ -358,7 +358,7 @@ export default function EnquiriesSection({ location }) {
 
             {/* DETAILS */}
             <div className="flex flex-col gap-[2vw] md:gap-2">
-              <label className="text-[3vw] md:text-[0.8vw] font-mono font-extralight tracking-widest text-white">
+              <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] font-mono font-extralight tracking-widest text-white">
                 DETAILS
               </label>
               <textarea
@@ -369,7 +369,7 @@ export default function EnquiriesSection({ location }) {
                 placeholder="Tell us about your event (e.g., Birthday, Party size)... "
                 disabled={isSubmitting}
                 style={{ fontFamily: "var(--font-neuzeit)" }}
-                className="bg-[#111111] border font-extralight text-[4vw] md:text-[1.2vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 resize-none focus:outline-none disabled:opacity-50"
+                className="bg-[#111111] border font-extralight text-[4vw] md:text-[16px] lg:text-[1.2vw] border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-white placeholder-white/40 resize-none focus:outline-none disabled:opacity-50"
               />
             </div>
 
@@ -378,7 +378,7 @@ export default function EnquiriesSection({ location }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto bg-white flex justify-center items-center gap-3 text-black font-sans font-bold px-[6vw] md:px-[3.5vw] py-[4vw] md:py-5 rounded-[2vw] md:rounded-[.6vw] text-[4vw] md:text-[1.45vw] tracking-widest hover:bg-white/90 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-50 disabled:shadow-none"
+                className="w-full md:w-auto bg-white flex justify-center items-center gap-3 text-black font-sans font-bold px-[6vw] md:px-[3.5vw] py-[4vw] md:py-5 rounded-[2vw] md:rounded-[.6vw] text-[4vw] md:text-[18px] lg:text-[1.45vw] tracking-widest hover:bg-white/90 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-50 disabled:shadow-none"
               >
                 {isSubmitting ? (
                   <>

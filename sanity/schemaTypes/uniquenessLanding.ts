@@ -2,7 +2,7 @@ import { defineType, defineField } from 'sanity'
 
 export default defineType({
     name: 'uniquenessLanding',
-    title: 'Uniqueness Landing Section',
+    title: 'Peckers Standard — Landing Section',
     type: 'document',
 
     fields: [

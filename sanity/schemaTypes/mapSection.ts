@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
     name: "mapSection",
-    title: "Map Section",
+    title: "Location Detail — Map & Address",
     type: "document",
     fields: [
         defineField({

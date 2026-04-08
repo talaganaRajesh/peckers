@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
     name: "siteSettings",
-    title: "Site Settings",
+    title: "Global — Site SEO & Identity",
     type: "document",
     fields: [
         defineField({

@@ -381,7 +381,7 @@ const Footer = ({ preloadedData = null }) => {
           {(data.copyright?.includes("Designed and Developed By")
             ? data.copyright.split("Designed and Developed By")[0].trim()
             : data.copyright ||
-              "© 2026 Peckers Chicken Ltd. All rights reserved. Do not steal our sauce recipe."
+            "© 2026 Peckers Chicken Ltd. All rights reserved. Do not steal our sauce recipe."
           ).replace(/©\s*20(2[0-5])/, "© 2026")}
         </div>
 
@@ -409,6 +409,17 @@ const Footer = ({ preloadedData = null }) => {
         </a>
       </div>
 
+      {/* Brand Bottom Logo */}
+      <div className="w-full bg-black pt-[5vw] pb-[10vw] md:pb-[8vw] overflow-hidden flex items-center justify-center">
+        <div className="relative w-full h-[30vw] md:h-[22vw] lg:h-[18vw] flex items-center justify-center pointer-events-none">
+          <Image
+            src={bottomLogoUrl || "/Peckers Logo 1 [Vectorized].svg"}
+            alt="Peckers Brand Logo"
+            fill
+            className="object-contain object-center scale-[1.5] md:scale-[1.7] lg:scale-[1.9] opacity-100"
+          />
+        </div>
+      </div>
 
     </footer>
   );

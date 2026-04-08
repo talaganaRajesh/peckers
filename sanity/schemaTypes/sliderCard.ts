@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
     name: "sliderCard",
-    title: "Slider Card",
+    title: "Homepage Slider Cards",
     type: "document",
     fields: [
         defineField({

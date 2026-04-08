@@ -69,22 +69,22 @@ export default function MobileRoadmap({ initialData = null }) {
   if (!roadmapData) return null;
 
   return (
-    <section className="block lg:hidden w-full bg-black text-white px-[4vw] md:px-[6vw] pt-0 md:pt-0 -mt-2 md:mt-8 pb-[10vw] md:pb-[10vw] overflow-hidden relative z-20">
+    <section className="block lg:hidden w-full bg-black text-white px-[4vw] md:px-[8vw] pt-0 md:pt-4 -mt-2 md:mt-12 pb-[10vw] md:pb-[15vw] overflow-hidden relative z-20">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center w-full mb-[5vw] md:mb-1"
+        className="flex flex-col items-center w-full mb-[5vw] md:mb-12"
       >
-        <h2 className="text-[7.5vw] md:text-[5vw] xl:text-[4vw] text-center font-bold leading-none font-peakers px-[1vw] tracking-wide mb-[2vw] uppercase">
+        <h2 className="text-[7.5vw] md:text-[6vw] xl:text-[4vw] text-center font-bold leading-none font-peakers px-[1vw] tracking-wide mb-[2vw] md:mb-[1.5vw] uppercase">
           {roadmapData.heading || "A LEGACY THAT CAME FULL CIRCLE"}
         </h2>
-        <span className="text-white/60 tracking-widest font-sans text-[4vw] md:text-[2.5vw] xl:text-[1.5vw]">
+        <span className="text-white/60 tracking-widest font-sans text-[4vw] md:text-[1.2rem] xl:text-[1.5vw]">
           {roadmapData.estYear || "EST. 1978"}
         </span>
-        <div className="w-full h-px bg-[#1F2937] mt-[4vw] md:mt-1"></div>
+        <div className="w-full h-px bg-[#1F2937] mt-[4vw] md:mt-8"></div>
       </motion.div>
 
       {/* Timeline container */}
@@ -115,22 +115,22 @@ export default function MobileRoadmap({ initialData = null }) {
                       }
                       : {}
                   }
-                  className={`relative px-[5vw] md:px-[4vw] xl:px-[3vw] py-[6vw] md:py-[4vw] xl:py-[3vw] rounded-[4vw] md:rounded-[2vw] xl:rounded-[1.5vw] flex flex-col items-center text-center w-[65vw] md:w-[45vw] xl:w-[35vw] border
+                  className={`relative px-[5vw] md:px-[6vw] xl:px-[3vw] py-[6vw] md:py-[6vw] xl:py-[3vw] rounded-[4vw] md:rounded-[2.5vw] xl:rounded-[1.5vw] flex flex-col items-center text-center w-[65vw] md:w-[48vw] xl:w-[35vw] border
                                         ${isHighlighted
                       ? "bg-[#121212] border-yellow-500/60"
                       : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
                     }`}
                 >
                   <span
-                    className="text-[4.5vw] md:text-[3vw] xl:text-[2vw] font-bold mb-[2vw] md:mb-[1vw] tracking-tight text-white"
+                    className="text-[4.5vw] md:text-[1.4rem] xl:text-[2vw] font-bold mb-[2vw] md:mb-[1.5vw] tracking-tight text-white"
                     style={{ fontFamily: "var(--font-neuzeit)" }}
                   >
                     {item.year}
                   </span>
-                  <h3 className="text-[4.5vw] md:text-[3vw] xl:text-[2.2vw] font-peakers mb-[2vw] md:mb-[1vw] leading-none text-white font-bold ">
+                  <h3 className="text-[4.5vw] md:text-[1.8rem] xl:text-[2.2vw] font-peakers mb-[2vw] md:mb-[1.5vw] leading-tight text-white font-bold uppercase transition-colors duration-300">
                     {item.title}
                   </h3>
-                  <p className="text-white font-peakers text-[3.5vw] md:text-[2.2vw] xl:text-[1.5vw] leading-tight font-medium">
+                  <p className="text-white/80 font-peakers text-[3.5vw] md:text-[1.1rem] xl:text-[1.5vw] leading-relaxed font-medium">
                     {item.description}
                   </p>
                 </div>

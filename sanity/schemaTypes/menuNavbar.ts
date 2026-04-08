@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
     name: "menuNavbar",
-    title: "Menu Navbar",
+    title: "Menu Page — Category Navigation",
     type: "document",
     fields: [
         defineField({
