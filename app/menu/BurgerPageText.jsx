@@ -209,7 +209,7 @@ export default function BurgerPageText({ burgerData = null }) {
 
       <div className="w-full flex justify-center pt-[8vw] md:pt-5 pb-[15vw] md:pb-[5vw] burger-available text-center px-[5vw]">
         <span className="text-white font-peakers text-[4vw] md:text-[20px] lg:text-[24px] xl:text-[2.2vw] tracking-3 font-normal">
-          {burgerData.availabilityText || "Also available as a wrap, rice bowl, or salad bowl."}
+          {burgerData.availabilityText || "Also available as a wrap, rice bowl and salad bowl."}
         </span>
       </div>
       <div className="w-full flex justify-center pb-[4vw] md:pb-5 text-center px-[5vw]">

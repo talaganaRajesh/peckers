@@ -120,17 +120,27 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
               const key = (categoryName || "").toUpperCase();
               if (key === "BURGERS") {
                 return (
-                  <>Also available as a <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>, <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
+                  <>Also available as a <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>, <Link href="/menu/rice-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or <Link href="/menu/salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
                 );
               }
               if (key === "WRAPS") {
                 return (
-                  <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link>, <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or <Link href="/menu/rice-and-salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
+                  <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link>, <Link href="/menu/rice-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>, or <Link href="/menu/salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
                 );
               }
-              //  Rice/Salad cases
+              if (key.includes("RICE BOWL")) {
+                return (
+                  <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link>, <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link> and <Link href="/menu/salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
+                );
+              }
+              if (key.includes("SALAD BOWL")) {
+                return (
+                  <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link>, <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link> and <Link href="/menu/rice-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link>.</>
+                );
+              }
+              //  Rice/Salad cases (Default Fallback)
               return (
-                <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link> and <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>.</>
+                <>Also available as a <Link href="/menu" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">burger</Link>, <Link href="/menu/wraps" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">wrap</Link>, <Link href="/menu/rice-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">rice bowl</Link> or <Link href="/menu/salad-bowls" className="text-white hover:text-[#F2DF0D] underline decoration-white/30 underline-offset-4 hover:decoration-[#F2DF0D] transition-colors">salad bowl</Link>.</>
               );
             })()}
           </div>
