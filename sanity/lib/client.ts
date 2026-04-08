@@ -17,7 +17,7 @@ export const client = createClient({
       const stringUrl = url.toString();
       if (stringUrl.includes("sanity.io")) {
         const proxiedUrl = stringUrl.replace(
-          `https://${projectId}.api.sanity.io`,
+          /https?:\/\/[a-z0-9]+\.(api|apicdn)\.sanity\.io/i,
           "/sanity-api",
         );
         return fetch(proxiedUrl, options);
