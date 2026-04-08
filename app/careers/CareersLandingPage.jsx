@@ -8,7 +8,7 @@ export default function CareersLandingPage({ initialData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full min-h-[50vh] md:min-h-[65vh] lg:min-h-[65vh] bg-[#0000] flex flex-col items-center justify-center relative py-[12vh] md:py-[8vh] lg:py-[8vh] overflow-hidden"
+            className="w-full min-h-[50vh] md:min-h-[85vh] lg:min-h-[85vh] bg-[#0000] flex flex-col items-center justify-center relative py-[12vh] md:py-[15vh] lg:py-[15vh] overflow-hidden"
         >
 
             {/* Content Wrapper */}

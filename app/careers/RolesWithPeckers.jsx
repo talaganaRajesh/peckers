@@ -37,7 +37,7 @@ export default function RolesWithPeckers({ initialData }) {
     const perks = initialData?.perks || perksFallback;
 
     return (
-        <div className="w-full bg-black flex flex-col items-center pt-[6vh] md:pt-0 lg:pt-0 pb-[4vh] md:pb-0 lg:pb-0 px-[6vw]">
+        <div className="w-full bg-black flex flex-col items-center pt-[6vh] md:pt-[12vh] lg:pt-[12vh] pb-[4vh] md:pb-[10vh] lg:pb-[10vh] px-[6vw]">
 
             {/* Title */}
             <motion.h1

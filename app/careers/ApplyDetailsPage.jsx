@@ -67,7 +67,7 @@ export default function ApplyDetailsPage({ initialData }) {
     }
   };
   return (
-    <div className="w-full bg-[#080808] flex justify-center pt-[4vh] md:pt-0 lg:pt-0 pb-[6vh] md:pb-[6vh] lg:pb-[6vh] px-[6vw]">
+    <div className="w-full bg-[#080808] flex justify-center pt-[4vh] md:pt-[12vh] lg:pt-[12vh] pb-[6vh] md:pb-[12vh] lg:pb-[12vh] px-[6vw]">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

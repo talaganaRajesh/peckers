@@ -37,7 +37,7 @@ export default function CrewPage({ initialData }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full bg-black text-white px-[6vw] py-[8vh] md:py-[6vh] lg:py-[6vh]"
+            className="w-full bg-black text-white px-[6vw] py-[8vh] md:py-[12vh] lg:py-[12vh]"
         >
 
             {/* Top Row */}
