@@ -27,15 +27,15 @@ const SectionItem = memo(({ section, index, num, total }) => {
     return () => ro.disconnect();
   }, []);
 
-  // Only load/play media when nearly in view — once: true prevents video destroy/remount on scroll
-  const isInView = useInView(sectionRef, { margin: "200px 0px", once: true });
-  // Specifically for video playback
-  const isStrictlyInView = useInView(sectionRef, { amount: 0.3 });
+  // Intersection detection for optimization
+  const isInView = useInView(sectionRef, { margin: "400px 0px", once: true });
+  // Specifically for video playback - more lenient threshold for iPads
+  const isStrictlyInView = useInView(sectionRef, { amount: 0.15 });
 
   useEffect(() => {
     if (videoRef.current) {
       if (isStrictlyInView) {
-        videoRef.current.play().catch(() => {}); // Handle autoplay blocks
+        videoRef.current.play().catch(() => {}); 
       } else {
         videoRef.current.pause();
       }
@@ -44,90 +44,78 @@ const SectionItem = memo(({ section, index, num, total }) => {
 
   const isAlternate = index % 2 !== 0;
 
-  // Calculate aspect ratios to reserve space and prevent layout shifts (fixing the "stucking" issue)
+  // Media aspect ratio
   const imageAspectRatio =
-    section.image?.asset?.metadata?.dimensions?.aspectRatio || 16 / 9;
-  const videoAspectRatio = 16 / 9; // Default for videos
+    section.image?.asset?.metadata?.dimensions?.aspectRatio || 1.777;
+  const videoAspectRatio = 1.777;
   const activeAspectRatio =
     section.videoUrl || section.video ? videoAspectRatio : imageAspectRatio;
-
-  // Use a fixed aspect ratio for the last subsections on mobile (e.g., last 2)
-  // to ensure they match others if their source images are too tall. 
-  const isLastSubsection = index >= total - 2;
-  const mobileAspectRatio = isLastSubsection ? "16/9" : (activeAspectRatio || "16/9");
 
   return (
     <section
       ref={sectionRef}
-      className={`w-full h-auto md:min-h-[60vh] lg:h-[75vh] flex flex-col ${
+      className={`w-full h-auto md:min-h-[60vh] lg:min-h-[75vh] flex flex-col ${
         isAlternate ? "md:flex-row-reverse" : "md:flex-row"
-      } bg-black overflow-hidden`}
+      } bg-black overflow-hidden relative shadow-inner`}
     >
       {/* MEDIA SECTION */}
       <div
-        className="w-full md:w-[50%] lg:w-[60%] md:h-full relative overflow-hidden flex items-center justify-center bg-black"
-        style={{
-          minHeight: "1px",
-        }}
+        className="w-full md:w-[50%] lg:w-[60%] flex-shrink-0 relative overflow-hidden bg-black flex items-center justify-center min-h-[300px] md:min-h-0 z-10"
       >
-        {/* Aspect Ratio Sizer (Mobile only, or consistent across screens) */}
+        {/* Aspect Ratio Sizer (Essential for mobile/iPad) */}
         <div
           className="w-full md:hidden"
-          style={{ aspectRatio: mobileAspectRatio }}
+          style={{ aspectRatio: activeAspectRatio || "16/9" }}
         />
-        <div className="hidden md:block absolute inset-0 md:relative md:h-full md:w-full" />
-
-        <div className="absolute inset-0 w-full h-full">
-          {isInView ? (
-            <>
-              {section.videoUrl || section.video ? (
-                // VIDEO SECTION
-                <video
-                  ref={videoRef}
-                  src={
-                    section.videoUrl ||
-                    (section.video?.asset?._ref
-                      ? urlFor(section.video).url()
-                      : "")
-                  }
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                  style={{ filter: "brightness(0.9)", willChange: "transform" }}
-                />
-              ) : (
-                // PHOTO SECTION
-                section.image && (
-                  <div className="w-full h-full">
-                    <Image
-                      src={urlFor(section.image)
-                        .width(1200)
-                        .format("webp")
-                        .url()}
-                      alt={section.title || `Section ${num}`}
-                      fill
-                      className="object-cover object-center"
-                      style={{ filter: "brightness(0.7)" }}
-                      priority={index === 0}
-                      loading={index === 0 ? "eager" : "lazy"}
-                      sizes="(max-width: 768px) 100vw, 65vw"
-                    />
-                  </div>
-                )
-              )}
-            </>
+        
+        {/* Media Content - Rendered directly to avoid "placeholder flip" issues on Safari */}
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center z-20">
+          {section.videoUrl || section.video ? (
+            // VIDEO SECTION
+            <video
+              ref={videoRef}
+              src={
+                section.videoUrl ||
+                (section.video?.asset?._ref
+                  ? urlFor(section.video).url()
+                  : "")
+              }
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover"
+              style={{ filter: "brightness(0.9)", opacity: isInView ? 1 : 0, transition: "opacity 0.8s ease-in-out" }}
+            />
           ) : (
-            // Placeholder while out of view - matches the exact aspect ratio
-            <div className="w-full h-full bg-[#0a0a0a]" />
+            // PHOTO SECTION
+            section.image && (
+              <div className="w-full h-full relative" style={{ opacity: isInView ? 1 : 0, transition: "opacity 0.8s ease-in-out" }}>
+                <Image
+                  src={urlFor(section.image)
+                    .width(1500)
+                    .format("webp")
+                    .url()}
+                  alt={section.title || `Section ${num}`}
+                  fill
+                  className="object-cover object-center"
+                  style={{ filter: "brightness(0.7)" }}
+                  priority={index < 3}
+                  loading={index < 3 ? "eager" : "lazy"}
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                />
+              </div>
+            )
           )}
         </div>
+
+        {/* Dynamic loading state for slow connections */}
+        <div className={`absolute inset-0 bg-[#0a0a0a] transition-opacity duration-1000 z-10 ${isInView ? 'opacity-0' : 'opacity-100'}`} />
       </div>
 
       {/* CONTENT SECTION */}
       <div
-        className={`w-full md:w-[50%] lg:w-[40%] h-auto md:h-full text-white flex flex-col overflow-hidden`}
+        className={`w-full md:w-[50%] lg:w-[40%] h-auto md:h-full text-white flex flex-col overflow-hidden z-20`}
         style={{
           backgroundColor: index % 2 === 0 ? "#111111" : "#000000",
         }}
@@ -168,29 +156,29 @@ const SectionItem = memo(({ section, index, num, total }) => {
             {section.title
               ?.toUpperCase()
               .includes("NOTHING COMES OUT OF A BOTTLE") && (
-              <a
-                href="/house-made-sauces"
-                className="inline-flex items-center gap-[2vw] md:gap-[10px] px-[6vw] md:px-[20px] py-[2.2vw] md:py-[8px] rounded-full border border-white/30 hover:border-white hover:bg-white/5 hover:text-white transition-all duration-300 text-[3.2vw] md:text-[12px] lg:text-[0.85vw] font-bold uppercase tracking-widest mt-[4vw] md:mt-[1.2vw] group"
-              >
-                <span>Explore our house-made sauces</span>
-                <svg
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-[2.8vw] h-[2.8vw] md:w-[0.7vw] md:h-[0.7vw] transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                <a
+                  href="/house-made-sauces"
+                  className="inline-flex items-center gap-[2vw] md:gap-[10px] px-[6vw] md:px-[20px] py-[2.2vw] md:py-[8px] rounded-full border border-white/30 hover:border-white hover:bg-white/5 hover:text-white transition-all duration-300 text-[3.2vw] md:text-[12px] lg:text-[0.85vw] font-bold uppercase tracking-widest mt-[4vw] md:mt-[1.2vw] group"
                 >
-                  <path
-                    d="M2 10L10 2M10 2H4M10 2V8"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
-            )}
+                  <span>Explore our house-made sauces</span>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-[2.8vw] h-[2.8vw] md:w-[0.7vw] md:h-[0.7vw] transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                  >
+                    <path
+                      d="M2 10L10 2M10 2H4M10 2V8"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              )}
           </div>
         </div>
       </div>
