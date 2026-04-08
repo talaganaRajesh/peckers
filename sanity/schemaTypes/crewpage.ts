@@ -1,6 +1,6 @@
 export default {
     name: 'crewPage',
-    title: 'Careers Page',
+    title: 'Careers Page Content',
     type: 'document',
     fields: [
         // Landing Section

@@ -2,7 +2,7 @@ import { defineType, defineField } from "sanity";
 
 export default defineType({
     name: "location",
-    title: "Location",
+    title: "Homepage Location Cards",
     type: "document",
     fields: [
         defineField({
