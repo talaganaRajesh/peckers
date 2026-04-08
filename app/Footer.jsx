@@ -410,14 +410,19 @@ const Footer = ({ preloadedData = null }) => {
       </div>
 
       {/* Brand Bottom Logo */}
-      <div className="w-full bg-black pt-[5vw] pb-[10vw] md:pb-[8vw] overflow-hidden flex items-center justify-center">
-        <div className="relative w-full h-[30vw] md:h-[22vw] lg:h-[18vw] flex items-center justify-center pointer-events-none">
-          <Image
-            src={bottomLogoUrl || "/Peckers Logo 1 [Vectorized].svg"}
-            alt="Peckers Brand Logo"
-            fill
-            className="object-contain object-center scale-[1.5] md:scale-[1.7] lg:scale-[1.9] opacity-100"
-          />
+
+      <div className="flex-1 flex items-center">
+        <div className="w-full flex justify-center items-center py-12 md:py-24 bg-black">
+          <div className="relative max-w-[98%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
+            {bottomLogoUrl && (
+              <Image
+                src={bottomLogoUrl}
+                alt="Peckers Logo"
+                fill
+                className="object-contain"
+              />
+            )}
+          </div>
         </div>
       </div>
 
