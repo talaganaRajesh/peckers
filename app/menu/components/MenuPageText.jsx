@@ -74,8 +74,21 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
       </div>
       <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-[6vw] md:gap-12 mt-8 text-white/90 font-mono px-[5vw] md:px-0">
         <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">
-          <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">Nutrition (Per Portion)</div>
+          <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">
+            {(() => {
+              const key = (categoryName || "").toUpperCase();
+              if (key.includes("RICE BOWL")) return "Nutrition (Per Rice Bowl)";
+              if (key.includes("SALAD BOWL")) return "Nutrition (Per Salad Bowl)";
+              if (key.includes("WRAP")) return "Nutrition (Per Wrap)";
+              if (key.includes("BURGER")) return "Nutrition (Per Burger)";
+              return "Nutrition (Per Portion)";
+            })()}
+          </div>
           <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
+            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" 
+              ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`) 
+              : "— kcal"}
+            <br />
             {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—"
               ? (itemData.protein.toLowerCase().includes("protein") ? itemData.protein : `${itemData.protein} Protein`)
               : "— Protein"}
@@ -87,14 +100,6 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
             {itemData.fats && itemData.fats !== "-" && itemData.fats !== "—"
               ? (itemData.fats.toLowerCase().includes("fats") ? itemData.fats : `${itemData.fats} Fats`)
               : "— Fats"}
-          </div>
-        </div>
-        <div className="min-w-[120px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
-          <div className="text-[#575750] font-mono text-[2.5vw] md:text-[12px] uppercase mb-1 tracking-wide font-bold">Energy & Calories</div>
-          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
-            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" ? itemData.calories : "—"}
-            <br />
-            {itemData.energy && itemData.energy !== "—" && itemData.energy !== "-" ? itemData.energy : "—"}
           </div>
         </div>
         <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
