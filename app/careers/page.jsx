@@ -49,6 +49,7 @@ export default async function CareersPage() {
             <CareersLandingPage initialData={careersData} />
             <RolesWithPeckers initialData={careersData} />
             <ApplyDetailsPage initialData={careersData} />
+            <CrewPage initialData={careersData} />
         </div>
     );
 }

@@ -37,19 +37,19 @@ export default function CrewPage({ initialData }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full bg-black text-white px-[6vw] py-[8vh] md:py-[12vh] lg:py-[12vh]"
+            className="w-full bg-black text-white px-[6vw] py-[8vh] md:py-[6vh] lg:py-[12vh]"
         >
 
             {/* Top Row */}
             <div className="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-[2vw] lg:gap-0">
 
                 {/* Left Title */}
-                <h1 className="font-peakers text-[12vw] md:text-[6.5vw] lg:text-[4.2vw] font-bold tracking-[0.1vw] leading-none uppercase">
+                <h1 className="font-peakers text-[12vw] md:text-[9vw] lg:text-[4.2vw] font-bold tracking-[0.1vw] leading-none uppercase">
                     {initialData?.heading || "THE CREW"}
                 </h1>
 
                 {/* Right Text */}
-                <p className="text-left md:text-right font-semibold font-peakers text-[4vw] md:text-[1.6vw] lg:text-[.9vw] tracking-[0.1vw] pt-0 md:pt-[1vw] lg:pt-[1.5vw] text-gray-400 max-w-full md:max-w-[45vw] lg:max-w-[35vw] uppercase">
+                <p className="text-left md:text-right font-semibold font-peakers text-[4vw] md:text-[2.2vw] lg:text-[.9vw] tracking-[0.1vw] pt-0 md:pt-[1vw] lg:pt-[1.5vw] text-gray-400 max-w-full md:max-w-[45vw] lg:max-w-[35vw] uppercase">
                     {initialData?.description || (
                         <>
                             FROM THE KITCHEN TO THE COUNTER — THIS IS THE <br className="hidden lg:block" />
@@ -77,7 +77,7 @@ export default function CrewPage({ initialData }) {
                         key={index}
                         variants={cardVariants}
                         className={`group relative aspect-3/4 overflow-hidden bg-[#111] transition-all duration-500 rounded-[3vw] md:rounded-xl lg:rounded-none 
-                            ${(index === 1 || index === 3) ? "md:mt-[6vh] lg:mt-[4vh]" : ""} 
+                            ${(index === 1 || index === 3) ? "md:mt-[3vh] lg:mt-[4vh]" : ""} 
                             `}
                     >
                         {/* Image from Sanity or Placeholder */}
@@ -97,8 +97,8 @@ export default function CrewPage({ initialData }) {
                         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/90 to-transparent"></div>
 
                         {/* Label */}
-                        <div className="absolute bottom-[4vw] left-[4vw] md:bottom-[2vw] md:left-[2vw] lg:bottom-[1.5vw] lg:left-[1.5vw]">
-                            <span className="font-peakers text-[5vw] md:text-[2.2vw] lg:text-[0.9vw] font-bold tracking-wider text-white uppercase drop-shadow-md">
+                        <div className="absolute bottom-[4vw] left-[4vw] md:bottom-[3vw] md:left-[3vw] lg:bottom-[1.5vw] lg:left-[1.5vw]">
+                            <span className="font-peakers text-[5vw] md:text-[3.5vw] lg:text-[0.9vw] font-bold tracking-wider text-white uppercase drop-shadow-md">
                                 {member.label}
                             </span>
                         </div>
