@@ -162,7 +162,7 @@ export default function EnquiriesSection({ location }) {
   return (
     <section
       id="enquiry-form"
-      className="w-[90%] md:w-[94%] lg:w-[88%] bg-black md:min-h-[700px] xl:min-h-screen mx-auto md:ml-[3vw] lg:ml-[7vw] mt-[10vw] md:mt-[7vw] rounded-[4vw] md:rounded-[1.4vw] text-white font-sans flex flex-col md:flex-row overflow-hidden"
+      className="w-[90%] md:w-[94%] lg:w-[88%] bg-black md:min-h-0 lg:min-h-0 xl:min-h-screen mx-auto md:ml-[3vw] lg:ml-[7vw] mt-[10vw] md:mt-[7vw] rounded-[4vw] md:rounded-[1.4vw] text-white font-sans flex flex-col md:flex-row overflow-hidden"
       style={{ border: "1px solid #1F2739" }}
     >
       {/* LEFT SIDE */}
@@ -276,7 +276,7 @@ export default function EnquiriesSection({ location }) {
             {/* NAME + PHONE */}
             <div className="flex flex-col md:flex-row gap-[6vw] md:gap-[2vw]">
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] tracking-wide font-extralight font-mono text-white">
+                <label className="text-[3vw] md:text-[14px] lg:text-[0.8vw] tracking-wide font-extralight font-mono text-white">
                   YOUR NAME <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -293,7 +293,7 @@ export default function EnquiriesSection({ location }) {
               </div>
 
               <div className="flex-1 flex flex-col gap-2">
-                <label className="text-[3vw] md:text-[12px] lg:text-[0.8vw] tracking-wide font-extralight text-white font-mono">
+                <label className="text-[3vw] md:text-[14px] lg:text-[0.8vw] tracking-wide font-extralight text-white font-mono">
                   PHONE NO. <span className="text-red-500">*</span>
                 </label>
                 <input

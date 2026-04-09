@@ -37,7 +37,7 @@ export default function RolesWithPeckers({ initialData }) {
     const perks = initialData?.perks || perksFallback;
 
     return (
-        <div className="w-full bg-black flex flex-col items-center pt-[6vh] md:pt-[6vh] lg:pt-[12vh] pb-[4vh] md:pb-[6vh] lg:pb-[10vh] px-[6vw]">
+        <div className="w-full bg-black flex flex-col items-center pt-[6vh] md:pt-[6vh] lg:pt-[5vh] xl:pt-[12vh] pb-[4vh] md:pb-[6vh] lg:pb-[5vh] xl:pb-[10vh] px-[6vw]">
 
             {/* Title */}
             <motion.h1
@@ -45,7 +45,7 @@ export default function RolesWithPeckers({ initialData }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="font-peakers text-white font-semibold text-[10vw] md:text-[8vw] lg:text-[3.5vw] text-center leading-none uppercase"
+                className="font-peakers text-white font-semibold text-[10vw] md:text-[8vw] lg:text-[4.5vw] xl:text-[3.5vw] text-center leading-none uppercase"
             >
                 {initialData?.rolesTitle || "WHY ROLL WITH US?"}
             </motion.h1>
@@ -80,7 +80,7 @@ export default function RolesWithPeckers({ initialData }) {
                                 className="object-cover"
                             />
                             <div className="relative z-10 w-full flex flex-col items-center">
-                                <div className="w-[15vw] h-[15vw] md:w-[9vw] md:h-[9vw] lg:w-[5vw] lg:h-[5vw] relative flex items-center justify-center mb-[4vh] md:mb-[3vh] lg:mb-[4vh]">
+                                <div className="w-[15vw] h-[15vw] md:w-[9vw] md:h-[9vw] lg:w-[6.5vw] lg:h-[6.5vw] xl:w-[5vw] xl:h-[5vw] relative flex items-center justify-center mb-[4vh] md:mb-[3vh] lg:mb-[4vh]">
                                     <svg className="absolute inset-0 w-full h-full" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" fill="black" stroke="#2A2A2A" />
                                     </svg>
@@ -89,11 +89,11 @@ export default function RolesWithPeckers({ initialData }) {
                                     </div>
                                 </div>
 
-                                <h2 className="font-peakers text-white text-[7vw] md:text-[4vw] lg:text-[1.6vw] mb-[2vh] tracking-widest uppercase text-center">
+                                <h2 className="font-peakers text-white text-[7vw] md:text-[4vw] lg:text-[2.2vw] xl:text-[1.6vw] mb-[2vh] tracking-widest uppercase text-center">
                                     {perk.title}
                                 </h2>
 
-                                <p className="text-gray-400 text-[3.8vw] md:text-[2.2vw] lg:text-[0.8vw] tracking-[0.05vw] leading-relaxed md:leading-[1.4] lg:leading-[1.6vw] text-center">
+                                <p className="text-gray-400 text-[3.8vw] md:text-[2.2vw] lg:text-[1.1vw] xl:text-[0.8vw] tracking-[0.05vw] leading-relaxed md:leading-[1.4] lg:leading-[1.6vw] text-center">
                                     {perk.description}
                                 </p>
                             </div>

@@ -8,7 +8,7 @@ export default function CareersLandingPage({ initialData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full min-h-[50vh] md:min-h-[70vh] lg:min-h-[85vh] bg-[#0000] flex flex-col items-center justify-center relative py-[12vh] md:py-[8vh] lg:py-[15vh] overflow-hidden"
+            className="w-full min-h-[50vh] md:min-h-[70vh] lg:min-h-[60vh] xl:min-h-[85vh] bg-[#0000] flex flex-col items-center justify-center relative py-[12vh] md:py-[8vh] lg:py-[10vh] xl:py-[15vh] overflow-hidden"
         >
 
             {/* Content Wrapper */}
@@ -31,10 +31,10 @@ export default function CareersLandingPage({ initialData }) {
                     transition={{ duration: 0.8, delay: 0.3 }}
                     className="flex flex-col items-center font-peakers mb-6"
                 >
-                    <h1 className="text-[14vw] md:text-[12vw] lg:text-[8vw] leading-none text-white font-extrabold uppercase">
+                    <h1 className="text-[14vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] leading-none text-white font-extrabold uppercase">
                         {initialData?.landingHeading1 || "WORK AT"}
                     </h1>
-                    <h1 className="text-[14vw] md:text-[12vw] lg:text-[8vw] leading-none text-white font-extrabold uppercase">
+                    <h1 className="text-[14vw] md:text-[12vw] lg:text-[10vw] xl:text-[8vw] leading-none text-white font-extrabold uppercase">
                         {initialData?.landingHeading2 || "PECKERS"}
                     </h1>
                 </motion.div>

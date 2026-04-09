@@ -35,7 +35,7 @@ export default function CustomGuestCounter({ value, onChange, disabled }) {
 
   return (
     <div
-      className={`flex items-center justify-between bg-[#111111] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 transition ${
+      className={`flex items-center justify-between bg-[#111111] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-[0.6rem] lg:py-0 lg:h-[64px] transition ${
         disabled ? "opacity-50" : ""
       }`}
     >
@@ -47,7 +47,7 @@ export default function CustomGuestCounter({ value, onChange, disabled }) {
         onChange={handleInput}
         placeholder="Est."
         disabled={disabled}
-        className="bg-transparent text-[4vw] md:text-[1.1vw] text-white placeholder-white/40 focus:outline-none w-full min-w-0"
+        className="bg-transparent text-[4vw] md:text-[14px] text-white placeholder-white/40 focus:outline-none w-full min-w-0"
         style={{ fontFamily: "var(--font-neuzeit)" }}
       />
 
