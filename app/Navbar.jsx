@@ -33,11 +33,27 @@ export default function Navbar({ preloadedSettings = null }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  // Close mobile menu and dropdowns on page navigation
+  // Close mobile menu and dropdowns on page navigation or outside click
   useEffect(() => {
-    setOpen(false);
-    setLocationsOpen(false);
-    setJourneyOpen(false);
+    const handleNavigation = () => {
+      setOpen(false);
+      setLocationsOpen(false);
+      setJourneyOpen(false);
+    };
+
+    const handleClickOutside = (e) => {
+      // If the click is outside the navbar, close all dropdowns
+      if (!e.target.closest("#main-navbar")) {
+        handleNavigation();
+      }
+    };
+
+    window.addEventListener("mousedown", handleClickOutside);
+    handleNavigation(); // Initial close on pathname change
+
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [pathname]);
 
   useEffect(() => {
@@ -94,14 +110,22 @@ export default function Navbar({ preloadedSettings = null }) {
         <Link href="/menu" className="whitespace-nowrap navbar-link">
           MENU
         </Link>
-        <div className="relative group">
-          <span className="whitespace-nowrap cursor-default navbar-link">
+        <div
+          className="relative group"
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              setLocationsOpen(!locationsOpen);
+              setJourneyOpen(false);
+            }
+          }}
+        >
+          <span className="whitespace-nowrap cursor-pointer md:cursor-default navbar-link">
             <span className="flex items-center gap-1.5">
               FIND US
-              <FaChevronDown className="text-[0.65em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
+              <FaChevronDown className={`text-[0.65em] transition-transform duration-300 opacity-80 ${locationsOpen ? "rotate-180" : "group-hover:rotate-180"}`} />
             </span>
           </span>
-          <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div className={`absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-all duration-200 z-50 ${locationsOpen ? "opacity-100 visible" : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"}`}>
             <div className="bg-[#1a1a1a] border border-[#333] rounded-lg py-2 shadow-xl md:min-w-[150px] lg:min-w-[180px] xl:min-w-[200px]">
               <Link
                 href="/hitchin"
@@ -118,14 +142,22 @@ export default function Navbar({ preloadedSettings = null }) {
             </div>
           </div>
         </div>
-        <div className="relative group">
-          <span className="whitespace-nowrap cursor-default navbar-link">
+        <div
+          className="relative group"
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              setJourneyOpen(!journeyOpen);
+              setLocationsOpen(false);
+            }
+          }}
+        >
+          <span className="whitespace-nowrap cursor-pointer md:cursor-default navbar-link">
             <span className="flex items-center gap-1.5">
               OUR SECRET
-              <FaChevronDown className="text-[0.65em] transition-transform duration-300 group-hover:rotate-180 opacity-80" />
+              <FaChevronDown className={`text-[0.65em] transition-transform duration-300 opacity-80 ${journeyOpen ? "rotate-180" : "group-hover:rotate-180"}`} />
             </span>
           </span>
-          <div className="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          <div className={`absolute left-1/2 -translate-x-1/2 top-full pt-2 transition-all duration-200 z-50 ${journeyOpen ? "opacity-100 visible" : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"}`}>
             <div className="bg-[#1a1a1a] border border-[#333] rounded-lg py-2 shadow-xl md:min-w-[180px] lg:min-w-[220px] xl:min-w-[250px]">
               <Link
                 href="/house-made-sauces"
@@ -159,7 +191,7 @@ export default function Navbar({ preloadedSettings = null }) {
         style={{ fontFamily: "var(--font-neuzeit)" }}
       >
         <HeaderActionButton
-          href={settings?.clickCollectUrl}
+          href="https://peckers.vmos.io/store/store-selection?app=online"
           className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap font-black"
           bgColor="bg-white"
           textColor="text-black"
@@ -170,7 +202,7 @@ export default function Navbar({ preloadedSettings = null }) {
         </HeaderActionButton>
 
         <HeaderActionButton
-          href={settings?.deliveryUrl}
+          href="https://peckers.vmos.io/store/store-selection?app=online"
           className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap hover:bg-red-700 font-black"
           bgColor="bg-red-600"
           textColor="text-white"
