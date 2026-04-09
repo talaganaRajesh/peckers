@@ -80,7 +80,7 @@ const Footer = ({ preloadedData = null }) => {
   ];
 
   const logoUrl = data.logo ? urlFor(data.logo).url() : null;
-  const bottomLogoUrl = data.bottomLogo ? urlFor(data.bottomLogo).url() : null;
+
 
   const resolveFooterHref = (url, title = "") => {
     const raw = (url || "").trim();
@@ -391,16 +391,15 @@ const Footer = ({ preloadedData = null }) => {
       {/* Brand Bottom Logo */}
 
       <div className="flex-1 flex items-center">
-        <div className="w-full flex justify-center items-center py-12 md:py-24 bg-black">
+        <div className="w-full flex justify-center items-center py-2 md:py-10 bg-black">
           <div className="relative max-w-[98%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
-            {bottomLogoUrl && (
-              <Image
-                src={bottomLogoUrl}
-                alt="Peckers Logo"
-                fill
-                className="object-contain"
-              />
-            )}
+            <Image
+              src="/Peckers Logo 1 [Vectorized].svg"
+              alt="Peckers Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
       </div>
