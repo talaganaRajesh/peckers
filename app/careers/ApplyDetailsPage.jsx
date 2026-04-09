@@ -67,7 +67,7 @@ export default function ApplyDetailsPage({ initialData }) {
     }
   };
   return (
-    <div className="w-full bg-[#080808] flex justify-center pt-[4vh] md:pt-[6vh] lg:pt-[12vh] pb-[6vh] md:pb-[8vh] lg:pb-[12vh] px-[6vw]">
+    <div className="w-full bg-[#080808] flex justify-center pt-[4vh] md:pt-[6vh] lg:pt-[5vh] xl:pt-[12vh] pb-[6vh] md:pb-[8vh] lg:pb-[5vh] xl:pb-[12vh] px-[6vw]">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -78,13 +78,13 @@ export default function ApplyDetailsPage({ initialData }) {
         {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-[3vh] gap-[2vh] md:gap-[3vw]">
           <div className="flex items-center gap-[4vw] md:gap-[1.5vw] w-full">
-            <h1 className="font-peakers font-semibold text-[10vw] md:text-[8vw] lg:text-[3.5vw] tracking-[.15vw] whitespace-nowrap uppercase">
+            <h1 className="font-peakers font-semibold text-[10vw] md:text-[8vw] lg:text-[4.5vw] xl:text-[3.5vw] tracking-[.15vw] whitespace-nowrap uppercase">
               {initialData?.applyTitle || "INTERESTED?"}
             </h1>
             <div className="h-px bg-gray-700 w-full"></div>
           </div>
 
-          <p className="md:ml-0 text-white text-[6vw] md:text-[3.5vw] lg:text-[1.6vw] tracking-tight font-peakers whitespace-nowrap uppercase">
+          <p className="md:ml-0 text-white text-[6vw] md:text-[3.5vw] lg:text-[2.2vw] xl:text-[1.6vw] tracking-tight font-peakers whitespace-nowrap uppercase">
             {initialData?.applySubtitle || "Let’s do this."}
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function ApplyDetailsPage({ initialData }) {
             {/* Name + Email */}
             <div className="flex flex-col md:flex-row justify-between gap-[4vh] md:gap-[2vw]">
               <div className="w-full">
-                <label className="block font-mono text-gray-500 text-[3vw] md:text-[1.8vw] lg:text-[0.6vw] tracking-[0.2em] mb-[1vh]">
+                <label className="block font-mono text-gray-500 text-[3vw] md:text-[1.8vw] lg:text-[1vw] xl:text-[0.6vw] tracking-[0.2em] mb-[1vh]">
                   NAME
                 </label>
                 <input
@@ -151,7 +151,7 @@ export default function ApplyDetailsPage({ initialData }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-white text-black font-bold py-[2.5vh] md:py-[2.5vh] text-[4.5vw] md:text-[2.5vw] lg:text-[1.1vw] tracking-wide hover:bg-gray-200 transition uppercase flex items-center justify-center gap-2 disabled:opacity-50 rounded-[2vw] md:rounded-[0.4vw]"
+                className="w-full bg-white text-black font-bold py-[2.5vh] md:py-[2.5vh] text-[4.5vw] md:text-[2.5vw] lg:text-[1.4vw] xl:text-[1.1vw] tracking-wide hover:bg-gray-200 transition uppercase flex items-center justify-center gap-2 disabled:opacity-50 rounded-[2vw] md:rounded-[0.4vw]"
               >
                 {isSubmitting ? (
                   <>

@@ -104,12 +104,11 @@ export default function CustomDatePicker({ value, onChange, min, disabled }) {
         type="button"
         onClick={() => !disabled && setOpen((o) => !o)}
         disabled={disabled}
-        className={`w-full flex items-center justify-between bg-[#111111] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-4 text-[4vw] md:text-[1.1vw] focus:outline-none transition disabled:opacity-50 ${
-          displayValue ? "text-white" : "text-white/40"
-        }`}
+        className={`w-full flex items-center justify-between bg-[#111111] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-3 lg:px-6 py-[3vw] md:py-4 lg:py-[2.1vw] text-[4vw] md:text-[14px] lg:text-[1.1vw] focus:outline-none transition disabled:opacity-50 ${displayValue ? "text-white" : "text-white/40"
+          }`}
         style={{ fontFamily: "var(--font-neuzeit)" }}
       >
-        <span>{displayValue || "Select a date"}</span>
+        <span className="whitespace-nowrap truncate mr-1">{displayValue || "Select a date"}</span>
         <svg
           className="w-[4vw] h-[4vw] md:w-4 md:h-4 shrink-0 text-white/40"
           fill="none"

@@ -100,14 +100,14 @@ export default function LocationAddress({ location = "hitchin" }) {
 
   return (
     <section>
-      <div className="flex justify-center items-center md:min-h-[70vh] lg:min-h-[75vh] xl:min-h-[90vh] mt-6">
+      <div className="flex justify-center items-center md:min-h-0 lg:min-h-0 xl:min-h-[75vh] mt-6">
         <div
-          className="bg-[#121212] rounded-[18px] px-[6vw] md:px-[5vw] py-[8vw] md:py-[4vw] gap-[8vw] md:gap-[2vw] flex flex-col md:flex-row shadow-lg h-auto md:min-h-[500px] xl:h-[77vh] w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] xl:max-w-7xl"
+          className="bg-[#121212] rounded-[18px] px-[6vw] md:px-[4vw] py-[8vw] md:py-[4vw] lg:py-[4vw] gap-[8vw] md:gap-[4vw] flex flex-col md:flex-row shadow-lg h-auto md:min-h-0 lg:min-h-0 xl:min-h-[500px] xl:h-[77vh] w-[90vw] md:w-[90vw] lg:w-[80vw] xl:w-[75vw] xl:max-w-7xl"
           style={{ border: "1px solid #333" }}
         >
           {/* Left Side (Info) */}
           <div
-            className="flex flex-col w-full md:w-[55%] lg:w-[50%] pr-0 md:pr-4 lg:pr-[2vw] mr-0 md:mr-0 lg:mr-[1vw]"
+            className="flex flex-col w-full md:w-[48%] lg:w-[48%] pr-0 md:pr-4 lg:pr-[2vw] mr-0 md:mr-0 lg:mr-[1vw]"
             style={{ borderRadius: "0.6vw", background: "transparent" }}
           >
             <div
@@ -116,8 +116,8 @@ export default function LocationAddress({ location = "hitchin" }) {
             >
               {data.name}
             </div>
-            
-            <div className="flex flex-col gap-6 mt-8 md:mt-10 mb-6 font-peakers">
+
+            <div className="flex flex-col gap-6 mt-8 md:mt-4 lg:mt-10 mb-6 font-peakers">
               <div className="flex items-center gap-[4vw] md:gap-4">
                 <svg
                   className="w-[6vw] h-[7.5vw] md:w-[24px] md:h-[30px] min-w-[20px]"
@@ -149,9 +149,9 @@ export default function LocationAddress({ location = "hitchin" }) {
                 </svg>
                 <div className="text-[#e3e3e5] text-[4vw] md:text-[18px] lg:text-[20px] xl:text-[1.1vw] whitespace-pre-line font-medium leading-relaxed">
                   {location.toLowerCase().includes("hitchin") &&
-                  (data.hours === "Monday - Sunday" || !data.hours) ? (
+                    (data.hours === "Monday - Sunday" || !data.hours) ? (
                     <>
-                      Monday – Sunday: 12 PM - 10 PM                  
+                      Monday – Sunday: 12 PM - 10 PM
                     </>
                   ) : location.toLowerCase().includes("stevenage") ? (
                     <>
@@ -166,9 +166,9 @@ export default function LocationAddress({ location = "hitchin" }) {
                   )}
                 </div>
               </div>
-</div>
+            </div>
             <br />
-            <div className="flex items-center gap-[4vw] md:gap-[1.5vw] mb-6 md:mb-10">
+            <div className="flex items-center gap-[4vw] md:gap-[1.5vw] mb-6 md:mb-4 lg:mb-10">
               <svg
                 className="w-[7vw] h-[7vw] md:w-[30px] md:h-[30px] min-w-[26px]"
                 viewBox="0 0 23 23"
@@ -191,7 +191,7 @@ export default function LocationAddress({ location = "hitchin" }) {
               <HeaderActionButton
                 href={data.clickCollectUrl}
                 wrapperClassName="w-full md:w-auto"
-                className="w-full md:w-auto text-center px-[4vw] md:px-[2.4vw] lg:px-[2.8vw] py-[3vw] md:py-[15px] text-[4vw] md:text-[16px] lg:text-[18px] tracking-wide whitespace-nowrap font-black"
+                className="w-full md:w-auto text-center px-[4vw] md:px-[2.4vw] lg:px-[2.8vw] py-[3vw] md:py-[15px] text-[4vw] md:text-[14px] lg:text-[18px] tracking-wide whitespace-nowrap font-black"
                 bgColor="bg-white"
                 textColor="text-black"
                 borderColor="border-white"
@@ -215,7 +215,7 @@ export default function LocationAddress({ location = "hitchin" }) {
 
           {/* Map: interactive so users can pan, zoom, and select locations */}
           <div
-            className="map-interactive h-[40vh] md:h-[58vh] w-full md:w-[50%] rounded-[2vw] md:rounded-[0.6vw] flex items-center justify-center mt-[4vw] md:mt-0 relative overflow-hidden"
+            className="map-interactive h-[40vh] md:h-auto md:aspect-square lg:h-auto lg:aspect-square xl:h-[58vh] xl:aspect-auto w-full md:w-[48%] lg:w-[48%] rounded-[2vw] md:rounded-[0.6vw] flex items-center justify-center mt-[4vw] md:mt-0 relative overflow-hidden"
             style={{
               border: "1px solid #333",
               pointerEvents: "auto",

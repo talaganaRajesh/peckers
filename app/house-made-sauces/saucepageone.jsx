@@ -326,7 +326,7 @@ export default function SaucePageOne({ initialData = [] }) {
         */}
         <div
           className="fixed md:absolute left-1/2 -translate-x-1/2
-                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-auto md:bottom-[-25%] lg:top-[25rem] lg:bottom-auto xl:top-[13.5rem]
+                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-auto md:bottom-[-25%] lg:top-[25rem] lg:bottom-auto xl:top-[13.5rem] xl:mt-[2vw]
                       w-[190vw] h-[190vw]
                       sm:w-[160vw] sm:h-[160vw]
                       md:w-[110vw] md:h-[110vw]
