@@ -80,7 +80,7 @@ const Footer = ({ preloadedData = null }) => {
   ];
 
   const logoUrl = data.logo ? urlFor(data.logo).url() : null;
-  const bottomLogoUrl = data.bottomLogo ? urlFor(data.bottomLogo).url() : null;
+
 
   const resolveFooterHref = (url, title = "") => {
     const raw = (url || "").trim();

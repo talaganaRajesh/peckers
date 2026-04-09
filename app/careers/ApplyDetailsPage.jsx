@@ -73,7 +73,7 @@ export default function ApplyDetailsPage({ initialData }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full md:w-[88%] lg:w-[88%] border border-gray-700 p-[8vw] md:p-[5vw] lg:p-[4vw] text-white"
+        className="w-full md:w-[94%] lg:w-[94%] border border-gray-700 p-[8vw] md:p-[5vw] lg:p-[4vw] text-white"
       >
         {/* Top Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-[3vh] gap-[2vh] md:gap-[3vw]">
