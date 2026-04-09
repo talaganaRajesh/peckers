@@ -21,7 +21,7 @@ export default function MobileBottomBar() {
   return (
     <div className="md:hidden fixed bottom-0 left-0 w-full bg-transparent shadow-none flex items-center gap-2 min-[375px]:gap-3 px-2 min-[375px]:px-4 py-3 z-50 pb-[calc(14px+env(safe-area-inset-bottom))]">
       <a
-        href={settings?.clickCollectUrl || "#"}
+        href="https://peckers.vmos.io/store/store-selection?app=online"
         target="_blank"
         rel="noopener noreferrer"
         className="flex-1 flex items-center justify-center gap-1.5 min-[375px]:gap-2 bg-white text-black py-2.5 sm:py-3 rounded-xl text-[12px] min-[375px]:text-[13px] sm:text-[15px] font-black active:scale-95 transition-transform shadow-md tracking-wide sm:tracking-wider whitespace-nowrap px-1"

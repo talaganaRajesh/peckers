@@ -64,7 +64,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
         </div>
       ) : null}
       <div className="flex gap-[3vw] md:gap-3 mt-6">
-        <a href={settings?.clickCollectUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-[4vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">Click & Collect</a>
+        <a href="https://peckers.vmos.io/store/store-selection?app=online" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-[4vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">Click & Collect</a>
         <a href={settings?.deliveryUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-[5vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">
           Delivery
           <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[3vw] h-auto md:w-[18px]">
@@ -85,8 +85,8 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
             })()}
           </div>
           <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
-            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" 
-              ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`) 
+            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-"
+              ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`)
               : "— kcal"}
             <br />
             {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—"
@@ -113,7 +113,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
           <div className="flex items-center gap-1.5 mt-1 h-[1.1em]">{renderSpiceLevel()}</div>
         </div>
       </div>
-      {['BURGERS','WRAPS','RICE BOWLS','SALAD BOWLS','RICE & SALAD BOWLS','RICE BOWLS & SALAD BOWLS','RICE AND SALAD BOWLS'].includes((categoryName || "").toUpperCase()) && (
+      {['BURGERS', 'WRAPS', 'RICE BOWLS', 'SALAD BOWLS', 'RICE & SALAD BOWLS', 'RICE BOWLS & SALAD BOWLS', 'RICE AND SALAD BOWLS'].includes((categoryName || "").toUpperCase()) && (
         <div className="w-full flex justify-center pt-2 pb-2 text-center px-[5vw]">
           <div className="text-white font-peakers text-[4vw] md:text-[22px] font-normal transition-all duration-300">
             {(() => {
@@ -146,7 +146,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
           </div>
         </div>
       )}
-      {['BURGERS','WRAPS','RICE BOWLS','SALAD BOWLS','RICE & SALAD BOWLS','RICE BOWLS & SALAD BOWLS','RICE AND SALAD BOWLS','SALAD BOWL','RICE BOWL'].includes(categoryName?.toUpperCase?.() || '') && (
+      {['BURGERS', 'WRAPS', 'RICE BOWLS', 'SALAD BOWLS', 'RICE & SALAD BOWLS', 'RICE BOWLS & SALAD BOWLS', 'RICE AND SALAD BOWLS', 'SALAD BOWL', 'RICE BOWL'].includes(categoryName?.toUpperCase?.() || '') && (
         <div className="w-full flex justify-center pt-0 pb-2 text-center px-[5vw]">
           <span className="text-[#F2DF0D] opacity-80 font-neuzeit text-[2.8vw] md:text-[14px] lg:text-[15px] xl:text-[1.35vw] tracking-3 font-normal">
             Can also be made into a veggie option
