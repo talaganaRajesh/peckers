@@ -174,11 +174,11 @@ export default function Navbar({ preloadedSettings = null }) {
             </div>
           </div>
         </div>
-        <Link href="/the-journey" className="whitespace-nowrap navbar-link">
-          THE JOURNEY
-        </Link>
         <Link href="/rewards" className="whitespace-nowrap navbar-link">
           REWARDS
+        </Link>
+        <Link href="/the-journey" className="whitespace-nowrap navbar-link">
+          THE JOURNEY
         </Link>
         <Link
           href="/careers"
@@ -321,11 +321,11 @@ export default function Navbar({ preloadedSettings = null }) {
               </div>
             )}
           </div>
-          <Link href="/the-journey" onClick={() => setOpen(false)}>
-            THE JOURNEY
-          </Link>
           <Link href="/rewards" onClick={() => setOpen(false)}>
             REWARDS
+          </Link>
+          <Link href="/the-journey" onClick={() => setOpen(false)}>
+            THE JOURNEY
           </Link>
           <Link href="/careers" onClick={() => setOpen(false)}>
             CAREERS
