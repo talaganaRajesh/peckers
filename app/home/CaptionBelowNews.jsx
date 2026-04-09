@@ -3,11 +3,11 @@ export default function CaptionBelowNews({
 }) {
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[120vw] md:w-[80vw] flex flex-col items-center pt-0 pb-4 md:pb-0 md:pt-3">
+      <div className="w-full flex flex-col items-center pt-0 pb-4 md:pb-0 md:pt-3">
         <div
           className="relative flex items-center justify-center md:my-[0.6vw]"
           style={{
-            width: "80%",
+            width: "97%",
             marginLeft: "auto",
             marginRight: "auto",
             height: "2.5px",
@@ -16,7 +16,7 @@ export default function CaptionBelowNews({
           <div
             className="absolute top-0 h-full bg-[#fff3] origin-center"
             style={{
-              width: "140%",
+              width: "100%",
               borderBottom: "2.5px solid #fff3",
               borderRadius: 2,
               pointerEvents: "none",

@@ -129,7 +129,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                     }
                     : {}
                 }
-                className={`relative z-130 px-[6vw] md:px-[1.35vw] py-[6vw] md:py-[1.22vw] rounded-[4vw] md:rounded-[0.95vw] flex flex-col ${alignment} ${offset} w-[80vw] md:w-[19.2vw] h-auto md:h-[11.8vw] border
+                className={`relative z-130 px-[6vw] md:px-[1.35vw] py-[6vw] md:py-[1.22vw] rounded-[4vw] md:rounded-[0.95vw] flex flex-col ${alignment} ${offset} w-[80vw] md:w-[19.2vw] h-auto md:min-h-[11.8vw] border
   ${isHighlighted
                     ? "bg-[#121212] border-yellow-500/60"
                     : `bg-[#0a0a0a] ${item.borderStyle || "border-zinc-800"}`
@@ -146,7 +146,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                   {item.title}
                 </h3>
 
-                <p className="text-white font-sans text-[3vw] md:text-[14px] lg:text-[0.92vw] leading-relaxed font-medium">
+                <p className="text-white font-sans text-[3vw] md:text-[14px] lg:text-[0.92vw] leading-tight font-medium">
                   {item.description}
                 </p>
               </motion.div>
