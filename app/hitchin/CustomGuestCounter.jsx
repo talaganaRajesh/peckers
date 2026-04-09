@@ -35,7 +35,7 @@ export default function CustomGuestCounter({ value, onChange, disabled }) {
 
   return (
     <div
-      className={`flex items-center justify-between bg-[#111111] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-[0.6rem] transition ${
+      className={`flex items-center justify-between bg-[#111111] border border-[#1F2937] rounded-[2vw] md:rounded-xl px-[4vw] md:px-6 py-[3vw] md:py-[0.6rem] lg:py-0 lg:h-[64px] transition ${
         disabled ? "opacity-50" : ""
       }`}
     >
