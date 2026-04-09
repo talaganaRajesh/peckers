@@ -288,7 +288,7 @@ export default function SaucePageOne({ initialData = [] }) {
                 {/* NUTRITIONAL BADGES - ANIMATED CAPSULE */}
                 {nutritionItems.length > 0 && (
                   <div className="flex flex-col items-center">
-                    <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                    <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[40px] lg:h-[2.2vw] xl:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[260px] lg:w-[13vw] xl:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={`nutri-${nutritionIndex}-${currentSauce._id}`}
@@ -326,10 +326,10 @@ export default function SaucePageOne({ initialData = [] }) {
         */}
         <div
           className="fixed md:absolute left-1/2 -translate-x-1/2
-                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-80 lg:top-[25rem] xl:top-[13.5rem]
+                      top-[min(46vh,19rem)] sm:top-[min(46vh,19rem)] md:top-auto md:bottom-[-25%] lg:top-[25rem] lg:bottom-auto xl:top-[13.5rem]
                       w-[190vw] h-[190vw]
                       sm:w-[160vw] sm:h-[160vw]
-                      md:w-[75vw] md:h-[75vw]
+                      md:w-[110vw] md:h-[110vw]
                       lg:w-[62vw] lg:h-[65vw] 
                       xl:w-[70vw] xl:h-[70vw]
                       flex items-center justify-center z-10 pointer-events-none"
@@ -448,7 +448,7 @@ export default function SaucePageOne({ initialData = [] }) {
         {/*
               ─── ARROW BUTTONS ───
       */}
-        <div className="absolute top-[63%] sm:top-[65%] md:top-auto bottom-auto md:bottom-[7%] lg:bottom-[8%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[96%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
+        <div className="absolute top-[63%] sm:top-[65%] md:top-[60%] lg:top-auto bottom-auto md:bottom-auto lg:bottom-[8%] xl:bottom-[18%] w-[94%] sm:w-[92%] md:w-[90%] lg:w-[92%] xl:w-[88%] left-1/2 -translate-x-1/2 flex justify-between items-center z-40 pointer-events-none">
           <button
             onClick={prevSlide}
             className="group pointer-events-auto transition-all duration-300 active:scale-95"
