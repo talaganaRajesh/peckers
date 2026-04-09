@@ -54,7 +54,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full h-auto md:min-h-[60vh] lg:min-h-[75vh] flex flex-col ${
+      className={`w-full h-auto md:h-[480px] lg:min-h-[75vh] flex flex-col ${
         isAlternate ? "md:flex-row-reverse" : "md:flex-row"
       } bg-black overflow-hidden relative shadow-inner`}
     >
@@ -135,7 +135,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
           {/* SCROLLABLE TEXT CONTENT */}
           <div
             ref={scrollableRef}
-            className="w-full flex-1 overflow-y-auto custom-scrollbar pr-[2vw] max-h-[60vw] md:max-h-none md:min-h-0"
+            className="w-full flex-1 overflow-y-auto custom-scrollbar pr-[2vw] max-h-[60vw] md:max-h-[260px] lg:max-h-none md:min-h-0"
           >
             <div className="max-w-[90vw] md:max-w-full pb-[2vw]">
               <p className="text-[#9CA3AF] font-bold w-full text-[3.8vw] leading-[5.5vw] md:text-[18px] md:leading-[28px] lg:text-[20px] lg:leading-[32px] xl:text-[1.1vw] xl:leading-[1.8vw] font-sans mb-[2vw] md:mb-[1vw]">
