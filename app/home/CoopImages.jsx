@@ -57,11 +57,11 @@ export default function CoopImages({ locations = [] }) {
   const STEVENAGE_IMG = stevenage?.image?.asset?.url || null;
 
   return (
-    <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[8vw] md:gap-[2vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-center lg:justify-between items-stretch px-[5vw] md:px-[4vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[10vw] md:pb-[6vw] lg:py-[7vw] xl:py-[3.5vw]">
+    <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[8vw] md:gap-[2vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-center lg:justify-between items-stretch px-[5vw] md:px-[1.4vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[10vw] md:pb-[6vw] lg:py-[7vw] xl:py-[3.5vw]">
       {/* Hitchin Mobile & Tablet */}
       <Link
         href="/hitchin"
-        className="group flex lg:hidden relative w-full md:w-[46%] h-[50vw] md:h-[36vw] rounded-[3vw] md:rounded-[2vw] overflow-hidden shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
+        className="group flex lg:hidden relative w-full md:w-[48.5%] h-[50vw] md:h-[36vw] rounded-[3vw] md:rounded-[2vw] overflow-hidden shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
       >
         {HITCHIN_IMG && (
           <Image
@@ -107,7 +107,7 @@ export default function CoopImages({ locations = [] }) {
       {/* Stevenage Mobile & Tablet */}
       <Link
         href="/stevenage"
-        className="group flex lg:hidden relative w-full md:w-[46%] h-[50vw] md:h-[36vw] rounded-[3vw] md:rounded-[2vw] overflow-hidden shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
+        className="group flex lg:hidden relative w-full md:w-[48.5%] h-[50vw] md:h-[36vw] rounded-[3vw] md:rounded-[2vw] overflow-hidden shadow-lg border border-[#333] transition-all duration-300 active:scale-95"
       >
         {STEVENAGE_IMG && (
           <Image
@@ -151,7 +151,7 @@ export default function CoopImages({ locations = [] }) {
       </Link>
 
       {/* Third Card */}
-      <div className="coop-card w-full md:w-[94%] lg:w-[31vw] xl:w-[35vw] h-[60vw] md:h-[36vw] lg:h-[22vw] xl:h-[19vw] bg-[#2222] rounded-[3vw] md:rounded-[2vw] lg:rounded-[1.5vw] xl:rounded-lg flex flex-col items-center justify-center border border-[#383838] px-[4vw] md:px-[6vw] lg:px-[2vw] xl:px-[1vw] py-[6vw] md:py-[4vw] lg:py-[1.5vw] xl:py-[1vw] relative overflow-hidden">
+      <div className="coop-card w-full md:w-full lg:w-[31vw] xl:w-[35vw] h-[60vw] md:h-[36vw] lg:h-[22vw] xl:h-[19vw] bg-[#2222] rounded-[3vw] md:rounded-[2vw] lg:rounded-[1.5vw] xl:rounded-lg flex flex-col items-center justify-center border border-[#383838] px-[4vw] md:px-[6vw] lg:px-[2vw] xl:px-[1vw] py-[6vw] md:py-[4vw] lg:py-[1.5vw] xl:py-[1vw] relative overflow-hidden">
         {!submitted ? (
           <>
             <span

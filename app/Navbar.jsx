@@ -77,7 +77,7 @@ export default function Navbar({ preloadedSettings = null }) {
   return (
     <nav
       id="main-navbar"
-      className={`sticky top-0 z-9999 flex items-center px-4 md:px-[2vw] lg:px-[2.5vw] xl:px-[1.8vw] bg-black text-white font-sans transition-all duration-300 ease-in-out ${scrolled
+      className={`sticky top-0 z-9999 flex items-center px-4 md:px-[1vw] lg:px-[2.5vw] xl:px-[1.8vw] bg-black text-white font-sans transition-all duration-300 ease-in-out ${scrolled
         ? "py-2 md:py-[0.5vw] lg:py-[0.6vw] xl:py-[0.2vw]"
         : "py-4 md:py-[1.2vw] lg:py-[1.5vw] xl:py-[.4vw]"
         }`}
@@ -104,7 +104,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Desktop Center Links */}
       <div
-        className="hidden md:flex flex-1 md:text-[14px] lg:text-[1.4vw] xl:text-[1.5vw] justify-center md:tracking-[.05vw] lg:tracking-[.15vw] xl:tracking-[.2vw] font-semibold md:gap-[2vw] lg:gap-[2.5vw] xl:gap-[2.7vw]"
+        className="hidden md:flex flex-1 md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         <Link href="/menu" className="whitespace-nowrap navbar-link">
@@ -177,9 +177,12 @@ export default function Navbar({ preloadedSettings = null }) {
         <Link href="/the-journey" className="whitespace-nowrap navbar-link">
           THE JOURNEY
         </Link>
+        <Link href="/rewards" className="whitespace-nowrap navbar-link">
+          REWARDS
+        </Link>
         <Link
           href="/careers"
-          className="whitespace-nowrap navbar-link mr-[1vw] lg:mr-[1.2vw] xl:mr-[3vw]"
+          className="whitespace-nowrap navbar-link mr-[0.7vw] lg:mr-[0.9vw] xl:mr-[1.6vw]"
         >
           CAREERS
         </Link>
@@ -232,7 +235,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Mobile Menu */}
       <div
-        className={`absolute left-0 w-full bg-black flex flex-col items-center justify-start text-xl tracking-wider transition-all duration-500 ease-in-out overflow-hidden md:hidden z-40`}
+        className={`absolute left-0 w-full bg-black flex flex-col items-center justify-start text-lg tracking-wider transition-all duration-500 ease-in-out overflow-hidden md:hidden z-40`}
         style={{
           fontFamily: "var(--font-peakers)",
           top: "100%",
@@ -242,7 +245,7 @@ export default function Navbar({ preloadedSettings = null }) {
           paddingBottom: open ? "2.5rem" : "0px",
         }}
       >
-        <div className="flex flex-col items-center gap-8 w-full">
+        <div className="flex flex-col items-center gap-6 w-full">
           <Link href="/menu" onClick={() => setOpen(false)}>
             MENU
           </Link>
@@ -320,6 +323,9 @@ export default function Navbar({ preloadedSettings = null }) {
           </div>
           <Link href="/the-journey" onClick={() => setOpen(false)}>
             THE JOURNEY
+          </Link>
+          <Link href="/rewards" onClick={() => setOpen(false)}>
+            REWARDS
           </Link>
           <Link href="/careers" onClick={() => setOpen(false)}>
             CAREERS

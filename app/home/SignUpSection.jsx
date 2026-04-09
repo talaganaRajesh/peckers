@@ -36,11 +36,11 @@ export default function SignUpSection({ initialData = null }) {
 
   return (
     <div
-      className="w-full flex justify-center items-center pt-0 pb-[6vw] md:pt-0 lg:pt-0 xl:pt-0 md:pb-[8vw] lg:pb-[4vw] xl:pb-[2.5vw] px-[5vw] md:px-[6vw] lg:px-[4vw] xl:px-[2vw] border-b border-[#262626]"
+      className="w-full flex justify-center items-center pt-0 pb-[5vw] md:pb-[6vw] lg:pb-[3vw] xl:pb-[2.5vw] px-[3.5vw] md:px-[4vw] lg:px-[3vw] xl:px-[2vw] border-b border-[#262626]"
       style={{ overflow: "visible" }}
     >
       <div
-        className="w-[101%] mx-auto rounded-[2.5vw] md:rounded-[3vw] lg:rounded-[1.5vw] xl:rounded-[0.9vw] shadow-lg flex flex-col items-center justify-center p-[5vw] md:p-[8vw_4vw] lg:p-[4vw_2vw] xl:p-[2.2vw_1.5vw] min-h-[40vw] md:min-h-[45vw] lg:min-h-[25vw] xl:min-h-[20vw]"
+        className="w-full max-w-7xl mx-auto rounded-[2.5vw] md:rounded-[3vw] lg:rounded-[1.5vw] xl:rounded-[0.9vw] shadow-lg flex flex-col items-center justify-center p-[4vw] md:p-[5vw_3vw] lg:p-[4vw_2vw] xl:p-[2.2vw_1.5vw] min-h-[38vw] md:min-h-[40vw] lg:min-h-[25vw] xl:min-h-[20vw]"
         style={{
           backgroundImage: `url('${bgImageUrl}')`,
           backgroundSize: "cover",
@@ -53,14 +53,14 @@ export default function SignUpSection({ initialData = null }) {
         }}
       >
         <h2
-          className="text-white px-[2vw] font-bold text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] mb-[1.5vw] md:mb-[2.5vw] lg:mb-[1.5vw] xl:mb-[0.5vw] leading-tight font-sans text-center"
+          className="text-white px-[2vw] font-bold text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] mb-[1.2vw] md:mb-[2vw] lg:mb-[1.5vw] xl:mb-[0.5vw] leading-tight font-sans text-center"
           style={{ letterSpacing: "0.04em", fontFamily: "var(--font-peakers)" }}
         >
           {data.heading || "JOIN THE FAMILY"}
         </h2>
 
         <p
-          className="text-[#e7e7e7e0] text-[3.5vw] sm:text-[3vw] md:text-[3.5vw] lg:text-[2vw] xl:text-[1.35vw] font-sans mb-[2vw] md:mb-[3vw] lg:mb-[1vw] xl:mb-[0.5vw] mt-[0.5vw] md:mt-[1vw] lg:mt-0 text-center max-w-[90vw] md:max-w-[80vw] lg:max-w-[60vw] xl:max-w-max"
+          className="text-[#e7e7e7e0] text-[3.5vw] sm:text-[3vw] md:text-[3.5vw] lg:text-[2vw] xl:text-[1.35vw] font-sans mb-[1.5vw] md:mb-[2.5vw] lg:mb-[1vw] xl:mb-[0.5vw] mt-[0.5vw] md:mt-[1vw] lg:mt-0 text-center max-w-[95vw] md:max-w-[80vw] lg:max-w-[60vw] xl:max-w-max"
           style={{
             fontWeight: 300,
             letterSpacing: "0.01em",
@@ -74,7 +74,7 @@ export default function SignUpSection({ initialData = null }) {
 
         <div style={{ position: "relative", width: "fit-content" }}>
           <button
-            className="bg-black text-white px-[6vw] md:px-[8vw] lg:px-[3vw] xl:px-[2vw] py-[3vw] md:py-[4vw] lg:py-[1.5vw] xl:py-[1.2vw] rounded-[2.5vw] md:rounded-[3vw] lg:rounded-[1vw] xl:rounded-[0.8vw] font-mono text-[3.2vw] md:text-[3.5vw] lg:text-[1.5vw] xl:text-[1.15vw] tracking-[0.07em] transition-all duration-150 hover:bg-[#232323] hover:scale-[1.04] focus:outline-none mx-auto relative overflow-hidden border-0 border-white"
+            className="bg-black text-white px-[5vw] md:px-[6vw] lg:px-[3vw] xl:px-[2vw] py-[2.5vw] md:py-[3.5vw] lg:py-[1.5vw] xl:py-[1.2vw] rounded-[2.5vw] md:rounded-[3vw] lg:rounded-[1vw] xl:rounded-[0.8vw] font-mono text-[3.2vw] md:text-[3.5vw] lg:text-[1.5vw] xl:text-[1.15vw] tracking-[0.07em] transition-all duration-150 hover:bg-[#232323] hover:scale-[1.04] focus:outline-none mx-auto relative overflow-hidden border-0 border-white"
             style={{
               letterSpacing: "0.11em",
               fontWeight: 500,

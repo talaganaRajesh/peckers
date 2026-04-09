@@ -391,16 +391,15 @@ const Footer = ({ preloadedData = null }) => {
       {/* Brand Bottom Logo */}
 
       <div className="flex-1 flex items-center">
-        <div className="w-full flex justify-center items-center py-12 md:py-24 bg-black">
-          <div className="relative max-w-[98%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
-            {bottomLogoUrl && (
-              <Image
-                src={bottomLogoUrl}
-                alt="Peckers Logo"
-                fill
-                className="object-contain"
-              />
-            )}
+        <div className="w-full flex justify-center items-center py-2 md:py-4 bg-black">
+          <div className="relative max-w-[100%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
+            <Image
+                        src="/Peckers Logo 1 [Vectorized].svg"
+                        alt="Peckers Logo"
+                        fill
+                        className="object-contain"
+                        priority
+                      />
           </div>
         </div>
       </div>

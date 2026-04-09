@@ -77,6 +77,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
           <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">
             {(() => {
               const key = (categoryName || "").toUpperCase();
+              if (key.includes("MEAL BOX")) return "Nutrition (Per Meal)";
               if (key.includes("RICE BOWL")) return "Nutrition (Per Rice Bowl)";
               if (key.includes("SALAD BOWL")) return "Nutrition (Per Salad Bowl)";
               if (key.includes("WRAP")) return "Nutrition (Per Wrap)";
