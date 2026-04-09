@@ -109,12 +109,12 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
         }
         @media (min-width: 768px) {
           .card-slot-m2 { transform: translate(calc(-50% - 97vw), -50%) rotateY(45deg) scale(0.6); }
-          .card-slot-m1 { transform: translate(calc(-50% - 28vw), -50%) rotate(-5deg) scale(0.92); }
-          .card-slot-1  { transform: translate(calc(-50% + 28vw), -50%) rotate(5deg) scale(0.92); }
+          .card-slot-m1 { transform: translate(calc(-50% - 33vw), -50%) rotate(-5deg) scale(0.92); }
+          .card-slot-1  { transform: translate(calc(-50% + 33vw), -50%) rotate(5deg) scale(0.92); }
           .card-slot-2  { transform: translate(calc(-50% + 97vw), -50%) rotateY(-45deg) scale(0.6); }
           .latest-card {
-             width: 32vw;
-             height: 45vw;
+             width: 40vw;
+             height: 56vw;
              border-radius: 2vw;
           }
         }

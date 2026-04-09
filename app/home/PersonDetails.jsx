@@ -11,7 +11,7 @@ export default function PersonDetails({ data = null }) {
   const resHeading = headingParts.join(" ");
 
   return (
-    <div className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-stretch justify-center mt-[8vw] md:mt-[8vw] lg:mt-[9vw] xl:mt-[5.5vw] gap-[8vw] md:gap-[8vw] lg:gap-[2vw] box-border px-[5vw] md:px-[6vw] lg:px-[2vw] mb-5 md:mb-0">
+    <div className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-stretch justify-center mt-[8vw] md:mt-[4vw] lg:mt-[9vw] xl:mt-[5.5vw] gap-[8vw] md:gap-[8vw] lg:gap-[2vw] box-border px-[5vw] md:px-[6vw] lg:px-[2vw] mb-5 md:mb-0">
       <div className="shrink-0 w-full lg:w-[43vw] xl:w-[44vw]">
         {data.imageUrl && (
           <Image

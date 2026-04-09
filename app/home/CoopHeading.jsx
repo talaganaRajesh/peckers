@@ -9,7 +9,7 @@ export default function CoopHeading({
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-[10vw] md:pt-[15vw] lg:pt-[12vw] xl:pt-[5.5vw] pb-[5vw] md:pb-0 xl:pb-0 flex flex-col items-start text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-[10vw] md:pt-[8vw] lg:pt-[12vw] xl:pt-[5.5vw] pb-[5vw] md:pb-0 xl:pb-0 flex flex-col items-start text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
