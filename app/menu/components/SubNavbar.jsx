@@ -50,7 +50,7 @@ export default function SubNavbar() {
   }, [scrollActiveToCenter]);
 
   return (
-    <div className="w-full flex justify-center px-4 md:px-0 z-50 bg-black pt-4 md:pt-2 lg:pt-4 xl:pt-6">
+    <div className="w-full flex justify-center px-4 md:px-0 z-50 bg-black">
       <nav
         className="subnavbar relative group w-full max-w-7xl"
         style={{ color: "white" }}
@@ -100,7 +100,7 @@ export default function SubNavbar() {
 
         <div
           ref={navRef}
-          className="flex font-sans gap-[6vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start items-center overflow-x-auto no-scrollbar px-2 md:px-14 pt-[4vw] sm:pt-[4vw] md:pt-4 lg:pt-6 xl:pt-[1.5vw] scroll-smooth"
+          className="flex font-sans gap-[4vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start lg:justify-between items-center overflow-x-auto no-scrollbar px-2 md:px-14 py-4 md:py-6 lg:py-8 xl:py-[1.5vw] scroll-smooth w-full"
           style={{
             fontFamily: "var(--font-peakers)",
             scrollbarWidth: "none",
@@ -110,7 +110,7 @@ export default function SubNavbar() {
           {navbarData.map((item, idx) => {
             const title = item.title?.toUpperCase() || "";
             let href = item.link || "#";
- 
+
             if (title === "BURGERS") href = "/menu";
             else if (title === "WRAPS") href = "/menu/wraps";
             else if (title === "WINGS") href = "/menu/wings";
@@ -137,11 +137,10 @@ export default function SubNavbar() {
                 key={idx}
                 ref={(el) => (itemRefs.current[idx] = el)}
                 href={href}
-                className={`whitespace-nowrap pb-1 md:pb-1 tracking-wider text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] ${
-                  isActive
-                    ? "border-b-2 border-red-500"
-                    : "opacity-70 hover:opacity-100 transition-opacity"
-                }`}
+                className={`whitespace-nowrap pb-1 md:pb-1 tracking-wider text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] border-b-2 ${isActive
+                  ? "border-red-500"
+                  : "border-transparent opacity-70 hover:opacity-100 transition-opacity"
+                  }`}
               >
                 {item.title}
               </Link>
