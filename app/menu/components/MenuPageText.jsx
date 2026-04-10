@@ -11,15 +11,15 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
   const hasIngredients = ingredientsText !== "" && ingredientsText !== "-" && ingredientsText !== "—";
 
   const hasNutrition = (itemData.calories && itemData.calories !== "—" && itemData.calories !== "-") ||
-                       (itemData.protein && itemData.protein !== "—" && itemData.protein !== "-") ||
-                       (itemData.carbs && itemData.carbs !== "—" && itemData.carbs !== "-") ||
-                       (itemData.fats && itemData.fats !== "—" && itemData.fats !== "-");
+    (itemData.protein && itemData.protein !== "—" && itemData.protein !== "-") ||
+    (itemData.carbs && itemData.carbs !== "—" && itemData.carbs !== "-") ||
+    (itemData.fats && itemData.fats !== "—" && itemData.fats !== "-");
 
-  const hasSpiceLevel = itemData.spiceLevel && 
-                        itemData.spiceLevel !== "—" && 
-                        itemData.spiceLevel !== "-" && 
-                        itemData.spiceLevel !== "0" && 
-                        itemData.spiceLevel !== "0/4";
+  const hasSpiceLevel = itemData.spiceLevel &&
+    itemData.spiceLevel !== "—" &&
+    itemData.spiceLevel !== "-" &&
+    itemData.spiceLevel !== "0" &&
+    itemData.spiceLevel !== "0/4";
 
   const isExcludedCategory = ['SHAKES', 'DRINKS & DESSERTS', 'DRINKS AND DESSERTS', 'DRINKS', 'DESSERTS', 'KIDS'].includes(categoryName?.toUpperCase());
 
@@ -86,43 +86,47 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
         </a>
       </div>
       <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-[6vw] md:gap-12 mt-8 text-white/90 font-mono px-[5vw] md:px-0">
-      {hasNutrition && !isExcludedCategory && (
-        <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">
-          <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">
-            {(() => {
-              const key = (categoryName || "").toUpperCase();
-              if (key.includes("MEAL BOX")) return "Nutrition (Per Meal)";
-              if (key.includes("RICE BOWL")) return "Nutrition (Per Rice Bowl)";
-              if (key.includes("SALAD BOWL")) return "Nutrition (Per Salad Bowl)";
-              if (key.includes("WRAP")) return "Nutrition (Per Wrap)";
-              if (key.includes("BURGER")) return "Nutrition (Per Burger)";
-              return "Nutrition (Per Portion)";
-            })()}
+        {hasNutrition && !isExcludedCategory && (
+          <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">
+            <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">
+              {(() => {
+                const key = (categoryName || "").toUpperCase();
+                if (key.includes("MEAL BOX")) return "Nutrition (Per Meal)";
+                if (key.includes("RICE BOWL")) return "Nutrition (Per Rice Bowl)";
+                if (key.includes("SALAD BOWL")) return "Nutrition (Per Salad Bowl)";
+                if (key.includes("WRAP")) return "Nutrition (Per Wrap)";
+                if (key.includes("BURGER")) return "Nutrition (Per Burger)";
+                return "Nutrition (Per Portion)";
+              })()}
+            </div>
+            <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
+              {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-"
+                ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`)
+                : ""}
+              {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" && <br />}
+              {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—"
+                ? (itemData.protein.toLowerCase().includes("protein") ? itemData.protein : `${itemData.protein} Protein`)
+                : ""}
+              {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—" && <br />}
+              {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—"
+                ? (itemData.carbs.toLowerCase().includes("carbs") ? itemData.carbs : `${itemData.carbs} Carbs`)
+                : ""}
+              {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—" && <br />}
+              {itemData.fats && itemData.fats !== "-" && itemData.fats !== "—"
+                ? (itemData.fats.toLowerCase().includes("fats") ? itemData.fats : `${itemData.fats} Fats`)
+                : ""}
+            </div>
           </div>
-          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
-            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-"
-              ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`)
-              : ""}
-            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" && <br />}
-            {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—"
-              ? (itemData.protein.toLowerCase().includes("protein") ? itemData.protein : `${itemData.protein} Protein`)
-              : ""}
-            {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—" && <br />}
-            {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—"
-              ? (itemData.carbs.toLowerCase().includes("carbs") ? itemData.carbs : `${itemData.carbs} Carbs`)
-              : ""}
-            {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—" && <br />}
-            {itemData.fats && itemData.fats !== "-" && itemData.fats !== "—"
-              ? (itemData.fats.toLowerCase().includes("fats") ? itemData.fats : `${itemData.fats} Fats`)
-              : ""}
-          </div>
-        </div>
-      )}
+        )}
         <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
-          <div className="text-[#575750] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">Allergens</div>
-          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem]">
-            {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
-          </div>
+          <Link href="/menu/allergens" className="group flex flex-col items-start cursor-pointer no-underline">
+            <div className="text-[#575750] group-hover:text-[#F2DF0D] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold transition-colors duration-200 decoration-[#F2DF0D]/50 underline-offset-4 decoration-1 group-hover:underline">
+              Allergens
+            </div>
+            <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] text-white">
+              {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
+            </div>
+          </Link>
         </div>
         {hasSpiceLevel && !isExcludedCategory && (
           <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
