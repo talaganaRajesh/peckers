@@ -92,11 +92,12 @@ export default function AllergensPage() {
 
         {/* PDF Viewer Section with moderate side gaps */}
         <section className="w-full min-h-[120vh] relative bg-black px-4 md:px-12 lg:px-20">
-          <div className="w-full h-full max-w-7xl mx-auto bg-white rounded shadow-2xl overflow-hidden">
+          <div className="w-full h-full max-w-7xl mx-auto bg-white rounded shadow-2xl overflow-hidden relative">
             {pdfUrl ? (
               <iframe
-                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-                className="w-full h-[120vh] border-none"
+                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                className="w-[calc(100%+40px)] h-[120vh] border-none m-0 p-0"
+                style={{ clipPath: "inset(0 40px 0 0)" }}
                 title="Allergens PDF"
                 allow="autoplay; scroll-behavior: smooth"
               />

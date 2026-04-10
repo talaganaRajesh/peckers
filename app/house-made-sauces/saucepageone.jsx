@@ -382,8 +382,8 @@ export default function SaucePageOne({ initialData = [] }) {
                         style={{
                           fontFamily: "var(--font-peakers)",
                           fontWeight: 700,
-                          fontSize: isDesktop ? "0.45rem" : "0.62rem",
-                          letterSpacing: isDesktop ? "0.015em" : "0.02em",
+                          fontSize: isDesktop ? "0.68rem" : "0.95rem",
+                          letterSpacing: isDesktop ? "0.03em" : "0.04em",
                           textTransform: "uppercase",
                           cursor: "pointer",
                           pointerEvents: "auto",
