@@ -205,7 +205,7 @@ export default function Navbar({ preloadedSettings = null }) {
         </HeaderActionButton>
 
         <HeaderActionButton
-          href="https://peckers.vmos.io/store/store-selection?app=online"
+          href="https://peckers.vmos.io/store/store-selection?app=delivery"
           className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap hover:bg-red-700 font-black"
           bgColor="bg-red-600"
           textColor="text-white"

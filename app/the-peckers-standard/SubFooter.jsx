@@ -76,8 +76,11 @@ const SubFooter = () => {
             transition={{ duration: 0.45, ease: "backOut", delay: 0.1 }}
             className="md:w-auto"
           >
-            <button
-              className="text-[#ffff] w-full md:w-auto px-[4vw] md:px-[1.6vw] py-[3.4vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4vw] md:text-[1.4vw] tracking-wide transition-all duration-300 hover:bg-[#232323] hover:scale-[1.04] relative overflow-hidden whitespace-nowrap"
+            <a
+              href="https://peckers.vmos.io/store/store-selection?app=online"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#ffff] w-full md:w-auto px-[4vw] md:px-[1.6vw] py-[3.4vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4vw] md:text-[1.4vw] tracking-wide transition-all duration-300 hover:bg-[#232323] hover:scale-[1.04] relative overflow-hidden whitespace-nowrap block text-center no-underline"
               style={{
                 fontFamily: "var(--font-neuzeit)",
                 border: "2px solid #fff",
@@ -105,7 +108,7 @@ const SubFooter = () => {
               <span style={{ position: "relative", zIndex: 3 }}>
                 CLICK & COLLECT
               </span>
-            </button>
+            </a>
           </motion.div>
 
           <motion.div
@@ -116,8 +119,11 @@ const SubFooter = () => {
             transition={{ duration: 0.45, ease: "backOut", delay: 0.2 }}
             className="md:w-auto"
           >
-            <button
-              className="text-black w-full md:w-auto px-[4vw] md:px-[2.9vw] font-bold py-[3.5vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4vw] md:text-[1.4vw] tracking-wide transition-all duration-300 hover:bg-[#ffff] bg-[#ffff] hover:scale-[1.04] relative overflow-hidden whitespace-nowrap"
+            <a
+              href="https://peckers.vmos.io/store/store-selection?app=delivery"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black w-full md:w-auto px-[4vw] md:px-[2.9vw] font-bold py-[3.5vw] md:py-[.8vw] rounded-[2vw] md:rounded-[0.8vw] text-[4vw] md:text-[1.4vw] tracking-wide transition-all duration-300 hover:bg-[#ffff] bg-[#ffff] hover:scale-[1.04] relative overflow-hidden whitespace-nowrap block text-center no-underline"
               style={{
                 fontFamily: "var(--font-neuzeit)",
                 border: "1px solid #333",
@@ -143,7 +149,7 @@ const SubFooter = () => {
                 }}
               ></span>
               <span style={{ position: "relative", zIndex: 3 }}>DELIVERY</span>
-            </button>
+            </a>
           </motion.div>
         </div>
       </motion.div>

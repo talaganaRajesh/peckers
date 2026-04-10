@@ -10,6 +10,19 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
   const ingredientsText = typeof itemData?.ingredients === "string" ? itemData.ingredients.trim() : "";
   const hasIngredients = ingredientsText !== "" && ingredientsText !== "-" && ingredientsText !== "—";
 
+  const hasNutrition = (itemData.calories && itemData.calories !== "—" && itemData.calories !== "-") ||
+    (itemData.protein && itemData.protein !== "—" && itemData.protein !== "-") ||
+    (itemData.carbs && itemData.carbs !== "—" && itemData.carbs !== "-") ||
+    (itemData.fats && itemData.fats !== "—" && itemData.fats !== "-");
+
+  const hasSpiceLevel = itemData.spiceLevel &&
+    itemData.spiceLevel !== "—" &&
+    itemData.spiceLevel !== "-" &&
+    itemData.spiceLevel !== "0" &&
+    itemData.spiceLevel !== "0/4";
+
+  const isExcludedCategory = ['SHAKES', 'DRINKS & DESSERTS', 'DRINKS AND DESSERTS', 'DRINKS', 'DESSERTS', 'KIDS'].includes(categoryName?.toUpperCase());
+
   useEffect(() => {
     const loadSettings = async () => {
       if (typeof window !== "undefined" && window.location.hostname.includes("localhost")) {
@@ -65,7 +78,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
       ) : null}
       <div className="flex gap-[3vw] md:gap-3 mt-6">
         <a href="https://peckers.vmos.io/store/store-selection?app=online" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-[4vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">Click & Collect</a>
-        <a href={settings?.deliveryUrl || "#"} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-[5vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">
+        <a href="https://peckers.vmos.io/store/store-selection?app=delivery" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-[5vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">
           Delivery
           <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[3vw] h-auto md:w-[18px]">
             <path d="M12 1L17 6L12 11M1 6H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -73,46 +86,54 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
         </a>
       </div>
       <div className="flex flex-wrap md:flex-nowrap justify-center md:justify-start gap-[6vw] md:gap-12 mt-8 text-white/90 font-mono px-[5vw] md:px-0">
-        <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">
-          <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">
-            {(() => {
-              const key = (categoryName || "").toUpperCase();
-              if (key.includes("MEAL BOX")) return "Nutrition (Per Meal)";
-              if (key.includes("RICE BOWL")) return "Nutrition (Per Rice Bowl)";
-              if (key.includes("SALAD BOWL")) return "Nutrition (Per Salad Bowl)";
-              if (key.includes("WRAP")) return "Nutrition (Per Wrap)";
-              if (key.includes("BURGER")) return "Nutrition (Per Burger)";
-              return "Nutrition (Per Portion)";
-            })()}
+        {hasNutrition && !isExcludedCategory && (
+          <div className="min-w-[150px] border-l-2 border-[#616132] pl-4">
+            <div className="text-[#c4b40a] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">
+              {(() => {
+                const key = (categoryName || "").toUpperCase();
+                if (key.includes("MEAL BOX")) return "Nutrition (Per Meal)";
+                if (key.includes("RICE BOWL")) return "Nutrition (Per Rice Bowl)";
+                if (key.includes("SALAD BOWL")) return "Nutrition (Per Salad Bowl)";
+                if (key.includes("WRAP")) return "Nutrition (Per Wrap)";
+                if (key.includes("BURGER")) return "Nutrition (Per Burger)";
+                return "Nutrition (Per Portion)";
+              })()}
+            </div>
+            <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
+              {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-"
+                ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`)
+                : ""}
+              {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-" && <br />}
+              {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—"
+                ? (itemData.protein.toLowerCase().includes("protein") ? itemData.protein : `${itemData.protein} Protein`)
+                : ""}
+              {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—" && <br />}
+              {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—"
+                ? (itemData.carbs.toLowerCase().includes("carbs") ? itemData.carbs : `${itemData.carbs} Carbs`)
+                : ""}
+              {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—" && <br />}
+              {itemData.fats && itemData.fats !== "-" && itemData.fats !== "—"
+                ? (itemData.fats.toLowerCase().includes("fats") ? itemData.fats : `${itemData.fats} Fats`)
+                : ""}
+            </div>
           </div>
-          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] leading-snug">
-            {itemData.calories && itemData.calories !== "—" && itemData.calories !== "-"
-              ? (itemData.calories.toLowerCase().includes("kcal") ? itemData.calories : `${itemData.calories} kcal`)
-              : "— kcal"}
-            <br />
-            {itemData.protein && itemData.protein !== "-" && itemData.protein !== "—"
-              ? (itemData.protein.toLowerCase().includes("protein") ? itemData.protein : `${itemData.protein} Protein`)
-              : "— Protein"}
-            <br />
-            {itemData.carbs && itemData.carbs !== "-" && itemData.carbs !== "—"
-              ? (itemData.carbs.toLowerCase().includes("carbs") ? itemData.carbs : `${itemData.carbs} Carbs`)
-              : "— Carbs"}
-            <br />
-            {itemData.fats && itemData.fats !== "-" && itemData.fats !== "—"
-              ? (itemData.fats.toLowerCase().includes("fats") ? itemData.fats : `${itemData.fats} Fats`)
-              : "— Fats"}
-          </div>
-        </div>
+        )}
         <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
-          <div className="text-[#575750] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold">Allergens</div>
-          <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem]">
-            {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
+          <Link href="/menu/allergens" className="group flex flex-col items-start cursor-pointer no-underline">
+            <div className="text-[#575750] group-hover:text-[#F2DF0D] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold transition-colors duration-200 decoration-[#F2DF0D]/50 underline-offset-4 decoration-1 group-hover:underline">
+              Allergens
+            </div>
+            <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] text-white">
+              {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
+            </div>
+          </Link>
+        </div>
+        {hasSpiceLevel && !isExcludedCategory && (
+          <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
+            <div className="text-[#c4b40a] uppercase mb-1 text-[2.5vw] md:text-[12px] tracking-wide font-bold">Spice Level</div>
+            <div className="flex items-center gap-1.5 mt-1 h-[1.1em]">{renderSpiceLevel()}</div>
           </div>
-        </div>
-        <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
-          <div className="text-[#c4b40a] uppercase mb-1 text-[2.5vw] md:text-[12px] tracking-wide font-bold">Spice Level</div>
-          <div className="flex items-center gap-1.5 mt-1 h-[1.1em]">{renderSpiceLevel()}</div>
-        </div>
+        )}
       </div>
       {['BURGERS', 'WRAPS', 'RICE BOWLS', 'SALAD BOWLS', 'RICE & SALAD BOWLS', 'RICE BOWLS & SALAD BOWLS', 'RICE AND SALAD BOWLS'].includes((categoryName || "").toUpperCase()) && (
         <div className="w-full flex justify-center pt-2 pb-2 text-center px-[5vw]">

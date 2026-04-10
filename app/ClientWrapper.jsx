@@ -110,10 +110,10 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
         className={pathname === "/house-made-sauces" ? "h-[100dvh] overflow-hidden flex flex-col" : ""}
       >
         <Navbar preloadedSettings={preloadedSettings} />
-        {pathname === "/house-made-sauces" ? (
+        {pathname === "/house-made-sauces" || pathname === "/menu/allergens" ? (
           <div
             id="main-content"
-            className={`w-full flex-1 overflow-hidden ${pathname === "/house-made-sauces" ? "![will-change:opacity,visibility]" : ""}`}
+            className={`w-full flex-1 overflow-hidden ${pathname === "/house-made-sauces" ? "![will-change:opacity,visibility]" : ""} ${pathname === "/menu/allergens" ? "h-screen" : ""}`}
           >
             {children}
           </div>
