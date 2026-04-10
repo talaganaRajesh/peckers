@@ -120,14 +120,11 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
         )}
         <div className="min-w-[105px] border-l-2 md:border-none border-[#616132] pl-4 md:pl-0">
           <Link href="/menu/allergens" className="group flex flex-col items-start cursor-pointer no-underline">
-            <div className="text-[#575750] group-hover:text-[#F2DF0D] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold transition-colors duration-200 decoration-[#F2DF0D]/50 underline-offset-4 decoration-1 group-hover:underline">
+            <div className="text-[#F2DF0D] group-hover:text-[#F2DF0D] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold transition-colors duration-200 decoration-[#F2DF0D]/50 underline-offset-4 decoration-1 group-hover:underline">
               Allergens
             </div>
-            <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] text-white">
-              {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
-            </div>
-            <div className="mt-2 text-[#F2DF0D] text-[2.2vw] md:text-[10px] font-mono uppercase tracking-[0.2em] font-bold flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
-              More Info
+            <div className="mt-2 text-[#c9c9c5] text-[2.2vw] md:text-[10px] font-mono tracking-[0.2em] font-bold flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
+              View Allergen Guide
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
