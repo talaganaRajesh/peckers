@@ -89,8 +89,16 @@ export default function SaucePageOne({ initialData = [] }) {
       .replace(/\s+/g, " ")
       .toUpperCase();
     if (title.startsWith("AYONNAISE")) title = "M" + title;
-    title = title.replace(/\s*SAUCE$/, "").trim();
-    return `• ${title} •`;
+    const baseTitle = title.replace(/\s*SAUCE$/, "").trim();
+    
+    let finalTitle = baseTitle;
+    if (baseTitle.includes("MAYO") || baseTitle.includes("MAYONNAISE")) {
+      finalTitle = "HOUSE MAYO";
+    } else if (["CHEESE", "BUFFALO", "BUFFLO", "BUFFLAO"].includes(baseTitle)) {
+      finalTitle = baseTitle + " SAUCE";
+    }
+    
+    return `• ${finalTitle} •`;
   });
 
   const ringLayout = ringLabels.reduce(
@@ -251,7 +259,17 @@ export default function SaucePageOne({ initialData = [] }) {
                 className="text-4xl sm:text-5xl md:text-[64px] lg:text-[72px] xl:text-[4vw] font-bold tracking-wide mb-2 sm:mb-3 md:mb-2"
                 style={{ fontFamily: "var(--font-peakers)" }}
               >
-                {currentSauce.title?.replace(/\s*SAUCE$/i, "").trim()}
+                {(() => {
+                  const title = currentSauce.title?.toUpperCase().trim() || "";
+                  const baseTitle = title.replace(/\s*SAUCE$/i, "").trim();
+                  if (baseTitle.includes("MAYO") || baseTitle.includes("MAYONNAISE")) {
+                    return "HOUSE MAYO";
+                  }
+                  if (["CHEESE", "BUFFALO", "BUFFLO", "BUFFLAO"].includes(baseTitle)) {
+                    return baseTitle + " SAUCE";
+                  }
+                  return baseTitle;
+                })()}
               </h1>
 
               {/* DESCRIPTION */}
