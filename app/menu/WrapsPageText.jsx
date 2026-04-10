@@ -125,7 +125,7 @@ export default function WrapsPageText({ wrapData = null }) {
             </div>
             <div className="flex gap-[3vw] md:gap-3 mt-[4vw] md:mt-5.5">
                 <a
-                    href={settings?.clickCollectUrl || "#"}
+                    href="https://peckers.vmos.io/store/store-selection?app=online"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-[4vw] py-[2vw] md:px-6 md:py-2 rounded-[.4vw] border-[1.5px] md:border-2 xl:border-[0.11vw] border-[#f2df0d] text-[#ffff] font-mono uppercase tracking-wide text-[2.8vw] md:text-[14px] lg:text-[16px] xl:text-[1vw] cursor-pointer hover:bg-[#f2df0d]/10 transition-colors duration-150 wrap-btn-cc no-underline"
@@ -139,7 +139,7 @@ export default function WrapsPageText({ wrapData = null }) {
                     Click & Collect
                 </a>
                 <a
-                    href={settings?.deliveryUrl || "#"}
+                    href="https://peckers.vmos.io/store/store-selection?app=delivery"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-[5vw] py-[2vw] md:px-7 md:py-2 rounded border-[1.5px] md:border-2 xl:border-[0.11vw] border-[#f2df0d] text-[#ffff] font-mono uppercase tracking-wide text-[2.8vw] md:text-[14px] lg:text-[16px] xl:text-[1vw] cursor-pointer hover:bg-[#f2df0d]/10 transition-colors duration-150 wrap-btn-delivery no-underline"

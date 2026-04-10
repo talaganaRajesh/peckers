@@ -189,7 +189,7 @@ export default function LocationAddress({ location = "hitchin" }) {
               style={{ fontFamily: "var(--font-neuzeit)" }}
             >
               <HeaderActionButton
-                href={data.clickCollectUrl}
+                href="https://peckers.vmos.io/store/store-selection?app=online"
                 wrapperClassName="w-full md:w-auto"
                 className="w-full md:w-auto text-center px-[4vw] md:px-[2.4vw] lg:px-[2.8vw] py-[3vw] md:py-[15px] text-[4vw] md:text-[14px] lg:text-[18px] tracking-wide whitespace-nowrap font-black"
                 bgColor="bg-white"
@@ -200,7 +200,7 @@ export default function LocationAddress({ location = "hitchin" }) {
                 CLICK & COLLECT
               </HeaderActionButton>
               <HeaderActionButton
-                href={data.deliveryUrl}
+                href="https://peckers.vmos.io/store/store-selection?app=delivery"
                 wrapperClassName="w-full md:w-auto"
                 className="w-full md:w-auto text-center px-[4vw] md:px-[3.6vw] lg:px-[4vw] py-[3vw] md:py-[15px] text-[4.2vw] md:text-[16px] lg:text-[18px] tracking-wide whitespace-nowrap hover:bg-red-700 font-black"
                 bgColor="bg-red-600"

@@ -89,12 +89,8 @@ export default function SaucePageOne({ initialData = [] }) {
       .replace(/\s+/g, " ")
       .toUpperCase();
     if (title.startsWith("AYONNAISE")) title = "M" + title;
-    if (/\bSAUCE$/.test(title)) {
-      title = title.replace(/\s*SAUCE$/, " SAUCE").trim();
-    } else {
-      title = `${title} SAUCE`;
-    }
-    return `${title} •`;
+    title = title.replace(/\s*SAUCE$/, "").trim();
+    return `• ${title} •`;
   });
 
   const ringLayout = ringLabels.reduce(
@@ -117,7 +113,7 @@ export default function SaucePageOne({ initialData = [] }) {
   const ringCenterOffsetsData = ringLayout.centers.map(
     (center) => (center / ringTotalUnits) * 100,
   );
-  const ringOffsets = ringStartOffsetsData.map((offset) => `${offset}%`);
+  const ringOffsets = ringCenterOffsetsData.map((offset) => `${offset}%`);
   const baseRotation = 90 - (ringCenterOffsetsData[0] || 0) * 3.6;
 
   const transitionToIndex = (targetIndex) => {
@@ -255,7 +251,7 @@ export default function SaucePageOne({ initialData = [] }) {
                 className="text-4xl sm:text-5xl md:text-[64px] lg:text-[72px] xl:text-[4vw] font-bold tracking-wide mb-2 sm:mb-3 md:mb-2"
                 style={{ fontFamily: "var(--font-peakers)" }}
               >
-                {currentSauce.title}
+                {currentSauce.title?.replace(/\s*SAUCE$/i, "").trim()}
               </h1>
 
               {/* DESCRIPTION */}
@@ -363,7 +359,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       <text
                         key={item.id}
                         fill="white"
-                        textAnchor="start"
+                        textAnchor="middle"
                         className={`${isActive ? "opacity-100" : "opacity-30 hover:opacity-70"} sauce-circular-text transition-opacity duration-300`}
                         style={{
                           fontFamily: "var(--font-peakers)",

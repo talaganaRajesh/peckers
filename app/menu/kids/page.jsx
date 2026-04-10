@@ -14,7 +14,7 @@ const DEFAULT_DATA = [
 export default async function KidsPage() {
     const { data } = await sanityFetch({
         query: `*[_type == "menuPage"][0] {
-        kidsCarousel[] { name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText }
+        kidsCarousel[] { name, image, boost, ingredients, allergens, availabilityText }
     }`
     });
 

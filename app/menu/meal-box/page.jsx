@@ -26,10 +26,10 @@ export default async function MealBoxPage() {
     }));
 
     return (
-        <GenericMenuPageClient 
-            initialItems={initialItems} 
-            initialNavbarData={navbarData} 
-            categoryName="MEAL BOX" 
+        <GenericMenuPageClient
+            initialItems={initialItems}
+            initialNavbarData={navbarData}
+            categoryName="MEAL BOX"
         />
     );
 }

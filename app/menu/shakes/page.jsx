@@ -10,7 +10,7 @@ export const metadata = {
 export default async function ShakesPage() {
     const { data } = await sanityFetch({
         query: `*[_type == "menuPage"][0] {
-        shakesCarousel[] { name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText }
+        shakesCarousel[] { name, image, boost, ingredients, allergens, availabilityText }
     }`
     });
 
@@ -26,10 +26,10 @@ export default async function ShakesPage() {
     }));
 
     return (
-        <GenericMenuPageClient 
-            initialItems={initialItems} 
-            initialNavbarData={navbarData} 
-            categoryName="SHAKES" 
+        <GenericMenuPageClient
+            initialItems={initialItems}
+            initialNavbarData={navbarData}
+            categoryName="SHAKES"
         />
     );
 }

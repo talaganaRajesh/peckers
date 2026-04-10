@@ -10,7 +10,7 @@ export const metadata = {
 export default async function DrinksAndDessertsPage() {
     const { data } = await sanityFetch({
         query: `*[_type == "menuPage"][0] {
-        shakesCarousel[] { name, image, boost, ingredients, protein, carbs, fats, calories, energy, allergens, spiceLevel, availabilityText }
+        shakesCarousel[] { name, image, boost, ingredients, allergens, availabilityText }
     }`
     });
 
