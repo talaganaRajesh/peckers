@@ -126,6 +126,12 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
             <div className="font-sans font-semibold text-[3.8vw] md:text-[0.95rem] text-white">
               {itemData.allergens && itemData.allergens !== "-" && itemData.allergens !== "—" ? itemData.allergens : "—"}
             </div>
+            <div className="mt-2 text-[#F2DF0D] text-[2.2vw] md:text-[10px] font-mono uppercase tracking-[0.2em] font-bold flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
+              More Info
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
           </Link>
         </div>
         {hasSpiceLevel && !isExcludedCategory && (

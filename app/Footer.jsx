@@ -112,7 +112,7 @@ const Footer = ({ preloadedData = null }) => {
     if (normalizedTitle.includes("stevenage")) return "/stevenage";
     if (normalizedTitle.includes("privacy")) return "/privacy";
     if (normalizedTitle.includes("terms")) return "/terms";
-    if (normalizedTitle.includes("allergen")) return "/allergens";
+    if (normalizedTitle.includes("allergen")) return "/menu/allergens";
     if (normalizedTitle.includes("faq")) return "/faq";
 
     return "/home";
@@ -364,7 +364,7 @@ const Footer = ({ preloadedData = null }) => {
                 </li>
                 <li>
                   <Link
-                    href="/allergens"
+                    href="/menu/allergens"
                     className="hover:underline inline-block"
                   >
                     Allergen Info
