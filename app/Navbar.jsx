@@ -77,13 +77,13 @@ export default function Navbar({ preloadedSettings = null }) {
   return (
     <nav
       id="main-navbar"
-      className={`sticky top-0 z-9999 flex items-center px-4 md:px-[1vw] lg:px-[2.5vw] xl:px-[1.8vw] bg-black text-white font-sans transition-all duration-300 ease-in-out ${scrolled
+      className={`sticky top-0 z-9999 flex items-center md:px-[1vw] lg:px-[2.5vw] xl:px-[1.8vw] bg-black text-white font-sans transition-all duration-300 ease-in-out ${scrolled
         ? "py-2 md:py-[0.5vw] lg:py-[0.6vw] xl:py-[0.2vw]"
         : "py-4 md:py-[1.2vw] lg:py-[1.5vw] xl:py-[.4vw]"
         }`}
     >
       {/* Logo Section */}
-      <div className="flex-1 flex items-center z-50">
+      <div className="flex-1 flex items-center z-50 px-4 md:px-0">
         <Link
           href="/home"
           onClick={() => setOpen(false)}
@@ -104,7 +104,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Desktop Center Links */}
       <div
-        className="hidden md:flex flex-1 md:mr-[3vw] lg:mr-[4vw] xl:mr-[3.8vw] md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
+        className="hidden md:flex flex-1 md:mr-[3vw] lg:mr-[4vw] xl:mr-[4vw] md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         <Link href="/menu" className="whitespace-nowrap navbar-link">
@@ -226,115 +226,118 @@ export default function Navbar({ preloadedSettings = null }) {
         </HeaderActionButton>
       </div>
 
-      {/* Hamburger Button (Mobile Only) */}
-      <div className="md:hidden z-50">
-        <button onClick={() => setOpen(!open)} className="text-3xl">
-          ☰
+      {/* Hamburger & Mobile CTAs */}
+      <div className="md:hidden z-[100] flex items-center pr-4">
+        <button
+          onClick={() => setOpen(!open)}
+          className="relative w-12 h-12 flex flex-col justify-center items-center focus:outline-none group"
+          aria-label="Toggle Menu"
+        >
+          <div className="flex flex-col gap-1.5 w-8">
+            <span className={`h-[3px] w-full bg-white rounded-full transition-all duration-500 ease-in-out ${open ? "rotate-45 translate-y-[9px] bg-[#F2DF0D]" : ""}`}></span>
+            <span className={`h-[3px] w-3/4 self-end bg-white rounded-full transition-all duration-300 ${open ? "opacity-0 translate-x-4" : ""}`}></span>
+            <span className={`h-[3px] w-full bg-white rounded-full transition-all duration-500 ease-in-out ${open ? "-rotate-45 -translate-y-[9px]" : ""}`}></span>
+          </div>
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown - Solid Black, Absolute to stay attached to header */}
       <div
-        className={`absolute left-0 w-full bg-black flex flex-col items-center justify-start text-lg tracking-wider transition-all duration-500 ease-in-out overflow-hidden md:hidden z-40`}
-        style={{
-          fontFamily: "var(--font-peakers)",
-          top: "100%",
-          maxHeight: open ? "600px" : "0px",
-          opacity: open ? 1 : 0,
-          paddingTop: open ? "2.5rem" : "0px",
-          paddingBottom: open ? "2.5rem" : "0px",
-        }}
+        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[85vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
-        <div className="flex flex-col items-center gap-6 w-full">
-          <Link href="/menu" onClick={() => setOpen(false)}>
-            MENU
-          </Link>
-          <div className="flex flex-col items-center w-full">
-            <button
-              type="button"
-              onClick={() => setLocationsOpen(!locationsOpen)}
-              className="w-full flex items-center justify-center gap-2 py-1"
-            >
-              LOCATIONS{" "}
-              <FaChevronDown
-                className={`text-[0.8em] transition-transform duration-300 ${locationsOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {locationsOpen && (
-              <div className="flex flex-col items-center gap-2 mt-2 w-full">
-                <Link
-                  href="/hitchin"
-                  onClick={() => {
-                    setOpen(false);
-                    setLocationsOpen(false);
-                  }}
-                  className="w-full text-center py-3 text-xl"
-                >
-                  Hitchin
-                </Link>
-                <Link
-                  href="/stevenage"
-                  onClick={() => {
-                    setOpen(false);
-                    setLocationsOpen(false);
-                  }}
-                  className="w-full text-center py-3 text-xl"
-                >
-                  Stevenage
-                </Link>
-              </div>
-            )}
+        <div className="flex flex-col px-10 py-10 space-y-2 relative">
+          {/* Decorative Background Text - Zinc Color */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.05] select-none pointer-events-none whitespace-nowrap">
+            <h2 className="text-[40vw] font-black italic transform -rotate-12 text-zinc-700">PECKERS</h2>
           </div>
-          <div className="flex flex-col items-center w-full">
-            <button
-              type="button"
-              onClick={() => setJourneyOpen(!journeyOpen)}
-              className="w-full flex items-center justify-center gap-2 py-1"
+
+          <div className="flex flex-col space-y-1">
+            <Link
+              href="/menu"
+              onClick={() => setOpen(false)}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[100ms]" : "opacity-0 -translate-x-10"}`}
             >
-              OUR SECRET{" "}
-              <FaChevronDown
-                className={`text-[0.8em] transition-transform duration-300 ${journeyOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {journeyOpen && (
-              <div className="flex flex-col items-center gap-2 mt-2 w-full">
-                <Link
-                  href="/house-made-sauces"
-                  onClick={() => {
-                    setOpen(false);
-                    setJourneyOpen(false);
-                  }}
-                  className="w-full text-center py-3 text-xl"
-                >
-                  House-Made Sauces
-                </Link>
-                <Link
-                  href="/the-peckers-standard"
-                  onClick={() => {
-                    setOpen(false);
-                    setJourneyOpen(false);
-                  }}
-                  className="w-full text-center py-3 text-xl"
-                >
-                  The Peckers Standard
-                </Link>
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">01</span>
+              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">MENU</span>
+            </Link>
+
+            <div className={`transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[200ms]" : "opacity-0 -translate-x-10"}`}>
+              <button
+                type="button"
+                onClick={() => setLocationsOpen(!locationsOpen)}
+                className="group flex items-center gap-6 py-3.5 w-full text-left"
+              >
+                <span className="text-white/70 font-mono text-[10px] leading-none pt-1">02</span>
+                <span className="text-3xl font-peakers tracking-tighter text-white uppercase">LOCATIONS</span>
+                <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`} />
+              </button>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${locationsOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
+                <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
+                  <Link href="/hitchin" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">Hitchin</Link>
+                  <Link href="/stevenage" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">Stevenage</Link>
+                </div>
               </div>
-            )}
+            </div>
+
+            <div className={`transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[300ms]" : "opacity-0 -translate-x-10"}`}>
+              <button
+                type="button"
+                onClick={() => setJourneyOpen(!journeyOpen)}
+                className="group flex items-center gap-6 py-3.5 w-full text-left"
+              >
+                <span className="text-white/70 font-mono text-[10px] leading-none pt-1">03</span>
+                <span className="text-3xl font-peakers tracking-tighter text-white uppercase">SECRET</span>
+                <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`} />
+              </button>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${journeyOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
+                <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
+                  <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">House Sauces</Link>
+                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">Standard</Link>
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/rewards"
+              onClick={() => setOpen(false)}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[400ms]" : "opacity-0 -translate-x-10"}`}
+            >
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">04</span>
+              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">REWARDS</span>
+            </Link>
+
+            <Link
+              href="/the-journey"
+              onClick={() => setOpen(false)}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[500ms]" : "opacity-0 -translate-x-10"}`}
+            >
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">05</span>
+              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">JOURNEY</span>
+            </Link>
+
+            <Link
+              href="/careers"
+              onClick={() => setOpen(false)}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[600ms]" : "opacity-0 -translate-x-10"}`}
+            >
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">06</span>
+              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">CAREERS</span>
+            </Link>
           </div>
-          <Link href="/rewards" onClick={() => setOpen(false)}>
-            REWARDS
-          </Link>
-          <Link href="/the-journey" onClick={() => setOpen(false)}>
-            THE JOURNEY
-          </Link>
-          <Link href="/careers" onClick={() => setOpen(false)}>
-            CAREERS
-          </Link>
+
+          {/* Footer info at bottom of menu area - Full Width Decoration */}
+          <div className="pt-12 pb-6 border-t border-white/10 mt-6">
+            <div className="flex justify-between items-center text-white/20 font-mono text-[9px] tracking-[0.2em] uppercase">
+              <span>EST. 2024</span>
+              <div className="h-px flex-1 mx-6 bg-white/10" />
+              <span>STAY CHICKEN</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* White Strip (Conditionally shown on home page, hidden after scrolling past hero) */}
-      {(pathname === "/" || pathname === "/home") && (
+      {/* White Strip (Conditionally shown on home page, hidden after scrolling past hero or when mobile menu open) */}
+      {(pathname === "/" || pathname === "/home") && (!open) && (
         <div
           className="absolute top-full left-0 w-full h-auto md:h-[4.5vw] flex items-center justify-center bg-white border-y-2 md:border-y-[3px] border-black overflow-hidden py-1.5 md:px-0 md:py-0"
           style={{

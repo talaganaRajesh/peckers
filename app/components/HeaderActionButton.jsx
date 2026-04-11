@@ -22,7 +22,7 @@ export default function HeaderActionButton({
         target="_blank"
         rel="noopener noreferrer"
         data-lenis-prevent
-        className={`relative z-10 flex items-center justify-center text-center rounded-full border-[0.15vw] ${borderColor} ${bgColor} ${textColor} transition-all duration-200 ease-out group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] ${className}`}
+        className={`relative z-10 flex items-center justify-center text-center leading-none pb-[2px] rounded-full border-[0.15vw] ${borderColor} ${bgColor} ${textColor} transition-all duration-200 ease-out group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] ${className}`}
       >
         {children}
       </a>

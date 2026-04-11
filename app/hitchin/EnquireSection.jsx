@@ -378,7 +378,7 @@ export default function EnquiriesSection({ location }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto bg-white flex justify-center items-center gap-3 text-black font-sans font-bold px-[6vw] md:px-[3.5vw] py-[4vw] md:py-5 rounded-[2vw] md:rounded-[.6vw] text-[4vw] md:text-[18px] lg:text-[1.45vw] tracking-widest hover:bg-white/90 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-50 disabled:shadow-none"
+                className="w-full md:w-auto bg-white flex justify-center items-center gap-3 cursor-pointer text-black font-sans font-bold px-[6vw] md:px-[3.5vw] py-[4vw] md:py-5 rounded-[2vw] md:rounded-[.6vw] text-[4vw] md:text-[18px] lg:text-[1.45vw] tracking-widest hover:bg-white/90 transition shadow-[0_0_40px_rgba(255,255,255,0.2)] disabled:opacity-50 disabled:shadow-none"
               >
                 {isSubmitting ? (
                   <>
