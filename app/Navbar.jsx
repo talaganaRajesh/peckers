@@ -104,7 +104,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Desktop Center Links */}
       <div
-        className="hidden md:flex flex-1 md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
+        className="hidden md:flex flex-1 md:mr-[3vw] lg:mr-[4vw] xl:mr-[3.8vw] md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         <Link href="/menu" className="whitespace-nowrap navbar-link">

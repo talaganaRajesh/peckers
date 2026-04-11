@@ -21,7 +21,8 @@ export default function HeaderActionButton({
         href={href || "#"}
         target="_blank"
         rel="noopener noreferrer"
-        className={`relative z-10 flex items-center justify-center pt-[2px] text-center rounded-full border-[0.15vw] ${borderColor} ${bgColor} ${textColor} transition-all duration-200 ease-out group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] ${className}`}
+        data-lenis-prevent
+        className={`relative z-10 flex items-center justify-center text-center rounded-full border-[0.15vw] ${borderColor} ${bgColor} ${textColor} transition-all duration-200 ease-out group-hover:-translate-x-[1px] group-hover:-translate-y-[1px] ${className}`}
       >
         {children}
       </a>
