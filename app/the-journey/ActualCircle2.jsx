@@ -74,9 +74,15 @@ export default function PeckersTimeline2({ initialData = [] }) {
   if (timelineData.length === 0) return null;
 
   return (
-    <div className="bg-transparent text-white relative z-120 flex justify-center mt-0 md:mt-[1.8vw] py-[0.5vw] md:py-0 font-peakers">
+    <div
+      className="bg-transparent text-white relative z-120 flex justify-center mt-0 md:mt-[1.8vw] py-[0.5vw] md:py-0 font-peakers"
+      style={{ perspective: "1200px" }} // Safari 3D transform fix
+    >
       <div className="w-full max-w-[98vw] relative">
-        <div className="flex flex-col md:flex-row justify-between gap-[6vw] md:gap-[1.4vw] h-auto md:h-[0.4vw] items-center leading-7 mb-0 md:w-[92vw] mx-auto relative z-120">
+        <div
+          className="flex flex-col md:flex-row justify-between gap-[6vw] md:gap-[1.4vw] h-auto md:h-[0.4vw] items-center leading-7 mb-0 md:w-[92vw] mx-auto relative z-120"
+          style={{ transformStyle: "preserve-3d" }} // Safari 3D preserve context
+        >
           {timelineData.slice(0, 3).map((item, index) => {
             const alignment =
               index === 0
@@ -104,6 +110,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                   rotateX: 0,
                   rotateY: 0,
                   rotate: 0,
+                  z: 0, // Force GPU acceleration in Safari
                   filter: "blur(0px)",
                 }}
                 viewport={{ once: true, margin: "-10%" }}
@@ -113,6 +120,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
                   ease: "easeOut",
                 }}
                 style={{
+                  willChange: "transform, opacity, filter", // Safari rendering hint
                   ...(isHighlighted
                     ? {
                       boxShadow:

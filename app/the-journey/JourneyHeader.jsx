@@ -385,10 +385,10 @@ export default function JourneyIntroSection({ initialData = null }) {
                             style={{ transformOrigin: "left center" }}
                             className="relative mb-20"
                         >
-                            <div className="absolute left-[7px] top-2 z-30">
+                            <div className="absolute left-[7px] md:left-[11px] top-2 z-30">
                                 <motion.svg
-                                    width="22"
-                                    height="22"
+                                    width="26"
+                                    height="26"
                                     viewBox="0 0 45 45"
                                     className={`drop-shadow-[0_0_12px_rgba(255,215,0,0.8)] ${!submitted ? 'animate-pulse' : ''}`}
                                     initial={{ opacity: 0, scale: 0.88 }}

@@ -38,7 +38,7 @@ export default function AllergensPage() {
             className="h-6 sm:h-8 md:h-10 lg:h-11 w-auto object-contain"
           />
           <div className="hidden xs:block w-px h-6 sm:h-8 bg-white/10" />
-          <h1 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-peakers text-[#F2DF0D] leading-none tracking-tighter uppercase whitespace-nowrap">
+          <h1 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl font-peakers font-bold text-[#F2DF0D] leading-none tracking-normal uppercase whitespace-nowrap">
             ALLERGENS
           </h1>
         </div>
@@ -83,21 +83,21 @@ export default function AllergensPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="text-white/50 text-[11px] md:text-sm max-w-3xl mx-auto leading-relaxed font-mono uppercase tracking-widest px-6"
-          >
-            Our comprehensive directory provides detailed information on all major allergens.
-            Please use the interactive viewer below to check specific items on our menu.
+            className="text-white/50 text-[11px] md:text-sm max-w-5xl mx-auto leading-relaxed font-sans tracking-widest px-6"
+          >We prepare our food in kitchens where allergens are present
+            and shared equipment is used. Although we handle your meal
+            with care, we cannot ensure it is allergen free, even if requested
+            ingredients are removed. We have products which contain both nuts and peanuts, hence we can’t guarantee any nut/peanut free guarantees.
           </motion.p>
         </section>
 
-        {/* PDF Viewer Section with moderate side gaps */}
-        <section className="w-full min-h-[120vh] relative bg-black px-4 md:px-12 lg:px-20">
-          <div className="w-full h-full max-w-7xl mx-auto bg-white rounded shadow-2xl overflow-hidden relative">
+        {/* PDF Viewer Section - Sharp Edge Layout */}
+        <section className="w-full relative bg-black px-4 md:px-12 lg:px-20 pb-20 overflow-visible">
+          <div className="w-full h-[70vh] md:h-[85vh] max-w-7xl mx-auto bg-white shadow-2xl overflow-hidden relative z-10 mb-10">
             {pdfUrl ? (
               <iframe
-                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                className="w-[calc(100%+40px)] h-[120vh] border-none m-0 p-0"
-                style={{ clipPath: "inset(0 40px 0 0)" }}
+                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                className="w-full h-full border-none m-0 p-0 allow-interaction"
                 title="Allergens PDF"
                 allow="autoplay; scroll-behavior: smooth"
               />
@@ -111,6 +111,27 @@ export default function AllergensPage() {
                 </p>
               </div>
             )}
+          </div>
+
+          {/* Allergen Alert Logo Section - Placed at the very bottom of the PDF viewer area */}
+          <div className="mt-16 flex flex-col items-center justify-center text-center px-6">
+            <div className="w-20 h-20 md:w-24 md:h-24 bg-red-600 rounded-full flex items-center justify-center mb-8 shadow-[0_0_40px_rgba(220,38,38,0.4)] border-4 border-white transition-transform hover:scale-110 duration-500">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                className="w-[55%] h-[55%] text-white"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 8V12M12 16H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <h3 className="text-[#F2DF0D] font-peakers text-3xl md:text-5xl uppercase tracking-tighter mb-4">
+              WARNING: <span className="text-white">SEVERE ALLERGIES</span>
+            </h3>
+            <p className="text-white/70 font-mono text-[11px] md:text-base max-w-3xl leading-relaxed uppercase tracking-[0.2em]">
+              If you have a severe food allergy, please alert a member of staff before placing your order.
+              Our kitchen handles gluten, dairy, nuts, and eggs. We take every precaution but cross-contamination is a risk.
+            </p>
           </div>
         </section>
 

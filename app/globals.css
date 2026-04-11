@@ -24,8 +24,12 @@ body {
   overscroll-behavior: contain;
 }
 
-.lenis.lenis-smooth iframe {
+.lenis.lenis-smooth iframe:not(.allow-interaction) {
   pointer-events: none;
+}
+
+.lenis.lenis-smooth iframe.allow-interaction {
+  pointer-events: auto;
 }
 
 /* Allow map iframes to be interactive (pan, zoom, click) */
