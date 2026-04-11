@@ -283,8 +283,8 @@ export default function SaucePageOne({ initialData = [] }) {
 
                 {/* NUTRITIONAL BADGES - ANIMATED CAPSULE */}
                 {nutritionItems.length > 0 && (
-                  <div className="flex flex-col items-center">
-                    <div className="relative mt-2 h-[32px] sm:h-[36px] md:h-[40px] lg:h-[2.2vw] xl:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[260px] lg:w-[13vw] xl:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
+                  <div className="flex items-center justify-center gap-4 mt-3 md:mt-4">
+                    <div className="relative h-[32px] sm:h-[36px] md:h-[40px] lg:h-[2.2vw] xl:h-[2.2vw] w-[180px] sm:w-[220px] md:w-[260px] lg:w-[13vw] xl:w-[13vw] overflow-hidden rounded-[100px] bg-white/5 border border-white/10 flex items-center justify-center backdrop-blur-md">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={`nutri-${nutritionIndex}-${currentSauce._id}`}
@@ -305,7 +305,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       </AnimatePresence>
                     </div>
                     <span
-                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none mt-2"
+                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none"
                       style={{ fontFamily: "var(--font-neuzeit)" }}
                     >
                       Per 100g nutrition
