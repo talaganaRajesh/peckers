@@ -122,11 +122,11 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
             </h2>
 
             <motion.p
-              className="font-sans mt-[4vw] md:mt-0 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none"
+              className="font-sans mt-[4vw] md:mt-2 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none uppercase tracking-widest"
               {...fadeUp(0.4)}
             >
               {ratingData?.subheading ||
-                "Real feedback from our community. Click any card to view on Google."}
+                "4.8/5 Rating from 1,000+ Familiar Faces"}
             </motion.p>
           </div>
 
@@ -147,13 +147,6 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
                 ))}
                 <FaStarHalfAlt className="text-yellow-500 text-sm md:text-lg" />
               </div>
-              <p className="text-white/60 font-medium text-xs md:text-sm tracking-tight">
-                ({ratingData?.rating || "4.8"}/5{" "}
-                {ratingData?.totalReviews
-                  ? `rating from ${ratingData.totalReviews}+ `
-                  : ""}
-                Familiar Faces)
-              </p>
             </div>
           </motion.div>
         </div>

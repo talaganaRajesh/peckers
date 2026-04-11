@@ -89,7 +89,7 @@ export default function RatingSection({ data = null }) {
           className="text-white text-[3.5vw] sm:text-[3vw] md:text-[3.5vw] lg:text-[1.8vw] xl:text-[1.2vw] font-sans font-light mt-[1vw] sm:mt-0 ml-0 md:ml-[1vw] xl:ml-[0.4vw]"
           style={{ letterSpacing: "0.04em" }}
         >
-          ( {rating}/5 Rating from {(totalReviews || 1000).toLocaleString()}+ Familiar Faces )
+          {rating}/5 Rating from {(totalReviews || 1000).toLocaleString()}+ Familiar Faces
         </span>
       </div>
     </div>
