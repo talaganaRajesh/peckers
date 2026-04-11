@@ -97,39 +97,39 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
     <div className="relative w-full h-full md:py-[1vw] bg-black overflow-visible">
       <style>{`
         .card-slot-m2 { transform: translate(calc(-50% - 150vw), -50%) rotateY(45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
-        .card-slot-m1 { transform: translate(calc(-50% - 38vw), -50%) rotate(-6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
+        .card-slot-m1 { transform: translate(calc(-50% - 42vw), -50%) rotate(-6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
         .card-slot-0  { transform: translate(-50%, -50%) rotateY(0deg) scale(1.08); opacity: 1; z-index: 10; filter: brightness(1); cursor: default;}
-        .card-slot-1  { transform: translate(calc(-50% + 38vw), -50%) rotate(6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
+        .card-slot-1  { transform: translate(calc(-50% + 42vw), -50%) rotate(6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
         .card-slot-2  { transform: translate(calc(-50% + 150vw), -50%) rotateY(-45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
         
         .latest-card {
-           width: 60.5vw;
-           height: 77vw;
-           border-radius: 3.3vw;
+           width: 72vw;
+           height: 92vw;
+           border-radius: 4vw;
         }
         @media (min-width: 768px) {
           .card-slot-m2 { transform: translate(calc(-50% - 97vw), -50%) rotateY(45deg) scale(0.6); }
-          .card-slot-m1 { transform: translate(calc(-50% - 33vw), -50%) rotate(-5deg) scale(0.92); }
-          .card-slot-1  { transform: translate(calc(-50% + 33vw), -50%) rotate(5deg) scale(0.92); }
+          .card-slot-m1 { transform: translate(calc(-50% - 38vw), -50%) rotate(-5deg) scale(0.92); }
+          .card-slot-1  { transform: translate(calc(-50% + 38vw), -50%) rotate(5deg) scale(0.92); }
           .card-slot-2  { transform: translate(calc(-50% + 97vw), -50%) rotateY(-45deg) scale(0.6); }
           .latest-card {
-             width: 40vw;
-             height: 56vw;
-             border-radius: 2vw;
+             width: 48vw;
+             height: 68vw;
+             border-radius: 2.5vw;
           }
         }
         @media (min-width: 1280px) {
-          .card-slot-m1 { transform: translate(calc(-50% - 27vw), -50%) rotate(-5deg) scale(0.92); }
-          .card-slot-1  { transform: translate(calc(-50% + 27vw), -50%) rotate(5deg) scale(0.92); }
+          .card-slot-m1 { transform: translate(calc(-50% - 32vw), -50%) rotate(-5deg) scale(0.92); }
+          .card-slot-1  { transform: translate(calc(-50% + 32vw), -50%) rotate(5deg) scale(0.92); }
           .latest-card {
-             width: 24.2vw;
-             height: 35.2vw;
-             border-radius: 1.1vw;
+             width: 30vw;
+             height: 44vw;
+             border-radius: 1.5vw;
           }
         }
       `}</style>
       <div
-        className="relative w-full h-[92vw] md:h-[500px] lg:h-[600px] xl:h-full py-[4vw] md:py-[3vw]"
+        className="relative w-full h-[110vw] md:h-[750px] lg:h-[850px] xl:h-[46vw] py-[4vw] md:py-[3vw]"
         style={{
           perspective: "1400px",
           transformStyle: "preserve-3d",
@@ -169,10 +169,10 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
             onKeyDown={
               card.slot === -1 || card.slot === 1
                 ? (e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      handleCardClick(card.slot);
-                    }
+                  if (e.key === "Enter" || e.key === " ") {
+                    handleCardClick(card.slot);
                   }
+                }
                 : undefined
             }
             className={`group latest-card card-slot-${card.slot < 0 ? "m" + Math.abs(card.slot) : card.slot} absolute left-1/2 top-1/2 overflow-hidden`}

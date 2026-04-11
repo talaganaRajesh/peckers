@@ -96,12 +96,12 @@ const HomePageClient = ({
       <CoopImages locations={initialLocations} />
 
       {/* THE PECKERS JOURNAL — full viewport section */}
-      <section className="flex flex-col gap-[4vw] md:gap-[4vw] lg:gap-[3vw] xl:gap-[1.5vw] xl:h-screen pt-[8vw] pb-[10vw] md:py-[4vw] xl:py-0">
+      <section className="flex flex-col  xl:min-h-screen pt-[8vw] pb-[4vw] md:py-[4vw] xl:py-12">
         <LatestNewsHeading
           heading={data?.journalHeading}
           subtitle={data?.journalSubtitle}
         />
-        <div className="md:flex-1 md:min-h-0">
+        <div className="md:flex-1 xl:flex-none md:min-h-0">
           <LatestNewsCards
             news={initialSliderCards}
             onActiveIndexChange={setActiveCardIndex}

@@ -3,7 +3,7 @@ export default function CaptionBelowNews({
 }) {
   return (
     <div className="w-full flex justify-center">
-      <div className="w-full flex flex-col items-center pt-0 pb-4 md:pb-0 md:pt-3">
+      <div className="w-full flex flex-col items-center pt-0 pb-4 md:pb-0 ">
         <div
           className="relative flex items-center justify-center md:my-[0.6vw]"
           style={{

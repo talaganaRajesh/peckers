@@ -11,13 +11,13 @@ export default function PersonDetails({ data = null }) {
   const resHeading = headingParts.join(" ");
 
   return (
-    <div className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-stretch justify-center mt-[6vw] md:mt-[3vw] lg:mt-[9vw] xl:mt-[5.5vw] gap-[6vw] md:gap-[1.5vw] lg:gap-[2vw] box-border px-[4vw] md:px-[1.4vw] lg:px-[2vw] mb-5 md:mb-0">
+    <div className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-start justify-center mt-[4vw] md:mt-[2vw] lg:mt-[4vw] xl:mt-[3vw] gap-[6vw] md:gap-[1.5vw] lg:gap-[4vw] box-border px-[4vw] md:px-[1.4vw] lg:px-[2vw] mb-5 md:mb-0">
       <div className="shrink-0 w-full lg:w-[48vw] xl:w-[44vw]">
         {data.imageUrl && (
           <Image
             src={data.imageUrl}
             alt="Profile"
-            className="w-full h-[70vw] md:h-[48vw] lg:h-[38vw] xl:h-[36vw] object-cover object-center rounded-2xl"
+            className="w-full h-[70vw] md:h-[48vw] lg:h-[32vw] xl:h-[30vw] object-cover object-center rounded-2xl shadow-2xl"
             sizes="(max-width: 768px) 90vw, 48vw"
             width={670}
             height={840}
@@ -25,7 +25,7 @@ export default function PersonDetails({ data = null }) {
         )}
       </div>
 
-      <div className="w-full lg:max-w-[50vw] xl:max-w-[40vw] flex flex-col justify-start bg-black px-[4vw] md:px-[2vw] lg:px-[4vw] xl:px-[3vw] py-[6vw] md:py-[4vw] lg:py-[2vw] xl:pt-[3vw] xl:pb-0 min-h-[45vw] md:min-h-[auto] lg:min-h-[38vw] xl:min-h-[28vw] shadow-xl relative mt-[4vw] md:mt-2 lg:-mt-[2vw] xl:-mt-[2.2vw] mr-0 xl:mr-[1vw] z-10 md:z-2 rounded-xl lg:rounded-none">
+      <div className="w-full lg:max-w-[50vw] xl:max-w-[40vw] flex flex-col justify-start bg-black px-[4vw] md:px-[2vw] lg:px-[4vw] xl:px-[3vw] py-[6vw] md:py-[4vw] lg:pt-0 xl:pt-0 lg:pb-[2vw] xl:pb-[3vw] min-h-[45vw] md:min-h-[auto] lg:min-h-[32vw] xl:min-h-[30vw] shadow-xl relative mt-[4vw] md:mt-2 lg:mt-0 xl:mt-0 mr-0 xl:mr-[1vw] z-10 md:z-2 rounded-xl lg:rounded-none">
         <h2
           className="block text-white font-bold text-[7.2vw] sm:text-[6.2vw] md:text-[4vw] lg:text-[3.3vw] tracking-[.18vw] leading-tight mb-[5vw] md:mb-[2vw] lg:mb-[1.5vw] xl:mb-[1vw] text-left whitespace-normal lg:max-w-[35vw]"
           style={{ letterSpacing: "0.01em", fontFamily: "var(--font-peakers)" }}
@@ -39,7 +39,7 @@ export default function PersonDetails({ data = null }) {
           </div>
         </div>
 
-        <div className="h-[6vw] md:h-2 lg:h-[3vw] xl:h-[2.2vw]" />
+        <div className="h-[2vw] md:h-2 lg:h-[0.5vw] xl:h-[0.5vw]" />
 
         <div className="flex justify-start w-full">
           <a
