@@ -20,7 +20,7 @@ export default function SignUpSection({ initialData = null }) {
       ease: "power2.inOut",
       yoyo: false,
       delay: 0.3,
-      onUpdate: () => {},
+      onUpdate: () => { },
       onRepeat: () => {
         gsap.set(gloss, { left: "-60%", opacity: 0.34 });
       },
@@ -74,6 +74,7 @@ export default function SignUpSection({ initialData = null }) {
 
         <div style={{ position: "relative", width: "fit-content" }}>
           <button
+            onClick={() => window.location.href = "https://peckers.vmos.io/account/auth/register"}
             className="bg-black text-white px-[5vw] md:px-[6vw] lg:px-[3vw] xl:px-[2vw] py-[2.5vw] md:py-[3.5vw] lg:py-[1.5vw] xl:py-[1.2vw] rounded-[2.5vw] md:rounded-[3vw] lg:rounded-[1vw] xl:rounded-[0.8vw] font-mono text-[3.2vw] md:text-[3.5vw] lg:text-[1.5vw] xl:text-[1.15vw] tracking-[0.07em] transition-all duration-150 hover:bg-[#232323] hover:scale-[1.04] focus:outline-none mx-auto relative overflow-hidden border-0 border-white"
             style={{
               letterSpacing: "0.11em",

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function AllergensPage() {
-  const pdfUrl = "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/All%20Dishes%20Allergens%20Info%20website.pdf";
+  const pdfUrl = "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/All%20Dishes%20Allergens%20Info%20website%20CHANEGD%20FORMAT.pdf";
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col font-sans selection:bg-[#F2DF0D] selection:text-black overflow-x-hidden">
@@ -75,7 +75,7 @@ export default function AllergensPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-[#F2DF0D] font-mono text-[8px] md:text-[9px] uppercase font-bold tracking-[0.4em] mb-3"
+            className="text-[#F2DF0D] font-mono text-[10px] md:text-[12px] uppercase font-bold tracking-[0.4em] mb-4"
           >
             Quality & Safety
           </motion.p>
@@ -83,32 +83,35 @@ export default function AllergensPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
-            className="text-white/40 text-[10px] md:text-xs max-w-2xl mx-auto leading-relaxed font-mono uppercase tracking-wide"
+            className="text-white/50 text-[11px] md:text-sm max-w-3xl mx-auto leading-relaxed font-mono uppercase tracking-widest px-6"
           >
             Our comprehensive directory provides detailed information on all major allergens.
             Please use the interactive viewer below to check specific items on our menu.
           </motion.p>
         </section>
 
-        {/* PDF Viewer Section */}
-        <section className="w-full h-[120vh] relative bg-white overflow-hidden">
-          {pdfUrl ? (
-            <iframe
-              src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-              className="absolute top-0 left-0 w-[calc(100%+24px)] h-full border-none m-0 p-0"
-              title="Allergens PDF"
-              allow="autoplay; scroll-behavior: smooth"
-            />
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-black">
-              <h2 className="text-3xl font-peakers uppercase tracking-widest mb-4 text-white/80">
-                Allergen Guide
-              </h2>
-              <p className="text-white/40 font-neuzeit max-w-md">
-                Integration pending. Please check back later.
-              </p>
-            </div>
-          )}
+        {/* PDF Viewer Section with moderate side gaps */}
+        <section className="w-full min-h-[120vh] relative bg-black px-4 md:px-12 lg:px-20">
+          <div className="w-full h-full max-w-7xl mx-auto bg-white rounded shadow-2xl overflow-hidden relative">
+            {pdfUrl ? (
+              <iframe
+                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                className="w-[calc(100%+40px)] h-[120vh] border-none m-0 p-0"
+                style={{ clipPath: "inset(0 40px 0 0)" }}
+                title="Allergens PDF"
+                allow="autoplay; scroll-behavior: smooth"
+              />
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center bg-black">
+                <h2 className="text-3xl font-peakers uppercase tracking-widest mb-4 text-white/80">
+                  Allergen Guide
+                </h2>
+                <p className="text-white/40 font-neuzeit max-w-md">
+                  Integration pending. Please check back later.
+                </p>
+              </div>
+            )}
+          </div>
         </section>
 
         {/* Dummy Allergen Info Section */}
