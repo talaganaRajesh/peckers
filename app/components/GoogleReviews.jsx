@@ -112,43 +112,43 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
       id="reviews"
     >
       <div className="w-full px-[5vw] md:px-[1.4vw] relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-[8vw] md:mb-[2vw] gap-8">
+        <div className="flex flex-col items-start mb-[8vw] md:mb-[2vw] gap-2 md:gap-3">
           <div className="flex flex-col items-start text-left">
             <h2
-              className="text-[7.2vw] sm:text-[6.2vw] md:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
+              className="text-[7.2vw] sm:text-[6.2vw] md:text-[4.8vw] lg:text-[3.3vw] font-bold text-white tracking-[.18vw] uppercase"
               style={{ fontFamily: "var(--font-peakers)" }}
             >
               {ratingData?.heading || "STREET CRED"}
             </h2>
 
-            <motion.p
-              className="font-sans mt-[4vw] md:mt-2 font-extralight text-[4vw] sm:text-[3vw] md:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none uppercase tracking-widest"
-              {...fadeUp(0.4)}
-            >
-              {ratingData?.subheading ||
-                "4.8/5 Rating from 1,000+ Familiar Faces"}
-            </motion.p>
-          </div>
+            <div className="flex items-center gap-3 md:gap-4 mt-2">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex items-center gap-1 md:gap-2"
+              >
+                <div className="flex items-center gap-0.5">
+                  {[...Array(4)].map((_, i) => (
+                    <FaStar
+                      key={i}
+                      className="text-yellow-500 text-sm md:text-lg"
+                    />
+                  ))}
+                  <FaStarHalfAlt className="text-yellow-500 text-sm md:text-lg" />
+                </div>
+              </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex items-center gap-3 self-start md:self-end mb-2 md:mb-1"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-0.5">
-                {[...Array(4)].map((_, i) => (
-                  <FaStar
-                    key={i}
-                    className="text-yellow-500 text-sm md:text-lg"
-                  />
-                ))}
-                <FaStarHalfAlt className="text-yellow-500 text-sm md:text-lg" />
-              </div>
+              <motion.p
+                className="font-sans font-extralight text-[3.5vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.3vw] text-white opacity-90"
+                {...fadeUp(0.4)}
+              >
+                {ratingData?.subheading ||
+                  "4.8/5 Rating from 1,000+ Familiar Faces"}
+              </motion.p>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Infinite Reviews Marquee */}
