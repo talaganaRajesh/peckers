@@ -1,19 +1,93 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function AllergensPage() {
+  const [isUnlocked, setIsUnlocked] = useState(false);
   const pdfUrl = "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/All%20Dishes%20Allergens%20Info%20website%20CHANEGD%20FORMAT.pdf";
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col lg:flex-row font-sans selection:bg-[#F2DF0D] selection:text-black overflow-x-hidden lg:overflow-hidden">
+    <div className="min-h-screen bg-black text-white flex flex-col lg:flex-row font-sans selection:bg-[#F2DF0D] selection:text-black overflow-x-hidden lg:overflow-hidden relative">
 
-      {/* LEFT SIDE PANEL - Sidebar on Desktop, Header on Mobile */}
-      <aside className="w-full lg:w-[35%] xl:w-[30%] bg-[#080808] border-r border-white/5 flex flex-col h-auto lg:h-screen z-50 relative overflow-y-auto custom-scrollbar">
+      {/* MOBILE-ONLY FULL-SCREEN INTERFACE (Sticky/Fixed) */}
+      <div className={`lg:hidden fixed inset-0 z-[60] bg-black transition-all duration-700 ${isUnlocked ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
+        <div className="absolute inset-0 z-0">
+          <iframe
+            src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+            className="w-full h-full border-none m-0 p-0 blur-[20px] scale-110 opacity-40"
+            title="Allergens PDF Preview"
+          />
+        </div>
+
+        {/* Mobile Header in Blur Mode */}
+        <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-20">
+          <Link href="/menu" className="p-3 border border-white/10 rounded-full bg-black/20 backdrop-blur-md">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </Link>
+          <img src="/Peckers Logo 1 [Vectorized].svg" alt="Peckers Logo" className="h-6 w-auto" />
+        </div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10 bg-black/20">
+          <div className="max-w-xs space-y-8">
+            <div className="space-y-4">
+              <div className="flex items-center justify-center gap-3">
+                <div className="h-[1px] w-8 bg-[#F2DF0D]" />
+                <p className="text-[#F2DF0D] font-mono text-[10px] uppercase font-bold tracking-[0.4em]">Quality & Safety</p>
+                <div className="h-[1px] w-8 bg-[#F2DF0D]" />
+              </div>
+              <h2 className="text-4xl font-peakers font-bold text-white uppercase leading-[0.9]">Allergen<br />Guide</h2>
+              <p className="text-white/60 text-sm leading-relaxed font-sans pt-2">
+                We prepare our food in kitchens where allergens are present. Your safety is our priority.
+              </p>
+            </div>
+
+            <button
+              onClick={() => setIsUnlocked(true)}
+              className="group relative w-full overflow-hidden rounded-full bg-[#F2DF0D] p-[1px] transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(242,223,13,0.2)]"
+            >
+              <div className="relative flex items-center justify-center gap-3 rounded-full bg-[#F2DF0D] px-8 py-4 text-black font-mono text-[11px] font-bold uppercase tracking-widest transition-all group-hover:bg-white">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                Click here to view full guide
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* MOBILE INTERACTIVE PDF (REVEALED AFTER CLICK) */}
+      <div className={`lg:hidden fixed inset-0 z-50 bg-black flex flex-col transition-all duration-700 ${isUnlocked ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
+        <div className="p-4 bg-black/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between shrink-0">
+          <button onClick={() => setIsUnlocked(false)} className="p-2 text-white/40 hover:text-white transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#F2DF0D]">Interactive Viewer</span>
+          <div className="w-10" /> {/* Spacer */}
+        </div>
+        <div className="flex-1 w-full relative h-[calc(100%-60px)]">
+          <iframe
+            src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+            className="w-full h-full border-none m-0 p-0 allow-interaction"
+            title="Allergens PDF Full"
+            allow="autoplay; scroll-behavior: smooth"
+          />
+        </div>
+      </div>
+
+
+      {/* LEFT SIDE PANEL - Sidebar on Desktop (HIDDEN ON MOBILE AFTER REDESIGN) */}
+      <aside className="hidden lg:flex w-full lg:w-[32%] xl:w-[28%] bg-[#080808] border-r border-white/5 flex flex-col h-screen z-50 relative overflow-y-auto custom-scrollbar">
         {/* Top Branding & Navigation */}
-        <div className="p-6 md:p-8 lg:p-10 space-y-8 md:space-y-12">
-          <div className="flex items-center justify-between lg:block lg:space-y-8">
+        <div className="p-10 space-y-12">
+          <div className="flex flex-col space-y-10">
             <Link
               href="/menu"
               className="group flex items-center gap-3 text-white/40 hover:text-[#F2DF0D] transition-all duration-300"
@@ -26,21 +100,20 @@ export default function AllergensPage() {
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] font-bold">Back to Menu</span>
             </Link>
 
-            <div className="flex items-center gap-4 lg:gap-0 lg:flex-col lg:items-start">
+            <div className="flex flex-col items-start whitespace-nowrap">
               <img
                 src="/Peckers Logo 1 [Vectorized].svg"
                 alt="Peckers Logo"
-                className="h-8 md:h-12 lg:h-[4.5vw] w-auto object-contain lg:mb-6"
+                className="lg:h-[4.2vw] w-auto object-contain mb-8"
               />
-              <div className="hidden xs:block lg:hidden w-px h-8 bg-white/10" />
-              <h1 className="text-2xl md:text-3xl lg:text-[4.8vw] xl:text-[4vw] font-peakers font-bold text-[#F2DF0D] leading-[0.9] tracking-tighter uppercase lg:mt-4">
-                ALLERGENS <br className="hidden lg:block" /> GUIDE
+              <h1 className="lg:text-[4vw] xl:text-[3.5vw] font-peakers font-bold text-[#F2DF0D] leading-[0.9] tracking-normal uppercase mt-6">
+                ALLERGENS
               </h1>
             </div>
           </div>
 
           {/* Description Section */}
-          <div className="space-y-6 lg:pt-4">
+          <div className="space-y-6 pt-2">
             <div className="flex items-center gap-3">
               <div className="h-[1px] w-8 bg-[#F2DF0D]" />
               <p className="text-[#F2DF0D] font-mono text-[10px] uppercase font-bold tracking-[0.4em]">
@@ -48,50 +121,24 @@ export default function AllergensPage() {
               </p>
             </div>
 
-            <p className="text-white/70 text-sm md:text-base lg:text-[1.1vw] leading-relaxed font-sans tracking-wide">
+            <p className="text-white/70 lg:text-[1.1vw] leading-relaxed font-sans tracking-wide max-w-2xl">
               We prepare our food in kitchens where allergens are present and shared equipment is used.
-              Although we handle your meal with care, we cannot ensure it is allergen free, even if
-              requested ingredients are removed.
               <br /><br />
-              <span className="text-white italic">We have products which contain both nuts and peanuts, hence we can’t guarantee any nut/peanut free guarantees.</span>
+              <span className="text-white italic font-medium">We have products which contain both nuts and peanuts.</span>
             </p>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <a
                 href={`${pdfUrl}?download=1`}
                 download="Peckers-Allergens.pdf"
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#F2DF0D] text-black font-mono text-[11px] font-bold uppercase tracking-widest rounded-full transition-all duration-300 hover:bg-white hover:scale-105 active:scale-95 shadow-xl shadow-[#F2DF0D]/10 w-full lg:w-auto"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
                 Download PDF Full Guide
               </a>
             </div>
           </div>
-
-          <div className="hidden lg:block h-px w-full bg-white/5" />
-
-          {/* Detailed Info (Left Aligned Now) */}
-          <div className="hidden lg:grid grid-cols-1 gap-10">
-            <div className="space-y-3">
-              <h4 className="text-white font-peakers text-xl uppercase tracking-wide">Regular Updates</h4>
-              <p className="text-white/30 text-[0.8vw] leading-relaxed font-mono uppercase tracking-wider">
-                This guide is reviewed monthly. Please alert staff before ordering.
-              </p>
-            </div>
-            <div className="space-y-3">
-              <h4 className="text-white font-peakers text-xl uppercase tracking-wide">Cross Contamination</h4>
-              <p className="text-white/30 text-[0.8vw] leading-relaxed font-mono uppercase tracking-wider">
-                Operations involve handling cereal, gluten, dairy, eggs, and nuts.
-              </p>
-            </div>
-          </div>
         </div>
 
-        {/* Footer info at bottom of sidebar */}
         <div className="mt-auto p-10 hidden lg:block border-t border-white/5 bg-black/20">
           <div className="text-white/20 font-mono text-[8px] uppercase tracking-widest flex items-center justify-between">
             <span>Last Updated: 12 April 2024</span>
@@ -100,25 +147,22 @@ export default function AllergensPage() {
         </div>
       </aside>
 
-      {/* RIGHT SIDE CONTENT - PDF Viewer */}
-      <main className="flex-1 bg-black relative flex flex-col h-auto lg:h-screen">
-        <div className="flex-1 w-full h-full relative overflow-hidden bg-zinc-900 shadow-inner">
+      {/* RIGHT SIDE CONTENT - PDF Viewer (DESKTOP) */}
+      <main className="hidden lg:flex flex-1 bg-black relative flex-col h-screen">
+        <div className="flex-1 w-full h-full relative overflow-hidden bg-zinc-900 shadow-2xl">
           {pdfUrl ? (
             <iframe
               src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
               className="w-full h-full border-none m-0 p-0 allow-interaction"
-              title="Allergens PDF"
+              title="Allergens PDF Desktop"
               allow="autoplay; scroll-behavior: smooth"
             />
           ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
-              <h2 className="text-3xl font-peakers uppercase tracking-widest mb-4 text-white/80">
-                Allergen Guide
-              </h2>
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-white/40">
+              <h2 className="text-3xl font-peakers uppercase tracking-widest">Guide Preview</h2>
             </div>
           )}
         </div>
-
       </main>
     </div>
   );
