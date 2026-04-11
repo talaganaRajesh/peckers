@@ -11,74 +11,73 @@ export default function AllergensPage() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col lg:flex-row font-sans selection:bg-[#F2DF0D] selection:text-black overflow-x-hidden lg:overflow-hidden relative">
 
-      {/* MOBILE-ONLY FULL-SCREEN INTERFACE (Sticky/Fixed) */}
-      <div className={`lg:hidden fixed inset-0 z-[60] bg-black transition-all duration-700 ${isUnlocked ? 'pointer-events-none opacity-0' : 'opacity-100'}`}>
-        <div className="absolute inset-0 z-0">
-          <iframe
-            src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-            className="w-full h-full border-none m-0 p-0 blur-[20px] scale-110 opacity-40"
-            title="Allergens PDF Preview"
-          />
-        </div>
-
-        {/* Mobile Header in Blur Mode */}
-        <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-20">
-          <Link href="/menu" className="p-3 border border-white/10 rounded-full bg-black/20 backdrop-blur-md">
+      {/* MOBILE INTERFACE (Blurs content until unlocked) */}
+      <div className="lg:hidden fixed inset-0 z-50 bg-black flex flex-col overflow-hidden">
+        {/* Mobile Header (Always visible) */}
+        <div className="bg-black/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-6 py-4 z-[70] shrink-0">
+          <Link href="/menu" className="p-2.5 border border-white/10 rounded-full bg-black/20">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
           </Link>
           <img src="/Peckers Logo 1 [Vectorized].svg" alt="Peckers Logo" className="h-6 w-auto" />
-        </div>
-
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10 bg-black/20">
-          <div className="max-w-xs space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center justify-center gap-3">
-                <div className="h-[1px] w-8 bg-[#F2DF0D]" />
-                <p className="text-[#F2DF0D] font-mono text-[10px] uppercase font-bold tracking-[0.4em]">Quality & Safety</p>
-                <div className="h-[1px] w-8 bg-[#F2DF0D]" />
-              </div>
-              <h2 className="text-4xl font-peakers font-bold text-white uppercase leading-[0.9]">Allergen<br />Guide</h2>
-              <p className="text-white/60 text-sm leading-relaxed font-sans pt-2">
-                We prepare our food in kitchens where allergens are present. Your safety is our priority.
-              </p>
-            </div>
-
-            <button
-              onClick={() => setIsUnlocked(true)}
-              className="group relative w-full overflow-hidden rounded-full bg-[#F2DF0D] p-[1px] transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(242,223,13,0.2)]"
-            >
-              <div className="relative flex items-center justify-center gap-3 rounded-full bg-[#F2DF0D] px-8 py-4 text-black font-mono text-[11px] font-bold uppercase tracking-widest transition-all group-hover:bg-white">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-                Click here to view full guide
-              </div>
+          {isUnlocked && (
+            <button onClick={() => setIsUnlocked(false)} className="text-[#F2DF0D] font-mono text-[9px] uppercase tracking-widest font-bold">
+              Lock
             </button>
-          </div>
+          )}
+          {!isUnlocked && <div className="w-10" />}
         </div>
-      </div>
 
-      {/* MOBILE INTERACTIVE PDF (REVEALED AFTER CLICK) */}
-      <div className={`lg:hidden fixed inset-0 z-50 bg-black flex flex-col transition-all duration-700 ${isUnlocked ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
-        <div className="p-4 bg-black/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between shrink-0">
-          <button onClick={() => setIsUnlocked(false)} className="p-2 text-white/40 hover:text-white transition-colors">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-[#F2DF0D]">Interactive Viewer</span>
-          <div className="w-10" /> {/* Spacer */}
-        </div>
-        <div className="flex-1 w-full relative h-[calc(100%-60px)]">
-          <iframe
-            src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
-            className="w-full h-full border-none m-0 p-0 allow-interaction"
-            title="Allergens PDF Full"
-            allow="autoplay; scroll-behavior: smooth"
-          />
+        {/* Unified Mobile Viewer Container */}
+        <div className="flex-1 relative w-full h-full bg-black overflow-hidden">
+          {/* Lock Overlay */}
+          <AnimatePresence>
+            {!isUnlocked && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 z-20 flex flex-col items-center justify-center p-8 text-center bg-black/40 backdrop-blur-sm"
+              >
+                <div className="max-w-xs space-y-8">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="h-[1px] w-8 bg-[#F2DF0D]" />
+                      <p className="text-[#F2DF0D] font-mono text-[10px] uppercase font-bold tracking-[0.4em]">Quality & Safety</p>
+                      <div className="h-[1px] w-8 bg-[#F2DF0D]" />
+                    </div>
+                    <h2 className="text-4xl font-peakers font-bold text-white uppercase leading-[0.9]">Allergen<br />Guide</h2>
+                    <p className="text-white/60 text-sm leading-relaxed font-sans pt-2">
+                       We handle your meal with care, but shared equipment is used. Your safety is our priority.
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => setIsUnlocked(true)}
+                    className="group relative w-full overflow-hidden rounded-full bg-[#F2DF0D] p-[1px] shadow-[0_10px_40px_rgba(242,223,13,0.15)]"
+                  >
+                    <div className="relative flex items-center justify-center gap-3 rounded-full bg-[#F2DF0D] px-8 py-4 text-black font-mono text-[11px] font-bold uppercase tracking-widest transition-all group-active:bg-white">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                      Click here to view full guide
+                    </div>
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Single Iframe for Mobile - Using Google Docs Viewer for robust mobile display */}
+          <div className={`w-full h-full transition-all duration-700 ease-in-out ${isUnlocked ? 'blur-0 scale-100' : 'blur-[15px] opacity-40 scale-105 pointer-events-none'}`}>
+             <iframe
+                src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+                className="w-full h-full border-none"
+                title="Allergens PDF Mobile Viewer"
+            />
+          </div>
         </div>
       </div>
 
@@ -122,7 +121,10 @@ export default function AllergensPage() {
             </div>
 
             <p className="text-white/70 lg:text-[1.1vw] leading-relaxed font-sans tracking-wide max-w-2xl">
-              We prepare our food in kitchens where allergens are present and shared equipment is used.
+              We prepare our food in kitchens where allergens are present
+              and shared equipment is used. Although we handle your meal
+              with care, we cannot ensure it is allergen free, even if requested
+              ingredients are removed. We have products which contain both nuts and peanuts, hence we can’t guarantee any nut/peanut free guarantees.
               <br /><br />
               <span className="text-white italic font-medium">We have products which contain both nuts and peanuts.</span>
             </p>
