@@ -108,7 +108,7 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
 
   return (
     <section
-      className="pt-[10vw] pb-[2vw] md:pt-[4vw] md:pb-[1vw] lg:pt-[9vw] lg:pb-[9vw] xl:pt-[5.5vw] xl:pb-[5.5vw] bg-black overflow-hidden relative"
+      className="pt-[4vw] pb-[2vw] md:pt-[2vw] md:pb-[1vw] lg:pt-[4vw] lg:pb-[9vw] xl:pt-[3vw] xl:pb-[5.5vw] bg-black overflow-hidden relative"
       id="reviews"
     >
       <div className="w-full px-[5vw] md:px-[1.4vw] relative z-10">

@@ -96,7 +96,7 @@ const HomePageClient = ({
       <CoopImages locations={initialLocations} />
 
       {/* THE PECKERS JOURNAL — full viewport section */}
-      <section className="flex flex-col  xl:min-h-screen pt-[8vw] pb-[10vw] md:py-[4vw] xl:py-12">
+      <section className="flex flex-col  xl:min-h-screen pt-[8vw] pb-[4vw] md:py-[4vw] xl:py-12">
         <LatestNewsHeading
           heading={data?.journalHeading}
           subtitle={data?.journalSubtitle}
