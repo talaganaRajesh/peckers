@@ -35,7 +35,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
   useEffect(() => {
     if (videoRef.current) {
       if (isStrictlyInView) {
-        videoRef.current.play().catch(() => {}); 
+        videoRef.current.play().catch(() => { });
       } else {
         videoRef.current.pause();
       }
@@ -54,20 +54,19 @@ const SectionItem = memo(({ section, index, num, total }) => {
   return (
     <section
       ref={sectionRef}
-      className={`w-full h-auto md:h-[480px] lg:min-h-[75vh] flex flex-col ${
-        isAlternate ? "md:flex-row-reverse" : "md:flex-row"
-      } bg-black overflow-hidden relative shadow-inner`}
+      className={`w-full h-auto md:h-[480px] lg:min-h-[75vh] flex flex-col ${isAlternate ? "md:flex-row-reverse" : "md:flex-row"
+        } bg-black overflow-hidden relative shadow-inner`}
     >
       {/* MEDIA SECTION */}
       <div
         className="w-full md:w-[50%] lg:w-[60%] flex-shrink-0 relative overflow-hidden bg-black flex items-center justify-center min-h-[300px] md:min-h-0 z-10"
       >
-        {/* Aspect Ratio Sizer (Essential for mobile/iPad) */}
+        {/* Aspect Ratio Sizer (Essential for mobile/iPad) - Forced consistency for mobile height */}
         <div
           className="w-full md:hidden"
-          style={{ aspectRatio: activeAspectRatio || "16/9" }}
+          style={{ aspectRatio: (activeAspectRatio && activeAspectRatio > 0.9) ? activeAspectRatio : "1.15" }}
         />
-        
+
         {/* Media Content - Rendered directly to avoid "placeholder flip" issues on Safari */}
         <div className="absolute inset-0 w-full h-full flex items-center justify-center z-20">
           {section.videoUrl || section.video ? (

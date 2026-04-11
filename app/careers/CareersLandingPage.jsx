@@ -8,21 +8,11 @@ export default function CareersLandingPage({ initialData }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full min-h-[50vh] md:min-h-[70vh] lg:min-h-[60vh] xl:min-h-[85vh] bg-[#0000] flex flex-col items-center justify-center relative py-[12vh] md:py-[8vh] lg:py-[10vh] xl:py-[15vh] overflow-hidden"
+            className="w-full min-h-[40vh] md:min-h-[50vh] lg:min-h-[45vh] xl:min-h-[65vh] bg-[#000] flex flex-col items-center justify-center relative py-[8vh] md:py-[5vh] lg:py-[6vh] xl:py-[8vh] overflow-hidden"
         >
 
             {/* Content Wrapper */}
             <div className="flex flex-col items-center text-center">
-
-                {/* Top Tag */}
-                <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="border md:border-[0.05vw] rounded-[4px] md:rounded-[.2vw] font-mono border-[#6666] px-5 py-2 text-[10px] md:text-[1.8vw] lg:text-xs tracking-[0.45em] text-gray-300 mb-6 uppercase"
-                >
-                    {initialData?.tagline || "JOIN THE REVOLUTION"}
-                </motion.div>
 
                 {/* Main Heading */}
                 <motion.div
