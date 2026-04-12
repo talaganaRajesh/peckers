@@ -245,7 +245,7 @@ export default function Navbar({ preloadedSettings = null }) {
       <div
         className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[85vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
-        <div className="flex flex-col px-10 py-26 space-y-2 relative">
+        <div className="flex flex-col px-10 py-20 space-y-2 relative">
           {/* Decorative Background Text - Zinc Color */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.05] select-none pointer-events-none whitespace-nowrap">
             <h2 className="text-[40vw] font-black italic transform -rotate-12 text-zinc-700">PECKERS</h2>
