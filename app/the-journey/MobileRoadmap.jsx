@@ -69,14 +69,14 @@ export default function MobileRoadmap({ initialData = null }) {
   if (!roadmapData) return null;
 
   return (
-    <section className="block lg:hidden w-full bg-black text-white px-[4vw] md:px-[8vw] pt-0 md:pt-4 -mt-2 md:mt-12 pb-[10vw] md:pb-[15vw] overflow-hidden relative z-20">
+    <section className="block lg:hidden w-full bg-black text-white px-[4vw] md:px-[8vw] pt-0 md:pt-4 mt-2 md:mt-12 pb-[10vw] md:pb-[15vw] overflow-hidden relative z-20">
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center w-full mb-[5vw] md:mb-12"
+        className="flex flex-col items-center w-full mt-[4vw] mb-[5vw] md:mb-12"
       >
         <h2 className="text-[7.5vw] md:text-[6vw] xl:text-[4vw] text-center font-bold leading-none font-peakers px-[1vw] tracking-wide mb-[2vw] md:mb-[1.5vw] uppercase">
           {roadmapData.heading || "A LEGACY THAT CAME FULL CIRCLE"}

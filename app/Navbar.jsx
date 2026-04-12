@@ -330,7 +330,7 @@ export default function Navbar({ preloadedSettings = null }) {
             <div className="flex justify-between items-center text-white/20 font-mono text-[9px] tracking-[0.2em] uppercase">
               <span>EST. 2024</span>
               <div className="h-px flex-1 mx-6 bg-white/10" />
-              <span>STAY CHICKEN</span>
+              <span>SERIOUSLY GOOD CHICKEN</span>
             </div>
           </div>
         </div>

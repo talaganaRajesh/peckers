@@ -11,7 +11,7 @@ export default function StoryCircle({ initialData = null }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="w-full bg-transparent text-white px-[4vw] xl:px-[3vw] pt-[0.8vw] pb-[1.6vw] backdrop-blur-[2px]"
+            className="w-full bg-transparent text-white px-[4vw] xl:px-[3vw] pt-[0.8vw] pb-[1.5vw] backdrop-blur-[2px]"
         >
             <div className="flex items-center justify-between gap-6 md:gap-10 w-full">
                 <h2 className="text-[3.2vw] xl:text-[3vw] text-left font-bold leading-[1.08] py-2 font-peakers tracking-wide uppercase whitespace-nowrap">
