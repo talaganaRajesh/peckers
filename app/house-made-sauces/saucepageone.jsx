@@ -323,7 +323,7 @@ export default function SaucePageOne({ initialData = [] }) {
                       </AnimatePresence>
                     </div>
                     <span
-                      className="text-[11px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none"
+                      className="text-[11px] pt-[3px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.8vw] text-white/50 font-bold uppercase tracking-[0.15em] whitespace-nowrap leading-none"
                       style={{ fontFamily: "var(--font-neuzeit)" }}
                     >
                       Per 100g nutrition

@@ -77,8 +77,8 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
         </div>
       ) : null}
       <div className="flex gap-[3vw] md:gap-3 mt-6">
-        <a href="https://peckers.vmos.io/store/store-selection?app=online" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center pt-[2px] px-[3.9vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">Click & Collect</a>
-        <a href="https://peckers.vmos.io/store/store-selection?app=delivery" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 pt-[2px] px-[4.5vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">
+        <a href="https://peckers.vmos.io/store/store-selection?app=online" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center pt-[6px] px-[3.9vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">Click & Collect</a>
+        <a href="https://peckers.vmos.io/store/store-selection?app=delivery" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 pt-[6px] px-[4.5vw] py-[1.4vw] md:py-[12px] rounded border-2 border-[#f2df0d] text-white font-mono uppercase tracking-wide text-[2.8vw] md:text-[16px] no-underline hover:bg-[#f2df0d]/10 transition-colors duration-150">
           Delivery
           <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[3vw] h-auto md:w-[18px]">
             <path d="M12 1L17 6L12 11M1 6H17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
