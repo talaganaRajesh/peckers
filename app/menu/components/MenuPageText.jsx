@@ -124,7 +124,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
             <div className="text-[#F2DF0D] group-hover:text-[#F2DF0D] text-[2.5vw] md:text-[12px] font-mono uppercase mb-1 tracking-wide font-bold transition-colors duration-200 decoration-[#F2DF0D]/50 underline-offset-4 decoration-1 group-hover:underline">
               Allergens
             </div>
-            <div className="mt-2 text-[#c9c9c5] text-[2.2vw] md:text-[10px] font-mono tracking-[0.2em] font-bold flex items-center gap-1 group-hover:gap-2 transition-all duration-300">
+            <div className="mt-1 text-[#e6e6e0] text-[2.5vw] md:text-[12px] font-sans font-extrabold tracking-wide flex items-center gap-1 group-hover:gap-1 transition-all duration-300">
               View Allergen Guide
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7" />

@@ -265,7 +265,7 @@ export default function Navbar({ preloadedSettings = null }) {
               <button
                 type="button"
                 onClick={() => setLocationsOpen(!locationsOpen)}
-                className="group flex items-center -[6vw] py-[3.5vw] w-full text-left"
+                className="group flex items-center gap-[6vw] py-[3.5vw] w-full text-left"
               >
                 <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">02</span>
                 <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">FIND US</span>
