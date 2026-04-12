@@ -312,10 +312,10 @@ export default function SaucePageOne({ initialData = [] }) {
                           transition={{ duration: 0.5, ease: "easeInOut" }}
                           className="flex items-center justify-center gap-1.5 md:gap-[0.4vw] font-bold"
                         >
-                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider">
+                          <span className="text-[12px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.9vw] text-[#F2DF0D] uppercase tracking-wider">
                             {nutritionItems[nutritionIndex].label} :
                           </span>
-                          <span className="text-[14px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[0.9vw] text-white uppercase tracking-wider">
+                          <span className="text-[12px] sm:text-[12px] md:text-[13px] lg:text-[15px] xl:text-[0.9vw] text-white uppercase tracking-wider">
                             {nutritionItems[nutritionIndex].value}
                             {nutritionItems[nutritionIndex].unit}
                           </span>

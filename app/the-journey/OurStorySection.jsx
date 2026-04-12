@@ -112,7 +112,7 @@ export default function OurStorySection({ initialData = null }) {
   if (!data) return null;
 
   return (
-    <section className="relative w-full lg:min-h-0 bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-0 md:pb-[12vw] lg:pb-0 mb-0 text-white flex flex-col justify-start items-center overflow-hidden">
+    <section className="relative w-full lg:min-h-0 bg-black px-[1.5vw] pt-[1vh] lg:pt-[5vh] pb-[10vw] md:pb-[12vw] lg:pb-0 mb-0 text-white flex flex-col justify-start items-center lg:overflow-hidden">
       <div className="absolute -top-[15vw] right-0 w-[52%] md:w-1/2 h-[70vw] md:h-auto md:bottom-0 pointer-events-none z-0 overflow-hidden">
         <svg
           width="100%"
@@ -137,7 +137,7 @@ export default function OurStorySection({ initialData = null }) {
 
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
-          <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 overflow-hidden text-left h-auto min-h-[400px] md:min-h-[480px] lg:h-[450px] xl:h-[72vh]">
+          <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 lg:overflow-hidden text-left h-auto min-h-[400px] md:min-h-[480px] lg:h-[450px] xl:h-[72vh]">
             <div className="h-full min-h-0 flex flex-col">
               <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.5vw] lg:text-[48px] xl:text-[60px] leading-[1.05] lg:leading-[1.1] uppercase mt-2 lg:mt-0 text-white">
                 {fixedHeading}
@@ -152,8 +152,8 @@ export default function OurStorySection({ initialData = null }) {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-                  data-lenis-prevent
-                  className="custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[20px] lg:text-[18px] xl:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[2vw] md:pt-[12px] lg:pt-[15px] pb-1 h-[400px] lg:h-auto lg:flex-1 min-h-0 overflow-y-auto !overscroll-auto pr-2"
+                  {...(typeof window !== 'undefined' && window.innerWidth >= 1024 ? { 'data-lenis-prevent': true } : {})}
+                  className="lg:custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[20px] lg:text-[18px] xl:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[2vw] md:pt-[12px] lg:pt-[15px] pb-1 h-auto lg:flex-1 min-h-0 overflow-visible lg:overflow-y-auto !overscroll-auto lg:pr-2"
                 >
                   {(() => {
                     const bodyArray =

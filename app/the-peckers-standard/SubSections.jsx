@@ -59,14 +59,8 @@ const SectionItem = memo(({ section, index, num, total }) => {
     >
       {/* MEDIA SECTION */}
       <div
-        className="w-full md:w-[50%] lg:w-[60%] flex-shrink-0 relative overflow-hidden bg-black flex items-center justify-center min-h-[300px] md:min-h-0 z-10"
+        className="w-full md:w-[50%] lg:w-[60%] h-[330px] md:h-auto shadow-2xl flex-shrink-0 relative overflow-hidden bg-black flex items-center justify-center z-10"
       >
-        {/* Aspect Ratio Sizer (Essential for mobile/iPad) - Forced consistency for mobile height */}
-        <div
-          className="w-full md:hidden"
-          style={{ aspectRatio: (activeAspectRatio && activeAspectRatio > 0.9) ? activeAspectRatio : "1.15" }}
-        />
-
         {/* Media Content - Rendered directly to avoid "placeholder flip" issues on Safari */}
         <div className="absolute inset-0 w-full h-full flex items-center justify-center z-20">
           {section.videoUrl || section.video ? (

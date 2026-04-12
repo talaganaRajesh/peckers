@@ -24,7 +24,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
           scale: 0.9,
           rotateY: 25,
           rotate: 5,
-          filter: "blur(20px)",
+          filter: "blur(4px)",
         };
       if (i === 1)
         return {
@@ -32,7 +32,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
           y: -120,
           scale: 0.85,
           rotateX: -20,
-          filter: "blur(20px)",
+          filter: "blur(4px)",
         };
       return {
         opacity: 0,
@@ -41,7 +41,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
         scale: 0.9,
         rotateY: -25,
         rotate: -5,
-        filter: "blur(20px)",
+        filter: "blur(4px)",
       };
     }
     if (i === 0)
@@ -51,7 +51,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
         y: -60,
         scale: 0.8,
         rotate: 15,
-        filter: "blur(15px)",
+        filter: "blur(4px)",
       };
     if (i === 1)
       return {
@@ -59,7 +59,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
         y: -80,
         scale: 0.8,
         rotate: 0,
-        filter: "blur(15px)",
+        filter: "blur(4px)",
       };
     return {
       opacity: 0,
@@ -67,7 +67,7 @@ export default function PeckersTimeline2({ initialData = [] }) {
       y: -60,
       scale: 0.8,
       rotate: -15,
-      filter: "blur(15px)",
+      filter: "blur(4px)",
     };
   };
 
@@ -110,17 +110,20 @@ export default function PeckersTimeline2({ initialData = [] }) {
                   rotateX: 0,
                   rotateY: 0,
                   rotate: 0,
-                  z: 0, // Force GPU acceleration in Safari
+                  z: 0,
+                  translateZ: 0, // Explicit GPU hint
                   filter: "blur(0px)",
                 }}
-                viewport={{ once: true, margin: "-10%" }}
+                viewport={{ once: true, margin: "-5%" }}
                 transition={{
-                  duration: 1.2,
-                  delay: 0.8 + index * 0.4,
+                  duration: 1.0,
+                  delay: 0.6 + index * 0.2, // Slightly faster staggered delay
                   ease: "easeOut",
                 }}
                 style={{
-                  willChange: "transform, opacity, filter", // Safari rendering hint
+                  willChange: "transform, opacity, filter",
+                  transformStyle: "preserve-3d", // Prevent flattening
+                  backfaceVisibility: "hidden",
                   ...(isHighlighted
                     ? {
                       boxShadow:

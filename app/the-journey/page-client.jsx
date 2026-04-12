@@ -56,8 +56,12 @@ const OurStoryPage = ({ initialStoryData }) => {
 
           <div className="w-full flex flex-col items-center z-50" style={{ paddingTop: `${timelineTopPadding}px` }}>
             <div
-              className="w-full h-full flex flex-col items-center justify-start relative z-100"
-              style={{ transform: `translateY(${timelineShiftY}px) scale(${timelineScale})`, transformOrigin: "top center" }}
+              className="w-full h-full flex flex-col items-center justify-start relative z-100 transform-gpu"
+              style={{
+                transform: `translateY(${timelineShiftY}px) scale(${timelineScale}) translateZ(0)`,
+                transformOrigin: "top center",
+                willChange: "transform"
+              }}
             >
               <ActualCircle initialData={pageData} />
 
@@ -66,30 +70,32 @@ const OurStoryPage = ({ initialStoryData }) => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: "-20%" }}
-                    transition={{ duration: 2.0, delay: 0.3, ease: "easeOut" }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[30vw] md:w-[12.2vw]"
                   >
                     <img src="https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/Logo%20image%20peckers.png" alt="Peckers Logo" className="w-full h-auto drop-shadow-2xl" />
                   </motion.div>
-                  <svg width="1038" height="454" viewBox="0 0 1038 454" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[90vw] md:w-[53vw] h-auto md:transform-[scaleY(0.95)] md:origin-center overflow-visible">
+                  <svg width="1038" height="454" viewBox="0 0 1038 454" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[90vw] md:w-[53vw] h-auto overflow-visible isolate translate-z-0">
                     <motion.g
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1 }}
+                      viewport={{ once: true, margin: "-5%" }}
+                      transition={{ duration: 0.8 }}
                       filter="url(#filter0_d_297_13)"
+                      style={{ willChange: "opacity" }}
                     >
                       <path d="M20 227C20 112.677 112.677 20 227 20H811C925.323 20 1018 112.677 1018 227C1018 341.323 925.323 434 811 434H227C112.677 434 20 341.323 20 227Z" fill="transparent" />
 
                       <motion.path
                         initial={{ pathLength: 0 }}
                         whileInView={{ pathLength: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 2.5, ease: "easeInOut" }}
+                        viewport={{ once: true, margin: "-10%" }}
+                        transition={{ duration: 2.2, ease: "easeInOut" }}
                         d="M227 21H811C924.771 21 1017 113.229 1017 227C1017 340.771 924.771 433 811 433H227C113.229 433 21 340.771 21 227C21 113.674 112.51 21.7204 225.668 21.0039L227 21Z"
                         stroke="white"
                         strokeWidth="2"
+                        strokeLinecap="round"
                       />
 
                       {/* Top Dots - Animated by whileInView */}
@@ -98,8 +104,8 @@ const OurStoryPage = ({ initialStoryData }) => {
                           key={`top-${i}`}
                           initial={{ opacity: 0, scale: 0 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.6, delay: 0.5 + i * 0.25 }}
+                          viewport={{ once: true, margin: "-10%" }}
+                          transition={{ duration: 0.5, delay: 0.4 + i * 0.2 }}
                           cx={cx} cy="21" r="5" fill="#EAB308"
                         />
                       ))}
@@ -110,8 +116,8 @@ const OurStoryPage = ({ initialStoryData }) => {
                           key={`bottom-${i}`}
                           initial={{ opacity: 0, scale: 0 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.6, delay: 1.0 + i * 0.25 }}
+                          viewport={{ once: true, margin: "-10%" }}
+                          transition={{ duration: 0.5, delay: 0.8 + i * 0.2 }}
                           cx={cx} cy="433" r="5" fill="#EAB308"
                         />
                       ))}

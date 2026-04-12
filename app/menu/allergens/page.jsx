@@ -47,9 +47,9 @@ export default function AllergensPage() {
                       <p className="text-[#F2DF0D] font-mono text-[10px] uppercase font-bold tracking-[0.4em]">Quality & Safety</p>
                       <div className="h-[1px] w-8 bg-[#F2DF0D]" />
                     </div>
-                    <h2 className="text-4xl font-peakers font-bold text-white uppercase leading-[0.9]">Allergen<br />Guide</h2>
+                    <h2 className="text-4xl font-peakers font-bold text-white uppercase leading-[0.9]">Allergen Guide</h2>
                     <p className="text-white/60 text-sm leading-relaxed font-sans pt-2">
-                      We handle your meal with care, but shared equipment is used. Your safety is our priority.
+                      We prepare our food in kitchens where allergens are present and shared equipment is used. Although we handle your meal with care, we cannot ensure it is allergen free, even if requested ingredients are removed. We have products which contain both nuts and peanuts, hence we can’t guarantee any nut/peanut free guarantees.
                     </p>
                   </div>
 
@@ -125,8 +125,6 @@ export default function AllergensPage() {
               and shared equipment is used. Although we handle your meal
               with care, we cannot ensure it is allergen free, even if requested
               ingredients are removed. We have products which contain both nuts and peanuts, hence we can’t guarantee any nut/peanut free guarantees.
-              <br /><br />
-              <span className="text-white italic font-medium">We have products which contain both nuts and peanuts.</span>
             </p>
 
             <div className="pt-2">
