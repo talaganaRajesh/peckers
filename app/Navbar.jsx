@@ -245,36 +245,36 @@ export default function Navbar({ preloadedSettings = null }) {
       <div
         className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[85vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
-        <div className="flex flex-col px-[8vw] py-[10vw] space-y-[1vw] relative">
+        <div className="flex flex-col px-10 py-12 space-y-2 relative">
           {/* Decorative Background Text - Zinc Color */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.05] select-none pointer-events-none whitespace-nowrap">
             <h2 className="text-[40vw] font-black italic transform -rotate-12 text-zinc-700">PECKERS</h2>
           </div>
 
-          <div className="flex flex-col space-y-[0.5vw]">
+          <div className="flex flex-col space-y-1">
             <Link
               href="/menu"
               onClick={() => setOpen(false)}
-              className={`group flex items-center gap-[6vw] py-[3.5vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[100ms]" : "opacity-0 -translate-x-10"}`}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[100ms]" : "opacity-0 -translate-x-10"}`}
             >
-              <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">01</span>
-              <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">MENU</span>
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">01</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">MENU</span>
             </Link>
 
             <div className={`transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[200ms]" : "opacity-0 -translate-x-10"}`}>
               <button
                 type="button"
                 onClick={() => setLocationsOpen(!locationsOpen)}
-                className="group flex items-center gap-[6vw] py-[3.5vw] w-full text-left"
+                className="group flex items-center gap-6 py-3.5 w-full text-left"
               >
-                <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">02</span>
-                <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">FIND US</span>
-                <FaChevronDown className={`text-[3.5vw] ml-auto text-white transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`} />
+                <span className="text-white/70 font-mono text-[10px] leading-none pt-1">02</span>
+                <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">FIND US</span>
+                <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`} />
               </button>
-              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${locationsOpen ? "max-h-[30vh] mt-[1vw] ml-[10vw]" : "max-h-0"}`}>
-                <div className="flex flex-col gap-[4vw] py-[3vw] border-l border-white/20 pl-[6vw]">
-                  <Link href="/hitchin" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal  ">Hitchin</Link>
-                  <Link href="/stevenage" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal ">Stevenage</Link>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${locationsOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
+                <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
+                  <Link href="/hitchin" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal  ">Hitchin</Link>
+                  <Link href="/stevenage" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">Stevenage</Link>
                 </div>
               </div>
             </div>
@@ -283,16 +283,16 @@ export default function Navbar({ preloadedSettings = null }) {
               <button
                 type="button"
                 onClick={() => setJourneyOpen(!journeyOpen)}
-                className="group flex items-center gap-[6vw] py-[3.5vw] w-full text-left"
+                className="group flex items-center gap-6 py-3.5 w-full text-left"
               >
-                <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">03</span>
-                <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">OUR SECRET</span>
-                <FaChevronDown className={`text-[3.5vw] ml-auto text-white transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`} />
+                <span className="text-white/70 font-mono text-[10px] leading-none pt-1">03</span>
+                <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">OUR SECRET</span>
+                <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`} />
               </button>
-              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${journeyOpen ? "max-h-[30vh] mt-[1vw] ml-[10vw]" : "max-h-0"}`}>
-                <div className="flex flex-col gap-[4vw] py-[3vw] border-l border-white/20 pl-[6vw]">
-                  <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal ">House-Made Sauces</Link>
-                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal ">The Peckers Standard</Link>
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${journeyOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
+                <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
+                  <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">House-Made Sauces</Link>
+                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">The Peckers Standard</Link>
                 </div>
               </div>
             </div>
@@ -300,36 +300,36 @@ export default function Navbar({ preloadedSettings = null }) {
             <Link
               href="/rewards"
               onClick={() => setOpen(false)}
-              className={`group flex items-center gap-[6vw] py-[3.5vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[400ms]" : "opacity-0 -translate-x-10"}`}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[400ms]" : "opacity-0 -translate-x-10"}`}
             >
-              <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">04</span>
-              <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">REWARDS</span>
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">04</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">REWARDS</span>
             </Link>
 
             <Link
               href="/the-journey"
               onClick={() => setOpen(false)}
-              className={`group flex items-center gap-[6vw] py-[3.5vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[500ms]" : "opacity-0 -translate-x-10"}`}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[500ms]" : "opacity-0 -translate-x-10"}`}
             >
-              <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">05</span>
-              <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">THE JOURNEY</span>
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">05</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">THE JOURNEY</span>
             </Link>
 
             <Link
               href="/careers"
               onClick={() => setOpen(false)}
-              className={`group flex items-center gap-[6vw] py-[3.5vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[600ms]" : "opacity-0 -translate-x-10"}`}
+              className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[600ms]" : "opacity-0 -translate-x-10"}`}
             >
-              <span className="text-white/70 font-mono text-[2.6vw] leading-none pt-[0.5vw]">06</span>
-              <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">CAREERS</span>
+              <span className="text-white/70 font-mono text-[10px] leading-none pt-1">06</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">CAREERS</span>
             </Link>
           </div>
 
           {/* Footer info at bottom of menu area - Full Width Decoration */}
-          <div className="pt-[10vw] pb-[6vw] border-t border-white/10 mt-[8vw]">
-            <div className="flex justify-between items-center text-white/20 font-mono text-[2.2vw] tracking-[0.2em] uppercase">
+          <div className="pt-12 pb-6 border-t border-white/10 mt-6">
+            <div className="flex justify-between items-center text-white/20 font-mono text-[9px] tracking-[0.2em] uppercase">
               <span>EST. 2023</span>
-              <div className="h-px flex-1 mx-[4vw] bg-white/10" />
+              <div className="h-px flex-1 mx-6 bg-white/10" />
               <span>SERIOUSLY GOOD CHICKEN</span>
             </div>
           </div>
