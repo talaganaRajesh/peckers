@@ -195,7 +195,7 @@ export default function Navbar({ preloadedSettings = null }) {
       >
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=online"
-          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap font-black pt-[2px]"
+          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap font-black xl:pt-[5px]"
           bgColor="bg-white"
           textColor="text-black"
           borderColor="border-white"
@@ -206,7 +206,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=delivery"
-          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap hover:bg-red-700 font-black pt-[2px]"
+          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap hover:bg-red-700 font-black xl:pt-[5px]"
           bgColor="bg-red-600"
           textColor="text-white"
           borderColor="border-red-600"
@@ -292,7 +292,7 @@ export default function Navbar({ preloadedSettings = null }) {
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${journeyOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
                 <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
                   <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">House-Made Sauces</Link>
-                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">Peckers Standard</Link>
+                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">The Peckers Standard</Link>
                 </div>
               </div>
             </div>
