@@ -104,7 +104,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Desktop Center Links */}
       <div
-        className="hidden md:flex flex-1 md:mr-[3vw] lg:mr-[4vw] xl:mr-[4vw] md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
+        className="hidden md:flex flex-1 md:mr-[3vw] lg:mr-[4vw] xl:mr-[1.5vw] md:text-[13px] lg:text-[1.2vw] xl:text-[1.3vw] justify-center md:tracking-[.03vw] lg:tracking-[.12vw] xl:tracking-[.15vw] font-semibold md:gap-[1.4vw] lg:gap-[1.8vw] xl:gap-[2vw]"
         style={{ fontFamily: "var(--font-peakers)" }}
       >
         <Link href="/menu" className="whitespace-nowrap navbar-link">
@@ -195,7 +195,7 @@ export default function Navbar({ preloadedSettings = null }) {
       >
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=online"
-          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap font-black"
+          className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap font-black pt-[2px]"
           bgColor="bg-white"
           textColor="text-black"
           borderColor="border-white"
@@ -206,7 +206,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=delivery"
-          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.1vw] whitespace-nowrap hover:bg-red-700 font-black"
+          className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap hover:bg-red-700 font-black pt-[2px]"
           bgColor="bg-red-600"
           textColor="text-white"
           borderColor="border-red-600"
@@ -268,7 +268,7 @@ export default function Navbar({ preloadedSettings = null }) {
                 className="group flex items-center gap-6 py-3.5 w-full text-left"
               >
                 <span className="text-white/70 font-mono text-[10px] leading-none pt-1">02</span>
-                <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">LOCATIONS</span>
+                <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">FIND US</span>
                 <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`} />
               </button>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${locationsOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
@@ -328,7 +328,7 @@ export default function Navbar({ preloadedSettings = null }) {
           {/* Footer info at bottom of menu area - Full Width Decoration */}
           <div className="pt-12 pb-6 border-t border-white/10 mt-6">
             <div className="flex justify-between items-center text-white/20 font-mono text-[9px] tracking-[0.2em] uppercase">
-              <span>EST. 2024</span>
+              <span>EST. 2023</span>
               <div className="h-px flex-1 mx-6 bg-white/10" />
               <span>SERIOUSLY GOOD CHICKEN</span>
             </div>
