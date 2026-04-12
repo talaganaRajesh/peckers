@@ -52,55 +52,14 @@ export default function SubNavbar() {
   return (
     <div className="w-full flex justify-center px-4 md:px-0 z-50 bg-black">
       <nav
-        className="subnavbar relative group w-full max-w-7xl"
+        className="subnavbar relative group w-full max-w-6xl"
         style={{ color: "white" }}
       >
         <style>{`.no-scrollbar::-webkit-scrollbar { display: none; }`}</style>
 
-        {/* Scroll Buttons */}
-        <button
-          onClick={() => {
-            if (navRef.current) {
-              navRef.current.scrollBy({ left: -250, behavior: "smooth" });
-            }
-          }}
-          className="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity bg-black/50 rounded-full"
-          aria-label="Scroll Left"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            className="w-6 h-6 text-[#EAB308]"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <button
-          onClick={() => {
-            if (navRef.current) {
-              navRef.current.scrollBy({ left: 250, behavior: "smooth" });
-            }
-          }}
-          className="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity bg-black/50 rounded-full"
-          aria-label="Scroll Right"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            className="w-6 h-6 text-[#EAB308]"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
         <div
           ref={navRef}
-          className="flex font-sans gap-[4vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start lg:justify-between items-center overflow-x-auto no-scrollbar px-2 md:px-14 py-4 md:py-6 lg:py-8 xl:py-[1.5vw] scroll-smooth w-full"
+          className="flex font-sans gap-[4vw] md:gap-6 lg:gap-8 xl:gap-[3.4vw] justify-start lg:justify-between items-center overflow-x-auto no-scrollbar px-2 md:px-6 py-4 md:py-6 lg:py-8 xl:py-[1.5vw] scroll-smooth w-full"
           style={{
             fontFamily: "var(--font-peakers)",
             scrollbarWidth: "none",
