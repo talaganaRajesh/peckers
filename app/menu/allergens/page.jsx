@@ -34,7 +34,7 @@ export default function AllergensPage() {
           {/* Lock Overlay */}
           <AnimatePresence>
             {!isUnlocked && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -49,7 +49,7 @@ export default function AllergensPage() {
                     </div>
                     <h2 className="text-4xl font-peakers font-bold text-white uppercase leading-[0.9]">Allergen<br />Guide</h2>
                     <p className="text-white/60 text-sm leading-relaxed font-sans pt-2">
-                       We handle your meal with care, but shared equipment is used. Your safety is our priority.
+                      We handle your meal with care, but shared equipment is used. Your safety is our priority.
                     </p>
                   </div>
 
@@ -72,10 +72,10 @@ export default function AllergensPage() {
 
           {/* Single Iframe for Mobile - Using Google Docs Viewer for robust mobile display */}
           <div className={`w-full h-full transition-all duration-700 ease-in-out ${isUnlocked ? 'blur-0 scale-100' : 'blur-[15px] opacity-40 scale-105 pointer-events-none'}`}>
-             <iframe
-                src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
-                className="w-full h-full border-none"
-                title="Allergens PDF Mobile Viewer"
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
+              className="w-full h-full border-none"
+              title="Allergens PDF Mobile Viewer"
             />
           </div>
         </div>

@@ -96,20 +96,21 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
   return (
     <div className="relative w-full h-full md:py-[1vw] bg-black overflow-visible">
       <style>{`
-        .card-slot-m2 { transform: translate(calc(-50% - 150vw), -50%) rotateY(45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
-        .card-slot-m1 { transform: translate(calc(-50% - 42vw), -50%) rotate(-6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
-        .card-slot-0  { transform: translate(-50%, -50%) rotateY(0deg) scale(1.08); opacity: 1; z-index: 10; filter: brightness(1); cursor: default;}
-        .card-slot-1  { transform: translate(calc(-50% + 42vw), -50%) rotate(6deg) scale(0.92); opacity: 0.75; z-index: 2; filter: brightness(0.7) blur(2px); cursor: pointer; }
-        .card-slot-2  { transform: translate(calc(-50% + 150vw), -50%) rotateY(-45deg) scale(0.6); opacity: 0; z-index: 0; pointer-events: none; }
+        .card-slot-m2 { transform: translate(calc(-50% - 150vw), -50%) scale(0.8); opacity: 0; z-index: 0; pointer-events: none; }
+        .card-slot-m1 { transform: translate(calc(-50% - 70vw), -50%) rotate(-4deg) scale(0.9); opacity: 0.6; z-index: 2; filter: brightness(0.7); cursor: pointer; }
+        .card-slot-0  { transform: translate(-50%, -50%) scale(1.02); opacity: 1; z-index: 10; filter: brightness(1); cursor: default;}
+        .card-slot-1  { transform: translate(calc(-50% + 70vw), -50%) rotate(4deg) scale(0.9); opacity: 0.6; z-index: 2; filter: brightness(0.7); cursor: pointer; }
+        .card-slot-2  { transform: translate(calc(-50% + 150vw), -50%) scale(0.8); opacity: 0; z-index: 0; pointer-events: none; }
         
         .latest-card {
-           width: 72vw;
-           height: 92vw;
+           width: 60vw;
+           height: 82vw;
            border-radius: 4vw;
         }
         @media (min-width: 768px) {
           .card-slot-m2 { transform: translate(calc(-50% - 97vw), -50%) rotateY(45deg) scale(0.6); }
           .card-slot-m1 { transform: translate(calc(-50% - 38vw), -50%) rotate(-5deg) scale(0.92); }
+          .card-slot-0  { transform: translate(-50%, -50%) rotateY(0deg) scale(1.08); opacity: 1; z-index: 10; filter: brightness(1); cursor: default;}
           .card-slot-1  { transform: translate(calc(-50% + 38vw), -50%) rotate(5deg) scale(0.92); }
           .card-slot-2  { transform: translate(calc(-50% + 97vw), -50%) rotateY(-45deg) scale(0.6); }
           .latest-card {
@@ -129,7 +130,7 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
         }
       `}</style>
       <div
-        className="relative w-full h-[110vw] md:h-[750px] lg:h-[850px] xl:h-[46vw] py-[4vw] md:py-[3vw]"
+        className="relative w-full h-[90vw] md:h-[750px] lg:h-[850px] xl:h-[46vw] py-0 md:py-[3vw]"
         style={{
           perspective: "1400px",
           transformStyle: "preserve-3d",
@@ -199,6 +200,17 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
             ›
           </span>
         </button>
+      </div>
+
+      {/* Mobile Indicator Dots/Dashes */}
+      <div className="flex justify-center gap-1.5 mt-[2vw] mb-[4vw] md:hidden">
+        {images.map((_, idx) => (
+          <div
+            key={idx}
+            className={`h-[3px] w-[5vw] transition-all duration-300 ${idx === centerIdx ? "bg-white scale-x-110" : "bg-zinc-700"
+              }`}
+          />
+        ))}
       </div>
     </div>
   );

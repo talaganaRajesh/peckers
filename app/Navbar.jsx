@@ -258,7 +258,7 @@ export default function Navbar({ preloadedSettings = null }) {
               className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[100ms]" : "opacity-0 -translate-x-10"}`}
             >
               <span className="text-white/70 font-mono text-[10px] leading-none pt-1">01</span>
-              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">MENU</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">MENU</span>
             </Link>
 
             <div className={`transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[200ms]" : "opacity-0 -translate-x-10"}`}>
@@ -268,13 +268,13 @@ export default function Navbar({ preloadedSettings = null }) {
                 className="group flex items-center gap-6 py-3.5 w-full text-left"
               >
                 <span className="text-white/70 font-mono text-[10px] leading-none pt-1">02</span>
-                <span className="text-3xl font-peakers tracking-tighter text-white uppercase">LOCATIONS</span>
+                <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">LOCATIONS</span>
                 <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`} />
               </button>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${locationsOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
                 <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
-                  <Link href="/hitchin" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">Hitchin</Link>
-                  <Link href="/stevenage" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">Stevenage</Link>
+                  <Link href="/hitchin" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal  ">Hitchin</Link>
+                  <Link href="/stevenage" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">Stevenage</Link>
                 </div>
               </div>
             </div>
@@ -286,13 +286,13 @@ export default function Navbar({ preloadedSettings = null }) {
                 className="group flex items-center gap-6 py-3.5 w-full text-left"
               >
                 <span className="text-white/70 font-mono text-[10px] leading-none pt-1">03</span>
-                <span className="text-3xl font-peakers tracking-tighter text-white uppercase">SECRET</span>
+                <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">OUR SECRET</span>
                 <FaChevronDown className={`text-sm ml-auto text-white transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`} />
               </button>
               <div className={`overflow-hidden transition-all duration-500 ease-in-out ${journeyOpen ? "max-h-[30vh] mt-2 ml-14" : "max-h-0"}`}>
                 <div className="flex flex-col gap-5 py-4 border-l border-white/20 pl-8">
-                  <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">House Sauces</Link>
-                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-xl font-peakers text-white tracking-widest uppercase">Standard</Link>
+                  <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">House-Made Sauces</Link>
+                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-2xl font-peakers text-white tracking-normal ">Peckers Standard</Link>
                 </div>
               </div>
             </div>
@@ -303,7 +303,7 @@ export default function Navbar({ preloadedSettings = null }) {
               className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[400ms]" : "opacity-0 -translate-x-10"}`}
             >
               <span className="text-white/70 font-mono text-[10px] leading-none pt-1">04</span>
-              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">REWARDS</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">REWARDS</span>
             </Link>
 
             <Link
@@ -312,7 +312,7 @@ export default function Navbar({ preloadedSettings = null }) {
               className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[500ms]" : "opacity-0 -translate-x-10"}`}
             >
               <span className="text-white/70 font-mono text-[10px] leading-none pt-1">05</span>
-              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">JOURNEY</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">THE JOURNEY</span>
             </Link>
 
             <Link
@@ -321,7 +321,7 @@ export default function Navbar({ preloadedSettings = null }) {
               className={`group flex items-center gap-6 py-3.5 transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[600ms]" : "opacity-0 -translate-x-10"}`}
             >
               <span className="text-white/70 font-mono text-[10px] leading-none pt-1">06</span>
-              <span className="text-3xl font-peakers tracking-tighter text-white uppercase">CAREERS</span>
+              <span className="text-2xl font-peakers tracking-normal font-bold text-white uppercase">CAREERS</span>
             </Link>
           </div>
 
