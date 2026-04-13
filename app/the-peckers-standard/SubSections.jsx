@@ -91,7 +91,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
                     .url()}
                   alt={section.title || `Section ${num}`}
                   fill
-                  className="object-cover object-right md:object-center"
+                  className="object-cover object-[80%_50%] md:object-center"
                   style={{ filter: "brightness(0.7)" }}
                   priority={index < 3}
                   loading={index < 3 ? "eager" : "lazy"}

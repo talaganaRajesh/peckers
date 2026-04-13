@@ -98,7 +98,7 @@ export default function SubNavbar() {
                 href={href}
                 className={`whitespace-nowrap pb-1 md:pb-1 tracking-wider text-[16px] sm:text-[20px] md:text-[16px] lg:text-[18px] xl:text-[1.3vw] border-b-2 ${isActive
                   ? "border-red-500"
-                  : "border-transparent opacity-70 hover:opacity-100 transition-opacity"
+                  : "border-transparent opacity-70"
                   }`}
               >
                 {item.title}
