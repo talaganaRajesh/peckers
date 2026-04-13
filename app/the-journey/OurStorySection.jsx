@@ -153,7 +153,7 @@ export default function OurStorySection({ initialData = null }) {
                   exit="exit"
                   transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
                   {...(typeof window !== 'undefined' && window.innerWidth >= 1024 ? { 'data-lenis-prevent': true } : {})}
-                  className="lg:custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[20px] lg:text-[18px] xl:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[2vw] md:pt-[12px] lg:pt-[15px] pb-1 h-auto lg:flex-1 min-h-0 overflow-visible lg:overflow-y-auto !overscroll-auto lg:pr-2"
+                  className="custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[20px] lg:text-[18px] xl:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[2vw] md:pt-[12px] lg:pt-[15px] pb-1 h-auto lg:flex-1 min-h-0 overflow-visible lg:overflow-y-auto !overscroll-auto lg:pr-2"
                 >
                   {(() => {
                     const bodyArray =
