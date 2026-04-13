@@ -26,7 +26,7 @@ export default function CardStack() {
         newArray.push(backCard); // push to front
         return newArray;
       });
-    }, 4000); // 3s gap + 1s for animation
+    }, 2500); // 2s gap as requested (plus some time for animation, 2.5s total)
     return () => clearInterval(interval);
   }, []);
 
@@ -68,8 +68,8 @@ export default function CardStack() {
               zIndex: i,
             }}
             transition={{
-              duration: 1.2,
-              ease: [0.25, 0.1, 0.25, 1], // Smooth cubic-bezier
+              duration: 0.8,
+              ease: "easeInOut",
               times: isComingForth ? [0, 0.5, 1] : undefined,
             }}
             className={`absolute w-[260px] sm:w-[320px] border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_10px_40px_rgba(0,0,0,0.5)] h-[380px] sm:h-[460px] ${card.bg}`}

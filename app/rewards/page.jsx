@@ -283,122 +283,15 @@ export default function RewardsPage() {
             </div>
           </div>
 
-          {/* Simple sequence path for mobile, complex graphic wrapper for desktop mostly */}
-          <div className="relative w-full py-10 overflow-x-auto scroller-hidden">
-            <div className="min-w-[1000px] max-w-full flex items-center justify-between pb-8">
-              {/* 10 Stamps mapped inline - simpler robust implementation over complex figma exact coordinates */}
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center gap-4 relative"
-                >
-                  <div
-                    className={`w-20 sm:w-24 h-20 sm:h-24 rounded-3xl border-4 border-dashed flex items-center justify-center 
-                      ${
-                        i === 9
-                          ? "border-[#e51a38] bg-[rgba(229,26,56,0.1)]"
-                          : i === 6
-                            ? "border-[#ed641b] bg-[rgba(255,141,140,0.1)]"
-                            : i === 3
-                              ? "border-[#611824] bg-[rgba(253,0,0,0.1)]"
-                              : "border-[#5f1822]"
-                      }`}
-                  >
-                    {/* Icons inside stamp */}
-                    {i === 9 ? (
-                      <img
-                        src={imgAlpha}
-                        className="w-10 sm:w-14"
-                        alt="Alpha"
-                      />
-                    ) : i === 6 ? (
-                      <img
-                        src={imgGamma}
-                        className="w-10 sm:w-14"
-                        alt="Gamma"
-                      />
-                    ) : i === 3 ? (
-                      <img src={imgBeta} className="w-10 sm:w-14" alt="Beta" />
-                    ) : (
-                      <img
-                        src={imgRecruit}
-                        className="w-10 sm:w-14 opacity-30 grayscale"
-                        alt="Head"
-                      />
-                    )}
-                  </div>
-                  {/* Descriptions below specific milestones */}
-                  <div className="text-center w-28 absolute -bottom-16">
-                    {i === 0 && (
-                      <p
-                        className="text-white text-xl uppercase leading-none"
-                        style={{ fontFamily: "var(--font-peakers-bold)" }}
-                      >
-                        Register
-                        <br />
-                        <span
-                          className="text-[14px] text-white/70 capitalize"
-                          style={{ fontFamily: "var(--font-neuzeit)" }}
-                        >
-                          Earn immediately
-                        </span>
-                      </p>
-                    )}
-                    {i === 3 && (
-                      <p
-                        className="text-white text-xl uppercase leading-none"
-                        style={{ fontFamily: "var(--font-peakers-bold)" }}
-                      >
-                        Free Main
-                        <br />
-                        <span
-                          className="text-[14px] text-white/70 capitalize"
-                          style={{ fontFamily: "var(--font-neuzeit)" }}
-                        >
-                          Beta Reward
-                        </span>
-                      </p>
-                    )}
-                    {i === 6 && (
-                      <p
-                        className="text-white text-xl uppercase leading-none"
-                        style={{ fontFamily: "var(--font-peakers-bold)" }}
-                      >
-                        Free Side
-                        <br />
-                        <span
-                          className="text-[14px] text-white/70 capitalize"
-                          style={{ fontFamily: "var(--font-neuzeit)" }}
-                        >
-                          Gamma Reward
-                        </span>
-                      </p>
-                    )}
-                    {i === 9 && (
-                      <p
-                        className="text-[#9a091c] text-xl uppercase leading-none"
-                        style={{ fontFamily: "var(--font-peakers-bold)" }}
-                      >
-                        Free Meal
-                        <br />
-                        <span
-                          className="text-[14px] text-[#9a091c]/70 capitalize"
-                          style={{ fontFamily: "var(--font-neuzeit)" }}
-                        >
-                          Alpha Reward
-                        </span>
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Path line that connects behind */}
-            <div className="absolute top-[80px] sm:top-[90px] w-full h-1 bg-[#222220] -z-10 rounded"></div>
-
+          {/* Graphic wrapper for desktop mostly */}
+          <div className="relative w-full py-10 flex flex-col items-center">
+            <img
+              src="/Video/Untitled%20design.gif"
+              alt="Tier Rewards Sequence"
+              className="w-full max-w-[1200px] object-contain rounded-2xl"
+            />
             <p
-              className="mt-20 text-white/60 text-sm italic"
+              className="mt-8 text-white/60 text-sm italic self-start sm:self-center"
               style={{ fontFamily: "var(--font-neuzeit)" }}
             >
               * 1 visit = 1 Head (When you spend £12 pounds or more)
