@@ -243,7 +243,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Mobile Menu Dropdown - Solid Black, Absolute to stay attached to header */}
       <div
-        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[85vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[85vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl rounded-b-[2.5rem] ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <div className="flex flex-col px-[8vw] py-[8vw] space-y-[1vw] relative min-h-[70vh]">
           {/* Decorative Background Text - Zinc Color */}
@@ -320,7 +320,7 @@ export default function Navbar({ preloadedSettings = null }) {
           </div>
 
           {/* Mobile CTA Buttons */}
-          <div className={`flex flex-row gap-[3vw] pt-[19vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[700ms]" : "opacity-0 -translate-x-10"}`} style={{ fontFamily: "var(--font-neuzeit)" }}>
+          {/* <div className={`flex flex-row gap-[3vw] pt-[19vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[700ms]" : "opacity-0 -translate-x-10"}`} style={{ fontFamily: "var(--font-neuzeit)" }}>
             <a
               href="https://peckers.vmos.io/store/store-selection?app=online"
               className="flex items-center justify-center flex-1 h-[12vw] bg-white text-black font-black text-[3.6vw] uppercase tracking-wider rounded-[4vw] border-2 border-white active:scale-95 transition-transform duration-150"
@@ -341,7 +341,7 @@ export default function Navbar({ preloadedSettings = null }) {
               </svg>
               DELIVERY
             </a>
-          </div>
+          </div> */}
 
           {/* COOL DESIGN AT THE BOTTOM */}
           <div className="mt-8 pt-10 pb-4 border-t border-white/10">
