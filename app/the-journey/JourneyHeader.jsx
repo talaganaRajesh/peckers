@@ -93,104 +93,65 @@ export default function JourneyIntroSection({ initialData = null }) {
                     >
                         <div className="w-full relative h-[32vw] transform-gpu" style={{ transform: 'translateZ(0)' }}>
                             {/* SVG Timeline Line */}
-                            <svg
-                                className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,215,0,0.3)] overflow-visible"
-                                viewBox="0 0 1440 463"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.rect
-                                        initial={{ width: 0, opacity: 0.95 }}
-                                        whileInView={{ width: 1440, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 3.5, ease: "easeInOut" }}
-                                        y="209.5" height="6.75" fill="#FFD700"
-                                        style={{ willChange: 'width' }}
-                                    />
-                                </g>
+                            <div className="relative w-full h-full">
+                                <svg
+                                    className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,215,0,0.3)] overflow-visible"
+                                    viewBox="0 0 1440 463"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
+                                        <motion.rect
+                                            initial={{ width: 0, opacity: 0.95 }}
+                                            whileInView={{ width: 1440, opacity: 1 }}
+                                            viewport={{ once: true, amount: 0.1 }}
+                                            transition={{ duration: 3.5, ease: "easeInOut" }}
+                                            y="209.5" height="6.75" fill="#FFD700"
+                                            style={{ willChange: 'width' }}
+                                        />
+                                    </g>
+                                </svg>
 
-                                {/* Connector and Circle 1 - Hitchin (at spot 1) */}
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.rect
-                                        initial={{ height: 0 }}
-                                        whileInView={{ height: 53.4739 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                                        x="307" y="228" width="6" fill="#FFD700"
-                                    />
-                                </g>
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.circle
-                                        initial={{ r: 0, opacity: 0 }}
-                                        whileInView={{ r: 22.5, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.2, delay: 0.3, ease: "backOut" }}
-                                        cx="310" cy="213" fill="#FFD700"
-                                    />
-                                    <motion.circle
-                                        initial={{ r: 0, opacity: 0 }}
-                                        whileInView={{ r: 20.25, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.2, delay: 0.3, ease: "backOut" }}
-                                        cx="310" cy="213" stroke="#121212" strokeWidth="4.5" fill="none"
-                                    />
-                                </g>
+                                {/* Dots and connector bars for desktop Safari compatibility */}
+                                <div className="absolute inset-0 pointer-events-none">
+                                    {[
+                                        { left: "21.5%", top: "45.5%", delay: 0.3 },
+                                        { left: "51%", top: "45.5%", delay: 0.7 },
+                                        { left: "80.8%", top: "45.5%", delay: 1.1 },
+                                    ].map((dot, idx) => (
+                                        <motion.div
+                                            key={`dot-${idx}`}
+                                            initial={{ scale: 0, opacity: 0 }}
+                                            whileInView={{ scale: 1, opacity: 1 }}
+                                            viewport={{ once: true, amount: 0.1 }}
+                                            transition={{ duration: 1.2, delay: dot.delay, ease: "backOut" }}
+                                            style={{ left: dot.left, top: dot.top }}
+                                            className="absolute -translate-x-1/2 -translate-y-1/2 transform w-[3.2vw] h-[3.2vw] md:w-[2.2vw] md:h-[2.2vw] rounded-full bg-[#FFD700] border-[2px] border-[#121212] shadow-[0_0_18px_rgba(255,215,0,0.8)]"
+                                        />
+                                    ))}
 
-                                {/* Connector and Circle 2 - Stevenage (at spot 2) */}
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.rect
-                                        initial={{ y: 218, height: 0 }}
-                                        whileInView={{ y: 144, height: 74 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
-                                        x="732" width="6" fill="#FFD700"
-                                    />
-                                </g>
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.circle
-                                        initial={{ r: 0, opacity: 0 }}
-                                        whileInView={{ r: 22.5, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.2, delay: 1.0, ease: "backOut" }}
-                                        cx="735" cy="213" fill="#FFD700"
-                                    />
-                                    <motion.circle
-                                        initial={{ r: 0, opacity: 0 }}
-                                        whileInView={{ r: 20.25, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.2, delay: 1.0, ease: "backOut" }}
-                                        cx="735" cy="213" stroke="#121212" strokeWidth="4.5" fill="none"
-                                    />
-                                </g>
-
-                                {/* Connector and Circle 3 - Where Next (at spot 3) */}
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.rect
-                                        initial={{ height: 0 }}
-                                        whileInView={{ height: 53.4739 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.5, delay: 2.0, ease: "easeOut" }}
-                                        x="1161" y="228" width="6" fill="#FFD700"
-                                    />
-                                </g>
-                                <g className="drop-shadow-[0_0_8px_rgba(255,215,0,0.8)]">
-                                    <motion.circle
-                                        initial={{ r: 0, opacity: 0 }}
-                                        whileInView={{ r: 22.5, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.2, delay: 1.8, ease: "backOut" }}
-                                        cx="1164" cy="213" fill="#FFD700"
-                                    />
-                                    <motion.circle
-                                        initial={{ r: 0, opacity: 0 }}
-                                        whileInView={{ r: 20.25, opacity: 1 }}
-                                        viewport={{ once: true, amount: 0.1 }}
-                                        transition={{ duration: 1.2, delay: 1.8, ease: "backOut" }}
-                                        cx="1164" cy="213" stroke="#121212" strokeWidth="4.5" fill="none"
-                                    />
-                                </g>
-                            </svg>
+                                    {[
+                                        { left: "21.3%", top: "49.25%", height: "11.55%", delay: 0.5 },
+                                        { left: "50.8%", top: "31.1%", height: "16%", delay: 1.2 },
+                                        { left: "80.6%", top: "49.25%", height: "11.55%", delay: 2.0 },
+                                    ].map((bar, idx) => (
+                                        <motion.div
+                                            key={`connector-${idx}`}
+                                            initial={{ scaleY: 0, opacity: 0.6 }}
+                                            whileInView={{ scaleY: 1, opacity: 1 }}
+                                            viewport={{ once: true, amount: 0.1 }}
+                                            transition={{ duration: 1.5, delay: bar.delay, ease: "easeOut" }}
+                                            style={{
+                                                left: bar.left,
+                                                top: bar.top,
+                                                height: bar.height,
+                                                transformOrigin: "top",
+                                            }}
+                                            className="absolute w-[0.35vw] min-w-[6px] bg-[#FFD700] shadow-[0_0_18px_rgba(255,215,0,0.8)] rounded-full"
+                                        />
+                                    ))}
+                                </div>
+                            </div>
 
                             {/* Card 1 - Hitchin (2022) */}
                             {data.timeline?.[0] && (
