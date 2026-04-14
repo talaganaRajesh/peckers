@@ -405,13 +405,14 @@ export default function RewardsRoadmap() {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full overflow-hidden -mx-3 sm:-mx-4 md:mx-0 px-3 sm:px-4 md:px-0 py-4">
+    <div ref={containerRef} className="w-full overflow-hidden py-4">
       <div
         className="relative mx-auto"
         style={{
           width: DESIGN_WIDTH * scale,
           height: DESIGN_HEIGHT * scale,
           maxWidth: "100%",
+          marginLeft: scale < 1 ? "-25px" : "auto",
         }}
       >
         <div
