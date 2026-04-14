@@ -172,7 +172,7 @@ function AlphaRewardCard({ animated }) {
 function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className={`absolute overflow-visible border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       <div className="absolute h-[83px] left-[17.5px] top-[7.29px] w-[63px]">
@@ -192,7 +192,7 @@ function OrangeDashedBox({ left, className, animated }) {
 function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className={`absolute overflow-visible border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
@@ -226,7 +226,7 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 // Beta reward overlay box
 function BetaOverlayBox({ animated }) {
   return (
-    <div className={`absolute overflow-visible bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
+    <div className={`absolute overflow-hidden bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
       <div className="absolute h-[84px] left-[18.89px] top-[7.53px] w-[65px]">
         <Image
           alt="Beta chicken"
@@ -243,7 +243,7 @@ function BetaOverlayBox({ animated }) {
 // Gamma reward overlay box
 function GammaOverlayBox({ animated }) {
   return (
-    <div className={`absolute overflow-visible bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''}`}>
+    <div className={`absolute overflow-hidden bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''}`}>
       <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px]">
         <Image
           alt="Gamma chicken"
@@ -362,18 +362,21 @@ export default function RewardsRoadmap() {
   const DESIGN_WIDTH = 1000;
   const DESIGN_HEIGHT = 740;
 
+  const CYCLE_DURATION = 26000; // Total animation cycle ~24.5s + 1.5s pause
+  const hasStarted = useRef(false);
+
   // Intersection Observer: trigger animations when section comes into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isInView) {
+        if (entry.isIntersecting && !hasStarted.current) {
+          hasStarted.current = true;
           setIsInView(true);
-          // Disconnect after triggering once
           observer.disconnect();
         }
       },
       {
-        threshold: 0.2, // Trigger when 20% of the section is visible
+        threshold: 0.2,
       }
     );
 
@@ -382,6 +385,24 @@ export default function RewardsRoadmap() {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  // Loop: restart the animation cycle after it completes
+  useEffect(() => {
+    if (!isInView) return;
+
+    const loopTimeout = setTimeout(() => {
+      // Briefly reset to clear all animations
+      setIsInView(false);
+      // Re-enable after a short frame to let CSS reset
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsInView(true);
+        });
+      });
+    }, CYCLE_DURATION);
+
+    return () => clearTimeout(loopTimeout);
   }, [isInView]);
 
   // Responsive scaling: scale the fixed-size design to fit the container
@@ -413,6 +434,7 @@ export default function RewardsRoadmap() {
           height: DESIGN_HEIGHT * scale,
           maxWidth: "100%",
           marginLeft: scale < 1 ? "-25px" : "auto",
+          left: scale >= 1 ? "-50px" : 0,
         }}
       >
         <div
@@ -520,7 +542,7 @@ export default function RewardsRoadmap() {
         </div>
 
         {/* Large character cards */}
-        <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaCard} ${isInView ? styles.animated : ''}`}>
+        <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaLargeCard} ${isInView ? styles.animated : ''}`}>
           <Image alt="Alpha card" className="object-cover" src={IMG.alphaCard} fill sizes="179px" />
         </div>
 
@@ -535,9 +557,9 @@ export default function RewardsRoadmap() {
         {/* ── Dashed connection lines ─────────────────────── */}
 
         {/* Row 1 connectors */}
-        <DashedLine left="157px" top="337px" width="174.026px" className={styles.line1} animated={isInView} />
-        <DashedLine left="438px" top="333px" width="66px" className={styles.line2} animated={isInView} />
-        <DashedLine left="775px" top="333px" width="66px" className={styles.line3} animated={isInView} />
+        <DashedLine left="157px" top="337px" width="174.026px" className={styles.connR1a} animated={isInView} />
+        <DashedLine left="438px" top="333px" width="66px" className={styles.connR1b} animated={isInView} />
+        <DashedLine left="775px" top="333px" width="66px" className={styles.connR1c} animated={isInView} />
 
         {/* Row 1→2 arrow (right side) */}
         <ArrowConnector
@@ -547,12 +569,12 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 66 22.0919"
           pathData={svgPaths.p1d639300}
-          className={styles.arrow1}
+          className={styles.connR1toR2}
           animated={isInView}
         />
 
         {/* Row 2 connectors */}
-        <DashedLine left="604px" top="487px" width="57px" className={styles.line1} animated={isInView} />
+        <DashedLine left="604px" top="487px" width="57px" className={styles.connR2a} animated={isInView} />
 
         {/* Row 2→3 arrow (left side) */}
         <ArrowConnector
@@ -562,16 +584,16 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 57 22.0919"
           pathData={svgPaths.p15049280}
-          className={styles.arrow2}
+          className={styles.connR2toR3}
           animated={isInView}
         />
 
         {/* Row 2 horizontal line */}
-        <DashedLine left="251.5px" top="485.5px" width="85px" className={styles.line2} animated={isInView} />
+        <DashedLine left="251.5px" top="485.5px" width="85px" className={styles.connR2b} animated={isInView} />
 
         {/* Row 3 connectors */}
-        <DashedLine left="331px" top="653px" width="46px" className={styles.line3} animated={isInView} />
-        <DashedLine left="475px" top="653px" width="46px" className={styles.line1} animated={isInView} />
+        <DashedLine left="331px" top="653px" width="46px" className={styles.connR3a} animated={isInView} />
+        <DashedLine left="475px" top="653px" width="46px" className={styles.connR3b} animated={isInView} />
 
         {/* Row 3 arrows */}
         <ArrowConnector
@@ -581,7 +603,7 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 43 22.0919"
           pathData={svgPaths.p1ba22280}
-          className={styles.arrow3}
+          className={styles.connR3c}
           animated={isInView}
         />
         <ArrowConnector
@@ -591,7 +613,7 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 64 22.0919"
           pathData={svgPaths.pde05b00}
-          className={styles.arrow4}
+          className={styles.connR3d}
           animated={isInView}
         />
 
@@ -603,7 +625,7 @@ export default function RewardsRoadmap() {
           height="57.55px"
           viewBox="0 0 108.5 57.5459"
           pathData={svgPaths.p2ef5f00}
-          className={styles.arrow5}
+          className={styles.connDownTurn}
           animated={isInView}
         />
 
@@ -615,7 +637,7 @@ export default function RewardsRoadmap() {
           height="101.55px"
           viewBox="0 0 39.5 101.546"
           pathData={svgPaths.p362f7a80}
-          className={styles.arrow6}
+          className={styles.connVertical}
           animated={isInView}
         />
 

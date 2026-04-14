@@ -56,13 +56,13 @@
 
   30% {
     opacity: 1;
-    transform: scale(2.2) translate(-180px, 20px);
+    transform: scale(2.2) translate(-181px, -111px);
     filter: drop-shadow(0 0 35px rgba(229, 26, 56, 0.8));
   }
 
   60% {
     opacity: 1;
-    transform: scale(2.0) translate(-180px, 20px);
+    transform: scale(2.0) translate(-181px, -111px);
     filter: drop-shadow(0 0 30px rgba(229, 26, 56, 0.6));
   }
 
@@ -82,13 +82,13 @@
 
   30% {
     opacity: 1;
-    transform: scale(2.2) translate(280px, 0px);
+    transform: scale(2.2) translate(134px, -47px);
     filter: drop-shadow(0 0 35px rgba(255, 126, 0, 0.8));
   }
 
   60% {
     opacity: 1;
-    transform: scale(2.0) translate(280px, 0px);
+    transform: scale(2.0) translate(134px, -47px);
     filter: drop-shadow(0 0 30px rgba(255, 126, 0, 0.6));
   }
 
@@ -108,13 +108,13 @@
 
   30% {
     opacity: 1;
-    transform: scale(2.2) translate(-180px, 80px);
+    transform: scale(2.2) translate(-175px, 13px);
     filter: drop-shadow(0 0 35px rgba(200, 100, 150, 0.8));
   }
 
   60% {
     opacity: 1;
-    transform: scale(2.0) translate(-180px, 80px);
+    transform: scale(2.0) translate(-175px, 13px);
     filter: drop-shadow(0 0 30px rgba(200, 100, 150, 0.6));
   }
 
@@ -124,6 +124,8 @@
     filter: drop-shadow(0 0 12px rgba(200, 100, 150, 0.25));
   }
 }
+
+
 
 /* Initial dim state for all elements */
 @keyframes initialDim {
@@ -170,15 +172,15 @@
 }
 
 .orangeBox1.animated {
-  animation-delay: 14.5s;
+  animation-delay: 18s;
 }
 
 .orangeBox2.animated {
-  animation-delay: 15.1s;
+  animation-delay: 18.4s;
 }
 
 .orangeBox3.animated {
-  animation-delay: 15.7s;
+  animation-delay: 18.8s;
 }
 
 /* Large reward card animations (slower, gentler) */
@@ -192,9 +194,14 @@
   animation: rewardCardPop 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+.alphaLargeCard.animated {
+  animation: alphaCardPopToCenter 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 21s;
+}
+
 .alphaCard.animated {
   animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  animation-delay: 19.8s;
+  animation-delay: 19.5s;
   transform: none !important;
 }
 
@@ -210,12 +217,12 @@
 
 .recruitGroup.animated {
   animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  animation-delay: 16.3s;
+  animation-delay: 0.3s;
 }
 
 /* Connection lines and arrows (subtle appearance) */
 .connectorLine {
-  opacity: 0;
+  opacity: 0.15;
 }
 
 .connectorLine.animated {
@@ -224,55 +231,70 @@
 
 @keyframes lineAppear {
   0% {
-    opacity: 0;
+    opacity: 0.15;
   }
   100% {
     opacity: 1;
   }
 }
 
-.line1.animated {
-  animation-delay: 1.2s;
+/* Row 1 connectors (after recruit 0.3s, goldBox1 0.6s, goldBox2 1.2s, gamma 1.8s) */
+.connR1a.animated {
+  animation-delay: 1s;       /* recruit → goldBox1 */
 }
 
-.line2.animated {
-  animation-delay: 2s;
+.connR1b.animated {
+  animation-delay: 1.8s;     /* goldBox1 → goldBox2 */
 }
 
-.line3.animated {
-  animation-delay: 2.8s;
+.connR1c.animated {
+  animation-delay: 2.4s;     /* goldBox2 → gamma */
 }
 
-.arrow1.animated {
-  animation-delay: 2.2s;
+.connR1toR2.animated {
+  animation-delay: 3s;       /* gamma → row 2 arrow */
 }
 
-.arrow2.animated {
-  animation-delay: 3s;
+/* Outline frame (roadmap border) */
+
+/* Down-turn connector (row 1 right → row 2, after gamma pop 8.7s) */
+.connDownTurn.animated {
+  animation-delay: 9s;
 }
 
-.arrow3.animated {
-  animation-delay: 3.8s;
+/* Row 2 connectors (after darkRedBox2 9.8s, darkRedBox1 10.4s, betaBox 11s) */
+.connR2a.animated {
+  animation-delay: 10.8s;    /* between dark red boxes */
 }
 
-.arrow4.animated {
-  animation-delay: 4.6s;
+.connR2toR3.animated {
+  animation-delay: 11.5s;    /* row 2 → row 3 arrow */
 }
 
-.arrow5.animated {
-  animation-delay: 4.4s;
+.connR2b.animated {
+  animation-delay: 11.5s;    /* horizontal line near beta */
 }
 
-.arrow6.animated {
-  animation-delay: 3.6s;
+/* Vertical connector (left side, after beta area) */
+.connVertical.animated {
+  animation-delay: 17.5s;    /* after beta pop finishes */
 }
 
-.arrow7.animated {
-  animation-delay: 5.4s;
+/* Row 3 connectors (after orangeBox1 18s, orangeBox2 18.4s, orangeBox3 18.8s) */
+.connR3a.animated {
+  animation-delay: 18.4s;    /* orangeBox1 → orangeBox2 */
 }
 
-.arrow8.animated {
-  animation-delay: 5.2s;
+.connR3b.animated {
+  animation-delay: 18.8s;    /* orangeBox2 → orangeBox3 */
+}
+
+.connR3c.animated {
+  animation-delay: 19.2s;    /* orangeBox3 → alpha arrow */
+}
+
+.connR3d.animated {
+  animation-delay: 19.8s;    /* arrow to alpha */
 }
 
 /* Text elements (fade in smoothly) */
@@ -307,12 +329,12 @@
 
 /* Outline frame */
 .outlineFrame {
-  opacity: 0;
+  opacity: 0.15;
 }
 
 .outlineFrame.animated {
   animation: lineAppear 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  animation-delay: 2.2s;
+  animation-delay: 24.5s;
 }
 
 /* No mobile-specific overrides needed — the design scales uniformly via CSS transform */
