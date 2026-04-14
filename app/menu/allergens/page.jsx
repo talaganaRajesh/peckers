@@ -6,7 +6,40 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function AllergensPage() {
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [isMobileLoading, setIsMobileLoading] = useState(true);
+  const [isDesktopLoading, setIsDesktopLoading] = useState(true);
   const pdfUrl = "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/All%20Dishes%20Allergens%20Info%20website%20CHANEGD%20FORMAT.pdf";
+
+  // Premium Loader Component
+  const Loader = ({ text = "Optimizing View..." }) => (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-[#080808]"
+    >
+      <div className="relative">
+        <div className="w-16 h-16 border-2 border-[#F2DF0D]/10 rounded-full" />
+        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-[#F2DF0D] rounded-full animate-spin" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-2 h-2 bg-[#F2DF0D] rounded-full animate-ping" />
+        </div>
+      </div>
+      <div className="mt-8 space-y-2 text-center">
+        <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2DF0D] font-bold">
+          {text}
+        </p>
+        <div className="w-32 h-[1px] bg-white/10 overflow-hidden mx-auto">
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            className="w-full h-full bg-[#F2DF0D]"
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col lg:flex-row font-sans selection:bg-[#F2DF0D] selection:text-black overflow-x-hidden lg:overflow-hidden relative">
@@ -72,10 +105,14 @@ export default function AllergensPage() {
 
           {/* Single Iframe for Mobile - Using Google Docs Viewer for robust mobile display */}
           <div className={`w-full h-full transition-all duration-700 ease-in-out ${isUnlocked ? 'blur-0 scale-100' : 'blur-[15px] opacity-40 scale-105 pointer-events-none'}`}>
+            <AnimatePresence>
+              {isMobileLoading && <Loader text="Loading Guide..." />}
+            </AnimatePresence>
             <iframe
               src={`https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`}
               className="w-full h-full border-none"
               title="Allergens PDF Mobile Viewer"
+              onLoad={() => setIsMobileLoading(false)}
             />
           </div>
         </div>
@@ -150,12 +187,16 @@ export default function AllergensPage() {
       {/* RIGHT SIDE CONTENT - PDF Viewer (DESKTOP) */}
       <main className="hidden lg:flex flex-1 bg-black relative flex-col h-screen">
         <div className="flex-1 w-full h-full relative overflow-hidden bg-zinc-900 shadow-2xl">
+          <AnimatePresence>
+            {isDesktopLoading && <Loader text="Synergizing Data..." />}
+          </AnimatePresence>
           {pdfUrl ? (
             <iframe
               src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
               className="w-full h-full border-none m-0 p-0 allow-interaction"
               title="Allergens PDF Desktop"
               allow="autoplay; scroll-behavior: smooth"
+              onLoad={() => setIsDesktopLoading(false)}
             />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-white/40">

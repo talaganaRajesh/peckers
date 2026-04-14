@@ -310,13 +310,13 @@ const Footer = ({ preloadedData = null }) => {
                 </>
               )}
               <div>
-                <Link
+                {/* <Link
                   href="/hitchin"
                   className="underline decoration-[#C41718] decoration-1 underline-offset-[1vw] md:underline-offset-4 lg:underline-offset-2 text-[#C41718] hover:text-[#f22] transition-colors inline-block mt-[1vw] md:mt-[2vw] lg:mt-0"
                   style={{ fontFamily: "var(--font-neuzeit)" }}
                 >
                   View All Locations
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
@@ -394,12 +394,12 @@ const Footer = ({ preloadedData = null }) => {
         <div className="w-full flex justify-center items-center py-2 md:py-4 bg-black">
           <div className="relative max-w-[100%] w-full h-80 md:h-[45vw] lg:h-[35vw] xl:h-[28vw]">
             <Image
-                        src="/Peckers Logo 1 [Vectorized].svg"
-                        alt="Peckers Logo"
-                        fill
-                        className="object-contain"
-                        priority
-                      />
+              src="/Peckers Logo 1 [Vectorized].svg"
+              alt="Peckers Logo"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
       </div>

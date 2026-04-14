@@ -114,11 +114,11 @@ const SectionItem = memo(({ section, index, num, total }) => {
         }}
       >
         <div
-          className={`w-full h-full flex flex-col px-[6vw] md:px-[5vw] leading-normal py-[4vw] sm:py-[6vw] md:py-[2vw]`}
+          className={`w-full h-full flex flex-col px-[6vw] md:px-[5vw] leading-normal pt-[2vw] pb-[4vw] sm:py-[6vw] md:py-[2vw]`}
         >
           {/* PERSISTENT HEADER */}
-          <div className="flex flex-col justify-end mb-[4vw] md:mb-[2vw] pt-[6vw] md:pt-[2vw]">
-            <div className="w-full flex justify-start items-end min-h-[18vw] md:min-h-[0.1vw]">
+          <div className="flex flex-col justify-end mb-[1.5vw] md:mb-[2vw] pt-[2vw] md:pt-[2vw]">
+            <div className="w-full flex justify-start items-end min-h-[5vw] md:min-h-[0.1vw]">
               <h2 className="font-peakers font-bold leading-none uppercase tracking-tight text-white text-[9vw] md:text-[44px] lg:text-[48px] xl:text-[50.4px]">
                 {section.title}
               </h2>

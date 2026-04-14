@@ -19,7 +19,7 @@ export default function MobileBottomBar() {
   }, []);
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 w-full bg-transparent shadow-none flex items-center gap-2 min-[375px]:gap-3 px-2 min-[375px]:px-4 py-3 z-50 pb-[calc(14px+env(safe-area-inset-bottom))]">
+    <div className="md:hidden fixed bottom-0 left-0 w-full bg-transparent shadow-none flex items-center gap-[5px] px-2 min-[375px]:px-4 py-3 z-50 pb-[calc(14px+env(safe-area-inset-bottom))]">
       <a
         href="https://peckers.vmos.io/store/store-selection?app=online"
         target="_blank"

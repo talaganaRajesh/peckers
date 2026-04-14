@@ -117,7 +117,7 @@ const HomePageClient = ({
         ratingData={data?.ratingSection}
       />
 
-      {/* <SignUpSection initialData={data?.signupSection} /> */}
+      <SignUpSection initialData={data?.signupSection} />
 
 
     </div>
