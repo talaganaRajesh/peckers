@@ -319,13 +319,6 @@
 /* RESPONSIVE STYLES FOR MOBILE ───────────────────────────────────────── */
 /* ────────────────────────────────────────────────────────────────────── */
 
-/* Mobile: Hide connector lines and arrows for cleaner view on small screens */
-@media (max-width: 480px) {
-  .connectorLine {
-    display: none !important;
-  }
-}
-
 /* Mobile: Better spacing and alignment */
 @media (max-width: 767px) {
   .smallCard {

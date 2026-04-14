@@ -7,6 +7,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: process.env.NODE_ENV === "development",
+    qualities: [75, 80, 85],
     remotePatterns: [
       {
         protocol: "https",

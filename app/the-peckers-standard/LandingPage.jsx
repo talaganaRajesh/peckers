@@ -8,7 +8,7 @@ export default function UniquenessLandingPage({ initialData = null }) {
   const data = initialData;
 
   const backgroundImageUrl = data?.backgroundImage
-    ? urlFor(data.backgroundImage).url()
+    ? urlFor(data.backgroundImage).width(1920).format("webp").url()
     : "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/Uniqueness/Uniqueness%20Background%20%281%29.webp";
   const gradientImageUrl =
     "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/Uniqueness/Gradient%20%281%29.webp";
@@ -24,6 +24,9 @@ export default function UniquenessLandingPage({ initialData = null }) {
           priority
           className="object-cover"
           sizes="100vw"
+          quality={85}
+          loading="eager"
+          decoding="async"
         />
       </div>
       {/* Gradient Overlay */}
@@ -36,6 +39,9 @@ export default function UniquenessLandingPage({ initialData = null }) {
           draggable={false}
           aria-hidden="true"
           sizes="100vw"
+          quality={80}
+          loading="eager"
+          decoding="async"
         />
       </div>
       {/* Centered Overlay Content */}

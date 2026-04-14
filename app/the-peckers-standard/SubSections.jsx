@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, memo } from "react";
+import React, { useRef, useEffect, memo, useState } from "react";
 import Image from "next/image";
 import { useInView } from "framer-motion";
 import { urlFor } from "../../sanity/lib/image";
@@ -9,6 +9,8 @@ const SectionItem = memo(({ section, index, num, total }) => {
   const videoRef = useRef(null);
   const sectionRef = useRef(null);
   const scrollableRef = useRef(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   // Only apply data-lenis-prevent when content actually overflows to avoid scroll dead zones
   useEffect(() => {
@@ -27,20 +29,38 @@ const SectionItem = memo(({ section, index, num, total }) => {
     return () => ro.disconnect();
   }, []);
 
-  // Intersection detection for optimization
-  const isInView = useInView(sectionRef, { margin: "400px 0px", once: true });
+  // More optimized intersection detection - smaller margin to prevent excessive early loading
+  const isInView = useInView(sectionRef, { margin: "150px 0px", once: true });
   // Specifically for video playback - more lenient threshold for iPads
   const isStrictlyInView = useInView(sectionRef, { amount: 0.15 });
 
+  // Handle video loading and playback with proper error handling
   useEffect(() => {
-    if (videoRef.current) {
-      if (isStrictlyInView) {
-        videoRef.current.play().catch(() => { });
-      } else {
-        videoRef.current.pause();
+    const video = videoRef.current;
+    if (!video || videoError) return;
+
+    if (isStrictlyInView) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Video playback prevented:", error);
+        });
       }
+    } else {
+      video.pause();
     }
-  }, [isStrictlyInView]);
+  }, [isStrictlyInView, videoError]);
+
+  // Handle video load and error events
+  const handleVideoLoadedMetadata = () => {
+    setVideoLoaded(true);
+    setVideoError(false);
+  };
+
+  const handleVideoError = (e) => {
+    console.error("Video failed to load:", e);
+    setVideoError(true);
+  };
 
   const isAlternate = index % 2 !== 0;
 
@@ -65,21 +85,54 @@ const SectionItem = memo(({ section, index, num, total }) => {
         <div className="absolute inset-0 w-full h-full flex items-center justify-center z-20">
           {section.videoUrl || section.video ? (
             // VIDEO SECTION
-            <video
-              ref={videoRef}
-              src={
-                section.videoUrl ||
-                (section.video?.asset?._ref
-                  ? urlFor(section.video).url()
-                  : "")
-              }
-              muted
-              loop
-              playsInline
-              preload="auto"
-              className="w-full h-full object-cover"
-              style={{ filter: "brightness(0.9)", opacity: isInView ? 1 : 0, transition: "opacity 0.8s ease-in-out" }}
-            />
+            !videoError ? (
+              <video
+                ref={videoRef}
+                src={
+                  section.videoUrl ||
+                  (section.video?.asset?._ref
+                    ? urlFor(section.video).url()
+                    : "")
+                }
+                poster={section.image ? urlFor(section.image).width(800).format("webp").url() : undefined}
+                muted
+                loop
+                playsInline
+                disablePictureInPicture
+                controlsList="nodownload"
+                preload={index < 3 ? "auto" : "metadata"}
+                crossOrigin="anonymous"
+                decoding="async"
+                className="w-full h-full object-cover"
+                onLoadedMetadata={handleVideoLoadedMetadata}
+                onError={handleVideoError}
+                onCanPlay={() => setVideoLoaded(true)}
+                style={{ 
+                  filter: "brightness(0.9)", 
+                  opacity: isInView && !videoError ? 1 : 0, 
+                  transition: "opacity 0.8s ease-in-out"
+                }}
+              />
+            ) : (
+              // Fallback to image if video fails to load
+              section.image && (
+                <div className="w-full h-full relative" style={{ opacity: isInView ? 1 : 0, transition: "opacity 0.8s ease-in-out" }}>
+                  <Image
+                    src={urlFor(section.image)
+                      .width(1500)
+                      .format("webp")
+                      .url()}
+                    alt={section.title || `Section ${num} - Fallback`}
+                    fill
+                    className="object-cover object-[80%_50%] md:object-center"
+                    style={{ filter: "brightness(0.7)" }}
+                    priority={index < 3}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    sizes="(max-width: 768px) 100vw, 60vw"
+                  />
+                </div>
+              )
+            )
           ) : (
             // PHOTO SECTION
             section.image && (
@@ -103,7 +156,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
         </div>
 
         {/* Dynamic loading state for slow connections */}
-        <div className={`absolute inset-0 bg-[#0a0a0a] transition-opacity duration-1000 z-10 ${isInView ? 'opacity-0' : 'opacity-100'}`} />
+        <div className={`absolute inset-0 bg-[#0a0a0a] transition-opacity duration-1000 z-10 ${isInView && videoLoaded ? 'opacity-0' : 'opacity-100'}`} />
       </div>
 
       {/* CONTENT SECTION */}
