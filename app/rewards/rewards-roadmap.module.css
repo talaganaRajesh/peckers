@@ -1,0 +1,316 @@
+/* ────────────────────────────────────────────────────────────────────── */
+/* Rewards Roadmap Animation Styles                                       */
+/* ────────────────────────────────────────────────────────────────────── */
+
+/* ── Keyframe Animations ─────────────────────────────────────────────── */
+
+/* Small cards: Smooth opacity fade-in with subtle glow effect (NO POP) */
+@keyframes smallCardAppear {
+  0% {
+    opacity: 0.15;
+    transform: none;
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+
+  40% {
+    opacity: 1;
+    transform: none;
+    filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.35));
+  }
+
+  100% {
+    opacity: 0.75;
+    transform: none;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.12));
+  }
+}
+
+/* Large reward cards: Smooth pop effect with gentle scale and glow */
+@keyframes rewardCardPop {
+  0% {
+    opacity: 1;
+    transform: scale(0.9);
+    filter: drop-shadow(0 0 0px rgba(229, 26, 56, 0));
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 25px rgba(229, 26, 56, 0.5));
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(229, 26, 56, 0.25));
+  }
+}
+
+/* Large reward cards with dramatic center pop effect */
+@keyframes alphaCardPopToCenter {
+  0% {
+    opacity: 1;
+    transform: scale(0.7) translate(0, 0);
+    filter: drop-shadow(0 0 0px rgba(229, 26, 56, 0));
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(2.2) translate(-180px, 20px);
+    filter: drop-shadow(0 0 35px rgba(229, 26, 56, 0.8));
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(2.0) translate(-180px, 20px);
+    filter: drop-shadow(0 0 30px rgba(229, 26, 56, 0.6));
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+    filter: drop-shadow(0 0 12px rgba(229, 26, 56, 0.25));
+  }
+}
+
+@keyframes betaCardPopToCenter {
+  0% {
+    opacity: 1;
+    transform: scale(0.7) translate(0, 0);
+    filter: drop-shadow(0 0 0px rgba(255, 126, 0, 0));
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(2.2) translate(280px, 0px);
+    filter: drop-shadow(0 0 35px rgba(255, 126, 0, 0.8));
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(2.0) translate(280px, 0px);
+    filter: drop-shadow(0 0 30px rgba(255, 126, 0, 0.6));
+  }
+
+  100% {
+    opacity: 1 ;
+    transform: scale(1) translate(0, 0);
+    filter: drop-shadow(0 0 12px rgba(255, 126, 0, 0.25));
+  }
+}
+
+@keyframes gammaCardPopToCenter {
+  0% {
+    opacity: 1;
+    transform: scale(0.7) translate(0, 0);
+    filter: drop-shadow(0 0 0px rgba(200, 100, 150, 0));
+  }
+
+  30% {
+    opacity: 1;
+    transform: scale(2.2) translate(-180px, 80px);
+    filter: drop-shadow(0 0 35px rgba(200, 100, 150, 0.8));
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(2.0) translate(-180px, 80px);
+    filter: drop-shadow(0 0 30px rgba(200, 100, 150, 0.6));
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+    filter: drop-shadow(0 0 12px rgba(200, 100, 150, 0.25));
+  }
+}
+
+/* Initial dim state for all elements */
+@keyframes initialDim {
+  0% {
+    opacity: 0.15;
+  }
+}
+
+/* ── Animation Classes ────────────────────────────────────────────────── */
+
+/* Small card animations with staggered delays (triggered on view) */
+.smallCard {
+  opacity: 0.15;
+  transform: none;
+}
+
+.smallCard.animated {
+  animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Specific delays for small cards (left to right progression, longer spacing) */
+.goldBox1.animated {
+  animation-delay: 0.6s;
+}
+
+.goldBox2.animated {
+  animation-delay: 1.2s;
+}
+
+.gammaCard.animated {
+  animation-delay: 1.8s;
+}
+
+.betaBox.animated {
+  animation-delay: 11s;
+}
+
+.darkRedBox1.animated {
+  animation-delay: 10.4s;
+}
+
+.darkRedBox2.animated {
+  animation-delay: 9.8s;
+}
+
+.orangeBox1.animated {
+  animation-delay: 14.5s;
+}
+
+.orangeBox2.animated {
+  animation-delay: 15.1s;
+}
+
+.orangeBox3.animated {
+  animation-delay: 15.7s;
+}
+
+/* Large reward card animations (slower, gentler) */
+.rewardCard {
+  opacity: 0.15;
+  transform-origin: center;
+  z-index: 50;
+}
+
+.rewardCard.animated {
+  animation: rewardCardPop 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.alphaCard.animated {
+  animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 19.8s;
+  transform: none !important;
+}
+
+.betaLargeCard.animated {
+  animation: betaCardPopToCenter 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 14s;
+}
+
+.gammaLargeCard.animated {
+  animation: gammaCardPopToCenter 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 5.2s;
+}
+
+.recruitGroup.animated {
+  animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 16.3s;
+}
+
+/* Connection lines and arrows (subtle appearance) */
+.connectorLine {
+  opacity: 0;
+}
+
+.connectorLine.animated {
+  animation: lineAppear 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes lineAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.line1.animated {
+  animation-delay: 1.2s;
+}
+
+.line2.animated {
+  animation-delay: 2s;
+}
+
+.line3.animated {
+  animation-delay: 2.8s;
+}
+
+.arrow1.animated {
+  animation-delay: 2.2s;
+}
+
+.arrow2.animated {
+  animation-delay: 3s;
+}
+
+.arrow3.animated {
+  animation-delay: 3.8s;
+}
+
+.arrow4.animated {
+  animation-delay: 4.6s;
+}
+
+.arrow5.animated {
+  animation-delay: 4.4s;
+}
+
+.arrow6.animated {
+  animation-delay: 3.6s;
+}
+
+.arrow7.animated {
+  animation-delay: 5.4s;
+}
+
+.arrow8.animated {
+  animation-delay: 5.2s;
+}
+
+/* Text elements (fade in smoothly) */
+.textElement {
+  opacity: 0;
+}
+
+.textElement.animated {
+  animation: textFadeIn 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.headerText.animated {
+  animation-delay: 0.6s;
+}
+
+.registerText.animated {
+  animation-delay: 0.3s;
+}
+
+.logoIcon.animated {
+  animation-delay: 1.4s;
+}
+
+/* Outline frame */
+.outlineFrame {
+  opacity: 0;
+}
+
+.outlineFrame.animated {
+  animation: lineAppear 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 2.2s;
+}

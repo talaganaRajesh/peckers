@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import styles from "./rewards-roadmap.module.css";
 
 // ── SVG path data (inlined from Figma export) ──────────────────────────────
 const svgPaths = {
@@ -43,9 +44,9 @@ const IMG = {
 
 // ── Sub-components (converted from Figma export) ────────────────────────────
 
-function LogoIcon() {
+function LogoIcon({ animated }) {
   return (
-    <div className="absolute h-[45px] left-[433px] top-[124px] w-[34px]">
+    <div className={`absolute h-[45px] left-[433px] top-[124px] w-[34px] ${styles.logoIcon} ${animated ? styles.animated : ''}`}>
       <svg
         className="absolute block inset-0 size-full"
         fill="none"
@@ -146,9 +147,9 @@ function LogoIcon() {
   );
 }
 
-function AlphaRewardCard() {
+function AlphaRewardCard({ animated }) {
   return (
-    <div className="absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px]">
+    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''}`}>
       <div className="absolute flex items-center justify-center left-1/2 -translate-x-1/2 size-[108.172px] top-0">
         <div className="flex-none scale-[1.1]">
           <div className="bg-[rgba(229,26,56,0.1)] border-[#e51a38] border-[4.097px] border-solid rounded-[24.585px] shadow-[0px_0px_51.218px_0px_rgba(229,26,56,0.42)] size-[98.339px]" />
@@ -168,10 +169,10 @@ function AlphaRewardCard() {
 }
 
 // Row 3 - Orange dashed border boxes (3 of them)
-function OrangeDashedBox({ left }) {
+function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className="absolute border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px]"
+      className={`absolute border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       <div className="absolute h-[83px] left-[17.5px] top-[7.29px] w-[63px]">
@@ -188,10 +189,10 @@ function OrangeDashedBox({ left }) {
 }
 
 // Row 2 - Dark red dashed border boxes
-function DarkRedDashedBox({ left, hasChickenAlt = false }) {
+function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className="absolute border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px]"
+      className={`absolute border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
@@ -223,9 +224,9 @@ function DarkRedDashedBox({ left, hasChickenAlt = false }) {
 }
 
 // Beta reward overlay box
-function BetaOverlayBox() {
+function BetaOverlayBox({ animated }) {
   return (
-    <div className="absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px]">
+    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
       <div className="absolute h-[84px] left-[18.89px] top-[7.53px] w-[65px]">
         <Image
           alt="Beta chicken"
@@ -240,9 +241,9 @@ function BetaOverlayBox() {
 }
 
 // Gamma reward overlay box
-function GammaOverlayBox() {
+function GammaOverlayBox({ animated }) {
   return (
-    <div className="absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px]">
+    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''}`}>
       <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px]">
         <Image
           alt="Gamma chicken"
@@ -257,10 +258,10 @@ function GammaOverlayBox() {
 }
 
 // Row 1 - Gold dashed border boxes
-function GoldDashedBox({ mlOffset }) {
+function GoldDashedBox({ mlOffset, className, animated }) {
   return (
     <div
-      className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center p-[4.097px] rounded-[24.585px] size-[98.339px] top-[280.71px]"
+      className={`absolute left-1/2 -translate-x-1/2 flex items-center justify-center p-[4.097px] rounded-[24.585px] size-[98.339px] top-[280.71px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ marginLeft: mlOffset }}
     >
       <div
@@ -281,10 +282,10 @@ function GoldDashedBox({ mlOffset }) {
 }
 
 // Recruit group
-function RecruitGroup() {
+function RecruitGroup({ animated }) {
   return (
     <>
-      <div className="absolute h-[113px] left-[113px] top-[220px] w-[88px]">
+      <div className={`absolute h-[113px] left-[113px] top-[220px] w-[88px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''}`}>
         <Image
           alt="Recruit card small"
           className="object-cover"
@@ -293,7 +294,7 @@ function RecruitGroup() {
           sizes="88px"
         />
       </div>
-      <div className="absolute h-[76px] left-[128px] top-[225px] w-[58px]">
+      <div className={`absolute h-[76px] left-[128px] top-[225px] w-[58px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''}`}>
         <Image
           alt="Recruit card"
           className="object-cover"
@@ -307,9 +308,9 @@ function RecruitGroup() {
 }
 
 // Dashed horizontal line
-function DashedLine({ left, top, width }) {
+function DashedLine({ left, top, width, className, animated }) {
   return (
-    <div className="absolute h-0" style={{ left, top, width }}>
+    <div className={`absolute h-0 ${styles.connectorLine} ${className} ${animated ? styles.animated : ''}`} style={{ left, top, width }}>
       <div className="absolute inset-[-3px_0_0_0]">
         <svg
           className="block size-full"
@@ -334,9 +335,9 @@ function DashedLine({ left, top, width }) {
 }
 
 // Arrow connector (SVG path based)
-function ArrowConnector({ left, top, width, height, viewBox, pathData }) {
+function ArrowConnector({ left, top, width, height, viewBox, pathData, className, animated }) {
   return (
-    <div className="absolute" style={{ left, top, width, height }}>
+    <div className={`absolute ${styles.connectorLine} ${className} ${animated ? styles.animated : ''}`} style={{ left, top, width, height }}>
       <div className="absolute inset-0">
         <svg
           className="block size-full"
@@ -355,9 +356,32 @@ function ArrowConnector({ left, top, width, height, viewBox, pathData }) {
 export default function RewardsRoadmap() {
   const containerRef = useRef(null);
   const [scale, setScale] = useState(1);
+  const [isInView, setIsInView] = useState(false);
 
   const DESIGN_WIDTH = 1000;
   const DESIGN_HEIGHT = 740;
+
+  // Intersection Observer: trigger animations when section comes into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isInView) {
+          setIsInView(true);
+          // Disconnect after triggering once
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.2, // Trigger when 20% of the section is visible
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isInView]);
 
   // Responsive scaling: scale the fixed-size design to fit the container
   useEffect(() => {
@@ -371,11 +395,11 @@ export default function RewardsRoadmap() {
       }
     };
 
-    const observer = new ResizeObserver(updateScale);
-    observer.observe(containerRef.current);
+    const resizeObserver = new ResizeObserver(updateScale);
+    resizeObserver.observe(containerRef.current);
     updateScale();
 
-    return () => observer.disconnect();
+    return () => resizeObserver.disconnect();
   }, []);
 
   return (
@@ -391,7 +415,7 @@ export default function RewardsRoadmap() {
       >
         {/* ── Header text ─────────────────────────────────── */}
         <div
-          className="absolute flex flex-col justify-center left-[482px] top-[126px] whitespace-nowrap text-white"
+          className={`absolute flex flex-col justify-center left-[482px] top-[126px] whitespace-nowrap text-white ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.headerText}`}
           style={{ fontFamily: "var(--font-peakers-bold)" }}
         >
           <p className="text-[15.657px] leading-normal">
@@ -408,7 +432,7 @@ export default function RewardsRoadmap() {
 
         {/* ── Register text ───────────────────────────────── */}
         <div
-          className="absolute left-[100px] top-[90px] w-[265px]"
+          className={`absolute left-[100px] top-[90px] w-[265px] ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.registerText}`}
         >
           <p
             className="text-[32.638px] text-white leading-normal"
@@ -427,49 +451,49 @@ export default function RewardsRoadmap() {
         </div>
 
         {/* ── Logo icon ───────────────────────────────────── */}
-        <LogoIcon />
+        <LogoIcon animated={isInView} />
 
         {/* ── Tier progression elements ───────────────────── */}
 
         {/* Alpha reward card (bottom right with glow) */}
-        <AlphaRewardCard />
+        <AlphaRewardCard animated={isInView} />
 
         {/* Row 3: Orange dashed boxes */}
-        <OrangeDashedBox left="232.88px" />
-        <OrangeDashedBox left="375.62px" />
-        <OrangeDashedBox left="518.35px" />
+        <OrangeDashedBox left="232.88px" className={styles.orangeBox1} animated={isInView} />
+        <OrangeDashedBox left="375.62px" className={styles.orangeBox2} animated={isInView} />
+        <OrangeDashedBox left="518.35px" className={styles.orangeBox3} animated={isInView} />
 
         {/* Row 2: Dark red dashed boxes */}
-        <DarkRedDashedBox left="501.68px" hasChickenAlt />
-        <DarkRedDashedBox left="665.78px" />
+        <DarkRedDashedBox left="501.68px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
+        <DarkRedDashedBox left="665.78px" className={styles.darkRedBox2} animated={isInView} />
 
         {/* Beta overlay box */}
-        <BetaOverlayBox />
+        <BetaOverlayBox animated={isInView} />
 
         {/* Gamma overlay box (row 1) */}
-        <GammaOverlayBox />
+        <GammaOverlayBox animated={isInView} />
 
         {/* Row 1: Gold dashed boxes */}
-        <GoldDashedBox mlOffset="-114.42px" />
-        <GoldDashedBox mlOffset="55.98px" />
+        <GoldDashedBox mlOffset="-114.42px" className={styles.goldBox1} animated={isInView} />
+        <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
 
         {/* Large character cards */}
-        <div className="absolute h-[214px] left-[808px] top-[508px] w-[179px]">
+        <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaCard} ${isInView ? styles.animated : ''}`}>
           <Image alt="Alpha card" className="object-cover" src={IMG.alphaCard} fill sizes="179px" />
         </div>
 
-        <RecruitGroup />
+        <RecruitGroup animated={isInView} />
 
-        <div className="absolute h-[189px] left-[808px] top-[247px] w-[153px]">
+        <div className={`absolute h-[189px] left-[808px] top-[247px] w-[153px] ${styles.rewardCard} ${styles.gammaLargeCard} ${isInView ? styles.animated : ''}`}>
           <Image alt="Gamma card" className="object-cover" src={IMG.gammaCard} fill sizes="153px" />
         </div>
 
         {/* ── Dashed connection lines ─────────────────────── */}
 
         {/* Row 1 connectors */}
-        <DashedLine left="157px" top="337px" width="174.026px" />
-        <DashedLine left="438px" top="333px" width="66px" />
-        <DashedLine left="775px" top="333px" width="66px" />
+        <DashedLine left="157px" top="337px" width="174.026px" className={styles.line1} animated={isInView} />
+        <DashedLine left="438px" top="333px" width="66px" className={styles.line2} animated={isInView} />
+        <DashedLine left="775px" top="333px" width="66px" className={styles.line3} animated={isInView} />
 
         {/* Row 1→2 arrow (right side) */}
         <ArrowConnector
@@ -479,10 +503,12 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 66 22.0919"
           pathData={svgPaths.p1d639300}
+          className={styles.arrow1}
+          animated={isInView}
         />
 
         {/* Row 2 connectors */}
-        <DashedLine left="604px" top="487px" width="57px" />
+        <DashedLine left="604px" top="487px" width="57px" className={styles.line1} animated={isInView} />
 
         {/* Row 2→3 arrow (left side) */}
         <ArrowConnector
@@ -492,14 +518,16 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 57 22.0919"
           pathData={svgPaths.p15049280}
+          className={styles.arrow2}
+          animated={isInView}
         />
 
         {/* Row 2 horizontal line */}
-        <DashedLine left="251.5px" top="485.5px" width="85px" />
+        <DashedLine left="251.5px" top="485.5px" width="85px" className={styles.line2} animated={isInView} />
 
         {/* Row 3 connectors */}
-        <DashedLine left="331px" top="653px" width="46px" />
-        <DashedLine left="475px" top="653px" width="43px" />
+        <DashedLine left="331px" top="653px" width="46px" className={styles.line3} animated={isInView} />
+        <DashedLine left="475px" top="653px" width="46px" className={styles.line1} animated={isInView} />
 
         {/* Row 3 arrows */}
         <ArrowConnector
@@ -509,6 +537,8 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 43 22.0919"
           pathData={svgPaths.p1ba22280}
+          className={styles.arrow3}
+          animated={isInView}
         />
         <ArrowConnector
           left="777.5px"
@@ -517,6 +547,8 @@ export default function RewardsRoadmap() {
           height="22.1px"
           viewBox="0 0 64 22.0919"
           pathData={svgPaths.pde05b00}
+          className={styles.arrow4}
+          animated={isInView}
         />
 
         {/* Right side: down-turn connector */}
@@ -527,6 +559,8 @@ export default function RewardsRoadmap() {
           height="57.55px"
           viewBox="0 0 108.5 57.5459"
           pathData={svgPaths.p2ef5f00}
+          className={styles.arrow5}
+          animated={isInView}
         />
 
         {/* Left side: vertical connector */}
@@ -537,15 +571,17 @@ export default function RewardsRoadmap() {
           height="101.55px"
           viewBox="0 0 39.5 101.546"
           pathData={svgPaths.p362f7a80}
+          className={styles.arrow6}
+          animated={isInView}
         />
 
         {/* Beta large card (bottom left) */}
-        <div className="absolute h-[187px] left-[128px] top-[379px] w-[154px]">
+        <div className={`absolute h-[187px] left-[128px] top-[379px] w-[154px] ${styles.rewardCard} ${styles.betaLargeCard} ${isInView ? styles.animated : ''}`}>
           <Image alt="Beta card" className="object-cover" src={IMG.betaCard} fill sizes="154px" />
         </div>
 
         {/* Large border/path around the roadmap (dashed outline frame) */}
-        <div className="absolute h-[454px] left-[384.5px] top-[201.5px] w-[659px]">
+        <div className={`absolute h-[454px] left-[384.5px] top-[201.5px] w-[659px] ${styles.outlineFrame} ${isInView ? styles.animated : ''}`}>
           <div className="absolute" style={{ inset: "-0.33% -0.23% -0.33% -1.68%" }}>
             <svg
               className="block size-full"
