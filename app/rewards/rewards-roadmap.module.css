@@ -25,103 +25,73 @@
   }
 }
 
-/* Large reward cards: Smooth pop effect with gentle scale and glow */
-@keyframes rewardCardPop {
+/* Large reward cards: Simple highlight effect with glow */
+@keyframes rewardCardHighlight {
   0% {
     opacity: 1;
-    transform: scale(0.9);
     filter: drop-shadow(0 0 0px rgba(229, 26, 56, 0));
   }
 
-  40% {
+  50% {
     opacity: 1;
-    transform: scale(1.12);
-    filter: drop-shadow(0 0 25px rgba(229, 26, 56, 0.5));
+    filter: drop-shadow(0 0 20px rgba(229, 26, 56, 0.6));
   }
 
   100% {
     opacity: 1;
-    transform: scale(1);
-    filter: drop-shadow(0 0 12px rgba(229, 26, 56, 0.25));
+    filter: drop-shadow(0 0 8px rgba(229, 26, 56, 0.2));
   }
 }
 
-/* Large reward cards with dramatic center pop effect */
-@keyframes alphaCardPopToCenter {
+/* Alpha card: Simple highlight effect */
+@keyframes alphaCardHighlight {
   0% {
     opacity: 1;
-    transform: scale(0.7) translate(0, 0);
     filter: drop-shadow(0 0 0px rgba(229, 26, 56, 0));
   }
 
-  30% {
+  50% {
     opacity: 1;
-    transform: scale(2.2) translate(-181px, -111px);
-    filter: drop-shadow(0 0 35px rgba(229, 26, 56, 0.8));
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale(2.0) translate(-181px, -111px);
-    filter: drop-shadow(0 0 30px rgba(229, 26, 56, 0.6));
+    filter: drop-shadow(0 0 20px rgba(229, 26, 56, 0.6));
   }
 
   100% {
     opacity: 1;
-    transform: scale(1) translate(0, 0);
-    filter: drop-shadow(0 0 12px rgba(229, 26, 56, 0.25));
+    filter: drop-shadow(0 0 8px rgba(229, 26, 56, 0.2));
   }
 }
 
-@keyframes betaCardPopToCenter {
+@keyframes betaCardHighlight {
   0% {
     opacity: 1;
-    transform: scale(0.7) translate(0, 0);
     filter: drop-shadow(0 0 0px rgba(255, 126, 0, 0));
   }
 
-  30% {
+  50% {
     opacity: 1;
-    transform: scale(2.2) translate(134px, -47px);
-    filter: drop-shadow(0 0 35px rgba(255, 126, 0, 0.8));
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale(2.0) translate(134px, -47px);
-    filter: drop-shadow(0 0 30px rgba(255, 126, 0, 0.6));
+    filter: drop-shadow(0 0 20px rgba(255, 126, 0, 0.6));
   }
 
   100% {
-    opacity: 1 ;
-    transform: scale(1) translate(0, 0);
-    filter: drop-shadow(0 0 12px rgba(255, 126, 0, 0.25));
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 126, 0, 0.2));
   }
 }
 
-@keyframes gammaCardPopToCenter {
+@keyframes gammaCardHighlight {
   0% {
     opacity: 1;
-    transform: scale(0.7) translate(0, 0);
     filter: drop-shadow(0 0 0px rgba(200, 100, 150, 0));
   }
 
-  30% {
+  50% {
     opacity: 1;
-    transform: scale(2.2) translate(-175px, 13px);
-    filter: drop-shadow(0 0 35px rgba(200, 100, 150, 0.8));
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale(2.0) translate(-175px, 13px);
-    filter: drop-shadow(0 0 30px rgba(200, 100, 150, 0.6));
+    filter: drop-shadow(0 0 20px rgba(200, 100, 150, 0.6));
   }
 
   100% {
     opacity: 1;
-    transform: scale(1) translate(0, 0);
-    filter: drop-shadow(0 0 12px rgba(200, 100, 150, 0.25));
+    filter: drop-shadow(0 0 8px rgba(200, 100, 150, 0.2));
   }
 }
 
@@ -191,11 +161,11 @@
 }
 
 .rewardCard.animated {
-  animation: rewardCardPop 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: rewardCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .alphaLargeCard.animated {
-  animation: alphaCardPopToCenter 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: alphaCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   animation-delay: 21s;
 }
 
@@ -206,12 +176,12 @@
 }
 
 .betaLargeCard.animated {
-  animation: betaCardPopToCenter 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: betaCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   animation-delay: 14s;
 }
 
 .gammaLargeCard.animated {
-  animation: gammaCardPopToCenter 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: gammaCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   animation-delay: 5.2s;
 }
 
