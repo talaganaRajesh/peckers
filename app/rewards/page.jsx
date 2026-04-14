@@ -89,9 +89,9 @@ const imgHero =
   "https://www.figma.com/api/mcp/asset/eb377fb0-ff3f-4a05-98e3-6b96e8ed3fe0";
 const imgRecruit =
   "https://www.figma.com/api/mcp/asset/ebdecf9b-b623-437b-9385-d1b3e4b22e9d";
-const imgGamma =
-  "https://www.figma.com/api/mcp/asset/58cb5f51-d062-48da-b41a-a69b87ed0259";
 const imgBeta =
+  "https://www.figma.com/api/mcp/asset/58cb5f51-d062-48da-b41a-a69b87ed0259";
+const imgGamma =
   "https://www.figma.com/api/mcp/asset/2c649633-6bee-41bb-8349-0e9f1fd335c9";
 const imgAlpha =
   "https://www.figma.com/api/mcp/asset/00104d2e-4149-4cfa-a832-e90a8fd95a1e";
@@ -247,7 +247,7 @@ export default function RewardsPage() {
             className="mt-12 bg-[#8e0b1c] hover:bg-[#a50d21] transition-colors text-white text-lg tracking-[1.6px] px-10 py-4 rounded font-bold uppercase cursor-pointer"
             style={{ fontFamily: "var(--font-peakers)" }}
           >
-            JOIN THE FLOCK
+            CLAIM FREE MILKSHAKE
           </Link>
         </div>
       </section>
@@ -279,7 +279,7 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Download the app or sign up here. Become a Recruit in seconds.
+                Sign up online to join the loyalty program and grab a FREE MILKSHAKE on us.
               </p>
             </div>
 
@@ -292,13 +292,13 @@ export default function RewardsPage() {
                 className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
-                WALLET
+                ADD TO WALLET
               </h3>
               <p
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Link your card. We track every wing you crunch across the UK.
+                Add your card to DIGITAL WALLET for easy scanning, or use your MEMBER CODE online.
               </p>
             </div>
 
@@ -311,13 +311,13 @@ export default function RewardsPage() {
                 className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
-                EARN
+                EARN CHICKEN HEADS
               </h3>
               <p
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Spend £12. Earn 1 Chicken Head. It's that simple, boss.
+                Get one every day you spend 12 OR MORE. Valid for Eat in, Click & Collect, or Website orders.
               </p>
             </div>
 
@@ -336,7 +336,7 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Reach milestones to unlock higher tier rewards & secrets.
+                Collect Chicken heads to level up: GAMMA Free side | BETA Free main | ALPHA Free Meal
               </p>
             </div>
 
@@ -355,7 +355,7 @@ export default function RewardsPage() {
                 className="text-[#f4f4f5] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Flash your code at the till. Claim your bounty. Feast.
+                Redeem your REWARDS at checkout.
               </p>
             </div>
           </div>
@@ -363,34 +363,31 @@ export default function RewardsPage() {
       </section>
 
       {/* 3. THE CHICKEN HEADS TIER SYSTEM — Figma Design */}
-      <section className="bg-[#141311] py-12 md:py-24 px-4 overflow-hidden border-t border-t-white/5 relative">
+      <section className="bg-[#141311] py-12 md:py-24 px-3 sm:px-4 md:px-6 overflow-hidden border-t border-t-white/5 relative">
         <div className="max-w-[1100px] mx-auto">
           {/* Section header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 md:mb-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-2 sm:mb-3 md:mb-4 px-2 sm:px-0">
             <div className="flex flex-col gap-2">
               <h2
-                className="text-[#e6e2de] text-4xl sm:text-5xl md:text-[64px] leading-none uppercase"
+                className="text-[#e6e2de] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-none uppercase"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 THE CHICKEN HEADS
                 <br />
                 <span className="text-[#d8192a]">TIER SYSTEM</span>
               </h2>
-              <p
-                className="text-[#71717a] text-xs md:text-sm tracking-[4px] uppercase mt-2"
-                style={{ fontFamily: "var(--font-peakers)" }}
-              >
-                ASCEND THE UNDERGROUND HIERARCHY
-              </p>
+              
             </div>
             <div
-              className="border border-white/20 rounded-md px-5 py-2.5 text-white text-xs md:text-sm tracking-[2px] uppercase whitespace-nowrap self-start md:self-auto"
+              className="border border-white/20 rounded-md px-4 sm:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm tracking-[2px] uppercase whitespace-nowrap self-start md:self-auto"
               style={{ fontFamily: "var(--font-peakers-bold)" }}
             >
               10 HEADS = ALPHA STATUS
             </div>
           </div>
-          <RewardsRoadmap />
+          <div className="px-0 sm:px-2 md:px-0 w-full overflow-x-auto">
+            <RewardsRoadmap />
+          </div>
         </div>
       </section>
 
@@ -409,43 +406,51 @@ export default function RewardsPage() {
               <br />
               <span className="text-[#d8192a]">YOUR CALL.</span>
             </h2>
-            <p
-              className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
-              style={{ fontFamily: "var(--font-neuzeit)" }}
-            >
-              Whether you're lurking in our booths or ordering from the shadows,
-              your loyalty is counted. Every bite brings you closer to Alpha
-              status.
-            </p>
+            <div className="flex flex-col gap-4">
+              <p
+                className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                Earn rewards and use them however you like, stick with your favourites or discover something new.
+              </p>
+              <p
+                className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                When you join the loyalty scheme, you'll also get a FREE MILKSHAKE of your choice, valid for 30 days and redeemable in-store only.
+              </p>
+              <p
+                className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                You can earn and redeem your rewards in-store, via Click & Collect, or on orders placed through our website.
+              </p>
+              <p
+                className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                Rewards are valid for 30 days from the date they are issued, so make sure to use them in time.
+              </p>
+              <p
+                className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                Sign up today and start collecting Chicken Heads to unlock more.
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-4 mt-2">
               <span className="bg-[#1e1d1b] px-7 py-3 rounded-full text-[#c1bfba] text-xs font-bold tracking-[2px] uppercase">
                 EAT IN
               </span>
               <span className="bg-[#1e1d1b] px-7 py-3 rounded-full text-[#c1bfba] text-xs font-bold tracking-[2px] uppercase">
-                COLLECT
+                PICK-UP
               </span>
               <span className="bg-[#1e1d1b] px-7 py-3 rounded-full text-[#c1bfba] text-xs font-bold tracking-[2px] uppercase">
                 DELIVERY
               </span>
             </div>
 
-            <ul className="flex flex-col gap-6 mt-4">
-              {[
-                "VALID ACROSS ALL UK LOCATIONS",
-                "HEADS EXPIRE 365 DAYS AFTER EARNING",
-                "DOUBLE HEAD EVENTS EVERY TUESDAY",
-              ].map((text, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-4 text-[#71717a] text-[14px] tracking-[0.5px] uppercase"
-                  style={{ fontFamily: "var(--font-neuzeit)" }}
-                >
-                  <TbCircleCheck className="text-[#d8192a] text-[22px] min-w-[22px]" />
-                  {text}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="relative h-[500px] sm:h-[600px] w-full flex items-center justify-center">
@@ -469,9 +474,9 @@ export default function RewardsPage() {
               className="text-5xl sm:text-[72px] text-black leading-none uppercase"
               style={{ fontFamily: "var(--font-peakers-bold)" }}
             >
-              READY TO JOIN
+              Ready to join
               <br />
-              THE FLOCK?
+              PECKERS REWARDS?
             </h2>
             <Link
               href="https://peckers.vmos.io/account/auth/register"
@@ -479,7 +484,7 @@ export default function RewardsPage() {
               className="bg-black hover:bg-gray-800 transition-colors text-white text-xl sm:text-[27px] tracking-[2.7px] px-12 py-5 rounded-lg uppercase"
               style={{ fontFamily: "var(--font-peakers)" }}
             >
-              WEB SIGN UP
+              CLAIM FREE MILKSHAKE
             </Link>
           </div>
         </div>

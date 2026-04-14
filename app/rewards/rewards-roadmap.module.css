@@ -1,0 +1,310 @@
+/* ────────────────────────────────────────────────────────────────────── */
+/* Rewards Roadmap Animation Styles                                       */
+/* ────────────────────────────────────────────────────────────────────── */
+
+/* ── Keyframe Animations ─────────────────────────────────────────────── */
+
+/* Small cards: Smooth opacity fade-in with subtle glow effect (NO POP) */
+@keyframes smallCardAppear {
+  0% {
+    opacity: 0.15;
+    transform: none;
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+
+  40% {
+    opacity: 1;
+    transform: none;
+    filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.35));
+  }
+
+  100% {
+    opacity: 0.75;
+    transform: none;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.12));
+  }
+}
+
+/* Large reward cards: Simple highlight effect with glow */
+@keyframes rewardCardHighlight {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0px rgba(229, 26, 56, 0));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(229, 26, 56, 0.6));
+  }
+
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(229, 26, 56, 0.2));
+  }
+}
+
+/* Alpha card: Simple highlight effect */
+@keyframes alphaCardHighlight {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0px rgba(229, 26, 56, 0));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(229, 26, 56, 0.6));
+  }
+
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(229, 26, 56, 0.2));
+  }
+}
+
+@keyframes betaCardHighlight {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0px rgba(255, 126, 0, 0));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(255, 126, 0, 0.6));
+  }
+
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 126, 0, 0.2));
+  }
+}
+
+@keyframes gammaCardHighlight {
+  0% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0px rgba(200, 100, 150, 0));
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(200, 100, 150, 0.6));
+  }
+
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(200, 100, 150, 0.2));
+  }
+}
+
+
+
+/* Initial dim state for all elements */
+@keyframes initialDim {
+  0% {
+    opacity: 0.15;
+  }
+}
+
+/* ── Animation Classes ────────────────────────────────────────────────── */
+
+/* Small card animations with staggered delays (triggered on view) */
+.smallCard {
+  opacity: 0.15;
+  transform: none;
+}
+
+.smallCard.animated {
+  animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Specific delays for small cards (left to right progression, longer spacing) */
+.goldBox1.animated {
+  animation-delay: 0.6s;
+}
+
+.goldBox2.animated {
+  animation-delay: 1.2s;
+}
+
+.gammaCard.animated {
+  animation-delay: 1.8s;
+}
+
+.betaBox.animated {
+  animation-delay: 11s;
+}
+
+.darkRedBox1.animated {
+  animation-delay: 10.4s;
+}
+
+.darkRedBox2.animated {
+  animation-delay: 9.8s;
+}
+
+.orangeBox1.animated {
+  animation-delay: 18s;
+}
+
+.orangeBox2.animated {
+  animation-delay: 18.4s;
+}
+
+.orangeBox3.animated {
+  animation-delay: 18.8s;
+}
+
+/* Large reward card animations (slower, gentler) */
+.rewardCard {
+  opacity: 0.15;
+  transform-origin: center;
+  z-index: 50;
+}
+
+.rewardCard.animated {
+  animation: rewardCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.alphaLargeCard.animated {
+  animation: alphaCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 21s;
+}
+
+.alphaCard.animated {
+  animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 19.5s;
+  transform: none !important;
+}
+
+.betaLargeCard.animated {
+  animation: betaCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 14s;
+}
+
+.gammaLargeCard.animated {
+  animation: gammaCardHighlight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 5.2s;
+}
+
+.recruitGroup.animated {
+  animation: smallCardAppear 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 0.3s;
+}
+
+/* Connection lines and arrows (subtle appearance) */
+.connectorLine {
+  opacity: 0.15;
+}
+
+.connectorLine.animated {
+  animation: lineAppear 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes lineAppear {
+  0% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Row 1 connectors (after recruit 0.3s, goldBox1 0.6s, goldBox2 1.2s, gamma 1.8s) */
+.connR1a.animated {
+  animation-delay: 1s;       /* recruit → goldBox1 */
+}
+
+.connR1b.animated {
+  animation-delay: 1.8s;     /* goldBox1 → goldBox2 */
+}
+
+.connR1c.animated {
+  animation-delay: 2.4s;     /* goldBox2 → gamma */
+}
+
+.connR1toR2.animated {
+  animation-delay: 3s;       /* gamma → row 2 arrow */
+}
+
+/* Outline frame (roadmap border) */
+
+/* Down-turn connector (row 1 right → row 2, after gamma pop 8.7s) */
+.connDownTurn.animated {
+  animation-delay: 9s;
+}
+
+/* Row 2 connectors (after darkRedBox2 9.8s, darkRedBox1 10.4s, betaBox 11s) */
+.connR2a.animated {
+  animation-delay: 10.8s;    /* between dark red boxes */
+}
+
+.connR2toR3.animated {
+  animation-delay: 11.5s;    /* row 2 → row 3 arrow */
+}
+
+.connR2b.animated {
+  animation-delay: 11.5s;    /* horizontal line near beta */
+}
+
+/* Vertical connector (left side, after beta area) */
+.connVertical.animated {
+  animation-delay: 17.5s;    /* after beta pop finishes */
+}
+
+/* Row 3 connectors (after orangeBox1 18s, orangeBox2 18.4s, orangeBox3 18.8s) */
+.connR3a.animated {
+  animation-delay: 18.4s;    /* orangeBox1 → orangeBox2 */
+}
+
+.connR3b.animated {
+  animation-delay: 18.8s;    /* orangeBox2 → orangeBox3 */
+}
+
+.connR3c.animated {
+  animation-delay: 19.2s;    /* orangeBox3 → alpha arrow */
+}
+
+.connR3d.animated {
+  animation-delay: 19.8s;    /* arrow to alpha */
+}
+
+/* Text elements (fade in smoothly) */
+.textElement {
+  opacity: 0;
+}
+
+.textElement.animated {
+  animation: textFadeIn 2.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.headerText.animated {
+  animation-delay: 0.6s;
+}
+
+.registerText.animated {
+  animation-delay: 0.3s;
+}
+
+.logoIcon.animated {
+  animation-delay: 1.4s;
+}
+
+/* Outline frame */
+.outlineFrame {
+  opacity: 0.15;
+}
+
+.outlineFrame.animated {
+  animation: lineAppear 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 24.5s;
+}
+
+/* No mobile-specific overrides needed — the design scales uniformly via CSS transform */

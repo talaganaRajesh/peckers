@@ -12,7 +12,7 @@ export const metadata = {
         "fresh chicken Stevenage",
         "premium grilled chicken standards",
         "Hitchin top chicken restaurant"
-    ]
+    ],
 };
 
 export default async function UniquenessPage() {
