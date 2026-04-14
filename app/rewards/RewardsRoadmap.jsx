@@ -42,6 +42,56 @@ const IMG = {
   betaCard: "/images/rewards/figma/beta-card.png",
 };
 
+// ── Tooltip Component ──────────────────────────────────────────────────────
+const TierTooltip = ({ tier, position, scale }) => {
+  const tooltipContent = {
+    recruit: {
+      title: "RECRUIT",
+      description: "Join our loyalty programme today and get a FREE MILKSHAKE on us.",
+      details: "Spend £12 or more"
+    },
+    gamma: {
+      title: "GAMMA REWARD",
+      description: "Fries, Peckers Gravy, Corn on the Cob, Rice Bowl, or a Salad Bowl.",
+      icon: "🟡"
+    },
+    beta: {
+      title: "BETA REWARD",
+      description: "OG Burger, OG Grilled Burger, Peckerless OG Burger, Any 4 Wings, or Any 4 Tenders.",
+      icon: "🟠"
+    },
+    alpha: {
+      title: "ALPHA REWARD",
+      description: "OG Burger Meal, OG Grilled Burger Meal, Peckerless OG Burger Meal, Any 4 Wings Meal, or Any 4 Tenders Meal.",
+      icon: "🔴"
+    }
+  };
+
+  const content = tooltipContent[tier];
+  if (!content) return null;
+
+  return (
+    <div
+      className="fixed bg-[#141311] border-2 border-[#d8192a] rounded-lg p-4 max-w-[280px] z-50 shadow-2xl"
+      style={{
+        ...position,        transform: `${position.transform || "translateX(-50%) translateY(calc(-100% - 8px))"}`,        fontFamily: "var(--font-peakers)",
+      }}
+    >
+      <h4 className="text-[#d8192a] font-bold text-sm mb-2 uppercase tracking-wider">
+        {content.title}
+      </h4>
+      <p className="text-[#a1a1aa] text-xs leading-relaxed mb-2">
+        {content.description}
+      </p>
+      {content.details && (
+        <p className="text-[#71717a] text-xs italic">
+          {content.details}
+        </p>
+      )}
+    </div>
+  );
+};
+
 // ── Sub-components (converted from Figma export) ────────────────────────────
 
 function LogoIcon({ animated }) {
@@ -172,7 +222,7 @@ function AlphaRewardCard({ animated }) {
 function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className={`absolute border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-visible border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       <div className="absolute h-[83px] left-[17.5px] top-[7.29px] w-[63px]">
@@ -184,6 +234,9 @@ function OrangeDashedBox({ left, className, animated }) {
           sizes="63px"
         />
       </div>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-26px] w-[120px] text-center text-[7px] font-semibold uppercase tracking-[0.2em] text-[#e6e2de] pointer-events-none">
+        Spend 12 pounds or more
+      </div>
     </div>
   );
 }
@@ -192,7 +245,7 @@ function OrangeDashedBox({ left, className, animated }) {
 function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className={`absolute border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-visible border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
@@ -219,6 +272,9 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
           />
         </div>
       )}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-26px] w-[120px] text-center text-[7px] font-semibold uppercase tracking-[0.2em] text-[#e6e2de] pointer-events-none">
+        Spend 12 pounds or more
+      </div>
     </div>
   );
 }
@@ -226,7 +282,7 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 // Beta reward overlay box
 function BetaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
+    <div className={`absolute overflow-visible bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
       <div className="absolute h-[84px] left-[18.89px] top-[7.53px] w-[65px]">
         <Image
           alt="Beta chicken"
@@ -236,6 +292,9 @@ function BetaOverlayBox({ animated }) {
           sizes="65px"
         />
       </div>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-26px] w-[120px] text-center text-[7px] font-semibold uppercase tracking-[0.2em] text-[#e6e2de] pointer-events-none">
+        Spend 12 pounds or more
+      </div>
     </div>
   );
 }
@@ -243,7 +302,7 @@ function BetaOverlayBox({ animated }) {
 // Gamma reward overlay box
 function GammaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''}`}>
+    <div className={`absolute overflow-visible bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''}`}>
       <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px]">
         <Image
           alt="Gamma chicken"
@@ -253,6 +312,9 @@ function GammaOverlayBox({ animated }) {
           sizes="66px"
         />
       </div>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-26px] w-[120px] text-center text-[7px] font-semibold uppercase tracking-[0.2em] text-[#e6e2de] pointer-events-none">
+        Spend 12 pounds or more
+      </div>
     </div>
   );
 }
@@ -261,7 +323,7 @@ function GammaOverlayBox({ animated }) {
 function GoldDashedBox({ mlOffset, className, animated }) {
   return (
     <div
-      className={`absolute left-1/2 -translate-x-1/2 flex items-center justify-center p-[4.097px] rounded-[24.585px] size-[98.339px] top-[280.71px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-visible left-1/2 -translate-x-1/2 flex items-center justify-center p-[4.097px] rounded-[24.585px] size-[98.339px] top-[280.71px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ marginLeft: mlOffset }}
     >
       <div
@@ -276,6 +338,9 @@ function GoldDashedBox({ mlOffset, className, animated }) {
           fill
           sizes="63px"
         />
+      </div>
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[-24px] w-[120px] text-center text-[7px] font-semibold uppercase tracking-[0.2em] text-[#e6e2de]">
+        Spend 12 pounds or more
       </div>
     </div>
   );
@@ -357,6 +422,15 @@ export default function RewardsRoadmap() {
   const containerRef = useRef(null);
   const [scale, setScale] = useState(1);
   const [isInView, setIsInView] = useState(false);
+  const [hoveredTier, setHoveredTier] = useState(null);
+
+  const handleHover = (tier, event) => {
+    setHoveredTier({
+      tier,
+      x: event.clientX,
+      y: event.clientY,
+    });
+  };
 
   const DESIGN_WIDTH = 1000;
   const DESIGN_HEIGHT = 740;
@@ -450,41 +524,87 @@ export default function RewardsRoadmap() {
           </p>
         </div>
 
+        {/* ── Important notes ─────────────────────────────── */}
+        <div
+          className={`absolute left-[100px] bottom-[20px] w-[700px] text-center ${styles.textElement}`}
+        >
+          <p
+            className="text-[13px] text-[#71717a] leading-normal"
+            style={{ fontFamily: "var(--font-peakers)" }}
+          >
+            Rewards expire after 30 days, so use them, don't lose them. Read the T&Cs for full details and exclusions.
+          </p>
+        </div>
+
         {/* ── Logo icon ───────────────────────────────────── */}
         <LogoIcon animated={isInView} />
 
         {/* ── Tier progression elements ───────────────────── */}
 
         {/* Alpha reward card (bottom right with glow) */}
-        <AlphaRewardCard animated={isInView} />
+        <div
+          onMouseMove={(event) => handleHover('alpha', event)}
+          onMouseLeave={() => setHoveredTier(null)}
+          className="cursor-help"
+        >
+          <AlphaRewardCard animated={isInView} />
+        </div>
 
         {/* Row 3: Orange dashed boxes */}
-        <OrangeDashedBox left="232.88px" className={styles.orangeBox1} animated={isInView} />
-        <OrangeDashedBox left="375.62px" className={styles.orangeBox2} animated={isInView} />
-        <OrangeDashedBox left="518.35px" className={styles.orangeBox3} animated={isInView} />
+        <div onMouseMove={(event) => handleHover('gamma', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <OrangeDashedBox left="232.88px" className={styles.orangeBox1} animated={isInView} />
+        </div>
+        <div onMouseMove={(event) => handleHover('gamma', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <OrangeDashedBox left="375.62px" className={styles.orangeBox2} animated={isInView} />
+        </div>
+        <div onMouseMove={(event) => handleHover('gamma', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <OrangeDashedBox left="518.35px" className={styles.orangeBox3} animated={isInView} />
+        </div>
 
         {/* Row 2: Dark red dashed boxes */}
-        <DarkRedDashedBox left="501.68px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
-        <DarkRedDashedBox left="665.78px" className={styles.darkRedBox2} animated={isInView} />
+        <div onMouseMove={(event) => handleHover('beta', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <DarkRedDashedBox left="501.68px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
+        </div>
+        <div onMouseMove={(event) => handleHover('beta', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <DarkRedDashedBox left="665.78px" className={styles.darkRedBox2} animated={isInView} />
+        </div>
 
         {/* Beta overlay box */}
-        <BetaOverlayBox animated={isInView} />
+        <div onMouseMove={(event) => handleHover('beta', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <BetaOverlayBox animated={isInView} />
+        </div>
 
         {/* Gamma overlay box (row 1) */}
-        <GammaOverlayBox animated={isInView} />
+        <div onMouseMove={(event) => handleHover('gamma', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <GammaOverlayBox animated={isInView} />
+        </div>
 
         {/* Row 1: Gold dashed boxes */}
-        <GoldDashedBox mlOffset="-114.42px" className={styles.goldBox1} animated={isInView} />
-        <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
+        <div onMouseMove={(event) => handleHover('gamma', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <GoldDashedBox mlOffset="-114.42px" className={styles.goldBox1} animated={isInView} />
+        </div>
+        <div onMouseMove={(event) => handleHover('gamma', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
+        </div>
 
         {/* Large character cards */}
-        <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaCard} ${isInView ? styles.animated : ''}`}>
+        <div 
+          onMouseMove={(event) => handleHover('alpha', event)} 
+          onMouseLeave={() => setHoveredTier(null)} 
+          className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] cursor-help ${styles.rewardCard} ${styles.alphaCard} ${isInView ? styles.animated : ''}`}
+        >
           <Image alt="Alpha card" className="object-cover" src={IMG.alphaCard} fill sizes="179px" />
         </div>
 
-        <RecruitGroup animated={isInView} />
+        <div onMouseMove={(event) => handleHover('recruit', event)} onMouseLeave={() => setHoveredTier(null)} className="cursor-help">
+          <RecruitGroup animated={isInView} />
+        </div>
 
-        <div className={`absolute h-[189px] left-[808px] top-[247px] w-[153px] ${styles.rewardCard} ${styles.gammaLargeCard} ${isInView ? styles.animated : ''}`}>
+        <div 
+          onMouseMove={(event) => handleHover('gamma', event)} 
+          onMouseLeave={() => setHoveredTier(null)} 
+          className={`absolute h-[189px] left-[808px] top-[247px] w-[153px] cursor-help ${styles.rewardCard} ${styles.gammaLargeCard} ${isInView ? styles.animated : ''}`}
+        >
           <Image alt="Gamma card" className="object-cover" src={IMG.gammaCard} fill sizes="153px" />
         </div>
 
@@ -576,7 +696,11 @@ export default function RewardsRoadmap() {
         />
 
         {/* Beta large card (bottom left) */}
-        <div className={`absolute h-[187px] left-[128px] top-[379px] w-[154px] ${styles.rewardCard} ${styles.betaLargeCard} ${isInView ? styles.animated : ''}`}>
+        <div 
+          onMouseMove={(event) => handleHover('beta', event)} 
+          onMouseLeave={() => setHoveredTier(null)} 
+          className={`absolute h-[187px] left-[128px] top-[379px] w-[154px] cursor-help ${styles.rewardCard} ${styles.betaLargeCard} ${isInView ? styles.animated : ''}`}
+        >
           <Image alt="Beta card" className="object-cover" src={IMG.betaCard} fill sizes="154px" />
         </div>
 
@@ -594,6 +718,19 @@ export default function RewardsRoadmap() {
           </div>
         </div>
       </div>
+
+      {/* ── Tooltip Overlay ─────────────────────────────── */}
+      {hoveredTier && (
+        <TierTooltip 
+          tier={hoveredTier.tier} 
+          position={{
+            left: `${hoveredTier.x}px`,
+            top: `${hoveredTier.y}px`,
+            transform: 'translateX(-50%) translateY(calc(-100% - 10px))'
+          }}
+          scale={scale}
+        />
+      )}
     </div>
   );
 }
