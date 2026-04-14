@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -8,7 +8,27 @@ export default function AllergensPage() {
   const [isUnlocked, setIsUnlocked] = useState(false);
   const [isMobileLoading, setIsMobileLoading] = useState(true);
   const [isDesktopLoading, setIsDesktopLoading] = useState(true);
+  const [showFallback, setShowFallback] = useState(false);
+
   const pdfUrl = "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/All%20Dishes%20Allergens%20Info%20website%20CHANEGD%20FORMAT.pdf";
+
+  // Preload PDF for faster initial access
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.href = pdfUrl;
+    document.head.appendChild(link);
+
+    // Show fallback option if loading takes more than 8 seconds
+    const timer = setTimeout(() => {
+      setShowFallback(true);
+    }, 8000);
+
+    return () => {
+      document.head.removeChild(link);
+      clearTimeout(timer);
+    };
+  }, []);
 
   // Premium Loader Component
   const Loader = ({ text = "Optimizing View..." }) => (
@@ -25,7 +45,7 @@ export default function AllergensPage() {
           <div className="w-2 h-2 bg-[#F2DF0D] rounded-full animate-ping" />
         </div>
       </div>
-      <div className="mt-8 space-y-2 text-center">
+      <div className="mt-8 space-y-4 text-center px-6">
         <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#F2DF0D] font-bold">
           {text}
         </p>
@@ -37,6 +57,23 @@ export default function AllergensPage() {
             className="w-full h-full bg-[#F2DF0D]"
           />
         </div>
+
+        {showFallback && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="pt-4"
+          >
+            <p className="text-white/40 text-[10px] mb-4">Taking longer than usual?</p>
+            <a
+              href={pdfUrl}
+              target="_blank"
+              className="text-[#F2DF0D] text-[11px] font-bold uppercase underline tracking-widest"
+            >
+              Open Direct Link
+            </a>
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );
@@ -113,6 +150,7 @@ export default function AllergensPage() {
               className="w-full h-full border-none"
               title="Allergens PDF Mobile Viewer"
               onLoad={() => setIsMobileLoading(false)}
+              loading="eager"
             />
           </div>
         </div>
@@ -197,6 +235,7 @@ export default function AllergensPage() {
               title="Allergens PDF Desktop"
               allow="autoplay; scroll-behavior: smooth"
               onLoad={() => setIsDesktopLoading(false)}
+              loading="eager"
             />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center p-12 text-center text-white/40">

@@ -36,13 +36,14 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0, marginTop: 0 }}
-            animate={{ height: "auto", opacity: 1, marginTop: 24 }}
-            exit={{ height: 0, opacity: 0, marginTop: 0 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
           >
             <div 
-              className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[90%]"
+              className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[90%] pt-6"
               style={{ fontFamily: "var(--font-neuzeit)" }}
             >
               {answer.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
