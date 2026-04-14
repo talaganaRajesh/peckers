@@ -363,34 +363,31 @@ export default function RewardsPage() {
       </section>
 
       {/* 3. THE CHICKEN HEADS TIER SYSTEM — Figma Design */}
-      <section className="bg-[#141311] py-12 md:py-24 px-4 overflow-hidden border-t border-t-white/5 relative">
+      <section className="bg-[#141311] py-12 md:py-24 px-3 sm:px-4 md:px-6 overflow-hidden border-t border-t-white/5 relative">
         <div className="max-w-[1100px] mx-auto">
           {/* Section header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 md:mb-12">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-12 px-2 sm:px-0">
             <div className="flex flex-col gap-2">
               <h2
-                className="text-[#e6e2de] text-4xl sm:text-5xl md:text-[64px] leading-none uppercase"
+                className="text-[#e6e2de] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-none uppercase"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 THE CHICKEN HEADS
                 <br />
                 <span className="text-[#d8192a]">TIER SYSTEM</span>
               </h2>
-              <p
-                className="text-[#71717a] text-xs md:text-sm tracking-[4px] uppercase mt-2"
-                style={{ fontFamily: "var(--font-peakers)" }}
-              >
-                ASCEND THE UNDERGROUND HIERARCHY
-              </p>
+              
             </div>
             <div
-              className="border border-white/20 rounded-md px-5 py-2.5 text-white text-xs md:text-sm tracking-[2px] uppercase whitespace-nowrap self-start md:self-auto"
+              className="border border-white/20 rounded-md px-4 sm:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm tracking-[2px] uppercase whitespace-nowrap self-start md:self-auto"
               style={{ fontFamily: "var(--font-peakers-bold)" }}
             >
               10 HEADS = ALPHA STATUS
             </div>
           </div>
-          <RewardsRoadmap />
+          <div className="px-0 sm:px-2 md:px-0 w-full overflow-x-auto">
+            <RewardsRoadmap />
+          </div>
         </div>
       </section>
 
@@ -454,20 +451,6 @@ export default function RewardsPage() {
               </span>
             </div>
 
-            <ul className="flex flex-col gap-6 mt-4">
-              {[
-                "REWARDS EXPIRE AFTER 30 DAYS",
-              ].map((text, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-4 text-[#71717a] text-[14px] tracking-[0.5px] uppercase"
-                  style={{ fontFamily: "var(--font-neuzeit)" }}
-                >
-                  <TbCircleCheck className="text-[#d8192a] text-[22px] min-w-[22px]" />
-                  {text}
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="relative h-[500px] sm:h-[600px] w-full flex items-center justify-center">
