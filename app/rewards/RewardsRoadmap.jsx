@@ -414,7 +414,7 @@ export default function RewardsRoadmap() {
         const containerWidth = containerRef.current.clientWidth;
         // Keep desktop scale unchanged while fitting the full roadmap width on mobile.
         const newScale = containerWidth / DESIGN_WIDTH;
-        setScale(Math.min(newScale, 1));
+        setScale(Math.min(newScale, 0.8));
       }
     };
 
@@ -434,7 +434,7 @@ export default function RewardsRoadmap() {
           height: DESIGN_HEIGHT * scale,
           maxWidth: "100%",
           marginLeft: scale < 1 ? "-25px" : "auto",
-          left: scale >= 1 ? "-50px" : 0,
+          left: scale >= 0.8 ? "145px" : 0,
         }}
       >
         <div
@@ -478,7 +478,7 @@ export default function RewardsRoadmap() {
           >
             now to unlock rewards with Chicken Heads
             <br />
-            and enjoy a free Peckers Milkshake on us.
+            and enjoy a FREE MILKSHAKE on us.
           </p>
         </div>
 

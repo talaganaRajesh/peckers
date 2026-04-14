@@ -366,7 +366,7 @@ export default function RewardsPage() {
       <section className="bg-[#141311] py-12 md:py-24 px-3 sm:px-4 md:px-6 overflow-hidden border-t border-t-white/5 relative">
         <div className="max-w-[1100px] mx-auto">
           {/* Section header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-12 px-2 sm:px-0">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-2 sm:mb-3 md:mb-4 px-2 sm:px-0">
             <div className="flex flex-col gap-2">
               <h2
                 className="text-[#e6e2de] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-none uppercase"
