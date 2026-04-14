@@ -391,8 +391,8 @@ export default function RewardsRoadmap() {
     const updateScale = () => {
       if (containerRef.current) {
         const containerWidth = containerRef.current.clientWidth;
-        // Maintain better scaling on mobile - use full width with minimum scaling
-        const newScale = Math.max(containerWidth / DESIGN_WIDTH, 0.45);
+        // Keep desktop scale unchanged while fitting the full roadmap width on mobile.
+        const newScale = containerWidth / DESIGN_WIDTH;
         setScale(Math.min(newScale, 1));
       }
     };
@@ -405,17 +405,23 @@ export default function RewardsRoadmap() {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full overflow-x-auto overflow-y-hidden -mx-3 sm:-mx-4 md:-mx-0 px-3 sm:px-4 md:px-0 py-4">
+    <div ref={containerRef} className="w-full overflow-hidden -mx-3 sm:-mx-4 md:mx-0 px-3 sm:px-4 md:px-0 py-4">
       <div
-        className="relative origin-top-left inline-block md:w-full"
+        className="relative mx-auto"
         style={{
-          width: DESIGN_WIDTH,
-          height: DESIGN_HEIGHT,
-          transform: `scale(${scale})`,
-          marginBottom: `${DESIGN_HEIGHT * (scale - 1)}px`,
-          minWidth: 'min-content',
+          width: DESIGN_WIDTH * scale,
+          height: DESIGN_HEIGHT * scale,
+          maxWidth: "100%",
         }}
       >
+        <div
+          className="relative origin-top-left"
+          style={{
+            width: DESIGN_WIDTH,
+            height: DESIGN_HEIGHT,
+            transform: `scale(${scale})`,
+          }}
+        >
         {/* ── Header text ─────────────────────────────────── */}
         <div
           className={`absolute flex flex-col justify-center left-[482px] top-[126px] whitespace-nowrap text-white ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.headerText}`}
@@ -631,9 +637,8 @@ export default function RewardsRoadmap() {
             </svg>
           </div>
         </div>
+        </div>
       </div>
-
-      
     </div>
   );
 }

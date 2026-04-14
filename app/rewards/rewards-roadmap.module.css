@@ -386,6 +386,12 @@
     animation-delay: 1s !important;
   }
 
+  .betaLargeCard.animated,
+  .gammaLargeCard.animated {
+    animation: rewardCardPop 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+    transform: none !important;
+  }
+
   .alphaCard.animated {
     animation-delay: 2.6s !important;
   }

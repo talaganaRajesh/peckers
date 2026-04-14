@@ -89,9 +89,9 @@ const imgHero =
   "https://www.figma.com/api/mcp/asset/eb377fb0-ff3f-4a05-98e3-6b96e8ed3fe0";
 const imgRecruit =
   "https://www.figma.com/api/mcp/asset/ebdecf9b-b623-437b-9385-d1b3e4b22e9d";
-const imgGamma =
-  "https://www.figma.com/api/mcp/asset/58cb5f51-d062-48da-b41a-a69b87ed0259";
 const imgBeta =
+  "https://www.figma.com/api/mcp/asset/58cb5f51-d062-48da-b41a-a69b87ed0259";
+const imgGamma =
   "https://www.figma.com/api/mcp/asset/2c649633-6bee-41bb-8349-0e9f1fd335c9";
 const imgAlpha =
   "https://www.figma.com/api/mcp/asset/00104d2e-4149-4cfa-a832-e90a8fd95a1e";
