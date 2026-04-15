@@ -1,11 +1,14 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import { client } from "../../sanity/lib/client";
 import { urlFor } from "../../sanity/lib/image";
 
-export default function SaucePageOne({ initialData = [] }) {
+function SauceSectionContent({ initialData = [] }) {
+  const searchParams = useSearchParams();
+  const sauceParam = searchParams.get("sauce");
+  
   const [fetchedSaucesData, setFetchedSaucesData] = useState([]);
   const [isFetching, setIsFetching] = useState(initialData.length === 0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,6 +18,29 @@ export default function SaucePageOne({ initialData = [] }) {
 
   const saucesData = initialData.length > 0 ? initialData : fetchedSaucesData;
   const loading = initialData.length === 0 && isFetching;
+
+  // Handle deep linking from query param
+  useEffect(() => {
+    // We only want to auto-navigate on initial load when sauces are ready
+    if (sauceParam && saucesData.length > 0) {
+      const targetSauce = sauceParam.toLowerCase();
+      const index = saucesData.findIndex(s => {
+        const titleNormalized = s.title?.toLowerCase().trim().replace(/\s+/g, '-');
+        // Match exact, or if one contains the other (e.g. "buffalo" vs "buffalo-sauce")
+        return titleNormalized === targetSauce || 
+               titleNormalized.replace(/-sauce$/, '') === targetSauce ||
+               targetSauce.replace(/-sauce$/, '') === titleNormalized;
+      });
+      
+      if (index !== -1 && index !== currentIndex) {
+        // Use a small timeout to ensure the component is fully ready for the GSAP/Framer transition
+        const timer = setTimeout(() => {
+          transitionToIndex(index);
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [sauceParam, saucesData.length]); // Only run when data is ready or param changes
 
   useEffect(() => {
     if (initialData && initialData.length > 0) return;
@@ -509,5 +535,19 @@ export default function SaucePageOne({ initialData = [] }) {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SaucePageOne(props) {
+  return (
+    <Suspense fallback={
+      <div className="w-full min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-2xl font-bold animate-pulse">
+          Preparing Sauces...
+        </div>
+      </div>
+    }>
+      <SauceSectionContent {...props} />
+    </Suspense>
   );
 }
