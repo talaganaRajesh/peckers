@@ -175,7 +175,7 @@ function OrangeDashedBox({ left, className, animated }) {
       className={`absolute overflow-hidden border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
-      <div className="absolute h-[83px] left-[17.5px] top-[7.29px] w-[63px]">
+      <div className="absolute h-[83px] left-[13.5px] top-[7.29px] w-[63px]">
         <Image
           alt="White chicken"
           className="object-cover"
@@ -227,7 +227,7 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 function BetaOverlayBox({ animated }) {
   return (
     <div className={`absolute overflow-hidden bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
-      <div className="absolute h-[84px] left-[18.89px] top-[7.53px] w-[65px]">
+      <div className="absolute h-[84px] left-[13.89px] top-[7.53px] w-[65px]">
         <Image
           alt="Beta chicken"
           className="object-cover"
@@ -445,221 +445,221 @@ export default function RewardsRoadmap() {
             transform: `scale(${scale})`,
           }}
         >
-        {/* ── Header text ─────────────────────────────────── */}
-        <div
-          className={`absolute flex flex-col justify-center left-[482px] top-[126px] whitespace-nowrap text-white ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.headerText}`}
-          style={{ fontFamily: "var(--font-peakers-bold)" }}
-        >
-          <p className="text-[15.657px] leading-normal">
-            = 1 visit
-          </p>
-          <p className="text-[13.815px] leading-normal">
-            (
-            <span style={{ fontFamily: "var(--font-peakers)" }}>
-              When you spend £12 pounds or more
-            </span>
-            )
-          </p>
-        </div>
-
-        {/* ── Register text ───────────────────────────────── */}
-        <div
-          className={`absolute left-[100px] top-[90px] w-[265px] ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.registerText}`}
-        >
-          <p
-            className="text-[32.638px] text-white leading-normal"
+          {/* ── Header text ─────────────────────────────────── */}
+          <div
+            className={`absolute flex flex-col justify-center left-[482px] top-[126px] whitespace-nowrap text-white ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.headerText}`}
             style={{ fontFamily: "var(--font-peakers-bold)" }}
           >
-            Register
-          </p>
-          <p
-            className="text-[18.83px] text-white leading-normal"
-            style={{ fontFamily: "var(--font-peakers)" }}
-          >
-            now to unlock rewards with Chicken Heads
-            <br />
-            and enjoy a FREE MILKSHAKE on us.
-          </p>
-        </div>
-
-        {/* ── Important notes ─────────────────────────────── */}
-        <div
-          className={`absolute left-[100px] bottom-[20px] w-[700px] text-center ${styles.textElement}`}
-        >
-          <p
-            className="text-[13px] text-[#71717a] leading-normal"
-            style={{ fontFamily: "var(--font-peakers)" }}
-          >
-            Rewards expire after 30 days, so use them, don't lose them. Read the T&Cs for full details and exclusions.
-          </p>
-        </div>
-
-        {/* ── Logo icon ───────────────────────────────────── */}
-        <LogoIcon animated={isInView} />
-
-        {/* ── Tier progression elements ───────────────────── */}
-
-        {/* Alpha reward card (bottom right with glow) */}
-        <div>
-          <AlphaRewardCard animated={isInView} />
-        </div>
-
-        {/* Row 3: Orange dashed boxes */}
-        <div>
-          <OrangeDashedBox left="232.88px" className={styles.orangeBox1} animated={isInView} />
-        </div>
-        <div>
-          <OrangeDashedBox left="375.62px" className={styles.orangeBox2} animated={isInView} />
-        </div>
-        <div>
-          <OrangeDashedBox left="518.35px" className={styles.orangeBox3} animated={isInView} />
-        </div>
-
-        {/* Row 2: Dark red dashed boxes */}
-        <div>
-          <DarkRedDashedBox left="501.68px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
-        </div>
-        <div>
-          <DarkRedDashedBox left="665.78px" className={styles.darkRedBox2} animated={isInView} />
-        </div>
-
-        {/* Beta overlay box */}
-        <div>
-          <BetaOverlayBox animated={isInView} />
-        </div>
-
-        {/* Gamma overlay box (row 1) */}
-        <div>
-          <GammaOverlayBox animated={isInView} />
-        </div>
-
-        {/* Row 1: Gold dashed boxes */}
-        <div>
-          <GoldDashedBox mlOffset="-114.42px" className={styles.goldBox1} animated={isInView} />
-        </div>
-        <div>
-          <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
-        </div>
-
-        {/* Large character cards */}
-        <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaLargeCard} ${isInView ? styles.animated : ''}`}>
-          <Image alt="Alpha card" className="object-cover" src={IMG.alphaCard} fill sizes="179px" />
-        </div>
-
-        <div>
-          <RecruitGroup animated={isInView} />
-        </div>
-
-        <div className={`absolute h-[189px] left-[808px] top-[247px] w-[153px] ${styles.rewardCard} ${styles.gammaLargeCard} ${isInView ? styles.animated : ''}`}>
-          <Image alt="Gamma card" className="object-cover" src={IMG.gammaCard} fill sizes="153px" />
-        </div>
-
-        {/* ── Dashed connection lines ─────────────────────── */}
-
-        {/* Row 1 connectors */}
-        <DashedLine left="157px" top="337px" width="174.026px" className={styles.connR1a} animated={isInView} />
-        <DashedLine left="438px" top="333px" width="66px" className={styles.connR1b} animated={isInView} />
-        <DashedLine left="775px" top="333px" width="66px" className={styles.connR1c} animated={isInView} />
-
-        {/* Row 1→2 arrow (right side) */}
-        <ArrowConnector
-          left="607.5px"
-          top="320.45px"
-          width="66px"
-          height="22.1px"
-          viewBox="0 0 66 22.0919"
-          pathData={svgPaths.p1d639300}
-          className={styles.connR1toR2}
-          animated={isInView}
-        />
-
-        {/* Row 2 connectors */}
-        <DashedLine left="604px" top="487px" width="57px" className={styles.connR2a} animated={isInView} />
-
-        {/* Row 2→3 arrow (left side) */}
-        <ArrowConnector
-          left="441.5px"
-          top="474.45px"
-          width="57px"
-          height="22.1px"
-          viewBox="0 0 57 22.0919"
-          pathData={svgPaths.p15049280}
-          className={styles.connR2toR3}
-          animated={isInView}
-        />
-
-        {/* Row 2 horizontal line */}
-        <DashedLine left="251.5px" top="485.5px" width="85px" className={styles.connR2b} animated={isInView} />
-
-        {/* Row 3 connectors */}
-        <DashedLine left="331px" top="653px" width="46px" className={styles.connR3a} animated={isInView} />
-        <DashedLine left="475px" top="653px" width="46px" className={styles.connR3b} animated={isInView} />
-
-        {/* Row 3 arrows */}
-        <ArrowConnector
-          left="620.5px"
-          top="640.45px"
-          width="43px"
-          height="22.1px"
-          viewBox="0 0 43 22.0919"
-          pathData={svgPaths.p1ba22280}
-          className={styles.connR3c}
-          animated={isInView}
-        />
-        <ArrowConnector
-          left="777.5px"
-          top="640.45px"
-          width="64px"
-          height="22.1px"
-          viewBox="0 0 64 22.0919"
-          pathData={svgPaths.pde05b00}
-          className={styles.connR3d}
-          animated={isInView}
-        />
-
-        {/* Right side: down-turn connector */}
-        <ArrowConnector
-          left="770px"
-          top="435px"
-          width="108.5px"
-          height="57.55px"
-          viewBox="0 0 108.5 57.5459"
-          pathData={svgPaths.p2ef5f00}
-          className={styles.connDownTurn}
-          animated={isInView}
-        />
-
-        {/* Left side: vertical connector */}
-        <ArrowConnector
-          left="192px"
-          top="564px"
-          width="39.5px"
-          height="101.55px"
-          viewBox="0 0 39.5 101.546"
-          pathData={svgPaths.p362f7a80}
-          className={styles.connVertical}
-          animated={isInView}
-        />
-
-        {/* Beta large card (bottom left) */}
-        <div className={`absolute h-[187px] left-[128px] top-[379px] w-[154px] ${styles.rewardCard} ${styles.betaLargeCard} ${isInView ? styles.animated : ''}`}>
-
-          <Image alt="Beta card" className="object-cover" src={IMG.betaCard} fill sizes="154px" />
-        </div>
-
-        {/* Large border/path around the roadmap (dashed outline frame) */}
-        <div className={`absolute h-[454px] left-[384.5px] top-[201.5px] w-[659px] ${styles.outlineFrame} ${isInView ? styles.animated : ''}`}>
-          <div className="absolute" style={{ inset: "-0.33% -0.23% -0.33% -1.68%" }}>
-            <svg
-              className="block size-full"
-              fill="none"
-              preserveAspectRatio="none"
-              viewBox="0 0 671.546 457"
-            >
-              <path d={svgPaths.p920e700} fill="white" />
-            </svg>
+            <p className="text-[15.657px] leading-normal">
+              = 1 visit
+            </p>
+            <p className="text-[13.815px] leading-normal">
+              (
+              <span style={{ fontFamily: "var(--font-peakers)" }}>
+                When you spend £12 pounds or more
+              </span>
+              )
+            </p>
           </div>
-        </div>
+
+          {/* ── Register text ───────────────────────────────── */}
+          <div
+            className={`absolute left-[100px] top-[90px] w-[265px] ${styles.textElement} ${isInView ? styles.animated : ''} ${styles.registerText}`}
+          >
+            <p
+              className="text-[32.638px] text-white leading-normal"
+              style={{ fontFamily: "var(--font-peakers-bold)" }}
+            >
+              Register
+            </p>
+            <p
+              className="text-[18.83px] text-white leading-normal"
+              style={{ fontFamily: "var(--font-peakers)" }}
+            >
+              now to unlock rewards with Chicken Heads
+              <br />
+              and enjoy a FREE MILKSHAKE on us.
+            </p>
+          </div>
+
+          {/* ── Important notes ─────────────────────────────── */}
+          <div
+            className={`absolute left-[100px] bottom-[20px] w-[700px] text-center ${styles.textElement}`}
+          >
+            <p
+              className="text-[13px] text-[#71717a] leading-normal"
+              style={{ fontFamily: "var(--font-peakers)" }}
+            >
+              Rewards expire after 30 days, so use them, don't lose them. Read the T&Cs for full details and exclusions.
+            </p>
+          </div>
+
+          {/* ── Logo icon ───────────────────────────────────── */}
+          <LogoIcon animated={isInView} />
+
+          {/* ── Tier progression elements ───────────────────── */}
+
+          {/* Alpha reward card (bottom right with glow) */}
+          <div>
+            <AlphaRewardCard animated={isInView} />
+          </div>
+
+          {/* Row 3: Orange dashed boxes */}
+          <div>
+            <OrangeDashedBox left="232.88px" className={styles.orangeBox1} animated={isInView} />
+          </div>
+          <div>
+            <OrangeDashedBox left="375.62px" className={styles.orangeBox2} animated={isInView} />
+          </div>
+          <div>
+            <OrangeDashedBox left="518.35px" className={styles.orangeBox3} animated={isInView} />
+          </div>
+
+          {/* Row 2: Dark red dashed boxes */}
+          <div>
+            <DarkRedDashedBox left="501.68px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
+          </div>
+          <div>
+            <DarkRedDashedBox left="665.78px" className={styles.darkRedBox2} animated={isInView} />
+          </div>
+
+          {/* Beta overlay box */}
+          <div>
+            <BetaOverlayBox animated={isInView} />
+          </div>
+
+          {/* Gamma overlay box (row 1) */}
+          <div>
+            <GammaOverlayBox animated={isInView} />
+          </div>
+
+          {/* Row 1: Gold dashed boxes */}
+          <div>
+            <GoldDashedBox mlOffset="-114.42px" className={styles.goldBox1} animated={isInView} />
+          </div>
+          <div>
+            <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
+          </div>
+
+          {/* Large character cards */}
+          <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaLargeCard} ${isInView ? styles.animated : ''}`}>
+            <Image alt="Alpha card" className="object-cover" src={IMG.alphaCard} fill sizes="179px" />
+          </div>
+
+          <div>
+            <RecruitGroup animated={isInView} />
+          </div>
+
+          <div className={`absolute h-[189px] left-[808px] top-[247px] w-[153px] ${styles.rewardCard} ${styles.gammaLargeCard} ${isInView ? styles.animated : ''}`}>
+            <Image alt="Gamma card" className="object-cover" src={IMG.gammaCard} fill sizes="153px" />
+          </div>
+
+          {/* ── Dashed connection lines ─────────────────────── */}
+
+          {/* Row 1 connectors */}
+          <DashedLine left="157px" top="337px" width="174.026px" className={styles.connR1a} animated={isInView} />
+          <DashedLine left="438px" top="333px" width="66px" className={styles.connR1b} animated={isInView} />
+          <DashedLine left="775px" top="333px" width="66px" className={styles.connR1c} animated={isInView} />
+
+          {/* Row 1→2 arrow (right side) */}
+          <ArrowConnector
+            left="607.5px"
+            top="320.45px"
+            width="66px"
+            height="22.1px"
+            viewBox="0 0 66 22.0919"
+            pathData={svgPaths.p1d639300}
+            className={styles.connR1toR2}
+            animated={isInView}
+          />
+
+          {/* Row 2 connectors */}
+          <DashedLine left="604px" top="487px" width="57px" className={styles.connR2a} animated={isInView} />
+
+          {/* Row 2→3 arrow (left side) */}
+          <ArrowConnector
+            left="441.5px"
+            top="474.45px"
+            width="57px"
+            height="22.1px"
+            viewBox="0 0 57 22.0919"
+            pathData={svgPaths.p15049280}
+            className={styles.connR2toR3}
+            animated={isInView}
+          />
+
+          {/* Row 2 horizontal line */}
+          <DashedLine left="251.5px" top="485.5px" width="85px" className={styles.connR2b} animated={isInView} />
+
+          {/* Row 3 connectors */}
+          <DashedLine left="331px" top="653px" width="46px" className={styles.connR3a} animated={isInView} />
+          <DashedLine left="475px" top="653px" width="46px" className={styles.connR3b} animated={isInView} />
+
+          {/* Row 3 arrows */}
+          <ArrowConnector
+            left="620.5px"
+            top="640.45px"
+            width="43px"
+            height="22.1px"
+            viewBox="0 0 43 22.0919"
+            pathData={svgPaths.p1ba22280}
+            className={styles.connR3c}
+            animated={isInView}
+          />
+          <ArrowConnector
+            left="777.5px"
+            top="640.45px"
+            width="64px"
+            height="22.1px"
+            viewBox="0 0 64 22.0919"
+            pathData={svgPaths.pde05b00}
+            className={styles.connR3d}
+            animated={isInView}
+          />
+
+          {/* Right side: down-turn connector */}
+          <ArrowConnector
+            left="770px"
+            top="435px"
+            width="108.5px"
+            height="57.55px"
+            viewBox="0 0 108.5 57.5459"
+            pathData={svgPaths.p2ef5f00}
+            className={styles.connDownTurn}
+            animated={isInView}
+          />
+
+          {/* Left side: vertical connector */}
+          <ArrowConnector
+            left="192px"
+            top="564px"
+            width="39.5px"
+            height="101.55px"
+            viewBox="0 0 39.5 101.546"
+            pathData={svgPaths.p362f7a80}
+            className={styles.connVertical}
+            animated={isInView}
+          />
+
+          {/* Beta large card (bottom left) */}
+          <div className={`absolute h-[187px] left-[128px] top-[379px] w-[154px] ${styles.rewardCard} ${styles.betaLargeCard} ${isInView ? styles.animated : ''}`}>
+
+            <Image alt="Beta card" className="object-cover" src={IMG.betaCard} fill sizes="154px" />
+          </div>
+
+          {/* Large border/path around the roadmap (dashed outline frame) */}
+          <div className={`absolute h-[454px] left-[384.5px] top-[201.5px] w-[659px] ${styles.outlineFrame} ${isInView ? styles.animated : ''}`}>
+            <div className="absolute" style={{ inset: "-0.33% -0.23% -0.33% -1.68%" }}>
+              <svg
+                className="block size-full"
+                fill="none"
+                preserveAspectRatio="none"
+                viewBox="0 0 671.546 457"
+              >
+                <path d={svgPaths.p920e700} fill="white" />
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </div>
