@@ -3,15 +3,72 @@
 import { useRef, useLayoutEffect, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 import { client } from "../../sanity/lib/client";
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
+// Mapping of sauce keywords to their page slugs for deep linking
+const SAUCE_MAPPING = [
+  { keywords: ["HOUSE - MAYO", "HOUSE MAYO", "HOUSE-MAYO", "HOUSE-MADE MAYO", "MAYONNAISE"], slug: "house-mayonnaise" },
+  { keywords: ["SUPERCHARGED OG SAUCE", "SUPERCHARGED OG", "SUPERCHARGED"], slug: "supercharged" },
+  { keywords: ["BBQ SAUCE", "BBQ", "HONEY GLAZE BBQ"], slug: "honey-glaze-bbq" },
+  { keywords: ["CHEESE SAUCE", "BLUE CHEESE", "CHEESE"], slug: "cheese" },
+  { keywords: ["BUFFALO SAUCE", "BUFFALO", "BUFFLO", "BUFFLAO"], slug: "buffalo" },
+  { keywords: ["HOT SAUCE BLAZE", "HOT SAUCE"], slug: "hot-sauce" },
+  { keywords: ["GARLIC MAYO"], slug: "garlic-mayo" },
+  { keywords: ["KOREAN BBQ", "KOREAN GLAZE"], slug: "korean-bbq" },
+  { keywords: ["HOT HONEY"], slug: "hot-honey" },
+  { keywords: ["BUTTER ME UP SAUCE", "BUTTER ME UP"], slug: "butter-me-up" },
+];
+
 export default function WrapsPageText({ wrapData = null }) {
     const containerRef = useRef(null);
     const [settings, setSettings] = useState(null);
+
+    // Utility to find sauce names in text and wrap them in Links
+    const renderLinkedText = (text) => {
+        if (!text) return null;
+        let result = [text];
+        
+        // Sort mapping by longest keyword first to match specific phrases before generic ones
+        const sortedSauces = [...SAUCE_MAPPING].sort((a, b) => {
+            const maxA = Math.max(...a.keywords.map(k => k.length));
+            const maxB = Math.max(...b.keywords.map(k => k.length));
+            return maxB - maxA;
+        });
+
+        sortedSauces.forEach(sauce => {
+            const nextResult = [];
+            result.forEach(part => {
+                if (typeof part !== "string") {
+                    nextResult.push(part);
+                    return;
+                }
+                const pattern = new RegExp(`(${sauce.keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join("|")})`, "gi");
+                const subParts = part.split(pattern);
+                subParts.forEach((sub, idx) => {
+                    if (sauce.keywords.some(k => k.toUpperCase() === sub.toUpperCase())) {
+                        nextResult.push(
+                            <Link
+                                key={`${sub}-${idx}`}
+                                href={`/house-made-sauces?sauce=${sauce.slug}`}
+                                className="hover:text-[#F2DF0D] transition-colors underline decoration-white/20 underline-offset-4 hover:decoration-[#F2DF0D]"
+                            >
+                                {sub}
+                            </Link>
+                        );
+                    } else {
+                        nextResult.push(sub);
+                    }
+                });
+            });
+            result = nextResult;
+        });
+        return result;
+    };
 
     useEffect(() => {
         const fetchSettings = async () => {
@@ -120,7 +177,7 @@ export default function WrapsPageText({ wrapData = null }) {
                         display: "inline-block",
                     }}
                 >
-                    {wrapData.ingredients}
+                    {renderLinkedText(wrapData.ingredients)}
                 </span>
             </div>
             <div className="flex gap-[3vw] md:gap-3 mt-[4vw] md:mt-5.5">

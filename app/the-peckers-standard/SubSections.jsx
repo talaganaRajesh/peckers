@@ -110,9 +110,9 @@ const SectionItem = memo(({ section, index, num, total }) => {
                 onLoadedMetadata={handleVideoLoadedMetadata}
                 onError={handleVideoError}
                 onCanPlay={() => setVideoLoaded(true)}
-                style={{ 
-                  filter: "brightness(0.9)", 
-                  opacity: isInView && !videoError ? 1 : 0, 
+                style={{
+                  filter: "brightness(0.9)",
+                  opacity: isInView && !videoError ? 1 : 0,
                   transition: "opacity 0.8s ease-in-out"
                 }}
               />
@@ -127,7 +127,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
                       .url()}
                     alt={section.title || `Section ${num} - Fallback`}
                     fill
-                    className={`object-cover ${mobileObjectPosition} md:object-center`}
+                    className={`object-cover ${mobileObjectPosition} md:object-[80%_50%]`}
                     style={{ filter: "brightness(0.7)" }}
                     priority={index < 3}
                     loading={index < 3 ? "eager" : "lazy"}
@@ -147,7 +147,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
                     .url()}
                   alt={section.title || `Section ${num}`}
                   fill
-                  className={`object-cover ${mobileObjectPosition} md:object-center`}
+                  className={`object-cover ${mobileObjectPosition} md:object-[80%_50%]`}
                   style={{ filter: "brightness(0.7)" }}
                   priority={index < 3}
                   loading={index < 3 ? "eager" : "lazy"}
@@ -159,7 +159,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
         </div>
 
         {/* Dynamic loading state for slow connections */}
-        <div className={`absolute inset-0 bg-[#0a0a0a] transition-opacity duration-1000 z-10 ${isInView && videoLoaded ? 'opacity-0' : 'opacity-100'}`} />
+        <div className={`absolute inset-0 bg-[#0a0a0a] transition-opacity duration-1000 z-10 ${isInView && (videoLoaded || !(section.videoUrl || section.video)) ? 'opacity-0' : 'opacity-100'}`} />
       </div>
 
       {/* CONTENT SECTION */}

@@ -4,9 +4,66 @@ import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { client } from "../../../sanity/lib/client";
 
+// Mapping of sauce keywords to their page slugs for deep linking
+const SAUCE_MAPPING = [
+  { keywords: ["HOUSE - MAYO", "HOUSE MAYO", "HOUSE-MAYO", "HOUSE-MADE MAYO", "MAYONNAISE"], slug: "house-mayonnaise" },
+  { keywords: ["SUPERCHARGED OG SAUCE", "SUPERCHARGED OG", "SUPERCHARGED"], slug: "supercharged" },
+  { keywords: ["BBQ SAUCE", "BBQ", "HONEY GLAZE BBQ"], slug: "honey-glaze-bbq" },
+  { keywords: ["CHEESE SAUCE", "BLUE CHEESE", "CHEESE"], slug: "cheese" },
+  { keywords: ["BUFFALO SAUCE", "BUFFALO", "BUFFLO", "BUFFLAO"], slug: "buffalo" },
+  { keywords: ["HOT SAUCE BLAZE", "HOT SAUCE"], slug: "hot-sauce" },
+  { keywords: ["GARLIC MAYO"], slug: "garlic-mayo" },
+  { keywords: ["KOREAN BBQ", "KOREAN GLAZE"], slug: "korean-bbq" },
+  { keywords: ["HOT HONEY"], slug: "hot-honey" },
+  { keywords: ["BUTTER ME UP SAUCE", "BUTTER ME UP"], slug: "butter-me-up" },
+];
+
 export default function MenuPageText({ itemData = null, categoryName = "" }) {
   const containerRef = useRef(null);
   const [settings, setSettings] = useState(null);
+
+  // Utility to find sauce names in text and wrap them in Links
+  const renderLinkedText = (text) => {
+    if (!text) return null;
+    let result = [text];
+    
+    // Sort mapping by longest keyword first to match specific phrases before generic ones
+    const sortedSauces = [...SAUCE_MAPPING].sort((a, b) => {
+      const maxA = Math.max(...a.keywords.map(k => k.length));
+      const maxB = Math.max(...b.keywords.map(k => k.length));
+      return maxB - maxA;
+    });
+
+    sortedSauces.forEach(sauce => {
+      const nextResult = [];
+      result.forEach(part => {
+        if (typeof part !== "string") {
+          nextResult.push(part);
+          return;
+        }
+        const pattern = new RegExp(`(${sauce.keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join("|")})`, "gi");
+        const subParts = part.split(pattern);
+        subParts.forEach((sub, idx) => {
+          if (sauce.keywords.some(k => k.toUpperCase() === sub.toUpperCase())) {
+            nextResult.push(
+              <Link
+                key={`${sub}-${idx}`}
+                href={`/house-made-sauces?sauce=${sauce.slug}`}
+                className="hover:text-[#F2DF0D] transition-colors underline decoration-white/20 underline-offset-4 hover:decoration-[#F2DF0D]"
+              >
+                {sub}
+              </Link>
+            );
+          } else {
+            nextResult.push(sub);
+          }
+        });
+      });
+      result = nextResult;
+    });
+    return result;
+  };
+
   const ingredientsText = typeof itemData?.ingredients === "string" ? itemData.ingredients.trim() : "";
   const hasIngredients = ingredientsText !== "" && ingredientsText !== "-" && ingredientsText !== "—";
 
@@ -37,7 +94,6 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
         const siteSettings = await client.fetch(`*[_type == "siteSettings"][0] { clickCollectUrl, deliveryUrl }`);
         if (siteSettings) setSettings(siteSettings);
       } catch (error) {
-        // Graceful fallbacks to avoid noisy console errors in dev mode when CORS or network is unavailable.
         setSettings({ clickCollectUrl: "#", deliveryUrl: "#" });
         console.warn("Unable to fetch site settings at this time; using defaults.", error);
       }
@@ -73,7 +129,7 @@ export default function MenuPageText({ itemData = null, categoryName = "" }) {
     <div ref={containerRef} className="w-full flex flex-col items-center justify-center mt-0 mb-8 relative bg-black pt-2 md:pt-4">
       {hasIngredients ? (
         <div className="flex items-center justify-center mt-0 pt-0.5 px-6 md:px-0">
-          <span className="text-[3.2vw] md:text-[18px] text-white/80 font-peakers uppercase tracking-wide">{ingredientsText}</span>
+          <span className="text-[3.2vw] md:text-[18px] text-white/80 font-peakers uppercase tracking-wide">{renderLinkedText(ingredientsText)}</span>
         </div>
       ) : null}
       <div className="flex gap-[3vw] md:gap-3 mt-6">
