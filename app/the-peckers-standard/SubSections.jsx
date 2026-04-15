@@ -12,6 +12,9 @@ const SectionItem = memo(({ section, index, num, total }) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoError, setVideoError] = useState(false);
 
+  // Dynamic object position for mobile: Section 4 needs to be centered to show all persons
+  const mobileObjectPosition = num === 4 ? "object-center" : "object-[80%_50%]";
+
   // Only apply data-lenis-prevent when content actually overflows to avoid scroll dead zones
   useEffect(() => {
     const el = scrollableRef.current;
@@ -124,7 +127,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
                       .url()}
                     alt={section.title || `Section ${num} - Fallback`}
                     fill
-                    className="object-cover object-[80%_50%] md:object-center"
+                    className={`object-cover ${mobileObjectPosition} md:object-center`}
                     style={{ filter: "brightness(0.7)" }}
                     priority={index < 3}
                     loading={index < 3 ? "eager" : "lazy"}
@@ -144,7 +147,7 @@ const SectionItem = memo(({ section, index, num, total }) => {
                     .url()}
                   alt={section.title || `Section ${num}`}
                   fill
-                  className="object-cover object-[80%_50%] md:object-center"
+                  className={`object-cover ${mobileObjectPosition} md:object-center`}
                   style={{ filter: "brightness(0.7)" }}
                   priority={index < 3}
                   loading={index < 3 ? "eager" : "lazy"}
