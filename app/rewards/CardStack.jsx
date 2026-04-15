@@ -31,7 +31,7 @@ export default function CardStack() {
   }, []);
 
   return (
-    <div className="relative h-[500px] sm:h-[600px] w-[260px] sm:w-[320px] flex items-center justify-center">
+    <div className="relative h-[500px] sm:h-[400px] w-[260px] sm:w-[250px] flex items-center justify-center">
       {cardsOrder.map((card, i) => {
         // i = 0 (Back), 1 (Middle Back), 2 (Middle Front), 3 (Front)
         // Since we physically reorder the array, Framer Motion layout transition will handle the movement!
@@ -72,7 +72,7 @@ export default function CardStack() {
               ease: "easeInOut",
               times: isComingForth ? [0, 0.5, 1] : undefined,
             }}
-            className={`absolute w-[260px] sm:w-[320px] border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_10px_40px_rgba(0,0,0,0.5)] h-[380px] sm:h-[460px] ${card.bg}`}
+            className={`absolute w-[260px] sm:w-[320px] border border-white/5 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_10px_40px_rgba(0,0,0,0.5)] h-[300px]  sm:h-[460px] ${card.bg}`}
           >
             <div className="flex justify-between items-start">
               <span
