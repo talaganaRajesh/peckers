@@ -172,10 +172,10 @@ function AlphaRewardCard({ animated }) {
 function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
-      <div className="absolute h-[83px] left-[13.5px] top-[7.29px] w-[63px]">
+      <div className="relative h-[83px] w-[63px]">
         <Image
           alt="White chicken"
           className="object-cover"
@@ -192,24 +192,23 @@ function OrangeDashedBox({ left, className, animated }) {
 function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
-        <>
-          <div className="absolute h-[85.342px] left-[17.41px] shadow-[0px_0px_29.529px_0px_#5f1822] top-[6.5px] w-[63.51px]" />
-          <div className="absolute h-[83px] left-[17.4px] top-[7.91px] w-[63px]">
-            <Image
-              alt="White chicken alt"
-              className="object-cover"
-              src={IMG.whiteChickenAlt}
-              fill
-              sizes="63px"
-            />
-          </div>
-        </>
+        <div className="relative h-[83px] w-[63px]">
+          {/* Subtle glow/shadow container for the alt chicken */}
+          <div className="absolute inset-0 shadow-[0px_0px_29.529px_0px_#5f1822]" style={{ height: '85.342px', width: '63.51px', left: '-0.25px', top: '-1.4px' }} />
+          <Image
+            alt="White chicken alt"
+            className="object-cover relative z-10"
+            src={IMG.whiteChickenAlt}
+            fill
+            sizes="63px"
+          />
+        </div>
       ) : (
-        <div className="absolute h-[83px] left-[17.3px] top-[7.91px] w-[63px]">
+        <div className="relative h-[83px] w-[63px]">
           <Image
             alt="White chicken"
             className="object-cover"
@@ -362,7 +361,7 @@ export default function RewardsRoadmap() {
   const DESIGN_WIDTH = 1000;
   const DESIGN_HEIGHT = 740;
 
-  const CYCLE_DURATION = 26000; // Total animation cycle ~24.5s + 1.5s pause
+  const CYCLE_DURATION = 12000; // Total animation cycle ~11s + 1s pause
   const hasStarted = useRef(false);
 
   // Intersection Observer: trigger animations when section comes into view
