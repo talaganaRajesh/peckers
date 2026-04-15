@@ -74,6 +74,15 @@ export default function Navbar({ preloadedSettings = null }) {
 
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : null;
 
+  const trackOutboundClick = (buttonName, destinationUrl) => {
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "outbound_click", {
+        button_name: buttonName,
+        destination_url: destinationUrl,
+      });
+    }
+  };
+
   return (
     <nav
       id="main-navbar"
@@ -195,6 +204,7 @@ export default function Navbar({ preloadedSettings = null }) {
       >
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=online"
+          onClick={() => trackOutboundClick("Click & Collect", "https://peckers.vmos.io/store/store-selection?app=online")}
           className="md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap font-black xl:pt-[5px]"
           bgColor="bg-white"
           textColor="text-black"
@@ -206,6 +216,7 @@ export default function Navbar({ preloadedSettings = null }) {
 
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=delivery"
+          onClick={() => trackOutboundClick("Delivery", "https://peckers.vmos.io/store/store-selection?app=delivery")}
           className="flex items-center gap-2 md:w-[140px] lg:w-[170px] xl:w-[200px] md:h-[38px] lg:h-[42px] xl:h-[42px] md:text-[1.2vw] lg:text-[1.3vw] xl:text-[1.15vw] whitespace-nowrap hover:bg-red-700 font-black xl:pt-[5px]"
           bgColor="bg-red-600"
           textColor="text-white"
