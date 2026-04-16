@@ -162,7 +162,7 @@ export default function RewardsPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center mt-20">
+        <div className="relative z-10 flex flex-col items-center mt-20 2xl:mt-32">
           <p
             className="text-[#d4a838] tracking-[5.8px] text-lg md:text-xl font-bold uppercase mb-4"
             style={{ fontFamily: "var(--font-peakers)" }}
