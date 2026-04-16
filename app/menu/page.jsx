@@ -3,7 +3,7 @@ import { urlFor } from "../../sanity/lib/image";
 import GenericMenuPageClient from "./components/MenuPageClient";
 
 export const metadata = {
-  title: "Peckers Menu | Halal Peri Peri Chicken, Gourmet Burgers & Wings",
+  title: "Peckers Menu | Peri Peri Chicken, Gourmet Burgers & Wings",
   description: "Explore the Peckers menu - the best alternative to Dave's Hot Chicken and Chicken George. From our signature peri peri grilled chicken to our mouth-watering gourmet burgers and spicy wings. 100% Halal and seriously good.",
 };
 

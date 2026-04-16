@@ -2,7 +2,7 @@ import { LocationsPageContent } from "./LocationsPageContent";
 import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
-    title: "Peckers Hitchin | Best Halal Chicken Takeaway & Restaurant in Hitchin",
+    title: "Peckers | Best Chicken Takeaway & Restaurant in Hitchin",
     description: "Looking for the best chicken in Hitchin? Peckers is the #1 alternative to Chicken George and Dave's Hot Chicken, offering premium halal peri peri grilled chicken, wings, and more. Late night takeaway available.",
     keywords: [
         "halal food Hitchin",

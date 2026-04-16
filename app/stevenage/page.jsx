@@ -2,7 +2,7 @@ import { LocationsPageContent } from "../hitchin/LocationsPageContent";
 import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
-    title: "Peckers Stevenage | Best Halal Chicken & Peri Peri in Stevenage",
+    title: "Peckers Stevenage | Best Chicken & Peri Peri in Stevenage",
     description: "Peckers Stevenage is the ultimate choice for fans of Chicken George and Dave's Hot Chicken. We offer the best halal peri peri grilled chicken, fried chicken, and burgers in Hertfordshire. Order online for fast delivery in Stevenage.",
     keywords: [
         "best halal food Stevenage",
