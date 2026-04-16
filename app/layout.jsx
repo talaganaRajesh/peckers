@@ -24,10 +24,9 @@ const neuzeit = localFont({
 });
 
 export const metadata = {
-  title:
-    "Peckers | Best Peri - Peri grilled chicken & Fried Chicken",
+  title: "Peckers | Seriously Good Chicken | Stevenage & Hitchin",
   description:
-    "Discover Peckers - Hertfordshire's destination for premium grilled and fried chicken. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin. Fast delivery and late-night takeaway available.",
+    "Premium halal grilled and fried chicken in Hertfordshire. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin. Order online for fast delivery.",
   keywords: [
     "Peckers chicken",
     "best halal chicken Stevenage",
@@ -50,9 +49,10 @@ export const metadata = {
     "Seriously Good Chicken"
   ],
   alternates: {
-    canonical: "https://peckers.co.uk", // Update with actual domain if known
+    canonical: "https://www.peckerschicken.co.uk",
   },
 };
+
 
 export const viewport = {
   width: "device-width",

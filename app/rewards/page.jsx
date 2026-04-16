@@ -80,10 +80,10 @@ const DashedArrow = ({ direction }) => {
 };
 
 export const metadata = {
-  title: "Rewards | Peckers",
-  description:
-    "Join the Peckers Inner Circle for exclusive offers, member perks, and early access to new menu items.",
+  title: "Peckers Rewards | Join the Inner Circle & Earn Chicken Heads",
+  description: "Join the Peckers Inner Circle loyalty program. Collect Chicken Heads with every visit and unlock free sides, mains, and full meals. Register now for a free milkshake!",
 };
+
 
 const imgHero =
   "https://www.figma.com/api/mcp/asset/eb377fb0-ff3f-4a05-98e3-6b96e8ed3fe0";

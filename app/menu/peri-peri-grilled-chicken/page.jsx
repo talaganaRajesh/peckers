@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Peri-Peri Grilled Chicken Menu | Halal Grilled Chicken",
+    title: "Peckers Peri-Peri Grilled Chicken Menu | Grilled Chicken",
     description: "Healthy and delicious flame-grilled chicken. Choose your marinade and enjoy our protein-packed health boxes and grilled platters.",
 };
 

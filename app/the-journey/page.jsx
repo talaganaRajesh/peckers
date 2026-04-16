@@ -3,8 +3,8 @@ import { sanityFetch } from "../../sanity/lib/live";
 import TheJourneyPageClient from "./page-client";
 
 export const metadata = {
-    title: "The Journey | Our Story | Peckers Chicken - Seriously Good Beginnings",
-    description: "Discover the story of Peckers - born from a family legacy in Hitchin to becoming Hertfordshire's destination for Seriously Good Chicken.",
+    title: "Our Journey | The Story of Peckers | Seriously Good Chicken",
+    description: "Discover the story of Peckers - born from a family legacy in Hitchin to becoming Hertfordshire's destination for Seriously Good Chicken. Passion, quality, and community in every bite.",
     keywords: [
         "Peckers story",
         "best chicken Hertfordshire history",
@@ -15,6 +15,7 @@ export const metadata = {
         "seriously good chicken origins"
     ]
 };
+
 
 export default async function TheJourneyPage() {
     let storyData = {

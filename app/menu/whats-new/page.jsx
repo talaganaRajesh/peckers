@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "What's New at Peckers | Latest Halal Menu Additions",
+    title: "What's New at Peckers | Latest Menu Additions",
     description: "Check out the latest additions to our menu. From grilled specialties to new burger flavours.",
 };
 
@@ -26,10 +26,10 @@ export default async function WhatsNewPage() {
     }));
 
     return (
-        <GenericMenuPageClient 
-            initialItems={initialItems} 
-            initialNavbarData={navbarData} 
-            categoryName="WHAT'S NEW" 
+        <GenericMenuPageClient
+            initialItems={initialItems}
+            initialNavbarData={navbarData}
+            categoryName="WHAT'S NEW"
         />
     );
 }

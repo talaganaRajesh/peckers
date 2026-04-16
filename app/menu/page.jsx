@@ -3,9 +3,10 @@ import { urlFor } from "../../sanity/lib/image";
 import GenericMenuPageClient from "./components/MenuPageClient";
 
 export const metadata = {
-  title: "Peckers Menu | Peri Peri Chicken, Gourmet Burgers & Wings",
-  description: "Explore the Peckers menu - the best alternative to Dave's Hot Chicken and Chicken George. From our signature peri peri grilled chicken to our mouth-watering gourmet burgers and spicy wings. 100% Halal and seriously good.",
+  title: "Peckers Menu | Peri-Peri Chicken, Burgers & Wings",
+  description: "Explore the full Peckers menu. From our signature peri-peri grilled chicken to gourmet burgers and spicy wings. 100% halal and seriously good. Order now for delivery or collection.",
 };
+
 
 export default async function MenuPage() {
   const { data } = await sanityFetch({

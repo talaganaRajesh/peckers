@@ -2,18 +2,18 @@ import { sanityFetch } from "../../sanity/lib/live";
 import UniquenessPageClient from "./page-client";
 
 export const metadata = {
-    title: "The Peckers Standard | Our Uniqueness | Peckers Chicken vs Competition",
-    description: "What makes Peckers unique? Discover why we are the top choice over Chicken George and Dave's Hot Chicken. Learn about our high standards, fresh ingredients, and commitment to the best halal chicken.",
+    title: "The Peckers Standard | Quality & Craft in Every Bite",
+    description: "Discover what makes Peckers unique. From our 100% halal certification to our artisan preparation and commitment to serving Seriously Good Chicken in every bite.",
     keywords: [
         "Peckers standard of quality",
         "best halal chicken Hertfordshire",
-        "why Peckers vs Chicken George",
-        "Dave's Hot Chicken UK comparison",
         "fresh chicken Stevenage",
         "premium grilled chicken standards",
-        "Hitchin top chicken restaurant"
+        "Hitchin top chicken restaurant",
+        "quality food standards UK"
     ],
 };
+
 
 export default async function UniquenessPage() {
     // Fetch all uniqueness related data on the server

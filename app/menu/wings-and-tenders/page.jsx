@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Wings & Tenders Menu | Halal Chicken Wings Stevenage",
+    title: "Peckers Wings & Tenders Menu | Chicken Wings Stevenage",
     description: "Try our signature southern fried or flame-grilled wings and buttermilk tenders. Coated in our house-made sauces.",
 };
 

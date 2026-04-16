@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Sides & Fries Menu | Halal Sides Stevenage & Hitchin",
+    title: "Peckers Sides & Fries Menu | Sides Stevenage & Hitchin",
     description: "Complete your meal with our crispy fries, cheesy loaded fries, halloumi, and more.",
 };
 

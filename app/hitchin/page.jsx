@@ -2,13 +2,11 @@ import { LocationsPageContent } from "./LocationsPageContent";
 import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
-    title: "Peckers | Best Chicken Takeaway & Restaurant in Hitchin",
-    description: "Looking for the best chicken in Hitchin? Peckers is the #1 alternative to Chicken George and Dave's Hot Chicken, offering premium halal peri peri grilled chicken, wings, and more. Late night takeaway available.",
+    title: "Peckers Hitchin | Best Chicken Takeaway & Restaurant",
+    description: "Visit Peckers in Hitchin for Seriously Good Chicken. Premium halal peri-peri grilled chicken, wings, and gourmet burgers. Fast delivery and late-night takeaway available in Hitchin.",
     keywords: [
         "halal food Hitchin",
         "best chicken Hitchin",
-        "Chicken George alternative Hitchin",
-        "Dave's Hot Chicken Hitchin alternative",
         "peri peri Hitchin",
         "takeaway Hitchin",
         "restaurants Hitchin",
@@ -18,6 +16,7 @@ export const metadata = {
         "halal fried chicken Hitchin"
     ]
 };
+
 
 export default async function LocationPage() {
     const location = "hitchin";

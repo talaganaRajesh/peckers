@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Kids Menu | Halal Chicken Meals for Kids",
+    title: "Peckers Kids Menu | Chicken Meals for Kids",
     description: "Delicious and fun halal chicken meals specially for the little ones at Peckers.",
 };
 

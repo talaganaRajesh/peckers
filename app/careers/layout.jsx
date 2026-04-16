@@ -1,6 +1,6 @@
 export const metadata = {
-    title: "Careers | Join the Peckers Team | Best Chicken in Hertfordshire",
-    description: "Join the Peckers team and become part of Hertfordshire's fastest-growing chicken brand in Stevenage and Hitchin. We're looking for passionate individuals to help us deliver Seriously Good Chicken.",
+    title: "Peckers Careers | Join the Team | Seriously Good Chicken",
+    description: "Join the Peckers family in Stevenage and Hitchin. We're looking for passionate individuals to join our kitchen and front-of-house teams. Discover our roles and apply today.",
     keywords: [
         "jobs in Stevenage",
         "Hitchin restaurant careers",
@@ -11,6 +11,7 @@ export const metadata = {
         "local restaurant vacancies"
     ]
 };
+
 
 export default function CareersLayout({ children }) {
     return <>{children}</>;

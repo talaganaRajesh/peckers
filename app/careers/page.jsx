@@ -6,9 +6,10 @@ import ApplyDetailsPage from "./ApplyDetailsPage";
 import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
-    title: "Careers | Join the Peckers Crew - Seriously Good Chicken",
-    description: "Join the Peckers family in Hertfordshire. We're looking for legends to join our kitchen and front-of-house teams. Discover our roles and apply today.",
+    title: "Peckers Careers | Join the Crew - Seriously Good Chicken",
+    description: "Looking for a career in food? Join the Peckers crew in Hertfordshire. Explore our kitchen and front-of-house roles and become part of something special. Apply today!",
 };
+
 
 export default async function CareersPage() {
     let careersData = null;

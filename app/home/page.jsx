@@ -3,20 +3,20 @@ import HomePageClient from "./page-client";
 import { fetchGoogleReviews } from "../lib/google-reviews";
 
 export const metadata = {
-  title: "Peckers | Best Peri Peri & Fried Chicken in Stevenage & Hitchin",
-  description: "Experience the ultimate halal peri peri grilled chicken at Peckers - the premium alternative to Chicken George and Dave's Hot Chicken in Stevenage and Hitchin. Family meals, late night takeaways, and fast delivery across Hertfordshire.",
+  title: "Peckers | Best Peri-Peri Grilled & Fried Chicken in Stevenage & Hitchin",
+  description: "Experience Seriously Good Chicken at Peckers. Hertfordshire's destination for premium halal peri-peri chicken, gourmet burgers, and signature wings. Fast delivery and late-night takeaway available.",
   keywords: [
-    "Chicken George Stevenage alternative",
-    "Dave's Hot Chicken UK alternative",
+    "Peckers chicken",
     "best halal chicken Stevenage",
     "halal food Hitchin",
     "peri peri grilled chicken",
     "chicken takeaway Stevenage",
     "late night food Stevenage",
-    "Peckers chicken",
-    "halal food Hertfordshire"
+    "halal food Hertfordshire",
+    "best fried chicken Hertfordshire"
   ]
 };
+
 
 export default async function HomePage() {
   // Fetch homepage data on the server

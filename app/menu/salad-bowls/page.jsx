@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Salad Bowls Menu | Halal Chicken Salads Stevenage",
+    title: "Peckers Salad Bowls Menu | Chicken Salads Stevenage",
     description: "Fresh and healthy halal chicken salad bowls at Peckers. Try our OG Salad or the Seoul-inspired Hert and Seoul bowl.",
 };
 

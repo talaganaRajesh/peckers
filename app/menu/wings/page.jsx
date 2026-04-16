@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Wings Menu | Halal Chicken Wings Stevenage & Hitchin",
+    title: "Peckers Wings Menu | Chicken Wings Stevenage & Hitchin",
     description: "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces. 100% Halal.",
 };
 

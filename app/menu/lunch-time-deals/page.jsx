@@ -3,7 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
-    title: "Peckers Lunch Time Deals | Best Halal Lunch Offers",
+    title: "Peckers Lunch Time Deals | Best Lunch Offers",
     description: "Grab our amazing lunch time deals at Peckers. Great value, great taste, 100% Halal.",
 };
 
