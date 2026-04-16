@@ -172,7 +172,7 @@ function AlphaRewardCard({ animated }) {
 function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden bg-black border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       <div className="relative h-[83px] w-[63px]">
@@ -192,13 +192,11 @@ function OrangeDashedBox({ left, className, animated }) {
 function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden bg-black border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
         <div className="relative h-[83px] w-[63px]">
-          {/* Subtle glow/shadow container for the alt chicken */}
-          <div className="absolute inset-0 shadow-[0px_0px_29.529px_0px_#5f1822]" style={{ height: '85.342px', width: '63.51px', left: '-0.25px', top: '-1.4px' }} />
           <Image
             alt="White chicken alt"
             className="object-cover relative z-10"
@@ -260,7 +258,7 @@ function GammaOverlayBox({ animated }) {
 function GoldDashedBox({ mlOffset, className, animated }) {
   return (
     <div
-      className={`absolute overflow-visible left-1/2 -translate-x-1/2 flex items-center justify-center p-[4.097px] rounded-[24.585px] size-[98.339px] top-[280.71px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-visible bg-black left-1/2 -translate-x-1/2 flex items-center justify-center p-[4.097px] rounded-[24.585px] size-[98.339px] top-[280.71px] ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ marginLeft: mlOffset }}
     >
       <div

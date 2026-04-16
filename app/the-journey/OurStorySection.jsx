@@ -261,7 +261,7 @@ export default function OurStorySection({ initialData = null }) {
         {/* Navigation Buttons flanking the text section */}
         <button
           onClick={prevSlide}
-          className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group"
+          className="absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-50 p-[1vw] group cursor-pointer"
         >
           <div className="relative flex items-center justify-center w-[24px] h-[24px] md:w-[48px] md:h-[48px]">
             <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
@@ -279,7 +279,7 @@ export default function OurStorySection({ initialData = null }) {
 
         <button
           onClick={nextSlide}
-          className="absolute right-1 md:right-4 lg:right-auto lg:left-[calc(50%-3.5vw)] top-1/2 -translate-y-1/2 z-50 p-[1vw] group text-white"
+          className="absolute right-1 md:right-4 lg:right-auto lg:left-[calc(50%-3.5vw)] top-1/2 -translate-y-1/2 z-50 p-[1vw] group text-white cursor-pointer"
         >
           <div className="relative flex items-center justify-center w-[24px] h-[24px] md:w-[48px] md:h-[48px]">
             <div className="w-full h-full flex items-center justify-center transition-all duration-300 group-active:scale-90 md:rounded-full md:bg-white/5 md:border md:border-white/10 md:group-hover:border-white/30 md:group-hover:bg-white/10 md:group-hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">

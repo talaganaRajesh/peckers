@@ -12,6 +12,8 @@ import {
 import CardStack from "./CardStack";
 import RewardsRoadmap from "./RewardsRoadmap";
 
+import OrderButtons from "./OrderButtons";
+
 const ChickenHeadIcon = ({ className }) => (
   <svg
     viewBox="0 0 24 24"
@@ -264,13 +266,13 @@ export default function RewardsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6">
             {/* Step 1 */}
-            <div className="bg-[#211f1d] rounded-xl p-8 flex flex-col gap-4 relative overflow-hidden">
+            <div className="bg-[#211f1d] rounded-xl px-8 py-4 flex flex-col gap-4 relative overflow-hidden">
               <div className="bg-[#d4a838] w-14 h-14 rounded-lg flex items-center justify-center relative z-10">
                 <TbUserPlus className="text-black text-2xl" />
               </div>
               <TbUserPlus className="absolute -top-4 -right-8 text-[140px] text-white/[0.04] pointer-events-none z-0" />
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
+                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 JOIN
@@ -284,12 +286,12 @@ export default function RewardsPage() {
             </div>
 
             {/* Step 2 */}
-            <div className="bg-[#211f1d] rounded-xl p-8 flex flex-col gap-4 relative overflow-hidden">
+            <div className="bg-[#211f1d] rounded-xl px-8 py-4 flex flex-col gap-4 relative overflow-hidden">
               <div className="bg-[#9b1c1c] w-14 h-14 rounded-lg flex items-center justify-center relative z-10">
                 <TbWallet className="text-[#141311] text-2xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
+                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 ADD TO WALLET
@@ -303,12 +305,12 @@ export default function RewardsPage() {
             </div>
 
             {/* Step 3 */}
-            <div className="bg-[#211f1d] rounded-xl p-8 flex flex-col gap-4 relative overflow-hidden">
+            <div className="bg-[#211f1d] rounded-xl px-8 py-4 flex flex-col gap-4 relative overflow-hidden">
               <div className="bg-[#e07820] w-14 h-14 rounded-lg flex items-center justify-center relative z-10">
                 <TbReceipt className="text-[#141311] text-2xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
+                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 EARN CHICKEN HEADS
@@ -322,12 +324,12 @@ export default function RewardsPage() {
             </div>
 
             {/* Step 4 */}
-            <div className="bg-[#211f1d] rounded-xl p-8 flex flex-col gap-4 relative overflow-hidden">
+            <div className="bg-[#211f1d] rounded-xl px-8 py-4 flex flex-col gap-4 relative overflow-hidden">
               <div className="bg-[#c82b3a] w-14 h-14 rounded-lg flex items-center justify-center relative z-10">
                 <TbLockOpen className="text-[#141311] text-2xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
+                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 UNLOCK
@@ -341,12 +343,12 @@ export default function RewardsPage() {
             </div>
 
             {/* Step 5 */}
-            <div className="bg-[#9a091c] rounded-xl p-8 flex flex-col gap-4 relative overflow-hidden">
+            <div className="bg-[#9a091c] rounded-xl px-8 py-4 flex flex-col gap-4 relative overflow-hidden">
               <div className="bg-white w-14 h-14 rounded-lg flex items-center justify-center relative z-10">
                 <TbConfetti className="text-[#9a091c] text-3xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-4 relative z-10"
+                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 REDEEM
@@ -393,7 +395,7 @@ export default function RewardsPage() {
 
 
       {/* 4. YOUR CHICKEN HEADS. YOUR CALL. */}
-      <section className="bg-[#0f0e0c] px-6 py-14 md:px-12 lg:px-20 overflow-hidden">
+      <section className="bg-[#0f0e0c] px-6 py-14 md:px-12 lg:px-20">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           <div className="flex flex-col gap-8">
             <h2
@@ -439,17 +441,7 @@ export default function RewardsPage() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 mt-2">
-              <span className="bg-[#1e1d1b] px-7 py-3 rounded-full text-[#c1bfba] text-xs font-bold tracking-[2px] uppercase">
-                EAT IN
-              </span>
-              <span className="bg-[#1e1d1b] px-7 py-3 rounded-full text-[#c1bfba] text-xs font-bold tracking-[2px] uppercase">
-                PICK-UP
-              </span>
-              <span className="bg-[#1e1d1b] px-7 py-3 rounded-full text-[#c1bfba] text-xs font-bold tracking-[2px] uppercase">
-                DELIVERY
-              </span>
-            </div>
+            <OrderButtons />
 
           </div>
 
