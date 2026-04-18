@@ -254,19 +254,19 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Mobile Menu Dropdown - Solid Black, Absolute to stay attached to header */}
       <div
-        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[85vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl rounded-b-[2.5rem] ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[78vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl rounded-b-[2.5rem] ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
-        <div className="flex flex-col px-[8vw] pt-[3vw] pb-[0.5vw] space-y-[1vw] relative min-h-[48vh]">
+        <div className="flex flex-col px-[8vw] pt-[3vw] pb-[0.5vw] space-y-[1vw] relative min-h-[44vh]">
           {/* Decorative Background Text - Zinc Color */}
           <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.05] select-none pointer-events-none whitespace-nowrap">
             <h2 className="text-[40vw] font-black italic transform -rotate-12 text-zinc-700">PECKERS</h2>
           </div>
 
-          <div className="flex flex-col space-y-[0.5vw]">
+          <div className="flex flex-col space-y-[0.2vw]">
             <Link
               href="/menu"
               onClick={() => setOpen(false)}
-              className={`group flex items-center gap-[6vw] py-[3.5vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[100ms]" : "opacity-0 -translate-x-10"}`}
+              className={`group flex items-center gap-[6vw] py-[2.7vw] transition-all duration-700 ${open ? "opacity-100 translate-x-0 delay-[100ms]" : "opacity-0 -translate-x-10"}`}
             >
               <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">MENU</span>
             </Link>

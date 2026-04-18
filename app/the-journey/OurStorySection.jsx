@@ -138,70 +138,50 @@ export default function OurStorySection({ initialData = null }) {
       <div className="relative z-10 w-full flex flex-col lg:flex-row items-start lg:items-center justify-center pt-0">
         <div className="w-full flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start lg:justify-center gap-y-6 lg:gap-y-0 lg:gap-x-2">
           <div className="relative w-full lg:w-1/2 px-[5vw] lg:px-[5vw] flex flex-col justify-start mt-[4vw] lg:mt-0 lg:overflow-hidden text-left h-auto min-h-[400px] md:min-h-[480px] lg:h-[450px] xl:h-[72vh]">
-            <div className="h-full min-h-0 flex flex-col">
-              <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.5vw] lg:text-[48px] xl:text-[60px] leading-[1.05] lg:leading-[1.1] uppercase mt-2 lg:mt-0 text-white">
-                {fixedHeading}
-              </h2>
+            {/* RISE ANIMATION WRAPPER: Synchronizes text with image slides to handle 'dancing' */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`text-content-${currentSlide}-${currentSubSlide}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="h-full min-h-0 flex flex-col"
+              >
+                <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.5vw] lg:text-[48px] xl:text-[60px] leading-[1.05] lg:leading-[1.1] uppercase mt-2 lg:mt-0 text-white">
+                  {fixedHeading}
+                </h2>
 
-              <AnimatePresence mode="wait" custom={direction}>
-                <motion.div
-                  key={`body-${currentSlide}`}
-                  custom={direction}
-                  variants={bodyVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
-                  data-lenis-prevent
+                <div
                   className="custom-scrollbar text-[#D1D5DB] font-neuzeit text-[4.5vw] md:text-[20px] lg:text-[18px] xl:text-[1.15vw] leading-[1.6] max-w-full lg:max-w-[40vw] pt-[2vw] md:pt-[12px] lg:pt-[15px] pb-1 h-[48vh] md:h-[35vh] lg:h-auto lg:flex-1 min-h-0 overflow-y-auto !overscroll-auto lg:pr-2"
+                  data-lenis-prevent
                 >
                   {(() => {
-                    const bodyArray =
-                      currentData.content || currentData.bodyText;
-                    if (
-                      !bodyArray ||
-                      (Array.isArray(bodyArray) && bodyArray.length === 0) ||
-                      (typeof bodyArray === "string" && bodyArray.trim() === "")
-                    ) {
-                      return <p>Content reveal in progress...</p>;
-                    }
-
+                    const bodyArray = currentData.content || currentData.bodyText;
+                    if (!bodyArray) return <p>Content reveal in progress...</p>;
                     const contentString = Array.isArray(bodyArray)
-                      ? bodyArray
-                        .map((item) =>
-                          typeof item === "string" ? item : String(item),
-                        )
-                        .join("\n")
-                      : typeof bodyArray === "string"
-                        ? bodyArray
-                        : String(bodyArray);
-
-                    return (
-                      <div className="whitespace-pre-wrap break-normal">
-                        {contentString}
-                      </div>
-                    );
+                      ? bodyArray.map((item) => String(item)).join("\n")
+                      : String(bodyArray);
+                    return <div className="whitespace-pre-wrap break-normal">{contentString}</div>;
                   })()}
-                </motion.div>
-              </AnimatePresence>
+                </div>
 
+                <div className="flex items-center justify-start gap-2 lg:gap-2 mt-2 lg:mt-2 pb-0 lg:pb-1 shrink-0">
+                  {slides.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-0.5 lg:h-1 w-10 lg:w-14 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}
+                    ></div>
+                  ))}
+                </div>
 
-
-              <div className="flex items-center justify-start gap-2 lg:gap-2 mt-2 lg:mt-2 pb-0 lg:pb-1 shrink-0">
-                {slides.map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-0.5 lg:h-1 w-10 lg:w-14 transition-all duration-300 rounded-full ${i === currentSlide ? "bg-white" : "bg-white/10"}`}
-                  ></div>
-                ))}
-              </div>
-
-              {fixedSubHeading && (
-                <p className="text-zinc-500 font-neuzeit text-[4.2vw] md:text-[18px] lg:text-[16px] xl:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-2 lg:mt-2 pb-0 shrink-0">
-                  {fixedSubHeading}
-                </p>
-              )}
-            </div>
+                {fixedSubHeading && (
+                  <p className="text-zinc-500 font-neuzeit text-[4.2vw] md:text-[18px] lg:text-[16px] xl:text-[1.1vw] leading-[1.45] max-w-full lg:max-w-[42vw] mt-2 lg:mt-2 pb-0 shrink-0">
+                    {fixedSubHeading}
+                  </p>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
           <div className="w-full lg:w-1/2 h-auto px-[4vw] lg:px-[2vw] flex flex-col items-start lg:justify-start justify-center mt-6 lg:mt-0">
@@ -298,3 +278,4 @@ export default function OurStorySection({ initialData = null }) {
     </section>
   );
 }
+

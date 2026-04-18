@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Script from "next/script";
@@ -29,6 +29,29 @@ const HomePageClient = ({
 }) => {
   const [data, setData] = useState(initialHomepageData || {});
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Force muted and other attributes to ensure autoplay works on mobile
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
+      videoRef.current.setAttribute("playsinline", "");
+      videoRef.current.setAttribute("webkit-playsinline", "");
+      videoRef.current.loop = true;
+
+      const playVideo = async () => {
+        try {
+          await videoRef.current.play();
+        } catch (error) {
+          console.log("Autoplay prevented:", error);
+        }
+      };
+
+      playVideo();
+    }
+  }, [data?.videoUrl]);
 
   const getCaption = () => {
     const card = initialSliderCards[activeCardIndex];
@@ -60,16 +83,25 @@ const HomePageClient = ({
     <div id="main-content">
       <section className="hero w-full h-[80vh] xl:h-screen bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
         {data?.videoUrl && (
-          <video
-            src={data.videoUrl}
-            poster={data.posterUrl}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover "
-          />
+          <>
+            <video
+              ref={videoRef}
+              poster={data.posterUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              onLoadedData={() => setVideoLoaded(true)}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"
+                }`}
+            >
+              <source src={data.videoUrl} type="video/mp4" />
+            </video>
+            {/* Visual enhancement overlay for better legibility */}
+            <div className="absolute inset-0 bg-black/10 z-[1]" />
+          </>
         )}
         <div className="relative z-10 w-full px-[5vw] md:px-[7vw] lg:px-[4vw]">
           <div className="flex flex-col gap-2 md:gap-4">
