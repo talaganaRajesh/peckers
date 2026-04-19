@@ -21,9 +21,9 @@ export const metadata = {
 export default async function HomePage() {
   // Fetch homepage data on the server
   const { data: homepageData } = await sanityFetch({
-    query: `*[_type == "homepage"][0]{
+    query: `*[_type == "homepage"] | order(_updatedAt desc)[0]{
         "videoUrl": heroVideo.asset->url,
-        "posterUrl": heroPoster.asset->url,
+        "posterUrl": heroPoster.asset->url + "?w=1920&q=75&auto=format",
         heroTitle,
         heroSubtitle,
         heroImage,
@@ -88,11 +88,23 @@ export default async function HomePage() {
   // Fetch reviews data from Google
   const reviews = await fetchGoogleReviews();
 
-  return <HomePageClient
-    initialHomepageData={homepageData}
-    initialSliderCards={sliderCards}
-    initialLocations={locationsList}
-    initialPersonDetails={personDetails}
-    initialReviews={reviews}
-  />;
+  return (
+    <>
+      {homepageData?.videoUrl && (
+        <link
+          rel="preload"
+          href={homepageData.videoUrl}
+          as="video"
+          type="video/mp4"
+        />
+      )}
+      <HomePageClient
+        initialHomepageData={homepageData}
+        initialSliderCards={sliderCards}
+        initialLocations={locationsList}
+        initialPersonDetails={personDetails}
+        initialReviews={reviews}
+      />
+    </>
+  );
 }

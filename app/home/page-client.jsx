@@ -79,6 +79,16 @@ const HomePageClient = ({
     );
   };
 
+  useEffect(() => {
+    // Failsafe: if video hasn't revealed within 3 seconds but we have a URL, show it anyway
+    const timer = setTimeout(() => {
+      if (!videoLoaded && data?.videoUrl) {
+        setVideoLoaded(true);
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [videoLoaded, data?.videoUrl]);
+
   return (
     <div id="main-content">
       <section className="hero w-full h-[80vh] xl:h-screen bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
@@ -94,9 +104,15 @@ const HomePageClient = ({
               loop
               playsInline
               preload="auto"
+              crossOrigin="anonymous"
               disablePictureInPicture
               onLoadedData={() => setVideoLoaded(true)}
               onCanPlay={() => setVideoLoaded(true)}
+              onPlay={() => setVideoLoaded(true)}
+              onError={() => {
+                console.error("Hero video failed to load");
+                setVideoLoaded(false);
+              }}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"
                 }`}
             />
