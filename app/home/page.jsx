@@ -1,6 +1,7 @@
 import { sanityFetch } from "../../sanity/lib/live";
 import HomePageClient from "./page-client";
 import { fetchGoogleReviews } from "../lib/google-reviews";
+import { urlFor } from "../../sanity/lib/image";
 
 export const metadata = {
   title: "Peckers | Best Peri-Peri Grilled & Fried Chicken in Stevenage & Hitchin",
@@ -81,12 +82,25 @@ export default async function HomePage() {
   return (
     <>
       {homepageData?.videoUrl && (
-        <link
-          rel="preload"
-          href={homepageData.videoUrl}
-          as="video"
-          type="video/mp4"
-        />
+        <>
+          <link
+            rel="preload"
+            href={homepageData.videoUrl}
+            as="video"
+            type="video/mp4"
+            // @ts-ignore
+            fetchPriority="high"
+          />
+          {homepageData.heroPoster && (
+            <link
+              rel="preload"
+              href={urlFor(homepageData.heroPoster).width(1920).quality(75).auto("format").url()}
+              as="image"
+              // @ts-ignore
+              fetchPriority="high"
+            />
+          )}
+        </>
       )}
       <HomePageClient
         initialHomepageData={homepageData}

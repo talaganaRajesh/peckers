@@ -80,12 +80,13 @@ const HomePageClient = ({
   };
 
   useEffect(() => {
-    // Failsafe: if video hasn't revealed within 3 seconds but we have a URL, show it anyway
+    // Failsafe: if video hasn't revealed within 1.5 seconds but we have a URL, show it anyway
+    // This is much better now because the backdrop image is already visible.
     const timer = setTimeout(() => {
       if (!videoLoaded && data?.videoUrl) {
         setVideoLoaded(true);
       }
-    }, 3000);
+    }, 1500);
     return () => clearTimeout(timer);
   }, [videoLoaded, data?.videoUrl]);
 
@@ -94,10 +95,29 @@ const HomePageClient = ({
       <section className="hero w-full h-[80vh] xl:h-screen bg-black flex items-center justify-center lg:justify-start overflow-hidden relative">
         {data?.videoUrl && (
           <>
+            {/* 
+                IMMEDIATE BACKDROP POSTER 
+                This ensures the "Seriously Good Chicken" text always has a high-quality 
+                background immediately after the page preloader, solving the "blank page" glitch.
+            */}
+            {data.heroPoster && (
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={urlFor(data.heroPoster).width(1920).quality(75).auto("format").url()}
+                  alt="Peckers Hero backdrop"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="100vw"
+                />
+              </div>
+            )}
+
             <video
               ref={videoRef}
               key={data?.videoUrl}
               src={data?.videoUrl}
+              // Keep poster on video tag as well for secondary backup
               poster={data.heroPoster ? urlFor(data.heroPoster).width(1920).quality(75).auto("format").url() : ""}
               autoPlay
               muted
@@ -108,16 +128,17 @@ const HomePageClient = ({
               disablePictureInPicture
               onLoadedData={() => setVideoLoaded(true)}
               onCanPlay={() => setVideoLoaded(true)}
+              onCanPlayThrough={() => setVideoLoaded(true)}
               onPlay={() => setVideoLoaded(true)}
               onError={() => {
                 console.error("Hero video failed to load");
-                setVideoLoaded(false);
+                setVideoLoaded(true); // Show the poster (from Image component) if video fails
               }}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"
+              className={`absolute inset-0 w-full h-full object-cover object-center z-[1] transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"
                 }`}
             />
             {/* Visual enhancement overlay for better legibility */}
-            <div className="absolute inset-0 bg-black/10 z-[1]" />
+            <div className="absolute inset-0 bg-black/10 z-[2]" />
           </>
         )}
         <div className="relative z-10 w-full px-[5vw] md:px-[7vw] lg:px-[4vw]">
