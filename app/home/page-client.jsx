@@ -86,6 +86,8 @@ const HomePageClient = ({
           <>
             <video
               ref={videoRef}
+              key={data?.videoUrl}
+              src={data?.videoUrl}
               poster={data.posterUrl}
               autoPlay
               muted
@@ -94,11 +96,10 @@ const HomePageClient = ({
               preload="auto"
               disablePictureInPicture
               onLoadedData={() => setVideoLoaded(true)}
+              onCanPlay={() => setVideoLoaded(true)}
               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? "opacity-100" : "opacity-0"
                 }`}
-            >
-              <source src={data.videoUrl} type="video/mp4" />
-            </video>
+            />
             {/* Visual enhancement overlay for better legibility */}
             <div className="absolute inset-0 bg-black/10 z-[1]" />
           </>
