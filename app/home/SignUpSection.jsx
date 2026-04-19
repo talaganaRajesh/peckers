@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
+import { urlFor } from "../../sanity/lib/image";
 
 export default function SignUpSection({ initialData = null }) {
   const glossRef = useRef(null);
@@ -30,9 +31,9 @@ export default function SignUpSection({ initialData = null }) {
 
   if (!data) return null;
 
-  const bgImageUrl =
-    data.backgroundImage?.asset?.url ||
-    "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/HomePage/Sign%20Up%20Section.webp";
+  const bgImageUrl = data.backgroundImage
+    ? urlFor(data.backgroundImage).width(1920).quality(80).auto("format").url()
+    : "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/HomePage/Sign%20Up%20Section.webp";
 
   return (
     <div

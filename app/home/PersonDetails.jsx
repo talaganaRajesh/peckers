@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { urlFor } from "../../sanity/lib/image";
 
 export default function PersonDetails({ data = null }) {
   if (!data) return null;
@@ -10,12 +11,15 @@ export default function PersonDetails({ data = null }) {
   const lastWord = headingParts.pop();
   const resHeading = headingParts.join(" ");
 
+  // Generate URL using urlFor instead of pre-dereferenced imageUrl
+  const profileImageUrl = data.image ? urlFor(data.image).width(800).quality(85).auto("format").url() : null;
+
   return (
     <div className="relative w-full max-w-full overflow-x-hidden flex flex-col lg:flex-row items-start justify-center mt-[4vw] md:mt-[2vw] lg:mt-[4vw] xl:mt-[3vw] gap-[1vw] md:gap-[1.5vw] lg:gap-[4vw] box-border px-[4vw] md:px-[1.4vw] lg:px-[2vw] mb-5 md:mb-0">
       <div className="shrink-0 w-full lg:w-[48vw] xl:w-[44vw]">
-        {data.imageUrl && (
+        {profileImageUrl && (
           <Image
-            src={data.imageUrl}
+            src={profileImageUrl}
             alt="Profile"
             className="w-full h-[70vw] md:h-[48vw] lg:h-[32vw] xl:h-[30vw] object-cover object-center rounded-2xl shadow-2xl"
             sizes="(max-width: 768px) 90vw, 48vw"

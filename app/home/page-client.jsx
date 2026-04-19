@@ -98,7 +98,7 @@ const HomePageClient = ({
               ref={videoRef}
               key={data?.videoUrl}
               src={data?.videoUrl}
-              poster={data.posterUrl}
+              poster={data.heroPoster ? urlFor(data.heroPoster).width(1920).quality(75).auto("format").url() : ""}
               autoPlay
               muted
               loop

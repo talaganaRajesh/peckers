@@ -23,7 +23,7 @@ export default async function HomePage() {
   const { data: homepageData } = await sanityFetch({
     query: `*[_type == "homepage"] | order(_updatedAt desc)[0]{
         "videoUrl": heroVideo.asset->url,
-        "posterUrl": heroPoster.asset->url + "?w=1920&q=75&auto=format",
+        heroPoster,
         heroTitle,
         heroSubtitle,
         heroImage,
@@ -40,12 +40,7 @@ export default async function HomePage() {
         },
         signupSection {
           ...,
-          backgroundImage {
-            asset -> {
-              _id,
-              url
-            }
-          }
+          backgroundImage
         }
     }`
   });
@@ -66,12 +61,7 @@ export default async function HomePage() {
     query: `*[_type == "location"]{
     _id,
     name,
-    image {
-      asset->{
-        _id,
-        url
-      }
-    }
+    image
   }`
   });
 
@@ -81,7 +71,7 @@ export default async function HomePage() {
     heading,
     description,
     buttonText,
-    "imageUrl": image.asset->url
+    image
   }`
   });
 
