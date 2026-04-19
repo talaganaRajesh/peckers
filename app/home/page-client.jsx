@@ -45,7 +45,17 @@ const HomePageClient = ({
         try {
           await videoRef.current.play();
         } catch (error) {
-          console.log("Autoplay prevented:", error);
+          console.log("Autoplay prevented recorded:", error);
+          // If autoplay failed, try again on first user interaction
+          const handleFirstInteraction = () => {
+            if (videoRef.current) {
+              videoRef.current.play().catch(e => console.log("Still blocked", e));
+              window.removeEventListener("touchstart", handleFirstInteraction);
+              window.removeEventListener("mousedown", handleFirstInteraction);
+            }
+          };
+          window.addEventListener("touchstart", handleFirstInteraction);
+          window.addEventListener("mousedown", handleFirstInteraction);
         }
       };
 
@@ -126,6 +136,7 @@ const HomePageClient = ({
               preload="auto"
               crossOrigin="anonymous"
               disablePictureInPicture
+              disableRemotePlayback
               onLoadedData={() => setVideoLoaded(true)}
               onCanPlay={() => setVideoLoaded(true)}
               onCanPlayThrough={() => setVideoLoaded(true)}
@@ -134,7 +145,7 @@ const HomePageClient = ({
                 console.error("Hero video failed to load");
                 setVideoLoaded(true); // Show the poster (from Image component) if video fails
               }}
-              className={`absolute inset-0 w-full h-full object-cover object-center z-[1] transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"
+              className={`absolute inset-0 w-full h-full object-cover object-center z-[1] pointer-events-none transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"
                 }`}
             />
             {/* Visual enhancement overlay for better legibility */}
