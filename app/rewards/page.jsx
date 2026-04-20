@@ -90,13 +90,13 @@ export const metadata = {
 const imgHero =
   "https://www.figma.com/api/mcp/asset/eb377fb0-ff3f-4a05-98e3-6b96e8ed3fe0";
 const imgRecruit =
-  "https://www.figma.com/api/mcp/asset/ebdecf9b-b623-437b-9385-d1b3e4b22e9d";
+  "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/recruit.png";
 const imgBeta =
-  "https://www.figma.com/api/mcp/asset/58cb5f51-d062-48da-b41a-a69b87ed0259";
+  "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/We%20Help%20Small%20Businesses%20%287%29%201.png";
 const imgGamma =
-  "https://www.figma.com/api/mcp/asset/2c649633-6bee-41bb-8349-0e9f1fd335c9";
+  "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/We%20Help%20Small%20Businesses%20%288%29%201%20%281%29.png";
 const imgAlpha =
-  "https://www.figma.com/api/mcp/asset/00104d2e-4149-4cfa-a832-e90a8fd95a1e";
+  "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/We%20Help%20Small%20Businesses%20%289%29%201.png";
 
 const imgCheck =
   "https://www.figma.com/api/mcp/asset/48f6f0a2-e590-4f46-aca8-163f8af75702"; // check mark
