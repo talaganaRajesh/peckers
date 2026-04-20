@@ -88,7 +88,7 @@ export const metadata = {
 
 
 const imgHero =
-  "https://www.figma.com/api/mcp/asset/eb377fb0-ff3f-4a05-98e3-6b96e8ed3fe0";
+  "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/Rewards%20page%20hero%20section.webp";
 const imgRecruit =
   "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/recruit.png";
 const imgBeta =
@@ -152,7 +152,7 @@ export default function RewardsPage() {
       {/* 1. Hero Section */}
       <section className="relative w-full h-[85vh] min-h-[600px] flex flex-col items-center justify-center -mt-[80px]">
         {/* Background */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 opacity-60 pointer-events-none">
           <img
             src={imgHero}
             className="w-full h-full object-cover"
