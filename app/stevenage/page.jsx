@@ -3,7 +3,7 @@ import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
     title: "Peckers Stevenage | Best Chicken Takeaway & Restaurant",
-    description: "Discover Peckers Stevenage - the ultimate spot for halal fried and grilled chicken. Serving premium peri-peri chicken, gourmet burgers, and signature wings with fast delivery across Stevenage.",
+    description: "Discover Peckers Stevenage - the ultimate spot for fried and grilled chicken. Serving premium peri-peri chicken, gourmet burgers, and signature wings with fast delivery across Stevenage.",
     keywords: [
         "best halal food Stevenage",
         "restaurants Stevenage",

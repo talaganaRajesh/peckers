@@ -3,7 +3,7 @@ import UniquenessPageClient from "./page-client";
 
 export const metadata = {
     title: "The Peckers Standard | Quality & Craft in Every Bite",
-    description: "Discover what makes Peckers unique. From our 100% halal certification to our artisan preparation and commitment to serving Seriously Good Chicken in every bite.",
+    description: "Discover what makes Peckers unique. From our artisan preparation to our commitment to serving Seriously Good Chicken in every bite.",
     keywords: [
         "Peckers standard of quality",
         "best halal chicken Hertfordshire",

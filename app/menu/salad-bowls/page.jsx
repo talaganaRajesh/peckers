@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Salad Bowls Menu | Chicken Salads Stevenage",
-    description: "Fresh and healthy halal chicken salad bowls at Peckers. Try our OG Salad or the Seoul-inspired Hert and Seoul bowl.",
+    description: "Fresh and healthy chicken salad bowls at Peckers. Try our OG Salad or the Seoul-inspired Hert and Seoul bowl.",
 };
 
 export default async function SaladBowlsPage() {

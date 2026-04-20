@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Rice Bowls Menu | Chicken Rice Bowls Stevenage",
-    description: "Discover our range of delicious halal chicken rice bowls at Peckers. From the OG to the fiery Buffalo Soldier.",
+    description: "Discover our range of delicious chicken rice bowls at Peckers. From the OG to the fiery Buffalo Soldier.",
 };
 
 export default async function RiceBowlsPage() {

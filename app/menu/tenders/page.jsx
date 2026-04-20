@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Buttermilk Tenders Menu | Chicken Tenders",
-    description: "Try our signature southern fried or buttermilk tenders. Coated in our house-made sauces. 100% Halal.",
+    description: "Try our signature southern fried or buttermilk tenders. Coated in our house-made sauces.",
 };
 
 export default async function TendersPage() {

@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Rice & Salad Bowls Menu | Chicken Bowls Stevenage",
-    description: "Discover our range of delicious halal chicken rice and salad bowls at Peckers. Fresh, healthy, and seriously good.",
+    description: "Discover our range of delicious chicken rice and salad bowls at Peckers. Fresh, healthy, and seriously good.",
 };
 
 export default async function RiceAndSaladBowlsPage() {

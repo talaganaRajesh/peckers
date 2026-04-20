@@ -5,7 +5,7 @@ import { urlFor } from "../../sanity/lib/image";
 
 export const metadata = {
   title: "Peckers | Best Peri-Peri Grilled & Fried Chicken in Stevenage & Hitchin",
-  description: "Experience Seriously Good Chicken at Peckers. Hertfordshire's destination for premium halal peri-peri chicken, gourmet burgers, and signature wings. Fast delivery and late-night takeaway available.",
+  description: "Experience Seriously Good Chicken at Peckers. Hertfordshire's destination for premium peri-peri chicken, gourmet burgers, and signature wings. Fast delivery and late-night takeaway available.",
   keywords: [
     "Peckers chicken",
     "best halal chicken Stevenage",

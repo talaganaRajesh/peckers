@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Lunch Time Deals | Best Lunch Offers",
-    description: "Grab our amazing lunch time deals at Peckers. Great value, great taste, 100% Halal.",
+    description: "Grab our amazing lunch time deals at Peckers. Great value, great taste.",
 };
 
 const DEFAULT_DATA = [

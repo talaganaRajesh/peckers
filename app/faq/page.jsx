@@ -4,7 +4,7 @@ import { faqData } from "./faqData";
 
 export const metadata = {
   title: "Frequently Asked Questions | Peckers - Seriously Good Chicken",
-  description: "Find answers to frequently asked questions about Peckers. Learn about our 100% Halal-certified fresh chicken, peri peri grilled range, housemade sauces, and locations in Stevenage and Hitchin.",
+  description: "Find answers to frequently asked questions about Peckers. Learn about our fresh chicken, peri peri grilled range, housemade sauces, and locations in Stevenage and Hitchin.",
   keywords: [
     "Peckers FAQ",
     "halal chicken FAQ",

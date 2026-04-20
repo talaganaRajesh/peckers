@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Wings Menu | Chicken Wings Stevenage & Hitchin",
-    description: "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces. 100% Halal.",
+    description: "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces.",
 };
 
 export default async function WingsPage() {

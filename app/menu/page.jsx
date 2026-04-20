@@ -4,7 +4,7 @@ import GenericMenuPageClient from "./components/MenuPageClient";
 
 export const metadata = {
   title: "Peckers Menu | Peri-Peri Chicken, Burgers & Wings",
-  description: "Explore the full Peckers menu. From our signature peri-peri grilled chicken to gourmet burgers and spicy wings. 100% halal and seriously good. Order now for delivery or collection.",
+  description: "Explore the full Peckers menu. From our signature peri-peri grilled chicken to gourmet burgers and spicy wings. Seriously good. Order now for delivery or collection.",
 };
 
 

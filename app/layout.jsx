@@ -26,7 +26,7 @@ const neuzeit = localFont({
 export const metadata = {
   title: "Peckers | Seriously Good Chicken | Stevenage & Hitchin",
   description:
-    "Premium halal grilled and fried chicken in Hertfordshire. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin. Order online for fast delivery.",
+    "Premium grilled and fried chicken in Hertfordshire. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin. Order online for fast delivery.",
   keywords: [
     "Peckers chicken",
     "best halal chicken Stevenage",
@@ -115,7 +115,7 @@ export default async function RootLayout({ children }) {
               name: "Peckers",
               image: "https://peckers.co.uk/logo.png", // Path to brand logo
               description:
-                "Premium Halal Grilled and Fried Chicken Restaurant in Hertfordshire.",
+                "Premium Grilled and Fried Chicken Restaurant in Hertfordshire.",
               servesCuisine: [
                 "Halal",
                 "Peri Peri",

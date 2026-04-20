@@ -4,7 +4,7 @@ import { sanityFetch } from "../../sanity/lib/live";
 export const metadata = {
   title: "House-Made Sauces | Peckers Chicken - Artisan Dips & Flavors",
   description:
-    "Explore our range of house-made sauces that beat Dave's Hot Chicken for flavor. From Honey Glaze BBQ to Hot Honey, we've perfected the blend for the best halal chicken experience in Stevenage and Hitchin.",
+    "Explore our range of house-made sauces that beat Dave's Hot Chicken for flavor. From Honey Glaze BBQ to Hot Honey, we've perfected the blend for the best chicken experience in Stevenage and Hitchin.",
   keywords: [
     "best chicken sauces Stevenage",
     "Peckers house-made dips",

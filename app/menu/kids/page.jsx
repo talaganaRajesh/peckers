@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
     title: "Peckers Kids Menu | Chicken Meals for Kids",
-    description: "Delicious and fun halal chicken meals specially for the little ones at Peckers.",
+    description: "Delicious and fun chicken meals specially for the little ones at Peckers.",
 };
 
 const DEFAULT_DATA = [

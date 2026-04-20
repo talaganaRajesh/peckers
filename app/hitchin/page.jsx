@@ -3,7 +3,7 @@ import { sanityFetch } from "../../sanity/lib/live";
 
 export const metadata = {
     title: "Peckers Hitchin | Best Chicken Takeaway & Restaurant",
-    description: "Visit Peckers in Hitchin for Seriously Good Chicken. Premium halal peri-peri grilled chicken, wings, and gourmet burgers. Fast delivery and late-night takeaway available in Hitchin.",
+    description: "Visit Peckers in Hitchin for Seriously Good Chicken. Premium peri-peri grilled chicken, wings, and gourmet burgers. Fast delivery and late-night takeaway available in Hitchin.",
     keywords: [
         "halal food Hitchin",
         "best chicken Hitchin",

@@ -4,7 +4,7 @@ import GenericMenuPageClient from "../components/MenuPageClient";
 
 export const metadata = {
   title: "Peckers Wraps Menu | Chicken Wraps Stevenage & Hitchin",
-  description: "Explore the Peckers wraps menu. From the classic OG to the Seoul-inspired Korean wrap, our halal chicken wraps are seriously good.",
+  description: "Explore the Peckers wraps menu. From the classic OG to the Seoul-inspired Korean wrap, our chicken wraps are seriously good.",
 };
 
 export default async function WrapsPage() {
