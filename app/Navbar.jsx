@@ -254,11 +254,11 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Mobile Menu Dropdown - Solid Black, Absolute to stay attached to header */}
       <div
-        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[78vh] bg-black flex flex-col transition-all duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl rounded-b-[2.5rem] ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`absolute top-full -mt-px left-0 right-0 w-full h-auto max-h-[78vh] bg-black flex flex-col transition-[transform,opacity] duration-500 ease-in-out md:hidden z-40 overflow-y-auto overflow-x-hidden scrollbar-hide shadow-2xl rounded-b-[2.5rem] ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <div className="flex flex-col px-[8vw] pt-[3vw] pb-[0.5vw] space-y-[1vw] relative min-h-[44vh]">
           {/* Decorative Background Text - Zinc Color */}
-          <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.05] select-none pointer-events-none whitespace-nowrap">
+          <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.05] select-none pointer-events-none whitespace-nowrap will-change-transform transform translate-z-0">
             <h2 className="text-[40vw] font-black italic transform -rotate-12 text-zinc-700">PECKERS</h2>
           </div>
 
@@ -282,19 +282,19 @@ export default function Navbar({ preloadedSettings = null }) {
                   <FaChevronDown className={`text-[4vw] ${locationsOpen ? "text-[#F2DF0D]" : "text-white/50"}`} />
                 </div>
               </button>
-              <div className={`grid transition-all duration-500 ease-out ${locationsOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+              <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out will-change-[grid-template-rows,opacity] ${locationsOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                 <div className="overflow-hidden">
                   <div className="flex flex-col gap-[5vw] pb-[6vw] pt-[2vw] pl-[6vw]">
-                    <Link 
-                      href="/hitchin" 
-                      onClick={() => setOpen(false)} 
+                    <Link
+                      href="/hitchin"
+                      onClick={() => setOpen(false)}
                       className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
                       HITCHIN
                     </Link>
-                    <Link 
-                      href="/stevenage" 
-                      onClick={() => setOpen(false)} 
+                    <Link
+                      href="/stevenage"
+                      onClick={() => setOpen(false)}
                       className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
                       STEVENAGE
@@ -315,19 +315,19 @@ export default function Navbar({ preloadedSettings = null }) {
                   <FaChevronDown className={`text-[4vw] ${journeyOpen ? "text-[#F2DF0D]" : "text-white/50"}`} />
                 </div>
               </button>
-              <div className={`grid transition-all duration-500 ease-out ${journeyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+              <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out will-change-[grid-template-rows,opacity] ${journeyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                 <div className="overflow-hidden">
                   <div className="flex flex-col gap-[5vw] pb-[6vw] pt-[2vw] pl-[6vw]">
-                    <Link 
-                      href="/house-made-sauces" 
-                      onClick={() => setOpen(false)} 
+                    <Link
+                      href="/house-made-sauces"
+                      onClick={() => setOpen(false)}
                       className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
                       HOUSE-MADE SAUCES
                     </Link>
-                    <Link 
-                      href="/the-peckers-standard" 
-                      onClick={() => setOpen(false)} 
+                    <Link
+                      href="/the-peckers-standard"
+                      onClick={() => setOpen(false)}
                       className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
                       THE PECKERS STANDARD
