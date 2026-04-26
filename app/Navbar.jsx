@@ -284,18 +284,18 @@ export default function Navbar({ preloadedSettings = null }) {
               </button>
               <div className={`grid transition-all duration-500 ease-out ${locationsOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                 <div className="overflow-hidden">
-                  <div className="flex flex-row gap-[10vw] pb-[6vw] pt-[2vw] pl-[4vw]">
+                  <div className="flex flex-col gap-[5vw] pb-[6vw] pt-[2vw] pl-[6vw]">
                     <Link 
                       href="/hitchin" 
                       onClick={() => setOpen(false)} 
-                      className={`text-[5.2vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${locationsOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
                       HITCHIN
                     </Link>
                     <Link 
                       href="/stevenage" 
                       onClick={() => setOpen(false)} 
-                      className={`text-[5.2vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${locationsOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
                       STEVENAGE
                     </Link>
@@ -317,20 +317,20 @@ export default function Navbar({ preloadedSettings = null }) {
               </button>
               <div className={`grid transition-all duration-500 ease-out ${journeyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                 <div className="overflow-hidden">
-                  <div className="flex flex-row gap-[5vw] pb-[6vw] pt-[2vw] pl-[4vw]">
+                  <div className="flex flex-col gap-[5vw] pb-[6vw] pt-[2vw] pl-[6vw]">
                     <Link 
                       href="/house-made-sauces" 
                       onClick={() => setOpen(false)} 
-                      className={`text-[4.8vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${journeyOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
-                      HOUSE - MADE SAUCES
+                      HOUSE-MADE SAUCES
                     </Link>
                     <Link 
                       href="/the-peckers-standard" 
                       onClick={() => setOpen(false)} 
-                      className={`text-[4.8vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${journeyOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
                     >
-                      PECKERS STANDARD
+                      THE PECKERS STANDARD
                     </Link>
                   </div>
                 </div>
