@@ -7,6 +7,7 @@ import Image from "next/image";
 import Script from "next/script";
 import { FaChevronDown } from "react-icons/fa";
 import HeaderActionButton from "./components/HeaderActionButton";
+import SearchBar from "./components/SearchBar";
 import { client } from "../sanity/lib/client";
 
 import { urlFor } from "../sanity/lib/image";
@@ -199,9 +200,10 @@ export default function Navbar({ preloadedSettings = null }) {
 
       {/* Desktop Buttons */}
       <div
-        className="hidden md:flex flex-1 justify-end md:gap-[1vw] lg:gap-[1.5vw] xl:gap-[1.2vw]"
+        className="hidden md:flex flex-1 justify-end items-center md:gap-[0.8vw] lg:gap-[1vw] xl:gap-[1.2vw]"
         style={{ fontFamily: "var(--font-neuzeit)" }}
       >
+        <SearchBar />
         <HeaderActionButton
           href="https://peckers.vmos.io/store/store-selection?app=online"
           onClick={() => trackOutboundClick("Click & Collect", "https://peckers.vmos.io/store/store-selection?app=online")}

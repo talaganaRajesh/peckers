@@ -164,6 +164,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   --font-mono: var(--font-neuzeit);
   --font-neuzeit: var(--font-neuzeit);
   --font-peakers: var(--font-peakers);
+  --color-peckers-yellow: #F2DF0D;
+  --color-peckers-red: #EF4444;
 }
 
 @media (prefers-color-scheme: light) {
@@ -233,16 +235,20 @@ img {
 .time-picker-scroll::-webkit-scrollbar {
   width: 3px;
 }
+
 .time-picker-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .time-picker-scroll::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.18);
   border-radius: 999px;
 }
+
 .time-picker-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
 }
+
 .time-picker-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
