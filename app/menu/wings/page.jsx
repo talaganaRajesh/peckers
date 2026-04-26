@@ -2,16 +2,10 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
-import { generateBaseMetadata } from "../../lib/seo-utils";
-
-export async function generateMetadata() {
-    return generateBaseMetadata({
-        title: "Wings Menu",
-        description: "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces.",
-        path: "/menu/wings",
-        keywords: ["wings", "chicken wings", "peri peri wings", "Peckers"],
-    });
-}
+export const metadata = {
+    title: "Peckers Wings Menu | Chicken Wings Stevenage & Hitchin",
+    description: "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces.",
+};
 
 export default async function WingsPage() {
     const { data } = await sanityFetch({
