@@ -2,10 +2,30 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
-export const metadata = {
-    title: "Peckers Wings Menu | Chicken Wings Stevenage & Hitchin",
-    description: "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces.",
-};
+import { generateMetadataObject } from "../../lib/seo";
+
+export async function generateMetadata() {
+    const { data } = await sanityFetch({
+        query: `*[_type == "menuPage"][0] {
+            wingsAndTendersCarousel[] { name }
+        }`
+    });
+
+    const items = (data?.wingsAndTendersCarousel || [])
+        .filter(item => item.name?.toLowerCase().includes("wing"));
+    
+    const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
+    const description = items.length > 0 
+        ? `Try our signature wings: ${itemNames}, and more. Coated in our house-made sauces. Best chicken wings in Stevenage and Hitchin.`
+        : "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces.";
+
+    return generateMetadataObject({
+        title: "Wings Menu",
+        description: description,
+        keywords: ["wings", "chicken wings", "peri peri wings", "Peckers", ...items.map(i => i.name)],
+        path: "/menu/wings"
+    });
+}
 
 export default async function WingsPage() {
     const { data } = await sanityFetch({
@@ -29,10 +49,28 @@ export default async function WingsPage() {
         }));
 
     return (
-        <GenericMenuPageClient 
-            initialItems={finalItems} 
-            initialNavbarData={navbarData} 
-            categoryName="WINGS" 
-        />
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "itemListElement": finalItems.map((item, index) => ({
+                            "@type": "ListItem",
+                            "position": index + 1,
+                            "name": item.name,
+                            "description": item.ingredients,
+                            "url": `https://www.peckerschicken.co.uk/menu/wings#${item.name.toLowerCase().replace(/\s+/g, '-')}`
+                        }))
+                    })
+                }}
+            />
+            <GenericMenuPageClient 
+                initialItems={finalItems} 
+                initialNavbarData={navbarData} 
+                categoryName="WINGS" 
+            />
+        </>
     );
 }

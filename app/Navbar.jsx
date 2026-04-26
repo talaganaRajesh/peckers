@@ -275,15 +275,31 @@ export default function Navbar({ preloadedSettings = null }) {
               <button
                 type="button"
                 onClick={() => setLocationsOpen(!locationsOpen)}
-                className="group flex items-center gap-[6vw] py-[3.5vw] w-full text-left"
+                className="group flex items-center justify-between py-[4vw] w-full text-left outline-none"
               >
-                <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">FIND US</span>
-                <FaChevronDown className={`text-[3.5vw] ml-auto text-white transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`} />
+                <span className={`text-[7vw] font-peakers tracking-tight font-black uppercase transition-colors duration-300 ${locationsOpen ? "text-[#F2DF0D]" : "text-white"}`}>FIND US</span>
+                <div className={`transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`}>
+                  <FaChevronDown className={`text-[4vw] ${locationsOpen ? "text-[#F2DF0D]" : "text-white/50"}`} />
+                </div>
               </button>
-              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${locationsOpen ? "max-h-[30vh] mt-[1vw] ml-[10vw]" : "max-h-0"}`}>
-                <div className="flex flex-col gap-[4vw] py-[3vw] border-l border-white/20 pl-[6vw]">
-                  <Link href="/hitchin" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal">Hitchin</Link>
-                  <Link href="/stevenage" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal">Stevenage</Link>
+              <div className={`grid transition-all duration-500 ease-out ${locationsOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                <div className="overflow-hidden">
+                  <div className="flex flex-row gap-[10vw] pb-[6vw] pt-[2vw] pl-[4vw]">
+                    <Link 
+                      href="/hitchin" 
+                      onClick={() => setOpen(false)} 
+                      className={`text-[5.2vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${locationsOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                    >
+                      HITCHIN
+                    </Link>
+                    <Link 
+                      href="/stevenage" 
+                      onClick={() => setOpen(false)} 
+                      className={`text-[5.2vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${locationsOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                    >
+                      STEVENAGE
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -292,15 +308,31 @@ export default function Navbar({ preloadedSettings = null }) {
               <button
                 type="button"
                 onClick={() => setJourneyOpen(!journeyOpen)}
-                className="group flex items-center gap-[6vw] py-[3.5vw] w-full text-left"
+                className="group flex items-center justify-between py-[4vw] w-full text-left outline-none"
               >
-                <span className="text-[6.5vw] font-peakers tracking-normal font-bold text-white uppercase">OUR SECRET</span>
-                <FaChevronDown className={`text-[3.5vw] ml-auto text-white transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`} />
+                <span className={`text-[7vw] font-peakers tracking-tight font-black uppercase transition-colors duration-300 ${journeyOpen ? "text-[#F2DF0D]" : "text-white"}`}>OUR SECRET</span>
+                <div className={`transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`}>
+                  <FaChevronDown className={`text-[4vw] ${journeyOpen ? "text-[#F2DF0D]" : "text-white/50"}`} />
+                </div>
               </button>
-              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${journeyOpen ? "max-h-[30vh] mt-[1vw] ml-[10vw]" : "max-h-0"}`}>
-                <div className="flex flex-col gap-[4vw] py-[3vw] border-l border-white/20 pl-[6vw]">
-                  <Link href="/house-made-sauces" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal">House-Made Sauces</Link>
-                  <Link href="/the-peckers-standard" onClick={() => setOpen(false)} className="text-[5.5vw] font-peakers text-white tracking-normal">The Peckers Standard</Link>
+              <div className={`grid transition-all duration-500 ease-out ${journeyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                <div className="overflow-hidden">
+                  <div className="flex flex-row gap-[5vw] pb-[6vw] pt-[2vw] pl-[4vw]">
+                    <Link 
+                      href="/house-made-sauces" 
+                      onClick={() => setOpen(false)} 
+                      className={`text-[4.8vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${journeyOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                    >
+                      HOUSE - MADE SAUCES
+                    </Link>
+                    <Link 
+                      href="/the-peckers-standard" 
+                      onClick={() => setOpen(false)} 
+                      className={`text-[4.8vw] font-peakers font-bold text-white/70 hover:text-[#F2DF0D] transition-all duration-500 transform ${journeyOpen ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"}`}
+                    >
+                      PECKERS STANDARD
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -2,10 +2,25 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
-export const metadata = {
-  title: "Peckers Wraps Menu | Chicken Wraps Stevenage & Hitchin",
-  description: "Explore the Peckers wraps menu. From the classic OG to the Seoul-inspired Korean wrap, our chicken wraps are seriously good.",
-};
+import { generateMetadataObject } from "../../lib/seo";
+
+export async function generateMetadata() {
+    const { data } = await sanityFetch({
+        query: `*[_type == "menuPage"][0] {
+            wrapsCarousel[] { name }
+        }`
+    });
+
+    const items = data?.wrapsCarousel || [];
+    const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
+    
+    return generateMetadataObject({
+        title: "Wraps Menu",
+        description: `Explore our chicken wraps: ${itemNames}, and more. Hand-crafted with premium ingredients in Stevenage & Hitchin.`,
+        keywords: ["chicken wraps", "Peckers wraps", "Stevenage takeaway", "Hitchin food", ...items.map(i => i.name)],
+        path: "/menu/wraps"
+    });
+}
 
 export default async function WrapsPage() {
   const { data } = await sanityFetch({
@@ -28,10 +43,28 @@ export default async function WrapsPage() {
   }));
 
   return (
-    <GenericMenuPageClient
-      initialItems={finalWraps}
-      initialNavbarData={navbarData}
-      categoryName="WRAPS"
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": finalWraps.map((item, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "name": item.name,
+              "description": item.ingredients,
+              "url": `https://www.peckerschicken.co.uk/menu/wraps#${item.name.toLowerCase().replace(/\s+/g, '-')}`
+            }))
+          })
+        }}
+      />
+      <GenericMenuPageClient
+        initialItems={finalWraps}
+        initialNavbarData={navbarData}
+        categoryName="WRAPS"
+      />
+    </>
   );
 }

@@ -2,10 +2,25 @@ import { sanityFetch } from "../../sanity/lib/live";
 import { urlFor } from "../../sanity/lib/image";
 import GenericMenuPageClient from "./components/MenuPageClient";
 
-export const metadata = {
-  title: "Peckers Menu | Peri-Peri Chicken, Burgers & Wings",
-  description: "Explore the full Peckers menu. From our signature peri-peri grilled chicken to gourmet burgers and spicy wings. Seriously good. Order now for delivery or collection.",
-};
+import { generateMetadataObject } from "../lib/seo";
+
+export async function generateMetadata() {
+    const { data } = await sanityFetch({
+        query: `*[_type == "menuPage"][0] {
+            burgerCarousel[] { name }
+        }`
+    });
+
+    const items = data?.burgerCarousel || [];
+    const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
+    
+    return generateMetadataObject({
+        title: "Full Menu",
+        description: `Explore the Peckers menu. Featuring our signature burgers like ${itemNames}, peri-peri chicken, and wings. Seriously good food in Stevenage & Hitchin.`,
+        keywords: ["Peckers Menu", "halal burgers", "peri peri chicken", "Stevenage", "Hitchin", ...items.map(i => i.name)],
+        path: "/menu"
+    });
+}
 
 
 export default async function MenuPage() {
@@ -29,10 +44,28 @@ export default async function MenuPage() {
   }));
 
   return (
-    <GenericMenuPageClient
-      initialItems={finalBurgers}
-      initialNavbarData={navbarData}
-      categoryName="BURGERS"
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": finalBurgers.map((item, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "name": item.name,
+              "description": item.ingredients,
+              "url": `https://www.peckerschicken.co.uk/menu#${item.name.toLowerCase().replace(/\s+/g, '-')}`
+            }))
+          })
+        }}
+      />
+      <GenericMenuPageClient
+        initialItems={finalBurgers}
+        initialNavbarData={navbarData}
+        categoryName="BURGERS"
+      />
+    </>
   );
 }
