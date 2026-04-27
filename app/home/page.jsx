@@ -8,12 +8,12 @@ export const metadata = {
   description: "Experience Seriously Good Chicken at Peckers. Hertfordshire's destination for premium peri-peri chicken, gourmet burgers, and signature wings. Fast delivery and late-night takeaway available.",
   keywords: [
     "Peckers chicken",
-    "best halal chicken Stevenage",
-    "halal food Hitchin",
+    "best chicken Stevenage",
+    "food Hitchin",
     "peri peri grilled chicken",
     "chicken takeaway Stevenage",
     "late night food Stevenage",
-    "halal food Hertfordshire",
+    "food Hertfordshire",
     "best fried chicken Hertfordshire"
   ]
 };

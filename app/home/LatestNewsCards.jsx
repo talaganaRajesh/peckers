@@ -184,7 +184,7 @@ export default function LatestNewsCards({ news = [], onActiveIndexChange }) {
           >
             <Image
               src={urlFor(images[card.imageIndex].image).url()}
-              alt={`${images[card.imageIndex].title || "Latest News"} | Peckers Halal Chicken Hertfordshire`}
+              alt={`${images[card.imageIndex].title || "Latest News"} | Peckers Chicken Hertfordshire`}
               fill
               sizes="(max-width:768px) 100vw, 33vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"

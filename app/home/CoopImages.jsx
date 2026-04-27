@@ -66,7 +66,7 @@ export default function CoopImages({ locations = [] }) {
         {HITCHIN_IMG && (
           <Image
             src={HITCHIN_IMG}
-            alt={`Peckers Hitchin - Best Halal Peri Peri Grilled Chicken and Takeaway in Hitchin`}
+            alt={`Peckers Hitchin - Best Peri Peri Grilled Chicken and Takeaway in Hitchin`}
             fill
             className="object-cover transition-transform duration-700 group-active:scale-105"
             sizes="100vw"
@@ -89,7 +89,7 @@ export default function CoopImages({ locations = [] }) {
         {HITCHIN_IMG && (
           <Image
             src={HITCHIN_IMG}
-            alt={`Peckers Hitchin - Premium Halal Fried Chicken and Peri Peri Takeaway`}
+            alt={`Peckers Hitchin - Premium Fried Chicken and Peri Peri Takeaway`}
             fill
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="35vw"
@@ -112,7 +112,7 @@ export default function CoopImages({ locations = [] }) {
         {STEVENAGE_IMG && (
           <Image
             src={STEVENAGE_IMG}
-            alt={`Peckers Stevenage - Best Halal Chicken Restaurant and Delivery in Stevenage`}
+            alt={`Peckers Stevenage - Best Chicken Restaurant and Delivery in Stevenage`}
             fill
             className="object-cover transition-transform duration-700 group-active:scale-105"
             sizes="100vw"
@@ -135,7 +135,7 @@ export default function CoopImages({ locations = [] }) {
         {STEVENAGE_IMG && (
           <Image
             src={STEVENAGE_IMG}
-            alt={`Peckers Stevenage - Top Rated Peri Peri Grilled Chicken and Halal Food Hertfordshire`}
+            alt={`Peckers Stevenage - Top Rated Peri Peri Grilled Chicken and Food Hertfordshire`}
             fill
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             sizes="35vw"

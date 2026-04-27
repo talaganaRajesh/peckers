@@ -28,11 +28,6 @@ export const faqData = [
         answer: "We are specialists in both fried and grilled chicken. Our signature fried chicken is made using our own unique, secret-recipe breading for the perfect crunch every time. We also offer a premium PERI-PERI grilled chicken range for those looking for a flame-grilled alternative. To round off your meal, don't miss our special milkshakes, thick, creamy, and the perfect partner to our seriously good chicken."
       },
       {
-        id: 5,
-        question: "Is the chicken at Peckers Halal?",
-        answer: "Yes, it is! We are proud to be a fully Halal-friendly chicken shop. We use only Halal-certified chicken across all our stores, ensuring that everyone in our community can enjoy our seriously good chicken."
-      },
-      {
         id: 6,
         question: "Is the food at Peckers fresh?",
         answer: "Absolutely. To ensure our chicken never goes dry, we cook in small fresh batches throughout the day. Whether you walk through our doors at lunch or late at night, you are promised Seriously Good Chicken that is fresh, succulent, and cooked to order. By using industry-leading Henny Penny pressure fryers, we lock in the moisture of every tender and fillet, delivering a perfect crunch and juicy finish across all our stores every single time."

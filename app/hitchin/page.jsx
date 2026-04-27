@@ -5,7 +5,7 @@ export const metadata = {
     title: "Peckers Hitchin | Best Chicken Takeaway & Restaurant",
     description: "Visit Peckers in Hitchin for Seriously Good Chicken. Premium peri-peri grilled chicken, wings, and gourmet burgers. Fast delivery and late-night takeaway available in Hitchin.",
     keywords: [
-        "halal food Hitchin",
+        "food Hitchin",
         "best chicken Hitchin",
         "peri peri Hitchin",
         "takeaway Hitchin",
@@ -13,7 +13,7 @@ export const metadata = {
         "chicken shop Hitchin",
         "late night takeaway Hitchin",
         "Peckers Hitchin",
-        "halal fried chicken Hitchin"
+        "fried chicken Hitchin"
     ]
 };
 

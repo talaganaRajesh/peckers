@@ -10,7 +10,7 @@ export const metadata = {
     "Peckers house-made dips",
     "hot honey chicken Hitchin",
     "Dave's Hot Chicken sauce alternative",
-    "halal BBQ sauce UK",
+    "BBQ sauce UK",
     "Peckers secret sauce",
     "artisan chicken dips",
   ],

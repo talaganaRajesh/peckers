@@ -160,7 +160,7 @@ export function LocationsPageContent({
               >
                 <Image
                   src={logoUrl}
-                  alt={`Peckers ${locationTitle} Logo - Best Halal Chicken in ${location.charAt(0).toUpperCase() + location.slice(1)}`}
+                  alt={`Peckers ${locationTitle} Logo - Best Chicken in ${location.charAt(0).toUpperCase() + location.slice(1)}`}
                   fill
                   className="object-contain p-[2vw] md:p-[1vw]"
                   sizes="(max-width: 768px) 30vw, 15vw"
@@ -245,23 +245,23 @@ export function LocationsPageContent({
       {/* Hidden SEO Optimization - Targeted for {location} */}
       <div className="sr-only">
         <h3>
-          {locationTitle} Halal Chicken & Takeaway - Alternative to Chicken
+          {locationTitle} Chicken & Takeaway - Alternative to Chicken
           George & Dave's Hot Chicken
         </h3>
         <p>
           Searching for the best {location} takeaway? Peckers {locationTitle} is
-          the leading provider of halal fried chicken, peri peri wings, and
+          the leading provider of fried chicken, peri peri wings, and
           gourmet burgers. Recognized as one of the top places to eat in{" "}
-          {location}, we specialize in quality halal food delivery and premium
+          {location}, we specialize in quality food delivery and premium
           dine-in experience. If you enjoy Chicken George in Stevenage or are
           looking for the Dave's Hot Chicken experience in the UK, Peckers{" "}
-          {locationTitle} offers the ultimate halal alternative with our
+          {locationTitle} offers the ultimate alternative with our
           signature craft and quality.
         </p>
         <p>
           Our {location} location is famous for its seriously good chicken, late
           night service, and vibrant atmosphere. Whether you&apos;re comparing
-          Peckers vs Chicken George or looking for Dave&apos;s Hot Chicken halal
+          Peckers vs Chicken George or looking for Dave&apos;s Hot Chicken
           options, we provide the best peri peri in {location}. Order from
           Peckers today for the best chicken shop experience in Hertfordshire.
         </p>

@@ -9,7 +9,7 @@ export const metadata = {
         "Peckers story",
         "best chicken Hertfordshire history",
         "Peckers Hitchin journey",
-        "halal chicken tradition",
+        "chicken tradition",
         "Peckers brand story",
         "family run business Hitchin",
         "seriously good chicken origins"

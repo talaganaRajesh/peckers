@@ -5,16 +5,16 @@ export const metadata = {
     title: "Peckers Stevenage | Best Chicken Takeaway & Restaurant",
     description: "Discover Peckers Stevenage - the ultimate spot for fried and grilled chicken. Serving premium peri-peri chicken, gourmet burgers, and signature wings with fast delivery across Stevenage.",
     keywords: [
-        "best halal food Stevenage",
+        "best food Stevenage",
         "restaurants Stevenage",
         "peri peri chicken Stevenage",
         "takeaway Stevenage",
         "Stevenage restaurants",
         "places to eat Stevenage",
-        "halal chicken Stevenage",
+        "chicken Stevenage",
         "late night takeaway Stevenage",
         "Peckers Stevenage",
-        "halal food Hertfordshire"
+        "food Hertfordshire"
     ]
 };
 

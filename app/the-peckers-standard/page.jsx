@@ -6,7 +6,7 @@ export const metadata = {
     description: "Discover what makes Peckers unique. From our artisan preparation to our commitment to serving Seriously Good Chicken in every bite.",
     keywords: [
         "Peckers standard of quality",
-        "best halal chicken Hertfordshire",
+        "best chicken Hertfordshire",
         "fresh chicken Stevenage",
         "premium grilled chicken standards",
         "Hitchin top chicken restaurant",

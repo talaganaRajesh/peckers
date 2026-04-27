@@ -29,12 +29,12 @@ export const metadata = {
     "Premium grilled and fried chicken in Hertfordshire. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin. Order online for fast delivery.",
   keywords: [
     "Peckers chicken",
-    "best halal chicken Stevenage",
+    "best chicken Stevenage",
     "fried chicken Hitchin",
     "peri peri grilled chicken near me",
     "late night takeaway Stevenage",
     "chicken delivery Hertfordshire",
-    "halal food near me",
+    "food near me",
     "peri peri chicken Stevenage",
     "grilled chicken Hertfordshire",
     "family meal takeaway Hertfordshire",
@@ -44,7 +44,7 @@ export const metadata = {
     "places to eat Hitchin",
     "lunch deals Stevenage",
     "takeaway near me",
-    "halal peri peri wings",
+    "peri peri wings",
     "gourmet burgers Hertfordshire",
     "Seriously Good Chicken"
   ],
@@ -117,7 +117,6 @@ export default async function RootLayout({ children }) {
               description:
                 "Premium Grilled and Fried Chicken Restaurant in Hertfordshire.",
               servesCuisine: [
-                "Halal",
                 "Peri Peri",
                 "Grilled Chicken",
                 "Fried Chicken",

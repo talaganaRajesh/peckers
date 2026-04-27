@@ -7,11 +7,11 @@ export const metadata = {
   description: "Find answers to frequently asked questions about Peckers. Learn about our fresh chicken, peri peri grilled range, housemade sauces, and locations in Stevenage and Hitchin.",
   keywords: [
     "Peckers FAQ",
-    "halal chicken FAQ",
+    "chicken FAQ",
     "Peckers opening hours",
     "Stevenage chicken delivery",
     "Hitchin takeaway",
-    "halal food Hertfordshire",
+    "food Hertfordshire",
     "Peckers menu questions",
     "chicken shop loyalty program"
   ],
