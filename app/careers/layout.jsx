@@ -5,7 +5,7 @@ export const metadata = {
         "jobs in Stevenage",
         "Hitchin restaurant careers",
         "Peckers chicken jobs",
-        "halal hospitality careers",
+        "hospitality careers",
         "working at Peckers",
         "food service jobs Hertfordshire",
         "local restaurant vacancies"

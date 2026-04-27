@@ -10,6 +10,16 @@ export default function OurStorySection({ initialData = null }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentSubSlide, setCurrentSubSlide] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Use slides from Sanity if available, otherwise fallback to default mocked slides
   const slides =
@@ -142,10 +152,10 @@ export default function OurStorySection({ initialData = null }) {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`text-content-${currentSlide}-${currentSubSlide}`}
-                initial={{ opacity: 0, y: 30 }}
+                initial={isMobile ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                exit={isMobile ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
+                transition={isMobile ? { duration: 0.6, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
                 className="h-full min-h-0 flex flex-col"
               >
                 <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.5vw] lg:text-[48px] xl:text-[60px] leading-[1.05] lg:leading-[1.1] uppercase mt-2 lg:mt-0 text-white">
