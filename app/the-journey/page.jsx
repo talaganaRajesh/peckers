@@ -1,22 +1,28 @@
 
 import { sanityFetch } from "../../sanity/lib/live";
 import TheJourneyPageClient from "./page-client";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata = {
-    title: "Our Story | The Peckers Journey | Seriously Good Chicken",
-    description: "From a community legacy in Hitchin to Hertfordshire's favourite chicken restaurant. Discover the story behind Peckers — two brothers, one mission, Seriously Good Chicken.",
-    keywords: [
-        "Peckers story",
-        "Peckers Hitchin origin",
-        "about Peckers chicken",
-        "community chicken brand Hitchin",
-        "independent chicken restaurant story",
-        "family chicken restaurant Hertfordshire",
-        "Peckers founders",
-        "best chicken brand UK story",
-        "who are Peckers"
-    ]
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Our Story | The Peckers Journey",
+        description:
+            "From a community legacy in Hitchin to Hertfordshire's favourite chicken restaurant. The story behind Peckers - two brothers, one mission, Seriously Good Chicken.",
+        keywords: [
+            "Peckers story",
+            "Peckers Hitchin origin",
+            "about Peckers chicken",
+            "community chicken brand Hitchin",
+            "independent chicken restaurant story",
+            "family chicken restaurant Hertfordshire",
+            "Peckers founders",
+            "best chicken brand UK story",
+            "who are Peckers",
+        ],
+        path: "/the-journey",
+    });
+}
 
 
 export default async function TheJourneyPage() {

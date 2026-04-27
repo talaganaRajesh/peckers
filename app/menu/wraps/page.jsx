@@ -2,9 +2,9 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
-import { generateMetadataObject } from "../../lib/seo";
+import { buildPageMetadata } from "../../lib/seo";
 
-export async function generateMetadata() {
+export async function generateMetadata({ searchParams }) {
     const { data } = await sanityFetch({
         query: `*[_type == "menuPage"][0] {
             wrapsCarousel[] { name }
@@ -13,12 +13,22 @@ export async function generateMetadata() {
 
     const items = data?.wrapsCarousel || [];
     const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
-    
-    return generateMetadataObject({
+
+    return buildPageMetadata({
+        searchParams,
         title: "Wraps Menu",
         description: `Explore our chicken wraps: ${itemNames}, and more. Hand-crafted with premium ingredients in Stevenage & Hitchin.`,
-        keywords: ["chicken wraps", "Peckers wraps", "Stevenage takeaway", "Hitchin food", ...items.map(i => i.name)],
-        path: "/menu/wraps"
+        keywords: [
+            "chicken wraps",
+            "Peckers wraps",
+            "wraps near me",
+            "wraps Stevenage",
+            "wraps Hitchin",
+            "Stevenage takeaway",
+            "Hitchin food",
+            ...items.map(i => i.name),
+        ],
+        path: "/menu/wraps",
     });
 }
 

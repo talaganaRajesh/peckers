@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Rice & Salad Bowls Menu | Chicken Bowls Stevenage",
-    description: "Discover our range of delicious chicken rice and salad bowls at Peckers. Fresh, healthy, and seriously good.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Rice & Salad Bowls Menu",
+        description:
+            "Discover Peckers chicken rice and salad bowls. Fresh, healthy, and seriously good chicken bowls in Stevenage and Hitchin.",
+        keywords: [
+            "chicken rice bowl",
+            "chicken salad bowl",
+            "healthy chicken meal",
+            "rice bowl Stevenage",
+            "salad bowl Hitchin",
+            "high protein bowl",
+            "Peckers bowls",
+        ],
+        path: "/menu/rice-and-salad-bowls",
+    });
+}
 
 export default async function RiceAndSaladBowlsPage() {
     const { data } = await sanityFetch({

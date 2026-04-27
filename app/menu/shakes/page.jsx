@@ -1,11 +1,28 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Shakes Menu | Thick Creamy Milkshakes Stevenage",
-    description: "Indulge in our thick and creamy shakes. From Kunafa Dubai Chocolate to classic Oreo and Lotus Biscoff.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Shakes Menu",
+        description:
+            "Indulge in our thick and creamy milkshakes at Peckers. From Kunafa Dubai Chocolate to classic Oreo and Lotus Biscoff in Stevenage and Hitchin.",
+        keywords: [
+            "milkshakes",
+            "shakes Stevenage",
+            "shakes Hitchin",
+            "thick milkshakes",
+            "Dubai chocolate shake",
+            "Oreo milkshake",
+            "Lotus Biscoff shake",
+            "best shakes near me",
+            "Peckers shakes",
+        ],
+        path: "/menu/shakes",
+    });
+}
 
 export default async function ShakesPage() {
     const { data } = await sanityFetch({

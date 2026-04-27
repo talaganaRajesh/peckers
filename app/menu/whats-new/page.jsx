@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "What's New at Peckers | Latest Menu Additions",
-    description: "Check out the latest additions to our menu. From grilled specialties to new burger flavours.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "What's New",
+        description:
+            "Check out the latest additions to the Peckers menu. From grilled specialties to new burger flavours, fresh drops in Stevenage and Hitchin.",
+        keywords: [
+            "new menu items",
+            "Peckers new menu",
+            "latest chicken menu",
+            "new burgers Stevenage",
+            "new burgers Hitchin",
+            "menu updates",
+            "what's new at Peckers",
+        ],
+        path: "/menu/whats-new",
+    });
+}
 
 export default async function WhatsNewPage() {
     const { data } = await sanityFetch({

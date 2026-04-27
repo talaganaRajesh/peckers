@@ -1,11 +1,27 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Wings & Tenders Menu | Chicken Wings Stevenage",
-    description: "Try our signature southern fried or flame-grilled wings and buttermilk tenders. Coated in our house-made sauces.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Wings & Tenders Menu",
+        description:
+            "Signature southern fried or flame-grilled wings and buttermilk tenders, coated in Peckers house-made sauces. Best wings in Stevenage and Hitchin.",
+        keywords: [
+            "chicken wings",
+            "buttermilk tenders",
+            "wings and tenders",
+            "wings Stevenage",
+            "wings Hitchin",
+            "tenders near me",
+            "southern fried wings",
+            "Peckers wings and tenders",
+        ],
+        path: "/menu/wings-and-tenders",
+    });
+}
 
 export default async function WingsPage() {
     const { data } = await sanityFetch({

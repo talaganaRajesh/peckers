@@ -1,50 +1,31 @@
 import React from "react";
 import FaqClient from "./FaqClient";
 import { faqData } from "./faqData";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata = {
-  title: "Peckers FAQ | Questions About Our Chicken, Locations & Menu",
-  description: "Got questions about Peckers? Find out about our chicken, opening hours, locations in Stevenage and Hitchin, delivery options, menu, and how to earn free food through our loyalty rewards.",
-  keywords: [
-    "Peckers FAQ",
-    "is Peckers good",
-    "what does Peckers serve",
-    "Peckers opening hours Stevenage",
-    "Peckers opening hours Hitchin",
-    "where is Peckers",
-    "does Peckers do delivery",
-    "best chicken shop Hertfordshire",
-    "Peckers loyalty program",
-    "Peckers chicken menu",
-    "is Peckers chicken fresh",
-    "Peckers peri peri"
-  ],
-  alternates: {
-    canonical: "https://www.peckerschicken.co.uk/faq",
-  },
-  openGraph: {
-    title: "Frequently Asked Questions | Peckers Chicken",
-    description: "Got questions? We've got answers. Explore everything about Peckers, from our fresh ingredients to our seriously good chicken.",
-    url: "https://peckers.co.uk/faq",
-    siteName: "Peckers",
-    images: [
-      {
-        url: "/Peckers Logo 1 [Vectorized].svg",
-        width: 800,
-        height: 600,
-        alt: "Peckers Logo",
-      },
+export async function generateMetadata({ searchParams }) {
+  return buildPageMetadata({
+    searchParams,
+    title: "Peckers FAQ | Questions About Our Chicken & Menu",
+    description:
+      "Got questions about Peckers? Find out about our chicken, opening hours, locations in Stevenage and Hitchin, delivery, menu, and loyalty rewards.",
+    keywords: [
+      "Peckers FAQ",
+      "is Peckers good",
+      "what does Peckers serve",
+      "Peckers opening hours Stevenage",
+      "Peckers opening hours Hitchin",
+      "where is Peckers",
+      "does Peckers do delivery",
+      "best chicken shop Hertfordshire",
+      "Peckers loyalty program",
+      "Peckers chicken menu",
+      "is Peckers chicken fresh",
+      "Peckers peri peri",
     ],
-    locale: "en_GB",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Frequently Asked Questions | Peckers Chicken",
-    description: "Answers to your questions about the best chicken in Hertfordshire.",
-    images: ["/Peckers Logo 1 [Vectorized].svg"],
-  },
-};
+    path: "/faq",
+  });
+}
 
 const FAQPage = () => {
   // Generate FAQ Schema (JSON-LD)

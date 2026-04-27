@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Salad Bowls Menu | Chicken Salads Stevenage",
-    description: "Fresh and healthy chicken salad bowls at Peckers. Try our OG Salad or the Seoul-inspired Hert and Seoul bowl.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Salad Bowls Menu",
+        description:
+            "Fresh and healthy chicken salad bowls at Peckers. Try the OG Salad or the Seoul-inspired Hert & Seoul bowl in Stevenage and Hitchin.",
+        keywords: [
+            "chicken salad",
+            "salad bowl Stevenage",
+            "salad bowl Hitchin",
+            "healthy chicken salad",
+            "high protein salad",
+            "Hert and Seoul bowl",
+            "Peckers salad",
+        ],
+        path: "/menu/salad-bowls",
+    });
+}
 
 export default async function SaladBowlsPage() {
     const { data } = await sanityFetch({

@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Meal Boxes | Wings, Tenders & Fries Combo Stevenage",
-    description: "Our signature meal boxes. The OG Meal Box, Supercharged, and Peri-Peri Grilled chicken combos with fries and sides.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Meal Boxes",
+        description:
+            "Peckers signature meal boxes. The OG Meal Box, Supercharged, and Peri-Peri Grilled chicken combos with fries and sides in Stevenage and Hitchin.",
+        keywords: [
+            "chicken meal box",
+            "meal box Stevenage",
+            "meal box Hitchin",
+            "wings tenders combo",
+            "OG meal box",
+            "peri peri meal combo",
+            "Peckers meal deal",
+        ],
+        path: "/menu/meal-box",
+    });
+}
 
 export default async function MealBoxPage() {
     const { data } = await sanityFetch({

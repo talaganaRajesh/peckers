@@ -1,11 +1,27 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Peri-Peri Grilled Chicken Menu | Grilled Chicken",
-    description: "Healthy and delicious flame-grilled chicken. Choose your marinade and enjoy our protein-packed health boxes and grilled platters.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Peri-Peri Grilled Chicken Menu",
+        description:
+            "Healthy and delicious flame-grilled peri-peri chicken at Peckers. Choose your marinade and enjoy protein-packed health boxes and grilled platters.",
+        keywords: [
+            "peri peri chicken",
+            "grilled chicken",
+            "flame grilled chicken",
+            "peri peri Stevenage",
+            "peri peri Hitchin",
+            "grilled chicken near me",
+            "healthy chicken meal",
+            "Peckers peri peri",
+        ],
+        path: "/menu/peri-peri-grilled-chicken",
+    });
+}
 
 export default async function PeriPeriGrillPage() {
     const { data } = await sanityFetch({

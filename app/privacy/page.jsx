@@ -1,7 +1,22 @@
-export const metadata = {
-  title: "Privacy Policy | Peckers",
-  description: "Privacy policy for Peckers - how we handle your data.",
-};
+import { buildPageMetadata } from "../lib/seo";
+
+export async function generateMetadata({ searchParams }) {
+  return buildPageMetadata({
+    searchParams,
+    title: "Privacy Policy",
+    description:
+      "Privacy policy for Peckers Chicken. Learn how we collect, use and safeguard your personal information when you order or visit our website.",
+    keywords: [
+      "Peckers privacy policy",
+      "data protection",
+      "GDPR Peckers",
+      "personal data",
+      "cookies policy",
+      "Peckers Chicken Ltd",
+    ],
+    path: "/privacy",
+  });
+}
 
 export default function PrivacyPage() {
   return (
