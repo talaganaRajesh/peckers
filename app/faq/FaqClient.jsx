@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { faqData } from "./faqData";
 import { FiPlus, FiMinus, FiSearch } from "react-icons/fi";
 import Link from "next/link";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
@@ -33,53 +34,73 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
         </div>
       </button>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div 
-              className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[90%] pt-6"
-              style={{ fontFamily: "var(--font-neuzeit)" }}
-            >
-              {answer.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
-                const match = part.match(/\[(.*?)\]\((.*?)\)/);
-                if (match) {
-                  const isExternal = match[2].startsWith('http');
-                  return (
-                    <Link 
-                      key={index} 
-                      href={match[2]} 
-                      target={isExternal ? "_blank" : undefined}
-                      rel={isExternal ? "noopener noreferrer" : undefined}
-                      className="text-[#C41718] hover:underline transition-all duration-300"
-                    >
-                      {match[1]}
-                    </Link>
-                  );
-                }
-                return part.split('\n').map((line, i) => (
-                  <React.Fragment key={`${index}-${i}`}>
-                    {line}
-                    {i !== part.split('\n').length - 1 && <br />}
-                  </React.Fragment>
-                ));
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        initial={false}
+        animate={{ 
+          height: isOpen ? "auto" : 0, 
+          opacity: isOpen ? 1 : 0 
+        }}
+        transition={{ 
+          duration: 0.4, 
+          ease: [0.22, 1, 0.36, 1] 
+        }}
+        className="overflow-hidden"
+      >
+        <div 
+          className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[90%] pt-6"
+          style={{ fontFamily: "var(--font-neuzeit)" }}
+        >
+          {answer.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
+            const match = part.match(/\[(.*?)\]\((.*?)\)/);
+            if (match) {
+              const isExternal = match[2].startsWith('http');
+              return (
+                <Link 
+                  key={index} 
+                  href={match[2]} 
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
+                  className="text-[#C41718] hover:underline transition-all duration-300"
+                >
+                  {match[1]}
+                </Link>
+              );
+            }
+            return part.split('\n').map((line, i) => (
+              <React.Fragment key={`${index}-${i}`}>
+                {line}
+                {i !== part.split('\n').length - 1 && <br />}
+              </React.Fragment>
+            ));
+          })}
+        </div>
+      </motion.div>
     </div>
   );
 };
 
 export default function FaqClient() {
-  const [openId, setOpenId] = useState(null);
+  const [openIds, setOpenIds] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const toggleId = (id) => {
+    setOpenIds(prev => 
+      prev.includes(id) 
+        ? prev.filter(i => i !== id) 
+        : [...prev, id]
+    );
+  };
+
+  // Update ScrollTrigger/Lenis on expansion
+  React.useEffect(() => {
+    const refresh = () => ScrollTrigger.refresh();
+    const timers = [
+      setTimeout(refresh, 100),
+      setTimeout(refresh, 300),
+      setTimeout(refresh, 600)
+    ];
+    return () => timers.forEach(t => clearTimeout(t));
+  }, [openIds]);
 
   const filteredData = faqData.map(category => ({
     ...category,
@@ -149,14 +170,14 @@ export default function FaqClient() {
                         Questions related to <br /> {category.category}
                       </p>
                    </div>
-                   <div className="space-y-2">
+                   <div className="space-y-2 flex flex-col items-start">
                     {category.items.map((item) => (
                       <FaqItem 
                         key={item.id}
                         question={item.question}
                         answer={item.answer}
-                        isOpen={openId === item.id}
-                        onClick={() => setOpenId(openId === item.id ? null : item.id)}
+                        isOpen={openIds.includes(item.id)}
+                        onClick={() => toggleId(item.id)}
                       />
                     ))}
                    </div>
