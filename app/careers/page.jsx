@@ -4,11 +4,27 @@ import CrewPage from "./CrewPage";
 import RolesWithPeckers from "./RolesWithPeckers";
 import ApplyDetailsPage from "./ApplyDetailsPage";
 import { sanityFetch } from "../../sanity/lib/live";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata = {
-    title: "Peckers Careers | Join the Crew - Seriously Good Chicken",
-    description: "Looking for a career in food? Join the Peckers crew in Hertfordshire. Explore our kitchen and front-of-house roles and become part of something special. Apply today!",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Peckers Careers | Join the Crew",
+        description:
+            "Looking for a career in food? Join the Peckers crew in Hertfordshire. Explore our kitchen and front-of-house roles and apply today.",
+        keywords: [
+            "Peckers careers",
+            "chicken restaurant jobs",
+            "kitchen jobs Stevenage",
+            "kitchen jobs Hitchin",
+            "front of house jobs Hertfordshire",
+            "Peckers crew",
+            "hospitality jobs UK",
+            "restaurant careers",
+        ],
+        path: "/careers",
+    });
+}
 
 
 export default async function CareersPage() {

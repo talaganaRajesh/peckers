@@ -1,11 +1,25 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Kids Menu | Chicken Meals for Kids",
-    description: "Delicious and fun chicken meals specially for the little ones at Peckers.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Kids Menu",
+        description:
+            "Delicious and fun chicken meals specially for the little ones at Peckers in Stevenage and Hitchin. Family-friendly portions kids will love.",
+        keywords: [
+            "kids meal",
+            "kids chicken menu",
+            "family meals Stevenage",
+            "family meals Hitchin",
+            "kids food near me",
+            "Peckers kids menu",
+        ],
+        path: "/menu/kids",
+    });
+}
 
 const DEFAULT_DATA = [
     { name: "Coming Soon", ingredients: "We are currently preparing our delicious Kids Menu. Stay tuned!", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "-", spiceLevel: "0", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Kids+Menu" },

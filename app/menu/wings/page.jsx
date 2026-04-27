@@ -2,9 +2,9 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
-import { generateMetadataObject } from "../../lib/seo";
+import { buildPageMetadata } from "../../lib/seo";
 
-export async function generateMetadata() {
+export async function generateMetadata({ searchParams }) {
     const { data } = await sanityFetch({
         query: `*[_type == "menuPage"][0] {
             wingsAndTendersCarousel[] { name }
@@ -13,17 +13,27 @@ export async function generateMetadata() {
 
     const items = (data?.wingsAndTendersCarousel || [])
         .filter(item => item.name?.toLowerCase().includes("wing"));
-    
-    const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
-    const description = items.length > 0 
-        ? `Try our signature wings: ${itemNames}, and more. Coated in our house-made sauces. Best chicken wings in Stevenage and Hitchin.`
-        : "Try our signature southern fried or flame-grilled wings. Coated in our house-made sauces.";
 
-    return generateMetadataObject({
+    const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
+    const description = items.length > 0
+        ? `Try our signature wings: ${itemNames}, and more. Coated in our house-made sauces. Best chicken wings in Stevenage and Hitchin.`
+        : "Try our signature southern fried or flame-grilled wings, coated in our house-made sauces. Best chicken wings in Stevenage and Hitchin.";
+
+    return buildPageMetadata({
+        searchParams,
         title: "Wings Menu",
-        description: description,
-        keywords: ["wings", "chicken wings", "peri peri wings", "Peckers", ...items.map(i => i.name)],
-        path: "/menu/wings"
+        description,
+        keywords: [
+            "wings",
+            "chicken wings",
+            "peri peri wings",
+            "wings near me",
+            "wings Stevenage",
+            "wings Hitchin",
+            "Peckers wings",
+            ...items.map(i => i.name),
+        ],
+        path: "/menu/wings",
     });
 }
 

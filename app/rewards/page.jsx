@@ -81,25 +81,29 @@ const DashedArrow = ({ direction }) => {
   );
 };
 
-export const metadata = {
-  title: "Peckers Rewards | Loyalty Program | Free Milkshake on Sign Up",
-  description: "Join the Peckers Inner Circle and earn Chicken Heads every time you order. Get a free milkshake when you sign up. Unlock free sides, mains, and full meals as you level up.",
-  keywords: [
-    "Peckers rewards",
-    "chicken loyalty program UK",
-    "free milkshake Peckers",
-    "Peckers Inner Circle",
-    "earn rewards chicken",
-    "chicken points program Hertfordshire",
-    "best chicken loyalty scheme UK",
-    "Peckers Chicken Heads",
-    "free food chicken Stevenage",
-    "free food chicken Hitchin"
-  ],
-  alternates: {
-    canonical: "https://www.peckerschicken.co.uk/rewards",
-  },
-};
+import { buildPageMetadata } from "../lib/seo";
+
+export async function generateMetadata({ searchParams }) {
+  return buildPageMetadata({
+    searchParams,
+    title: "Peckers Rewards | Free Milkshake on Sign Up",
+    description:
+      "Join the Peckers Inner Circle and earn Chicken Heads every time you order. Free milkshake on sign up. Unlock free sides, mains, and full meals as you level up.",
+    keywords: [
+      "Peckers rewards",
+      "chicken loyalty program UK",
+      "free milkshake Peckers",
+      "Peckers Inner Circle",
+      "earn rewards chicken",
+      "chicken points program Hertfordshire",
+      "best chicken loyalty scheme UK",
+      "Peckers Chicken Heads",
+      "free food chicken Stevenage",
+      "free food chicken Hitchin",
+    ],
+    path: "/rewards",
+  });
+}
 
 
 const imgHero =

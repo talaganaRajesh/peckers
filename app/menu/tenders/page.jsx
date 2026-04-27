@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Buttermilk Tenders Menu | Chicken Tenders",
-    description: "Try our signature southern fried or buttermilk tenders. Coated in our house-made sauces.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Buttermilk Tenders Menu",
+        description:
+            "Try our signature southern fried buttermilk chicken tenders, coated in Peckers house-made sauces. Best chicken tenders in Stevenage and Hitchin.",
+        keywords: [
+            "chicken tenders",
+            "buttermilk tenders",
+            "tenders near me",
+            "tenders Stevenage",
+            "tenders Hitchin",
+            "fried chicken tenders",
+            "Peckers tenders",
+        ],
+        path: "/menu/tenders",
+    });
+}
 
 export default async function TendersPage() {
     const { data } = await sanityFetch({

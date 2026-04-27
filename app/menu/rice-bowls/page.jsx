@@ -1,11 +1,25 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Rice Bowls Menu | Chicken Rice Bowls Stevenage",
-    description: "Discover our range of delicious chicken rice bowls at Peckers. From the OG to the fiery Buffalo Soldier.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Rice Bowls Menu",
+        description:
+            "Discover Peckers chicken rice bowls, from the OG to the fiery Buffalo Soldier. High-protein chicken meals in Stevenage and Hitchin.",
+        keywords: [
+            "chicken rice bowl",
+            "rice bowl Stevenage",
+            "rice bowl Hitchin",
+            "high protein chicken bowl",
+            "Buffalo Soldier rice bowl",
+            "Peckers rice bowls",
+        ],
+        path: "/menu/rice-bowls",
+    });
+}
 
 export default async function RiceBowlsPage() {
     const { data } = await sanityFetch({

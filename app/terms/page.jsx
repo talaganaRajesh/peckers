@@ -1,7 +1,22 @@
-export const metadata = {
-  title: "Terms of Service | Peckers",
-  description: "Terms and conditions for using Peckers services.",
-};
+import { buildPageMetadata } from "../lib/seo";
+
+export async function generateMetadata({ searchParams }) {
+  return buildPageMetadata({
+    searchParams,
+    title: "Terms of Service",
+    description:
+      "Terms and conditions for using Peckers services - orders, payment, delivery, collection, cancellations, refunds and allergen liability for Stevenage and Hitchin.",
+    keywords: [
+      "Peckers terms of service",
+      "terms and conditions",
+      "Peckers ordering terms",
+      "delivery terms Stevenage",
+      "delivery terms Hitchin",
+      "Peckers Chicken Ltd",
+    ],
+    path: "/terms",
+  });
+}
 
 export default function TermsPage() {
   return (

@@ -1,7 +1,23 @@
-export const metadata = {
-  title: "Allergen Information | Peckers",
-  description: "Allergen guidance and safety information for Peckers menu.",
-};
+import { buildPageMetadata } from "../lib/seo";
+
+export async function generateMetadata({ searchParams }) {
+  return buildPageMetadata({
+    searchParams,
+    title: "Allergen Information",
+    description:
+      "Allergen guidance and safety information for the Peckers menu in Stevenage and Hitchin. Find what's in every dish before you order.",
+    keywords: [
+      "allergen information",
+      "Peckers allergens",
+      "food allergy guide",
+      "gluten free chicken",
+      "dairy free chicken",
+      "menu allergens Stevenage",
+      "menu allergens Hitchin",
+    ],
+    path: "/allergens",
+  });
+}
 
 export default function AllergensPage() {
   return (

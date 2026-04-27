@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Lunch Time Deals | Best Lunch Offers",
-    description: "Grab our amazing lunch time deals at Peckers. Great value, great taste.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Lunch Time Deals",
+        description:
+            "Grab amazing lunch time deals at Peckers. Great value chicken combos in Stevenage and Hitchin. Eat in, collect or order delivery.",
+        keywords: [
+            "lunch deals",
+            "lunch offers Stevenage",
+            "lunch offers Hitchin",
+            "chicken lunch deal",
+            "cheap lunch near me",
+            "Peckers lunch menu",
+            "lunch combo Hertfordshire",
+        ],
+        path: "/menu/lunch-time-deals",
+    });
+}
 
 const DEFAULT_DATA = [
     { name: "Coming Soon", ingredients: "Our special Lunch Time Deals are coming soon! Check back later.", calories: "-", protein: "-", carbs: "-", fats: "-", allergens: "-", spiceLevel: "0", image: "https://placehold.co/600x600/000000/FFFFFF/png?text=Lunch+Deals" },

@@ -2,9 +2,9 @@ import { sanityFetch } from "../../sanity/lib/live";
 import { urlFor } from "../../sanity/lib/image";
 import GenericMenuPageClient from "./components/MenuPageClient";
 
-import { generateMetadataObject } from "../lib/seo";
+import { buildPageMetadata } from "../lib/seo";
 
-export async function generateMetadata() {
+export async function generateMetadata({ searchParams }) {
   const { data } = await sanityFetch({
     query: `*[_type == "menuPage"][0] {
             burgerCarousel[] { name }
@@ -14,11 +14,21 @@ export async function generateMetadata() {
   const items = data?.burgerCarousel || [];
   const itemNames = items.map(i => i.name).slice(0, 5).join(", ");
 
-  return generateMetadataObject({
+  return buildPageMetadata({
+    searchParams,
     title: "Full Menu",
     description: `Explore the Peckers menu. Featuring our signature burgers like ${itemNames}, peri-peri chicken, and wings. Seriously good food in Stevenage & Hitchin.`,
-    keywords: ["Peckers Menu", "burgers", "peri peri chicken", "Stevenage", "Hitchin", ...items.map(i => i.name)],
-    path: "/menu"
+    keywords: [
+      "Peckers Menu",
+      "burgers",
+      "peri peri chicken",
+      "chicken menu Stevenage",
+      "chicken menu Hitchin",
+      "Stevenage",
+      "Hitchin",
+      ...items.map(i => i.name),
+    ],
+    path: "/menu",
   });
 }
 

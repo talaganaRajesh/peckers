@@ -1,11 +1,26 @@
 import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
+import { buildPageMetadata } from "../../lib/seo";
 
-export const metadata = {
-    title: "Peckers Drinks & Desserts Menu | Milkshakes & More Stevenage",
-    description: "Indulge in our thick and creamy shakes and delicious desserts at Peckers. From Kunafa Dubai Chocolate to classic Oreo.",
-};
+export async function generateMetadata({ searchParams }) {
+    return buildPageMetadata({
+        searchParams,
+        title: "Drinks & Desserts Menu",
+        description:
+            "Indulge in thick creamy milkshakes and delicious desserts at Peckers. From Kunafa Dubai Chocolate to classic Oreo in Stevenage and Hitchin.",
+        keywords: [
+            "drinks Stevenage",
+            "drinks Hitchin",
+            "milkshakes",
+            "chicken shop desserts",
+            "desserts near me",
+            "Dubai chocolate dessert",
+            "Peckers drinks menu",
+        ],
+        path: "/menu/drinks-and-desserts",
+    });
+}
 
 export default async function DrinksAndDessertsPage() {
     const { data } = await sanityFetch({
