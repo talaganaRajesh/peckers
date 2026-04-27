@@ -245,7 +245,7 @@ export default function Navbar({ preloadedSettings = null }) {
           aria-label="Toggle Menu"
         >
           <div className="flex flex-col gap-1.5 w-8">
-            <span className={`h-[3px] w-full bg-white rounded-full transition-all duration-500 ease-in-out ${open ? "rotate-45 translate-y-[9px] bg-[#F2DF0D]" : ""}`}></span>
+            <span className={`h-[3px] w-full bg-white rounded-full transition-all duration-500 ease-in-out ${open ? "rotate-45 translate-y-[9px]" : ""}`}></span>
             <span className={`h-[3px] w-3/4 self-end bg-white rounded-full transition-all duration-300 ${open ? "opacity-0 translate-x-4" : ""}`}></span>
             <span className={`h-[3px] w-full bg-white rounded-full transition-all duration-500 ease-in-out ${open ? "-rotate-45 -translate-y-[9px]" : ""}`}></span>
           </div>
@@ -277,9 +277,9 @@ export default function Navbar({ preloadedSettings = null }) {
                 onClick={() => setLocationsOpen(!locationsOpen)}
                 className="group flex items-center justify-between py-[4vw] w-full text-left outline-none"
               >
-                <span className={`text-[7vw] font-peakers tracking-tight font-black uppercase transition-colors duration-300 ${locationsOpen ? "text-[#F2DF0D]" : "text-white"}`}>FIND US</span>
+                <span className={`text-[7vw] font-peakers tracking-tight font-black uppercase transition-colors duration-300 ${locationsOpen ? "text-white" : "text-white"}`}>FIND US</span>
                 <div className={`transition-transform duration-500 ${locationsOpen ? "rotate-180" : ""}`}>
-                  <FaChevronDown className={`text-[4vw] ${locationsOpen ? "text-[#F2DF0D]" : "text-white/50"}`} />
+                  <FaChevronDown className={`text-[4vw] ${locationsOpen ? "text-white" : "text-white/50"}`} />
                 </div>
               </button>
               <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out will-change-[grid-template-rows,opacity] ${locationsOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
@@ -288,14 +288,14 @@ export default function Navbar({ preloadedSettings = null }) {
                     <Link
                       href="/hitchin"
                       onClick={() => setOpen(false)}
-                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-red-600 transition-colors"
                     >
                       HITCHIN
                     </Link>
                     <Link
                       href="/stevenage"
                       onClick={() => setOpen(false)}
-                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-red-600 transition-colors"
                     >
                       STEVENAGE
                     </Link>
@@ -310,9 +310,9 @@ export default function Navbar({ preloadedSettings = null }) {
                 onClick={() => setJourneyOpen(!journeyOpen)}
                 className="group flex items-center justify-between py-[4vw] w-full text-left outline-none"
               >
-                <span className={`text-[7vw] font-peakers tracking-tight font-black uppercase transition-colors duration-300 ${journeyOpen ? "text-[#F2DF0D]" : "text-white"}`}>OUR SECRET</span>
+                <span className={`text-[7vw] font-peakers tracking-tight font-black uppercase transition-colors duration-300 ${journeyOpen ? "text-white" : "text-white"}`}>OUR SECRET</span>
                 <div className={`transition-transform duration-500 ${journeyOpen ? "rotate-180" : ""}`}>
-                  <FaChevronDown className={`text-[4vw] ${journeyOpen ? "text-[#F2DF0D]" : "text-white/50"}`} />
+                  <FaChevronDown className={`text-[4vw] ${journeyOpen ? "text-white" : "text-white/50"}`} />
                 </div>
               </button>
               <div className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out will-change-[grid-template-rows,opacity] ${journeyOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
@@ -321,14 +321,14 @@ export default function Navbar({ preloadedSettings = null }) {
                     <Link
                       href="/house-made-sauces"
                       onClick={() => setOpen(false)}
-                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-red-600 transition-colors"
                     >
                       HOUSE-MADE SAUCES
                     </Link>
                     <Link
                       href="/the-peckers-standard"
                       onClick={() => setOpen(false)}
-                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-[#F2DF0D] transition-colors"
+                      className="text-[6vw] font-peakers font-bold text-white/90 hover:text-red-600 transition-colors"
                     >
                       THE PECKERS STANDARD
                     </Link>
