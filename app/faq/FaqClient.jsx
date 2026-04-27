@@ -143,7 +143,7 @@ export default function FaqClient() {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-x-12">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-x-12 items-start">
                    <div className="hidden lg:block">
                       <p className="text-[#586676] font-mono text-[0.9vw] uppercase tracking-widest leading-relaxed">
                         Questions related to <br /> {category.category}
