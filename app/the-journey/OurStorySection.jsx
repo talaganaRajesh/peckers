@@ -57,9 +57,9 @@ export default function OurStorySection({ initialData = null }) {
 
   const bodyVariants = {
     enter: (dir) => ({
-      x: dir > 0 ? 32 : -32,
+      x: dir > 0 ? 16 : -16,
       opacity: 0,
-      filter: "blur(2px)",
+      filter: "blur(1px)",
     }),
     center: {
       x: 0,
@@ -67,17 +67,17 @@ export default function OurStorySection({ initialData = null }) {
       filter: "blur(0px)",
     },
     exit: (dir) => ({
-      x: dir > 0 ? -32 : 32,
+      x: dir > 0 ? -16 : 16,
       opacity: 0,
-      filter: "blur(2px)",
+      filter: "blur(1px)",
     }),
   };
 
   const imageVariants = {
     enter: (dir) => ({
-      x: dir > 0 ? 36 : -36,
+      x: dir > 0 ? 20 : -20,
       opacity: 0,
-      scale: 0.985,
+      scale: 0.99,
     }),
     center: {
       x: 0,
@@ -85,9 +85,9 @@ export default function OurStorySection({ initialData = null }) {
       scale: 1,
     },
     exit: (dir) => ({
-      x: dir > 0 ? -36 : 36,
+      x: dir > 0 ? -20 : 20,
       opacity: 0,
-      scale: 0.985,
+      scale: 0.99,
     }),
   };
 
@@ -155,7 +155,7 @@ export default function OurStorySection({ initialData = null }) {
                 initial={isMobile ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={isMobile ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
-                transition={isMobile ? { duration: 0.6, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
+                transition={isMobile ? { duration: 0.25, ease: [0.22, 1, 0.36, 1] } : { duration: 0 }}
                 className="h-full min-h-0 flex flex-col"
               >
                 <h2 className="font-bold font-peakers text-[7.2vw] md:text-[5.5vw] lg:text-[48px] xl:text-[60px] leading-[1.05] lg:leading-[1.1] uppercase mt-2 lg:mt-0 text-white">
@@ -205,7 +205,7 @@ export default function OurStorySection({ initialData = null }) {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: isMobile ? 0.18 : 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute top-0 lg:top-0 left-0 lg:left-0 right-0 lg:right-0 bottom-0 lg:bottom-0 w-full h-full rounded-[1.2vw] overflow-hidden"
                   >
                     <Image
@@ -237,7 +237,7 @@ export default function OurStorySection({ initialData = null }) {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    transition={{ duration: isMobile ? 0.2 : 0.4, ease: "easeOut" }}
                     className="mt-2 lg:mt-3 text-[3vw] md:text-[16px] lg:text-[15px] xl:text-[0.95vw] text-white/70 font-neuzeit uppercase tracking-[0.15em] text-center w-full px-0 lg:px-4 leading-snug"
                   >
                     {desc}
