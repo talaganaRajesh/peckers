@@ -3,16 +3,18 @@ import { sanityFetch } from "../../sanity/lib/live";
 import TheJourneyPageClient from "./page-client";
 
 export const metadata = {
-    title: "Our Journey | The Story of Peckers | Seriously Good Chicken",
-    description: "Discover the story of Peckers - born from a family legacy in Hitchin to becoming Hertfordshire's destination for Seriously Good Chicken. Passion, quality, and community in every bite.",
+    title: "Our Story | The Peckers Journey | Seriously Good Chicken",
+    description: "From a community legacy in Hitchin to Hertfordshire's favourite chicken restaurant. Discover the story behind Peckers — two brothers, one mission, Seriously Good Chicken.",
     keywords: [
         "Peckers story",
-        "best chicken Hertfordshire history",
-        "Peckers Hitchin journey",
-        "chicken tradition",
-        "Peckers brand story",
-        "family run business Hitchin",
-        "seriously good chicken origins"
+        "Peckers Hitchin origin",
+        "about Peckers chicken",
+        "community chicken brand Hitchin",
+        "independent chicken restaurant story",
+        "family chicken restaurant Hertfordshire",
+        "Peckers founders",
+        "best chicken brand UK story",
+        "who are Peckers"
     ]
 };
 

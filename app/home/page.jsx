@@ -4,17 +4,27 @@ import { fetchGoogleReviews } from "../lib/google-reviews";
 import { urlFor } from "../../sanity/lib/image";
 
 export const metadata = {
-  title: "Peckers | Best Peri-Peri Grilled & Fried Chicken in Stevenage & Hitchin",
-  description: "Experience Seriously Good Chicken at Peckers. Hertfordshire's destination for premium peri-peri chicken, gourmet burgers, and signature wings. Fast delivery and late-night takeaway available.",
+  title: "Peckers | Best Fried & Grilled Chicken in Stevenage & Hitchin",
+  description: "Peckers is Hertfordshire's home of Seriously Good Chicken. Freshly fried and flame-grilled peri-peri chicken, gourmet burgers, crispy wings, and signature shakes — in Stevenage and Hitchin.",
   keywords: [
+    "best chicken near me",
+    "best chicken in Stevenage",
+    "best chicken in Hitchin",
+    "best chicken in Hertfordshire",
+    "peri peri chicken near me",
+    "best peri peri in Hertfordshire",
+    "fried chicken near me",
+    "grilled chicken near me",
+    "chicken takeaway near me",
+    "chicken delivery near me",
+    "best burger near me Hertfordshire",
+    "where to eat near me Stevenage",
+    "where to eat near me Hitchin",
+    "chicken restaurant near me",
+    "best wings near me",
+    "food near me Hertfordshire",
     "Peckers chicken",
-    "best chicken Stevenage",
-    "food Hitchin",
-    "peri peri grilled chicken",
-    "chicken takeaway Stevenage",
-    "late night food Stevenage",
-    "food Hertfordshire",
-    "best fried chicken Hertfordshire"
+    "Seriously Good Chicken"
   ]
 };
 

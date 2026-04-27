@@ -3,20 +3,24 @@ import FaqClient from "./FaqClient";
 import { faqData } from "./faqData";
 
 export const metadata = {
-  title: "Frequently Asked Questions | Peckers - Seriously Good Chicken",
-  description: "Find answers to frequently asked questions about Peckers. Learn about our fresh chicken, peri peri grilled range, housemade sauces, and locations in Stevenage and Hitchin.",
+  title: "Peckers FAQ | Questions About Our Chicken, Locations & Menu",
+  description: "Got questions about Peckers? Find out about our chicken, opening hours, locations in Stevenage and Hitchin, delivery options, menu, and how to earn free food through our loyalty rewards.",
   keywords: [
     "Peckers FAQ",
-    "chicken FAQ",
-    "Peckers opening hours",
-    "Stevenage chicken delivery",
-    "Hitchin takeaway",
-    "food Hertfordshire",
-    "Peckers menu questions",
-    "chicken shop loyalty program"
+    "is Peckers good",
+    "what does Peckers serve",
+    "Peckers opening hours Stevenage",
+    "Peckers opening hours Hitchin",
+    "where is Peckers",
+    "does Peckers do delivery",
+    "best chicken shop Hertfordshire",
+    "Peckers loyalty program",
+    "Peckers chicken menu",
+    "is Peckers chicken fresh",
+    "Peckers peri peri"
   ],
   alternates: {
-    canonical: "https://peckers.co.uk/faq",
+    canonical: "https://www.peckerschicken.co.uk/faq",
   },
   openGraph: {
     title: "Frequently Asked Questions | Peckers Chicken",
@@ -47,7 +51,7 @@ const FAQPage = () => {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqData.flatMap(category => 
+    "mainEntity": faqData.flatMap(category =>
       category.items.map(item => ({
         "@type": "Question",
         "name": item.question,
@@ -66,7 +70,7 @@ const FAQPage = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      
+
       <main className="min-h-screen bg-black text-white pt-[25vw] md:pt-[15vw] lg:pt-[10vw] pb-[2vw]">
         <FaqClient />
       </main>

@@ -4,8 +4,9 @@
 
 export const SEO_CONFIG = {
   siteName: "Peckers",
-  titleSuffix: " | Peckers Seriously Good Chicken",
-  defaultDescription: "Premium grilled and fried chicken in Hertfordshire. We serve artisan-quality peri peri chicken, gourmet burgers, and signature wings in Stevenage and Hitchin.",
+  titleSuffix: " | Peckers – Seriously Good Chicken",
+  defaultDescription:
+    "Premium grilled and fried chicken in Hertfordshire. Peckers serves fresh peri-peri chicken, gourmet burgers, crispy wings, and signature sides in Stevenage and Hitchin.",
   baseUrl: "https://www.peckerschicken.co.uk",
 };
 
@@ -13,7 +14,9 @@ export const SEO_CONFIG = {
  * Ensures title is between 50-60 characters
  */
 export const formatTitle = (title) => {
-  const fullTitle = title.includes("Peckers") ? title : `${title}${SEO_CONFIG.titleSuffix}`;
+  const fullTitle = title.includes("Peckers")
+    ? title
+    : `${title}${SEO_CONFIG.titleSuffix}`;
   if (fullTitle.length > 60) return fullTitle.substring(0, 57) + "...";
   return fullTitle;
 };
@@ -30,7 +33,13 @@ export const formatDescription = (description) => {
 /**
  * Generates standard metadata object
  */
-export const generateMetadataObject = ({ title, description, keywords, path, image }) => {
+export const generateMetadataObject = ({
+  title,
+  description,
+  keywords,
+  path,
+  image,
+}) => {
   const formattedTitle = formatTitle(title);
   const formattedDesc = formatDescription(description);
   const url = `${SEO_CONFIG.baseUrl}${path || ""}`;
