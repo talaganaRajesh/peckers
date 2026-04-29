@@ -2,6 +2,7 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 import { buildPageMetadata } from "../../lib/seo";
+import MenuPageJsonLd from "../components/MenuPageJsonLd";
 
 export async function generateMetadata({ searchParams }) {
     return buildPageMetadata({
@@ -54,10 +55,17 @@ export default async function LunchDealsPage() {
     const finalItems = initialItems.length > 0 ? initialItems : DEFAULT_DATA;
 
     return (
-        <GenericMenuPageClient 
-            initialItems={finalItems} 
-            initialNavbarData={navbarData} 
-            categoryName="LUNCH TIME DEALS" 
-        />
+        <>
+            <MenuPageJsonLd
+                categoryName="Lunch Time Deals"
+                categoryPath="/menu/lunch-time-deals"
+                items={initialItems}
+            />
+            <GenericMenuPageClient
+                initialItems={finalItems}
+                initialNavbarData={navbarData}
+                categoryName="LUNCH TIME DEALS"
+            />
+        </>
     );
 }

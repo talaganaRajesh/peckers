@@ -2,6 +2,7 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 import { buildPageMetadata } from "../../lib/seo";
+import MenuPageJsonLd from "../components/MenuPageJsonLd";
 
 export async function generateMetadata({ searchParams }) {
     return buildPageMetadata({
@@ -47,10 +48,17 @@ export default async function WingsPage() {
     });
 
     return (
-        <GenericMenuPageClient 
-            initialItems={finalItems} 
-            initialNavbarData={navbarData} 
-            categoryName="WINGS & TENDERS" 
-        />
+        <>
+            <MenuPageJsonLd
+                categoryName="Wings & Tenders"
+                categoryPath="/menu/wings-and-tenders"
+                items={finalItems}
+            />
+            <GenericMenuPageClient
+                initialItems={finalItems}
+                initialNavbarData={navbarData}
+                categoryName="WINGS & TENDERS"
+            />
+        </>
     );
 }

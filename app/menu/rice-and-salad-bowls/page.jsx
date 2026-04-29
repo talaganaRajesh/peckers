@@ -2,6 +2,7 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 import { buildPageMetadata } from "../../lib/seo";
+import MenuPageJsonLd from "../components/MenuPageJsonLd";
 
 export async function generateMetadata({ searchParams }) {
     return buildPageMetadata({
@@ -49,10 +50,17 @@ export default async function RiceAndSaladBowlsPage() {
     const finalItems = [...riceItems, ...saladItems];
 
     return (
-        <GenericMenuPageClient
-            initialItems={finalItems}
-            initialNavbarData={navbarData}
-            categoryName="RICE & SALAD BOWLS"
-        />
+        <>
+            <MenuPageJsonLd
+                categoryName="Rice & Salad Bowls"
+                categoryPath="/menu/rice-and-salad-bowls"
+                items={finalItems}
+            />
+            <GenericMenuPageClient
+                initialItems={finalItems}
+                initialNavbarData={navbarData}
+                categoryName="RICE & SALAD BOWLS"
+            />
+        </>
     );
 }

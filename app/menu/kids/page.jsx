@@ -2,6 +2,7 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 import { buildPageMetadata } from "../../lib/seo";
+import MenuPageJsonLd from "../components/MenuPageJsonLd";
 
 export async function generateMetadata({ searchParams }) {
     return buildPageMetadata({
@@ -53,10 +54,17 @@ export default async function KidsPage() {
     const finalItems = initialItems.length > 0 ? initialItems : DEFAULT_DATA;
 
     return (
-        <GenericMenuPageClient 
-            initialItems={finalItems} 
-            initialNavbarData={navbarData} 
-            categoryName="KIDS" 
-        />
+        <>
+            <MenuPageJsonLd
+                categoryName="Kids"
+                categoryPath="/menu/kids"
+                items={initialItems}
+            />
+            <GenericMenuPageClient
+                initialItems={finalItems}
+                initialNavbarData={navbarData}
+                categoryName="KIDS"
+            />
+        </>
     );
 }

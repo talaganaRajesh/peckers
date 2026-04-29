@@ -1,6 +1,8 @@
 import { LocationsPageContent } from "../hitchin/LocationsPageContent";
 import { sanityFetch } from "../../sanity/lib/live";
 import { buildPageMetadata } from "../lib/seo";
+import JsonLd from "../components/JsonLd";
+import { locationSchema, breadcrumbSchema } from "../lib/structured-data";
 
 export async function generateMetadata({ searchParams }) {
     return buildPageMetadata({
@@ -50,5 +52,18 @@ export default async function StevenagePage() {
         params: { location }
     });
 
-    return <LocationsPageContent location={location} initialData={data} />;
+    return (
+        <>
+            <JsonLd
+                data={[
+                    locationSchema("stevenage"),
+                    breadcrumbSchema([
+                        { name: "Home", path: "/" },
+                        { name: "Stevenage", path: "/stevenage" },
+                    ]),
+                ]}
+            />
+            <LocationsPageContent location={location} initialData={data} />
+        </>
+    );
 }

@@ -2,6 +2,7 @@ import { sanityFetch } from "../../../sanity/lib/live";
 import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 import { buildPageMetadata } from "../../lib/seo";
+import MenuPageJsonLd from "../components/MenuPageJsonLd";
 
 export async function generateMetadata({ searchParams }) {
     return buildPageMetadata({
@@ -41,10 +42,17 @@ export default async function MealBoxPage() {
     }));
 
     return (
-        <GenericMenuPageClient
-            initialItems={initialItems}
-            initialNavbarData={navbarData}
-            categoryName="MEAL BOX"
-        />
+        <>
+            <MenuPageJsonLd
+                categoryName="Meal Box"
+                categoryPath="/menu/meal-box"
+                items={initialItems}
+            />
+            <GenericMenuPageClient
+                initialItems={initialItems}
+                initialNavbarData={navbarData}
+                categoryName="MEAL BOX"
+            />
+        </>
     );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import FaqClient from "./FaqClient";
 import { faqData } from "./faqData";
 import { buildPageMetadata } from "../lib/seo";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, faqSchema } from "../lib/structured-data";
 
 export async function generateMetadata({ searchParams }) {
   return buildPageMetadata({
@@ -28,28 +30,23 @@ export async function generateMetadata({ searchParams }) {
 }
 
 const FAQPage = () => {
-  // Generate FAQ Schema (JSON-LD)
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.flatMap(category =>
-      category.items.map(item => ({
-        "@type": "Question",
-        "name": item.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": item.answer.replace(/\[(.*?)\]\((.*?)\)/g, '$1') // Strip markdown links for schema
-        }
-      }))
-    )
-  };
+  const faqItems = faqData.flatMap((category) =>
+    category.items.map((item) => ({
+      question: item.question,
+      answer: item.answer.replace(/\[(.*?)\]\((.*?)\)/g, "$1"),
+    })),
+  );
 
   return (
     <>
-      {/* FAQ Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "FAQ", path: "/faq" },
+          ]),
+          faqSchema(faqItems),
+        ]}
       />
 
       <main className="min-h-screen bg-black text-white pt-[25vw] md:pt-[15vw] lg:pt-[10vw] pb-[2vw]">

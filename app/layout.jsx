@@ -158,31 +158,6 @@ export default async function RootLayout({ children }) {
             __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-256TPVH0TH');`,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FoodEstablishment",
-              name: "Peckers",
-              image: "https://peckers.co.uk/logo.png", // Path to brand logo
-              description:
-                "Premium Grilled and Fried Chicken Restaurant in Hertfordshire.",
-              servesCuisine: [
-                "Peri Peri",
-                "Grilled Chicken",
-                "Fried Chicken",
-              ],
-              areaServed: ["Stevenage", "Hitchin", "Hertfordshire"],
-              hasMenu: "https://peckers.co.uk/menu",
-              address: {
-                "@type": "PostalAddress",
-                addressRegion: "Hertfordshire",
-                addressCountry: "UK",
-              },
-            }),
-          }}
-        />
       </head>
       <body
         className={`${peakersFont.variable} ${peakersBold.variable} ${neuzeit.variable} antialiased`}

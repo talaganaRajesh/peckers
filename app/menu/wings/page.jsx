@@ -3,6 +3,7 @@ import { urlFor } from "../../../sanity/lib/image";
 import GenericMenuPageClient from "../components/MenuPageClient";
 
 import { buildPageMetadata } from "../../lib/seo";
+import MenuPageJsonLd from "../components/MenuPageJsonLd";
 
 export async function generateMetadata({ searchParams }) {
     const { data } = await sanityFetch({
@@ -60,26 +61,15 @@ export default async function WingsPage() {
 
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "ItemList",
-                        "itemListElement": finalItems.map((item, index) => ({
-                            "@type": "ListItem",
-                            "position": index + 1,
-                            "name": item.name,
-                            "description": item.ingredients,
-                            "url": `https://www.peckerschicken.co.uk/menu/wings#${item.name.toLowerCase().replace(/\s+/g, '-')}`
-                        }))
-                    })
-                }}
+            <MenuPageJsonLd
+                categoryName="Wings"
+                categoryPath="/menu/wings"
+                items={finalItems}
             />
-            <GenericMenuPageClient 
-                initialItems={finalItems} 
-                initialNavbarData={navbarData} 
-                categoryName="WINGS" 
+            <GenericMenuPageClient
+                initialItems={finalItems}
+                initialNavbarData={navbarData}
+                categoryName="WINGS"
             />
         </>
     );

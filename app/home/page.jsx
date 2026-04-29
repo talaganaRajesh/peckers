@@ -3,6 +3,12 @@ import HomePageClient from "./page-client";
 import { fetchGoogleReviews } from "../lib/google-reviews";
 import { urlFor } from "../../sanity/lib/image";
 import { buildPageMetadata } from "../lib/seo";
+import JsonLd from "../components/JsonLd";
+import {
+  organizationSchema,
+  websiteSchema,
+  restaurantChainSchema,
+} from "../lib/structured-data";
 
 export async function generateMetadata({ searchParams }) {
   return buildPageMetadata({
@@ -95,8 +101,27 @@ export default async function HomePage() {
   // Fetch reviews data from Google
   const reviews = await fetchGoogleReviews();
 
+  const aggregateRating =
+    homepageData?.ratingSection?.rating && homepageData?.ratingSection?.totalReviews
+      ? {
+          "@context": "https://schema.org",
+          "@type": "AggregateRating",
+          itemReviewed: { "@id": `https://www.peckerschicken.co.uk#restaurant` },
+          ratingValue: homepageData.ratingSection.rating,
+          reviewCount: homepageData.ratingSection.totalReviews,
+        }
+      : null;
+
   return (
     <>
+      <JsonLd
+        data={[
+          organizationSchema(),
+          websiteSchema(),
+          restaurantChainSchema(),
+          aggregateRating,
+        ]}
+      />
       {homepageData?.videoUrl && (
         <>
           <link

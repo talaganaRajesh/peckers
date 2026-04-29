@@ -3,6 +3,25 @@ import { urlFor } from "../../sanity/lib/image";
 import GenericMenuPageClient from "./components/MenuPageClient";
 
 import { buildPageMetadata } from "../lib/seo";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbSchema, menuSchema } from "../lib/structured-data";
+
+const MENU_SECTIONS = [
+  { name: "Burgers", path: "/menu" },
+  { name: "Peri-Peri Grilled Chicken", path: "/menu/peri-peri-grilled-chicken" },
+  { name: "Wings", path: "/menu/wings" },
+  { name: "Tenders", path: "/menu/tenders" },
+  { name: "Wraps", path: "/menu/wraps" },
+  { name: "Rice Bowls", path: "/menu/rice-bowls" },
+  { name: "Salad Bowls", path: "/menu/salad-bowls" },
+  { name: "Sides & Fries", path: "/menu/sides-and-fries" },
+  { name: "Shakes", path: "/menu/shakes" },
+  { name: "Drinks & Desserts", path: "/menu/drinks-and-desserts" },
+  { name: "Kids", path: "/menu/kids" },
+  { name: "Meal Box", path: "/menu/meal-box" },
+  { name: "Lunch Time Deals", path: "/menu/lunch-time-deals" },
+  { name: "What's New", path: "/menu/whats-new" },
+];
 
 export async function generateMetadata({ searchParams }) {
   const { data } = await sanityFetch({
@@ -55,21 +74,25 @@ export default async function MenuPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Menu", path: "/menu" },
+          ]),
+          menuSchema(MENU_SECTIONS),
+          {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "itemListElement": finalBurgers.map((item, index) => ({
+            itemListElement: finalBurgers.map((item, index) => ({
               "@type": "ListItem",
-              "position": index + 1,
-              "name": item.name,
-              "description": item.ingredients,
-              "url": `https://www.peckerschicken.co.uk/menu#${item.name.toLowerCase().replace(/\s+/g, '-')}`
-            }))
-          })
-        }}
+              position: index + 1,
+              name: item.name,
+              description: item.ingredients,
+              url: `https://www.peckerschicken.co.uk/menu#${item.name.toLowerCase().replace(/\s+/g, "-")}`,
+            })),
+          },
+        ]}
       />
       <GenericMenuPageClient
         initialItems={finalBurgers}
