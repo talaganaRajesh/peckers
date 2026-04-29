@@ -9,15 +9,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const FaqItem = ({ question, answer, isOpen, onClick }) => {
   return (
-    <div className="border-b border-[#262626] py-6 sm:py-8 overflow-hidden">
+    <div className="w-full border-b border-[#262626] py-5 sm:py-7">
       <button
         onClick={onClick}
         className="w-full flex justify-between items-start text-left gap-4 group"
         aria-expanded={isOpen}
       >
-        <h3 
+        <h3
           className="text-[5vw] sm:text-[3.5vw] md:text-[2.2vw] lg:text-[1.8vw] xl:text-[1.4vw] leading-snug text-white transition-colors group-hover:text-[#C41718]"
-          style={{ 
+          style={{
             fontFamily: "var(--font-peakers-bold)",
             letterSpacing: "0.02em",
             textTransform: "uppercase"
@@ -34,47 +34,47 @@ const FaqItem = ({ question, answer, isOpen, onClick }) => {
         </div>
       </button>
 
-      <motion.div
-        initial={false}
-        animate={{ 
-          height: isOpen ? "auto" : 0, 
-          opacity: isOpen ? 1 : 0 
+      <div
+        className="faq-collapse"
+        style={{
+          display: "grid",
+          gridTemplateRows: isOpen ? "1fr" : "0fr",
+          transition: "grid-template-rows 350ms cubic-bezier(0.22, 1, 0.36, 1)",
+          WebkitTransform: "translateZ(0)",
+          transform: "translateZ(0)",
         }}
-        transition={{ 
-          duration: 0.4, 
-          ease: [0.22, 1, 0.36, 1] 
-        }}
-        className="overflow-hidden"
       >
-        <div 
-          className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[90%] pt-6"
-          style={{ fontFamily: "var(--font-neuzeit)" }}
-        >
-          {answer.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
-            const match = part.match(/\[(.*?)\]\((.*?)\)/);
-            if (match) {
-              const isExternal = match[2].startsWith('http');
-              return (
-                <Link 
-                  key={index} 
-                  href={match[2]} 
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="text-[#C41718] hover:underline transition-all duration-300"
-                >
-                  {match[1]}
-                </Link>
-              );
-            }
-            return part.split('\n').map((line, i) => (
-              <React.Fragment key={`${index}-${i}`}>
-                {line}
-                {i !== part.split('\n').length - 1 && <br />}
-              </React.Fragment>
-            ));
-          })}
+        <div style={{ overflow: "hidden", minHeight: 0 }}>
+          <div
+            className="text-[#B7BAC8] text-[4vw] sm:text-[2.8vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] leading-relaxed max-w-[95%] pt-5"
+            style={{ fontFamily: "var(--font-neuzeit)" }}
+          >
+            {answer.split(/(\[.*?\]\(.*?\))/g).map((part, index) => {
+              const match = part.match(/\[(.*?)\]\((.*?)\)/);
+              if (match) {
+                const isExternal = match[2].startsWith('http');
+                return (
+                  <Link
+                    key={index}
+                    href={match[2]}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="text-[#C41718] hover:underline transition-all duration-300"
+                  >
+                    {match[1]}
+                  </Link>
+                );
+              }
+              return part.split('\n').map((line, i) => (
+                <React.Fragment key={`${index}-${i}`}>
+                  {line}
+                  {i !== part.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ));
+            })}
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };
@@ -113,7 +113,7 @@ export default function FaqClient() {
   return (
     <div className="px-4 md:px-[2vw] lg:px-[2.5vw] xl:px-[2.8vw]">
         {/* Header Section */}
-        <section className="mb-[10vw] md:mb-[8vw] lg:mb-[6vw] max-w-4xl">
+        <section className="mb-[8vw] md:mb-[8vw] lg:mb-[6vw] max-w-4xl">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -135,28 +135,28 @@ export default function FaqClient() {
         </section>
 
         {/* Search Bar */}
-        <section className="mb-[12vw] md:mb-[8vw] lg:mb-[6vw]">
+        <section className="mb-[8vw] md:mb-[8vw] lg:mb-[6vw]">
           <div className="relative max-w-2xl group">
-            <FiSearch className="absolute left-6 top-1/2 -translate-y-1/2 text-[#586676] w-6 h-6 transition-colors group-focus-within:text-[#C41718]" />
-            <input 
+            <FiSearch className="absolute left-5 sm:left-6 top-1/2 -translate-y-1/2 text-[#586676] w-5 h-5 sm:w-6 sm:h-6 transition-colors group-focus-within:text-[#C41718]" />
+            <input
               type="text"
               name="search"
               placeholder="Search for a question..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#111] border border-[#262626] rounded-2xl py-5 pl-16 pr-6 text-white text-[4vw] sm:text-[2.5vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] focus:outline-none focus:border-[#C41718] transition-all"
+              className="w-full bg-[#111] border border-[#262626] rounded-2xl py-4 sm:py-5 pl-13 sm:pl-16 pr-5 sm:pr-6 text-white text-[4vw] sm:text-[2.5vw] md:text-[1.8vw] lg:text-[1.3vw] xl:text-[1.1vw] focus:outline-none focus:border-[#C41718] transition-all"
               style={{ fontFamily: "var(--font-neuzeit)" }}
             />
           </div>
         </section>
 
         {/* FAQ Accordion Section */}
-        <section className="space-y-[10vw] md:space-y-[8vw]">
+        <section className="space-y-[8vw] md:space-y-[8vw]">
           {filteredData.length > 0 ? (
             filteredData.map((category, catIdx) => (
               <div key={catIdx} className="relative">
-                <div className="sticky top-0 bg-black/90 backdrop-blur-sm pt-4 pb-6 z-10 border-b border-[#C41718]/20 mb-6 font-bold">
-                  <h2 
+                <div className="sticky top-0 bg-black/90 backdrop-blur-sm pt-3 pb-3 sm:pt-4 sm:pb-5 z-10 border-b border-[#C41718]/20 mb-2 sm:mb-4 font-bold">
+                  <h2
                     className="text-[7vw] sm:text-[5vw] md:text-[3.5vw] lg:text-[2.5vw] xl:text-[2vw] text-[#C41718] uppercase"
                     style={{ fontFamily: "var(--font-peakers-bold)" }}
                   >
@@ -170,9 +170,9 @@ export default function FaqClient() {
                         Questions related to <br /> {category.category}
                       </p>
                    </div>
-                   <div className="space-y-2 flex flex-col items-start">
+                   <div className="flex flex-col items-stretch w-full">
                     {category.items.map((item) => (
-                      <FaqItem 
+                      <FaqItem
                         key={item.id}
                         question={item.question}
                         answer={item.answer}
