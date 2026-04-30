@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import React from "react";
 import {
   TbUserPlus,
@@ -104,7 +104,6 @@ export async function generateMetadata({ searchParams }) {
     path: "/rewards",
   });
 }
-
 
 const imgHero =
   "https://ehtazgziwtjqm5ww.public.blob.vercel-storage.com/REWARDS%20PAGE%20ICONS/Rewards%20page%20hero%20section.webp";
@@ -219,11 +218,7 @@ export default function RewardsPage() {
 
             <div className="flex flex-col items-center gap-2">
               <div className="bg-[#0f0e0c] border-[2px] border-[#9b1c1c] rounded-full p-2 w-16 h-16 flex items-center justify-center">
-                <img
-                  src={imgGamma}
-                  className="w-8 object-contain"
-                  alt="Gamma"
-                />
+                <img src={imgBeta} className="w-8 object-contain" alt="Gamma" />
               </div>
               <p
                 className="text-[#71717a] text-xs font-bold tracking-widest uppercase"
@@ -235,7 +230,7 @@ export default function RewardsPage() {
 
             <div className="flex flex-col items-center gap-2">
               <div className="bg-[#0f0e0c] border-[2px] border-[#e07820] rounded-full p-2 w-16 h-16 flex items-center justify-center">
-                <img src={imgBeta} className="w-8 object-contain" alt="Beta" />
+                <img src={imgGamma} className="w-8 object-contain" alt="Beta" />
               </div>
               <p
                 className="text-[#71717a] text-xs font-bold tracking-widest uppercase"
@@ -300,7 +295,8 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Sign up online to join the loyalty program and grab a FREE MILKSHAKE on us.
+                Sign up online to join the loyalty program and grab a FREE
+                MILKSHAKE on us.
               </p>
             </div>
 
@@ -319,7 +315,8 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Add your card to DIGITAL WALLET for easy scanning, or use your MEMBER CODE online.
+                Add your card to DIGITAL WALLET for easy scanning, or use your
+                MEMBER CODE online.
               </p>
             </div>
 
@@ -338,7 +335,8 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Get one every day you spend 12 OR MORE. Valid for Eat in, Click & Collect, or Website orders.
+                Get one every day you spend 12 OR MORE. Valid for Eat in, Click
+                & Collect, or Website orders.
               </p>
             </div>
 
@@ -357,7 +355,8 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-base leading-relaxed relative z-10"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Collect Chicken heads to level up: GAMMA Free side | BETA Free main | ALPHA Free Meal
+                Collect Chicken heads to level up: GAMMA Free side | BETA Free
+                main | ALPHA Free Meal
               </p>
             </div>
 
@@ -397,7 +396,6 @@ export default function RewardsPage() {
                 <br />
                 <span className="text-[#d8192a]">TIER SYSTEM</span>
               </h2>
-
             </div>
             <div
               className="border border-white/20 rounded-md px-4 sm:px-5 py-2 sm:py-2.5 text-white text-xs sm:text-sm tracking-[2px] uppercase whitespace-nowrap self-start md:self-auto"
@@ -411,7 +409,6 @@ export default function RewardsPage() {
           </div>
         </div>
       </section>
-
 
       {/* 4. YOUR CHICKEN HEADS. YOUR CALL. */}
       <section className="bg-[#0f0e0c] px-6 py-14 md:px-12 lg:px-20">
@@ -432,25 +429,30 @@ export default function RewardsPage() {
                 className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Earn rewards and use them however you like, stick with your favourites or discover something new.
+                Earn rewards and use them however you like, stick with your
+                favourites or discover something new.
               </p>
               <p
                 className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                When you join the loyalty scheme, you'll also get a FREE MILKSHAKE of your choice, valid for 30 days and redeemable in-store only.
+                When you join the loyalty scheme, you'll also get a FREE
+                MILKSHAKE of your choice, valid for 30 days and redeemable
+                in-store only.
               </p>
               <p
                 className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                You can earn and redeem your rewards in-store, via Click & Collect, or on orders placed through our website.
+                You can earn and redeem your rewards in-store, via Click &
+                Collect, or on orders placed through our website.
               </p>
               <p
                 className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Rewards are valid for 30 days from the date they are issued, so make sure to use them in time.
+                Rewards are valid for 30 days from the date they are issued, so
+                make sure to use them in time.
               </p>
               <p
                 className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[500px] leading-relaxed"
@@ -461,7 +463,6 @@ export default function RewardsPage() {
             </div>
 
             <OrderButtons />
-
           </div>
 
           <div className="relative h-[500px] sm:h-[600px] w-full flex items-center justify-center">
