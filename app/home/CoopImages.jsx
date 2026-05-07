@@ -57,7 +57,7 @@ export default function CoopImages({ locations = [] }) {
   const STEVENAGE_IMG = stevenage?.image ? urlFor(stevenage.image).width(1200).quality(80).auto("format").url() : null;
 
   return (
-    <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[8vw] md:gap-[2vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-center lg:justify-between items-stretch px-[5vw] md:px-[1.4vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[4vw] md:pb-[6vw] lg:py-[7vw] xl:py-[3.5vw]">
+    <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap gap-[8vw] md:gap-[2vw] lg:gap-[2.5vw] xl:gap-[1.5vw] w-full justify-center lg:justify-between items-stretch px-[5vw] md:px-[1.4vw] lg:px-[2.5vw] xl:px-[1.3vw] pt-[1vw] pb-[0.5vw] md:pb-[1vw] lg:pb-[1.5vw] lg:pt-[3.5vw] xl:pb-[0.5vw] xl:pt-[2.5vw]">
       {/* Hitchin Mobile & Tablet */}
       <Link
         href="/hitchin"

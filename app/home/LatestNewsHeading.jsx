@@ -7,7 +7,7 @@ export default function LatestNewsHeading({
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-0 md:pt-[2vw] xl:pt-[1.5vw] flex flex-col items-center md:items-start text-center md:text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-0 md:pt-[0.5vw] xl:pt-[0.5vw] flex flex-col items-center md:items-start text-center md:text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
@@ -23,7 +23,7 @@ export default function LatestNewsHeading({
       </h2>
 
       {/* Subtitle */}
-      <p className="font-sans mt-[9px] font-extralight text-[4vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none">
+      <p className="font-sans mt-[4px] font-extralight text-[4vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none">
         {subtitleText}
       </p>
     </div>

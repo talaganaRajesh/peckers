@@ -9,7 +9,7 @@ export default function CoopHeading({
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-[10vw] md:pt-[8vw] lg:pt-[12vw] xl:pt-[5.5vw] pb-[5vw] md:pb-0 xl:pb-0 flex flex-col items-start text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-[2vw] md:pt-[1.5vw] lg:pt-[2vw] xl:pt-[1.5vw] pb-[5vw] md:pb-0 xl:pb-0 flex flex-col items-start text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}
@@ -25,7 +25,7 @@ export default function CoopHeading({
       </h2>
 
       {/* Subtitle */}
-      <p className="font-sans mt-[9px] font-extralight text-[4vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none">
+      <p className="font-sans mt-[4px] font-extralight text-[4vw] sm:text-[3vw] md:text-[2.2vw] lg:text-[1.3vw] text-white opacity-90 max-w-[90vw] md:max-w-none">
         {subtitleText}
       </p>
     </div>
