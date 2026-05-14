@@ -25,61 +25,16 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    // We'll always fetch on the client to satisfy referer restrictions
+    if (initialReviews.length > 0) return;
+
     const fetchReviews = async () => {
-      const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-      const placeIds = [
-        "ChIJVVweuNo1dkgRi-IfLyhtgyU", // Hitchin
-        "ChIJxVydIDgvdkgR3vKTXPIOuYo", // Stevenage
-      ];
-
-      if (!apiKey) {
-        setError("API Key missing");
-        setLoading(false);
-        return;
-      }
-
       try {
-        const results = await Promise.all(
-          placeIds.map(async (placeId) => {
-            const url = `https://places.googleapis.com/v1/places/${placeId}`;
-            const response = await fetch(url, {
-              headers: {
-                "Content-Type": "application/json",
-                "X-Goog-Api-Key": apiKey,
-                "X-Goog-FieldMask":
-                  "reviews,rating,userRatingCount,displayName",
-              },
-            });
-            const data = await response.json();
-            const reviews = data.reviews || [];
-            const locationName = data.displayName?.text || "";
-
-            return reviews.map((review) => ({
-              ...review,
-              locationName,
-              placeId,
-            }));
-          }),
-        );
-
-        const allReviews = results.flat().map((review, index) => ({
-          _id: `google-${index}-${review.name?.split("/").pop() || index}`,
-          author_name: review.authorAttribution?.displayName || "Anonymous",
-          text: review.text?.text || review.originalText?.text || "",
-          relative_time_description: review.relativePublishTimeDescription,
-          rating: review.rating,
-          profile_photo_url: review.authorAttribution?.photoUri,
-          locationName: review.locationName,
-          placeId: review.placeId, // Ensure this matches the iterator placeId
-          time: review.publishTime
-            ? new Date(review.publishTime).getTime() / 1000
-            : 0,
-        }));
-
-        // Sort reviews by time (newest first)
-        allReviews.sort((a, b) => b.time - a.time);
-        setReviews(allReviews);
+        const response = await fetch("/api/reviews");
+        if (!response.ok) {
+          throw new Error(`Reviews API responded ${response.status}`);
+        }
+        const data = await response.json();
+        setReviews(data.reviews || []);
       } catch (err) {
         setError("Failed to load reviews");
         console.error(err);
@@ -89,7 +44,7 @@ const GoogleReviews = ({ initialReviews = [], ratingData = {} }) => {
     };
 
     fetchReviews();
-  }, []);
+  }, [initialReviews.length]);
 
   if (loading) {
     return (

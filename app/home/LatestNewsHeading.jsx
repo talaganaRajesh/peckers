@@ -7,7 +7,7 @@ export default function LatestNewsHeading({
 
   return (
     <div
-      className="w-full px-[5vw] md:px-[1.4vw] pt-0 md:pt-[0.5vw] xl:pt-[0.5vw] flex flex-col items-center md:items-start text-center md:text-left"
+      className="w-full px-[5vw] md:px-[1.4vw] pt-7 md:pt-[0.5vw] xl:pt-[0.5vw] flex flex-col items-center md:items-start text-center md:text-left"
       style={{ lineHeight: "1.2" }}
     >
       {/* Title */}

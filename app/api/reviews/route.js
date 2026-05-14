@@ -18,12 +18,19 @@ export async function GET() {
       const response = await fetch(url);
       const data = await response.json();
 
+      if (data.error) {
+        console.error(
+          `Google Places API error for ${placeId}: ${data.error.status} — ${data.error.message}`,
+        );
+      }
+
       const reviews = data.reviews || [];
       const locationName = data.displayName?.text || "";
 
       return reviews.map((review) => ({
         ...review,
-        locationName
+        locationName,
+        placeId,
       }));
     };
 
@@ -49,7 +56,8 @@ export async function GET() {
       rating: review.rating,
       profile_photo_url: review.authorAttribution?.photoUri,
       locationName: review.locationName,
-      time: new Date(review.publishTime).getTime() / 1000
+      placeId: review.placeId,
+      time: review.publishTime ? new Date(review.publishTime).getTime() / 1000 : 0,
     }));
 
     // Sort reviews by time (newest first)
