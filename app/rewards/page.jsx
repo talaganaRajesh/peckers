@@ -66,10 +66,6 @@ const benefits = [
     title: "Rewards valid 30 days",
     desc: "Plenty of time to come back and put your hard-earned heads to work.",
   },
-  {
-    title: "Level up fast",
-    desc: "Climb from Recruit to Alpha and unlock bigger rewards along the way.",
-  },
 ];
 
 export default function RewardsPage() {

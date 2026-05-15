@@ -149,7 +149,7 @@ function LogoIcon({ animated }) {
 
 function AlphaRewardCard({ animated }) {
   return (
-    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} group cursor-help`}>
+    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       <div className="absolute flex items-center justify-center left-1/2 -translate-x-1/2 size-[108.172px] top-0">
         <div className="flex-none scale-[1.1]">
           <div className="bg-[rgba(229,26,56,0.1)] border-[#e51a38] border-[4.097px] border-solid rounded-[24.585px] shadow-[0px_0px_51.218px_0px_rgba(229,26,56,0.42)] size-[98.339px]" />
@@ -165,7 +165,7 @@ function AlphaRewardCard({ animated }) {
         />
       </div>
       {/* Hover tooltip — positioned ABOVE since Alpha sits at the bottom of the roadmap */}
-      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#e51a38] rounded-xl p-4 shadow-2xl">
           <p className="text-[#e51a38] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Alpha Reward</p>
           <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Meal</p>
@@ -231,7 +231,7 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 // Beta reward overlay box
 function BetaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} group cursor-help`}>
+    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       <div className="absolute h-[84px] left-[13.89px] top-[7.53px] w-[65px] overflow-hidden">
         <Image
           alt="Beta chicken"
@@ -241,7 +241,7 @@ function BetaOverlayBox({ animated }) {
           sizes="65px"
         />
       </div>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#ed641b] rounded-xl p-4 shadow-2xl">
           <p className="text-[#ed641b] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Beta Reward</p>
           <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Main</p>
@@ -255,7 +255,7 @@ function BetaOverlayBox({ animated }) {
 // Gamma reward overlay box
 function GammaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} group cursor-help`}>
+    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px] overflow-hidden">
         <Image
           alt="Gamma chicken"
@@ -265,7 +265,7 @@ function GammaOverlayBox({ animated }) {
           sizes="66px"
         />
       </div>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#9b091b] rounded-xl p-4 shadow-2xl">
           <p className="text-[#d8192a] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Gamma Reward</p>
           <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Side</p>
@@ -304,7 +304,7 @@ function GoldDashedBox({ mlOffset, className, animated }) {
 // Recruit group
 function RecruitGroup({ animated }) {
   return (
-    <div className={`absolute left-[113px] top-[220px] h-[113px] w-[88px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''} group cursor-help`}>
+    <div className={`absolute left-[113px] top-[220px] h-[113px] w-[88px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       <div className="absolute inset-0">
         <Image
           alt="Recruit card small"
@@ -323,7 +323,7 @@ function RecruitGroup({ animated }) {
           sizes="58px"
         />
       </div>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[280px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[280px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#d4a838] rounded-xl p-4 shadow-2xl">
           <p className="text-[#d4a838] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Recruit</p>
           <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Welcome to the Inner Circle</p>
@@ -553,7 +553,7 @@ export default function RewardsRoadmap() {
 
           {/* ── Important notes ─────────────────────────────── */}
           <div
-            className={`absolute left-[100px] bottom-[30px] w-[700px] text-center ${styles.textElement}`}
+            className={`absolute left-[150px] bottom-[30px] w-[700px] text-center ${styles.textElement}`}
           >
             <p
               className="text-[20px] text-[#71717a] leading-snug"
