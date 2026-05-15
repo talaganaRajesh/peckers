@@ -7,6 +7,9 @@ import {
   TbLockOpen,
   TbConfetti,
   TbCircleCheck,
+  TbCake,
+  TbGift,
+  TbSparkles,
 } from "react-icons/tb";
 
 import OrderButtons from "./OrderButtons";
@@ -407,7 +410,95 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* 5. Bottom CTA */}
+      {/* 5. BIRTHDAY PERK */}
+      <section className="bg-[#141311] px-4 sm:px-6 md:px-12 lg:px-20 py-16 md:py-24">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[27px] overflow-hidden border border-white/5">
+            {/* Left — cream side */}
+            <div className="bg-[#f3ece2] p-10 sm:p-14 md:p-16 flex flex-col justify-center gap-6">
+              <div className="flex items-center gap-3">
+                <span className="h-px w-10 bg-[#9a081c]/60"></span>
+                <p
+                  className="text-[#9a081c] tracking-[4px] text-xs sm:text-sm font-bold uppercase"
+                  style={{ fontFamily: "var(--font-peakers)" }}
+                >
+                  BIRTHDAY PERK
+                </p>
+              </div>
+              <h2
+                className="text-[#1c1b19] text-4xl sm:text-5xl md:text-[64px] leading-[0.95] uppercase"
+                style={{ fontFamily: "var(--font-peakers-bold)" }}
+              >
+                Free churros
+                <br />
+                on your birthday
+              </h2>
+              <p
+                className="text-[#3a3733] text-base sm:text-lg leading-relaxed max-w-[460px]"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                Celebrate your big day with churros on us. Add your birthday to
+                your Inner Circle profile and we&apos;ll drop the reward into
+                your wallet — plus exclusive surprises throughout the year.
+              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-2">
+                <Link
+                  href="https://peckers.vmos.io/account/auth/register"
+                  target="_blank"
+                  className="bg-[#9a081c] hover:bg-[#b00a23] transition-colors text-white text-sm md:text-base tracking-[2.5px] px-10 py-4 rounded-full font-bold uppercase shadow-[0_10px_40px_-12px_rgba(154,8,28,0.5)] text-center"
+                  style={{ fontFamily: "var(--font-peakers)" }}
+                >
+                  JOIN & CLAIM
+                </Link>
+                <span
+                  className="text-[#6b6660] text-xs sm:text-sm tracking-wide"
+                  style={{ fontFamily: "var(--font-neuzeit)" }}
+                >
+                  Inner Circle members only**
+                </span>
+              </div>
+            </div>
+
+            {/* Right — burgundy celebration side */}
+            <div className="relative bg-gradient-to-br from-[#9a081c] via-[#7a0617] to-[#5c0411] p-10 sm:p-14 md:p-16 min-h-[340px] md:min-h-[460px] flex items-center justify-center overflow-hidden">
+              {/* Decorative watermark */}
+              <div
+                className="absolute -top-6 -left-4 text-[140px] md:text-[220px] text-white/[0.04] whitespace-nowrap select-none pointer-events-none leading-none"
+                style={{ fontFamily: "var(--font-peakers-bold)" }}
+              >
+                HAPPY
+              </div>
+              <div
+                className="absolute -bottom-10 -right-2 text-[140px] md:text-[220px] text-white/[0.04] whitespace-nowrap select-none pointer-events-none leading-none"
+                style={{ fontFamily: "var(--font-peakers-bold)" }}
+              >
+                B-DAY
+              </div>
+
+              {/* Floating sparkles */}
+              <TbSparkles className="absolute top-10 left-12 text-[#d4a838] text-3xl md:text-4xl opacity-80" />
+              <TbSparkles className="absolute bottom-14 right-10 text-[#d4a838] text-2xl md:text-3xl opacity-70" />
+              <TbConfetti className="absolute top-16 right-14 text-[#f3ece2] text-3xl md:text-4xl opacity-50 rotate-12" />
+              <TbGift className="absolute bottom-10 left-14 text-[#f3ece2] text-3xl md:text-4xl opacity-40 -rotate-12" />
+
+              {/* Center cake icon stack */}
+              <div className="relative z-10 flex flex-col items-center gap-4">
+                <div className="bg-[#f3ece2] w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.4)] border-4 border-[#d4a838]">
+                  <TbCake className="text-[#9a081c] text-6xl sm:text-7xl md:text-8xl" />
+                </div>
+                <p
+                  className="text-[#d4a838] tracking-[6px] text-sm md:text-base font-bold uppercase mt-2"
+                  style={{ fontFamily: "var(--font-peakers-bold)" }}
+                >
+                  + EXCLUSIVE REWARDS
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Bottom CTA */}
       <section className="px-4 py-8 md:p-12 mb-16 lg:mb-32">
         <div className="bg-[#9a081c] rounded-[27px] w-full relative overflow-hidden py-24 md:py-32 flex flex-col items-center justify-center">
           <div
