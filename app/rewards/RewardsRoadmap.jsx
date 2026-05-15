@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"; // useEffect/useState kept for responsive scaling
 import Image from "next/image";
 import styles from "./rewards-roadmap.module.css";
 
@@ -354,53 +354,10 @@ function ArrowConnector({ left, top, width, height, viewBox, pathData, className
 export default function RewardsRoadmap() {
   const containerRef = useRef(null);
   const [scale, setScale] = useState(1);
-  const [isInView, setIsInView] = useState(false);
+  const isInView = true; // animations removed — always render in final visible state
 
   const DESIGN_WIDTH = 1000;
   const DESIGN_HEIGHT = 740;
-
-  const CYCLE_DURATION = 12000; // Total animation cycle ~11s + 1s pause
-  const hasStarted = useRef(false);
-
-  // Intersection Observer: trigger animations when section comes into view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted.current) {
-          hasStarted.current = true;
-          setIsInView(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.2,
-      }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Loop: restart the animation cycle after it completes
-  useEffect(() => {
-    if (!isInView) return;
-
-    const loopTimeout = setTimeout(() => {
-      // Briefly reset to clear all animations
-      setIsInView(false);
-      // Re-enable after a short frame to let CSS reset
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsInView(true);
-        });
-      });
-    }, CYCLE_DURATION);
-
-    return () => clearTimeout(loopTimeout);
-  }, [isInView]);
 
   // Responsive scaling: scale the fixed-size design to fit the container
   useEffect(() => {
@@ -475,7 +432,7 @@ export default function RewardsRoadmap() {
             >
               now to unlock rewards with Chicken Heads
               <br />
-              and enjoy a FREE MILKSHAKE on us.
+              and join the Peckers Inner Circle.
             </p>
           </div>
 
