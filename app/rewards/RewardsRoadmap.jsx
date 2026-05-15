@@ -149,7 +149,7 @@ function LogoIcon({ animated }) {
 
 function AlphaRewardCard({ animated }) {
   return (
-    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''}`}>
+    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} group cursor-help`}>
       <div className="absolute flex items-center justify-center left-1/2 -translate-x-1/2 size-[108.172px] top-0">
         <div className="flex-none scale-[1.1]">
           <div className="bg-[rgba(229,26,56,0.1)] border-[#e51a38] border-[4.097px] border-solid rounded-[24.585px] shadow-[0px_0px_51.218px_0px_rgba(229,26,56,0.42)] size-[98.339px]" />
@@ -163,6 +163,14 @@ function AlphaRewardCard({ animated }) {
           fill
           sizes="70px"
         />
+      </div>
+      {/* Hover tooltip — positioned ABOVE since Alpha sits at the bottom of the roadmap */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+        <div className="bg-[#1c1b19] border-2 border-[#e51a38] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#e51a38] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Alpha Reward</p>
+          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Meal</p>
+          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>OG Burger Meal, OG Grilled Burger Meal, Peckerless OG Burger Meal, Any 4 Wings Meal, or Any 4 Tenders Meal.</p>
+        </div>
       </div>
     </div>
   );
@@ -223,8 +231,8 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 // Beta reward overlay box
 function BetaOverlayBox({ animated }) {
   return (
-    <div className={`absolute overflow-hidden bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''}`}>
-      <div className="absolute h-[84px] left-[13.89px] top-[7.53px] w-[65px]">
+    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} group cursor-help`}>
+      <div className="absolute h-[84px] left-[13.89px] top-[7.53px] w-[65px] overflow-hidden">
         <Image
           alt="Beta chicken"
           className="object-cover"
@@ -233,6 +241,13 @@ function BetaOverlayBox({ animated }) {
           sizes="65px"
         />
       </div>
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+        <div className="bg-[#1c1b19] border-2 border-[#ed641b] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#ed641b] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Beta Reward</p>
+          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Main</p>
+          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>OG Burger, OG Grilled Burger, Peckerless OG Burger, Any 4 Wings, or Any 4 Tenders.</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -240,8 +255,8 @@ function BetaOverlayBox({ animated }) {
 // Gamma reward overlay box
 function GammaOverlayBox({ animated }) {
   return (
-    <div className={`absolute overflow-hidden bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''}`}>
-      <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px]">
+    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} group cursor-help`}>
+      <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px] overflow-hidden">
         <Image
           alt="Gamma chicken"
           className="object-cover"
@@ -249,6 +264,13 @@ function GammaOverlayBox({ animated }) {
           fill
           sizes="66px"
         />
+      </div>
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+        <div className="bg-[#1c1b19] border-2 border-[#9b091b] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#d8192a] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Gamma Reward</p>
+          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Side</p>
+          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Fries, Peckers Gravy, Corn on the Cob, Rice Bowl, or a Salad Bowl.</p>
+        </div>
       </div>
     </div>
   );
@@ -282,8 +304,8 @@ function GoldDashedBox({ mlOffset, className, animated }) {
 // Recruit group
 function RecruitGroup({ animated }) {
   return (
-    <>
-      <div className={`absolute h-[113px] left-[113px] top-[220px] w-[88px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''}`}>
+    <div className={`absolute left-[113px] top-[220px] h-[113px] w-[88px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''} group cursor-help`}>
+      <div className="absolute inset-0">
         <Image
           alt="Recruit card small"
           className="object-cover"
@@ -292,7 +314,7 @@ function RecruitGroup({ animated }) {
           sizes="88px"
         />
       </div>
-      <div className={`absolute h-[76px] left-[128px] top-[225px] w-[58px] ${styles.rewardCard} ${styles.recruitGroup} ${animated ? styles.animated : ''}`}>
+      <div className="absolute h-[76px] left-[15px] top-[5px] w-[58px]">
         <Image
           alt="Recruit card"
           className="object-cover"
@@ -301,7 +323,14 @@ function RecruitGroup({ animated }) {
           sizes="58px"
         />
       </div>
-    </>
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[280px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-50">
+        <div className="bg-[#1c1b19] border-2 border-[#d4a838] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#d4a838] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Recruit</p>
+          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Welcome to the Inner Circle</p>
+          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Sign up to start collecting Chicken Heads on every order.</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -332,6 +361,92 @@ function DashedLine({ left, top, width, className, animated }) {
   );
 }
 
+// Dashed vertical line (used to bridge inter-row connectors after removing big cards)
+function VerticalDashedLine({ left, top, height, className, animated }) {
+  return (
+    <div className={`absolute w-0 ${styles.connectorLine} ${className || ''} ${animated ? styles.animated : ''}`} style={{ left, top, height }}>
+      <div className="absolute inset-[0_-3px_0_0]">
+        <svg
+          className="block size-full"
+          fill="none"
+          preserveAspectRatio="none"
+          viewBox={`0 0 3 ${parseFloat(height)}`}
+        >
+          <line
+            stroke="white"
+            strokeDasharray="6 6"
+            strokeLinecap="round"
+            strokeWidth="3"
+            x1="1.5"
+            x2="1.5"
+            y1="1.5"
+            y2={parseFloat(height) - 1.5}
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+// Single SVG path for a multi-segment dashed connector with an optional arrow at the end.
+// Drawing the whole route as one stroke keeps the dash pattern continuous through corners.
+function PolyDashedConnector({ points, animated }) {
+  const xs = points.map((p) => p[0]);
+  const ys = points.map((p) => p[1]);
+  const pad = 14;
+  const minX = Math.min(...xs) - pad;
+  const minY = Math.min(...ys) - pad;
+  const maxX = Math.max(...xs) + pad;
+  const maxY = Math.max(...ys) + pad;
+  const width = maxX - minX;
+  const height = maxY - minY;
+
+  const pathD = points
+    .map((p, i) => (i === 0 ? "M" : "L") + `${p[0] - minX} ${p[1] - minY}`)
+    .join(" ");
+
+  // Arrow head at the last point, based on direction of the final segment
+  const last = points[points.length - 1];
+  const prev = points[points.length - 2];
+  const dx = last[0] - prev[0];
+  const dy = last[1] - prev[1];
+  const len = Math.sqrt(dx * dx + dy * dy) || 1;
+  const ux = dx / len;
+  const uy = dy / len;
+  const headLen = 11;
+  const headWidth = 7;
+  const tipX = last[0] - minX;
+  const tipY = last[1] - minY;
+  const baseX = tipX - ux * headLen;
+  const baseY = tipY - uy * headLen;
+  const perpX = -uy * headWidth;
+  const perpY = ux * headWidth;
+  const arrowD = `M${tipX} ${tipY} L${baseX + perpX} ${baseY + perpY} L${baseX - perpX} ${baseY - perpY} Z`;
+
+  return (
+    <div
+      className={`absolute ${styles.connectorLine} ${animated ? styles.animated : ""}`}
+      style={{ left: minX, top: minY, width, height }}
+    >
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="block size-full"
+        fill="none"
+      >
+        <path
+          d={pathD}
+          stroke="white"
+          strokeWidth="3"
+          strokeDasharray="6 6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path d={arrowD} fill="white" />
+      </svg>
+    </div>
+  );
+}
+
 // Arrow connector (SVG path based)
 function ArrowConnector({ left, top, width, height, viewBox, pathData, className, animated }) {
   return (
@@ -357,7 +472,7 @@ export default function RewardsRoadmap() {
   const isInView = true; // animations removed — always render in final visible state
 
   const DESIGN_WIDTH = 1000;
-  const DESIGN_HEIGHT = 740;
+  const DESIGN_HEIGHT = 820;
 
   // Responsive scaling: scale the fixed-size design to fit the container
   useEffect(() => {
@@ -438,10 +553,10 @@ export default function RewardsRoadmap() {
 
           {/* ── Important notes ─────────────────────────────── */}
           <div
-            className={`absolute left-[100px] bottom-[20px] w-[700px] text-center ${styles.textElement}`}
+            className={`absolute left-[100px] bottom-[30px] w-[700px] text-center ${styles.textElement}`}
           >
             <p
-              className="text-[13px] text-[#71717a] leading-normal"
+              className="text-[20px] text-[#71717a] leading-snug"
               style={{ fontFamily: "var(--font-peakers)" }}
             >
               Rewards expire after 30 days, so use them, don't lose them. Read the T&Cs for full details and exclusions.
@@ -495,27 +610,17 @@ export default function RewardsRoadmap() {
             <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
           </div>
 
-          {/* Large character cards */}
-          <div className={`absolute h-[214px] left-[808px] top-[508px] w-[179px] ${styles.rewardCard} ${styles.alphaLargeCard} ${isInView ? styles.animated : ''}`}>
-            <Image alt="Alpha card" className="object-cover" src={IMG.alphaCard} fill sizes="179px" />
-          </div>
-
           <div>
             <RecruitGroup animated={isInView} />
           </div>
 
-          <div className={`absolute h-[189px] left-[808px] top-[247px] w-[153px] ${styles.rewardCard} ${styles.gammaLargeCard} ${isInView ? styles.animated : ''}`}>
-            <Image alt="Gamma card" className="object-cover" src={IMG.gammaCard} fill sizes="153px" />
-          </div>
-
           {/* ── Dashed connection lines ─────────────────────── */}
 
-          {/* Row 1 connectors */}
+          {/* Row 1 connectors (intra-row dashes between boxes) */}
           <DashedLine left="157px" top="337px" width="174.026px" className={styles.connR1a} animated={isInView} />
           <DashedLine left="438px" top="333px" width="66px" className={styles.connR1b} animated={isInView} />
-          <DashedLine left="775px" top="333px" width="66px" className={styles.connR1c} animated={isInView} />
 
-          {/* Row 1→2 arrow (right side) */}
+          {/* Row 1→2 arrow (right side, between gold2 and gamma) */}
           <ArrowConnector
             left="607.5px"
             top="320.45px"
@@ -527,10 +632,10 @@ export default function RewardsRoadmap() {
             animated={isInView}
           />
 
-          {/* Row 2 connectors */}
+          {/* Row 2 intra-row connectors */}
           <DashedLine left="604px" top="487px" width="57px" className={styles.connR2a} animated={isInView} />
 
-          {/* Row 2→3 arrow (left side) */}
+          {/* Row 2 arrow (between R2 box 1 and beta) */}
           <ArrowConnector
             left="441.5px"
             top="474.45px"
@@ -542,14 +647,9 @@ export default function RewardsRoadmap() {
             animated={isInView}
           />
 
-          {/* Row 2 horizontal line */}
-          <DashedLine left="251.5px" top="485.5px" width="85px" className={styles.connR2b} animated={isInView} />
-
-          {/* Row 3 connectors */}
+          {/* Row 3 intra-row connectors */}
           <DashedLine left="331px" top="653px" width="46px" className={styles.connR3a} animated={isInView} />
           <DashedLine left="475px" top="653px" width="46px" className={styles.connR3b} animated={isInView} />
-
-          {/* Row 3 arrows */}
           <ArrowConnector
             left="620.5px"
             top="640.45px"
@@ -560,60 +660,29 @@ export default function RewardsRoadmap() {
             className={styles.connR3c}
             animated={isInView}
           />
-          <ArrowConnector
-            left="777.5px"
-            top="640.45px"
-            width="64px"
-            height="22.1px"
-            viewBox="0 0 64 22.0919"
-            pathData={svgPaths.pde05b00}
-            className={styles.connR3d}
+
+          {/* Right side: continuous dashed path from gamma right → down → into row 2 right box */}
+          <PolyDashedConnector
+            points={[
+              [775, 331.5],
+              [877, 331.5],
+              [877, 485.45],
+              [765, 485.45],
+            ]}
             animated={isInView}
           />
 
-          {/* Right side: down-turn connector */}
-          <ArrowConnector
-            left="770px"
-            top="435px"
-            width="108.5px"
-            height="57.55px"
-            viewBox="0 0 108.5 57.5459"
-            pathData={svgPaths.p2ef5f00}
-            className={styles.connDownTurn}
+          {/* Left side: continuous dashed path from beta left → down → into row 3 left box */}
+          <PolyDashedConnector
+            points={[
+              [339, 484],
+              [211.5, 484],
+              [211.5, 651.45],
+              [232, 651.45],
+            ]}
             animated={isInView}
           />
 
-          {/* Left side: vertical connector */}
-          <ArrowConnector
-            left="192px"
-            top="564px"
-            width="39.5px"
-            height="101.55px"
-            viewBox="0 0 39.5 101.546"
-            pathData={svgPaths.p362f7a80}
-            className={styles.connVertical}
-            animated={isInView}
-          />
-
-          {/* Beta large card (bottom left) */}
-          <div className={`absolute h-[187px] left-[128px] top-[379px] w-[154px] ${styles.rewardCard} ${styles.betaLargeCard} ${isInView ? styles.animated : ''}`}>
-
-            <Image alt="Beta card" className="object-cover" src={IMG.betaCard} fill sizes="154px" />
-          </div>
-
-          {/* Large border/path around the roadmap (dashed outline frame) */}
-          <div className={`absolute h-[454px] left-[384.5px] top-[201.5px] w-[659px] ${styles.outlineFrame} ${isInView ? styles.animated : ''}`}>
-            <div className="absolute" style={{ inset: "-0.33% -0.23% -0.33% -1.68%" }}>
-              <svg
-                className="block size-full"
-                fill="none"
-                preserveAspectRatio="none"
-                viewBox="0 0 671.546 457"
-              >
-                <path d={svgPaths.p920e700} fill="white" />
-              </svg>
-            </div>
-          </div>
         </div>
       </div>
     </div>
