@@ -111,6 +111,12 @@ const Footer = ({ preloadedData = null }) => {
     if (normalizedTitle.includes("hitchin")) return "/hitchin";
     if (normalizedTitle.includes("stevenage")) return "/stevenage";
     if (normalizedTitle.includes("privacy")) return "/privacy";
+    if (
+      normalizedTitle.includes("rewards term") ||
+      normalizedTitle.includes("rewards t&c") ||
+      normalizedTitle.includes("loyalty term")
+    )
+      return "/rewards-terms";
     if (normalizedTitle.includes("terms")) return "/terms";
     if (normalizedTitle.includes("allergen")) return "/menu/allergens";
     if (normalizedTitle.includes("faq")) return "/faq";
@@ -371,6 +377,20 @@ const Footer = ({ preloadedData = null }) => {
                   </Link>
                 </li>
               </>
+            )}
+            {!data.legalLinks?.some((l) =>
+              l.title.toLowerCase().includes("rewards term") ||
+              l.title.toLowerCase().includes("rewards t&c") ||
+              l.title.toLowerCase().includes("loyalty term")
+            ) && (
+              <li>
+                <Link
+                  href="/rewards-terms"
+                  className="hover:underline inline-block"
+                >
+                  Rewards T&amp;Cs
+                </Link>
+              </li>
             )}
           </ul>
         </div>

@@ -559,7 +559,14 @@ export default function RewardsRoadmap() {
               className="text-[20px] text-[#71717a] leading-snug"
               style={{ fontFamily: "var(--font-peakers)" }}
             >
-              Rewards expire after 30 days, so use them, don't lose them. Read the T&Cs for full details and exclusions.
+              Rewards expire after 30 days, so use them, don't lose them.{" "}
+              <a
+                href="/rewards-terms"
+                className="text-[#d4a838] underline underline-offset-4 hover:text-white transition-colors"
+              >
+                Read the T&Cs
+              </a>{" "}
+              for full details and exclusions.
             </p>
           </div>
 

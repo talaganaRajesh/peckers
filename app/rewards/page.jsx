@@ -10,6 +10,9 @@ import {
   TbCake,
   TbGift,
   TbSparkles,
+  TbTag,
+  TbBellRinging,
+  TbMail,
 } from "react-icons/tb";
 
 import OrderButtons from "./OrderButtons";
@@ -364,9 +367,7 @@ export default function RewardsPage() {
               className="text-[#e6e2de] text-5xl sm:text-[64px] md:text-[72px] leading-none uppercase"
               style={{ fontFamily: "var(--font-peakers-bold)" }}
             >
-              YOUR CHICKEN
-              <br />
-              HEADS.
+              YOUR CHICKEN HEADS.
               <br />
               <span className="text-[#d8192a]">YOUR CALL.</span>
             </h2>
@@ -437,9 +438,9 @@ export default function RewardsPage() {
                 className="text-[#3a3733] text-base sm:text-lg leading-relaxed max-w-[460px]"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Celebrate your big day with churros on us. Add your birthday to
-                your Inner Circle profile and we&apos;ll drop the reward into
-                your wallet — plus exclusive surprises throughout the year.
+                Celebrate your birthday the PECKERS way. Join our loyalty
+                program, add your birthday, and enjoy free churros on your
+                special day.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-2">
                 <Link
@@ -448,13 +449,13 @@ export default function RewardsPage() {
                   className="bg-[#9a081c] hover:bg-[#b00a23] transition-colors text-white text-sm md:text-base tracking-[2.5px] px-10 py-4 rounded-full font-bold uppercase shadow-[0_10px_40px_-12px_rgba(154,8,28,0.5)] text-center"
                   style={{ fontFamily: "var(--font-peakers)" }}
                 >
-                  JOIN & CLAIM
+                  JOIN NOW & CLAIM
                 </Link>
                 <span
-                  className="text-[#6b6660] text-xs sm:text-sm tracking-wide"
-                  style={{ fontFamily: "var(--font-neuzeit)" }}
+                  className="text-[#6b6660] text-[10px] sm:text-xs tracking-[2px] uppercase"
+                  style={{ fontFamily: "var(--font-peakers)" }}
                 >
-                  Inner Circle members only**
+                  Peckers Inner Circle members only*
                 </span>
               </div>
             </div>
@@ -498,36 +499,99 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* 6. Bottom CTA */}
-      <section className="px-4 py-8 md:p-12 mb-12 lg:mb-20">
-        <div className="bg-[#9a081c] rounded-[27px] w-full relative overflow-hidden py-16 md:py-24 flex flex-col items-center justify-center">
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[150px] md:text-[360px] text-white/10 whitespace-nowrap select-none overflow-hidden"
-            style={{ fontFamily: "var(--font-peakers-bold)" }}
-          >
-            PECKERS
-          </div>
+      {/* 6. EXCLUSIVE OFFERS */}
+      <section className="bg-[#141311] px-4 sm:px-6 md:px-12 lg:px-20 pb-12 md:pb-16">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[27px] overflow-hidden border border-white/5">
+            {/* Left — gold visual side */}
+            <div className="relative bg-gradient-to-br from-[#d4a838] via-[#b8902f] to-[#7a5d1e] p-10 sm:p-14 md:p-16 min-h-[340px] md:min-h-[460px] flex items-center justify-center overflow-hidden order-2 lg:order-1">
+              {/* Decorative watermark */}
+              <div
+                className="absolute -top-6 -left-4 text-[140px] md:text-[220px] text-black/[0.07] whitespace-nowrap select-none pointer-events-none leading-none"
+                style={{ fontFamily: "var(--font-peakers-bold)" }}
+              >
+                PERKS
+              </div>
+              <div
+                className="absolute -bottom-10 -right-2 text-[140px] md:text-[220px] text-black/[0.07] whitespace-nowrap select-none pointer-events-none leading-none"
+                style={{ fontFamily: "var(--font-peakers-bold)" }}
+              >
+                ONLY
+              </div>
 
-          <div className="relative z-10 flex flex-col items-center gap-8 px-4 text-center">
-            <h2
-              className="text-5xl sm:text-[72px] text-black leading-none uppercase"
-              style={{ fontFamily: "var(--font-peakers-bold)" }}
-            >
-              Ready to join
-              <br />
-              PECKERS REWARDS?
-            </h2>
-            <Link
-              href="https://peckers.vmos.io/account/auth/register"
-              target="_blank"
-              className="bg-black hover:bg-gray-800 transition-colors text-white text-xl sm:text-[27px] tracking-[2.7px] px-12 py-5 rounded-lg uppercase"
-              style={{ fontFamily: "var(--font-peakers)" }}
-            >
-              JOIN NOW
-            </Link>
+              {/* Floating sparkles & icons */}
+              <TbSparkles className="absolute top-10 left-12 text-[#9a081c] text-3xl md:text-4xl opacity-80" />
+              <TbSparkles className="absolute bottom-14 right-10 text-[#9a081c] text-2xl md:text-3xl opacity-70" />
+              <TbTag className="absolute top-16 right-14 text-[#1c1b19] text-3xl md:text-4xl opacity-50 -rotate-12" />
+              <TbBellRinging className="absolute bottom-10 left-14 text-[#1c1b19] text-3xl md:text-4xl opacity-40 rotate-12" />
+
+              {/* Center icon */}
+              <div className="relative z-10 flex flex-col items-center gap-4">
+                <div className="bg-[#1c1b19] w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.4)] border-4 border-[#9a081c]">
+                  <TbGift className="text-[#d4a838] text-6xl sm:text-7xl md:text-8xl" />
+                </div>
+                <p
+                  className="text-[#1c1b19] tracking-[6px] text-sm md:text-base font-bold uppercase mt-2"
+                  style={{ fontFamily: "var(--font-peakers-bold)" }}
+                >
+                  + SURPRISE DROPS
+                </p>
+              </div>
+            </div>
+
+            {/* Right — cream text side */}
+            <div className="bg-[#f3ece2] p-10 sm:p-14 md:p-16 flex flex-col justify-center gap-6 order-1 lg:order-2">
+              <div className="flex items-center gap-3">
+                <span className="h-px w-10 bg-[#9a081c]/60"></span>
+                <p
+                  className="text-[#9a081c] tracking-[4px] text-xs sm:text-sm font-bold uppercase"
+                  style={{ fontFamily: "var(--font-peakers)" }}
+                >
+                  EXCLUSIVE PERKS
+                </p>
+              </div>
+              <h2
+                className="text-[#1c1b19] text-4xl sm:text-5xl md:text-[64px] leading-[0.95] uppercase"
+                style={{ fontFamily: "var(--font-peakers-bold)" }}
+              >
+                Exclusive offers,
+                <br />
+                just for you
+              </h2>
+              <p
+                className="text-[#3a3733] text-base sm:text-lg leading-relaxed max-w-[460px]"
+                style={{ fontFamily: "var(--font-neuzeit)" }}
+              >
+                Stay in the loop and unlock exclusive perks all year round. Opt
+                in to our marketing communications to receive surprise offers,
+                including special payday deals, early access to new menu
+                launches, and unexpected free food and gifts. Just tick the
+                &ldquo;I want to receive future discounts and offers&rdquo; box
+                when you join our loyalty program and wait for the rewards to
+                roll in.
+              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-2">
+                <Link
+                  href="https://peckers.vmos.io/account/auth/register"
+                  target="_blank"
+                  className="bg-[#9a081c] hover:bg-[#b00a23] transition-colors text-white text-sm md:text-base tracking-[2.5px] px-10 py-4 rounded-full font-bold uppercase shadow-[0_10px_40px_-12px_rgba(154,8,28,0.5)] text-center"
+                  style={{ fontFamily: "var(--font-peakers)" }}
+                >
+                  JOIN & GET REWARDS
+                </Link>
+                <span
+                  className="text-[#6b6660] text-[10px] sm:text-xs tracking-[2px] uppercase flex items-center gap-2"
+                  style={{ fontFamily: "var(--font-peakers)" }}
+                >
+                  <TbMail className="text-[#9a081c] text-sm" />
+                  Opt-in required
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
