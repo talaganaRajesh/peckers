@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/user/.claude/**)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\user\\.claude"
+    ]
+  },
+  "disableAllHooks": true
+}

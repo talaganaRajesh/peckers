@@ -115,8 +115,8 @@ export default function RewardsPage() {
 
   return (
     <div className="bg-[#141311] min-h-screen text-white w-full overflow-hidden">
-      {/* 1. Hero Section — fits within viewport height */}
-      <section className="relative w-full h-screen max-h-screen flex items-center justify-center -mt-[80px] pt-[80px] px-6 overflow-hidden">
+      {/* 1. Hero Section — fixed height for consistency across all devices */}
+      <section className="relative w-full h-[680px] md:h-[720px] lg:h-[760px] flex items-center justify-center -mt-[80px] pt-[80px] px-6 overflow-hidden">
         {/* Background image */}
         <div className="absolute inset-0 pointer-events-none">
           <img
@@ -216,8 +216,8 @@ export default function RewardsPage() {
       </section>
 
       {/* 2. HOW IT WORK$ */}
-      <section className="bg-[#1c1b19] px-6 py-24 md:px-12 lg:px-20">
-        <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
+      <section className="bg-[#1c1b19] px-6 py-12 md:py-16 md:px-12 lg:px-20">
+        <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-14">
           <div
             className="border-l-[8px] border-[#e51a38] pl-6 text-white text-5xl md:text-[72px] leading-none uppercase"
             style={{ fontFamily: "var(--font-peakers-bold)" }}
@@ -330,10 +330,10 @@ export default function RewardsPage() {
       </section>
 
       {/* 3. THE CHICKEN HEADS TIER SYSTEM — original Figma roadmap, animations stripped */}
-      <section className="bg-[#141311] py-12 md:py-24 px-3 sm:px-4 md:px-6 overflow-hidden border-t border-t-white/5 relative">
+      <section className="bg-[#141311] py-12 md:py-16 px-3 sm:px-4 md:px-6 overflow-hidden border-t border-t-white/5 relative">
         <div className="max-w-[1100px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-2 sm:mb-3 md:mb-4 px-2 sm:px-0">
-            <div className="flex flex-col gap-2">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 sm:gap-6 mb-2 sm:mb-3 md:mb-4 px-2 sm:px-0 items-center">
+            <div className="flex flex-col gap-2 text-center md:text-left">
               <h2
                 className="text-[#e6e2de] text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-none uppercase"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
@@ -357,8 +357,8 @@ export default function RewardsPage() {
       </section>
 
       {/* 4. YOUR CHICKEN HEADS. YOUR CALL. — benefits checklist */}
-      <section className="bg-[#0f0e0c] px-6 py-20 md:px-12 lg:px-20">
-        <div className="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-24 items-center">
+      <section className="bg-[#0f0e0c] px-6 py-12 md:py-16 md:px-12 lg:px-20">
+        <div className="max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="flex flex-col gap-8">
             <h2
               className="text-[#e6e2de] text-5xl sm:text-[64px] md:text-[72px] leading-none uppercase"
@@ -411,7 +411,7 @@ export default function RewardsPage() {
       </section>
 
       {/* 5. BIRTHDAY PERK */}
-      <section className="bg-[#141311] px-4 sm:px-6 md:px-12 lg:px-20 py-16 md:py-24">
+      <section className="bg-[#141311] px-4 sm:px-6 md:px-12 lg:px-20 py-12 md:py-16">
         <div className="max-w-[1240px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[27px] overflow-hidden border border-white/5">
             {/* Left — cream side */}
@@ -499,8 +499,8 @@ export default function RewardsPage() {
       </section>
 
       {/* 6. Bottom CTA */}
-      <section className="px-4 py-8 md:p-12 mb-16 lg:mb-32">
-        <div className="bg-[#9a081c] rounded-[27px] w-full relative overflow-hidden py-24 md:py-32 flex flex-col items-center justify-center">
+      <section className="px-4 py-8 md:p-12 mb-12 lg:mb-20">
+        <div className="bg-[#9a081c] rounded-[27px] w-full relative overflow-hidden py-16 md:py-24 flex flex-col items-center justify-center">
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[150px] md:text-[360px] text-white/10 whitespace-nowrap select-none overflow-hidden"
             style={{ fontFamily: "var(--font-peakers-bold)" }}

@@ -495,15 +495,15 @@ export default function RewardsRoadmap() {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full overflow-hidden py-4">
+    <div ref={containerRef} className="w-full overflow-hidden py-4 flex justify-center">
       <div
-        className="relative mx-auto"
+        className="relative"
         style={{
           width: DESIGN_WIDTH * scale,
           height: DESIGN_HEIGHT * scale,
           maxWidth: "100%",
-          marginLeft: scale < 1 ? "-25px" : "auto",
-          left: scale >= 0.8 ? "145px" : 0,
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       >
         <div
