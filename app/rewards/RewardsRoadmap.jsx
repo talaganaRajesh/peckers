@@ -149,10 +149,16 @@ function LogoIcon({ animated }) {
 
 function AlphaRewardCard({ animated }) {
   return (
-    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
+    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} z-10`}>
+      {/* Reward name pill — above */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-30">
+        <div className="bg-[#5f1822] rounded-full px-5 py-1.5 shadow-md">
+          <p className="text-white text-[13px] tracking-[0.2em] leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>ALPHA</p>
+        </div>
+      </div>
       <div className="absolute flex items-center justify-center left-1/2 -translate-x-1/2 size-[108.172px] top-0">
         <div className="flex-none scale-[1.1]">
-          <div className="bg-[rgba(229,26,56,0.1)] border-[#e51a38] border-[4.097px] border-solid rounded-[24.585px] shadow-[0px_0px_51.218px_0px_rgba(229,26,56,0.42)] size-[98.339px]" />
+          <div className="bg-[rgba(229,26,56,0.1)] border-[#e51a38] border-[4.097px] border-solid rounded-[24.585px] shadow-[0px_0px_24px_0px_rgba(229,26,56,0.25)] size-[98.339px]" />
         </div>
       </div>
       <div className="absolute h-[90px] left-[17.22px] top-[9.12px] w-[70px]">
@@ -164,13 +170,11 @@ function AlphaRewardCard({ animated }) {
           sizes="70px"
         />
       </div>
-      {/* Hover tooltip — positioned ABOVE since Alpha sits at the bottom of the roadmap */}
-      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
-        <div className="bg-[#1c1b19] border-2 border-[#e51a38] rounded-xl p-4 shadow-2xl">
-          <p className="text-[#e51a38] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Alpha Reward</p>
-          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Meal</p>
-          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>OG Burger Meal, OG Grilled Burger Meal, Peckerless OG Burger Meal, Any 4 Wings Meal, or Any 4 Tenders Meal.</p>
-        </div>
+      {/* Perk text — below */}
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 text-center whitespace-nowrap z-30">
+        <p className="text-[#e51a38] text-[19px] leading-[1.05] tracking-[0.12em]" style={{ fontFamily: 'var(--font-peakers-bold)' }}>
+          FREE<br />MEAL
+        </p>
       </div>
     </div>
   );
@@ -180,7 +184,7 @@ function AlphaRewardCard({ animated }) {
 function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden bg-black border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ed641b] size-[98.339px] top-[601.09px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden bg-black border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(237,100,27,0.45)] size-[98.339px] top-[601.09px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       <div className="relative h-[83px] w-[63px]">
@@ -200,7 +204,7 @@ function OrangeDashedBox({ left, className, animated }) {
 function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden bg-black border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#ec6074] size-[98.339px] top-[436.47px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden bg-black border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(236,96,116,0.4)] size-[98.339px] top-[436.47px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
@@ -231,7 +235,13 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 // Beta reward overlay box
 function BetaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(255,141,140,0.3)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
+    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_18px_0px_rgba(255,141,140,0.22)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} z-10`}>
+      {/* Reward name pill — above */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-30">
+        <div className="bg-[#5f1822] rounded-full px-5 py-1.5 shadow-md">
+          <p className="text-white text-[13px] tracking-[0.2em] leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>BETA</p>
+        </div>
+      </div>
       <div className="absolute h-[84px] left-[13.89px] top-[7.53px] w-[65px] overflow-hidden">
         <Image
           alt="Beta chicken"
@@ -241,12 +251,11 @@ function BetaOverlayBox({ animated }) {
           sizes="65px"
         />
       </div>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
-        <div className="bg-[#1c1b19] border-2 border-[#ed641b] rounded-xl p-4 shadow-2xl">
-          <p className="text-[#ed641b] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Beta Reward</p>
-          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Main</p>
-          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>OG Burger, OG Grilled Burger, Peckerless OG Burger, Any 4 Wings, or Any 4 Tenders.</p>
-        </div>
+      {/* Perk text — below */}
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 text-center whitespace-nowrap z-30">
+        <p className="text-[#ed641b] text-[19px] leading-[1.05] tracking-[0.12em]" style={{ fontFamily: 'var(--font-peakers-bold)' }}>
+          FREE<br />MAIN
+        </p>
       </div>
     </div>
   );
@@ -255,7 +264,13 @@ function BetaOverlayBox({ animated }) {
 // Gamma reward overlay box
 function GammaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_30.731px_0px_rgba(180,35,56,0.79)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
+    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_18px_0px_rgba(180,35,56,0.4)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} z-10`}>
+      {/* Reward name pill — above */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-30">
+        <div className="bg-[#5f1822] rounded-full px-5 py-1.5 shadow-md">
+          <p className="text-white text-[13px] tracking-[0.2em] leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>GAMMA</p>
+        </div>
+      </div>
       <div className="absolute h-[85px] left-[16.49px] top-[6.29px] w-[66px] overflow-hidden">
         <Image
           alt="Gamma chicken"
@@ -265,12 +280,11 @@ function GammaOverlayBox({ animated }) {
           sizes="66px"
         />
       </div>
-      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[300px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
-        <div className="bg-[#1c1b19] border-2 border-[#9b091b] rounded-xl p-4 shadow-2xl">
-          <p className="text-[#d8192a] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Gamma Reward</p>
-          <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Free Side</p>
-          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Fries, Peckers Gravy, Corn on the Cob, Rice Bowl, or a Salad Bowl.</p>
-        </div>
+      {/* Perk text — below */}
+      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 text-center whitespace-nowrap z-30">
+        <p className="text-[#d8192a] text-[19px] leading-[1.05] tracking-[0.12em]" style={{ fontFamily: 'var(--font-peakers-bold)' }}>
+          FREE<br />SIDE
+        </p>
       </div>
     </div>
   );
@@ -285,7 +299,7 @@ function GoldDashedBox({ mlOffset, className, animated }) {
     >
       <div
         aria-hidden="true"
-        className="absolute border-[#e5c885] border-[4.097px] border-dashed inset-0 pointer-events-none rounded-[24.585px] shadow-[0px_0px_29.529px_0px_#e5c885]"
+        className="absolute border-[#e5c885] border-[4.097px] border-dashed inset-0 pointer-events-none rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(229,200,133,0.45)]"
       />
       <div className="h-[83px] relative shrink-0 w-[63px]">
         <Image

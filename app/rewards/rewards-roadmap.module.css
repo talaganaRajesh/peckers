@@ -5,29 +5,29 @@
 /* Small cards: settled glow */
 .smallCard {
   opacity: 1;
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.18));
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.1));
 }
 
 .smallCard.animated {
-  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.22));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.12));
 }
 
 /* Per-tier small box hues (gold / dark red / orange) — kept subtle */
 .goldBox1,
 .goldBox2 {
-  filter: drop-shadow(0 0 14px rgba(212, 168, 56, 0.35));
+  filter: drop-shadow(0 0 8px rgba(212, 168, 56, 0.2));
 }
 
 .darkRedBox1,
 .darkRedBox2,
 .gammaCard {
-  filter: drop-shadow(0 0 14px rgba(155, 28, 28, 0.35));
+  filter: drop-shadow(0 0 8px rgba(155, 28, 28, 0.2));
 }
 
 .orangeBox1,
 .orangeBox2,
 .orangeBox3 {
-  filter: drop-shadow(0 0 14px rgba(224, 120, 32, 0.35));
+  filter: drop-shadow(0 0 8px rgba(224, 120, 32, 0.2));
 }
 
 /* Large reward cards: full visible state with colored glow */
@@ -37,7 +37,7 @@
 }
 
 .alphaLargeCard {
-  filter: drop-shadow(0 0 18px rgba(229, 26, 56, 0.4));
+  filter: drop-shadow(0 0 10px rgba(229, 26, 56, 0.25));
 }
 
 .alphaCard {
