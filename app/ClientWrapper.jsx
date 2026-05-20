@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import Preloader from "./components/Preloader";
 import PageLoader from "./components/Pageloader";
 import SmoothScroll from "./SmoothScroll";
 import MobileBottomBar from "./components/MobileBottomBar";
@@ -13,7 +12,6 @@ import ConditionalFooter from "./ConditionalFooter";
 
 export default function ClientWrapper({ children, preloadedSettings, preloadedFooter }) {
   const pathname = usePathname();
-  const [loadingDone, setLoadingDone] = useState(false);
 
   // Initialize loading state based on path to prevent flash on direct landing
   const [isPageLoading, setIsPageLoading] = useState(() => {
@@ -33,53 +31,37 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
     const toMenu = isMenuPath(pathname);
     const isMenuTabSwitch = fromMenu && toMenu;
 
-    if (loadingDone && !isPageLoading && !isMenuTabSwitch) {
+    if (!isPageLoading && !isMenuTabSwitch) {
       setIsPageLoading(true);
     }
     prevPathname.current = pathname;
   }
 
-  // Lock body scroll while loaders are visible
+  // Lock body scroll while the page loader is visible
   useEffect(() => {
-    if (isPageLoading || !loadingDone) {
+    if (isPageLoading) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-  }, [isPageLoading, loadingDone]);
+  }, [isPageLoading]);
 
-
-  // After Preloader unmounts, force Lenis to recalculate its scroll limit.
-  // Lenis caches scrollHeight on init — if the DOM changes (preloader removed)
-  // it will have a stale limit, causing phantom scroll past the real bottom.
+  // After PageLoader hides, force Lenis to recalculate its scroll limit.
+  // Lenis caches scrollHeight on init — if the DOM changes it will have a stale
+  // limit, causing phantom scroll past the real bottom.
   useEffect(() => {
-    if (!loadingDone) return;
+    if (isPageLoading) return;
 
     const timer = setTimeout(() => {
       if (lenisRef.current) {
-        lenisRef.current.resize();   // 🔥 THIS is critical
-        lenisRef.current.start();    // ensure it's active
+        lenisRef.current.resize();
+        lenisRef.current.start();
       }
-
       ScrollTrigger.refresh();
-    }, 300); // give DOM more time on mobile
+    }, 300);
 
     return () => clearTimeout(timer);
-  }, [loadingDone]);
-
-  const handlePreloaderComplete = useCallback(() => {
-    // Unlock native scroll first
-    document.body.style.overflow = "";
-
-    // Snap Lenis + native scroll to top so they stay in sync
-    // if (lenisRef.current) {
-    //   lenisRef.current.scrollTo(0, { immediate: true });
-    // }
-    // window.scrollTo(0, 0);
-
-    // Remove the preloader — the useEffect above handles recalculation
-    setLoadingDone(true);
-  }, []);
+  }, [isPageLoading]);
 
   const isHome = pathname === "/" || pathname === "/home" || pathname === "/home/";
   const isStudio = pathname?.startsWith("/studio");
@@ -90,13 +72,9 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
 
   return (
     <>
-      {!loadingDone && (
-        <Preloader onComplete={handlePreloaderComplete} />
-      )}
-
       <PageLoader
         loading={isPageLoading}
-        minimal={isHome || isStudio}
+        minimal={isStudio}
         onComplete={() => setIsPageLoading(false)}
       />
 
