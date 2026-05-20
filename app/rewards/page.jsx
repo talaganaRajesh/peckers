@@ -236,7 +236,7 @@ export default function RewardsPage() {
               </div>
               <TbUserPlus className="absolute -top-4 -right-8 text-[140px] text-white/[0.04] pointer-events-none z-0" />
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
+                className="text-[#e6e2de] text-2xl md:text-xl xl:text-lg uppercase mt-2 relative z-10 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 JOIN
@@ -256,7 +256,7 @@ export default function RewardsPage() {
                 <TbWallet className="text-[#141311] text-2xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
+                className="text-[#e6e2de] text-2xl md:text-xl xl:text-lg uppercase mt-2 relative z-10 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 ADD TO WALLET
@@ -276,7 +276,7 @@ export default function RewardsPage() {
                 <TbReceipt className="text-[#141311] text-2xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
+                className="text-[#e6e2de] text-2xl md:text-xl xl:text-lg uppercase mt-2 relative z-10 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 EARN CHICKEN HEADS
@@ -296,7 +296,7 @@ export default function RewardsPage() {
                 <TbLockOpen className="text-[#141311] text-2xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
+                className="text-[#e6e2de] text-2xl md:text-xl xl:text-lg uppercase mt-2 relative z-10 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 UNLOCK
@@ -316,7 +316,7 @@ export default function RewardsPage() {
                 <TbConfetti className="text-[#9a091c] text-3xl" />
               </div>
               <h3
-                className="text-[#e6e2de] text-3xl uppercase mt-2 relative z-10"
+                className="text-[#e6e2de] text-2xl md:text-xl xl:text-lg uppercase mt-2 relative z-10 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 REDEEM
@@ -375,7 +375,7 @@ export default function RewardsPage() {
               className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[520px] leading-relaxed"
               style={{ fontFamily: "var(--font-neuzeit)" }}
             >
-              Earn rewards and use them however you like — stick with your
+              Earn rewards and use them however you like, stick with your
               favourites or discover something new. Sign up today and start
               collecting Chicken Heads to unlock more.
             </p>
@@ -414,7 +414,7 @@ export default function RewardsPage() {
       {/* 5. BIRTHDAY PERK */}
       <section className="bg-[#141311] px-4 sm:px-6 md:px-12 lg:px-20 py-12 md:py-16">
         <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[27px] overflow-hidden border border-white/5">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 lg:min-h-[520px] rounded-[27px] overflow-hidden border border-white/5">
             {/* Left — cream side */}
             <div className="bg-[#f3ece2] p-10 sm:p-14 md:p-16 flex flex-col justify-center gap-6">
               <div className="flex items-center gap-3">
@@ -460,6 +460,13 @@ export default function RewardsPage() {
               </div>
             </div>
 
+            {/* Curved cream divider — bulges from cream side into the burgundy half on lg+ */}
+            <div className="hidden lg:block absolute inset-y-0 left-1/2 w-16 pointer-events-none z-10">
+              <svg className="h-full w-full" viewBox="0 0 64 460" preserveAspectRatio="none">
+                <path d="M0 0 Q64 230 0 460 Z" fill="#f3ece2" />
+              </svg>
+            </div>
+
             {/* Right — burgundy celebration side */}
             <div className="relative bg-gradient-to-br from-[#9a081c] via-[#7a0617] to-[#5c0411] p-10 sm:p-14 md:p-16 min-h-[340px] md:min-h-[460px] flex items-center justify-center overflow-hidden">
               {/* Decorative watermark */}
@@ -502,41 +509,48 @@ export default function RewardsPage() {
       {/* 6. EXCLUSIVE OFFERS */}
       <section className="bg-[#141311] px-4 sm:px-6 md:px-12 lg:px-20 pb-12 md:pb-16">
         <div className="max-w-[1240px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 rounded-[27px] overflow-hidden border border-white/5">
-            {/* Left — gold visual side */}
-            <div className="relative bg-gradient-to-br from-[#d4a838] via-[#b8902f] to-[#7a5d1e] p-10 sm:p-14 md:p-16 min-h-[340px] md:min-h-[460px] flex items-center justify-center overflow-hidden order-2 lg:order-1">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 lg:min-h-[520px] rounded-[27px] overflow-hidden border border-white/5">
+            {/* Left — burgundy visual side */}
+            <div className="relative bg-gradient-to-br from-[#9a081c] via-[#7a0617] to-[#5c0411] p-10 sm:p-14 md:p-16 min-h-[340px] md:min-h-[460px] flex items-center justify-center overflow-hidden order-2 lg:order-1">
               {/* Decorative watermark */}
               <div
-                className="absolute -top-6 -left-4 text-[140px] md:text-[220px] text-black/[0.07] whitespace-nowrap select-none pointer-events-none leading-none"
+                className="absolute -top-6 -left-4 text-[140px] md:text-[220px] text-white/[0.04] whitespace-nowrap select-none pointer-events-none leading-none"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 PERKS
               </div>
               <div
-                className="absolute -bottom-10 -right-2 text-[140px] md:text-[220px] text-black/[0.07] whitespace-nowrap select-none pointer-events-none leading-none"
+                className="absolute -bottom-10 -right-2 text-[140px] md:text-[220px] text-white/[0.04] whitespace-nowrap select-none pointer-events-none leading-none"
                 style={{ fontFamily: "var(--font-peakers-bold)" }}
               >
                 ONLY
               </div>
 
               {/* Floating sparkles & icons */}
-              <TbSparkles className="absolute top-10 left-12 text-[#9a081c] text-3xl md:text-4xl opacity-80" />
-              <TbSparkles className="absolute bottom-14 right-10 text-[#9a081c] text-2xl md:text-3xl opacity-70" />
-              <TbTag className="absolute top-16 right-14 text-[#1c1b19] text-3xl md:text-4xl opacity-50 -rotate-12" />
-              <TbBellRinging className="absolute bottom-10 left-14 text-[#1c1b19] text-3xl md:text-4xl opacity-40 rotate-12" />
+              <TbSparkles className="absolute top-10 left-12 text-[#d4a838] text-3xl md:text-4xl opacity-80" />
+              <TbSparkles className="absolute bottom-14 right-10 text-[#d4a838] text-2xl md:text-3xl opacity-70" />
+              <TbTag className="absolute top-16 right-14 text-[#f3ece2] text-3xl md:text-4xl opacity-50 -rotate-12" />
+              <TbBellRinging className="absolute bottom-10 left-14 text-[#f3ece2] text-3xl md:text-4xl opacity-40 rotate-12" />
 
               {/* Center icon */}
               <div className="relative z-10 flex flex-col items-center gap-4">
-                <div className="bg-[#1c1b19] w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.4)] border-4 border-[#9a081c]">
-                  <TbGift className="text-[#d4a838] text-6xl sm:text-7xl md:text-8xl" />
+                <div className="bg-[#f3ece2] w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 rounded-full flex items-center justify-center shadow-[0_20px_60px_-10px_rgba(0,0,0,0.4)] border-4 border-[#d4a838]">
+                  <TbGift className="text-[#9a081c] text-6xl sm:text-7xl md:text-8xl" />
                 </div>
                 <p
-                  className="text-[#1c1b19] tracking-[6px] text-sm md:text-base font-bold uppercase mt-2"
+                  className="text-[#d4a838] tracking-[6px] text-sm md:text-base font-bold uppercase mt-2"
                   style={{ fontFamily: "var(--font-peakers-bold)" }}
                 >
                   + SURPRISE DROPS
                 </p>
               </div>
+            </div>
+
+            {/* Curved cream divider — bulges from cream side into the burgundy half on lg+ */}
+            <div className="hidden lg:block absolute inset-y-0 left-1/2 w-16 -translate-x-full pointer-events-none z-10">
+              <svg className="h-full w-full" viewBox="0 0 64 460" preserveAspectRatio="none">
+                <path d="M64 0 Q0 230 64 460 Z" fill="#f3ece2" />
+              </svg>
             </div>
 
             {/* Right — cream text side */}
@@ -562,13 +576,9 @@ export default function RewardsPage() {
                 className="text-[#3a3733] text-base sm:text-lg leading-relaxed max-w-[460px]"
                 style={{ fontFamily: "var(--font-neuzeit)" }}
               >
-                Stay in the loop and unlock exclusive perks all year round. Opt
-                in to our marketing communications to receive surprise offers,
-                including special payday deals, early access to new menu
-                launches, and unexpected free food and gifts. Just tick the
-                &ldquo;I want to receive future discounts and offers&rdquo; box
-                when you join our loyalty program and wait for the rewards to
-                roll in.
+                Opt in to our marketing emails when you join the Peckers Inner
+                Circle, and unlock surprise drops, payday deals, and unexpected
+                free food year-round.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 pt-2">
                 <Link

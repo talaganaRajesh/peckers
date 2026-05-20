@@ -149,10 +149,10 @@ function LogoIcon({ animated }) {
 
 function AlphaRewardCard({ animated }) {
   return (
-    <div className={`absolute h-[108.172px] left-[665.78px] top-[595.88px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} z-10`}>
+    <div className={`absolute h-[108.172px] left-[797px] top-[515px] w-[104.075px] ${styles.rewardCard} ${styles.alphaCard} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       {/* Reward name pill — above */}
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-30">
-        <div className="bg-[#5f1822] rounded-full px-5 py-1.5 shadow-md">
+        <div className="bg-[#e51a38] rounded-full px-5 py-1.5 shadow-md">
           <p className="text-white text-[13px] tracking-[0.2em] leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>ALPHA</p>
         </div>
       </div>
@@ -176,15 +176,23 @@ function AlphaRewardCard({ animated }) {
           FREE<br />MEAL
         </p>
       </div>
+      {/* Tooltip — appears on hover above the pill */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-14 w-[240px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
+        <div className="bg-[#1c1b19] border-2 border-[#e51a38] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#e51a38] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Alpha</p>
+          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Top of the pecking order</p>
+          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Hit 10 Chicken Heads and feast on a full free meal from selected items.</p>
+        </div>
+      </div>
     </div>
   );
 }
 
-// Row 3 - Orange dashed border boxes (3 of them)
+// Row 2 - Orange dashed border boxes (3 of them)
 function OrangeDashedBox({ left, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden bg-black border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(237,100,27,0.45)] size-[98.339px] top-[601.09px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden bg-black border-[#ed641b] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(237,100,27,0.45)] size-[98.339px] top-[520px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       <div className="relative h-[83px] w-[63px]">
@@ -200,11 +208,11 @@ function OrangeDashedBox({ left, className, animated }) {
   );
 }
 
-// Row 2 - Dark red dashed border boxes
+// Row 1 - Dark red dashed border boxes (next to Gamma)
 function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) {
   return (
     <div
-      className={`absolute overflow-hidden bg-black border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(236,96,116,0.4)] size-[98.339px] top-[436.47px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
+      className={`absolute overflow-hidden bg-black border-[#5f1822] border-[4.097px] border-dashed rounded-[24.585px] shadow-[0px_0px_16px_0px_rgba(236,96,116,0.4)] size-[98.339px] top-[280.71px] flex items-center justify-center ${styles.smallCard} ${className} ${animated ? styles.animated : ''}`}
       style={{ left }}
     >
       {hasChickenAlt ? (
@@ -235,10 +243,10 @@ function DarkRedDashedBox({ left, hasChickenAlt = false, className, animated }) 
 // Beta reward overlay box
 function BetaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_18px_0px_rgba(255,141,140,0.22)] size-[98.339px] top-[436.47px] ml-[-110.72px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} z-10`}>
+    <div className={`absolute bg-[rgba(255,141,140,0.1)] border-[#ed641b] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_18px_0px_rgba(255,141,140,0.22)] size-[98.339px] top-[520px] ml-[-343px] ${styles.smallCard} ${styles.betaBox} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       {/* Reward name pill — above */}
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-30">
-        <div className="bg-[#5f1822] rounded-full px-5 py-1.5 shadow-md">
+        <div className="bg-[#ed641b] rounded-full px-5 py-1.5 shadow-md">
           <p className="text-white text-[13px] tracking-[0.2em] leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>BETA</p>
         </div>
       </div>
@@ -257,6 +265,14 @@ function BetaOverlayBox({ animated }) {
           FREE<br />MAIN
         </p>
       </div>
+      {/* Tooltip — appears on hover above the pill */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-14 w-[240px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
+        <div className="bg-[#1c1b19] border-2 border-[#ed641b] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#ed641b] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Beta</p>
+          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>You&apos;re properly in the flock now</p>
+          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Hit 6 Chicken Heads and grab a free main from selected items.</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -264,10 +280,10 @@ function BetaOverlayBox({ animated }) {
 // Gamma reward overlay box
 function GammaOverlayBox({ animated }) {
   return (
-    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_18px_0px_rgba(180,35,56,0.4)] size-[98.339px] top-[280.71px] ml-[222.68px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} z-10`}>
+    <div className={`absolute bg-[rgba(253,0,0,0.1)] border-[#611824] border-[4.097px] border-solid left-1/2 -translate-x-1/2 rounded-[24.585px] shadow-[0px_0px_18px_0px_rgba(180,35,56,0.4)] size-[98.339px] top-[280.71px] ml-[3px] ${styles.smallCard} ${styles.gammaCard} ${animated ? styles.animated : ''} group cursor-help z-10 hover:z-[200]`}>
       {/* Reward name pill — above */}
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap z-30">
-        <div className="bg-[#5f1822] rounded-full px-5 py-1.5 shadow-md">
+        <div className="bg-[#611824] rounded-full px-5 py-1.5 shadow-md">
           <p className="text-white text-[13px] tracking-[0.2em] leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>GAMMA</p>
         </div>
       </div>
@@ -285,6 +301,14 @@ function GammaOverlayBox({ animated }) {
         <p className="text-[#d8192a] text-[19px] leading-[1.05] tracking-[0.12em]" style={{ fontFamily: 'var(--font-peakers-bold)' }}>
           FREE<br />SIDE
         </p>
+      </div>
+      {/* Tooltip — appears on hover above the pill */}
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-14 w-[240px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
+        <div className="bg-[#1c1b19] border-2 border-[#611824] rounded-xl p-4 shadow-2xl">
+          <p className="text-[#d8192a] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Gamma</p>
+          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>The first taste of the Inner Circle</p>
+          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Hit 3 Chicken Heads and pick any free side on us.</p>
+        </div>
       </div>
     </div>
   );
@@ -486,7 +510,7 @@ export default function RewardsRoadmap() {
   const isInView = true; // animations removed — always render in final visible state
 
   const DESIGN_WIDTH = 1000;
-  const DESIGN_HEIGHT = 820;
+  const DESIGN_HEIGHT = 740;
 
   // Responsive scaling: scale the fixed-size design to fit the container
   useEffect(() => {
@@ -589,117 +613,80 @@ export default function RewardsRoadmap() {
 
           {/* ── Tier progression elements ───────────────────── */}
 
-          {/* Alpha reward card (bottom right with glow) */}
-          <div>
-            <AlphaRewardCard animated={isInView} />
-          </div>
-
-          {/* Row 3: Orange dashed boxes */}
-          <div>
-            <OrangeDashedBox left="232.88px" className={styles.orangeBox1} animated={isInView} />
-          </div>
-          <div>
-            <OrangeDashedBox left="375.62px" className={styles.orangeBox2} animated={isInView} />
-          </div>
-          <div>
-            <OrangeDashedBox left="518.35px" className={styles.orangeBox3} animated={isInView} />
-          </div>
-
-          {/* Row 2: Dark red dashed boxes */}
-          <div>
-            <DarkRedDashedBox left="501.68px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
-          </div>
-          <div>
-            <DarkRedDashedBox left="665.78px" className={styles.darkRedBox2} animated={isInView} />
-          </div>
-
-          {/* Beta overlay box */}
-          <div>
-            <BetaOverlayBox animated={isInView} />
-          </div>
-
-          {/* Gamma overlay box (row 1) */}
-          <div>
-            <GammaOverlayBox animated={isInView} />
-          </div>
-
-          {/* Row 1: Gold dashed boxes */}
-          <div>
-            <GoldDashedBox mlOffset="-114.42px" className={styles.goldBox1} animated={isInView} />
-          </div>
-          <div>
-            <GoldDashedBox mlOffset="55.98px" className={styles.goldBox2} animated={isInView} />
-          </div>
-
+          {/* ── Row 1: Recruit · Gold · Gamma · DarkRed · DarkRed ───── */}
           <div>
             <RecruitGroup animated={isInView} />
           </div>
 
+          <div>
+            <GoldDashedBox mlOffset="-170px" className={styles.goldBox1} animated={isInView} />
+          </div>
+
+          <div>
+            <GammaOverlayBox animated={isInView} />
+          </div>
+
+          <div>
+            <DarkRedDashedBox left="626.83px" hasChickenAlt className={styles.darkRedBox1} animated={isInView} />
+          </div>
+          <div>
+            <DarkRedDashedBox left="799.83px" className={styles.darkRedBox2} animated={isInView} />
+          </div>
+
+          {/* ── Row 2: Beta · Orange · Orange · Orange · Alpha ──────── */}
+          <div>
+            <BetaOverlayBox animated={isInView} />
+          </div>
+
+          <div>
+            <OrangeDashedBox left="280.83px" className={styles.orangeBox1} animated={isInView} />
+          </div>
+          <div>
+            <OrangeDashedBox left="453.83px" className={styles.orangeBox2} animated={isInView} />
+          </div>
+          <div>
+            <OrangeDashedBox left="626.83px" className={styles.orangeBox3} animated={isInView} />
+          </div>
+
+          <div>
+            <AlphaRewardCard animated={isInView} />
+          </div>
+
           {/* ── Dashed connection lines ─────────────────────── */}
 
-          {/* Row 1 connectors (intra-row dashes between boxes) */}
-          <DashedLine left="157px" top="337px" width="174.026px" className={styles.connR1a} animated={isInView} />
-          <DashedLine left="438px" top="333px" width="66px" className={styles.connR1b} animated={isInView} />
-
-          {/* Row 1→2 arrow (right side, between gold2 and gamma) */}
-          <ArrowConnector
-            left="607.5px"
-            top="320.45px"
-            width="66px"
-            height="22.1px"
-            viewBox="0 0 66 22.0919"
-            pathData={svgPaths.p1d639300}
-            className={styles.connR1toR2}
-            animated={isInView}
-          />
-
-          {/* Row 2 intra-row connectors */}
-          <DashedLine left="604px" top="487px" width="57px" className={styles.connR2a} animated={isInView} />
-
-          {/* Row 2 arrow (between R2 box 1 and beta) */}
-          <ArrowConnector
-            left="441.5px"
-            top="474.45px"
-            width="57px"
-            height="22.1px"
-            viewBox="0 0 57 22.0919"
-            pathData={svgPaths.p15049280}
-            className={styles.connR2toR3}
-            animated={isInView}
-          />
-
-          {/* Row 3 intra-row connectors */}
-          <DashedLine left="331px" top="653px" width="46px" className={styles.connR3a} animated={isInView} />
-          <DashedLine left="475px" top="653px" width="46px" className={styles.connR3b} animated={isInView} />
-          <ArrowConnector
-            left="620.5px"
-            top="640.45px"
-            width="43px"
-            height="22.1px"
-            viewBox="0 0 43 22.0919"
-            pathData={svgPaths.p1ba22280}
-            className={styles.connR3c}
-            animated={isInView}
-          />
-
-          {/* Right side: continuous dashed path from gamma right → down → into row 2 right box */}
+          {/* Row 1 intra-row connectors (between centers 157, 330, 503, 676, 849) */}
+          <DashedLine left="201px" top="331px" width="80px" className={styles.connR1a} animated={isInView} />
           <PolyDashedConnector
             points={[
-              [775, 331.5],
-              [877, 331.5],
-              [877, 485.45],
-              [765, 485.45],
+              [379, 329.5],
+              [454, 329.5],
+            ]}
+            animated={isInView}
+          />
+          <DashedLine left="552px" top="331px" width="75px" className={styles.connR1b} animated={isInView} />
+          <DashedLine left="725px" top="331px" width="75px" className={styles.connR1c} animated={isInView} />
+
+          {/* Row 1 → Row 2 traversal: DarkRed2 right → out right → down → across left → into Beta */}
+          <PolyDashedConnector
+            points={[
+              [898, 329.5],
+              [950, 329.5],
+              [950, 450],
+              [50, 450],
+              [50, 569.5],
+              [108, 569.5],
             ]}
             animated={isInView}
           />
 
-          {/* Left side: continuous dashed path from beta left → down → into row 3 left box */}
+          {/* Row 2 intra-row connectors */}
+          <DashedLine left="206px" top="571px" width="75px" className={styles.connR2a} animated={isInView} />
+          <DashedLine left="379px" top="571px" width="75px" className={styles.connR2b} animated={isInView} />
+          <DashedLine left="552px" top="571px" width="75px" className={styles.connR2c} animated={isInView} />
           <PolyDashedConnector
             points={[
-              [339, 484],
-              [211.5, 484],
-              [211.5, 651.45],
-              [232, 651.45],
+              [725, 569.5],
+              [800, 569.5],
             ]}
             animated={isInView}
           />

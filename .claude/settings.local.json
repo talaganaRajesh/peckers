@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Read(//c/Users/user/.claude/**)"
+      "Read(//c/Users/user/.claude/**)",
+      "Bash(node -e \"require\\('fs'\\).readFileSync\\('app/rewards/RewardsRoadmap.jsx','utf8'\\).length\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\user\\.claude"
