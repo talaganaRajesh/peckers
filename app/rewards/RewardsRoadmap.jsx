@@ -180,8 +180,8 @@ function AlphaRewardCard({ animated }) {
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-14 w-[240px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#e51a38] rounded-xl p-4 shadow-2xl">
           <p className="text-[#e51a38] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Alpha</p>
-          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Top of the pecking order</p>
-          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Hit 10 Chicken Heads and feast on a full free meal from selected items.</p>
+          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Level Up to Alpha!</p>
+          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Collect 10 chicken heads to unlock your Alpha Reward and get a Free Meal on the house! Choose from: OG Burger Meal, OG Grilled Burger Meal, Peckerless OG Burger Meal, Any 4 Wings Meal, or Any 3 Tenders Meal.</p>
         </div>
       </div>
     </div>
@@ -269,8 +269,8 @@ function BetaOverlayBox({ animated }) {
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-14 w-[240px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#ed641b] rounded-xl p-4 shadow-2xl">
           <p className="text-[#ed641b] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Beta</p>
-          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>You&apos;re properly in the flock now</p>
-          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Hit 6 Chicken Heads and grab a free main from selected items.</p>
+          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Level Up to Beta!</p>
+          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Collect 6 chicken heads to unlock your Beta Reward and get a Free Main on the house! Choose from: OG Burger, OG Grilled Burger, Peckerless OG Burger, Any 4 Wings, or Any 3 Tenders.</p>
         </div>
       </div>
     </div>
@@ -306,8 +306,8 @@ function GammaOverlayBox({ animated }) {
       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-14 w-[240px] opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[200]">
         <div className="bg-[#1c1b19] border-2 border-[#611824] rounded-xl p-4 shadow-2xl">
           <p className="text-[#d8192a] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Gamma</p>
-          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>The first taste of the Inner Circle</p>
-          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Hit 3 Chicken Heads and pick any free side on us.</p>
+          <p className="text-white text-base font-bold mt-2 leading-tight" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Level Up to Gamma!</p>
+          <p className="text-[#a1a1aa] text-sm mt-2 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Collect 3 chicken heads to unlock your Gamma Reward and get any Free Side on us.</p>
         </div>
       </div>
     </div>
@@ -365,7 +365,7 @@ function RecruitGroup({ animated }) {
         <div className="bg-[#1c1b19] border-2 border-[#d4a838] rounded-xl p-4 shadow-2xl">
           <p className="text-[#d4a838] text-base font-bold uppercase tracking-wide leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Recruit</p>
           <p className="text-white text-xl font-bold mt-2 leading-none" style={{ fontFamily: 'var(--font-peakers-bold)' }}>Welcome to the Inner Circle</p>
-          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Sign up to start collecting Chicken Heads on every order.</p>
+          <p className="text-[#a1a1aa] text-sm mt-3 leading-snug" style={{ fontFamily: 'var(--font-peakers)' }}>Sign up for the Peckers Loyalty program and start collecting chicken head stamps on every order of £12 or more.</p>
         </div>
       </div>
     </div>

@@ -375,9 +375,13 @@ export default function RewardsPage() {
               className="text-[#a1a1aa] text-lg sm:text-[20px] max-w-[520px] leading-relaxed"
               style={{ fontFamily: "var(--font-neuzeit)" }}
             >
-              Earn rewards and use them however you like, stick with your
-              favourites or discover something new. Sign up today and start
-              collecting Chicken Heads to unlock more.
+              Earn rewards and use them however you like, stick with your favourites or discover something new. Sign up today and start collecting Chicken Heads to unlock more!
+            </p>
+            <p
+              className="text-[#a1a1aa] text-base sm:text-lg max-w-[520px] leading-relaxed"
+              style={{ fontFamily: "var(--font-neuzeit)" }}
+            >
+              <span className="text-[#e6e2de] font-bold" style={{ fontFamily: "var(--font-peakers-bold)" }}>How to redeem:</span> Just add your choice of food to your cart and scan your loyalty card or enter your member code at checkout.
             </p>
             <OrderButtons />
           </div>

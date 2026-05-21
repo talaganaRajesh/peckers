@@ -44,7 +44,7 @@ export default function RewardsTermsPage() {
             >
               Recruit
             </h3>
-            <p className="text-white/70 text-sm">Sign up</p>
+            <p className="text-white/70 text-sm">Sign up for the Peckers Loyalty program and start collecting chicken head stamps on every order of £12 or more.</p>
           </div>
           <div className="bg-[#1c1b19] border border-white/10 rounded-2xl p-5">
             <h3
