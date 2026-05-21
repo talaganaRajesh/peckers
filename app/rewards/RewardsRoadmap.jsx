@@ -428,7 +428,7 @@ function VerticalDashedLine({ left, top, height, className, animated }) {
 
 // Single SVG path for a multi-segment dashed connector with an optional arrow at the end.
 // Drawing the whole route as one stroke keeps the dash pattern continuous through corners.
-function PolyDashedConnector({ points, animated }) {
+function PolyDashedConnector({ points, animated, showArrow = true }) {
   const xs = points.map((p) => p[0]);
   const ys = points.map((p) => p[1]);
   const pad = 14;
@@ -479,7 +479,7 @@ function PolyDashedConnector({ points, animated }) {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <path d={arrowD} fill="white" />
+        {showArrow && <path d={arrowD} fill="white" />}
       </svg>
     </div>
   );
@@ -655,7 +655,7 @@ export default function RewardsRoadmap() {
           {/* ── Dashed connection lines ─────────────────────── */}
 
           {/* Row 1 intra-row connectors (between centers 157, 330, 503, 676, 849) */}
-          <DashedLine left="201px" top="331px" width="80px" className={styles.connR1a} animated={isInView} />
+          <DashedLine left="157px" top="331px" width="124px" className={styles.connR1a} animated={isInView} />
           <PolyDashedConnector
             points={[
               [379, 329.5],
@@ -686,7 +686,7 @@ export default function RewardsRoadmap() {
           <PolyDashedConnector
             points={[
               [725, 569.5],
-              [800, 569.5],
+              [793, 569.5],
             ]}
             animated={isInView}
           />
