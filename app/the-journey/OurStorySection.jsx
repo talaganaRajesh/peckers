@@ -151,7 +151,7 @@ export default function OurStorySection({ initialData = null }) {
             {/* RISE ANIMATION WRAPPER: Synchronizes text with image slides to handle 'dancing' */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={`text-content-${currentSlide}-${currentSubSlide}`}
+                key={`text-content-${currentSlide}`}
                 initial={isMobile ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={isMobile ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
@@ -226,25 +226,32 @@ export default function OurStorySection({ initialData = null }) {
             </div>
 
             {/* Image Description */}
-            <AnimatePresence mode="wait">
-              {(() => {
-                const activeImg = displayImages[currentSubSlide % displayImages.length];
-                const desc = activeImg?.description;
-                if (!desc) return null;
-                return (
-                  <motion.p
-                    key={`description-${currentSlide}-${currentSubSlide}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: isMobile ? 0.2 : 0.4, ease: "easeOut" }}
-                    className="mt-2 lg:mt-3 text-[3vw] md:text-[16px] lg:text-[15px] xl:text-[0.95vw] text-white/70 font-neuzeit uppercase tracking-[0.15em] text-center w-full px-0 lg:px-4 leading-snug"
-                  >
-                    {desc}
-                  </motion.p>
-                );
-              })()}
-            </AnimatePresence>
+            <motion.div
+              layout
+              transition={{ layout: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }}
+              className="w-full"
+            >
+              <AnimatePresence mode="popLayout" initial={false}>
+                {(() => {
+                  const activeImg = displayImages[currentSubSlide % displayImages.length];
+                  const desc = activeImg?.description;
+                  if (!desc) return null;
+                  return (
+                    <motion.p
+                      key={`description-${currentSlide}-${currentSubSlide}`}
+                      layout
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: isMobile ? 0.25 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+                      className="mt-2 lg:mt-3 text-[3vw] md:text-[16px] lg:text-[15px] xl:text-[0.95vw] text-white/70 font-neuzeit uppercase tracking-[0.15em] text-center w-full px-0 lg:px-4 leading-snug"
+                    >
+                      {desc}
+                    </motion.p>
+                  );
+                })()}
+              </AnimatePresence>
+            </motion.div>
           </div>
         </div>
 
