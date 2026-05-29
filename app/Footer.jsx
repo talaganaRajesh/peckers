@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "../sanity/lib/client";
 import { urlFor } from "../sanity/lib/image";
+import { openCookiePreferences } from "./lib/cookie-consent";
 
 const Footer = ({ preloadedData = null }) => {
   const [data, setData] = useState(preloadedData);
@@ -392,6 +393,15 @@ const Footer = ({ preloadedData = null }) => {
                 </Link>
               </li>
             )}
+            <li>
+              <button
+                type="button"
+                onClick={openCookiePreferences}
+                className="hover:underline inline-block text-left"
+              >
+                Cookie Settings
+              </button>
+            </li>
           </ul>
         </div>
       </div>

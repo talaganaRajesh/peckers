@@ -149,14 +149,46 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/*
+          Google Consent Mode v2. This MUST run before gtag.js loads so the
+          default state is "denied" — no analytics/ads cookies are set until the
+          visitor opts in via the cookie banner (UK PECR / GDPR requirement).
+          Any consent already stored from a previous visit is re-applied here so
+          GA respects the visitor's choice on every page load.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'wait_for_update': 500
+              });
+              try {
+                var stored = JSON.parse(localStorage.getItem('peckers_cookie_consent'));
+                if (stored && stored.version === 1 && stored.categories) {
+                  var a = stored.categories.analytics ? 'granted' : 'denied';
+                  var m = stored.categories.marketing ? 'granted' : 'denied';
+                  gtag('consent', 'update', {
+                    'analytics_storage': a,
+                    'ad_storage': m,
+                    'ad_user_data': m,
+                    'ad_personalization': m
+                  });
+                }
+              } catch (e) {}
+              gtag('js', new Date());
+              gtag('config', 'G-256TPVH0TH');
+            `,
+          }}
+        />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-256TPVH0TH"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-256TPVH0TH');`,
-          }}
         />
       </head>
       <body

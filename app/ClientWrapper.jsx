@@ -9,6 +9,7 @@ import MobileBottomBar from "./components/MobileBottomBar";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "./Navbar";
 import ConditionalFooter from "./ConditionalFooter";
+import CookieConsent from "./components/CookieConsent";
 
 export default function ClientWrapper({ children, preloadedSettings, preloadedFooter }) {
   const pathname = usePathname();
@@ -109,6 +110,7 @@ export default function ClientWrapper({ children, preloadedSettings, preloadedFo
         {!pathname.startsWith('/menu') && <MobileBottomBar />}
       </motion.div>
 
+      <CookieConsent />
     </>
   );
 }
